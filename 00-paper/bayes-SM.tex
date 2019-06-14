@@ -1,0 +1,173 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amsfonts,nicefrac}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{natbib}
+\usepackage{url} % not crucial - just used below for the URL 
+\usepackage{ifthen}
+
+%\pdfminorversion=4
+% NOTE: To produce blinded version, replace "0" with "1" below.
+\newcommand{\blind}{1}
+% DON'T change margins - should be 1 inch all around.
+\addtolength{\oddsidemargin}{-.5in}%
+\addtolength{\evensidemargin}{-.5in}%
+\addtolength{\textwidth}{1in}%
+\addtolength{\textheight}{-.3in}%
+\addtolength{\topmargin}{-.8in}%
+
+
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
+
+\newcommand{\cl}[2]{\cellcolor{#1!#2}}
+\newcommand{\inc}[2]{ \ifthenelse{\equal{#1}{1}}{\input{./sections/#2}}{ } }
+
+
+
+\begin{document}
+
+%\bibliographystyle{natbib}
+
+\def\spacingset#1{\renewcommand{\baselinestretch}%
+{#1}\small\normalsize} \spacingset{1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\if1\blind
+{
+  \title{\bf Towards Structured Use of Bayesian Sequential Monitoring in Clinical Trials}
+  \author{Evan Kwiatkowski\textsuperscript{$\dagger$}, 
+	        Eugenio Andraca-Carrera\textsuperscript{$\ddagger$},\\
+					Mat Soukup\textsuperscript{$\ddagger$},
+					\medskip Matthew A. Psioda\textsuperscript{$\dagger$}\thanks{The authors gratefully acknowledge \textit{please remember to list all relevant funding sources in the unblinded version}}\\
+	  %
+	  $\dagger$ Department of Biostatistics,
+		University of North Carolina, \\
+		McGavran-Greenberg Hall, CB\#7420, \\
+		%
+		\medskip Chapel Hill, North Carolina, U.S.A.\\
+    $\ddagger$ Division of Biometrics VII, Office of Biostatistics \\
+		           Center for Drug Evaluation and Research, \\
+							 US Food and Drug Administration, \\
+							 Silver Spring, Maryland, USA \\									
+		}
+  \maketitle
+} \fi
+
+\if0\blind
+{
+  \bigskip
+  \bigskip
+  \bigskip
+  \begin{center}
+    {\LARGE\bf Title}
+\end{center}
+  \medskip
+} \fi
+
+\bigskip
+\begin{abstract}
+The text of your abstract. 200 or fewer words.
+\end{abstract}
+
+\noindent%
+{\it Keywords:}  3 to 6 keywords, that do not appear in the title
+\vfill
+
+\newpage
+\spacingset{1.5} % DON'T change the spacing!
+
+
+
+\section{Introduction}
+
+Things to discuss:
+\begin{itemize}
+ \item 21\textsuperscript{st} Century Cures Act (MATT)
+ \item PDUFA VI reauthorization (MATT)
+ \item Expansive work already done on sequential monitoring  (EVAN -- draft on 6/21)
+ \item Our majors contribution (EVAN -- as early as possible in introduction without having the flow appear weird -- draft on 6/21)
+ \item Outline for the remaining section of the paper (EVAN -- draft on 6/21)
+\end{itemize}
+
+\section{Methods}
+
+As you introduce ideas that come from or extend other ideas in the literature, cite the relevant literature.
+
+\subsection{Monitoring versus Estimation Priors (EVAN -- draft on 6/21)}
+
+\begin{itemize}
+ \item Define generally in terms of $\boldsymbol\theta = \left( \gamma, \boldsymbol\psi  \right)$ where $\gamma$ is a parameter of interest
+       and $\boldsymbol\psi$ is a nuisance parameter (possible vector valued).
+ \item Define \textit{Monitoring} Priors and \textit{Inference} Priors.
+ \item Make connection between Inference priors and two-part mixture prior and BMA.
+ \item Define \textit{Skeptical} and \textit{Enthusiastic} monitoring priors and how each would be used.
+ \item I would have a generic graphic to illustrate the types of priors and the mixture.
+ %\item Motivate in the context of a simple example (i.e., single parameter binary example).
+\end{itemize}
+
+\subsection{Futility Monitoring Using Probability of Success (EVAN -- draft on 6/21)}
+
+\begin{itemize}
+ \item Futility monitoring using POS is about stopping early when their is a high likelihood
+       of a study being inconclusive at the end of the study.
+ \item Since the final analysis uses the \textit{Inference} prior, POS should be based on the
+       inference prior.
+ \item Develop the framework for POS and show how it is a weighted average POS based on the skeptical
+       and enthusiastic priors.
+\end{itemize}
+
+\section{Examples -- (EVAN)}
+
+\subsection{Single-Arm Oncology Proof-of-Activity Trial w/ Binary Endpoint}
+
+\subsection{Parallel Two-Group Superiority Trial /w Continuous Binary Endpoint}
+
+\subsection{Three-Arm, Placebo Controlled Non-Inferiority Trial w/ Continuous Endpoint}
+
+\section{Discussion -- (MATT/EVAN)}
+
+%\section{Example of Parallel Two-Group Design}
+%
+%In this section we consider a sequential monitoring approach in a parallel two-group setting using a binary response endpoint.
+%
+%We consider the case where the goal is prove superiority of an investigational product (IP) to a control 
+%which could be a placebo.
+%
+%Let $\pi_0$ represent the response rate the control group and $\pi_1$ represent the response probability for the IP group.
+%
+%Here we wish to elicit pessimistic and enthusiastic priors consistent with the following:
+% \begin{enumerate}
+%  \item The control group response probability is expected to be approximately $0.20$ and investigators are relatively sure
+%		    that the it will be between 0.5 and 0.35.
+%				
+%	\item The IP group response probability is likely to provide an improvement of approximately 0.20.
+%\end{enumerate}
+%
+%In this setting pessimism or optimism is reflected in the induced prior on the difference in proportions $\pi_1 - \pi_0$.
+%
+%One easy way to specify such a prior in this case is to elicit a bivariate normal prior for $\pi_0$ and $\pi_1$ truncated to the unit square.  
+
+
+%
+%		\begin{figure}
+%      \centering\includegraphics[scale=0.70]{./FIGURES/BINARY-PRIORS.pdf}
+%      \caption{Prior for Control Group Response Probability \label{fig:pmp}}
+%    \end{figure}
+			
+	
+
+%\bigskip
+\newpage
+\begin{center}
+{\large\bf SUPPLEMENTARY MATERIAL}
+\end{center}
+
+
+\section{BibTeX}
+
+ \bibliographystyle{agsm}
+ \bibliography{./References}		
+
+\end{document}
