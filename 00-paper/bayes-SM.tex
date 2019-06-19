@@ -118,6 +118,10 @@ As you introduce ideas that come from or extend other ideas in the literature, c
        and enthusiastic priors.
 \end{itemize}
 
+Suppose the parameter space is $\Theta$ and consider testing the hypothesis $H_0:\theta\in\Theta_{H_0}$ versus $H_1:\theta\in\Theta_{H_1}$, where $\Theta=\Theta_{H_0}\cup \Theta_{H_0}$ and $\Theta_{H_0}\cap \Theta_{H_0}=\emptyset$. Let $p(H_0)$ and $p(H_1)$ denote the prior probabilities for $H_0$ and $H_1$, where $p(H_0)+p(H_1)=1$. Let $D$ denote the data collected in the experiment. Let $\pi=\pi(\theta)$ denote a prior distribution for $\theta$ and define $p(D|\pi)=\int_\theta L(\theta|D)\pi(\theta)d\theta$ be the marginal likelihood for the data given the prior $\pi$.
+
+For example, consider testing the hypothesis $H_0:\theta\leq\theta_0$ versus $H_1:\theta>\theta_0$ where $\theta$ is a treatment effect of interest. Suppose an effect $\theta_1>\theta_0$ is thought to be highly clinically relevant and plausible given what limited data is available. Consider a clinical trial with a single analysis and fixed sample size chosen that there is a high probability of proving $H_1$ when $\theta=\theta_1$. A standard Bayesian decision rule would rejectg $H_0$ when $P(\theta>\theta_0|D)\geq 0.95$ which will result in a type one error rate of $0.05$ (approximately) if $\theta=\theta_0$ when the analysis prior is non-informative (a so-called reference or flat prior).
+
 \section{Examples -- (EVAN)}
 
 \subsection{Single-Arm Oncology Proof-of-Activity Trial w/ Binary Endpoint}
