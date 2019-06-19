@@ -87,10 +87,14 @@ Things to discuss:
  \item 21\textsuperscript{st} Century Cures Act (MATT)
  \item PDUFA VI reauthorization (MATT)
  \item Expansive work already done on sequential monitoring  (EVAN -- draft on 6/21)
+\begin{enumerate}
+\item First papers in Bayes sequential monitoring.
+\item Papers which compare to frequentist stopping rules \& increased interpretation on role of priors.
+\item 
+\end{enumerate}
  \item Our majors contribution (EVAN -- as early as possible in introduction without having the flow appear weird -- draft on 6/21)
  \item Outline for the remaining section of the paper (EVAN -- draft on 6/21)
 \end{itemize}
-
 \section{Methods}
 
 As you introduce ideas that come from or extend other ideas in the literature, cite the relevant literature.
@@ -107,16 +111,25 @@ As you introduce ideas that come from or extend other ideas in the literature, c
  %\item Motivate in the context of a simple example (i.e., single parameter binary example).
 \end{itemize}
 
-Suppose the parameter space is $\Theta$ and consider testing the hypothesis $H_0:\theta\in\Theta_{H_0}$ versus $H_1:\theta\in\Theta_{H_1}$, where $\Theta=\Theta_{H_0}\cup \Theta_{H_0}$ and $\Theta_{H_0}\cap \Theta_{H_0}=\emptyset$. Let $D$ denote the data collected in the experiment, let $\pi\equiv \pi(\theta)$ denote a prior distribution for $\theta$, and let $p(\theta|D,\pi)$ denote the posterior distribution of $\theta$ given a particular prior distribution.
-
-Before any data is collected, define the skeptical viewpoint as being ``all but convinced" that $\theta\in\Theta_{H_0}$ and similarly the enthuastic viewpoint as being ``all but convinced" that $\theta\in\Theta_{H_1}$. These viewpoints can be made rigorous by associating them with priors $\pi_{Skeptical}$ and $\pi_{Enthuastic}$ such that $P(\theta\in\Theta_0|\pi_{Skeptical})$ and $P(\theta\in\Theta_1|\pi_{Enthuastic})$ are sufficiently close to 1. Although these viewpoints are highly certain, we require that $\pi(\theta)>0$ for all $\theta\in\Theta$.
-
-
-These viewpoints can be used in monitoring the trial once data is collected. It is reasonable to  The efficacy critiera is $P(\theta\in\Theta_1|D,\pi_{Skeptical})\geq c_1$, and the futility criteria is $P(\theta\in\Theta_0|D,\pi_{Enthuastic})\geq c_2$, where $c_1$ and $c_2$ are the thresholds reflecting strong belief in the skeptical and enthuastic viewpoints respectively.
+Suppose the parameter space is $\Theta$ and consider testing the hypothesis $H_0:\theta\in\Theta_{H_0}$ versus $H_1:\theta\in\Theta_{H_1}$, where $\Theta=\Theta_{H_0}\cup \Theta_{H_0}$ and $\Theta_{H_0}\cap \Theta_{H_0}=\emptyset$. Let $D$ denote the data collected in the experiment and let $\pi\equiv \pi(\theta)$ denote a prior distribution for $\theta$. 
+%and let $p(\theta|D,\pi)$ denote the posterior distribution of $\theta$ given a particular prior distribution.
 
 
+Consider a-priori beliefs about the true value of $\theta$ before data is collected. Define the skeptical viewpoint as being ``all but convinced" that $\theta\in\Theta_{H_0}$ and similarly the enthuastic viewpoint as being ``all but convinced" that $\theta\in\Theta_{H_1}$. These viewpoints can be made rigorous by associating them with priors $\pi_{Skeptical}$ and $\pi_{Enthuastic}$ such that $P(\theta\in\Theta_0|\pi_{Skeptical})$ and $P(\theta\in\Theta_1|\pi_{Enthuastic})$ reflect a high amount of certainty.
 
-A standard Bayesian decision rule would reject $H_0$ when $P(\theta\in\Theta_1 | D)\geq 0.95$. 
+
+These viewpoints can be used in monitoring the trial once data is collected. It is reasonable to stop the trial for efficacy if the posterior distribution of $\theta$ given the skeptical prior is sufficiently contained in $\Theta_1$, that is, if $P(\theta\in\Theta_1|D,\pi_{Skeptical})$ is close to 1.. Similarly, it is reasonable to stop the trial for futility if the posterior distribution of $\theta$ given the enthuastic prior is sufficiently contained in $\Theta_0$, that is, if $P(\theta\in\Theta_0|D,\pi_{Enthuastic})$ is close to 1. Intuitively, if an individual had the prior belief that there was no effect but once presented with data, updates their opinion via Bayes rule and now is strongly convinced there is an effect, then efficacy can be accepted. The prior belief can be seen as a pessimistic viewpoint that has to be overwhelmed with evidence.
+
+
+Once the trial is stopped based on the monitoring priors, or at the planned end of the trial, it is necessary to use a prior to make final inference on $\theta$. It is inadvisable to use either the skeptical or enthuastic prior for inference since they are admittedly biased opionions in the direction of the null or the alternative for monitoring purposes. For inference purposes it is better to use an impartial prior $\pi_{Inference}$.  Define $p(D|\pi)=\int L (\theta|D)\pi(\theta)d\theta$ to be the marginal likelihood for the data given the prior $\pi$. One can average the posterior means from the analyses using the skeptical and enthuastic priors, such that,
+\begin{align*}
+\pi_{Inference}=\frac{p(D|\pi_{Skeptical})\pi_{Skeptical}+p(D|\pi_{Enthuastic})\pi_{Enthuastic}}{p(D|\pi_{Skeptical})+p(D|\pi_{Enthuastic})}
+\end{align*}
+Let $\omega=p(D|\pi_{Skeptical}/(p(D|\pi_{Skeptical})+p(D|\pi_{Enthuastic}))$. Then
+\begin{align*}
+E(\theta|D,\pi_{Inference})=\omega\times E(\theta|D,\pi_{Skeptical})+(1-\omega)\times E(\theta|D,\pi_{Enthuastic})
+\end{align*}
+
 
 For example, consider testing the hypothesis $H_0:\theta\leq\theta_0$ versus $H_1:\theta>\theta_0$ where $\theta$ is a treatment effect of interest. A standard Bayesian decision rule would reject $H_0$ when $P(\theta>\theta_0|D)\geq 0.95$.
 
