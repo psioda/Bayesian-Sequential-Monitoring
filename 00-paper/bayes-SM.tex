@@ -88,9 +88,20 @@ Things to discuss:
  \item PDUFA VI reauthorization (MATT)
  \item Expansive work already done on sequential monitoring  (EVAN -- draft on 6/21)
 \begin{enumerate}
-\item First papers in Bayes sequential monitoring.
+%\item Berry A Case for Bayesianism, Cornfield The Bayesian outlook, classical arguments for Bayes in clinical trials, not sequential monitoring in particular
+\item (1) Berry Montoring Accumulating Data, (2) Cornfield/Greenhouse On certain aspects, (3) Cornfield Sequential Trials, (4) A Bayesian Test of Some Classical Hypotheses, with Applications to Sequential Clinical Trials
+Jerome Cornfield 
+\item Bayes \& monitoring, based on posterior distributions
+\item First papers in Bayes sequential monitoring. Bayesian inferences not affected by frequent or continual monitoring by the likelihood principle.
 \item Papers which compare to frequentist stopping rules \& increased interpretation on role of priors.
-\item 
+\item Freedman/Spiegelhalter Comparison of Bayesian with group sequential: The need to overcome this `\textbf{handicap}' prevents unduly early termination.
+\item Spiegelhalter/Freedman/Parmar Bayesian approaches to randomized trials - 
+\item Spiegelhalter/Freedman/Parmar Applying Bayesian ideas - predictive distributions as basis for monitoring
+\item Freedman/Spiegelhalter - choice of prior explained by showing its impact on percentiles of posterior distribution
+\item Fayers/Ashby/Parmar Tutorial in biostatistics... Choosing these two priors (skeptical, enthuastic) provides a useful \textbf{brake} against the premature termination of trials.
+\item Bayesian
+Adaptive Methods
+for Clinical Trials Berry, Carlin, Etc.
 \end{enumerate}
  \item Our majors contribution (EVAN -- as early as possible in introduction without having the flow appear weird -- draft on 6/21)
  \item Outline for the remaining section of the paper (EVAN -- draft on 6/21)
@@ -111,17 +122,23 @@ As you introduce ideas that come from or extend other ideas in the literature, c
  %\item Motivate in the context of a simple example (i.e., single parameter binary example).
 \end{itemize}
 
-Suppose the parameter space is $\Theta$ and consider testing the hypothesis $H_0:\theta\in\Theta_{H_0}$ versus $H_1:\theta\in\Theta_{H_1}$, where $\Theta=\Theta_{H_0}\cup \Theta_{H_0}$ and $\Theta_{H_0}\cap \Theta_{H_0}=\emptyset$. Let $D$ denote the data collected in the experiment and let $\pi\equiv \pi(\theta)$ denote a prior distribution for $\theta$. 
+\subsubsection{Bayesian hypothesis testing}
+
+Suppose the parameter space is $\Theta$ and consider testing the hypothesis $H_0:\theta\in\Theta_{H_0}$ versus $H_1:\theta\in\Theta_{H_1}$, where $\Theta=\Theta_{H_0}\cup \Theta_{H_0}$ and $\Theta_{H_0}\cap \Theta_{H_0}=\emptyset$. Let $D$ denote the data collected in the experiment and let $\pi\equiv \pi(\theta)$ denote a prior distribution for $\theta$. %A standard Bayesian decision rule would reject $H_0$ when $P(\theta\in\Theta_{H_1}|D\geq 0.95)$ which will result in a Type I error rate of $0.05$ when the analysis prior is non-informative (a so-called reference or flat prior). The Bayes factor in favor of $H_0$ is defined as 
+%\begin{align*}
+%BF=\frac{p(D|H_0)}{p(D|H_1)}=\frac{\int_{\Theta_{H_0}}p(D|\theta,H_0)\pi(\theta|H_0)d\theta}{\int_{\Theta_{H_1}}p(D|\theta,H_0)\pi(\theta|H_1)d\theta}
+%\end{align*}
 %and let $p(\theta|D,\pi)$ denote the posterior distribution of $\theta$ given a particular prior distribution.
 
+\subsubsection{Skeptical and enthuastic monitoring priors}
 
-Consider a-priori beliefs about the true value of $\theta$ before data is collected. Define the skeptical viewpoint as being ``all but convinced" that $\theta\in\Theta_{H_0}$ and similarly the enthuastic viewpoint as being ``all but convinced" that $\theta\in\Theta_{H_1}$. These viewpoints can be made rigorous by associating them with priors $\pi_{Skeptical}$ and $\pi_{Enthuastic}$ such that $P(\theta\in\Theta_0|\pi_{Skeptical})$ and $P(\theta\in\Theta_1|\pi_{Enthuastic})$ reflect a high amount of certainty.
-
-
-These viewpoints can be used in monitoring the trial once data is collected. It is reasonable to stop the trial for efficacy if the posterior distribution of $\theta$ given the skeptical prior is sufficiently contained in $\Theta_1$, that is, if $P(\theta\in\Theta_1|D,\pi_{Skeptical})$ is close to 1.. Similarly, it is reasonable to stop the trial for futility if the posterior distribution of $\theta$ given the enthuastic prior is sufficiently contained in $\Theta_0$, that is, if $P(\theta\in\Theta_0|D,\pi_{Enthuastic})$ is close to 1. Intuitively, if an individual had the prior belief that there was no effect but once presented with data, updates their opinion via Bayes rule and now is strongly convinced there is an effect, then efficacy can be accepted. The prior belief can be seen as a pessimistic viewpoint that has to be overwhelmed with evidence.
+Consider a-priori beliefs about the true value of $\theta$ before data is collected. Define the skeptical viewpoint as being ``all but convinced" that $\theta\in\Theta_{H_0}$ and define the enthuastic viewpoint as being ``all but convinced" that $\theta\in\Theta_{H_1}$. Associate these viewpoints with priors $\pi_{Skeptical}$ and $\pi_{Enthuastic}$ such that the quantities $P(\theta\in\Theta_0|\pi_{Skeptical})$ and $P(\theta\in\Theta_1|\pi_{Enthuastic})$ reflect a high amount of certainty. Based on the study design there will be many options for specification of these priors (see Section \ref{monitoring_prior_specification}).
 
 
-Once the trial is stopped based on the monitoring priors, or at the planned end of the trial, it is necessary to use a prior to make final inference on $\theta$. It is inadvisable to use either the skeptical or enthuastic prior for inference since they are admittedly biased opionions in the direction of the null or the alternative for monitoring purposes. For inference purposes it is better to use an impartial prior $\pi_{Inference}$.  Define $p(D|\pi)=\int L (\theta|D)\pi(\theta)d\theta$ to be the marginal likelihood for the data given the prior $\pi$. One can average the posterior means from the analyses using the skeptical and enthuastic priors, such that,
+These viewpoints can be used in monitoring the trial once data is collected, using the posterior probability of $\theta$ under different prior specifications. It is reasonable to stop the trial for efficacy if, once presented with the data, the skeptical viewpoint as updated via Bayes rule becomes convinced of the alternative hypothesis, that is, if $P(\theta\in\Theta_1|D,\pi_{Skeptical})$ is close to 1. Similarly, it is reasponable to stop the trialy for futility if, $P(\theta\in\Theta_0|D,\pi_{Enthuastic})$ is close to 1. The concept of using the the skeptical and enthuastic priors for trial monitoring has been presnted in XXXX and YYYY. (Include interpretations).
+
+\subsubsection{Inference priors}
+Once the trial is stopped based on the monitoring priors, or at the planned end of the trial, it is necessary to use a prior to make final inference on $\theta$. It is inadvisable to use either the skeptical or enthuastic prior for inference since they are admittedly biased opinions in the direction of the null or the alternative for monitoring purposes. For inference purposes it is better to use an impartial prior $\pi_{Inference}$.  Define $p(D|\pi)=\int L (\theta|D)\pi(\theta)d\theta$ to be the marginal likelihood for the data given the prior $\pi$. One can average the posterior means from the analyses using the skeptical and enthuastic priors, such that,
 \begin{align*}
 \pi_{Inference}=\frac{p(D|\pi_{Skeptical})\pi_{Skeptical}+p(D|\pi_{Enthuastic})\pi_{Enthuastic}}{p(D|\pi_{Skeptical})+p(D|\pi_{Enthuastic})}
 \end{align*}
@@ -129,13 +146,17 @@ Let $\omega=p(D|\pi_{Skeptical}/(p(D|\pi_{Skeptical})+p(D|\pi_{Enthuastic}))$. T
 \begin{align*}
 E(\theta|D,\pi_{Inference})=\omega\times E(\theta|D,\pi_{Skeptical})+(1-\omega)\times E(\theta|D,\pi_{Enthuastic})
 \end{align*}
+Need to describe relation to Type I and Type II error.
+\subsubsection{Default parameterization of monitoring priors for common designs}\label{monitoring_prior_specification}
+Define prior distribution as $\pi(\theta|\lambda)$ where $\lambda$ is a vector of hyperparameters.
 
+Skeptical prior might be centered around the clinical inferiority boundary.
+Enthuastic prior might be centered around clinical superiority boundry.
+Variance based on tail area considerations, or by matching the skeptical prior variance.
 
-For example, consider testing the hypothesis $H_0:\theta\leq\theta_0$ versus $H_1:\theta>\theta_0$ where $\theta$ is a treatment effect of interest. A standard Bayesian decision rule would reject $H_0$ when $P(\theta>\theta_0|D)\geq 0.95$.
+Reference prior attempts to express no particular opinion about the treatment's merit. 
 
-Let $p(H_0)$ and $p(H_1)$ denote the prior probabilities for $H_0$ and $H_1$, where $p(H_0)+p(H_1)=1$. Let $D$ denote the data collected in the experiment. Let $\pi=\pi(\theta)$ denote a prior distribution for $\theta$ and define $p(D|\pi)=\int_\theta L(\theta|D)\pi(\theta)d\theta$ be the marginal likelihood for the data given the prior $\pi$.
-
-For example, consider testing the hypothesis $H_0:\theta\leq\theta_0$ versus $H_1:\theta>\theta_0$ where $\theta$ is a treatment effect of interest. Suppose an effect $\theta_1>\theta_0$ is thought to be highly clinically relevant and plausible given what limited data is available. Consider a clinical trial with a single analysis and fixed sample size chosen that there is a high probability of proving $H_1$ when $\theta=\theta_1$. A standard Bayesian decision rule would rejectg $H_0$ when $P(\theta>\theta_0|D)\geq 0.95$ which will result in a type one error rate of $0.05$ (approximately) if $\theta=\theta_0$ when the analysis prior is non-informative (a so-called reference or flat prior).
+Spiegelhalter et al. 1994 ``an adversary who will need to be disilusioned by the data to stop further experimentation."
 
 \subsection{Futility Monitoring Using Probability of Success (EVAN -- draft on 6/21)}
 
@@ -147,13 +168,21 @@ For example, consider testing the hypothesis $H_0:\theta\leq\theta_0$ versus $H_
  \item Develop the framework for POS and show how it is a weighted average POS based on the skeptical
        and enthusiastic priors.
 \end{itemize}
+As an alternative strategy to futility analysis, one can monitor the probability of success (POS) for the trial. Let $\pi(\theta|D)\equiv \pi(\theta|D,\pi_{Skeptical})$ denote the posterior distribution for $\theta$ based on the skeptical prior $\pi_{Skeptical}$ and the current data $D$. Let $\psi\equiv\psi(D,\pi_{Skeptical})$ denote the POS which is given as follows:
+\begin{align*}
+\psi=E[1\{P(\theta>0.20|D_1,D,\pi_{Skeptical})\geq 0.95\}]
+\end{align*}
+where the expectation is taken with respect to the posterior predictive distribution $p(D_1)$ for future data $D_1$ (ongoing + subjects yet to enroll).
+\begin{align*}
+p(D_1)=\int p(D_1|\theta)\times \pi(\theta|D)d\theta
+\end{align*}
+One may stop the enrollment if $\psi$ is sufficiently small (i.e., $\psi<0.05$).
 
-
-
+Stochastic curtailment in frequentist setting.
 \section{Examples -- (EVAN)}
 
 \subsection{Single-Arm Oncology Proof-of-Activity Trial w/ Binary Endpoint}
-
+For example, consider testing the hypothesis $H_0:\theta\leq\theta_0$ versus $H_1:\theta>\theta_0$ where $\theta$ is a treatment effect of interest. Suppose an effect $\theta_1>\theta_0$ is thought to be highly clinically relevant and plausible given what limited data is available. Consider a clinical trial with a single analysis and fixed sample size chosen that there is a high probability of proving $H_1$ when $\theta=\theta_1$. A standard Bayesian decision rule would reject $H_0$ when $P(\theta>\theta_0|D)\geq 0.95$ which will result in a type one error rate of $0.05$ (approximately) if $\theta=\theta_0$ when the analysis prior is non-informative (a so-called reference or flat prior).
 \subsection{Parallel Two-Group Superiority Trial /w Continuous Binary Endpoint}
 
 \subsection{Three-Arm, Placebo Controlled Non-Inferiority Trial w/ Continuous Endpoint}
