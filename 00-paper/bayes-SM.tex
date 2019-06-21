@@ -89,19 +89,18 @@ Things to discuss:
  \item Expansive work already done on sequential monitoring  (EVAN -- draft on 6/21)
 \begin{enumerate}
 %\item Berry A Case for Bayesianism, Cornfield The Bayesian outlook, classical arguments for Bayes in clinical trials, not sequential monitoring in particular
-\item (1) Berry Montoring Accumulating Data, (2) Cornfield/Greenhouse On certain aspects, (3) Cornfield Sequential Trials, (4) A Bayesian Test of Some Classical Hypotheses, with Applications to Sequential Clinical Trials
-Jerome Cornfield 
-\item Bayes \& monitoring, based on posterior distributions
-\item First papers in Bayes sequential monitoring. Bayesian inferences not affected by frequent or continual monitoring by the likelihood principle.
-\item Papers which compare to frequentist stopping rules \& increased interpretation on role of priors.
-\item Freedman/Spiegelhalter Comparison of Bayesian with group sequential: The need to overcome this `\textbf{handicap}' prevents unduly early termination.
-\item Spiegelhalter/Freedman/Parmar Bayesian approaches to randomized trials - 
-\item Spiegelhalter/Freedman/Parmar Applying Bayesian ideas - predictive distributions as basis for monitoring
-\item Freedman/Spiegelhalter - choice of prior explained by showing its impact on percentiles of posterior distribution
-\item Fayers/Ashby/Parmar Tutorial in biostatistics... Choosing these two priors (skeptical, enthuastic) provides a useful \textbf{brake} against the premature termination of trials.
-\item Bayesian
-Adaptive Methods
-for Clinical Trials Berry, Carlin, Etc.
+%\item (1) Berry Montoring Accumulating Data, (2) Cornfield/Greenhouse On certain aspects, (3) Cornfield Sequential Trials, (4) A Bayesian Test of Some Classical Hypotheses, with Applications to Sequential Clinical Trials Jerome Cornfield 
+%\item Bayes \& monitoring, based on posterior distributions
+\item Foundational Bayesian sequential monitoring \cite{Cornfield1966}~\cite{Cornfield1966a}~\cite{Neyman1967}.
+\item Further development \cite{Freedman1989}~\cite{Freedman1992}~\cite{Spiegelhalter1993}~\cite{Spiegelhalter1994}~\cite{Fayers1997}.
+%\item First papers in Bayes sequential monitoring. Bayesian inferences not affected by frequent or continual monitoring by the likelihood principle.
+%\item Papers which compare to frequentist stopping rules \& increased interpretation on role of priors.
+%\item \cite{Spiegelhalter1994}
+%\item \cite{Spiegelhalter1993} predictive distributions as basis for monitoring
+%\item \cite{Freedman1992} choice of prior explained by showing its impact on percentiles of posterior distribution
+%\item \cite{Freedman1989} The need to overcome this `\textbf{handicap}' prevents unduly early termination.
+%\item \cite{Fayers1997} Choosing these two priors (skeptical, enthuastic) provides a useful \textbf{brake} against the premature termination of trials.
+%\item Bayesian Adaptive Methods for Clinical Trials Berry, Carlin, Etc.
 \end{enumerate}
  \item Our majors contribution (EVAN -- as early as possible in introduction without having the flow appear weird -- draft on 6/21)
  \item Outline for the remaining section of the paper (EVAN -- draft on 6/21)
@@ -131,31 +130,37 @@ Let $X$ be a random variable having density $p(x|\theta,\tau)$ where $\theta\in\
 %and let $p(\theta|D,\pi)$ denote the posterior distribution of $\theta$ given a particular prior distribution.
 
 \subsubsection{Skeptical and enthuastic monitoring priors}
-Summarizing Spiegelhalter et al. (1993) and others: A Bayesian may monitor data continually and stop collection when any of the following criteria have been met:
-\begin{itemize}
-\item A sufficiently \textit{skeptical person} is convinced that $H_1$ is true.
-\item A sufficiently \textit{enthuastic person} is convinced that $H_1$ is false or that the benefit of treatment is not likely to be what was expected.
-\item The probability of \textit{eventually} proving that $H_1$ is true is sufficiently low.
-\item The resources have been exhausted.
-\end{itemize}
-We will illustrate pragmatic aproaches for elicitation of skeptical and enthuastic priors by linking elicitation to the set of hypotheses to be tested.
+%Summarizing Spiegelhalter et al. (1993) and others: A Bayesian may monitor data continually and stop collection when any of the following criteria have been met:
+%\begin{itemize}
+%\item A sufficiently \textit{skeptical person} is convinced that $H_1$ is true.
+%\item A sufficiently \textit{enthuastic person} is convinced that $H_1$ is false or that the benefit of treatment is not likely to be what was expected.
+%\item The probability of \textit{eventually} proving that $H_1$ is true is sufficiently low.
+%\item The resources have been exhausted.
+%\end{itemize}
 
 
-Consider a-priori beliefs about the true value of $\theta$ before data is collected. Define the skeptical viewpoint as being ``all but convinced" that $\theta\in\Theta_{H_0}$ and define the enthuastic viewpoint as being ``all but convinced" that $\theta\in\Theta_{H_1}$. Associate these viewpoints with priors $\pi_{S}(\theta,\tau)\equiv\pi_{S}$ and $\pi_{E}(\theta,\tau)\equiv\pi_{E}$ such that the quantities $P(\theta\in\Theta_0| \pi_{S})$ and $P(\theta\in\Theta_1| \pi_{E})$ reflect a high amount of certainty. Based on the study design there will be many options for specification of these priors (see Section \ref{monitoring_prior_specification}).
 
+Consider a-priori beliefs before data is collected that reflect strong opinions on the true value of $\theta$. \textit{Define monitoring priors formally as the set of priors used to determine when enrollment or data collection should cease}. \textit{Define all but convinced.}
 
-These viewpoints can be used in monitoring the trial once data is collected, using the posterior probability of $\theta$ under different prior specifications. It is reasonable to stop the trial for efficacy if, once presented with the data, the skeptical viewpoint as updated via Bayes rule becomes convinced of the alternative hypothesis, that is, if $P(\theta\in\Theta_1|\mathbf{D}, \pi_{S})$ is close to 1. Similarly, it is reasponable to stop the trialy for futility if, $P(\theta\in\Theta_0|\mathbf{D}, \pi_{E})$ is close to 1. The concept of using the the skeptical and enthuastic priors for trial monitoring has been presented in XXXX and YYYY. (Include interpretations).
+We will illustrate pragmatic aproaches for elicitation of skeptical and enthuastic priors by linking elicitation to the set of hypotheses to be tested. Define the skeptical viewpoint as being all but convinced that $\theta\in\Theta_{H_0}$ and define the enthuastic viewpoint as being all but convinced that $\theta\in\Theta_{H_1}$. Associate these viewpoints with priors $\pi_{S}(\theta,\tau)\equiv\pi_{S}$ and $\pi_{E}(\theta,\tau)\equiv\pi_{E}$ such that the quantities $P(\theta\in\Theta_0| \pi_{S})$ and $P(\theta\in\Theta_1| \pi_{E})$ reflect a high amount of certainty. Based on the study design there will be many options for specification of these priors (see Section \ref{monitoring_prior_specification}).
+
+The use of monitoring based on changing the opinion of skeptical and enthuastic priors has been described as overcoming a handicap (\cite{Freedman1989}), constructing ``an adversary who will need to be disilusioned by the data to stop further experimentation" (\cite{Spiegelhalter1994}) and providing a brake (\cite{Fayers1997}) on the premature termination of trials.
+
+These viewpoints can be used in monitoring the trial once data is collected, using the posterior probability of $\theta$ under different prior specifications. It is reasonable to stop the trial for efficacy if, once presented with the data, the skeptical viewpoint as updated via Bayes rule becomes convinced of the alternative hypothesis, that is, if $P(\theta\in\Theta_1|\mathbf{D}, \pi_{S})$ is close to 1. Similarly, it is reasponable to stop the trialy for futility if, $P(\theta\in\Theta_0|\mathbf{D}, \pi_{E})$ is close to 1.
 
 \subsubsection{Inference priors}
-Once the trial is stopped based on the monitoring priors, or at the planned end of the trial, it is necessary to use a prior to make final inference on $\theta$. It is inadvisable to use either the skeptical or enthuastic prior for inference since they are admittedly biased opinions in the direction of the null or the alternative for monitoring purposes. For inference purposes it is better to use an impartial prior $\pi_{Inference}$.  Define $p(\mathbf{D}|\pi)=\int L (\theta|\mathbf{D})\pi(\theta)d\theta$ to be the marginal likelihood for the data given the prior $\pi$. One can average the posterior means from the analyses using the skeptical and enthuastic priors, such that,
-\begin{align*}
-\pi_{Inference}=\frac{p(\mathbf{D}| \pi_{S}) \pi_{S}+p(\mathbf{D}| \pi_{E}) \pi_{E}}{p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E})}
-\end{align*}
-Let $\omega=p(\mathbf{D}| \pi_{S}/(p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E}))$. Then
+Once enrollment is stopped based on the monitoring priors, or at the planned end of the trial, it is necessary to use a prior to make final inference on $\theta$. It is potentially inadvisable to use either the skeptical or enthuastic prior for inference since they represent quite extreme opinions in about the hypotheses to be tested. For inference purpose, we propose use of a mixture prior constructed from the monitoring process.  Define $p(\mathbf{D}|\pi)=\int L (\theta|\mathbf{D})\pi(\theta)d\theta$ to be the marginal likelihood for the data given the prior $\pi$. One can average the posterior means from the analyses using the skeptical and enthuastic priors, such that,
 \begin{align*}
 E(\theta|\mathbf{D},\pi_{Inference})=\omega\times E(\theta|\mathbf{D}, \pi_{S})+(1-\omega)\times E(\theta|\mathbf{D}, \pi_{E})
 \end{align*}
-Need to describe relation to Type I and Type II error.
+for $\omega\in[0,1]$. Choosing $\omega=1/2$ corresponds to an agnostic inference prior. Choosing $\omega$ based on posterior model probabilities of the null and alternative hypothesis yields $\omega=p(\mathbf{D}| \pi_{S}/(p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E}))$.
+%\begin{align*}
+%\pi_{Inference}=\frac{p(\mathbf{D}| \pi_{S}) \pi_{S}+p(\mathbf{D}| \pi_{E}) \pi_{E}}{p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E})}
+%\end{align*}
+%\begin{align*}
+%E(\theta|\mathbf{D},\pi_{Inference})=\omega\times E(\theta|\mathbf{D}, \pi_{S})+(1-\omega)\times E(\theta|\mathbf{D}, \pi_{E})
+%\end{align*}
+%Need to describe relation to Type I and Type II error.
 \subsubsection{Default parameterization of monitoring priors for common designs}\label{monitoring_prior_specification}
 Define prior distribution as $\pi(\theta|\lambda)$ where $\lambda$ is a vector of hyperparameters.
 
@@ -165,7 +170,7 @@ Variance based on tail area considerations, or by matching the skeptical prior v
 
 Reference prior attempts to express no particular opinion about the treatment's merit. 
 
-Spiegelhalter et al. 1994 ``an adversary who will need to be disilusioned by the data to stop further experimentation."
+
 
 \subsection{Futility Monitoring Using Probability of Success (EVAN -- draft on 6/21)}
 
