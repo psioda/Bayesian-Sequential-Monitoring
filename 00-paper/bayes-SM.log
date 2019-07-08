@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2019.1.25)  21 JUN 2019 07:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2019.1.25)  8 JUL 2019 12:33
 entering extended mode
 **./bayes-SM.tex
 (bayes-SM.tex
@@ -273,59 +273,61 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 87.
 
-
-Package natbib Warning: Citation `Greenhouse1966a' on page 2 undefined on input
- line 95.
-
-
-Package natbib Warning: Citation `Greenhouse1966' on page 2 undefined on input 
-line 95.
-
-
-Package natbib Warning: Citation `Neyman1967' on page 2 undefined on input line
- 95.
+Overfull \hbox (28.45149pt too wide) in paragraph at lines 94--95
+[]\OT1/cmr/m/n/12 Foundational Bayesian se-quen-tial mon-i-tor-ing Corn-field (
+1966\OT1/cmr/m/it/12 a\OT1/cmr/m/n/12 ) Corn-field (1966\OT1/cmr/m/it/12 b\OT1/
+cmr/m/n/12 ) Ney-
+ []
 
 [2] [3] [4] [5] [6]
-Overfull \hbox (5.53114pt too wide) in paragraph at lines 198--198
+Overfull \hbox (5.53114pt too wide) in paragraph at lines 211--211
 []\OT1/cmr/bx/n/14.4 Three-Arm, Placebo Con-trolled Non-Inferiority Trial w/ Co
 n-
  []
 
-[7] [8] (bayes-SM.bbl
+[7] (bayes-SM.bbl
+Overfull \hbox (122.0178pt too wide) in paragraph at lines 18--22
+\OT1/cmr/bx/n/12 URL: \OT1/cmr/m/it/12 http://doi.wiley.com/10.1002/%28SICI%291
+097-0258%2819970630%2916%3A12%3C1413%3A%3AAID-
+ []
 
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
+Overfull \hbox (7.99619pt too wide) in paragraph at lines 24--29
+\OT1/cmr/bx/n/12 URL: \OT1/cmr/m/it/12 https://www.sciencedirect.com/science/ar
+ticle/pii/0197245689900019?via%3Dihub 
+ []
+
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 47.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omlcmr.fd"
+File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-
-Package natbib Warning: There were undefined citations.
-
-[9] (bayes-SM.aux) ) 
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 47.
+ [8]) [9] (bayes-SM.aux) ) 
 Here is how much of TeX's memory you used:
- 3245 strings out of 493305
- 42334 string characters out of 3138865
- 111028 words of memory out of 3000000
- 6727 multiletter control sequences out of 15000+200000
- 17118 words of font info for 64 fonts, out of 3000000 for 9000
+ 3274 strings out of 493305
+ 43008 string characters out of 3138865
+ 112648 words of memory out of 3000000
+ 6759 multiletter control sequences out of 15000+200000
+ 15277 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,13n,35p,1371b,324s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on bayes-SM.pdf (9 pages, 195697 bytes).
+ 41i,13n,35p,1637b,324s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+sy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on bayes-SM.pdf (9 pages, 193331 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
+ 88 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,3 +1,73 @@
 \begin{thebibliography}{xx}
 
+\harvarditem{Cornfield}{1966{\em a}}{Cornfield1966}
+Cornfield, J.  \harvardyearleft 1966{\em a}\harvardyearright , `{A Bayesian
+  Test of Some Classical Hypotheses, with Applications to Sequential Clinical
+  Trials}', {\em Journal of the American Statistical Association} {\bf
+  61}(315),~577.
+\newline\harvardurl{https://www.jstor.org/stable/2282772?origin=crossref}
+
+\harvarditem{Cornfield}{1966{\em b}}{Cornfield1966a}
+Cornfield, J.  \harvardyearleft 1966{\em b}\harvardyearright , `{Sequential
+  Trials, Sequential Analysis and the Likelihood Principle}', {\em The American
+  Statistician} {\bf 20}(2),~18.
+\newline\harvardurl{https://www.jstor.org/stable/2682711?origin=crossref}
+
+\harvarditem[Fayers et~al.]{Fayers, Ashby \harvardand\
+  Parmar}{1997}{Fayers1997}
+Fayers, P.~M., Ashby, D. \harvardand\ Parmar, M. K.~B.  \harvardyearleft
+  1997\harvardyearright , `{Tutorial in Biostatistics: Bayesian Data Monitoring
+  in Clinical Trials}', {\em Statistics in Medicine} {\bf 16}(12),~1413--1430.
+\newline\harvardurl{http://doi.wiley.com/10.1002/{\%}28SICI{\%}291097-0258{\%}2819970630{\%}2916{\%}3A12{\%}3C1413{\%}3A{\%}3AAID-SIM578{\%}3E3.0.CO{\%}3B2-U}
+
+\harvarditem{Freedman \harvardand\ Spiegelhalter}{1989}{Freedman1989}
+Freedman, L.~S. \harvardand\ Spiegelhalter, D.~J.  \harvardyearleft
+  1989\harvardyearright , `{Comparison of Bayesian with group sequential
+  methods for monitoring clinical trials}', {\em Controlled Clinical Trials}
+  {\bf 10}(4),~357--367.
+\newline\harvardurl{https://www.sciencedirect.com/science/article/pii/0197245689900019?via{\%}3Dihub}
+
+\harvarditem{Freedman \harvardand\ Spiegelhalter}{1992}{Freedman1992}
+Freedman, L.~S. \harvardand\ Spiegelhalter, D.~J.  \harvardyearleft
+  1992\harvardyearright , `{Application of bayesian statistics to decision
+  making during a clinical trial}', {\em Statistics in Medicine} {\bf
+  11}(1),~23--35.
+\newline\harvardurl{http://doi.wiley.com/10.1002/sim.4780110105}
+
+\harvarditem[Hyman et~al.]{Hyman, Puzanov, Subbiah, Faris, Chau, Blay, Wolf,
+  Raje, Diamond, Hollebecque, Gervais, Elez-Fernandez, Italiano, Hofheinz,
+  Hidalgo, Chan, Schuler, Lasserre, Makrutzki, Sirzen, Veronese, Tabernero
+  \harvardand\ Baselga}{2015}{Hyman2015}
+Hyman, D.~M., Puzanov, I., Subbiah, V., Faris, J.~E., Chau, I., Blay, J.-Y.,
+  Wolf, J., Raje, N.~S., Diamond, E.~L., Hollebecque, A., Gervais, R.,
+  Elez-Fernandez, M.~E., Italiano, A., Hofheinz, R.-D., Hidalgo, M., Chan, E.,
+  Schuler, M., Lasserre, S.~F., Makrutzki, M., Sirzen, F., Veronese, M.~L.,
+  Tabernero, J. \harvardand\ Baselga, J.  \harvardyearleft
+  2015\harvardyearright , `{Vemurafenib in Multiple Nonmelanoma Cancers with
+  {\textless}i{\textgreater}BRAF{\textless}/i{\textgreater} V600 Mutations}',
+  {\em New England Journal of Medicine} {\bf 373}(8),~726--736.
+\newline\harvardurl{http://www.nejm.org/doi/10.1056/NEJMoa1502309}
+
+\harvarditem{Neyman \harvardand\ Greenhouse}{1967}{Neyman1967}
+Neyman, J. \harvardand\ Greenhouse, S.~W.  \harvardyearleft
+  1967\harvardyearright , {\em {Proceedings of the Berkeley Symposium on
+  Mathematical Statistics and Probability.}}, University of California Press.
+\newline\harvardurl{https://projecteuclid.org/euclid.bsmsp/1200513830}
+
+\harvarditem[Spiegelhalter et~al.]{Spiegelhalter, Freedman \harvardand\
+  Parmar}{1993}{Spiegelhalter1993}
+Spiegelhalter, D.~J., Freedman, L.~S. \harvardand\ Parmar, M. K.~B.
+  \harvardyearleft 1993\harvardyearright , `{Applying Bayesian ideas in drug
+  development and clinical trials}', {\em Statistics in Medicine} {\bf
+  12}(15-16),~1501--1511.
+\newline\harvardurl{http://doi.wiley.com/10.1002/sim.4780121516}
+
+\harvarditem[Spiegelhalter et~al.]{Spiegelhalter, Freedman \harvardand\
+  Parmar}{1994}{Spiegelhalter1994}
+Spiegelhalter, D.~J., Freedman, L.~S. \harvardand\ Parmar, M. K.~B.
+  \harvardyearleft 1994\harvardyearright , `{Bayesian Approaches to Randomized
+  Trials}', {\em Journal of the Royal Statistical Society. Series A (Statistics
+  in Society)} {\bf 157}(3),~357.
+\newline\harvardurl{https://www.jstor.org/stable/10.2307/2983527?origin=crossref}
+
 \end{thebibliography}
