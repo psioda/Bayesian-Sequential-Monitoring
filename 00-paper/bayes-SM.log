@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2019.1.25)  8 JUL 2019 12:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2019.1.25)  8 JUL 2019 16:47
 entering extended mode
 **./bayes-SM.tex
 (bayes-SM.tex
@@ -280,12 +280,23 @@ cmr/m/n/12 ) Ney-
  []
 
 [2] [3] [4] [5] [6]
-Overfull \hbox (5.53114pt too wide) in paragraph at lines 211--211
+<D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIG
+URES/figure3_1.png, id=34, 248.42813pt x 278.54062pt>
+File: D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-pape
+r/FIGURES/figure3_1.png Graphic file (type png)
+<use D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper
+/FIGURES/figure3_1.png>
+Package pdftex.def Info: D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential
+-Monitoring/00-paper/FIGURES/figure3_1.png  used on input line 210.
+(pdftex.def)             Requested size: 248.42752pt x 278.53993pt.
+ [7]
+Overfull \hbox (5.53114pt too wide) in paragraph at lines 227--227
 []\OT1/cmr/bx/n/14.4 Three-Arm, Placebo Con-trolled Non-Inferiority Trial w/ Co
 n-
  []
 
-[7] (bayes-SM.bbl
+[8 <D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/
+FIGURES/figure3_1.png>] (bayes-SM.bbl
 Overfull \hbox (122.0178pt too wide) in paragraph at lines 18--22
 \OT1/cmr/bx/n/12 URL: \OT1/cmr/m/it/12 http://doi.wiley.com/10.1002/%28SICI%291
 097-0258%2819970630%2916%3A12%3C1413%3A%3AAID-
@@ -303,31 +314,32 @@ File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 47.
- [8]) [9] (bayes-SM.aux) ) 
+ [9]) [10]
+(bayes-SM.aux) ) 
 Here is how much of TeX's memory you used:
- 3274 strings out of 493305
- 43008 string characters out of 3138865
- 112648 words of memory out of 3000000
- 6759 multiletter control sequences out of 15000+200000
+ 3280 strings out of 493305
+ 43479 string characters out of 3138865
+ 112636 words of memory out of 3000000
+ 6762 multiletter control sequences out of 15000+200000
  15277 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,13n,35p,1637b,324s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
-mbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on bayes-SM.pdf (9 pages, 193331 bytes).
+ 41i,13n,35p,1429b,324s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmb
+x10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+r8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on bayes-SM.pdf (10 pages, 196577 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
+ 93 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
