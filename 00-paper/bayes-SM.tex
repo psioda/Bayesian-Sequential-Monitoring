@@ -87,13 +87,9 @@ Things to discuss:
  \item 21\textsuperscript{st} Century Cures Act (MATT)
  \item PDUFA VI reauthorization (MATT)
  \item Expansive work already done on sequential monitoring  (EVAN -- draft on 6/21)
-\begin{enumerate}
 %\item Berry A Case for Bayesianism, Cornfield The Bayesian outlook, classical arguments for Bayes in clinical trials, not sequential monitoring in particular
 %\item (1) Berry Montoring Accumulating Data, (2) Cornfield/Greenhouse On certain aspects, (3) Cornfield Sequential Trials, (4) A Bayesian Test of Some Classical Hypotheses, with Applications to Sequential Clinical Trials Jerome Cornfield 
 %\item Bayes \& monitoring, based on posterior distributions
-\item Foundational Bayesian sequential monitoring \cite{Cornfield1966}~\cite{Cornfield1966a}~\cite{Neyman1967}.
-\item Further development \cite{Freedman1989}~\cite{Freedman1992}~\cite{Spiegelhalter1993}~\cite{Spiegelhalter1994}~\cite{Fayers1997}.
-\item Need to go further, and mention work on 3-arm Bayesian trials.
 %\item First papers in Bayes sequential monitoring. Bayesian inferences not affected by frequent or continual monitoring by the likelihood principle.
 %\item Papers which compare to frequentist stopping rules \& increased interpretation on role of priors.
 %\item \cite{Spiegelhalter1994}
@@ -102,10 +98,13 @@ Things to discuss:
 %\item \cite{Freedman1989} The need to overcome this `\textbf{handicap}' prevents unduly early termination.
 %\item \cite{Fayers1997} Choosing these two priors (skeptical, enthuastic) provides a useful \textbf{brake} against the premature termination of trials.
 %\item Bayesian Adaptive Methods for Clinical Trials Berry, Carlin, Etc.
-\end{enumerate}
  \item Our majors contribution (EVAN -- as early as possible in introduction without having the flow appear weird -- draft on 6/21)
  \item Outline for the remaining section of the paper (EVAN -- draft on 6/21)
 \end{itemize}
+The theoretical foundations for the Bayesian clinical trials has been long established \cite{Cornfield1966}~\cite{Cornfield1966a}~\cite{Neyman1967}. These methods were not widely used in practice until a comprehensive framework for interpretation of results was developed through specifying prior distributions that were naturally and intuitively related to the research objectives (e.g. skeptical and enthuastic priors) \cite{Freedman1989}~\cite{Freedman1992}~\cite{Spiegelhalter1993}~\cite{Spiegelhalter1994}~\cite{Fayers1997}.
+
+There is still potential for further utilization of Bayesian methods in the clinical trial setting. While the framework for interpretation of Bayesian clincial trials is well devloped, the details of specifying prior distributions in a natural and intuitive way is lacking. This paper presents a structured or default way to determine prior distributions based on the trial design. Our major contribution is to present methods for the default or automatic selection of prior distributions in a way that is applicable to a wide array of clinical trial designs.
+
 \section{Methods}
 
 As you introduce ideas that come from or extend other ideas in the literature, cite the relevant literature.
@@ -126,16 +125,18 @@ As you introduce ideas that come from or extend other ideas in the literature, c
 
 The Bayesian paradigm allows direct inference on a parameter of interest through specification of a model for the data generating mechanism and prior distributions for unknown quantities. Let $\mathbf{D}$ be a random variable representing the data collected in the trial with density $p(\mathbf{D}|\theta,\psi)$ where $\theta$ and $\psi$ are the unknown quantities. Let $\theta$ be the parameter of interest and $\psi$ be the unknown quantities that are not of primary importance (i.e. ``nuisance parameters"). Define the sample spaces for the unknown quantities as $\theta\in\Theta$ and $\psi\in\Psi$. 
 
-Suppose the hypotheses under consideration are $H_0:\theta\in\Theta_{H_0}\equiv\Theta_0$ versus $H_1:\theta\in\Theta_{H_1}\equiv\Theta_1$, where $\Theta=\Theta_{H_0}\cup \Theta_{H_1}$ and $\Theta_{H_0}\cap \Theta_{H_1}=\emptyset$. These hypotheses are adjudicated based on posterior probabilities of $\theta$ by evaluating $P(\theta\in\Theta_{H_i}|\mathbf{D})=\int_{\Theta_{H_i}}p(\theta|\mathbf{D})d\theta$ for $i\in\{0,1\}$, where $p(\theta|\mathbf{D})=\int_{\Psi}p(\theta,\psi|\mathbf{D})d\psi$. 
+Suppose the hypotheses under consideration are $H_0:\theta\in\Theta_0$ versus $H_1:\theta\in\Theta_1$, where $\Theta=\Theta_0\cup \Theta_1$ and $\Theta_0\cap \Theta_1=\emptyset$. These hypotheses are adjudicated based on posterior probabilities of $\theta$ by evaluating its marginal likelihood $P(\theta\in\Theta_i|\mathbf{D})=\int_{\Theta_i}p(\theta|\mathbf{D})d\theta$ for $i\in\{0,1\}$, which is marginalized over the nuisance parameters $p(\theta|\mathbf{D})=\int_{\Psi}p(\theta,\psi|\mathbf{D})d\psi$. 
 
-Define $\delta$ as a threshold for \textit{a compelling level of evidence} as it relates to $\theta$. We say that an individual is ``all but convinced" that $H_i$ is true given the observed data if $P(\theta\in\Theta_i|\mathbf{D})\geq\delta$ for $i\in\{0,1\}$. The quantity $1-\delta$ reflects \textit{residual uncertainty} of $H_i$ being true relative to the competing hypothesis. For example, an individual would be ``all but convinced" of the truth of the alternative hypothesis if $P(\theta\in\Theta_{H_1}|\mathbf{D})\geq\delta$.
+Define $\delta\in[0,1]$ as a threshold for \textit{a compelling level of evidence} as it relates to $\theta$. We say that an individual is ``all but convinced" that $H_i$ is true given the observed data if $P(\theta\in\Theta_i|\mathbf{D})\geq\delta$ for $i\in\{0,1\}$. The quantity $1-\delta$ reflects \textit{residual uncertainty} of $H_i$ being true relative to the competing hypothesis. For example, an individual would be ``all but convinced" of the truth of the alternative hypothesis if $P(\theta\in\Theta_1|\mathbf{D})\geq\delta$.
 
-The posterior distribution of $\theta$ depends on the choice of prior distribution $\pi(\theta,\psi)$, since $p(\theta,\psi|\mathbf{D})=p(\mathbf{D}|\theta,\psi)\pi(\theta,\psi)/p(\mathbf{D})$ by Bayes rule. The specification of the prior distribution depends on the research objective. An \textit{inference prior} is a prior that is used when the research objective is to make final analysis after data collection is complete. A \textit{monitoring prior} is a prior that is used when the research objective is monitor enrollment with an eye towards early termination.
+The posterior distribution of $\theta$ depends on the choice of prior distribution $\pi(\theta,\psi)$ since $p(\theta,\psi|\mathbf{D})=p(\mathbf{D}|\theta,\psi)\pi(\theta,\psi)/p(\mathbf{D})$ by Bayes rule. The specification of the prior distribution depends on the research objective. An \textit{inference prior} is a prior that is used when the research objective is to make final analysis after data collection is complete. A \textit{monitoring prior} is a prior that is used when the research objective is to consider the impact of interim analyses on subject enrollment, with the potential for early termination (or less commonly prolongation).
 %Possible simplifying functional relationships between $\theta$ and $\psi$ are conditional independence $\pi(\theta,\psi)=\pi(\theta|\psi)\pi(\psi)$ and independence $\pi(\theta,\psi)=\pi(\theta)\pi(\psi)$. An inference prior is often non-informative or objective in the sense that it does not show preference to $H_0$ or $H_1$. Decisions made using using a non-informative prior are often similar to those made in the frequentist setting. 
 
-It has been said that `the purpose of a trial is to collect data that bring to conclusive consensus at termination opinions that had been diverse and indecisive at the outset' (Kass and Greenhouse (1989)). These opinions manifest as priors $\pi(\theta,\psi)$ for which their relation to $P(\theta\in\Theta_i|\pi(\theta,\psi))$ $i\in\{0,1\}$ is examined (note this quantity does not depend on the data $\mathbf{D}$ and therefore reflect a-priori opinion). A skeptical prior is an informative or subjective prior that gives substantial preference to $H_0$ such that it is ``all but convinced" that $H_0$ is true a-priori. This prior $\pi_{S}(\theta,\psi)\equiv\pi_{S}$ has the property that $P(\theta\in\Theta_0| \pi_{S})\geq\delta$ (equivalently $P(\theta\in\Theta_1| \pi_{S})<1-\delta$). For example, if $\delta=0.95$, then this choice of skeptical prior places 95\% prior probability that $\theta\in\Theta_0$. An enthuastic prior $\pi_{E}(\theta,\psi)\equiv\pi_{E}$ similarly gives preference to $H_1$ through the property that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$ (equivalently $P(\theta\in\Theta_0| \pi_{E})<1-\delta$). For purposes of interpretation, a \textit{skeptical person} is someone whose a-priori opinions of $\theta$ are reflected through a skeptical prior and a \textit{enthuastic person} is someone whose a-priori opinions of $\theta$ are reflected through an ethuastic prior.
+It has been said that ``the purpose of a trial is to collect data that bring to conclusive consensus at termination opinions that had been diverse and indecisive at the \textit{outset}" (Kass and Greenhouse (1989), emphasis added). These opinions manifest as priors $\pi(\theta,\psi)$ for which their relation to $P(\theta\in\Theta_i|\pi(\theta,\psi))$ $i\in\{0,1\}$ is examined. Note this quantity does not depend on the data $\mathbf{D}$ and therefore reflect a-priori opinion. A skeptical prior is an informative or subjective prior that gives substantial preference to $H_0$ such that it is ``all but convinced" that $H_0$ is true a-priori. This prior $\pi_{S}(\theta,\psi)\equiv\pi_{S}$ has the property that $P(\theta\in\Theta_0| \pi_{S})\geq\delta$ (equivalently $P(\theta\in\Theta_1| \pi_{S})<1-\delta$). The choice of $\delta\in[0,1]$ is motivated by \textit{a compelling level of evidence} as it relates to $\theta$, although in this setting the ``evidence" reflects a theoretical opinion rather than empirical judgement. For example, if $\delta=0.95$, then this choice of skeptical prior places 95\% prior probability that $\theta\in\Theta_0$. An enthuastic prior $\pi_{E}(\theta,\psi)\equiv\pi_{E}$ similarly gives preference to $H_1$ through the property that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$ (equivalently $P(\theta\in\Theta_0| \pi_{E})<1-\delta$). For purposes of interpretation, a \textit{skeptical person} is someone whose a-priori opinions of $\theta$ are reflected through a skeptical prior and a \textit{enthuastic person} is someone whose a-priori opinions of $\theta$ are reflected through an ethuastic prior.
 
-The use of monitoring based on changing the opinion of skeptical and enthuastic priors has been described as overcoming a handicap (\cite{Freedman1989}) and providing a brake (\cite{Fayers1997}) on the premature termination of trials, or constructing ``an adversary who will need to be disilusioned by the data to stop further experimentation" (\cite{Spiegelhalter1994}). Early termination of the trial is appriopriate if diverse prior opinions about $\theta$ would be in agreement given the interm data (e.g. the skeptical and enthuastic person reach the same conclusion). It is then reasonable to stop data collection if, upon seeing the data, a \textit{skeptical person} changes their opinion to be ``all but convinced" that $H_1$ is true ($P(\theta\in\Theta_1|\mathbf{D}, \pi_{S})\geq\delta$), or an \textit{enthuastic person} becomes ``all but convinced" that $H_1$ is false ($P(\theta\in\Theta_0|\mathbf{D}, \pi_{E})\geq\delta$).
+The use of monitoring based on changing the opinion of skeptical and enthuastic priors has been described as overcoming a handicap (\cite{Freedman1989}) and providing a brake (\cite{Fayers1997}) on the premature termination of trials, or constructing ``an adversary who will need to be disilusioned by the data to stop further experimentation" (\cite{Spiegelhalter1994}). 
+
+Early termination of the trial is appriopriate if diverse prior opinions about $\theta$ would be in agreement given the interim data (e.g. the skeptical and enthuastic person reach the same conclusion). It is then reasonable to stop data collection if, upon seeing the data, a \textit{skeptical person} changes their opinion to be ``all but convinced" that $H_1$ is true ($P(\theta\in\Theta_1|\mathbf{D}, \pi_{S})\geq\delta$), or an \textit{enthuastic person} becomes ``all but convinced" that $H_1$ is false ($P(\theta\in\Theta_0|\mathbf{D}, \pi_{E})\geq\delta$).
 
 %Summarizing~\cite{Spiegelhalter1993} and others:  or that the benefit of treatment is not likely to be what was expected, the probability of \textit{eventually} proving that $H_1$ is true is sufficiently low, or the resources have been exhausted.  
 %A standard Bayesian decision rule would reject $H_0$ when $P(\theta\in\Theta_{H_1}|D\geq 0.95)$ which will result in a Type I error rate of $0.05$ when the analysis prior is non-informative (a so-called reference or flat prior). The Bayes factor in favor of $H_0$ is defined as 
@@ -145,25 +146,26 @@ The use of monitoring based on changing the opinion of skeptical and enthuastic 
 %and let $p(\theta|D,\pi)$ denote the posterior distribution of $\theta$ given a particular prior distribution.
 
 
-Final inference on $\theta$ is made once enrollment is stopped based on the monitoring priors or at the planned end of the trial. An inference prior is often non-informative or objective in the sense that it does not show a-priori preference to $H_0$ or $H_1$. This prior $\pi_{I}(\theta,\psi)\equiv\pi_{I}$ has the property that $P(\theta\in\Theta_0|\pi_I)\approx P(\theta\in\Theta_1|\pi_I)$. There are many ways to formulate an inference prior with this property. We propose use of a mixture prior constructed from the monitoring process as the inference prior:
+Final inference on $\theta$ is made once enrollment is stopped based on the monitoring priors or at the planned end of the trial. An inference prior $\pi_{I}(\theta,\psi)\equiv\pi_{I}$ is often non-informative or objective in the sense that it does not show a-priori preference to $H_0$ or $H_1$ ($P(\theta\in\Theta_0|\pi_I)\approx P(\theta\in\Theta_1|\pi_I)$). There are many ways to formulate an inference prior with this property. We propose use of a mixture prior constructed from the monitoring process as the inference prior:
 \begin{align*}
-\pi_{I}=\omega\times\pi_{S}+(1-\omega)\times\pi_E
+\pi_{I}=\omega\cdot\pi_{S}+(1-\omega)\cdot\pi_E
 \end{align*}
-for $\omega\in[0,1]$. Choosing $\omega=1/2$ corresponds to an agnostic inference prior. Choosing $\omega$ based on posterior model probabilities of the null and alternative hypothesis yields $\omega=p(\mathbf{D}| \pi_{S})/(p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E}))$. 
+for $\omega\in[0,1]$. Choosing $\omega=1/2$ for an equal mixture of $\pi_S$ and $\pi_E$ corresponds to an inference prior that is impartial to $H_0$ and $H_1$, and is a practical choice of $\pi_I$ is to be determined before the start of data collection. Define $p(\mathbf{D}|\pi(\theta,\psi))=\int p(\theta|\mathbf{D})\pi(\theta,\psi)d(\theta,\psi)$ to be the marginal likelihood for the data given the prior $\pi(\theta,\psi)$. Choosing $\omega$ based on posterior model probabilities of the null and alternative hypotheses yields $\omega=p(\mathbf{D}| \pi_{S})/(p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E}))$. 
 
-All relevant information about $\theta$ can be derived from its posterior distribution with an inference prior (e.g. posterior mean, credible intervals). Define $p(\mathbf{D}|\pi)=\int L (\theta|\mathbf{D})\pi(\theta)d\theta$ to be the marginal likelihood for the data given the prior $\pi$. The posterior mean using the inference prior will be a two-part mixture of the posterior means using the skeptical and enthuastic priors:
+All relevant information about $\theta$ can be derived from its marginal posterior distribution with an inference prior (e.g. posterior mean, credible intervals). For example, posterior mean using the inference prior will be a two-part mixture of the posterior means using the skeptical and enthuastic priors:
 \begin{align*}
-E(\theta|\mathbf{D},\pi_{I})=\omega\times E(\theta|\mathbf{D}, \pi_{S})+(1-\omega)\times E(\theta|\mathbf{D}, \pi_{E}).
+E(\theta|\mathbf{D},\pi_{I})=\omega\cdot E(\theta|\mathbf{D}, \pi_{S})+(1-\omega)\cdot E(\theta|\mathbf{D}, \pi_{E}).
 \end{align*}
-As an alternative strategy to futility analysis, one can monitor the probability of success (POS) for the trial. The probability of getting a convincing result at the end of the trail can be computed using the interm data. Let $p(\theta|D, \pi_{I})$ denote the posterior distribution for $\theta$ based on the inference prior $ \pi_{I}$ and the current data $D$. Let $\omega$ denote the POS which is given as follows:
+
+As an alternative strategy to futility analysis, one can monitor the probability of success (POS) for the trial. The probability of getting a convincing result at the end of the trail can be computed using the interim data. Let $p(\theta|\mathbf{D}, \pi_{I})$ denote the posterior distribution for $\theta$ based on the inference prior $ \pi_{I}$ and the current data $\mathbf{D}$. Let $\xi$ denote the POS which is given as follows:
 \begin{align*}
-\omega=E[1\{P(\theta\in\Theta_1|D_1,D, \pi_{I})\geq 1-\delta\}]
+\xi=E[1\{P(\theta\in\Theta_1|\mathbf{D}_1,\mathbf{D}, \pi_{I})\geq \delta\}]
 \end{align*}
-where the expectation is taken with respect to the posterior predictive distribution $p(D_1)$ for future data $D_1$ (ongoing + subjects yet to enroll):
+where the expectation is taken with respect to the posterior predictive distribution $p(\mathbf{D}_1)$ for future data $\mathbf{D}_1$ (which includes subjects yet to enroll):
 \begin{align*}
-p(D_1)=\int p(D_1|\theta)\times \pi(\theta|D)d\theta.
+p(\mathbf{D}_1)=\int p(\mathbf{D}_1|\theta)\cdot \pi(\theta|\mathbf{D})d\theta.
 \end{align*}
-One may stop the enrollment if $\omega$ is sufficiently small (i.e., $\omega<0.05$). \textit{Develop the framework for POS and show how it is a weighted average POS based on the skeptical and enthusiastic priors.}
+One may stop the enrollment if $\xi$ is sufficiently small (i.e. $\xi<0.05$).
 %\begin{align*}
 %\pi_{Inference}=\frac{p(\mathbf{D}| \pi_{S}) \pi_{S}+p(\mathbf{D}| \pi_{E}) \pi_{E}}{p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E})}
 %\end{align*}
@@ -173,8 +175,6 @@ One may stop the enrollment if $\omega$ is sufficiently small (i.e., $\omega<0.0
 %Need to describe relation to Type I and Type II error.
 %\subsubsection{Default parameterization of monitoring priors for common designs}\label{monitoring_prior_specification}
 %Define prior distribution as $\pi(\theta|\lambda)$ where $\lambda$ is a vector of hyperparameters.
-
-This paper presents default parameterizations of prior distributions for inference and monitoring. The prior distributions depend on the type of data to be collected and on the hypotheses under consideration. For example, consider a superiority trial with continuous data which is assumed to be normally distributed. The skeptical prior is centered around the clinical inferiority boundary and the enthuastic prior is be centered around clinical superiority boundry. The variance of these priors is a nuisance parameter, and it is determined based on tail area considerations.
 
 %Reference prior attempts to express no particular opinion about the treatment's merit. 
 
@@ -198,16 +198,29 @@ This paper presents default parameterizations of prior distributions for inferen
 \subsection{Single-Arm Oncology Proof-of-Activity Trial w/ Binary Endpoint}
 
 
-Consider a single-arm oncology proof-of-activity trial with a binary endpoint. The response rate is the treatment effect of interest. Consider testing the hypothesis $H_0:\theta\leq\theta_0\text{ versus }H_1:\theta>\theta_0$. Using the general notation $\Theta=[0,1]$, $\Theta_{H_0}=[0,\theta_0]$, $\Theta_{H_1}=(\theta_0,1]$. In this simple situation there are no nuisance parameters $\psi$.
+Consider a single-arm oncology proof-of-activity trial with a binary endpoint. The data $\mathbf{D}$ is assumed to be Binomially distributed. The response rate $\theta$ is the parameter effect of interest, which is the only unknown quantity in this simple situation.
 
-A standard Bayesian decision rule would reject $H_0$ when $P(\theta>\theta_0|\mathbf{D})\geq 0.95$ which will result in a type one error rate of $0.05$ (approximately) if $\theta=\theta_0$ when the analysis prior is non-informative.
+Consider testing the hypothesis $H_0:\theta\leq\theta_0\text{ versus }H_1:\theta>\theta_0$. Using the general notation $\Theta_0=[0,\theta_0]$ and $\Theta_1=(\theta_0,1]$. Consider a highly clinically relevant treatment effect $\theta_A>\theta_0$. It is desirable that the trial have appropriate power (probability of proving $H_1$ when $\theta=\theta_A$). 
 
-Suppose an effect $\theta_A>\theta_0$ is thought to be highly clinically relevant and plausible given what limited data is available. Consider a clinical trial with a single analysis and fixed sample size chosen that there is a high probability of proving $H_1$ when $\theta=\theta_A$. Motivated by a trial for Vemurafenib (\cite{Hyman2015}) let $\theta_0=0.15$ and $\theta_A=0.45$.
+Monitoring priors for this trial will be made using the concepts of a skeptical prior and an enthuastic prior. Recall a skeptic is ``all but convinced" that $H_0$ is true a-priori, therefore $P(\theta\in\Theta_0|\pi_S)\geq\delta$. An optimist is ``all but convinced" that $H_1$ is true a-priori, therefore $P(\theta\in\Theta_1|\pi_E)\geq\delta$. 
 
-A skeptic is ``all but convinced" that $H_0$ is true a-priori, therefore $P(\theta\in\Theta_0|\pi_S)\geq\delta$. An optimist is ``all but convinced" that $H_1$ is true a-priori, therefore $P(\theta\in\Theta_1|\pi_E)\geq\delta$. There are many ways to choose priors that have these properties. Beta priors will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy. The priors will be chosen so that the skeptical prior has expected value $\theta_0$ and the enthuastic prior has expected value $\theta_A$.
+Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy. The Beta distribution has two shape parameters. These parameters can be determined uniquely by specifying the desired mean and variance of the distribution. It is intuitive to center the skeptical and enthuastic priors around the quantities $\theta_0$ and $\theta_A$ respectively, so that $E(\pi_S)=\theta_0$ and $E(\pi_E)=\theta_A$. The variance for the skeptical and enthuastic priors is then uniquely determined through by the choice of threshold $\delta$. Alternatively, the variance could be determined by specifying a desired quantile of the prior distributions which would then be reflected in $\delta$.
 
+Motivated by a trial for Vemurafenib (\cite{Hyman2015}) let $\theta_0=0.15$ and $\theta_A=0.45$.
+\newpage
+Graph of $\pi_S$ and $\pi_E$ (very rough draft):
 
 \includegraphics{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_1.png}
+
+\newpage
+Graph of inference mixture for $\omega\in\{0,1/4,1/2,3/4,1\}$ (very rough draft)
+
+\includegraphics{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_2.png}
+
+\textit{Include details for how Bayesian monitoring has good frequentist properties even with frequent interim analyses}.
+
+
+
 
 
 %\subsubsection*{Vemurafenib Trial }
@@ -223,9 +236,19 @@ A skeptic is ``all but convinced" that $H_0$ is true a-priori, therefore $P(\the
 %cohort would be 7, 13, or 19, depending on the
 %results obtained."
 \subsection{Parallel Two-Group Superiority Trial /w Continuous Binary Endpoint}
-
+Interesting because prior is on risk difference while also being non-informative on control group. Will need numerical integration to evalutate posteriors.
 \subsection{Three-Arm, Placebo Controlled Non-Inferiority Trial w/ Continuous Endpoint}
+\begin{align*}
+P&\rightarrow\beta_0 \text{ (placebo)}\\
+C&\rightarrow\beta_0+\beta_1 \text{ (control)}\\
+A&\rightarrow\beta_0+\beta_1+\beta_2 \text{ (active)}\\
+H_0&:\beta_2-\delta\beta_1\leq 0
+\end{align*}
+Parameters of interest $(\beta_1,\beta_2)$, nuisance parameters $(\beta_0,\sigma^2)$.
 
+Need priors $\pi(\beta_0), \pi(\beta_1), \pi(\beta_2|\beta_1)$. 
+
+Will use MCMC to evaluate posteriors.
 \section{Discussion -- (MATT/EVAN)}
 
 %\section{Example of Parallel Two-Group Design}
