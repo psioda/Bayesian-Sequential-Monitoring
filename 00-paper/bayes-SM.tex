@@ -132,7 +132,7 @@ Define $\delta\in[0,1]$ as a threshold for \textit{a compelling level of evidenc
 The posterior distribution of $\theta$ depends on the choice of prior distribution $\pi(\theta,\psi)$ since $p(\theta,\psi|\mathbf{D})=p(\mathbf{D}|\theta,\psi)\pi(\theta,\psi)/p(\mathbf{D})$ by Bayes rule. The specification of the prior distribution depends on the research objective. An \textit{inference prior} is a prior that is used when the research objective is to make final analysis after data collection is complete. A \textit{monitoring prior} is a prior that is used when the research objective is to consider the impact of interim analyses on subject enrollment, with the potential for early termination (or less commonly prolongation).
 %Possible simplifying functional relationships between $\theta$ and $\psi$ are conditional independence $\pi(\theta,\psi)=\pi(\theta|\psi)\pi(\psi)$ and independence $\pi(\theta,\psi)=\pi(\theta)\pi(\psi)$. An inference prior is often non-informative or objective in the sense that it does not show preference to $H_0$ or $H_1$. Decisions made using using a non-informative prior are often similar to those made in the frequentist setting. 
 
-It has been said that ``the purpose of a trial is to collect data that bring to conclusive consensus at termination opinions that had been diverse and indecisive at the \textit{outset}" (Kass and Greenhouse (1989), emphasis added). These opinions manifest as priors $\pi(\theta,\psi)$ for which their relation to $P(\theta\in\Theta_i|\pi(\theta,\psi))$ $i\in\{0,1\}$ is examined. Note this quantity does not depend on the data $\mathbf{D}$ and therefore reflect a-priori opinion. A skeptical prior is an informative or subjective prior that gives substantial preference to $H_0$ such that it is ``all but convinced" that $H_0$ is true a-priori. This prior $\pi_{S}(\theta,\psi)\equiv\pi_{S}$ has the property that $P(\theta\in\Theta_0| \pi_{S})\geq\delta$ (equivalently $P(\theta\in\Theta_1| \pi_{S})<1-\delta$). The choice of $\delta\in[0,1]$ is motivated by \textit{a compelling level of evidence} as it relates to $\theta$, although in this setting the ``evidence" reflects a theoretical opinion rather than empirical judgement. For example, if $\delta=0.95$, then this choice of skeptical prior places 95\% prior probability that $\theta\in\Theta_0$. An enthuastic prior $\pi_{E}(\theta,\psi)\equiv\pi_{E}$ similarly gives preference to $H_1$ through the property that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$ (equivalently $P(\theta\in\Theta_0| \pi_{E})<1-\delta$). For purposes of interpretation, a \textit{skeptical person} is someone whose a-priori opinions of $\theta$ are reflected through a skeptical prior and a \textit{enthuastic person} is someone whose a-priori opinions of $\theta$ are reflected through an ethuastic prior.
+It has been said that ``the purpose of a trial is to collect data that bring to conclusive consensus at termination opinions that had been diverse and indecisive at the \textit{outset}" (Kass and Greenhouse (1989), emphasis added). These opinions manifest as priors $\pi(\theta,\psi)$ for which their relation to $P(\theta\in\Theta_i|\pi(\theta,\psi))$ $i\in\{0,1\}$ is examined. Note this quantity does not depend on the data $\mathbf{D}$ and therefore reflect a-priori opinion. A skeptical prior is an informative or subjective prior that gives substantial preference to $H_0$ such that it is ``all but convinced" that $H_0$ is true a-priori. This prior $\pi_{S}(\theta,\psi)\equiv\pi_{S}$ has the property that $P(\theta\in\Theta_0| \pi_{S})\geq\delta$ (equivalently $P(\theta\in\Theta_1| \pi_{S})<1-\delta$). The choice of $\delta\in[0,1]$ is motivated by \textit{a compelling level of evidence} as it relates to $\theta$, although in this setting the ``evidence" reflects a theoretical opinion rather than empirical judgement. For example, if $\delta=0.95$, then this choice of skeptical prior places 95\% prior probability that $\theta\in\Theta_0$. An enthuastic prior $\pi_{E}(\theta,\psi)\equiv\pi_{E}$ similarly gives preference to $H_1$ through the property that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$ (equivalently $P(\theta\in\Theta_0| \pi_{E})<1-\delta$). For purposes of interpretation, a \textit{skeptical person} is someone whose a-priori opinions of $\theta$ are reflected through a skeptical prior and a \textit{enthuastic person} is someone whose a-priori opinions of $\theta$ are reflected through an ethuastic prior. The prior distributions discussed are generally ``non-informative" over the nuisance parameters.
 
 The use of monitoring based on changing the opinion of skeptical and enthuastic priors has been described as overcoming a handicap (\cite{Freedman1989}) and providing a brake (\cite{Fayers1997}) on the premature termination of trials, or constructing ``an adversary who will need to be disilusioned by the data to stop further experimentation" (\cite{Spiegelhalter1994}). 
 
@@ -156,6 +156,7 @@ All relevant information about $\theta$ can be derived from its marginal posteri
 \begin{align*}
 E(\theta|\mathbf{D},\pi_{I})=\omega\cdot E(\theta|\mathbf{D}, \pi_{S})+(1-\omega)\cdot E(\theta|\mathbf{D}, \pi_{E}).
 \end{align*}
+
 
 As an alternative strategy to futility analysis, one can monitor the probability of success (POS) for the trial. The probability of getting a convincing result at the end of the trail can be computed using the interim data. Let $p(\theta|\mathbf{D}, \pi_{I})$ denote the posterior distribution for $\theta$ based on the inference prior $ \pi_{I}$ and the current data $\mathbf{D}$. Let $\xi$ denote the POS which is given as follows:
 \begin{align*}
@@ -204,9 +205,32 @@ Consider testing the hypothesis $H_0:\theta\leq\theta_0\text{ versus }H_1:\theta
 
 Monitoring priors for this trial will be made using the concepts of a skeptical prior and an enthuastic prior. Recall a skeptic is ``all but convinced" that $H_0$ is true a-priori, therefore $P(\theta\in\Theta_0|\pi_S)\geq\delta$. An optimist is ``all but convinced" that $H_1$ is true a-priori, therefore $P(\theta\in\Theta_1|\pi_E)\geq\delta$. 
 
-Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy. The Beta distribution has two shape parameters. These parameters can be determined uniquely by specifying the desired mean and variance of the distribution. It is intuitive to center the skeptical and enthuastic priors around the quantities $\theta_0$ and $\theta_A$ respectively, so that $E(\pi_S)=\theta_0$ and $E(\pi_E)=\theta_A$. The variance for the skeptical and enthuastic priors is then uniquely determined through by the choice of threshold $\delta$. Alternatively, the variance could be determined by specifying a desired quantile of the prior distributions which would then be reflected in $\delta$.
+Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy. The Beta distribution has two shape parameters. These parameters can be determined uniquely by specifying the desired mean and variance of the distribution. It is intuitive to center the skeptical and enthuastic priors around the quantities $\theta_0$ and $\theta_A$ respectively, so that $E(\pi_S)=\theta_0$ and $E(\pi_E)=\theta_A$. The variance for the skeptical and enthuastic priors is then uniquely determined through by the choice of threshold $\delta$. In particular, let $\pi_S(\theta)\sim \mathcal{B}(\alpha,\beta)$ be Beta distributed with shape parameters $(\alpha,\beta)$. There is a single choice of $(\alpha,\beta)$ such that:
+\begin{align*}
+\theta_0=E(\pi_S)=\int_{\Theta}\pi_S(\theta)d\theta=\frac{\alpha}{\alpha+\beta}\text{ and }\delta=\int_{\Theta_0}\pi_S(\theta)d\theta=\int_{0}^{\theta_0}\frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}d\theta
+\end{align*}
+where $B(\alpha,\beta)$ is the Beta function.
+
+Alternatively, the variance could be determined by specifying a desired quantile of the prior distribution which would then be reflected in $\delta$. For example, suppose it is desirable that the skeptical prior places small probability $\lambda>0$ that the $\theta\geq\theta_A$, which is the highly clinically relevant treatment effect. Then there is a single choice of $(\alpha,\beta)$ such that
+\begin{align*}
+\theta_0=E(\pi_S)=\int_{\Theta}\pi_S(\theta)d\theta=\frac{\alpha}{\alpha+\beta}\text{ and }\lambda=\int_{\theta_A}^{1}\pi_S(\theta)d\theta=\int_{\theta_A}^{1}\frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}d\theta,
+\end{align*}
+in which case $\delta=\int_{\Theta_0}\pi_S(\theta)d\theta$ is a deterministic quantity.
 
 Motivated by a trial for Vemurafenib (\cite{Hyman2015}) let $\theta_0=0.15$ and $\theta_A=0.45$.
+\begin{align*}
+H_0&:\theta\leq 0.15\\
+H_1&:\theta>0.15\\
+\pi_S(\theta)&\sim\mathcal{B}()\\
+\pi_E(\theta)&\sim\mathcal{B}()\\
+\text{efficacy criteria:}&P(\theta>0.15|\mathbf{D},\pi_S)\geq 0.95\\
+\text{futility criteria:}&P(\theta\leq 0.35|\mathbf{D},\pi_E)\geq 0.95\\
+\text{exhausted resources:}&N=XX \text{ patient outcomes obtained}
+\end{align*}
+Make figure similar to slide 19, separate plots for Skeptical Beta Prior and Enthuastic Beta Prior.
+Make figure similar to slide 20, but vary to get 5 different priors.
+Make examples of violin plots for particular sample paths (slides 21-22).
+Vary decay rate will affect bias not Type I/II error. Not dissimilar to Frequentist: flatter-Pocock, mass at null-OBF.
 \newpage
 Graph of $\pi_S$ and $\pi_E$ (very rough draft):
 
@@ -217,6 +241,7 @@ Graph of inference mixture for $\omega\in\{0,1/4,1/2,3/4,1\}$ (very rough draft)
 
 \includegraphics{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_2.png}
 
+Include 4 different sequential monitoring strategies.
 \textit{Include details for how Bayesian monitoring has good frequentist properties even with frequent interim analyses}.
 
 
