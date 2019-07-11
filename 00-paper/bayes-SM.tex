@@ -217,31 +217,42 @@ Alternatively, the variance could be determined by specifying a desired quantile
 \end{align*}
 in which case $\delta=\int_{\Theta_0}\pi_S(\theta)d\theta$ is a deterministic quantity.
 
-Motivated by a trial for Vemurafenib (\cite{Hyman2015}) let $\theta_0=0.15$ and $\theta_A=0.45$.
+Motivated by a trial for Vemurafenib (\cite{Hyman2015}) let $\theta_0=0.15$ and $\theta_A=0.45$. Consider the hypotheses
 \begin{align*}
 H_0&:\theta\leq 0.15\\
-H_1&:\theta>0.15\\
-\pi_S(\theta)&\sim\mathcal{B}()\\
-\pi_E(\theta)&\sim\mathcal{B}()\\
-\text{efficacy criteria:}&P(\theta>0.15|\mathbf{D},\pi_S)\geq 0.95\\
-\text{futility criteria:}&P(\theta\leq 0.35|\mathbf{D},\pi_E)\geq 0.95\\
-\text{exhausted resources:}&N=XX \text{ patient outcomes obtained}
+H_1&:\theta>0.15
 \end{align*}
-Make figure similar to slide 19, separate plots for Skeptical Beta Prior and Enthuastic Beta Prior.
-Make figure similar to slide 20, but vary to get 5 different priors.
-Make examples of violin plots for particular sample paths (slides 21-22).
+
+The skeptical prior will be Beta distributed, centered around $\theta_0=0.15$, and have $2.5\%$ prior probability that $\theta>\theta_A$. Similarly, the enthuastic prior will be centered around $\theta_A=0.45$ and have $2.5\%$ prior probability that $\theta<\theta_0$. These priors are distributed as
+\begin{align*}
+\pi_S(\theta)&\sim\mathcal{B}(1.187,6.724)\\
+\pi_E(\theta)&\sim\mathcal{B}(3.681,4.499).
+\end{align*}
+\begin{center}
+\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_1.png}
+\end{center}
+The trial will proceed until one of the following three conditions are satisfied:
+\begin{align*}
+\text{Efficacy criteria: }&P(\theta>0.15|\mathbf{D},\pi_S)\geq 0.95\\
+\text{Futility criteria: }&P(\theta\leq 0.45|\mathbf{D},\pi_E)\geq 0.95\\
+\text{Exhausted resources: }&N=14 \text{ patient outcomes obtained},
+\end{align*}
+where the maximum sample size is that of a frequentist trial design with a Type 1 error rate of $0.05$ and $80\%$ power.
+
+The inference priors will be of the form $\pi_{I}=\omega\cdot\pi_{S}+(1-\omega)\cdot\pi_E$ with $\omega\in\{0,1/4,1/2,3/4,1\}$.
+\begin{center}
+\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_2.png}
+\end{center}
+
+Figures needed:
+\begin{enumerate}
+\item An example path - early stoppage for effiacy (violin plots)
+\item An example path - early stoppage for futility (violin plots)
+\item Sequential design properties - slow vs. fast accrual (average sample size, posterior mean, coverage probabilities, distribution of final posterior probability).
+\end{enumerate}
+
 Vary decay rate will affect bias not Type I/II error. Not dissimilar to Frequentist: flatter-Pocock, mass at null-OBF.
-\newpage
-Graph of $\pi_S$ and $\pi_E$ (very rough draft):
 
-\includegraphics{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_1.png}
-
-\newpage
-Graph of inference mixture for $\omega\in\{0,1/4,1/2,3/4,1\}$ (very rough draft)
-
-\includegraphics{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_2.png}
-
-Include 4 different sequential monitoring strategies.
 \textit{Include details for how Bayesian monitoring has good frequentist properties even with frequent interim analyses}.
 
 
