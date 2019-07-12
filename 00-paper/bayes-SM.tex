@@ -101,9 +101,16 @@ Things to discuss:
  \item Our majors contribution (EVAN -- as early as possible in introduction without having the flow appear weird -- draft on 6/21)
  \item Outline for the remaining section of the paper (EVAN -- draft on 6/21)
 \end{itemize}
-The theoretical foundations for the Bayesian clinical trials has been long established \cite{Cornfield1966}~\cite{Cornfield1966a}~\cite{Neyman1967}. These methods were not widely used in practice until a comprehensive framework for interpretation of results was developed through specifying prior distributions that were naturally and intuitively related to the research objectives (e.g. skeptical and enthuastic priors) \cite{Freedman1989}~\cite{Freedman1992}~\cite{Spiegelhalter1993}~\cite{Spiegelhalter1994}~\cite{Fayers1997}.
+The theoretical foundations for the Bayesian clinical trials has been long established \cite{Cornfield1966}~\cite{Cornfield1966a}~\cite{Neyman1967}. These methods were not widely used in practice until a comprehensive framework for interpretation of results was developed through specifying prior distributions that were naturally and intuitively related to the research objectives (e.g. skeptical and enthuastic priors) \cite{Freedman1989}~\cite{Freedman1992}~\cite{Spiegelhalter1993}~\cite{Spiegelhalter1994}~\cite{Fayers1997}. (\textit{Rewrite paragraph.})
 
 There is still potential for further utilization of Bayesian methods in the clinical trial setting. While the framework for interpretation of Bayesian clincial trials is well devloped, the details of specifying prior distributions in a natural and intuitive way is lacking. This paper presents a structured or default way to determine prior distributions based on the trial design. Our major contribution is to present methods for the default or automatic selection of prior distributions in a way that is applicable to a wide array of clinical trial designs.
+
+\begin{enumerate}
+\item Bayesian methodology is widely developed.
+\item It has been applied (cite).
+\item The current perspective is that Bayesian methodology is only valid when Frequentist methods are insufficient, including where enrollment is challenging (rare diseases, pediatric studies)
+\item Our contribution is to show that Bayesian methods are applicable to all clinical trials. This is shown by highlighting their improved interpretation and showing their use in varied and complicated situations.
+\end{enumerate}
 
 \section{Methods}
 
@@ -257,6 +264,9 @@ Figures needed:
 \item Sequential design properties - slow vs. fast accrual (average sample size, posterior mean, coverage probabilities, distribution of final posterior probability).
 \end{enumerate}
 
+Include plot of the Type 1 error rate by the frequency of data monitoring.
+
+Look at varying the types of priors while keeping the tail areas the same. More spiked are OBF, less spiked are Pocock.
 Vary decay rate will affect bias not Type I/II error. Not dissimilar to Frequentist: flatter-Pocock, mass at null-OBF.
 
 \textit{Include details for how Bayesian monitoring has good frequentist properties even with frequent interim analyses}.
@@ -278,7 +288,7 @@ Vary decay rate will affect bias not Type I/II error. Not dissimilar to Frequent
 %cohort would be 7, 13, or 19, depending on the
 %results obtained."
 \subsection{Parallel Two-Group Superiority Trial /w Continuous Binary Endpoint}
-Interesting because prior is on risk difference while also being non-informative on control group. Will need numerical integration to evalutate posteriors.
+Interesting because prior is on risk difference [-1,1] while also being non-informative on control group. Will need numerical integration to evalutate posteriors.
 \subsection{Three-Arm, Placebo Controlled Non-Inferiority Trial w/ Continuous Endpoint}
 \begin{align*}
 P&\rightarrow\beta_0 \text{ (placebo)}\\
@@ -292,7 +302,9 @@ Need priors $\pi(\beta_0), \pi(\beta_1), \pi(\beta_2|\beta_1)$.
 
 Will use MCMC to evaluate posteriors.
 \section{Discussion -- (MATT/EVAN)}
+Q: Why not reverse engineer priors to have exact Type 1 error properties?
 
+A: This would basically be a frequentist method, in that the design would have to be adhered to exactly (including number and timing of data monitoring). Philosophically, designing a Bayesian study that requires rigid monitoring rules loses the advantages of Bayes from the likelihood principle.
 %\section{Example of Parallel Two-Group Design}
 %
 %In this section we consider a sequential monitoring approach in a parallel two-group setting using a binary response endpoint.
