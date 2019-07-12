@@ -61,125 +61,32 @@ abline(v=theta_H)
 #abline(v=pi_0)
 #abline(v=(pi_0+delta_0))
 
-rm(list = ls())
-
 #################################################################################################
 ## INITIAL CONDITIONS ###########################################################################
 #################################################################################################
 
-# equivalence target
-pi_0<-0.5 
-# equivalence margin
-delta_0<-0.1
-# tail probabilities for priors (low, middle, high)
-alpha_L<-0.05
-alpha_M<-0.05
-alpha_H<-0.05
 ## Prior model probabilities
-prior_L<-1/3 # default 1/3
-prior_M<-1/3 # default 1/3
-prior_H<-1/3 # default 1/3
+prior_L<-1/2 
+prior_H<-1/2 
 ## posterior probability of event A margin
 
 ## stopping criteria
 
 ## after how many patients do you check
-interm<-20
-
-#################################################################################################
-## PRIOR SPECIFICATION ##########################################################################
-#################################################################################################
-
-## Parameterize prior models
-# Step 1: Create grid for possible values of phi
-# E.g. beta parameterization for middle prior: beta(pi_0*phi,(1-pi_0)*phi)
-phi_seq<-seq(0,100,by=0.01)
-
-# Step 2: Compute tail probabilities for every possible choice of phi
-# upper tail probability equal to alpha_L/2
-test_L<-qbeta(alpha_L/2,(pi_0-delta_0)*phi_seq,(1-(pi_0-delta_0))*phi_seq,lower.tail=FALSE)
-# upper tail probability equal to alpha_M/2
-test_M<-qbeta(alpha_M/2,pi_0*phi_seq,(1-pi_0)*phi_seq,lower.tail=FALSE)
-# lower tail probability equal to alpha_H/2
-test_H<-qbeta(alpha_H/2,(pi_0+delta_0)*phi_seq,(1-(pi_0+delta_0))*phi_seq,lower.tail=TRUE)
-
-# Step 3: Grid search to find value of phi with the desired tail probability for the priors
-phi_L<-phi_seq[which.min(abs(pi_0-test_L))] # fixed 5/13/19
-phi_M<-phi_seq[which.min(abs(pi_0+delta_0-test_M))]
-phi_H<-phi_seq[which.min(abs(pi_0-test_H))] # fixed 5/13/19
-
-# Step 4: Find parameters for the priors
-alpha_L<-(pi_0-delta_0)*phi_L
-beta_L<-(1-(pi_0-delta_0))*phi_L
-alpha_M<-pi_0*phi_M
-beta_M<-(1-pi_0)*phi_M
-alpha_H<-(pi_0+delta_0)*phi_H
-beta_H<-(1-(pi_0+delta_0))*phi_H
-
-# Plot results
-x<-seq(0,1,by=0.01)
-#low (skeptical)
-plot(x,dbeta(x,alpha_L,beta_L),type="l",col="red",xlab="x",ylab="f(x)",
-     ylim=c(0,max(dbeta(x,alpha_L,beta_L),dbeta(x,alpha_M,beta_M),dbeta(x,alpha_H,beta_H))))
-#middle
-lines(x,dbeta(x,alpha_M,beta_M),type="l",col="black")
-#high (enthuastic)
-lines(x,dbeta(x,alpha_H,beta_H),type="l",col="blue")
-points(x,prior_L*dbeta(x,alpha_L,beta_L)+prior_M*dbeta(x,alpha_M,beta_M)+prior_H*dbeta(x,alpha_H,beta_H),type='l',lty=5,lwd=3)
-title(main="Beta priors")
-#abline(v=(pi_0-delta_0))
-#abline(v=pi_0)
-#abline(v=(pi_0+delta_0))
+interm<-30
 
 #################################################################################################
 ## FREQUENTIST SAMPLE SIZE ######################################################################
 #################################################################################################
 
-p1<-pi_0
-delta<-delta_0
-delta0<-delta_0
-pU<-p1+delta # p0U
-pL<-p1-delta # p0L
-
-alpha<-0.05
-beta<-0.1
-za<-qnorm(alpha,lower.tail=FALSE)
-
-power_et<-vector()
-power_zs<-vector() # Z Test using S(Phat)
-for (n in 1:1000){
-  power_et[n]<-pnorm((sqrt(n)*(pU-p1)-za*sqrt(pU*(1-pU)))/sqrt(p1*(1-p1)))-
-    pnorm((sqrt(n)*(pL-p1)+za*sqrt(pL*(1-pL)))/sqrt(p1*(1-p1)))
-  power_zs[n]<-pnorm((sqrt(n)*(pU-p1)-za*sqrt(p1*(1-p1)))/sqrt(p1*(1-p1)))-
-    pnorm((sqrt(n)*(pL-p1)+za*sqrt(p1*(1-p1)))/sqrt(p1*(1-p1)))
-  
-}
-# compute sample size
-n_et<-which(power_et>1-beta)[1]
-n_zs<-which(power_zs>1-beta)[1]
-# reset use of n
-freq_ss<-n_zs
-n<-n_zs
-
-# compute power
-power_plot<-vector()
-p_range<-seq(p1-delta0,p1+delta0,by=0.05)
-za<-qnorm(alpha,lower.tail=FALSE)
-
-for (j in 1:length(p_range)){
-  p1<-p_range[j]
-  power_plot[j]<- pnorm((sqrt(n)*(pU-p1)-za*sqrt(p1*(1-p1)))/sqrt(p1*(1-p1)))-
-    pnorm((sqrt(n)*(pL-p1)+za*sqrt(p1*(1-p1)))/sqrt(p1*(1-p1)))
-}
-plot(p_range,power_plot,xlab="pi",ylab="power",type='l')
-title(main="Frequentist power")
+freq_ss<-14
 
 #################################################################################################
 ## SIMULATIONS ##################################################################################
 #################################################################################################
 
 ## OUTERMOST LOOP OVER TRUE PARAMETER VALUE ##
-pi_range<-seq(pi_0-delta_0,pi_0+delta_0,by=0.05)
+pi_range<-seq(theta_L,theta_H,by=0.05)
 #pi_range<-pi_0
 
 outer_trial_result<-vector(length=length(pi_range))
@@ -202,11 +109,9 @@ for (j in 1:length(pi_range)){
   for (i in 1:reps){
     
     ## INNER LOOP OVER SAMPLE 
-    futility1<-0 # initialize
-    futility2<-0 # initialize
-    efficacy1<-0 # initialize
-    efficacy2<-0 # initialize
-    
+    futility<-0 # initialize
+    efficacy<-0 # initialize
+
     n<-1 # initializing sample size
     y1_before<-0 # initializing number of successes
     
@@ -220,20 +125,16 @@ for (j in 1:length(pi_range)){
       y0<-n-y1
       
       ## Adding early stopping 5/23/19
-      # futility1 = even an optimist would place high probability that the proportion value is less than left endpoint
-      futility1<-pbeta(pi_0-delta_0,alpha_M+y1,beta_M+y0)
-      # futility2 = even a skeptic would place high probability that the proportion is higher than right endpoint
-      futility2<-pbeta(pi_0+delta_0,alpha_M+y1,beta_M+y0,lower.tail=FALSE)
-      
-      efficacy1<-pbeta(pi_0+delta_0,alpha_L+y1,beta_L+y0)-pbeta(pi_0-delta_0,alpha_L+y1,beta_L+y0)
-      efficacy2<-pbeta(pi_0+delta_0,alpha_H+y1,beta_H+y0)-pbeta(pi_0-delta_0,alpha_H+y1,beta_H+y0)
-      
-      eventA<-pbeta(pi_0+delta_0,alpha_L+y1,beta_L+y0)-pbeta(pi_0-delta_0,alpha_L+y1,beta_L+y0)
+      # futility
+      futility<-pbeta(theta_L,alpha_H+y1,beta_H+y0)
+
+      efficacy<-pbeta(theta_H,alpha_L+y1,beta_L+y0)
+
       ## for next loop
       y1_before<-y1
       n<-n+1
       
-      if (n%%interm==0 & (futility1>.4 | futility2>.4 | (efficacy1>.95 & efficacy2>.95))){
+      if (n%%interm==0 & (futility>1 | efficacy>1)){
         break
       }
     }
@@ -241,21 +142,18 @@ for (j in 1:length(pi_range)){
     ## Posterior model probabilities, slide 133/1005 of 779 notes
     # posterior probability of data given models
     post_L_D<-(beta(alpha_L,beta_L))^(-1)*beta(alpha_L+y1,beta_L+y0)
-    post_M_D<-(beta(alpha_M,beta_M))^(-1)*beta(alpha_M+y1,beta_M+y0)
     post_H_D<-(beta(alpha_H,beta_H))^(-1)*beta(alpha_H+y1,beta_H+y0)
     
     # posterior probability of models given data
-    post_L<-post_L_D*prior_L/(post_L_D*prior_L+post_M_D*prior_M+post_H_D*prior_H)
-    post_M<-post_M_D*prior_M/(post_L_D*prior_L+post_M_D*prior_M+post_H_D*prior_H)
-    post_H<-post_H_D*prior_H/(post_L_D*prior_L+post_M_D*prior_M+post_H_D*prior_H)
+    post_L<-post_L_D*prior_L/(post_L_D*prior_L+post_H_D*prior_H)
+    post_H<-post_H_D*prior_H/(post_L_D*prior_L+post_H_D*prior_H)
     
     ## compute probability of event A given the models, slide 7/1005 of 779 notes
-    post_L_eventA<-pbeta(pi_0+delta_0,alpha_L+y1,beta_L+y0)-pbeta(pi_0-delta_0,alpha_L+y1,beta_L+y0)
-    post_M_eventA<-pbeta(pi_0+delta_0,alpha_M+y1,beta_M+y0)-pbeta(pi_0-delta_0,alpha_M+y1,beta_M+y0)
-    post_H_eventA<-pbeta(pi_0+delta_0,alpha_H+y1,beta_H+y0)-pbeta(pi_0-delta_0,alpha_H+y1,beta_H+y0)
+    post_L_eventA<-pbeta(theta_H,alpha_L+y1,beta_L+y0)
+    post_H_eventA<-pbeta(theta_H,alpha_H+y1,beta_H+y0)
     
     # compute probability of event A
-    trial_result[i]<-sum(post_L*post_L_eventA,post_M*post_M_eventA,post_H*post_H_eventA)
+    trial_result[i]<-sum(post_L*post_L_eventA,post_H*post_H_eventA)
     trial_result_binary[i]=(trial_result[i]>=0.95) # rejecting null hypothesis of non-equivalence
     trial_result_ss[i]<-n-1
     inner_p_hat[i]<-(y1/n-pi_range[j])
@@ -268,6 +166,12 @@ for (j in 1:length(pi_range)){
   outer_trial_result_ss[j]<-mean(trial_result_ss)
   outer_p_hat[j]<-mean(inner_p_hat)
 }
+
+outer_trial_result_binary
+outer_trial_result
+outer_freq_trial_result
+outer_trial_result_ss
+outer_p_hat
 
 
 plot(p_range,power_plot,xlab="pi",ylab="power",type='l')
