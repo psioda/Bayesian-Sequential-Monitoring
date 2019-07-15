@@ -8,9 +8,9 @@ rm(list = ls())
 theta_L<-0.15
 
 # upper target
-theta_H<-0.45
+theta_H<-0.25
 
-# tail probabilities for priors (low, middle, high)
+# tail probabilities for priors (low, high)
 alpha_L<-0.05
 alpha_H<-0.05
 
@@ -68,43 +68,42 @@ abline(v=theta_H)
 ## Prior model probabilities
 prior_L<-1/2 
 prior_H<-1/2 
-## posterior probability of event A margin
 
-## stopping criteria
-
-## after how many patients do you check
-interm<-30
 
 #################################################################################################
 ## FREQUENTIST SAMPLE SIZE ######################################################################
 #################################################################################################
 
-freq_ss<-14
+freq_ss<-1000
 
 #################################################################################################
 ## SIMULATIONS ##################################################################################
 #################################################################################################
 
-## OUTERMOST LOOP OVER TRUE PARAMETER VALUE ##
-pi_range<-seq(theta_L,theta_H,by=0.05)
-#pi_range<-pi_0
+check_vector<-c(1,4,25,100,1000) # frequency of sequential monitoring
+pi_range<-seq(theta_L,theta_H,by=0.01) # value of true response proportion
+outer_trial_result_binary<-matrix(nrow=length(check_vector),ncol=length(pi_range)) # results matrix
+outer_trial_result<-matrix(nrow=length(check_vector),ncol=length(pi_range)) # results matrix
+outer_trial_result_ss<-matrix(nrow=length(check_vector),ncol=length(pi_range)) # results matrix
 
-outer_trial_result<-vector(length=length(pi_range))
-outer_trial_result_binary<-vector(length=length(pi_range))
-outer_freq_trial_result<-vector(length=length(pi_range))
-outer_trial_result_ss<-vector(length=length(pi_range)) # expected sample size
-outer_p_hat<-vector(length=length(pi_range))
+for (k in 1:length(check_vector)){
+
+## OUTERMOST LOOP OVER TRUE PARAMETER VALUE ##
+#outer_trial_result<-vector(length=length(pi_range))
+#outer_trial_result_binary<-vector(length=length(pi_range))
+#outer_freq_trial_result<-vector(length=length(pi_range))
+#outer_trial_result_ss<-vector(length=length(pi_range)) # expected sample size
+#outer_p_hat<-vector(length=length(pi_range))
 
 for (j in 1:length(pi_range)){
-  
   
   ## OUTER LOOP OVER TRIALS
   reps<-1000
   trial_result<-vector(length=reps)
   trial_result_binary<-vector(length=reps)
   trial_result_ss<-vector(length=reps)
-  freq_trial_result<-vector(length=reps)
-  inner_p_hat<-vector(length=reps)
+  #freq_trial_result<-vector(length=reps)
+  #inner_p_hat<-vector(length=reps)
   
   for (i in 1:reps){
     
@@ -124,17 +123,16 @@ for (j in 1:length(pi_range)){
       # new number of failures
       y0<-n-y1
       
-      ## Adding early stopping 5/23/19
-      # futility
-      futility<-pbeta(theta_L,alpha_H+y1,beta_H+y0)
-
-      efficacy<-pbeta(theta_H,alpha_L+y1,beta_L+y0)
+      # futility (even optimst would give up)
+      futility<-pbeta(theta_L,alpha_H+y1,beta_H+y0,lower.tail=TRUE)
+      # efficacy (even pessimist would accept)
+      efficacy<-pbeta(theta_H,alpha_L+y1,beta_L+y0,lower.tail=FALSE)
 
       ## for next loop
       y1_before<-y1
       n<-n+1
       
-      if (n%%interm==0 & (futility>1 | efficacy>1)){
+      if (n%%check_vector[k]==0 & (futility>.5 | efficacy>.5)){
         break
       }
     }
@@ -143,34 +141,68 @@ for (j in 1:length(pi_range)){
     # posterior probability of data given models
     post_L_D<-(beta(alpha_L,beta_L))^(-1)*beta(alpha_L+y1,beta_L+y0)
     post_H_D<-(beta(alpha_H,beta_H))^(-1)*beta(alpha_H+y1,beta_H+y0)
-    
     # posterior probability of models given data
     post_L<-post_L_D*prior_L/(post_L_D*prior_L+post_H_D*prior_H)
     post_H<-post_H_D*prior_H/(post_L_D*prior_L+post_H_D*prior_H)
-    
     ## compute probability of event A given the models, slide 7/1005 of 779 notes
-    post_L_eventA<-pbeta(theta_H,alpha_L+y1,beta_L+y0)
-    post_H_eventA<-pbeta(theta_H,alpha_H+y1,beta_H+y0)
-    
+    post_L_eventA<-pbeta(theta_L,alpha_L+y1,beta_L+y0,lower.tail=FALSE)
+    post_H_eventA<-pbeta(theta_L,alpha_H+y1,beta_H+y0,lower.tail=FALSE)
     # compute probability of event A
     trial_result[i]<-sum(post_L*post_L_eventA,post_H*post_H_eventA)
-    trial_result_binary[i]=(trial_result[i]>=0.95) # rejecting null hypothesis of non-equivalence
+    trial_result_binary[i]=(trial_result[i]>=0.95) # rejecting null hypothesis
     trial_result_ss[i]<-n-1
-    inner_p_hat[i]<-(y1/n-pi_range[j])
+    #inner_p_hat[i]<-(y1/n-pi_range[j])
     #freq_trial_result[i]<-((sqrt(n)*(pi_range[j]-p_hat-delta_0)/sqrt(p_hat*(1-p_hat))<qnorm(alpha)) &
     #    (sqrt(n)*(pi_range[j]-p_hat+delta_0)/sqrt(p_hat*(1-p_hat))>qnorm(1-alpha)))
   }
-  outer_trial_result_binary[j]<-mean(trial_result_binary)
-  outer_trial_result[j]<-mean(trial_result)
-  outer_freq_trial_result[j]<-mean(freq_trial_result)
-  outer_trial_result_ss[j]<-mean(trial_result_ss)
-  outer_p_hat[j]<-mean(inner_p_hat)
+  outer_trial_result_binary[k,j]<-mean(trial_result_binary) # sent to final results matrix
+  outer_trial_result[k,j]<-mean(trial_result)
+  #outer_freq_trial_result[j]<-mean(freq_trial_result)
+  outer_trial_result_ss[k,j]<-mean(trial_result_ss)
+  #outer_p_hat[j]<-mean(inner_p_hat)
+}
 }
 
-outer_trial_result_binary
+outer_trial_result_binary # probability of rejecting null hypothesis (alpha at theta_L, 1-beta at theta_H)
 outer_trial_result
-outer_freq_trial_result
 outer_trial_result_ss
+
+
+plot(pi_range,outer_trial_result_binary[1,],type='l')
+lines(pi_range,outer_trial_result_binary[2,],type='l')
+lines(pi_range,outer_trial_result_binary[3,],type='l')
+lines(pi_range,outer_trial_result_binary[4,],type='l')
+
+
+,dbeta(x,alpha_L,beta_L),type="l",col="red",xlab="x",ylab="f(x)",
+     ylim=c(0,max(dbeta(x,alpha_L,beta_L),dbeta(x,alpha_H,beta_H))))
+
+#high (enthuastic)
+lines(x,dbeta(x,alpha_H,beta_H),type="l",col="blue")
+points(x,1/4*dbeta(x,alpha_L,beta_L)+3/4*dbeta(x,alpha_H,beta_H),type='l',lty=5,lwd=2)
+points(x,1/2*dbeta(x,alpha_L,beta_L)+1/2*dbeta(x,alpha_H,beta_H),type='l',lty=6,lwd=2)
+points(x,3/4*dbeta(x,alpha_L,beta_L)+1/4*dbeta(x,alpha_H,beta_H),type='l',lty=7,lwd=2)
+title(main="Beta priors")
+title(main="Beta priors")
+abline(v=theta_L)
+abline(v=theta_H)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+outer_freq_trial_result
+
 outer_p_hat
 
 
