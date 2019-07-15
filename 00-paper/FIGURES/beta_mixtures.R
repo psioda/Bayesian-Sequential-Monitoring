@@ -8,7 +8,7 @@ rm(list = ls())
 theta_L<-0.15
 
 # upper target
-theta_H<-0.25
+theta_H<-0.45
 
 # tail probabilities for priors (low, high)
 alpha_L<-0.05
@@ -41,21 +41,46 @@ beta_L<-(1-(theta_L))*phi_L
 alpha_H<-(theta_H)*phi_H
 beta_H<-(1-(theta_H))*phi_H
 
-# Plot results
-x<-seq(0,1,by=0.01)
-#low (skeptical)
-plot(x,dbeta(x,alpha_L,beta_L),type="l",col="red",xlab="x",ylab="f(x)",
-     ylim=c(0,max(dbeta(x,alpha_L,beta_L),dbeta(x,alpha_H,beta_H))))
 
-#high (enthuastic)
+# Plot results
+par(mfrow = c(1, 1)) 
+x<-seq(0,1,by=0.01)
+
+
+plot(x,dbeta(x,alpha_L,beta_L),type="l",col="red",xlab="Response Probability",ylab="Density Value",main="Monitoring Priors",
+     xaxt="n",
+     ylim=c(0,max(dbeta(x,alpha_L,beta_L),dbeta(x,alpha_H,beta_H))))
+axis(1,at=theta_L,labels=expression(theta[0]))
 lines(x,dbeta(x,alpha_H,beta_H),type="l",col="blue")
-points(x,1/4*dbeta(x,alpha_L,beta_L)+3/4*dbeta(x,alpha_H,beta_H),type='l',lty=5,lwd=2)
-points(x,1/2*dbeta(x,alpha_L,beta_L)+1/2*dbeta(x,alpha_H,beta_H),type='l',lty=6,lwd=2)
-points(x,3/4*dbeta(x,alpha_L,beta_L)+1/4*dbeta(x,alpha_H,beta_H),type='l',lty=7,lwd=2)
-title(main="Beta priors")
-title(main="Beta priors")
+axis(1,at=theta_H,labels=expression(theta[A]))
+points(x,1/4*dbeta(x,alpha_L,beta_L)+3/4*dbeta(x,alpha_H,beta_H),type='l',lty=3)
+points(x,1/2*dbeta(x,alpha_L,beta_L)+1/2*dbeta(x,alpha_H,beta_H),type='l',lty=2)
+points(x,3/4*dbeta(x,alpha_L,beta_L)+1/4*dbeta(x,alpha_H,beta_H),type='l',lty=1)
+legend(x=0.55,y=4.5,
+       legend=c("Skeptical","75:25","50:50","25:75","Enthuastic"),
+       col=c("red","black","black","black","blue"),lty=c(1,1,2,3,1),
+       cex=0.8,text.font=3)
+
+
+# Set graphical parameter `mfrow`
+par(mfrow = c(1, 2)) 
+
+# Make 2 boxplots
+#low (skeptical)
+plot(x,dbeta(x,alpha_L,beta_L),type="l",col="red",xlab="Response Probability",ylab="Density Value",main="Skeptical Prior",
+     xaxt="n",
+     ylim=c(0,max(dbeta(x,alpha_L,beta_L),dbeta(x,alpha_H,beta_H))))
+axis(1,at=theta_L,labels=expression(theta[0]))
+#axis(1,at=seq(0,1,by=0.2))
 abline(v=theta_L)
+
+
+plot(x,dbeta(x,alpha_H,beta_H),type="l",col="blue",xlab="Response Probability",ylab="Density Value",main="Enthuastic Prior",
+     xaxt="n",
+     ylim=c(0,max(dbeta(x,alpha_L,beta_L),dbeta(x,alpha_H,beta_H))))
+axis(1,at=theta_H,labels=expression(theta[A]))
 abline(v=theta_H)
+
 
 #abline(v=(pi_0-delta_0))
 #abline(v=pi_0)
@@ -74,7 +99,7 @@ prior_H<-1/2
 ## FREQUENTIST SAMPLE SIZE ######################################################################
 #################################################################################################
 
-freq_ss<-1000
+freq_ss<-50
 
 #################################################################################################
 ## SIMULATIONS ##################################################################################
