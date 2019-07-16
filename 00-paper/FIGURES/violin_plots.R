@@ -92,5 +92,6 @@ my_data2 = data.frame(
 #################################################################################################
 #################################################################################################
 
-ggplot(my_data2, aes(x, y, fill = m)) + geom_split_violin()
+ggplot(my_data2, aes(x, y, fill = m)) + geom_split_violin() + ggtitle("Example Path - Early Stopping for Futility") +
+  xlab("Interim Analysis") + ylab("Probability of Response") + labs(fill="")+scale_fill_discrete(labels=c("Enthuastic","Skeptical"))
 

@@ -139,7 +139,7 @@ Define $\delta\in[0,1]$ as a threshold for \textit{a compelling level of evidenc
 The posterior distribution of $\theta$ depends on the choice of prior distribution $\pi(\theta,\psi)$ since $p(\theta,\psi|\mathbf{D})=p(\mathbf{D}|\theta,\psi)\pi(\theta,\psi)/p(\mathbf{D})$ by Bayes rule. The specification of the prior distribution depends on the research objective. An \textit{inference prior} is a prior that is used when the research objective is to make final analysis after data collection is complete. A \textit{monitoring prior} is a prior that is used when the research objective is to consider the impact of interim analyses on subject enrollment, with the potential for early termination (or less commonly prolongation).
 %Possible simplifying functional relationships between $\theta$ and $\psi$ are conditional independence $\pi(\theta,\psi)=\pi(\theta|\psi)\pi(\psi)$ and independence $\pi(\theta,\psi)=\pi(\theta)\pi(\psi)$. An inference prior is often non-informative or objective in the sense that it does not show preference to $H_0$ or $H_1$. Decisions made using using a non-informative prior are often similar to those made in the frequentist setting. 
 
-It has been said that ``the purpose of a trial is to collect data that bring to conclusive consensus at termination opinions that had been diverse and indecisive at the \textit{outset}" (Kass and Greenhouse (1989), emphasis added). These opinions manifest as priors $\pi(\theta,\psi)$ for which their relation to $P(\theta\in\Theta_i|\pi(\theta,\psi))$ $i\in\{0,1\}$ is examined. Note this quantity does not depend on the data $\mathbf{D}$ and therefore reflect a-priori opinion. A skeptical prior is an informative or subjective prior that gives substantial preference to $H_0$ such that it is ``all but convinced" that $H_0$ is true a-priori. This prior $\pi_{S}(\theta,\psi)\equiv\pi_{S}$ has the property that $P(\theta\in\Theta_0| \pi_{S})\geq\delta$ (equivalently $P(\theta\in\Theta_1| \pi_{S})<1-\delta$). The choice of $\delta\in[0,1]$ is motivated by \textit{a compelling level of evidence} as it relates to $\theta$, although in this setting the ``evidence" reflects a theoretical opinion rather than empirical judgement. For example, if $\delta=0.95$, then this choice of skeptical prior places 95\% prior probability that $\theta\in\Theta_0$. An enthuastic prior $\pi_{E}(\theta,\psi)\equiv\pi_{E}$ similarly gives preference to $H_1$ through the property that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$ (equivalently $P(\theta\in\Theta_0| \pi_{E})<1-\delta$). For purposes of interpretation, a \textit{skeptical person} is someone whose a-priori opinions of $\theta$ are reflected through a skeptical prior and a \textit{enthuastic person} is someone whose a-priori opinions of $\theta$ are reflected through an ethuastic prior. The prior distributions discussed are generally ``non-informative" over the nuisance parameters.
+It has been said that ``the purpose of a trial is to collect data that bring to conclusive consensus at termination opinions that had been diverse and indecisive at the \textit{outset}" (Kass and Greenhouse (1989), emphasis added). These opinions manifest as priors $\pi(\theta,\psi)$ for which their relation to $P(\theta\in\Theta_i|\pi(\theta,\psi))$ $i\in\{0,1\}$ is examined. Note this quantity does not depend on the data $\mathbf{D}$ and therefore reflects a-priori opinion. A skeptical prior is an informative or subjective prior that gives substantial preference to $H_0$ such that it is ``all but convinced" that $H_0$ is true a-priori. This prior $\pi_{S}(\theta,\psi)\equiv\pi_{S}$ has the property that $P(\theta\in\Theta_0| \pi_{S})\geq\delta$ (equivalently $P(\theta\in\Theta_1| \pi_{S})<1-\delta$). The choice of $\delta\in[0,1]$ is motivated by \textit{a compelling level of evidence} as it relates to $\theta$, although in this setting the ``evidence" reflects a theoretical opinion rather than empirical judgement. For example, if $\delta=0.95$, then this choice of skeptical prior places 95\% prior probability that $\theta\in\Theta_0$. An enthuastic prior $\pi_{E}(\theta,\psi)\equiv\pi_{E}$ similarly gives preference to $H_1$ through the property that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$ (equivalently $P(\theta\in\Theta_0| \pi_{E})<1-\delta$). For purposes of interpretation, a \textit{skeptical person} is someone whose a-priori opinions of $\theta$ are reflected through a skeptical prior and a \textit{enthuastic person} is someone whose a-priori opinions of $\theta$ are reflected through an ethuastic prior. The prior distributions discussed are generally ``non-informative" over the nuisance parameters.
 
 The use of monitoring based on changing the opinion of skeptical and enthuastic priors has been described as overcoming a handicap (\cite{Freedman1989}) and providing a brake (\cite{Fayers1997}) on the premature termination of trials, or constructing ``an adversary who will need to be disilusioned by the data to stop further experimentation" (\cite{Spiegelhalter1994}). 
 
@@ -159,15 +159,21 @@ Final inference on $\theta$ is made once enrollment is stopped based on the moni
 \end{align*}
 for $\omega\in[0,1]$. Choosing $\omega=1/2$ for an equal mixture of $\pi_S$ and $\pi_E$ corresponds to an inference prior that is impartial to $H_0$ and $H_1$, and is a practical choice of $\pi_I$ is to be determined before the start of data collection. Define $p(\mathbf{D}|\pi(\theta,\psi))=\int p(\theta|\mathbf{D})\pi(\theta,\psi)d(\theta,\psi)$ to be the marginal likelihood for the data given the prior $\pi(\theta,\psi)$. Choosing $\omega$ based on posterior model probabilities of the null and alternative hypotheses yields $\omega=p(\mathbf{D}| \pi_{S})/(p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E}))$. 
 
-All relevant information about $\theta$ can be derived from its marginal posterior distribution with an inference prior (e.g. posterior mean, credible intervals). For example, posterior mean using the inference prior will be a two-part mixture of the posterior means using the skeptical and enthuastic priors:
+The determination of a significant trial result is given by
 \begin{align*}
-E(\theta|\mathbf{D},\pi_{I})=\omega\cdot E(\theta|\mathbf{D}, \pi_{S})+(1-\omega)\cdot E(\theta|\mathbf{D}, \pi_{E}).
-\end{align*}
+P(\theta\in\Theta_1|\mathbf{D},\pi_I)\geq\delta.
+\end{align*} 
 
+All relevant information about $\theta$ can be derived from its marginal posterior distribution with an inference prior (e.g. posterior mean, credible intervals). For example, the posterior mean using the inference prior will be a two-part mixture of the posterior means using the skeptical and enthuastic priors:
+\begin{align*}
+E(\theta|\mathbf{D},\pi_I)&=\omega\cdot E(\theta|\mathbf{D}, \pi_{S})+(1-\omega)\cdot E(\theta|\mathbf{D}, \pi_{E})\\
+\int_\Theta \theta p(\theta|\mathbf{D},\pi_{I})d\theta&=\omega\cdot \int_\Theta \theta p(\theta|\mathbf{D},\pi_{S})d\theta+(1-\omega)\cdot\int_\Theta \theta p(\theta|\mathbf{D},\pi_{E})d\theta
+\end{align*}
 
 As an alternative strategy to futility analysis, one can monitor the probability of success (POS) for the trial. The probability of getting a convincing result at the end of the trail can be computed using the interim data. Let $p(\theta|\mathbf{D}, \pi_{I})$ denote the posterior distribution for $\theta$ based on the inference prior $ \pi_{I}$ and the current data $\mathbf{D}$. Let $\xi$ denote the POS which is given as follows:
 \begin{align*}
-\xi=E[1\{P(\theta\in\Theta_1|\mathbf{D}_1,\mathbf{D}, \pi_{I})\geq \delta\}]
+\xi&=P[\mathbf{D}_1\in\mathbb{R}^{dim(\mathbf{D}_1)}|P(\theta\in\Theta_1|\mathbf{D}_1,\mathbf{D},\pi_I)\geq\delta]\\
+&=E[1\{P(\theta\in\Theta_1|\mathbf{D}_1,\mathbf{D}, \pi_{I})\geq \delta\}]
 \end{align*}
 where the expectation is taken with respect to the posterior predictive distribution $p(\mathbf{D}_1)$ for future data $\mathbf{D}_1$ (which includes subjects yet to enroll):
 \begin{align*}
@@ -252,11 +258,20 @@ The inference priors will be of the form $\pi_{I}=\omega\cdot\pi_{S}+(1-\omega)\
 \end{center}
 
 \begin{itemize}
-\item Show formulas for efficacy and futility stopping (Beta distributed)
 \item Show formulas for posterior model probabilities using inference prior
 \item Show formula that determines a significant trial result
 \end{itemize}
-
+Let $y_1$ be the number of successes and $y_0$ be the number of failures.
+\begin{align*}
+\text{Skeptical prior: }&\pi_S(\theta)\sim\mathcal{B}(\alpha_S,\beta_S)\\
+\text{Skeptical posterior: }&p(\theta|\mathbf{D},\pi_S)\sim\mathcal{B}(\alpha_S+y_1,\beta_S+y_0)\\
+\text{Efficacy stopping: }&P(\theta\in\Theta_1|\mathbf{D}, \pi_{S})\geq\delta)\Longleftrightarrow\int_{\theta_1}^{1}p(\theta|\mathbf{D},\pi_S)d\theta\geq\delta
+\end{align*}
+\begin{align*}
+\text{Enthuastic prior: }&\pi_E(\theta)\sim\mathcal{B}(\alpha_E,\beta_E)\\
+\text{Enthuastic posterior: }&p(\theta|\mathbf{D},\pi_E)\sim\mathcal{B}(\alpha_E+y_1,\beta_E+y_0)\\
+\text{Futility stopping: } &P(\theta\in\Theta_0|\mathbf{D}, \pi_{E})\geq\delta)\Longleftrightarrow\int_{0}^{\theta_0}p(\theta|\mathbf{D},\pi_E)d\theta\geq\delta
+\end{align*}
 Figures needed:
 \begin{enumerate}
 \item An example path - early stoppage for effiacy (violin plots)
