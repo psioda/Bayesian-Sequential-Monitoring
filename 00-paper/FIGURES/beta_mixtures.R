@@ -24,11 +24,11 @@ sig.inf<-0.9
 sig.fut<-0.85
 sig.eff<-0.95
 # number of simulated trials per design
-reps<-10000
+reps<-5000
 # compute empirical quantities for credible interval
 sims<-10000
 # number of months until response observed
-response.time<-10
+response.time<-0
 # rate of enrollment
 rate<-1
 # credible interval is 1-cred.tail
@@ -84,7 +84,7 @@ outer.cov.initial<-matrix(nrow=length(freq.mntr),ncol=length(p.range))
 outer.cov.final<-matrix(nrow=length(freq.mntr),ncol=length(p.range))
 
 for (k in 1:length(freq.mntr)){ # frequency of monitoring
-
+# need to change to enrollment rate
 for (j in 1:length(p.range)){ # true response proportion
   
   inner.eff<-vector(length=reps)
@@ -101,8 +101,8 @@ for (j in 1:length(p.range)){ # true response proportion
 
   for (i in 1:reps){ # simulate specified trial design
     
-    if (i%%100==0){
-      print(j) 
+    if (i%%1000==0){
+      print(p.range[j]) 
       print(i)
       }
     
@@ -164,22 +164,22 @@ for (j in 1:length(p.range)){ # true response proportion
         # posterior mean
     inner.post.mean.initial[i]<-c1.initial*(alpha.skpt+y1)/(alpha.skpt+beta.skpt+n)+
       c2.initial*(alpha.enth+y1)/(alpha.enth+beta.enth+n)
-    inner.post.mean.final[i]<-c1.final*(alpha.skpt+y1.final)/(alpha.skpt+beta.skpt+n)+
+    inner.post.mean.final[i]<-c1.final*(alpha.skpt+y1.final)/(alpha.skpt+beta.skpt+n.final)+
       c2.final*(alpha.enth+y1.final)/(alpha.enth+beta.enth+n.final)
   
-    theta_1 <- rbeta(round(sims*c1.initial,log10(sims)), alpha.skpt+y1, beta.skpt+y0)
-    theta_2 <- rbeta(round(sims*c2.initial,log10(sims)), alpha.enth+y1, beta.enth+y0)
-    theta <- sort(c(theta_1, theta_2))
-    q_lower <- theta[round((cred.tail / 2) * sims)]
-    q_upper <- theta[round((1 - cred.tail / 2) * sims)]
-    inner.cov.initial[i]=(p.range[j]>q_lower & p.range[j]<q_upper) # initial
-    
-    theta_1 <- rbeta(round(sims*c1.final,log10(sims)), alpha.skpt+y1, beta.skpt+y0)
-    theta_2 <- rbeta(round(sims*c2.final,log10(sims)), alpha.enth+y1, beta.enth+y0)
-    theta <- sort(c(theta_1, theta_2))
-    q_lower <- theta[round((cred.tail / 2) * sims)]
-    q_upper <- theta[round((1 - cred.tail / 2) * sims)]
-    inner.cov.final[i]=(p.range[j]>q_lower & p.range[j]<q_upper) # final
+    # theta_1 <- rbeta(round(sims*c1.initial,log10(sims)), alpha.skpt+y1, beta.skpt+y0)
+    # theta_2 <- rbeta(round(sims*c2.initial,log10(sims)), alpha.enth+y1, beta.enth+y0)
+    # theta <- sort(c(theta_1, theta_2))
+    # q_lower <- theta[round((cred.tail / 2) * sims)]
+    # q_upper <- theta[round((1 - cred.tail / 2) * sims)]
+    # inner.cov.initial[i]=(p.range[j]>q_lower & p.range[j]<q_upper) # initial
+    # 
+    # theta_1 <- rbeta(round(sims*c1.final,log10(sims)), alpha.skpt+y1, beta.skpt+y0)
+    # theta_2 <- rbeta(round(sims*c2.final,log10(sims)), alpha.enth+y1, beta.enth+y0)
+    # theta <- sort(c(theta_1, theta_2))
+    # q_lower <- theta[round((cred.tail / 2) * sims)]
+    # q_upper <- theta[round((1 - cred.tail / 2) * sims)]
+    # inner.cov.final[i]=(p.range[j]>q_lower & p.range[j]<q_upper) # final
     
   }
 
@@ -199,12 +199,49 @@ for (j in 1:length(p.range)){ # true response proportion
 outer.ss.initial-outer.ss.final
 outer.cov.initial-outer.cov.final
 
-
-#### BEGIN PLOTS ####
 par(ask=FALSE)
-plot(p.range,outer.fut,type='l',ylim=c(0,1))
-lines(p.range,outer.eff)
-lines(p.range,outer.inc)
+par(mar=c(5, 4, 4, 2) + 0.1)
+plot(p.range,outer.fut,type='l',ylim=c(0,1),col='red',lwd=3,lty='dotted',
+     ylab="Probability",xlab="",main="Sequential Design Properties",
+     axes=FALSE)
+box()
+lines(p.range,outer.eff,lwd=3,lty='longdash',col='green')
+lines(p.range,outer.inc,lwd=3)
+axis(1,las=0,at=p.range,labels=format(p.range,nsmall=2))
+axis(2,las=2,at=seq(0,1,by=0.1),labels=format(seq(0,1,by=0.1),nsmall=1))
+abline(h=seq(0,1,by=0.1),col='grey')
+abline(v=c(0.20,0.40),col='grey',lty='dashed')
+row<-1
+  for (column in 2:length(p.range)){
+    mtext(text=paste0(round(outer.ss.initial[column],digits=1),
+                      " + ",round(outer.ss.final[column]-outer.ss.initial[column],digits=1),
+                      " = ",round(outer.ss.final[column],digits=1)),
+                      side=1,line=row+1,at=p.range[column])
+  }
+column<-1
+mtext(text=paste0("Sample Size ",
+      round(outer.ss.initial[column],digits=1),
+      " + ",round(outer.ss.final[column]-outer.ss.initial[column],digits=1),
+      " = ",round(outer.ss.final[column],digits=1)),
+      side=1,line=row+1,at=p.range[column])
+row<-2
+for (column in 2:length(p.range)){
+  mtext(text=paste0("(I) ",round(outer.post.mean.initial[column],digits=3),
+                    " (F) ",round(outer.post.mean.final[column],digits=3)),
+        side=1,line=row+1,at=p.range[column])
+}
+column<-1
+mtext(text=paste0("Post Mean (I) ",round(outer.post.mean.initial[column],digits=3),
+                              " (F) ",round(outer.post.mean.final[column],digits=3)),
+      side=1,line=row+1,at=p.range[column])
+legend(x=0.35,y=0.5,legend=c("Stop Early for Efficacy","Stop Early for Futility",
+                "Inconclusive w/ Full Dataset"),
+       col=c("green","red","black"),lty=c('longdash','dotted','solid'),
+       cex=0.8,
+       box.lwd = 1,box.col = "black",bg = "white",pt.cex = 1)
+
+
+#### END EXAMPLES FOR 7/26/19 ####
 
 outer_trial_result_binary # probability of rejecting null hypothesis (alpha at p.skpt, 1-beta at p.enth)
 outer_trial_result
@@ -225,7 +262,8 @@ plot(x,dbeta(x,alpha.skpt,beta.skpt),type="l",col="red",xlab="Response Probabili
 abline(v=p.enth)
 abline(v=p.skpt)
 #high (enthuastic)
-plot(x,dbeta(x,alpha.enth,beta.enth),type="l",col="blue",xlab="Response Probability",ylab="Density Value",main="Enthuastic Prior",
+plot(x,dbeta(x,alpha.enth,beta.enth),type="l",col="blue",
+     xlab="Response Probability",ylab="Density Value",main="Enthuastic Prior",
      #xaxt="n",
      ylim=c(0,max(dbeta(x,alpha.skpt,beta.skpt),dbeta(x,alpha.enth,beta.enth))))
 #axis(1,at=p.enth,labels=expression(theta[A]))
