@@ -7,7 +7,9 @@ p.enth<-0.40
 # futility theta
 p.intr<-0.30
 # value of true response proportion
-p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05)
+p.range<-0.2 # only interested in type 1 error
+#p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05)
+#p.range<-seq(p.skpt,p.enth,by=0.1)
 # tail probabilities for priors (low, high)
 tail.skpt<-0.045
 tail.enth<-0.05
@@ -26,9 +28,9 @@ sims<-10000
 # credible interval is 1-cred.tail
 cred.tail<-0.05
 
-enr.mnths<-c(2)
-out.mnths<-c(4)
-freq.mntr<-c(38)
+enr.mnths<-c(rep(4,12),rep(8,12))
+out.mnths<-rep(c(rep(4,6),rep(8,6)),2)
+freq.mntr<-rep(c(1,2,4,8,16,80),4)
 
 #example1<-function(){
 
@@ -160,18 +162,23 @@ for (j in 1:length(p.range)){ # true response proportion
     inner.phat.final[i]<-y1.final/n.final
     
     # inference posterior mixture proportions
-    c1.initial<-prior.skpt*beta(alpha.skpt+y1,beta.skpt+y0)/
-      (prior.skpt*beta(alpha.skpt+y1,beta.skpt+y0)+
-         prior.enth*beta(alpha.enth+y1,beta.enth+y0))
-    c2.initial<-prior.enth*beta(alpha.enth+y1,beta.enth+y0)/
-      (prior.skpt*beta(alpha.skpt+y1,beta.skpt+y0)+
-         prior.enth*beta(alpha.enth+y1,beta.enth+y0))
-    c1.final<-prior.skpt*beta(alpha.skpt+y1.final,beta.skpt+y0.final)/
-      (prior.skpt*beta(alpha.skpt+y1.final,beta.skpt+y0.final)+
-         prior.enth*beta(alpha.enth+y1.final,beta.enth+y0.final))
-    c2.final<-prior.enth*beta(alpha.enth+y1.final,beta.enth+y0.final)/
-      (prior.skpt*beta(alpha.skpt+y1.final,beta.skpt+y0.final)+
-         prior.enth*beta(alpha.enth+y1.final,beta.enth+y0.final))
+    # fixed on 7/29/19
+    c1.initial<-
+      prior.skpt*beta(alpha.skpt+y1,beta.skpt+y0)/beta(alpha.skpt,beta.skpt)/
+      (prior.skpt*beta(alpha.skpt+y1,beta.skpt+y0)/beta(alpha.skpt,beta.skpt)+
+       prior.enth*beta(alpha.enth+y1,beta.enth+y0)/beta(alpha.enth,beta.enth))
+    c2.initial<-
+      prior.enth*beta(alpha.enth+y1,beta.enth+y0)/beta(alpha.enth,beta.enth)/
+      (prior.skpt*beta(alpha.skpt+y1,beta.skpt+y0)/beta(alpha.skpt,beta.skpt)+
+       prior.enth*beta(alpha.enth+y1,beta.enth+y0)/beta(alpha.enth,beta.enth))
+    c1.final<-
+prior.skpt*beta(alpha.skpt+y1.final,beta.skpt+y0.final)/beta(alpha.skpt,beta.skpt)/
+(prior.skpt*beta(alpha.skpt+y1.final,beta.skpt+y0.final)/beta(alpha.skpt,beta.skpt)+
+ prior.enth*beta(alpha.enth+y1.final,beta.enth+y0.final)/beta(alpha.enth,beta.enth))
+    c2.final<-
+prior.enth*beta(alpha.enth+y1.final,beta.enth+y0.final)/beta(alpha.enth,beta.enth)/
+(prior.skpt*beta(alpha.skpt+y1.final,beta.skpt+y0.final)/beta(alpha.skpt,beta.skpt)+
+ prior.enth*beta(alpha.enth+y1.final,beta.enth+y0.final)/beta(alpha.enth,beta.enth))
         # posterior mean
     inner.post.mean.initial[i]<-c1.initial*(alpha.skpt+y1)/(alpha.skpt+beta.skpt+n)+
       c2.initial*(alpha.enth+y1)/(alpha.enth+beta.enth+n)
@@ -191,7 +198,7 @@ for (j in 1:length(p.range)){ # true response proportion
     # q_lower <- theta[round((cred.tail / 2) * sims)]
     # q_upper <- theta[round((1 - cred.tail / 2) * sims)]
     # inner.cov.final[i]=(p.range[j]>q_lower & p.range[j]<q_upper) # final
-    
+
   }
 
   outer.ss.initial[k,j]<-mean(inner.ss.initial)
@@ -210,8 +217,7 @@ for (j in 1:length(p.range)){ # true response proportion
   outer.cov.final[k,j]<-mean(inner.cov.final)
 }
 }
-outer.ss.initial-outer.ss.final
-outer.cov.initial-outer.cov.final
+
 
 k<-1
 plot(p.range,outer.fut[k,],type='l',ylim=c(0,1),col='red',lwd=2,lty='longdash',
@@ -229,16 +235,28 @@ abline(h=seq(0,1,by=0.1),col='grey')
 abline(v=c(p.skpt,p.enth),col='grey',lty='dashed')
 row<-1
   for (column in 1:length(p.range)){
-    mtext(text=paste0(round(outer.ss.initial[k,column],digits=1),
-                      " + ",round(outer.ss.final[k,column]-
-                                  outer.ss.initial[k,column],digits=1),
-                      " = ",round(outer.ss.final[k,column],digits=1)),
+    mtext(text=paste0(format(round(outer.ss.initial[k,column],digits=1),nsmall=1),
+                      " + ",
+                      format(round(outer.ss.final[k,column]-
+                                  outer.ss.initial[k,column],digits=1),nsmall=1),
+                      " = ",
+                      format(round(outer.ss.final[k,column],digits=1),nsmall=1)),
                       side=1,line=row+1,at=p.range[column])
   }
 row<-2
 for (column in 1:length(p.range)){
-  mtext(text=paste0("(I) ",round(outer.post.mean.initial[k,column],digits=3),
-                    " (F) ",round(outer.post.mean.final[k,column],digits=3)),
+  mtext(text=paste0("(I) ",
+        format(round(outer.post.mean.initial[k,column],digits=3),nsmall=3),
+                    " (F) ",
+        format(round(outer.post.mean.final[k,column],digits=3),nsmall=3)),
+        side=1,line=row+1,at=p.range[column])
+}
+row<-3
+for (column in 1:length(p.range)){
+  mtext(text=paste0("(I) ",
+        format(round(outer.cov.initial[k,column],digits=3),nsmall=3),
+                    " (F) ",
+        format(round(outer.cov.final[k,column],digits=3),nsmall=3)),
         side=1,line=row+1,at=p.range[column])
 }
 column<-1
@@ -249,7 +267,140 @@ legend(x=0.35,y=0.5,legend=c("Stop Early for Efficacy","Stop Early for Futility"
        box.lwd = 1,box.col = "black",bg = "white",pt.cex = 1)
 mtext(text="SS",side=1,line=2,at=0.125)
 mtext(text="PM",side=1,line=3,at=0.125)
+mtext(text="CP",side=1,line=4,at=0.125)
 #### END EXAMPLES FOR 7/26/19 ####
+
+
+
+
+#### Type I error graphs ####
+par(mfrow = c(2, 2)) 
+k1<-4
+k2<-8
+plot(1/freq.mntr[out.mnths==k1 & enr.mnths==k2],
+     outer.eff[out.mnths==k1 & enr.mnths==k2],
+     type='l',ylim=c(0,.15),col='red',lwd=2,lty='longdash',
+     ylab="Type 1 Error Rate",xlab="",
+     main=paste0("k1=",k1,", k2=",k2),
+     axes=FALSE)
+lines(1/freq.mntr[out.mnths==k1 & enr.mnths==k2],
+      outer.eff.final[out.mnths==k1 & enr.mnths==k2])
+box()
+axis(1,las=0,at=1/freq.mntr[out.mnths==k1 & enr.mnths==k2],
+     labels=80/freq.mntr[out.mnths==k1 & enr.mnths==k2])
+axis(2,las=2,at=seq(0,.15,by=0.01),labels=format(seq(0,.15,by=0.01),nsmall=2))
+abline(h=seq(0,0.15,by=0.01),col='grey')
+for (column in 1:length(freq.mntr[out.mnths==k1 & enr.mnths==k2])){
+  mtext(text=paste0(format(round(
+    outer.ss.initial[out.mnths==k1 & enr.mnths==k2][column],
+    digits=1),nsmall=1),
+    " + ",
+    format(round(outer.ss.final[out.mnths==k1 & enr.mnths==k2][column]-
+                   outer.ss.initial[out.mnths==k1 & enr.mnths==k2][column],
+                 digits=1),nsmall=1),
+    " = ",
+    format(round(outer.ss.final[out.mnths==k1 & enr.mnths==k2][column],
+                 digits=1),nsmall=1)),
+    side=1,
+    line=8-column,
+    at=1/freq.mntr[out.mnths==k1 & enr.mnths==k2][column])
+}
+k1<-4
+k2<-4
+plot(1/freq.mntr[out.mnths==k1 & enr.mnths==k2],
+     outer.eff[out.mnths==k1 & enr.mnths==k2],
+     type='l',ylim=c(0,.15),col='red',lwd=2,lty='longdash',
+     ylab="Type 1 Error Rate",xlab="",
+     main=paste0("k1=",k1,", k2=",k2),
+     axes=FALSE)
+lines(1/freq.mntr[out.mnths==k1 & enr.mnths==k2],
+      outer.eff.final[out.mnths==k1 & enr.mnths==k2])
+box()
+axis(1,las=0,at=1/freq.mntr[out.mnths==k1 & enr.mnths==k2],
+     labels=80/freq.mntr[out.mnths==k1 & enr.mnths==k2])
+axis(2,las=2,at=seq(0,.15,by=0.01),labels=format(seq(0,.15,by=0.01),nsmall=2))
+abline(h=seq(0,0.15,by=0.01),col='grey')
+for (column in 1:length(freq.mntr[out.mnths==k1 & enr.mnths==k2])){
+  mtext(text=paste0(format(round(
+    outer.ss.initial[out.mnths==k1 & enr.mnths==k2][column],
+    digits=1),nsmall=1),
+    " + ",
+    format(round(outer.ss.final[out.mnths==k1 & enr.mnths==k2][column]-
+                   outer.ss.initial[out.mnths==k1 & enr.mnths==k2][column],
+                 digits=1),nsmall=1),
+    " = ",
+    format(round(outer.ss.final[out.mnths==k1 & enr.mnths==k2][column],
+                 digits=1),nsmall=1)),
+    side=1,
+    line=8-column,
+    at=1/freq.mntr[out.mnths==k1 & enr.mnths==k2][column])
+}
+k1<-8
+k2<-8
+plot(1/freq.mntr[out.mnths==k1 & enr.mnths==k2],
+     outer.eff[out.mnths==k1 & enr.mnths==k2],
+     type='l',ylim=c(0,.15),col='red',lwd=2,lty='longdash',
+     ylab="Type 1 Error Rate",xlab="",
+     main=paste0("k1=",k1,", k2=",k2),
+     axes=FALSE)
+lines(1/freq.mntr[out.mnths==k1 & enr.mnths==k2],
+      outer.eff.final[out.mnths==k1 & enr.mnths==k2])
+box()
+axis(1,las=0,at=1/freq.mntr[out.mnths==k1 & enr.mnths==k2],
+     labels=80/freq.mntr[out.mnths==k1 & enr.mnths==k2])
+axis(2,las=2,at=seq(0,.15,by=0.01),labels=format(seq(0,.15,by=0.01),nsmall=2))
+abline(h=seq(0,0.15,by=0.01),col='grey')
+row<-1
+for (column in 1:length(freq.mntr[out.mnths==k1 & enr.mnths==k2])){
+  mtext(text=paste0(format(round(
+    outer.ss.initial[out.mnths==k1 & enr.mnths==k2][column],
+    digits=1),nsmall=1),
+                    " + ",
+    format(round(outer.ss.final[out.mnths==k1 & enr.mnths==k2][column]-
+                 outer.ss.initial[out.mnths==k1 & enr.mnths==k2][column],
+                 digits=1),nsmall=1),
+                    " = ",
+    format(round(outer.ss.final[out.mnths==k1 & enr.mnths==k2][column],
+      digits=1),nsmall=1)),
+        side=1,
+    line=8-column,
+    at=1/freq.mntr[out.mnths==k1 & enr.mnths==k2][column])
+}
+k1<-8
+k2<-4
+plot(1/freq.mntr[out.mnths==k1 & enr.mnths==k2],
+     outer.eff[out.mnths==k1 & enr.mnths==k2],
+     type='l',ylim=c(0,.15),col='red',lwd=2,lty='longdash',
+     ylab="Type 1 Error Rate",xlab="",
+     main=paste0("k1=",k1,", k2=",k2),
+     axes=FALSE)
+lines(1/freq.mntr[out.mnths==k1 & enr.mnths==k2],
+      outer.eff.final[out.mnths==k1 & enr.mnths==k2])
+box()
+axis(1,las=0,at=1/freq.mntr[out.mnths==k1 & enr.mnths==k2],
+     labels=80/freq.mntr[out.mnths==k1 & enr.mnths==k2])
+axis(2,las=2,at=seq(0,.15,by=0.01),labels=format(seq(0,.15,by=0.01),nsmall=2))
+abline(h=seq(0,0.15,by=0.01),col='grey')
+for (column in 1:length(freq.mntr[out.mnths==k1 & enr.mnths==k2])){
+  mtext(text=paste0(format(round(
+    outer.ss.initial[out.mnths==k1 & enr.mnths==k2][column],
+    digits=1),nsmall=1),
+    " + ",
+    format(round(outer.ss.final[out.mnths==k1 & enr.mnths==k2][column]-
+                   outer.ss.initial[out.mnths==k1 & enr.mnths==k2][column],
+                 digits=1),nsmall=1),
+    " = ",
+    format(round(outer.ss.final[out.mnths==k1 & enr.mnths==k2][column],
+                 digits=1),nsmall=1)),
+    side=1,
+    line=8-column,
+    at=1/freq.mntr[out.mnths==k1 & enr.mnths==k2][column])
+}
+
+
+
+
+
 
 outer_trial_result_binary # probability of rejecting null hypothesis (alpha at p.skpt, 1-beta at p.enth)
 outer_trial_result
