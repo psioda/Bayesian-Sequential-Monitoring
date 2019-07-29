@@ -1,5 +1,4 @@
 rm(list = ls())
-require("poisson")
 
 # mean of skeptical prior
 p.skpt<-0.20
@@ -16,23 +15,20 @@ tail.enth<-0.05
 prior.skpt<-1/2 
 prior.enth<-1/2 
 # maximum sample sizes
-max.ss<-76
-# frequency of sequential monitoring
-freq.mntr<-c(2) 
+max.ss<-80
 # significant trial result threshold
-sig.inf<-0.9
 sig.fut<-0.85
 sig.eff<-0.95
 # number of simulated trials per design
-reps<-5000
+reps<-10000
 # compute empirical quantities for credible interval
 sims<-10000
-# number of months until response observed
-response.time<-0
-# rate of enrollment
-rate<-1
 # credible interval is 1-cred.tail
 cred.tail<-0.05
+
+enr.mnths<-c(2)
+out.mnths<-c(4)
+freq.mntr<-c(38)
 
 #example1<-function(){
 
@@ -66,10 +62,13 @@ beta.enth<-(1-(p.enth))*phi_H
 ## Step 1: Create outer loop based on frequency of interim analyses
 # stop early for efficacy
 outer.eff<-matrix(nrow=length(freq.mntr),ncol=length(p.range))
+outer.eff.final<-matrix(nrow=length(freq.mntr),ncol=length(p.range))
 # stop early for futility
 outer.fut<-matrix(nrow=length(freq.mntr),ncol=length(p.range))
+outer.fut.final<-matrix(nrow=length(freq.mntr),ncol=length(p.range))
 # inconclusive findings
 outer.inc<-matrix(nrow=length(freq.mntr),ncol=length(p.range))
+outer.inc.final<-matrix(nrow=length(freq.mntr),ncol=length(p.range))
 # sample mean
 outer.phat.initial<-matrix(nrow=length(freq.mntr),ncol=length(p.range))
 outer.phat.final<-matrix(nrow=length(freq.mntr),ncol=length(p.range))
@@ -84,12 +83,15 @@ outer.cov.initial<-matrix(nrow=length(freq.mntr),ncol=length(p.range))
 outer.cov.final<-matrix(nrow=length(freq.mntr),ncol=length(p.range))
 
 for (k in 1:length(freq.mntr)){ # frequency of monitoring
-# need to change to enrollment rate
+
 for (j in 1:length(p.range)){ # true response proportion
   
   inner.eff<-vector(length=reps)
+  inner.eff.final<-vector(length=reps)
   inner.fut<-vector(length=reps)
+  inner.fut.final<-vector(length=reps)
   inner.inc<-vector(length=reps)
+  inner.inc.final<-vector(length=reps)
   inner.ss.initial<-vector(length=reps)
   inner.ss.final<-vector(length=reps)
   inner.phat.initial<-vector(length=reps)
@@ -102,7 +104,7 @@ for (j in 1:length(p.range)){ # true response proportion
   for (i in 1:reps){ # simulate specified trial design
     
     if (i%%1000==0){
-      print(p.range[j]) 
+      print(k) 
       print(i)
       }
     
@@ -110,7 +112,9 @@ for (j in 1:length(p.range)){ # true response proportion
     futility<-0
     inner.inc[i]<-1
     cutoff.time<-vector()
-    event.times<-hpp.event.times(rate, max.ss)
+    event.times<-rep(seq(from=1,
+                          to=max.ss/enr.mnths[k],by=1),
+                          each=enr.mnths[k])
     responses<-rbinom(n=max.ss,size=1,prob=p.range[j])
     
     for (n in 1:max.ss){
@@ -138,10 +142,17 @@ for (j in 1:length(p.range)){ # true response proportion
       }
     }
     cutoff.time<-event.times[n]
-    responses.final<-responses[event.times<=cutoff.time+response.time]
+    responses.final<-responses[event.times<=cutoff.time+out.mnths[k]]
     n.final<-length(responses.final)
     y1.final<-sum(responses.final)
     y0.final<-n.final-y1.final
+    
+    inner.fut.final[i]<-(pbeta(p.intr,alpha.enth+y1.final,beta.enth+y0.final,
+                              lower.tail=TRUE)>sig.fut)
+    inner.eff.final[i]<-(pbeta(p.skpt,alpha.skpt+y1.final,beta.skpt+y0.final,
+                              lower.tail=FALSE)>sig.eff)
+    inner.inc.final[i]<-1-inner.fut.final[i]-inner.eff.final[i]
+    
     
     inner.ss.initial[i]<-n
     inner.phat.initial[i]<-y1/n
@@ -188,8 +199,11 @@ for (j in 1:length(p.range)){ # true response proportion
   outer.phat.initial[k,j]<-mean(inner.phat.initial)
   outer.phat.final[k,j]<-mean(inner.phat.final)
   outer.fut[k,j]<-mean(inner.fut)
+  outer.fut.final[k,j]<-mean(inner.fut.final)
   outer.eff[k,j]<-mean(inner.eff)
+  outer.eff.final[k,j]<-mean(inner.eff.final)
   outer.inc[k,j]<-mean(inner.inc)
+  outer.inc.final[k,j]<-mean(inner.inc.final)
   outer.post.mean.initial[k,j]<-mean(inner.post.mean.initial)
   outer.post.mean.final[k,j]<-mean(inner.post.mean.final)
   outer.cov.initial[k,j]<-mean(inner.cov.initial)
@@ -199,48 +213,42 @@ for (j in 1:length(p.range)){ # true response proportion
 outer.ss.initial-outer.ss.final
 outer.cov.initial-outer.cov.final
 
-par(ask=FALSE)
-par(mar=c(5, 4, 4, 2) + 0.1)
-plot(p.range,outer.fut,type='l',ylim=c(0,1),col='red',lwd=3,lty='dotted',
+k<-1
+plot(p.range,outer.fut[k,],type='l',ylim=c(0,1),col='red',lwd=2,lty='longdash',
      ylab="Probability",xlab="",main="Sequential Design Properties",
      axes=FALSE)
 box()
-lines(p.range,outer.eff,lwd=3,lty='longdash',col='green')
-lines(p.range,outer.inc,lwd=3)
+lines(p.range,outer.fut.final[k,],col='red',lwd=2)
+lines(p.range,outer.eff[k,],lwd=2,lty='longdash',col='green')
+lines(p.range,outer.eff.final[k,],lwd=2,col='green')
+lines(p.range,outer.inc[k,],lwd=2,lty='longdash')
+lines(p.range,outer.inc.final[k,],lwd=2)
 axis(1,las=0,at=p.range,labels=format(p.range,nsmall=2))
 axis(2,las=2,at=seq(0,1,by=0.1),labels=format(seq(0,1,by=0.1),nsmall=1))
 abline(h=seq(0,1,by=0.1),col='grey')
-abline(v=c(0.20,0.40),col='grey',lty='dashed')
+abline(v=c(p.skpt,p.enth),col='grey',lty='dashed')
 row<-1
-  for (column in 2:length(p.range)){
-    mtext(text=paste0(round(outer.ss.initial[column],digits=1),
-                      " + ",round(outer.ss.final[column]-outer.ss.initial[column],digits=1),
-                      " = ",round(outer.ss.final[column],digits=1)),
+  for (column in 1:length(p.range)){
+    mtext(text=paste0(round(outer.ss.initial[k,column],digits=1),
+                      " + ",round(outer.ss.final[k,column]-
+                                  outer.ss.initial[k,column],digits=1),
+                      " = ",round(outer.ss.final[k,column],digits=1)),
                       side=1,line=row+1,at=p.range[column])
   }
-column<-1
-mtext(text=paste0("Sample Size ",
-      round(outer.ss.initial[column],digits=1),
-      " + ",round(outer.ss.final[column]-outer.ss.initial[column],digits=1),
-      " = ",round(outer.ss.final[column],digits=1)),
-      side=1,line=row+1,at=p.range[column])
 row<-2
-for (column in 2:length(p.range)){
-  mtext(text=paste0("(I) ",round(outer.post.mean.initial[column],digits=3),
-                    " (F) ",round(outer.post.mean.final[column],digits=3)),
+for (column in 1:length(p.range)){
+  mtext(text=paste0("(I) ",round(outer.post.mean.initial[k,column],digits=3),
+                    " (F) ",round(outer.post.mean.final[k,column],digits=3)),
         side=1,line=row+1,at=p.range[column])
 }
 column<-1
-mtext(text=paste0("Post Mean (I) ",round(outer.post.mean.initial[column],digits=3),
-                              " (F) ",round(outer.post.mean.final[column],digits=3)),
-      side=1,line=row+1,at=p.range[column])
 legend(x=0.35,y=0.5,legend=c("Stop Early for Efficacy","Stop Early for Futility",
                 "Inconclusive w/ Full Dataset"),
        col=c("green","red","black"),lty=c('longdash','dotted','solid'),
        cex=0.8,
        box.lwd = 1,box.col = "black",bg = "white",pt.cex = 1)
-
-
+mtext(text="SS",side=1,line=2,at=0.125)
+mtext(text="PM",side=1,line=3,at=0.125)
 #### END EXAMPLES FOR 7/26/19 ####
 
 outer_trial_result_binary # probability of rejecting null hypothesis (alpha at p.skpt, 1-beta at p.enth)
