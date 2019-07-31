@@ -7,8 +7,8 @@ p.enth<-0.40
 # futility theta
 p.intr<-0.30
 # value of true response proportion
-p.range<-0.2 # only interested in type 1 error
-#p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05)
+#p.range<-0.2 # only interested in type 1 error
+p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05)
 #p.range<-seq(p.skpt,p.enth,by=0.1)
 # tail probabilities for priors (low, high)
 tail.skpt<-0.045
@@ -27,10 +27,9 @@ reps<-10000
 sims<-10000
 # credible interval is 1-cred.tail
 cred.tail<-0.05
-
-enr.mnths<-c(rep(4,12),rep(8,12))
-out.mnths<-rep(c(rep(4,6),rep(8,6)),2)
-freq.mntr<-rep(c(1,2,4,8,16,80),4)
+#enr.mnths<-c(rep(4,12),rep(8,12))
+#out.mnths<-rep(c(rep(4,6),rep(8,6)),2)
+freq.mntr<-2
 
 #example1<-function(){
 
@@ -106,7 +105,8 @@ for (j in 1:length(p.range)){ # true response proportion
   for (i in 1:reps){ # simulate specified trial design
     
     if (i%%1000==0){
-      print(k) 
+      #print(k) 
+      print(p.range[j])
       print(i)
       }
     
@@ -114,9 +114,9 @@ for (j in 1:length(p.range)){ # true response proportion
     futility<-0
     inner.inc[i]<-1
     cutoff.time<-vector()
-    event.times<-rep(seq(from=1,
-                          to=max.ss/enr.mnths[k],by=1),
-                          each=enr.mnths[k])
+    event.times<-cumsum(rgamma(n=max.ss,shape=1,scale=0.5))
+    final.times<-event.times+rnorm(n=max.ss,mean=4,sd=0.25)
+    
     responses<-rbinom(n=max.ss,size=1,prob=p.range[j])
     
     for (n in 1:max.ss){
@@ -143,8 +143,8 @@ for (j in 1:length(p.range)){ # true response proportion
         inner.inc[i]<-1
       }
     }
-    cutoff.time<-event.times[n]
-    responses.final<-responses[event.times<=cutoff.time+out.mnths[k]]
+    cutoff.time<-final.times[n]
+    responses.final<-responses[event.times<=cutoff.time]
     n.final<-length(responses.final)
     y1.final<-sum(responses.final)
     y0.final<-n.final-y1.final
@@ -185,19 +185,19 @@ prior.enth*beta(alpha.enth+y1.final,beta.enth+y0.final)/beta(alpha.enth,beta.ent
     inner.post.mean.final[i]<-c1.final*(alpha.skpt+y1.final)/(alpha.skpt+beta.skpt+n.final)+
       c2.final*(alpha.enth+y1.final)/(alpha.enth+beta.enth+n.final)
   
-    # theta_1 <- rbeta(round(sims*c1.initial,log10(sims)), alpha.skpt+y1, beta.skpt+y0)
-    # theta_2 <- rbeta(round(sims*c2.initial,log10(sims)), alpha.enth+y1, beta.enth+y0)
-    # theta <- sort(c(theta_1, theta_2))
-    # q_lower <- theta[round((cred.tail / 2) * sims)]
-    # q_upper <- theta[round((1 - cred.tail / 2) * sims)]
-    # inner.cov.initial[i]=(p.range[j]>q_lower & p.range[j]<q_upper) # initial
-    # 
-    # theta_1 <- rbeta(round(sims*c1.final,log10(sims)), alpha.skpt+y1, beta.skpt+y0)
-    # theta_2 <- rbeta(round(sims*c2.final,log10(sims)), alpha.enth+y1, beta.enth+y0)
-    # theta <- sort(c(theta_1, theta_2))
-    # q_lower <- theta[round((cred.tail / 2) * sims)]
-    # q_upper <- theta[round((1 - cred.tail / 2) * sims)]
-    # inner.cov.final[i]=(p.range[j]>q_lower & p.range[j]<q_upper) # final
+    theta_1 <- rbeta(round(sims*c1.initial,log10(sims)), alpha.skpt+y1, beta.skpt+y0)
+    theta_2 <- rbeta(round(sims*c2.initial,log10(sims)), alpha.enth+y1, beta.enth+y0)
+    theta <- sort(c(theta_1, theta_2))
+    q_lower <- theta[round((cred.tail / 2) * sims)]
+    q_upper <- theta[round((1 - cred.tail / 2) * sims)]
+    inner.cov.initial[i]=(p.range[j]>q_lower & p.range[j]<q_upper) # initial
+
+    theta_1 <- rbeta(round(sims*c1.final,log10(sims)), alpha.skpt+y1, beta.skpt+y0)
+    theta_2 <- rbeta(round(sims*c2.final,log10(sims)), alpha.enth+y1, beta.enth+y0)
+    theta <- sort(c(theta_1, theta_2))
+    q_lower <- theta[round((cred.tail / 2) * sims)]
+    q_upper <- theta[round((1 - cred.tail / 2) * sims)]
+    inner.cov.final[i]=(p.range[j]>q_lower & p.range[j]<q_upper) # final
 
   }
 
