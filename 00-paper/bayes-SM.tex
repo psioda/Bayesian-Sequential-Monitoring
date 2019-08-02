@@ -157,7 +157,7 @@ Final inference on $\theta$ is made once enrollment is stopped based on the moni
 \begin{align*}
 \pi_{I}=\omega\cdot\pi_{S}+(1-\omega)\cdot\pi_E
 \end{align*}
-for $\omega\in[0,1]$. Choosing $\omega=1/2$ for an equal mixture of $\pi_S$ and $\pi_E$ corresponds to an inference prior that is impartial to $H_0$ and $H_1$, and is a practical choice of $\pi_I$ is to be determined before the start of data collection. Define $p(\mathbf{D}|\pi(\theta,\psi))=\int p(\theta|\mathbf{D})\pi(\theta,\psi)d(\theta,\psi)$ to be the marginal likelihood for the data given the prior $\pi(\theta,\psi)$. Choosing $\omega$ based on posterior model probabilities of the null and alternative hypotheses yields $\omega=p(\mathbf{D}| \pi_{S})/(p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E}))$. 
+for $\omega\in[0,1]$. Choosing $\omega=1/2$ for an equal mixture of $\pi_S$ and $\pi_E$ corresponds to an inference prior that is impartial to $H_0$ and $H_1$, and is a practical choice of $\pi_I$ is to be determined before the start of data collection. Define $p(\mathbf{D}|\pi(\theta,\psi))=\int p(\mathbf{D}|\theta)\pi(\theta,\psi)d(\theta,\psi)$ to be the marginal likelihood for the data given the prior $\pi(\theta,\psi)$. Choosing $\omega$ based on posterior model probabilities of the null and alternative hypotheses yields $\omega=p(\mathbf{D}| \pi_{S})/(p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E}))$. 
 
 The determination of a significant trial result is given by
 \begin{align*}
