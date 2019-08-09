@@ -7,33 +7,36 @@ p.enth<-0.40
 # futility theta
 p.intr<-0.30
 # value of true response proportion
-p.range<-0.2 # only interested in type 1 error
-#p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05)
+#p.range<-0.2 # only interested in type 1 error
+p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05)
 #p.range<-seq(p.skpt,p.enth,by=0.1)
 # tail probabilities for priors (low, high)
 tail.skpt<-0.045
 tail.enth<-0.05
 # maximum sample sizes
-max.ss<-80
+max.ss<-76
 # significant trial result threshold
 sig.fut<-0.85
 sig.eff<-0.95
 # number of simulated trials per design
-reps<-50000
+reps<-10000
 # compute empirical quantities for credible interval
 sims<-10000
 # credible interval is 1-cred.tail
 cred.tail<-0.05
 # design parameters
 # frequency of monitoring
-#freq.mntr<-rep(2)
-freq.mntr<-rep(c(1,2,4,8,16,80),4) 
+freq.mntr<-2
+#freq.mntr<-c(1,2,4,8,16,80)
+#freq.mntr<-rep(c(1,2,4,8,16,80),4) 
 # shape gamma dist enrollment
-#enr.shape<-1
-enr.shape<-c(rep(1,12),rep(0.25,12))
+enr.shape<-1
+#enr.shape<-c(rep(1,12),rep(0.25,12))
+#enr.shape<-rep(1,6)
 # mean normal dist outcome
-#out.mean<-4
-out.mean<-rep(c(rep(4,6),rep(8,6)),2)
+out.mean<-4
+#out.mean<-rep(4,6)
+#out.mean<-rep(c(rep(4,6),rep(8,6)),2)
 
 
 ## posterior coverage probability
@@ -388,17 +391,17 @@ for (j in 1:length(p.range)){ # true response proportion
                                              a.e=alpha.enth,b.e=beta.enth,
                                              y1=y1.final,y0=y0.final)
 
-    # inner.cov.initial[i]<-posterior.cov(a.s=alpha.skpt,b.s=beta.skpt,
-    #                                     a.e=alpha.enth,b.e=beta.enth,
-    #                                     y1=y1,y0=y0,
-    #                                     p=p.range[j],
-    #                                     cred.tail=cred.tail,sims=sims)
-    # 
-    # inner.cov.final[i]<-posterior.cov(a.s=alpha.skpt,b.s=beta.skpt,
-    #                                   a.e=alpha.enth,b.e=beta.enth,
-    #                                   y1=y1.final,y0=y0.final,
-    #                                   p=p.range[j],
-    #                                   cred.tail=cred.tail,sims=sims)
+    inner.cov.initial[i]<-posterior.cov(a.s=alpha.skpt,b.s=beta.skpt,
+                                        a.e=alpha.enth,b.e=beta.enth,
+                                        y1=y1,y0=y0,
+                                        p=p.range[j],
+                                        cred.tail=cred.tail,sims=sims)
+
+    inner.cov.final[i]<-posterior.cov(a.s=alpha.skpt,b.s=beta.skpt,
+                                      a.e=alpha.enth,b.e=beta.enth,
+                                      y1=y1.final,y0=y0.final,
+                                      p=p.range[j],
+                                      cred.tail=cred.tail,sims=sims)
   }
 
   outer.ss.initial[k,j]<-mean(inner.ss.initial)
@@ -423,21 +426,22 @@ par(mfrow = c(1,1))
 k<-1
 plot(p.range,outer.eff[k,],type='l',ylim=c(0,1),lwd=2,lty='longdash',
      ylab="Probability",xlab="",
-     main="Probability of Efficacy\n 2 subjects per month, 4 month follow-up, analyze after every 2 results",
+     main="Sequential Design Properties",
      axes=FALSE)
 box()
 text(p.range,outer.eff[k,],
      labels=format(round(outer.eff[k,],digits=2),nsmall=2),pos=3)
-#lines(p.range,outer.fut.final[k,],col='red',lwd=2)
+lines(p.range,outer.fut.final[k,],lwd=2)
 lines(p.range,outer.fut[k,],lwd=2,lty='longdash')
-text(p.range,outer.fut[k,],
-     labels=format(round(outer.fut[k,],digits=2),nsmall=2),pos=1)
-#lines(p.range,outer.eff.final[k,],lwd=2,lty='dotted')
+#text(p.range,outer.fut[k,],
+#     labels=format(round(outer.fut[k,],digits=2),nsmall=2),pos=1)
+lines(p.range,outer.eff.final[k,],lwd=2)
 #lines(p.range,outer.eff.final.mix[k,],lwd=2)
 lines(p.range,outer.inc[k,],lwd=2,lty='longdash')
-text(p.range,outer.inc[k,],
-     labels=format(round(outer.inc[k,],digits=2),nsmall=2),pos=1)
-#lines(p.range,outer.inc.final[k,],lwd=2)
+lines(p.range,outer.inc.final[k,],lwd=2)
+#text(p.range,outer.inc[k,],
+#     labels=format(round(outer.inc[k,],digits=2),nsmall=2),pos=1)
+
 axis(1,las=0,at=p.range,labels=format(p.range,nsmall=2))
 axis(2,las=2,at=seq(0,1,by=0.1),labels=format(seq(0,1,by=0.1),nsmall=1))
 abline(h=seq(0,1,by=0.1),col='grey')
@@ -469,6 +473,69 @@ for (column in 1:length(p.range)){
         side=1,line=row+1,at=p.range[column])
 }
 column<-1
+text(locator(1),"Stop Early for Efficacy")
+text(locator(1),"Final Efficacy")
+text(locator(1),"Stop Early for Futility")
+text(locator(1),"Final Futility")
+text(locator(1),"Inconclusive")
+text(locator(1),"Final Inconclusive")
+# legend(x=0.325,y=0.6,
+#        legend=c("Stop Early for Efficacy",
+#                 "Stop Early for Futility",
+#                 "Inconclusive with Full Data"),
+#        lty=c('longdash','dotted','solid'),
+#        cex=0.5,
+#        box.lwd = 1,box.col = "black",bg = "white",pt.cex = 1,
+#        text.width=20)
+mtext(text="SS",side=1,line=2,at=0.125)
+mtext(text="PM",side=1,line=3,at=0.125)
+mtext(text="CP",side=1,line=4,at=0.125)
+#### END EXAMPLES FOR 7/26/19 ####
+
+
+## POWER CURVES
+par(ask=FALSE)
+par(mfrow = c(1,1))
+k<-1
+plot(p.range,outer.eff[k,],type='l',ylim=c(0,1),lwd=2,
+     ylab="Probability",xlab="",
+     main="Power Curves (Probability of Efficacy at Interim)\n Modifying Frequency of Monitoring",
+     axes=FALSE)
+for (k in 2:6){
+lines(p.range,outer.eff[k,],lwd=2)
+}
+box()
+axis(1,las=0,at=p.range,labels=format(p.range,nsmall=2))
+axis(2,las=2,at=seq(0,1,by=0.1),labels=format(seq(0,1,by=0.1),nsmall=1))
+abline(h=seq(0,1,by=0.1),col='grey')
+abline(v=c(p.skpt,p.enth),col='grey',lty='dashed')
+row<-1
+for (column in 1:length(p.range)){
+  mtext(text=paste0(format(round(outer.ss.initial[k,column],digits=1),nsmall=1),
+                    " + ",
+                    format(round(outer.ss.final[k,column]-
+                                   outer.ss.initial[k,column],digits=1),nsmall=1),
+                    " = ",
+                    format(round(outer.ss.final[k,column],digits=1),nsmall=1)),
+        side=1,line=row+1,at=p.range[column])
+}
+row<-2
+for (column in 1:length(p.range)){
+  mtext(text=paste0("(I) ",
+                    format(round(outer.post.mean.initial[k,column],digits=3),nsmall=3),
+                    " (F) ",
+                    format(round(outer.post.mean.final[k,column],digits=3),nsmall=3)),
+        side=1,line=row+1,at=p.range[column])
+}
+row<-3
+for (column in 1:length(p.range)){
+  mtext(text=paste0("(I) ",
+                    format(round(outer.cov.initial[k,column],digits=3),nsmall=3),
+                    " (F) ",
+                    format(round(outer.cov.final[k,column],digits=3),nsmall=3)),
+        side=1,line=row+1,at=p.range[column])
+}
+column<-1
 #legend(x=0.325,y=0.6,legend=c("Skeptic at Interim","Skeptical at Final","Mixture Prior"),
 #       lty=c('longdash','dotted','solid'),
 #       cex=0.8,
@@ -482,17 +549,31 @@ mtext(text="CP",side=1,line=4,at=0.125)
 
 
 #### Type I error graphs ####
-par(mfrow = c(2, 2)) 
+par(mar=c(5.1+4,4.1,4.1,2.1+1))
+par(mfrow = c(1, 1)) 
 k1<-4
 k2<-1
 plot(1/freq.mntr[out.mean==k1 & enr.shape==k2],
      outer.eff[out.mean==k1 & enr.shape==k2],
-     type='l',ylim=c(0,.15),col='red',lwd=2,lty='longdash',
+     type='l',ylim=c(0,.15),lwd=2,lty='longdash',
      ylab="Type 1 Error Rate",xlab="",
-     main='',#paste0("k1=",k1,", k2=",k2),
+     main='4 month follow-up, 2 enrollments per month',#paste0("k1=",k1,", k2=",k2),
      axes=FALSE)
+mtext(text="Number of Interim Analyses",
+      side=1,
+      line=2,
+      at=.5)
+mtext(text="SS",side=1,line=3,at=-.5)
+text(1/freq.mntr[out.mean==k1 & enr.shape==k2],
+     outer.eff[out.mean==k1 & enr.shape==k2],
+     labels=format(round(outer.eff[out.mean==k1 & enr.shape==k2],digits=3),
+                   nsmall=3),pos=3)
 lines(1/freq.mntr[out.mean==k1 & enr.shape==k2],
-      outer.eff.final[out.mean==k1 & enr.shape==k2])
+      outer.eff.final[out.mean==k1 & enr.shape==k2],lwd=2)
+text(1/freq.mntr[out.mean==k1 & enr.shape==k2],
+     outer.eff.final[out.mean==k1 & enr.shape==k2],
+     labels=format(round(outer.eff.final[out.mean==k1 & enr.shape==k2],digits=3),
+                   nsmall=3),pos=1)
 box()
 axis(1,las=0,at=1/freq.mntr[out.mean==k1 & enr.shape==k2],
      labels=80/freq.mntr[out.mean==k1 & enr.shape==k2])
@@ -510,19 +591,31 @@ for (column in 1:length(freq.mntr[out.mean==k1 & enr.shape==k2])){
     format(round(outer.ss.final[out.mean==k1 & enr.shape==k2][column],
                  digits=1),nsmall=1)),
     side=1,
-    line=8-column,
+    line=9-column,
     at=1/freq.mntr[column])
 }
 k1<-8
 k2<-1
 plot(1/freq.mntr[out.mean==k1 & enr.shape==k2],
      outer.eff[out.mean==k1 & enr.shape==k2],
-     type='l',ylim=c(0,.15),col='red',lwd=2,lty='longdash',
+     type='l',ylim=c(0,.15),lwd=2,lty='longdash',
      ylab="Type 1 Error Rate",xlab="",
-     main='',#paste0("k1=",k1,", k2=",k2),
+     main='8 month follow-up, 2 enrollments per month',#paste0("k1=",k1,", k2=",k2),
      axes=FALSE)
+mtext(text="Number of Interim Analyses",
+      side=1,
+      line=2,
+      at=.5)
+text(1/freq.mntr[out.mean==k1 & enr.shape==k2],
+     outer.eff[out.mean==k1 & enr.shape==k2],
+     labels=format(round(outer.eff[out.mean==k1 & enr.shape==k2],digits=3),
+                   nsmall=3),pos=3)
 lines(1/freq.mntr[out.mean==k1 & enr.shape==k2],
-      outer.eff.final[out.mean==k1 & enr.shape==k2])
+      outer.eff.final[out.mean==k1 & enr.shape==k2],lwd=2)
+text(1/freq.mntr[out.mean==k1 & enr.shape==k2],
+     outer.eff.final[out.mean==k1 & enr.shape==k2],
+     labels=format(round(outer.eff.final[out.mean==k1 & enr.shape==k2],digits=3),
+                   nsmall=3),pos=1)
 box()
 axis(1,las=0,at=1/freq.mntr[out.mean==k1 & enr.shape==k2],
      labels=80/freq.mntr[out.mean==k1 & enr.shape==k2])
@@ -540,19 +633,32 @@ for (column in 1:length(freq.mntr[out.mean==k1 & enr.shape==k2])){
     format(round(outer.ss.final[out.mean==k1 & enr.shape==k2][column],
                  digits=1),nsmall=1)),
     side=1,
-    line=8-column,
-    at=0.5)
+    line=9-column,
+    at=1/freq.mntr[column])
 }
+par(mar=c(5.1+4,4.1,4.1,2.1+1))
 k1<-4
 k2<-0.25
 plot(1/freq.mntr[out.mean==k1 & enr.shape==k2],
      outer.eff[out.mean==k1 & enr.shape==k2],
-     type='l',ylim=c(0,.15),col='red',lwd=2,lty='longdash',
+     type='l',ylim=c(0,.15),lwd=2,lty='longdash',
      ylab="Type 1 Error Rate",xlab="",
-     main='',#paste0("k1=",k1,", k2=",k2),
+     main='4 month follow-up, 8 enrollments per month',#paste0("k1=",k1,", k2=",k2),
      axes=FALSE)
+mtext(text="Number of Interim Analyses",
+      side=1,
+      line=2,
+      at=.5)
+text(1/freq.mntr[out.mean==k1 & enr.shape==k2],
+     outer.eff[out.mean==k1 & enr.shape==k2],
+     labels=format(round(outer.eff[out.mean==k1 & enr.shape==k2],digits=3),
+                   nsmall=3),pos=3)
 lines(1/freq.mntr[out.mean==k1 & enr.shape==k2],
-      outer.eff.final[out.mean==k1 & enr.shape==k2])
+      outer.eff.final[out.mean==k1 & enr.shape==k2],lwd=2)
+text(1/freq.mntr[out.mean==k1 & enr.shape==k2],
+     outer.eff.final[out.mean==k1 & enr.shape==k2],
+     labels=format(round(outer.eff.final[out.mean==k1 & enr.shape==k2],digits=3),
+                   nsmall=3),pos=1)
 box()
 axis(1,las=0,at=1/freq.mntr[out.mean==k1 & enr.shape==k2],
      labels=80/freq.mntr[out.mean==k1 & enr.shape==k2])
@@ -571,19 +677,31 @@ for (column in 1:length(freq.mntr[out.mean==k1 & enr.shape==k2])){
     format(round(outer.ss.final[out.mean==k1 & enr.shape==k2][column],
       digits=1),nsmall=1)),
         side=1,
-    line=8-column,
-    at=0.5)
+    line=9-column,
+    at=1/freq.mntr[column])
 }
 k1<-8
 k2<-0.25
 plot(1/freq.mntr[out.mean==k1 & enr.shape==k2],
      outer.eff[out.mean==k1 & enr.shape==k2],
-     type='l',ylim=c(0,.15),col='red',lwd=2,lty='longdash',
+     type='l',ylim=c(0,.15),lwd=2,lty='longdash',
      ylab="Type 1 Error Rate",xlab="",
-     main='',#paste0("k1=",k1,", k2=",k2),
+     main='8 month follow-up, 8 enrollments per month',#paste0("k1=",k1,", k2=",k2),
      axes=FALSE)
+mtext(text="Number of Interim Analyses",
+      side=1,
+      line=2,
+      at=.5)
+text(1/freq.mntr[out.mean==k1 & enr.shape==k2],
+     outer.eff[out.mean==k1 & enr.shape==k2],
+     labels=format(round(outer.eff[out.mean==k1 & enr.shape==k2],digits=3),
+                   nsmall=3),pos=3)
 lines(1/freq.mntr[out.mean==k1 & enr.shape==k2],
-      outer.eff.final[out.mean==k1 & enr.shape==k2])
+      outer.eff.final[out.mean==k1 & enr.shape==k2],lwd=2)
+text(1/freq.mntr[out.mean==k1 & enr.shape==k2],
+     outer.eff.final[out.mean==k1 & enr.shape==k2],
+     labels=format(round(outer.eff.final[out.mean==k1 & enr.shape==k2],digits=3),
+                   nsmall=3),pos=1)
 box()
 axis(1,las=0,at=1/freq.mntr[out.mean==k1 & enr.shape==k2],
      labels=80/freq.mntr[out.mean==k1 & enr.shape==k2])
@@ -601,8 +719,8 @@ for (column in 1:length(freq.mntr[out.mean==k1 & enr.shape==k2])){
     format(round(outer.ss.final[out.mean==k1 & enr.shape==k2][column],
                  digits=1),nsmall=1)),
     side=1,
-    line=8-column,
-    at=0.5)
+    line=9-column,
+    at=1/freq.mntr[column])
 }
 
 

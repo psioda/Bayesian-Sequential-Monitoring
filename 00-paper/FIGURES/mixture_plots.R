@@ -27,6 +27,43 @@ beta.skpt<-(1-(p.skpt))*phi_L
 alpha.enth<-(p.enth)*phi_H
 beta.enth<-(1-(p.enth))*phi_H
 
+
+
+# Step 5: Plot Skeptical and enthuastic priors separately
+## 7/19/19 match slide 14 from FDA presentation, shade in gray scale, set 350 DPI
+par(ask=TRUE)
+par(mfrow = c(1, 1)) 
+x<-seq(0,1,by=0.01)
+# Make 2 boxplots
+#low (skeptical)
+plot(x,dbeta(x,alpha.skpt,beta.skpt),type="l",
+     xlab="Response Probability",ylab="Density Value",
+     main="Skeptical Beta Prior",
+     #xaxt="n",
+     ylim=c(0,max(dbeta(x,alpha.skpt,beta.skpt))))
+
+polygon(c(x[x<=0.4],0.4),c(dbeta(x,alpha.skpt,beta.skpt)[x<=0.4],0),col="blue")
+polygon(c(x[x>=0.4],0.4),c(dbeta(x,alpha.skpt,beta.skpt)[x>=0.4],0),col="red")
+text(0.5, 4,expression(P(theta>0.40)==0.045),pos=4)
+text(0.5,3.8,"Approximately N=14.0 Subjects",pos=4)
+text(0.5,3.6,expression(E(theta)==0.20),pos=4)
+#axis(1,at=p.skpt,labels=expression(theta[0]))
+#axis(1,at=seq(0,1,by=0.2))
+#high (enthuastic)
+plot(x,dbeta(x,alpha.enth,beta.enth),type="l",
+     xlab="Response Probability",
+     ylab="",
+     main="Enthuastic Beta Prior",
+     #xaxt="n",
+     yaxt="n",
+     ylim=c(0,max(dbeta(x,alpha.enth,beta.enth))))
+axis(2,at=c(0,1,2,3),labels=c(0,1,2,3))
+polygon(c(x[x<=0.2],0.2),c(dbeta(x,alpha.enth,beta.enth)[x<=0.2],0),col="red")
+polygon(c(x[x>=0.2],0.2),c(dbeta(x,alpha.enth,beta.enth)[x>=0.2],0),col="blue")
+text(0.5, 3,expression(P(theta<0.20)==0.05),pos=4)
+text(0.5,2.85,"Approximately N=14.0 Subjects",pos=4)
+text(0.5,2.7,expression(E(theta)==0.40),pos=4)
+
 ### SPIKE NEXT
 # mean of skeptical prior
 p.skpt<-0.20
