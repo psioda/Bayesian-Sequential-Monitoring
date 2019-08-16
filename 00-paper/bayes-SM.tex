@@ -250,10 +250,32 @@ The skeptical prior will be Beta distributed, centered around $\theta_0=0.15$, a
 \includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_skpt}
 \includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_enth}
 \includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties}
+\end{center}
+\begin{itemize}
+\item Use correct terminology: discuss the probability of stopping early vs. probability we conclude the treatment works.
+\item The two sides of the discussion: first is what happens during the trial regarding sequential monitoring, such as \% of time stopping early vs. trial done to completion and expected sample size. Second is the final determination of efficacy or futility and how that relates to Type 1 Error and power. 
+\item Make the point that regardless of frequency of monitoring there are good Type 1 error rates. Remember the best case for sequential monitoring is slow enrollment relative to outcome ascertainment. Slow enrollment means there is a benefit to ending trial early and reach a conclusion faster. Outcome ascertainment needs to be somewhat fast to ensure a good \# of outcomes are generated.
+\item Consider hyperlinking formulas. 
+\item Still need to fix violin plots!
+\end{itemize}
+\begin{center}
 \includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties_2}
 \includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/type1error_0809}
+\end{center}
+\begin{itemize}
+\item Want to highlight that the ultimate inference will have no Type 1 error inflation. At this point the ultimate inference for efficacy is still made with skeptical prior.
+\item Label lines nicely.
+\item ``Only bad thing to do is to stop learning"
+\item Enrollment rate and \% of ongoing data as operating characteristics are interesting ideas, but focus on the plots already created.
+\item Mat: Scaling on \# of subjects in each interim analysis rather than \# of interim analyses (e.g. flip X axis). Make labels go vertical or diagonal.
+\end{itemize}
+\begin{center}
 \includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/power_curves}
 \end{center}
+Looking at spike/slab and flat priors...
+\begin{itemize}
+\item Test the hypothesis that power curves will be identical and what will change is the expected sample sizes.
+\end{itemize}
 The trial will proceed until one of the following three conditions are satisfied:
 \begin{align*}
 \text{Efficacy criteria: }&P(\theta>0.15|\mathbf{D},\pi_S)\geq 0.95\\
@@ -297,7 +319,15 @@ Look at varying the types of priors while keeping the tail areas the same. More 
 Vary decay rate will affect bias not Type I/II error. Not dissimilar to Frequentist: flatter-Pocock, mass at null-OBF.
 
 \textit{Include details for how Bayesian monitoring has good frequentist properties even with frequent interim analyses}.
-
+\begin{center}
+\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/evidence_decrease.png}
+\end{center}
+\begin{itemize}
+\item Plot is conditional on evidence going down. For example, at $\theta=0.45$ there is a $93\%$ chance of agreement, which means there is evidence decrease only $7\%$ of the time. At $\theta=0.15$ there is evidence decrease $64\%$ of the time. Note that minimum is very sensitive to the number of simulations and should be removed from the plot. 
+\item Note that there is functionally a minimum sample size already that is the \# of subjects needed to overwhelm the skeptical prior. Actually compute the \# (perhaps after 5 consecutive successes).
+\item There is a drop in the final power which is undesirable, but the drop in type 1 error is desirable. These move in tandem.
+\item Move discussion away from being scared of evidence decrease. There is an attenuation with respect to dichotomous threshold, but not overall. In this sense \% agreement may be misleading. Look at the \% of change in the evidence rather than the \% change in the agreement based on a dichotomous agreement. The methods section may need to be modified to reduce focus on dichotmous decision. However, don't abandon hypothesis testing, but look at it holistically. Offer different perspectives on attenuation in the discussion. After all, 0.93 posterior probability isn't that different from 0.95.
+\end{itemize}
 
 
 

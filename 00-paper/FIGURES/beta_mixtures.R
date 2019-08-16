@@ -12,7 +12,7 @@ cred.tail<-0.05   # credible interval is 1-cred.tail
 max.ss<-76        # maximum sample size
 
 ## Simulation parameters ##
-reps<-10000       # number of simulated trials per design
+reps<-5000       # number of simulated trials per design
 p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05) # range of response proportion
 #p.range<-0.2                             
 freq.mntr<-2      # frequency of monitoring
