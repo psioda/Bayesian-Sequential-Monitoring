@@ -1,8 +1,56 @@
+rm(list = ls())
+
 library(ggplot2)
 library(dplyr)
 library(ggpubr)
+library(grid)
+
+## Design parameters ##
+p.skpt<-0.20      # response rate for skeptic, enthusiast, futility
+p.enth<-0.40
+p.intr<-0.30
+tail.skpt<-0.045  # tail probabilities for priors (low, high)
+tail.enth<-0.05
+sig.fut<-0.85     # significant trial result threshold
+sig.eff<-0.95
+cred.tail<-0.05   # credible interval is 1-cred.tail
+max.ss<-76        # maximum sample size
+
+#################################################################################################
+## PRIOR SPECIFICATION ##########################################################################
+#################################################################################################
+
+# Step 1: Create grid for possible values of phi
+phi.range<-seq(0,100,by=0.001)
+
+# Step 2: Compute tail probabilities for every possible choice of phi
+# upper tail probability equal to tail.skpt
+quantiles.skpt<-qbeta(tail.skpt,(p.skpt)*phi.range,(1-(p.skpt))*phi.range,
+                      lower.tail=FALSE)
+# lower tail probability equal to tail.enth
+quantiles.enth<-qbeta(tail.enth,(p.enth)*phi.range,(1-(p.enth))*phi.range,
+                      lower.tail=TRUE)
+
+# Step 3: Grid search to find value of phi with the desired tail probability for the priors
+phi_L<-phi.range[which.min(abs(p.enth-quantiles.skpt))] # fixed 5/13/19
+phi_H<-phi.range[which.min(abs(p.skpt-quantiles.enth))] # fixed 5/13/19
+
+# Step 4: Find parameters for the priors
+alpha.skpt<-(p.skpt)*phi_L
+beta.skpt<-(1-(p.skpt))*phi_L
+alpha.enth<-(p.enth)*phi_H
+beta.enth<-(1-(p.enth))*phi_H
+
+
+
+### START CODE ###
+
 n<-c(0,6,12,18)
-y1<-c(0,1,2,3)
+y1<-c(0,3,6,9)
+y0=n-y1
+
+futility<-pbeta(p.intr,alpha.enth+y1,beta.enth+y0,lower.tail=TRUE)
+efficacy<-pbeta(p.skpt,alpha.skpt+y1,beta.skpt+y0,lower.tail=TRUE)
 
 grid<-seq(0,1,length=50)
 
@@ -32,11 +80,48 @@ pdat=data.frame(dens=as.vector(dens),
 
 pdat2<-pdat[order(pdat$x,pdat$m,-pdat$loc),]
 
-ggplot(pdat2, aes(dens, loc, fill = m, group = interaction(m, x))) + 
+p<- ggplot(pdat2, aes(dens, loc, fill = m, group = interaction(m, x))) + 
   geom_polygon() +
-  scale_x_continuous(breaks = c(0,10,20,30)) +
+  scale_x_continuous(breaks = c(-10,0,10,20,30)) +
   ylab('Probability of Response') +
-  scale_y_continuous(breaks=seq(0,0.8,by=0.2)) +
+  #ylim(-.2,0.8) +
+  scale_y_continuous(breaks=seq(0,0.6,by=0.2)) +
   theme_minimal() +
-  theme(axis.title.x = element_blank()) +
-  geom_text(size = 3.5)
+  theme(axis.title.x = element_blank())
+
+for (i in 1:length(n)){
+p <- p + annotation_custom(
+  grob = textGrob(label = 
+  paste0(format(round(futility[i]*100,digits=1),nsmall=1),"%"),
+  hjust = 0, gp = gpar(cex = 1)),
+  ymin = .8,ymax = .8,xmin = (i-1)*10,xmax = (i-1)*10)+
+  annotation_custom(
+  grob = textGrob(label =
+ paste0(format(round((1-efficacy[i])*100,digits=1),nsmall=1),"%"),
+  hjust = 0, gp = gpar(cex = 1)),
+  ymin = .85,ymax = .85,xmin = (i-1)*10,xmax = (i-1)*10)+
+ annotation_custom(
+  grob = textGrob(label = y1[i], hjust = 0, gp = gpar(cex = 1)),
+  ymin = .9,ymax = .9,xmin = (i-1)*10,xmax = (i-1)*10)+
+ annotation_custom(
+  grob = textGrob(label = n[i], hjust = 0, gp = gpar(cex = 1)),
+  ymin = .95,ymax = .95,xmin = (i-1)*10,xmax = (i-1)*10)
+}
+p <- p + annotation_custom(
+  grob = textGrob(label = "Futility", hjust = 0, gp = gpar(cex = 1)),
+  ymin = .8,ymax = .8,xmin = -10,xmax = -10)+
+  annotation_custom(
+    grob = textGrob(label = "Efficacy", hjust = 0, gp = gpar(cex = 1)),
+    ymin = .85,ymax = .85,xmin = -10,xmax = -10)+
+  annotation_custom(
+    grob = textGrob(label = "y1", hjust = 0, gp = gpar(cex = 1)),
+    ymin = .9,ymax = .9,xmin = -10,xmax = -10)+
+  annotation_custom(
+    grob = textGrob(label = "n", hjust = 0, gp = gpar(cex = 1)),
+    ymin = .95,ymax = .95,xmin = -10,xmax = -10)
+
+# Code to override clipping
+gt <- ggplot_gtable(ggplot_build(p))
+gt$layout$clip[gt$layout$name == "panel"] <- "off"
+grid.draw(gt)
+

@@ -249,11 +249,11 @@ The skeptical prior will be Beta distributed, centered around $\theta_0=0.15$, a
 \subsubsection{Sequential monitoring}
 The trial will proceed until one of the following three conditions are satisfied:
 \begin{align*}
-\text{Efficacy criteria: }&P(\theta>0.15|\mathbf{D},\pi_S)\geq 0.95\\
-\text{Futility criteria: }&P(\theta\leq 0.45|\mathbf{D},\pi_E)\geq 0.95\\
-\text{Exhausted resources: }&N=14 \text{ patient outcomes obtained},
+\text{Efficacy criteria: }&P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95\\
+\text{Futility criteria: }&P(\theta\leq 0.30|\mathbf{D},\pi_E)\geq 0.85\\
+\text{Exhausted resources: }&N=76 \text{ patient outcomes obtained}
 \end{align*}
-where the maximum sample size is that of a frequentist trial design with a Type 1 error rate of $0.05$ and $80\%$ power.
+
 
 Let $y_1$ be the number of successes and $y_0$ be the number of failures.
 \begin{align*}
@@ -269,11 +269,20 @@ Let $y_1$ be the number of successes and $y_0$ be the number of failures.
 \newpage
 \subsubsection{Example paths (violin plots)}
 \begin{center}
-\includegraphics[width=3.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_efficacy.png}
+\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_efficacy.png}
 \end{center}
-Perhaps reduce the number of interim analyses...after every 10 subjects or so. Have at most 4 analyses before the final result. Nothing wrong with having 4 analyses for both examples.
 \begin{center}
-\includegraphics[width=3.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility.png}
+\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility.png}
+\end{center}
+\newpage
+\begin{center}
+An Example Path - Early Stoppage for Efficacy
+
+\includegraphics[width=2.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_efficacy_ekk.jpg}
+
+An Example Path - Early Stoppage for Futility
+
+\includegraphics[width=2.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility_ekk.jpg}
 \end{center}
 \newpage
 \subsubsection{Design properties: Results}
@@ -300,8 +309,6 @@ Perhaps reduce the number of interim analyses...after every 10 subjects or so. H
 
 Figures needed:
 \begin{enumerate}
-\item An example path - early stoppage for effiacy (violin plots)
-\item An example path - early stoppage for futility (violin plots)
 \item Sequential design properties - slow vs. fast accrual (average sample size, posterior mean, coverage probabilities, distribution of final posterior probability).
 \end{enumerate}
 Look at varying the types of priors while keeping the tail areas the same. More spiked are OBF, less spiked are Pocock.
@@ -316,7 +323,6 @@ Vary decay rate will affect bias not Type I/II error. Not dissimilar to Frequent
 \item The two sides of the discussion: first is what happens during the trial regarding sequential monitoring, such as \% of time stopping early vs. trial done to completion and expected sample size. Second is the final determination of efficacy or futility and how that relates to Type 1 Error and power. 
 \item Make the point that regardless of frequency of monitoring there are good Type 1 error rates. Remember the best case for sequential monitoring is slow enrollment relative to outcome ascertainment. Slow enrollment means there is a benefit to ending trial early and reach a conclusion faster. Outcome ascertainment needs to be somewhat fast to ensure a good \# of outcomes are generated.
 \item Consider hyperlinking formulas. 
-\item Still need to fix violin plots!
 \end{itemize}
 \begin{center}
 \includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties_2}
