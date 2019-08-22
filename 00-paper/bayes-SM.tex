@@ -130,17 +130,23 @@ As you introduce ideas that come from or extend other ideas in the literature, c
 
 \subsubsection{Bayesian hypothesis testing based on posterior probabilities}
 
-The Bayesian paradigm allows direct inference on a parameter of interest through specification of a model for the data generating mechanism and prior distributions for unknown quantities. Let $\mathbf{D}$ be a random variable representing the data collected in the trial with density $p(\mathbf{D}|\theta,\psi)$ where $\theta$ and $\psi$ are the unknown quantities. Let $\theta$ be the parameter of interest and $\psi$ be the unknown quantities that are not of primary importance (i.e. ``nuisance parameters"). Define the sample spaces for the unknown quantities as $\theta\in\Theta$ and $\psi\in\Psi$. 
+The Bayesian paradigm provides direct inference on a parameter of interest through specification of a model for the data generating mechanism and prior distributions for unknown quantities. Let $\mathbf{D}$ be a random variable representing the data collected in the trial with density $p(\mathbf{D}|\theta,\psi)$ where $\theta$ and $\psi$ are the unknown quantities. Let $\theta$ be the parameter of interest and $\psi$ be the unknown quantities that are not of primary importance (i.e. ``nuisance parameters"). Define the sample spaces for the unknown quantities as $\theta\in\Theta$ and $\psi\in\Psi$. 
 
-Suppose the hypotheses under consideration are $H_0:\theta\in\Theta_0$ versus $H_1:\theta\in\Theta_1$, where $\Theta=\Theta_0\cup \Theta_1$ and $\Theta_0\cap \Theta_1=\emptyset$. These hypotheses are adjudicated based on posterior probabilities of $\theta$ by evaluating its marginal likelihood $P(\theta\in\Theta_i|\mathbf{D})=\int_{\Theta_i}p(\theta|\mathbf{D})d\theta$ for $i\in\{0,1\}$, which is marginalized over the nuisance parameters $p(\theta|\mathbf{D})=\int_{\Psi}p(\theta,\psi|\mathbf{D})d\psi$. 
+Suppose the hypotheses under consideration are $H_0:\theta\in\Theta_0$ versus $H_1:\theta\in\Theta_1$. These hypotheses are adjudicated based on posterior probabilities of $\theta$ by evaluating its marginal likelihood 
+\begin{align*}
+P(\theta\in\Theta_i|\mathbf{D})=\int_{\Theta_i}p(\theta|\mathbf{D})d\theta\text{ for }i\in\{0,1\},
+\end{align*}
+ which is integrated or ``marginalized" over the nuisance parameters $p(\theta|\mathbf{D})=\int_{\Psi}p(\theta,\psi|\mathbf{D})d\psi$. 
 
-Define $\delta\in[0,1]$ as a threshold for \textit{a compelling level of evidence} as it relates to $\theta$. We say that an individual is ``all but convinced" that $H_i$ is true given the observed data if $P(\theta\in\Theta_i|\mathbf{D})\geq\delta$ for $i\in\{0,1\}$. The quantity $1-\delta$ reflects \textit{residual uncertainty} of $H_i$ being true relative to the competing hypothesis. For example, an individual would be ``all but convinced" of the truth of the alternative hypothesis if $P(\theta\in\Theta_1|\mathbf{D})\geq\delta$.
+\subsubsection{Compelling level of evidence \& prior elicitation}
+Define $\delta\in[0,1]$ as a threshold for \textit{a compelling level of evidence} as it relates to $\theta$. We say that an individual is ``all but convinced" that $H_i$ is true given the observed data if $P(\theta\in\Theta_i|\mathbf{D})\geq\delta$ for $i\in\{0,1\}$. The quantity $1-\delta$ reflects \textit{residual uncertainty} of $H_i$ being true relative to the competing hypothesis. %For example, an individual would be ``all but convinced" of the truth of the alternative hypothesis if $P(\theta\in\Theta_1|\mathbf{D})\geq\delta$.
 
-The posterior distribution of $\theta$ depends on the choice of prior distribution $\pi(\theta,\psi)$ since $p(\theta,\psi|\mathbf{D})=p(\mathbf{D}|\theta,\psi)\pi(\theta,\psi)/p(\mathbf{D})$ by Bayes rule. The specification of the prior distribution depends on the research objective. An \textit{inference prior} is a prior that is used when the research objective is to make final analysis after data collection is complete. A \textit{monitoring prior} is a prior that is used when the research objective is to consider the impact of interim analyses on subject enrollment, with the potential for early termination (or less commonly prolongation).
+The posterior distribution of $\theta$ depends on the choice of prior distribution $\pi(\theta,\psi)$ since $p(\theta,\psi|\mathbf{D})=p(\mathbf{D}|\theta,\psi)\pi(\theta,\psi)/p(\mathbf{D})$ by Bayes rule. The specification of the prior distribution depends on the research objective. An \textit{inference prior} is a prior that is used when the research objective is to make final analysis after data collection is complete. A \textit{monitoring prior} is a prior that is used when the research objective is to consider the impact of interim analyses on subject enrollment, with the potential for early termination of enrollment.
 %Possible simplifying functional relationships between $\theta$ and $\psi$ are conditional independence $\pi(\theta,\psi)=\pi(\theta|\psi)\pi(\psi)$ and independence $\pi(\theta,\psi)=\pi(\theta)\pi(\psi)$. An inference prior is often non-informative or objective in the sense that it does not show preference to $H_0$ or $H_1$. Decisions made using using a non-informative prior are often similar to those made in the frequentist setting. 
 
 It has been said that ``the purpose of a trial is to collect data that bring to conclusive consensus at termination opinions that had been diverse and indecisive at the \textit{outset}" (Kass and Greenhouse (1989), emphasis added). These opinions manifest as priors $\pi(\theta,\psi)$ for which their relation to $P(\theta\in\Theta_i|\pi(\theta,\psi))$ $i\in\{0,1\}$ is examined. Note this quantity does not depend on the data $\mathbf{D}$ and therefore reflects a-priori opinion. A skeptical prior is an informative or subjective prior that gives substantial preference to $H_0$ such that it is ``all but convinced" that $H_0$ is true a-priori. This prior $\pi_{S}(\theta,\psi)\equiv\pi_{S}$ has the property that $P(\theta\in\Theta_0| \pi_{S})\geq\delta$ (equivalently $P(\theta\in\Theta_1| \pi_{S})<1-\delta$). The choice of $\delta\in[0,1]$ is motivated by \textit{a compelling level of evidence} as it relates to $\theta$, although in this setting the ``evidence" reflects a theoretical opinion rather than empirical judgement. For example, if $\delta=0.95$, then this choice of skeptical prior places 95\% prior probability that $\theta\in\Theta_0$. An enthuastic prior $\pi_{E}(\theta,\psi)\equiv\pi_{E}$ similarly gives preference to $H_1$ through the property that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$ (equivalently $P(\theta\in\Theta_0| \pi_{E})<1-\delta$). For purposes of interpretation, a \textit{skeptical person} is someone whose a-priori opinions of $\theta$ are reflected through a skeptical prior and a \textit{enthuastic person} is someone whose a-priori opinions of $\theta$ are reflected through an ethuastic prior. The prior distributions discussed are generally ``non-informative" over the nuisance parameters.
 
+\subsubsection{Sequential monitoring \& final inference}
 The use of monitoring based on changing the opinion of skeptical and enthuastic priors has been described as overcoming a handicap (\cite{Freedman1989}) and providing a brake (\cite{Fayers1997}) on the premature termination of trials, or constructing ``an adversary who will need to be disilusioned by the data to stop further experimentation" (\cite{Spiegelhalter1994}). 
 
 Early termination of the trial is appriopriate if diverse prior opinions about $\theta$ would be in agreement given the interim data (e.g. the skeptical and enthuastic person reach the same conclusion). It is then reasonable to stop data collection if, upon seeing the data, a \textit{skeptical person} changes their opinion to be ``all but convinced" that $H_1$ is true ($P(\theta\in\Theta_1|\mathbf{D}, \pi_{S})\geq\delta$), or an \textit{enthuastic person} becomes ``all but convinced" that $H_1$ is false ($P(\theta\in\Theta_0|\mathbf{D}, \pi_{E})\geq\delta$).
@@ -151,7 +157,6 @@ Early termination of the trial is appriopriate if diverse prior opinions about $
 %BF=\frac{p(D|H_0)}{p(D|H_1)}=\frac{\int_{\Theta_{H_0}}p(D|\theta,H_0)\pi(\theta|H_0)d\theta}{\int_{\Theta_{H_1}}p(D|\theta,H_0)\pi(\theta|H_1)d\theta}
 %\end{align*}
 %and let $p(\theta|D,\pi)$ denote the posterior distribution of $\theta$ given a particular prior distribution.
-
 
 Final inference on $\theta$ is made once enrollment is stopped based on the monitoring priors or at the planned end of the trial. An inference prior $\pi_{I}(\theta,\psi)\equiv\pi_{I}$ is often non-informative or objective in the sense that it does not show a-priori preference to $H_0$ or $H_1$ ($P(\theta\in\Theta_0|\pi_I)\approx P(\theta\in\Theta_1|\pi_I)$). There are many ways to formulate an inference prior with this property. We propose use of a mixture prior constructed from the monitoring process as the inference prior:
 \begin{align*}
@@ -207,50 +212,105 @@ One may stop the enrollment if $\xi$ is sufficiently small (i.e. $\xi<0.05$).
 
 
 %Stochastic curtailment in frequentist setting.
-\section{Examples -- (EVAN)}
+\section{Examples}
 
-\subsection{Single-Arm Oncology Proof-of-Activity Trial w/ Binary Endpoint}
+\subsection{Single-Arm Proof-of-Activity Trial with Binary Endpoint}
 
+\subsubsection{Model formulation \& prior elicitation}
 
-Consider a single-arm oncology proof-of-activity trial with a binary endpoint. The data $\mathbf{D}$ is assumed to be Binomially distributed. The response rate $\theta$ is the parameter effect of interest, which is the only unknown quantity in this simple situation.
+Consider a single-arm oncology proof-of-activity trial with a binary endpoint. The data $\mathbf{D}$ are Binomially distributed and the response rate $\theta$ is the parameter of interest, with higher values of $\theta$ being indicative of proof-of-activity.
 
-Consider testing the hypothesis $H_0:\theta\leq\theta_0\text{ versus }H_1:\theta>\theta_0$. Using the general notation $\Theta_0=[0,\theta_0]$ and $\Theta_1=(\theta_0,1]$. Consider a highly clinically relevant treatment effect $\theta_A>\theta_0$. It is desirable that the trial have appropriate power (probability of proving $H_1$ when $\theta=\theta_A$). 
+Consider testing the hypothesis $H_0:\theta\leq\theta_0\text{ versus }H_1:\theta>\theta_0$. Consider a highly clinically relevant treatment effect $\theta_A>\theta_0$. A design property of the trial will be the posterior probability of $\theta\geq\theta_0$ given $\theta=\theta_A$ (similar to frequentist power).
 
 Monitoring priors for this trial will be made using the concepts of a skeptical prior and an enthuastic prior. Recall a skeptic is ``all but convinced" that $H_0$ is true a-priori, therefore $P(\theta\in\Theta_0|\pi_S)\geq\delta$. An optimist is ``all but convinced" that $H_1$ is true a-priori, therefore $P(\theta\in\Theta_1|\pi_E)\geq\delta$. 
 
-Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy (the posterior distribution $p(\theta|\mathbf{D})$ will be Beta distributed). The Beta distribution has two shape parameters. These parameters can be determined uniquely by specifying the desired mean and variance of the distribution. It is intuitive to center the skeptical and enthuastic priors around the quantities $\theta_0$ and $\theta_A$ respectively, so that $E(\pi_S)=\theta_0$ and $E(\pi_E)=\theta_A$. The variance for the skeptical and enthuastic priors is then uniquely determined through by the choice of threshold $\delta$. In particular, let $\pi_S(\theta)\sim \mathcal{B}(\alpha,\beta)$ be Beta distributed with shape parameters $(\alpha,\beta)$. There is a single choice of $(\alpha,\beta)$ such that:
-\begin{align*}
-\theta_0=E(\pi_S)=\int_{\Theta}\pi_S(\theta)d\theta=\frac{\alpha}{\alpha+\beta}\text{ and }\delta=\int_{\Theta_0}\pi_S(\theta)d\theta=\int_{0}^{\theta_0}\frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}d\theta
-\end{align*}
-where $B(\alpha,\beta)$ is the Beta function.
+It is intuitive to center the skeptical and enthuastic priors around the quantities $\theta_0$ and $\theta_A$ respectively, so that $E(\pi_S)=\theta_0$ and $E(\pi_E)=\theta_A$. For example, suppose it is desirable that the skeptical prior places small probability $\lambda>0$ that the $\theta\geq\theta_A$, which is the highly clinically relevant treatment effect.
 
-Alternatively, the variance could be determined by specifying a desired quantile of the prior distribution which would then be reflected in $\delta$. For example, suppose it is desirable that the skeptical prior places small probability $\lambda>0$ that the $\theta\geq\theta_A$, which is the highly clinically relevant treatment effect. Then there is a single choice of $(\alpha,\beta)$ such that
-\begin{align*}
-\theta_0=E(\pi_S)=\int_{\Theta}\pi_S(\theta)d\theta=\frac{\alpha}{\alpha+\beta}\text{ and }\lambda=\int_{\theta_A}^{1}\pi_S(\theta)d\theta=\int_{\theta_A}^{1}\frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}d\theta,
-\end{align*}
-in which case $\delta=\int_{\Theta_0}\pi_S(\theta)d\theta$ is a deterministic quantity.
+Assume that the outcomes are ascertained after approximately 4 months of follow-up and 2 patients per month on average are enrolled. The study may stop enrollment at a given point in time, but all enrolled patients will be followed for outcome ascertainment.
 
-Motivated by a trial for Vemurafenib (\cite{Hyman2015}) let $\theta_0=0.15$ and $\theta_A=0.45$. Consider the hypotheses
+Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy (the posterior distribution $p(\theta|\mathbf{D})$ will be Beta distributed). 
+
+%Motivated by a trial for Vemurafenib (\cite{Hyman2015}) let $\theta_0=0.15$ and $\theta_A=0.45$. 
+Consider the hypotheses
 \begin{align*}
 H_0&:\theta\leq 0.15\\
 H_1&:\theta>0.15
 \end{align*}
 
-The skeptical prior will be Beta distributed, centered around $\theta_0=0.15$, and have $2.5\%$ prior probability that $\theta>\theta_A$. Similarly, the enthuastic prior will be centered around $\theta_A=0.45$ and have $2.5\%$ prior probability that $\theta<\theta_0$. These priors are distributed as
-\begin{align*}
-\pi_S(\theta)&\sim\mathcal{B}(1.187,6.724)\\
-\pi_E(\theta)&\sim\mathcal{B}(3.681,4.499).
-\end{align*}
+The skeptical prior will be Beta distributed, centered around $\theta_0=0.15$, and have $2.5\%$ prior probability that $\theta>\theta_A$. Similarly, the enthuastic prior will be centered around $\theta_A=0.45$ and have $2.5\%$ prior probability that $\theta<\theta_0$.
+\newpage
 \begin{center}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/skpt_prior}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/enth_prior}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/5050mix}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/ss_skpt}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/ss_enth}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_skpt}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_enth}
-\includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties}
+\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/skpt_prior}
+\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/enth_prior}
+\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/5050mix}
 \end{center}
+
+\newpage
+\subsubsection{Sequential monitoring}
+The trial will proceed until one of the following three conditions are satisfied:
+\begin{align*}
+\text{Efficacy criteria: }&P(\theta>0.15|\mathbf{D},\pi_S)\geq 0.95\\
+\text{Futility criteria: }&P(\theta\leq 0.45|\mathbf{D},\pi_E)\geq 0.95\\
+\text{Exhausted resources: }&N=14 \text{ patient outcomes obtained},
+\end{align*}
+where the maximum sample size is that of a frequentist trial design with a Type 1 error rate of $0.05$ and $80\%$ power.
+
+Let $y_1$ be the number of successes and $y_0$ be the number of failures.
+\begin{align*}
+\text{Skeptical prior: }&\pi_S(\theta)\sim\mathcal{B}(\alpha_S,\beta_S)\\
+\text{Skeptical posterior: }&p(\theta|\mathbf{D},\pi_S)\sim\mathcal{B}(\alpha_S+y_1,\beta_S+y_0)\\
+\text{Efficacy stopping: }&P(\theta\in\Theta_1|\mathbf{D}, \pi_{S})\geq\delta%\Longleftrightarrow\int_{\theta_1}^{1}p(\theta|\mathbf{D},\pi_S)d\theta\geq\delta
+\end{align*}
+\begin{align*}
+\text{Enthuastic prior: }&\pi_E(\theta)\sim\mathcal{B}(\alpha_E,\beta_E)\\
+\text{Enthuastic posterior: }&p(\theta|\mathbf{D},\pi_E)\sim\mathcal{B}(\alpha_E+y_1,\beta_E+y_0)\\
+\text{Futility stopping: } &P(\theta\in\Theta_0|\mathbf{D}, \pi_{E})\geq\delta)%\Longleftrightarrow\int_{0}^{\theta_0}p(\theta|\mathbf{D},\pi_E)d\theta\geq\delta
+\end{align*}
+\newpage
+\subsubsection{Example paths (violin plots)}
+\begin{center}
+\includegraphics[width=3.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_efficacy.png}
+\end{center}
+Perhaps reduce the number of interim analyses...after every 10 subjects or so. Have at most 4 analyses before the final result. Nothing wrong with having 4 analyses for both examples.
+\begin{center}
+\includegraphics[width=3.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility.png}
+\end{center}
+\newpage
+\subsubsection{Design properties: Results}
+\begin{center}
+\includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/seq_des_pro}
+\end{center}
+\begin{itemize}
+\item EFF is the probability of the trial stopping early for efficacy.
+\item FUT is the probability of the trial stopping early for futility. 
+\item INC is the probability of reaching the maximum sample size without a conclusive monitoring result.
+\item CP is the coverage probability using the mixture prior.
+\item SS is the average sample size at the interim analysis and at the end of follow-up. Note there are approximately 8 subjects undergoing follow-up when enrollment is terminated.
+\item PM is the posterior mean using the mixture prior.
+\end{itemize}
+\newpage
+\subsubsection{Design properties: Slow vs. fast accrual}
+\subsubsection{Type 1 error rate by the frequency of data monitoring}
+%The inference priors will be of the form $\pi_{I}=\omega\cdot\pi_{S}+(1-\omega)\cdot\pi_E$ with $\omega\in\{0,1/4,1/2,3/4,1\}$.
+%\begin{center}
+%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_2.png}
+%\end{center}
+
+
+
+Figures needed:
+\begin{enumerate}
+\item An example path - early stoppage for effiacy (violin plots)
+\item An example path - early stoppage for futility (violin plots)
+\item Sequential design properties - slow vs. fast accrual (average sample size, posterior mean, coverage probabilities, distribution of final posterior probability).
+\end{enumerate}
+Look at varying the types of priors while keeping the tail areas the same. More spiked are OBF, less spiked are Pocock.
+Vary decay rate will affect bias not Type I/II error. Not dissimilar to Frequentist: flatter-Pocock, mass at null-OBF.
+
+
+
+
+
 \begin{itemize}
 \item Use correct terminology: discuss the probability of stopping early vs. probability we conclude the treatment works.
 \item The two sides of the discussion: first is what happens during the trial regarding sequential monitoring, such as \% of time stopping early vs. trial done to completion and expected sample size. Second is the final determination of efficacy or futility and how that relates to Type 1 Error and power. 
@@ -259,8 +319,8 @@ The skeptical prior will be Beta distributed, centered around $\theta_0=0.15$, a
 \item Still need to fix violin plots!
 \end{itemize}
 \begin{center}
-\includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties_2}
-\includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/type1error_0809}
+\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties_2}
+\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/type1error_0809}
 \end{center}
 \begin{itemize}
 \item Want to highlight that the ultimate inference will have no Type 1 error inflation. At this point the ultimate inference for efficacy is still made with skeptical prior.
@@ -270,57 +330,16 @@ The skeptical prior will be Beta distributed, centered around $\theta_0=0.15$, a
 \item Mat: Scaling on \# of subjects in each interim analysis rather than \# of interim analyses (e.g. flip X axis). Make labels go vertical or diagonal.
 \end{itemize}
 \begin{center}
-\includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/power_curves}
+\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/power_curves}
 \end{center}
 Looking at spike/slab and flat priors...
 \begin{itemize}
 \item Test the hypothesis that power curves will be identical and what will change is the expected sample sizes.
 \end{itemize}
-The trial will proceed until one of the following three conditions are satisfied:
-\begin{align*}
-\text{Efficacy criteria: }&P(\theta>0.15|\mathbf{D},\pi_S)\geq 0.95\\
-\text{Futility criteria: }&P(\theta\leq 0.45|\mathbf{D},\pi_E)\geq 0.95\\
-\text{Exhausted resources: }&N=14 \text{ patient outcomes obtained},
-\end{align*}
-where the maximum sample size is that of a frequentist trial design with a Type 1 error rate of $0.05$ and $80\%$ power.
-
-The inference priors will be of the form $\pi_{I}=\omega\cdot\pi_{S}+(1-\omega)\cdot\pi_E$ with $\omega\in\{0,1/4,1/2,3/4,1\}$.
-\begin{center}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_2.png}
-\end{center}
-
-\begin{itemize}
-\item Show formulas for posterior model probabilities using inference prior
-\item Show formula that determines a significant trial result
-\end{itemize}
-Let $y_1$ be the number of successes and $y_0$ be the number of failures.
-\begin{align*}
-\text{Skeptical prior: }&\pi_S(\theta)\sim\mathcal{B}(\alpha_S,\beta_S)\\
-\text{Skeptical posterior: }&p(\theta|\mathbf{D},\pi_S)\sim\mathcal{B}(\alpha_S+y_1,\beta_S+y_0)\\
-\text{Efficacy stopping: }&P(\theta\in\Theta_1|\mathbf{D}, \pi_{S})\geq\delta)\Longleftrightarrow\int_{\theta_1}^{1}p(\theta|\mathbf{D},\pi_S)d\theta\geq\delta
-\end{align*}
-\begin{align*}
-\text{Enthuastic prior: }&\pi_E(\theta)\sim\mathcal{B}(\alpha_E,\beta_E)\\
-\text{Enthuastic posterior: }&p(\theta|\mathbf{D},\pi_E)\sim\mathcal{B}(\alpha_E+y_1,\beta_E+y_0)\\
-\text{Futility stopping: } &P(\theta\in\Theta_0|\mathbf{D}, \pi_{E})\geq\delta)\Longleftrightarrow\int_{0}^{\theta_0}p(\theta|\mathbf{D},\pi_E)d\theta\geq\delta
-\end{align*}
-Figures needed:
-\begin{enumerate}
-\item An example path - early stoppage for effiacy (violin plots)
-\item An example path - early stoppage for futility (violin plots)
-\item Sequential design properties - slow vs. fast accrual (average sample size, posterior mean, coverage probabilities, distribution of final posterior probability).
-\end{enumerate}
-\begin{center}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_3.png}
-\end{center}
-Include plot of the Type 1 error rate by the frequency of data monitoring.
-
-Look at varying the types of priors while keeping the tail areas the same. More spiked are OBF, less spiked are Pocock.
-Vary decay rate will affect bias not Type I/II error. Not dissimilar to Frequentist: flatter-Pocock, mass at null-OBF.
 
 \textit{Include details for how Bayesian monitoring has good frequentist properties even with frequent interim analyses}.
 \begin{center}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/evidence_decrease.png}
+\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/evidence_decrease.png}
 \end{center}
 \begin{itemize}
 \item Plot is conditional on evidence going down. For example, at $\theta=0.45$ there is a $93\%$ chance of agreement, which means there is evidence decrease only $7\%$ of the time. At $\theta=0.15$ there is evidence decrease $64\%$ of the time. Note that minimum is very sensitive to the number of simulations and should be removed from the plot. 
@@ -416,8 +435,24 @@ A: This would basically be a frequentist method, in that the design would have t
 \begin{center}
 {\large\bf SUPPLEMENTARY MATERIAL}
 \end{center}
+\section{Beta Priors}
+Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy (the posterior distribution $p(\theta|\mathbf{D})$ will be Beta distributed). The Beta distribution has two shape parameters. These parameters can be determined uniquely by specifying the desired mean and variance of the distribution.  The variance for the skeptical and enthuastic priors is then uniquely determined through by the choice of threshold $\delta$. In particular, let $\pi_S(\theta)\sim \mathcal{B}(\alpha,\beta)$ be Beta distributed with shape parameters $(\alpha,\beta)$. There is a single choice of $(\alpha,\beta)$ such that:
+\begin{align*}
+\theta_0=E(\pi_S)=\int_{\Theta}\pi_S(\theta)d\theta=\frac{\alpha}{\alpha+\beta}\text{ and }\delta=\int_{\Theta_0}\pi_S(\theta)d\theta=\int_{0}^{\theta_0}\frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}d\theta
+\end{align*}
+where $B(\alpha,\beta)$ is the Beta function.
 
-
+Alternatively, the variance could be determined by specifying a desired quantile of the prior distribution which would then be reflected in $\delta$.  Then there is a single choice of $(\alpha,\beta)$ such that
+\begin{align*}
+\theta_0=E(\pi_S)=\int_{\Theta}\pi_S(\theta)d\theta=\frac{\alpha}{\alpha+\beta}\text{ and }\lambda=\int_{\theta_A}^{1}\pi_S(\theta)d\theta=\int_{\theta_A}^{1}\frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}d\theta,
+\end{align*}
+in which case $\delta=\int_{\Theta_0}\pi_S(\theta)d\theta$ is a deterministic quantity.
+\begin{center}
+\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/ss_skpt}
+\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/ss_enth}
+\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_skpt}
+\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_enth}
+\end{center}
 \section{BibTeX}
 
  \bibliographystyle{agsm}

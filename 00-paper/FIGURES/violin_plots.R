@@ -1,98 +1,42 @@
-rm(list = ls())
+library(ggplot2)
+library(dplyr)
+library(ggpubr)
+n<-c(0,6,12,18)
+y1<-c(0,1,2,3)
 
-set.seed(20160229)
+grid<-seq(0,1,length=50)
 
-my_data = data.frame(
-  y=c(rnorm(1000), rnorm(1000, 0.5), rnorm(1000, 1), rnorm(1000, 1.5)),
-  x=c(rep('a', 2000), rep('b', 2000)),
-  m=c(rep('i', 1000), rep('j', 2000), rep('i', 1000))
-)
+dens<-array(NA,dim=c(length(n),2,length(grid)),
+                dimnames=list(seq_len(length(n)),c("skpt","enth"),seq_len(length(grid))))
+loc<-array(NA,dim=c(length(n),2,length(grid)),
+           dimnames=list(seq_len(length(n)),c("skpt","enth"),seq_len(length(grid))))
+x<-array(NA,dim=c(length(n),2,length(grid)),
+         dimnames=list(seq_len(length(n)),c("skpt","enth"),seq_len(length(grid))))
+m<-array(NA,dim=c(length(n),2,length(grid)),
+         dimnames=list(seq_len(length(n)),c("skpt","enth"),seq_len(length(grid))))
 
-GeomSplitViolin <- ggproto("GeomSplitViolin", GeomViolin, 
-                           draw_group = function(self, data, ..., draw_quantiles = NULL) {
-                             data <- transform(data, xminv = x - violinwidth * (x - xmin), xmaxv = x + violinwidth * (xmax - x))
-                             grp <- data[1, "group"]
-                             newdata <- plyr::arrange(transform(data, x = if (grp %% 2 == 1) xminv else xmaxv), if (grp %% 2 == 1) y else -y)
-                             newdata <- rbind(newdata[1, ], newdata, newdata[nrow(newdata), ], newdata[1, ])
-                             newdata[c(1, nrow(newdata) - 1, nrow(newdata)), "x"] <- round(newdata[1, "x"])
-                             
-                             if (length(draw_quantiles) > 0 & !scales::zero_range(range(data$y))) {
-                               stopifnot(all(draw_quantiles >= 0), all(draw_quantiles <=
-                                                                         1))
-                               quantiles <- ggplot2:::create_quantile_segment_frame(data, draw_quantiles)
-                               aesthetics <- data[rep(1, nrow(quantiles)), setdiff(names(data), c("x", "y")), drop = FALSE]
-                               aesthetics$alpha <- rep(1, nrow(quantiles))
-                               both <- cbind(quantiles, aesthetics)
-                               quantile_grob <- GeomPath$draw_panel(both, ...)
-                               ggplot2:::ggname("geom_split_violin", grid::grobTree(GeomPolygon$draw_panel(newdata, ...), quantile_grob))
-                             }
-                             else {
-                               ggplot2:::ggname("geom_split_violin", GeomPolygon$draw_panel(newdata, ...))
-                             }
-                           })
-
-geom_split_violin <- function(mapping = NULL, data = NULL, stat = "ydensity", position = "identity", ..., 
-                              draw_quantiles = NULL, trim = TRUE, scale = "area", na.rm = FALSE, 
-                              show.legend = NA, inherit.aes = TRUE) {
-  layer(data = data, mapping = mapping, stat = stat, geom = GeomSplitViolin, 
-        position = position, show.legend = show.legend, inherit.aes = inherit.aes, 
-        params = list(trim = trim, scale = scale, draw_quantiles = draw_quantiles, na.rm = na.rm, ...))
+for (i in 1:length(n)){
+  dens[i,"skpt",]<-dbeta(grid,shape1=alpha.skpt+y1[i],shape2=beta.skpt+n[i]-y1[i])*(-1)+(i-1)*10
+  dens[i,"enth",]<-dbeta(grid,shape1=alpha.enth+y1[i],shape2=beta.enth+n[i]-y1[i])+(i-1)*10
+  loc[i,"skpt",]<-grid
+  loc[i,"enth",]<-grid
+  x[i,"skpt",]<-rep(as.character(i),length(grid))
+  x[i,"enth",]<-rep(as.character(i),length(grid))
+  m[i,"skpt",]<-rep("s",length(grid))
+  m[i,"enth",]<-rep("e",length(grid))
 }
+pdat=data.frame(dens=as.vector(dens),
+                loc=as.vector(loc),
+                x=as.factor(as.vector(x)),
+                m=as.factor(as.vector(m)))
 
-ggplot(my_data, aes(x, y, fill = m)) + geom_split_violin()
+pdat2<-pdat[order(pdat$x,pdat$m,-pdat$loc),]
 
-require("ggplot2")
-#################################################################################################
-## INITIAL CONDITIONS ###########################################################################
-#################################################################################################
-# lower target
-theta_L<-0.15
-
-# upper target
-theta_H<-0.45
-
-# tail probabilities for priors (low, high)
-alpha_L<-0.05
-alpha_H<-0.05
-#################################################################################################
-## PRIOR SPECIFICATION ##########################################################################
-#################################################################################################
-## Parameterize prior models
-# Step 1: Create grid for possible values of phi
-# E.g. beta parameterization for middle prior: beta(pi_0*phi,(1-pi_0)*phi)
-phi_seq<-seq(0,100,by=0.01)
-
-# Step 2: Compute tail probabilities for every possible choice of phi
-# upper tail probability equal to alpha_L/2
-test_L<-qbeta(alpha_L/2,(theta_L)*phi_seq,(1-(theta_L))*phi_seq,lower.tail=FALSE)
-# lower tail probability equal to alpha_H/2
-test_H<-qbeta(alpha_H/2,(theta_H)*phi_seq,(1-(theta_H))*phi_seq,lower.tail=TRUE)
-
-# Step 3: Grid search to find value of phi with the desired tail probability for the priors
-phi_L<-phi_seq[which.min(abs(theta_H-test_L))] # fixed 5/13/19
-phi_H<-phi_seq[which.min(abs(theta_L-test_H))] # fixed 5/13/19
-
-# Step 4: Find parameters for the priors
-alpha_L<-(theta_L)*phi_L
-beta_L<-(1-(theta_L))*phi_L
-
-alpha_H<-(theta_H)*phi_H
-beta_H<-(1-(theta_H))*phi_H
-#################################################################################################
-## SIMULATIONS ##################################################################################
-#################################################################################################
-x<-seq(0,1,length.out=1000)
-my_data2 = data.frame(
-  y=c(qbeta(x,alpha_L,beta_L),qbeta(x,alpha_L+5,beta_L+15),qbeta(x,alpha_L+10,beta_L+30),
-      qbeta(x,alpha_H,beta_H),qbeta(x,alpha_H+5,beta_H+15),qbeta(x,alpha_H+10,beta_H+30)),
-  m=c(rep('l', 3000), rep('h', 3000)),
-  x=c(rep('1', 1000), rep('2', 1000),rep('3',1000),
-      rep('1', 1000), rep('2', 1000),rep('3',1000))
-)
-#################################################################################################
-#################################################################################################
-#################################################################################################
-
-ggplot(my_data2, aes(x, y, fill = m)) + geom_split_violin() + ggtitle("Example Path - Early Stopping for Futility") +
-  xlab("Interim Analysis") + ylab("Probability of Response") + labs(fill="")+scale_fill_discrete(labels=c("Enthuastic","Skeptical"))
-
+ggplot(pdat2, aes(dens, loc, fill = m, group = interaction(m, x))) + 
+  geom_polygon() +
+  scale_x_continuous(breaks = c(0,10,20,30)) +
+  ylab('Probability of Response') +
+  scale_y_continuous(breaks=seq(0,0.8,by=0.2)) +
+  theme_minimal() +
+  theme(axis.title.x = element_blank()) +
+  geom_text(size = 3.5)

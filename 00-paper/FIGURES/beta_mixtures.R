@@ -12,7 +12,7 @@ cred.tail<-0.05   # credible interval is 1-cred.tail
 max.ss<-76        # maximum sample size
 
 ## Simulation parameters ##
-reps<-5000       # number of simulated trials per design
+reps<-10000       # number of simulated trials per design
 p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05) # range of response proportion
 #p.range<-0.2                             
 freq.mntr<-2      # frequency of monitoring
@@ -192,21 +192,22 @@ outer.p.agree[i,j,"conditional"]<-sum((inner.p[,"initial.p"]>sig.eff) & (inner.p
 
 
 par(mfrow = c(1,1)) 
+par(mar=c(5.1+5,4.1,4.1,2.1))
 i<-1
-plot(p.range,outer[i,,"eff.mon.initial"],type='l',ylim=c(0,1),lwd=2,lty='longdash',
+plot(p.range,outer[i,,"eff.mon.initial"],type='l',ylim=c(0,1),lwd=2,col="blue",
      ylab="Probability",xlab="",
      main="Sequential Design Properties",
      axes=FALSE)
 box()
-text(p.range,outer[i,,"eff.mon.initial"],labels=format(round(outer[i,,"eff.mon.initial"],digits=2),nsmall=2),pos=3)
-lines(p.range,outer[i,,"fut.mon.final"],lwd=2)
-lines(p.range,outer[i,,"fut.mon.initial"],lwd=2,lty='longdash')
-text(p.range,outer[i,,"fut.mon.initial"],labels=format(round(outer[i,,"fut.mon.initial"],digits=2),nsmall=2),pos=1)
-lines(p.range,outer[i,,"eff.mon.final"],lwd=2)
+#text(p.range,outer[i,,"eff.mon.initial"],labels=format(round(outer[i,,"eff.mon.initial"],digits=2),nsmall=2),pos=3)
+#lines(p.range,outer[i,,"fut.mon.final"],lwd=2)
+lines(p.range,outer[i,,"fut.mon.initial"],lwd=2,col="red")
+#text(p.range,outer[i,,"fut.mon.initial"],labels=format(round(outer[i,,"fut.mon.initial"],digits=2),nsmall=2),pos=1)
+#lines(p.range,outer[i,,"eff.mon.final"],lwd=2)
 
-
-lines(p.range,outer[i,,"inc"],lwd=2,lty='longdash')
-lines(p.range,outer[i,,"inc.final"],lwd=2)
+## calculate futility
+lines(p.range,1-outer[i,,"fut.mon.initial"]-outer[i,,"eff.mon.initial"],lwd=2,col="darkgrey")
+#lines(p.range,outer[i,,"inc.final"],lwd=2)
 #text(p.range,outer[i,,"inc"],
 #     labels=format(round(outer[i,,"inc"],digits=2),nsmall=2),pos=1)
 
@@ -214,35 +215,67 @@ axis(1,las=0,at=p.range,labels=format(p.range,nsmall=2))
 axis(2,las=2,at=seq(0,1,by=0.1),labels=format(seq(0,1,by=0.1),nsmall=1))
 abline(h=seq(0,1,by=0.1),col='grey')
 abline(v=c(p.skpt,p.enth),col='grey',lty='dashed')
-row<-1
-  for (column in 1:length(p.range)){
-    mtext(text=paste0(format(round(outer[k,column,"ss.initial"],digits=1),nsmall=1),
-                      " + ",
-                      format(round(outer[k,column,"ss.final"]-
-                                   outer[k,column,"ss.initial"],digits=1),nsmall=1),
-                      " = ",
-                      format(round(outer[k,column,"ss.final"],digits=1),nsmall=1)),
-                      side=1,line=row+1,at=p.range[column])
-  }
+
+legend("right",text.width=0.05,seg.len=0.2,
+       inset = c(0, -0.2), bty = "n", x.intersp=0.5,
+       xjust=0, yjust=0,
+       legend=c("Stop Early for Efficacy","Stop Early for Futility","Inconclusive Findings w/ Full Dataset"),
+       col=c("blue","red","darkgrey"),
+       lwd=3, cex = 0.75, xpd = TRUE)
 row<-2
-for (column in 1:length(p.range)){
-  mtext(text=paste0("(I) ",
-        format(round(outer[k,column,"post.mean.initial"],digits=3),nsmall=3),
-                    " (F) ",
-        format(round(outer[k,column,"post.mean.final"],digits=3),nsmall=3)),
-        side=1,line=row+1,at=p.range[column])
+for (j in 1:length(p.range)){
+  mtext(text=paste0(format(round(outer[i,j,"eff.mon.initial"]*100,digits=1),nsmall=1),"%"),
+        side=1,line=row+1,at=p.range[j])
 }
+mtext(text="EFF",side=1,line=row+1,at=0.125)
 row<-3
-for (column in 1:length(p.range)){
-  mtext(text=paste0("(I) ",
-        format(round(outer[k,column,"cov.initial"],digits=3),nsmall=3),
-                    " (F) ",
-        format(round(outer[k,column,"cov.final"],digits=3),nsmall=3)),
-        side=1,line=row+1,at=p.range[column])
+for (j in 1:length(p.range)){
+  mtext(text=paste0(format(round(outer[i,j,"fut.mon.initial"]*100,digits=1),nsmall=1),"%"),
+        side=1,line=row+1,at=p.range[j])
 }
-mtext(text="SS",side=1,line=2,at=0.125)
-mtext(text="PM",side=1,line=3,at=0.125)
-mtext(text="CP",side=1,line=4,at=0.125)
+mtext(text="FUT",side=1,line=row+1,at=0.125)
+row<-4
+for (j in 1:length(p.range)){
+  mtext(text=paste0(format(round((1-outer[i,j,"fut.mon.initial"]-outer[i,j,"eff.mon.initial"])*100,digits=1),
+        nsmall=1),"%"),
+        side=1,line=row+1,at=p.range[j])
+}
+mtext(text="INC",side=1,line=row+1,at=0.125)
+row<-6
+  for (j in 1:length(p.range)){
+    mtext(text=paste0(format(round(outer[i,j,"ss.initial"],digits=1),nsmall=1),
+                      " + ",
+                      format(round(outer[i,j,"ss.final"]-
+                                   outer[i,j,"ss.initial"],digits=1),nsmall=1),
+                      " = ",
+                      format(round(outer[i,j,"ss.final"],digits=1),nsmall=1)),
+                      side=1,line=row+1,at=p.range[j])
+  }
+mtext(text="CP",side=1,line=row+1,at=0.125)
+row<-7
+for (j in 1:length(p.range)){
+  mtext(text=paste0("(I) ",
+        format(round(outer[i,j,"post.mean.initial"],digits=3),nsmall=3),
+                    " (F) ",
+        format(round(outer[i,j,"post.mean.final"],digits=3),nsmall=3)),
+        side=1,line=row+1,at=p.range[j])
+}
+mtext(text="SS",side=1,line=row+1,at=0.125)
+row<-8
+for (j in 1:length(p.range)){
+  mtext(text=paste0("(I) ",
+        format(round(outer[i,j,"cov.initial"],digits=3),nsmall=3),
+                    " (F) ",
+        format(round(outer[i,j,"cov.final"],digits=3),nsmall=3)),
+        side=1,line=row+1,at=p.range[j])
+}
+mtext(text="PM",side=1,line=row+1,at=0.125)
+
+
+
+
+
+
 column<-1
 text(locator(1),"Stop Early for Efficacy")
 text(locator(1),"Final Efficacy")
