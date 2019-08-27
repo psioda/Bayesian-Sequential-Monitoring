@@ -41,7 +41,7 @@ require(betareg)
 # # sampling from the lower triangular section is a little tricky
 # # https://en.wikipedia.org/wiki/Inverse_transform_sampling
 # x <- seq(0,1,by=0.1)
-# plot(x,2*x,type='l') # pdf 
+# plot(x,2*x,type='l') # pdf
 # plot(x,x^2,type='l') # cdf
 #  invcdf<-function(x){
 #   sqrt(x)
@@ -49,18 +49,22 @@ require(betareg)
 # plot(x,invcdf(x),type='l') # inverse cdf
 # hist(invcdf(runif(100000,0,1)),freq=F) # random draws
 
-# x<-seq(0.4,1,by=0.1)
-# plot(x, (1-x)/0.6^2*2,type='l') # pdf
-# cdf<-function(x){
-#   -1.77778 + 5.55556*x - 2.77778*x^2
-# }
-# plot(x,cdf(x),type='l') # cdf
-# invcdf<-function(x){
-#   1 - 0.6*sqrt(1 - x)
-# }
-# plot(x,invcdf(x),type='l') # inverse cdf
-# U<-runif(100000,0,1)
-# hist(invcdf(U),freq=F) # random draws
+t<-0.8 # minimum of x for right triangular portion
+x<-seq(t,1,by=0.1)
+plot(x, (1-x)/(1-x.min)^2*2,type='l') # pdf
+# int_t^1 (1-x)/(1-t)^2*2dx = 1
+# use indefinite integral to get CDF
+cdf<-function(x){
+  -(2*(-x + x^2/2))/(-1 + t)^2+ # indefiniate portion
+    ((-2 + t) * t)/(-1 + t)^2   # evaluated at x=t
+}
+plot(x,cdf(x),type='l') # cdf
+invcdf<-function(x){
+  1 - (1-t)*sqrt(1 - x)
+}
+plot(x,invcdf(x),type='l') # inverse cdf
+U<-runif(100000,0,1)
+hist(invcdf(U),freq=F) # random draws
 
 
 
@@ -68,12 +72,13 @@ require(betareg)
 invcdf<-function(x){
   1 - 0.6*sqrt(1 - x)
 }
-reps<-1E6
+reps<-1E5
 samps<-c(seq(0,0.15,length=reps*0.205),
   seq(0.15,0.25,length=reps*0.7),
   seq(0.25,0.40,length=reps*0.045),
   invcdf(seq(0,1,length=reps*0.05)))
 hist(samps)
+
 
 d <- data.frame(y=samps[-c(1,length(samps))])
 
@@ -98,5 +103,5 @@ x<-seq(0,1,by=0.01)
 hist(d$y,freq=FALSE)
 lines(x, dbeta(x, shape1 = a[1], shape2 = b[1]),col = hcl(0, 80, 50), lwd = 2)
 lines(x, dbeta(x, shape1 = a[2], shape2 = b[2]),col = hcl(240, 80, 50), lwd = 2)
-lines(x, w[1]*dbeta(x, shape1 = a[1], shape2 = b[1])+w[2]*dbeta(x, shape1 = a[2], shape2 = b[2]))
+plot(x, w[1]*dbeta(x, shape1 = a[1], shape2 = b[1])+w[2]*dbeta(x, shape1 = a[2], shape2 = b[2]))
 
