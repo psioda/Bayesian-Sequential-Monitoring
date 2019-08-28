@@ -1,3 +1,6 @@
+## NOT NEEDED ANYMORE
+## ALL RELEVANT CODE WENT INTO spike_slab_parameterization
+
 rm(list = ls())
 
 ### ORIGINAL FIRST

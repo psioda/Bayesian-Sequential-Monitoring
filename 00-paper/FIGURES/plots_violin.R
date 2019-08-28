@@ -1,3 +1,6 @@
+## The purpose of this program is to produce violin plots that show sample
+## trajectories of sample data
+
 rm(list = ls())
 
 library(ggplot2)
