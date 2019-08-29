@@ -1,10 +1,12 @@
 rm(list = ls())
+
 ## posterior coverage probability
+## assuming equal mixture of priors
 posterior.cov<-function(a1,b1,a2,b2,y0,y1,p,cred.tail){
   
   c<-beta(a1+y1,b1+y0)/beta(a1,b1)/
     (beta(a1+y1,b1+y0)/beta(a1,b1)+
-       beta(a2+y1,b2+y0)/beta(a2,b2))
+     beta(a2+y1,b2+y0)/beta(a2,b2))
   
   lower_cr<-0
   tail <-0
@@ -26,60 +28,71 @@ posterior.cov<-function(a1,b1,a2,b2,y0,y1,p,cred.tail){
   
   return(result)}
 ## posterior coverage probability
-posterior.cov.2<-function(a.s.1,b.s.1,a.s.2,b.s.2,const.1,
-                          a.e.1,b.e.1,a.e.2,b.e.2,const.2,
-                          y0,y1,p,cred.tail,sims){
+posterior.cov.2<-function(a.s.1,b.s.1,a.s.2,b.s.2,w.s.1,
+                          a.e.1,b.e.1,a.e.2,b.e.2,w.e.1,
+                          y0,y1,p,cred.tail){
   
-  tmp1<-const.1*(beta(a.s.1+y1,b.s.1+y0)/beta(a.s.1,b.s.1))+
-    (1-const.1)*(beta(a.s.2+y1,b.s.2+y0)/beta(a.s.2,b.s.2))
-  tmp2<-const.2*(beta(a.e.1+y1,b.e.1+y0)/beta(a.e.1,b.e.1))+
-    (1-const.2)*(beta(a.e.2+y1,b.e.2+y0)/beta(a.e.2,b.e.2))
+  k.0<-1/2*c(w.s.1,1-w.s.1,w.e.1,1-w.e.1)
   
-  c<-(tmp1)/(tmp1+tmp2)
+  c<-c(beta(a.s.1+y1,b.s.1+y0)/beta(a.s.1,b.s.1),
+       beta(a.s.2+y1,b.s.2+y0)/beta(a.s.2,b.s.2),
+       beta(a.e.1+y1,b.e.1+y0)/beta(a.e.1,b.e.1),
+       beta(a.e.2+y1,b.e.2+y0)/beta(a.e.2,b.e.2))
   
-  theta.1.1<-rbeta(round(sims*c*const.1,log10(sims)),a.s.1+y1,b.s.1+y0)
-  theta.1.2<-rbeta(round(sims*c*(1-const.1),log10(sims)),a.s.2+y1,b.s.2+y0)
-  theta.2.1<-rbeta(round(sims*(1-c)*const.2,log10(sims)),a.e.1+y1,b.e.1+y0)
-  theta.2.2<-rbeta(round(sims*(1-c)*(1-const.2),log10(sims)),a.e.2+y1,b.e.2+y0)
-  theta<-sort(c(theta.1.1,theta.1.2,theta.2.1,theta.2.2))
+  k.1<-k.0*c/(sum(k.0*c))
   
-  q.lower<-theta[round((cred.tail/2)*sims)]
-  q.upper<-theta[round((1-cred.tail/2)*sims)]
+  lower_cr<-0
+  tail <-0
+  while(tail<cred.tail/2){
+    tail<-k.1[1]*pbeta(lower_cr,a.s.1+y1,b.s.1+y0)+
+          k.1[2]*pbeta(lower_cr,a.s.2+y1,b.s.2+y0)+
+          k.1[3]*pbeta(lower_cr,a.e.1+y1,b.e.1+y0)+
+          k.1[4]*pbeta(lower_cr,a.e.2+y1,b.e.2+y0)
+    if (tail<=cred.tail/2) lower_cr<-lower_cr+1e-3
+  }
   
-  result<-(p>q.lower & p<q.upper)
+  upper_cr<-1
+  tail <-0
+  while(tail<cred.tail/2){
+    tail<-k.1[1]*pbeta(upper_cr,a.s.1+y1,b.s.1+y0,lower.tail=FALSE)+
+          k.1[2]*pbeta(upper_cr,a.s.2+y1,b.s.2+y0,lower.tail=FALSE)+
+          k.1[3]*pbeta(upper_cr,a.e.1+y1,b.e.1+y0,lower.tail=FALSE)+
+          k.1[4]*pbeta(upper_cr,a.e.2+y1,b.e.2+y0,lower.tail=FALSE)
+    if (tail<=cred.tail/2) upper_cr<-upper_cr-1e-3
+  }
   
+  result<-(p>=lower_cr & p<=upper_cr)
+
   return(result)
 }
 
-## posterior quantile
-posterior.quantile<-function(a1,b1,a2,b2,y0,y1,q){
+## posterior cdf
+posterior.cdf<-function(a1,b1,a2,b2,y0,y1,q){
   
   c<-beta(a1+y1,b1+y0)/beta(a1,b1)/
-    (beta(a1+y1,b1+y0)/beta(a1,b1)+
-       beta(a2+y1,b2+y0)/beta(a2,b2))
+    (beta(a1+y1,b1+y0)/beta(a1,b1)+beta(a2+y1,b2+y0)/beta(a2,b2))
   
-  result<-c*pbeta(q,a1+y1,b1+y0)+
-    (1-c)*pbeta(q,a2+y1,b2+y0)
+  result<-c*pbeta(q,a1+y1,b1+y0)+(1-c)*pbeta(q,a2+y1,b2+y0)
   
   return(result)}
-posterior.quantile.2<-function(a.s.1,b.s.1,a.s.2,b.s.2,const.1,
-                               a.e.1,b.e.1,a.e.2,b.e.2,const.2,
-                               y0,y1,q,sims){
+
+posterior.cdf.2<-function(a.s.1,b.s.1,a.s.2,b.s.2,w.s.1,
+                          a.e.1,b.e.1,a.e.2,b.e.2,w.e.1,
+                          y0,y1,q){
   
-  tmp1<-const.1*(beta(a.s.1+y1,b.s.1+y0)/beta(a.s.1,b.s.1))+
-    (1-const.1)*(beta(a.s.2+y1,b.s.2+y0)/beta(a.s.2,b.s.2))
-  tmp2<-const.2*(beta(a.e.1+y1,b.e.1+y0)/beta(a.e.1,b.e.1))+
-    (1-const.2)*(beta(a.e.2+y1,b.e.2+y0)/beta(a.e.2,b.e.2))
+  k.0<-1/2*c(w.s.1,1-w.s.1,w.e.1,1-w.e.1)
   
-  c<-(tmp1)/(tmp1+tmp2)
+  c<-c(beta(a.s.1+y1,b.s.1+y0)/beta(a.s.1,b.s.1),
+       beta(a.s.2+y1,b.s.2+y0)/beta(a.s.2,b.s.2),
+       beta(a.e.1+y1,b.e.1+y0)/beta(a.e.1,b.e.1),
+       beta(a.e.2+y1,b.e.2+y0)/beta(a.e.2,b.e.2))
   
-  theta.1.1<-rbeta(round(sims*c*const.1,log10(sims)),a.s.1+y1,b.s.1+y0)
-  theta.1.2<-rbeta(round(sims*c*(1-const.1),log10(sims)),a.s.2+y1,b.s.2+y0)
-  theta.2.1<-rbeta(round(sims*(1-c)*const.2,log10(sims)),a.e.1+y1,b.e.1+y0)
-  theta.2.2<-rbeta(round(sims*(1-c)*(1-const.2),log10(sims)),a.e.2+y1,b.e.2+y0)
-  theta<-sort(c(theta.1.1,theta.1.2,theta.2.1,theta.2.2))
-  
-  result<-sum(theta<q)/sims
+  k.1<-k.0*c/(sum(k.0*c))
+
+  result<-k.1[1]*pbeta(q,a.s.1+y1,b.s.1+y0)+
+          k.1[2]*pbeta(q,a.s.2+y1,b.s.2+y0)+
+          k.1[3]*pbeta(q,a.e.1+y1,b.e.1+y0)+
+          k.1[4]*pbeta(q,a.e.2+y1,b.e.2+y0)
   
   return(result)
 }
@@ -88,27 +101,27 @@ posterior.quantile.2<-function(a.s.1,b.s.1,a.s.2,b.s.2,const.1,
 posterior.mean<-function(a1,b1,a2,b2,y0,y1){
   
   c<-beta(a1+y1,b1+y0)/beta(a1,b1)/
-    (beta(a1+y1,b1+y0)/beta(a1,b1)+
-       beta(a2+y1,b2+y0)/beta(a2,b2))
+    (beta(a1+y1,b1+y0)/beta(a1,b1)+beta(a2+y1,b2+y0)/beta(a2,b2))
   
-  result<-c*(a1+y1)/(a1+b1+y1+y0)+
-    (1-c)*(a2+y1)/(a2+b2+y1+y0)
+  result<-c*(a1+y1)/(a1+b1+y1+y0)+(1-c)*(a2+y1)/(a2+b2+y1+y0)
   
   return(result)}
-posterior.mean.2<-function(a.s.1,b.s.1,a.s.2,b.s.2,const.1,
-                           a.e.1,b.e.1,a.e.2,b.e.2,const.2,
+posterior.mean.2<-function(a.s.1,b.s.1,a.s.2,b.s.2,w.s.1,
+                           a.e.1,b.e.1,a.e.2,b.e.2,w.s.2,
                            y0,y1){
   
-  tmp1<-const.1*(beta(a.s.1+y1,b.s.1+y0)/beta(a.s.1,b.s.1))+
-    (1-const.1)*(beta(a.s.2+y1,b.s.2+y0)/beta(a.s.2,b.s.2))
-  tmp2<-const.2*(beta(a.e.1+y1,b.e.1+y0)/beta(a.e.1,b.e.1))+
-    (1-const.2)*(beta(a.e.2+y1,b.e.2+y0)/beta(a.e.2,b.e.2))
+  k.0<-1/2*c(w.s.1,1-w.s.1,w.e.1,1-w.e.1)
   
-  c<-(tmp1)/(tmp1+tmp2)
+  c<-c(beta(a.s.1+y1,b.s.1+y0)/beta(a.s.1,b.s.1),
+       beta(a.s.2+y1,b.s.2+y0)/beta(a.s.2,b.s.2),
+       beta(a.e.1+y1,b.e.1+y0)/beta(a.e.1,b.e.1),
+       beta(a.e.2+y1,b.e.2+y0)/beta(a.e.2,b.e.2))
   
-  result<-c*(const.1*(a.s.1+y1)/(a.s.1+b.s.1+y1+y0)+
-               (1-const.1)*(a.s.2+y1)/(a.s.2+b.s.2+y1+y0))+
-    (1-c)*(const.2*(a.e.1+y1)/(a.e.1+b.e.1+y1+y0)+
-             (1-const.2)*(a.e.2+y1)/(a.e.2+b.e.2+y1+y0))
+  k.1<-k.0*c/(sum(k.0*c))
+  
+  result<-k.1[1]*(a.s.1+y1)/(a.s.1+b.s.1+y1+y0)+
+          k.1[2]*(a.s.2+y1)/(a.s.2+b.s.2+y1+y0)+
+          k.1[3]*(a.e.1+y1)/(a.e.1+b.e.1+y1+y0)+
+          k.1[4]*(a.e.2+y1)/(a.e.2+b.e.2+y1+y0)
   
   return(result)}

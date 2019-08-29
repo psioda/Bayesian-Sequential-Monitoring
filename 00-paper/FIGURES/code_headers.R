@@ -1,35 +1,27 @@
-## header for spike/slab and flat priors
+rm(list = ls())
 
-# alpha.skpt.1<-alpha.skpt
-# beta.skpt.1<-beta.skpt
-# alpha.skpt.2<-alpha.skpt
-# beta.skpt.2<-beta.skpt
-# mix.1<-.5
-# alpha.enth.1<-alpha.enth
-# beta.enth.1<-beta.enth
-# alpha.enth.2<-alpha.enth
-# beta.enth.2<-beta.enth
-# mix.2<-.5
-# 
-# alpha.skpt.1<-1.59
-# beta.skpt.1<-6.36
-# alpha.skpt.2<-20
-# beta.skpt.2<-80
-# mix.1<-0.5
-# alpha.enth.1<-3.56
-# beta.enth.1<-5.34
-# alpha.enth.2<-12
-# beta.enth.2<-18
-# mix.2<-0.5
+## Design parameters, usual case ##
+p.skpt<-0.20      # response rate for skeptic, enthusiast, futility
+p.enth<-0.40
+p.intr<-0.30
+tail.skpt<-0.045  # tail probabilities for priors (low, high)
+tail.enth<-0.05
+sig.fut<-0.85     # significant trial result threshold
+sig.eff<-0.95
+cred.tail<-0.05   # credible interval is 1-cred.tail
+max.ss<-76        # maximum sample size
 
-# alpha.skpt.1<-1.7752
-# beta.skpt.1<-10.9048
-# alpha.skpt.2<-5.7226
-# beta.skpt.2<-16.2874
-# mix.1<-0.5
-# alpha.enth.1<-8.3979
-# beta.enth.1<-18.6921
-# alpha.enth.2<-11.4219
-# beta.enth.2<-11.8881
-# mix.2<-0.5
+## Design parameters, spike/slab case ##
 
+a.s.1<-1.59
+b.s.1<-6.36
+a.s.2<-20
+b.s.2<-80
+w.s.1<-0.19
+a.e.1<-3.56
+b.e.1<-5.34
+a.e.2<-12
+b.e.2<-18
+w.e.1<-0.39
+y1<-5
+y0<-7
