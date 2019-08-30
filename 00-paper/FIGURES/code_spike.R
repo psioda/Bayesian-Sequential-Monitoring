@@ -2,7 +2,6 @@
 ## mixtures of beta distributions for spike/slab and 
 ## flat versions of skeptical and enthuastic priors
 
-rm(list = ls())
 require(flexmix)
 require(betareg)
 
@@ -10,15 +9,15 @@ invcdf.lower<-function(x,t){t*sqrt(x)}
 invcdf.upper<-function(x,t){1-(1-t)*sqrt(1-x)}
 
 ## PARAMETERS ##
-t.lower<-0.1
-t.upper<-0.4
-cut<-c(0.15,0.25)         # cutoff points determining inner 3 segments
-p<-c(0.05,NA,.6,NA,0.05)  # probabilities of the 5 segments
-target.mean<-0.2          # desired mean
-target.tail<-0.95         # created with lower tail in mind
-target.cutoff<-0.40       # created with lower tail in mind
-mean.tol<-0.001            
-tail.tol<-0.001
+t.lower<-0.2
+t.upper<-0.55
+cut<-c(0.35,0.45)         # cutoff points determining inner 3 segments
+p<-c(0.05,NA,.4,NA,0.05)  # probabilities of the 5 segments
+target.mean<-0.4          # desired mean
+target.tail<-0.05         # created with lower tail in mind
+target.cutoff<-0.20       # created with lower tail in mind
+mean.tol<-0.4*0.01            
+tail.tol<-0.05*0.01
 
 E<-c(t.lower*(2/3),       # expected value of each segment separately
      (t.lower+cut[1])/2,  # used the fact that the end pieces are triangular
@@ -37,7 +36,6 @@ p[4]<-solve(a=A,b=b)[2]
 # final check
 sum(p)
 sum(E*p)
-
 
 # check histogram
 reps<-1E6
@@ -58,7 +56,7 @@ while(cond1>mean.tol | cond2 > tail.tol){
   
 print(i)
   
-reps<-200
+reps<-500
 samps<-c(invcdf.lower(x=runif(n=reps*p[1]),t=t.lower),
          t.lower+runif(n=reps*p[2])*(cut[1]-t.lower),
          cut[1]+runif(n=reps*p[3])*(cut[2]-cut[1]),

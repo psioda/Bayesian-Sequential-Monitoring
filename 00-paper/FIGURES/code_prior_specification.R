@@ -25,15 +25,13 @@ beta.enth<-(1-(p.enth))*phi_H
 
 
 ## Design parameters, spike/slab case ##
-a.s.1<-1.59
-b.s.1<-6.36
-a.s.2<-20
-b.s.2<-80
-w.s.1<-0.19
-a.e.1<-3.56
-b.e.1<-5.34
-a.e.2<-12
-b.e.2<-18
-w.e.1<-0.39
-y1<-5
-y0<-7
+alpha.skpt.1<-0.969595  
+beta.skpt.1<-2.186593 
+alpha.skpt.2<-10.199189 
+beta.skpt.2<-46.344410 
+mix.1<-0.1421888
+alpha.enth.1<-2.460314 
+beta.enth.1<-3.603074 
+alpha.enth.2<-96.979737
+beta.enth.2<-143.682052
+mix.2<-0.3426655 

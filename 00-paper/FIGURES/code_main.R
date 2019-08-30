@@ -1,3 +1,4 @@
+spike<-0 # spike/slab version or regular version
 
 ## Design parameters, usual case ##
 p.skpt<-0.20      # response rate for skeptic, enthusiast, futility
@@ -11,7 +12,7 @@ cred.tail<-0.05   # credible interval is 1-cred.tail
 max.ss<-76        # maximum sample size
 
 ## Simulation parameters ##
-reps<-1000       # number of simulated trials per design
+reps<-10000       # number of simulated trials per design
 p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05) # range of response proportion
 #p.range<-0.2                             
 freq.mntr<-2      # frequency of monitoring
@@ -23,8 +24,6 @@ enr.shape<-1      # shape gamma dist enrollment
 out.mean<-4       # mean normal dist outcome
 #out.mean<-rep(4,6)
 #out.mean<-rep(c(rep(4,6),rep(8,6)),2)
-
-spike<-0 # spike/slab version or regular version
 
 #################################################################################################
 ## SIMULATIONS ##################################################################################
@@ -73,13 +72,13 @@ for (j in 1:length(p.range)){
     futility<-pbeta(p.intr,alpha.enth+y1,beta.enth+y0,lower.tail=TRUE)
     efficacy<-pbeta(p.skpt,alpha.skpt+y1,beta.skpt+y0,lower.tail=TRUE)}
     if (spike==1){
-    futility<-posterior.cdf(a.s=alpha.enth.1,b.s=beta.enth.1,
-                                 a.e=alpha.enth.2,b.e=beta.enth.2,
-                                 y0=y0,y1=y1,q=p.intr,sims=sims)
+    futility<-posterior.cdf(a1=alpha.enth.1,b1=beta.enth.1,
+                            a2=alpha.enth.2,b2=beta.enth.2,
+                            y0=y0,y1=y1,q=p.intr)
       
-    efficacy<-posterior.cdf(a.s=alpha.skpt.1,b.s=beta.skpt.1,
-                                 a.e=alpha.skpt.2,b.e=beta.skpt.2,
-                                 y0=y0,y1=y1,q=p.skpt,sims=sims)}
+    efficacy<-posterior.cdf(a1=alpha.skpt.1,b1=beta.skpt.1,
+                            a2=alpha.skpt.2,b2=beta.skpt.2,
+                            y0=y0,y1=y1,q=p.skpt)}
 
     n.initial<-min(
       which((futility>sig.fut) | ((1-efficacy)>sig.eff) & (seq(1:max.ss)%%freq.mntr==0)),
@@ -133,15 +132,15 @@ for (j in 1:length(p.range)){
         a.s.1=alpha.skpt.1,b.s.1=beta.skpt.1,
         a.s.2=alpha.skpt.2,b.s.2=beta.skpt.2,w.s.1=mix.1,
         a.e.1=alpha.enth.1,b.e.1=beta.enth.1,
-        a.e.2=alpha.enth.2,b.e.2=beta.enth.2,w.e=mix.2,
+        a.e.2=alpha.enth.2,b.e.2=beta.enth.2,w.e.1=mix.2,
         y1=y1[n[l]],y0=y0[n[l]])
     
-    inner.cov.initial[i]<-posterior.cov.2(
+    inner[k,paste0("cov.",time[l])]<-posterior.cov.2(
         a.s.1=alpha.skpt.1,b.s.1=beta.skpt.1,
         a.s.2=alpha.skpt.2,b.s.2=beta.skpt.2,w.s.1=mix.1,
         a.e.1=alpha.enth.1,b.e.1=beta.enth.1,
         a.e.2=alpha.enth.2,b.e.2=beta.enth.2,w.e.1=mix.2,
-        y1=y1[n[l]],y0=y0[n[l]],p=p.range[j],cred.tail=cred.tail,sims=sims)}
+        y1=y1[n[l]],y0=y0[n[l]],p=p.range[j],cred.tail=cred.tail)}
     # posterior probability
     inner.p[k,paste0(time[l],".p")]<-(1-efficacy[n[l]])
     }

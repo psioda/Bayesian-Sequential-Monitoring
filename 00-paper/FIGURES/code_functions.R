@@ -107,7 +107,7 @@ posterior.mean<-function(a1,b1,a2,b2,y0,y1){
   
   return(result)}
 posterior.mean.2<-function(a.s.1,b.s.1,a.s.2,b.s.2,w.s.1,
-                           a.e.1,b.e.1,a.e.2,b.e.2,w.s.2,
+                           a.e.1,b.e.1,a.e.2,b.e.2,w.e.1,
                            y0,y1){
   
   k.0<-1/2*c(w.s.1,1-w.s.1,w.e.1,1-w.e.1)
