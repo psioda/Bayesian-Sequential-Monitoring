@@ -151,6 +151,8 @@ The use of monitoring based on changing the opinion of skeptical and enthuastic 
 
 Early termination of the trial is appriopriate if diverse prior opinions about $\theta$ would be in agreement given the interim data (e.g. the skeptical and enthuastic person reach the same conclusion). It is then reasonable to stop data collection if, upon seeing the data, a \textit{skeptical person} changes their opinion to be ``all but convinced" that $H_1$ is true ($P(\theta\in\Theta_1|\mathbf{D}, \pi_{S})\geq\delta$), or an \textit{enthuastic person} becomes ``all but convinced" that $H_1$ is false ($P(\theta\in\Theta_0|\mathbf{D}, \pi_{E})\geq\delta$).
 
+\textbf{The futility criteria isn't actually based on $\Theta_0$ (e.g. it is based on an intermediate value in the proof-of-activity example). Therefore, develop the futility stopping criteria in its own section along with probability of success.}
+
 %Summarizing~\cite{Spiegelhalter1993} and others:  or that the benefit of treatment is not likely to be what was expected, the probability of \textit{eventually} proving that $H_1$ is true is sufficiently low, or the resources have been exhausted.  
 %A standard Bayesian decision rule would reject $H_0$ when $P(\theta\in\Theta_{H_1}|D\geq 0.95)$ which will result in a Type I error rate of $0.05$ when the analysis prior is non-informative (a so-called reference or flat prior). The Bayes factor in favor of $H_0$ is defined as 
 %\begin{align*}
@@ -158,7 +160,7 @@ Early termination of the trial is appriopriate if diverse prior opinions about $
 %\end{align*}
 %and let $p(\theta|D,\pi)$ denote the posterior distribution of $\theta$ given a particular prior distribution.
 
-Final inference on $\theta$ is made once enrollment is stopped based on the monitoring priors or at the planned end of the trial. An inference prior $\pi_{I}(\theta,\psi)\equiv\pi_{I}$ is often non-informative or objective in the sense that it does not show a-priori preference to $H_0$ or $H_1$ ($P(\theta\in\Theta_0|\pi_I)\approx P(\theta\in\Theta_1|\pi_I)$). There are many ways to formulate an inference prior with this property. We propose use of a mixture prior constructed from the monitoring process as the inference prior:
+Final inference on $\theta$ is made once enrollment is stopped based on the monitoring priors or at the planned end of the trial. An inference prior $\pi_{I}(\theta,\psi)\equiv\pi_{I}$ is often non-informative or objective in the sense that it does not show a-priori preference to $H_0$ or $H_1$ ($P(\theta\in\Theta_0|\pi_I)\approx P(\theta\in\Theta_1|\pi_I)$). \textbf{Not always true. In the proof-of-activity example the inference prior which is a 50:50 mixture of skeptical and enthuastic priors still favors $H_1$.)} There are many ways to formulate an inference prior with this property. We propose use of a mixture prior constructed from the monitoring process as the inference prior:
 \begin{align*}
 \pi_{I}=\omega\cdot\pi_{S}+(1-\omega)\cdot\pi_E
 \end{align*}
@@ -222,28 +224,27 @@ Consider a single-arm oncology proof-of-activity trial with a binary endpoint. T
 
 Consider testing the hypothesis $H_0:\theta\leq\theta_0\text{ versus }H_1:\theta>\theta_0$. Consider a highly clinically relevant treatment effect $\theta_A>\theta_0$. A design property of the trial will be the posterior probability of $\theta\geq\theta_0$ given $\theta=\theta_A$ (similar to frequentist power).
 
-Monitoring priors for this trial will be made using the concepts of a skeptical prior and an enthuastic prior. Recall a skeptic is ``all but convinced" that $H_0$ is true a-priori, therefore $P(\theta\in\Theta_0|\pi_S)\geq\delta$. An optimist is ``all but convinced" that $H_1$ is true a-priori, therefore $P(\theta\in\Theta_1|\pi_E)\geq\delta$. 
+Monitoring priors for this trial will be made using the concepts of a skeptical prior and an enthuastic prior. Recall a skeptic is ``all but convinced" that $H_0$ is true a-priori, therefore $P(\theta\in\Theta_0|\pi_S)\geq\delta$. \textbf{(This expression of probability for the skeptic doesn't hold in this example.)} An optimist is ``all but convinced" that $H_1$ is true a-priori, therefore $P(\theta\in\Theta_1|\pi_E)\geq\delta$.
 
-It is intuitive to center the skeptical and enthuastic priors around the quantities $\theta_0$ and $\theta_A$ respectively, so that $E(\pi_S)=\theta_0$ and $E(\pi_E)=\theta_A$. For example, suppose it is desirable that the skeptical prior places small probability $\lambda>0$ that the $\theta\geq\theta_A$, which is the highly clinically relevant treatment effect.
-
-Assume that the outcomes are ascertained after approximately 4 months of follow-up and 2 patients per month on average are enrolled. The study may stop enrollment at a given point in time, but all enrolled patients will be followed for outcome ascertainment.
+It is intuitive to center the skeptical and enthuastic priors around the quantities $\theta_0$ and $\theta_A$ respectively, so that $E(\pi_S)=\theta_0$ and $E(\pi_E)=\theta_A$.
 
 Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy (the posterior distribution $p(\theta|\mathbf{D})$ will be Beta distributed). 
 
 %Motivated by a trial for Vemurafenib (\cite{Hyman2015}) let $\theta_0=0.15$ and $\theta_A=0.45$. 
 Consider the hypotheses
 \begin{align*}
-H_0&:\theta\leq 0.15\\
-H_1&:\theta>0.15
+H_0&:\theta\leq 0.20\\
+H_1&:\theta>0.20
 \end{align*}
 
-The skeptical prior will be Beta distributed, centered around $\theta_0=0.15$, and have $2.5\%$ prior probability that $\theta>\theta_A$. Similarly, the enthuastic prior will be centered around $\theta_A=0.45$ and have $2.5\%$ prior probability that $\theta<\theta_0$.
+The skeptical prior will be Beta distributed, centered around $\theta_0=0.15$, and have $4.5\%$ prior probability that $\theta>\theta_A$. Similarly, the enthuastic prior will be centered around $\theta_A=0.4$ and have $5\%$ prior probability that $\theta<\theta_0$.
 \newpage
-\begin{center}
+\begin{figure}
 \includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/skpt_prior}
 \includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/enth_prior}
 \includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/5050mix}
-\end{center}
+\caption{(a) Skeptical prior (b) Enthuastic prior (c) 50/50 mixture of skeptical and enthuastic prior}
+\end{figure}
 
 \newpage
 \subsubsection{Sequential monitoring}
@@ -251,9 +252,10 @@ The trial will proceed until one of the following three conditions are satisfied
 \begin{align*}
 \text{Efficacy criteria: }&P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95\\
 \text{Futility criteria: }&P(\theta\leq 0.30|\mathbf{D},\pi_E)\geq 0.85\\
-\text{Exhausted resources: }&N=76 \text{ patient outcomes obtained}
+\text{Maximum sample size: }&N=76 \text{ patient outcomes obtained}
 \end{align*}
 
+\textbf{Add justification for maximum sample size.}
 
 Let $y_1$ be the number of successes and $y_0$ be the number of failures.
 \begin{align*}
@@ -266,68 +268,44 @@ Let $y_1$ be the number of successes and $y_0$ be the number of failures.
 \text{Enthuastic posterior: }&p(\theta|\mathbf{D},\pi_E)\sim\mathcal{B}(\alpha_E+y_1,\beta_E+y_0)\\
 \text{Futility stopping: } &P(\theta\in\Theta_0|\mathbf{D}, \pi_{E})\geq\delta)%\Longleftrightarrow\int_{0}^{\theta_0}p(\theta|\mathbf{D},\pi_E)d\theta\geq\delta
 \end{align*}
+%\begin{center}
+%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_efficacy.png}
+%\end{center}
+%\begin{center}
+%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility.png}
+%\end{center}
 \newpage
-\subsubsection{Example paths (violin plots)}
-\begin{center}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_efficacy.png}
-\end{center}
-\begin{center}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility.png}
-\end{center}
-\newpage
-\begin{center}
-An Example Path - Early Stoppage for Efficacy
+\subsubsection{Example paths}
+\begin{figure}
+\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_efficacy_ekk.png}
 
-\includegraphics[width=2.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_efficacy_ekk.jpg}
 
-An Example Path - Early Stoppage for Futility
-
-\includegraphics[width=2.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility_ekk.jpg}
-\end{center}
+\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility_ekk.png}
+\caption{(a) Early stopping for efficacy (b) Early stopping for futility}
+\end{figure}
 \newpage
 \subsubsection{Design properties: Results}
-\begin{center}
+Assume that the outcomes are ascertained after approximately 4 months of follow-up and 2 patients per month on average are enrolled. The study may stop enrollment at a given point in time, but all enrolled patients will be followed for outcome ascertainment. An interim analysis will be completed after every 2 subjects complete follow-up.
+\begin{figure}
 \includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/seq_des_pro}
-\end{center}
-\begin{itemize}
-\item EFF is the probability of the trial stopping early for efficacy.
-\item FUT is the probability of the trial stopping early for futility. 
-\item INC is the probability of reaching the maximum sample size without a conclusive monitoring result.
-\item CP is the coverage probability using the mixture prior.
-\item SS is the average sample size at the interim analysis and at the end of follow-up. Note there are approximately 8 subjects undergoing follow-up when enrollment is terminated.
-\item PM is the posterior mean using the mixture prior.
-\end{itemize}
+\caption{EFF is the probability of the trial stopping early for efficacy, FUT is the probability of the trial stopping early for futility,INC is the probability of reaching the maximum sample size without a conclusive monitoring result, SS is the average sample size at the interim analysis and at the end of follow-up (note there are approximately 8 subjects undergoing follow-up when enrollment is terminated), CP is the coverage probability using the mixture prior, PM is the posterior mean using the mixture prior.}
+\end{figure}
 \newpage
 \subsubsection{Design properties: Slow vs. fast accrual}
-\subsubsection{Type 1 error rate by the frequency of data monitoring}
-%The inference priors will be of the form $\pi_{I}=\omega\cdot\pi_{S}+(1-\omega)\cdot\pi_E$ with $\omega\in\{0,1/4,1/2,3/4,1\}$.
-%\begin{center}
-%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_2.png}
-%\end{center}
-
-
-
-Figures needed:
-\begin{enumerate}
-\item Sequential design properties - slow vs. fast accrual (average sample size, posterior mean, coverage probabilities, distribution of final posterior probability).
-\end{enumerate}
-Look at varying the types of priors while keeping the tail areas the same. More spiked are OBF, less spiked are Pocock.
-Vary decay rate will affect bias not Type I/II error. Not dissimilar to Frequentist: flatter-Pocock, mass at null-OBF.
-
-
-
-
-
+Add figure for how Type 1 error and power vary based on design schemes.
+\newpage
+\subsubsection{Agreement between interim and final result}
 \begin{itemize}
 \item Use correct terminology: discuss the probability of stopping early vs. probability we conclude the treatment works.
 \item The two sides of the discussion: first is what happens during the trial regarding sequential monitoring, such as \% of time stopping early vs. trial done to completion and expected sample size. Second is the final determination of efficacy or futility and how that relates to Type 1 Error and power. 
 \item Make the point that regardless of frequency of monitoring there are good Type 1 error rates. Remember the best case for sequential monitoring is slow enrollment relative to outcome ascertainment. Slow enrollment means there is a benefit to ending trial early and reach a conclusion faster. Outcome ascertainment needs to be somewhat fast to ensure a good \# of outcomes are generated.
-\item Consider hyperlinking formulas. 
 \end{itemize}
-\begin{center}
-\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties_2}
-\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/type1error_0809}
-\end{center}
+\begin{figure}
+\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties_2}
+\caption{Shows agreement between sequential and final determinations as they relate to the strict cut-offs}
+\end{figure}
+\newpage
+\subsubsection{Type 1 error rate by the frequency of data monitoring}
 \begin{itemize}
 \item Want to highlight that the ultimate inference will have no Type 1 error inflation. At this point the ultimate inference for efficacy is still made with skeptical prior.
 \item Label lines nicely.
@@ -335,24 +313,48 @@ Vary decay rate will affect bias not Type I/II error. Not dissimilar to Frequent
 \item Enrollment rate and \% of ongoing data as operating characteristics are interesting ideas, but focus on the plots already created.
 \item Mat: Scaling on \# of subjects in each interim analysis rather than \# of interim analyses (e.g. flip X axis). Make labels go vertical or diagonal.
 \end{itemize}
-\begin{center}
-\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/power_curves}
-\end{center}
-Looking at spike/slab and flat priors...
-\begin{itemize}
-\item Test the hypothesis that power curves will be identical and what will change is the expected sample sizes.
-\end{itemize}
-
-\textit{Include details for how Bayesian monitoring has good frequentist properties even with frequent interim analyses}.
-\begin{center}
-\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/evidence_decrease.png}
-\end{center}
+\begin{figure}
+\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/type1error_0809}
+\caption{Type 1 error rate depending on frequency of sequential monitoring}
+\end{figure}
+Bayesian monitoring has good frequentist properties even with frequent interim analyses.
+\newpage
+\subsubsection{Evidence decrease}
+\begin{figure}
+\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/evidence_decrease.png}
+\caption{Have the necessary data summaries in R, just need to replicate the plot.}
+\end{figure}
 \begin{itemize}
 \item Plot is conditional on evidence going down. For example, at $\theta=0.45$ there is a $93\%$ chance of agreement, which means there is evidence decrease only $7\%$ of the time. At $\theta=0.15$ there is evidence decrease $64\%$ of the time. Note that minimum is very sensitive to the number of simulations and should be removed from the plot. 
 \item Note that there is functionally a minimum sample size already that is the \# of subjects needed to overwhelm the skeptical prior. Actually compute the \# (perhaps after 5 consecutive successes).
 \item There is a drop in the final power which is undesirable, but the drop in type 1 error is desirable. These move in tandem.
 \item Move discussion away from being scared of evidence decrease. There is an attenuation with respect to dichotomous threshold, but not overall. In this sense \% agreement may be misleading. Look at the \% of change in the evidence rather than the \% change in the agreement based on a dichotomous agreement. The methods section may need to be modified to reduce focus on dichotmous decision. However, don't abandon hypothesis testing, but look at it holistically. Offer different perspectives on attenuation in the discussion. After all, 0.93 posterior probability isn't that different from 0.95.
 \end{itemize}
+%The inference priors will be of the form $\pi_{I}=\omega\cdot\pi_{S}+(1-\omega)\cdot\pi_E$ with $\omega\in\{0,1/4,1/2,3/4,1\}$.
+%\begin{center}
+%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_2.png}
+%\end{center}
+
+%\begin{center}
+%\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/power_curves}
+%\end{center}
+\newpage
+\section{Robustness of parameterizations of monitoring priors}
+\begin{itemize}
+\item Test the hypothesis that power curves will be identical and what will change is the expected sample sizes and that varying the decay rate will affect bias not Type I/II error
+\item Actually, the having one prior ``default" and the other spike-slab changes the monitoring result substantially. When using the spike-slab skeptical prior and the default enthuastic prior, the determination of efficacy at the interim is made less frequently than when using the default skeptical prior. Similarly, when using the spike-slab enthuastic prior and the default skeptical prior, the determination of futility is made less frequently than when using the default enthuastic prior.
+\item The spike-slab and flattened priors are both 2-part mixtures of Beta distributions. The flattened priors are not very well represented by 2-part mixtures of Betas. I would have to add more Beta components to produce good representations of a flattened prior.
+\end{itemize}
+\begin{figure}
+\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure5.png}
+ \caption{(a) Spike-slab skeptical prior (b) Flattened skeptical prior (c) Spike-slab enthuastic prior (d) Flattened enthuastic prior}
+\end{figure}
+\begin{figure}
+\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/spike-slab_skeptical}
+\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/spike-slab_enthuastic}
+\caption{(a) Spike-slab skeptical prior and default enthuastic prior (b) Default skeptical prior and spike-slab enthuastic prior}
+\end{figure}
+\newpage
 
 
 
@@ -415,26 +417,7 @@ A: This would basically be a frequentist method, in that the design would have t
 %      \caption{Prior for Control Group Response Probability \label{fig:pmp}}
 %    \end{figure}
 			
-\section*{Meeting Notes 7/19/19}
-\begin{itemize}
-\item For slides 22/23, it should say nmis not ymis.
-\item Violin plots are particular examples.
-\item Run replicates of trial to get frequentist properties.
-\item Poisson process enrollment, $\lambda$=rate parameter, $1/\lambda$=monthly enrollment. Consider the outcome ascertainment length in months.
-\item Interim/final results are consistent if quick/high enrollment relative to outcome ascertainment (think of the extreme example of instant ascertainment). Iterim/final results could be inconsistent if slow/low enrollment relative to outcome ascertainment.
-\item The efficacy criteria (proving the null is not true (showing skeptical prior based centered $H_0$ is now convinced)) is usually not changed in simulations.
-\item The futility criteria takes two forms: use futility prior based on intermediate value (between $H_0$ and $H_1$) if the intermediate value has clinical significant, otherwise use probability of success (POS). Pick one method to show in the paper, and show the other way is equivalent in the supplement.
-\item \textit{Major point: Regardless of the frequency of monitoring there are good type 1 error rates}.
-\item Recall the best case for sequential monitoring is slow enrollment relative to outcome ascertainment (outcome ascertainment is quick to provide consistency with interim and final results, enrollment is slow so there is substantial pragmatic benefit to ending trial early if possible).
-\item Create panel graph, with Slow, Medium, and High enrollment. Slow=1 subject per month, instantanous outcome ascertainment. Medium=2 subjects per month, 1 month for outcome ascertainment. High=2 subjects per month, 2 months for outcome ascertainment. Show interim and final probability of rejecting $H_0$. Show how the type 1 error changes in each scenario. There is no gap in Slow case, and gap is highest in High case.
-\item Main ideas
-\begin{enumerate}
-\item Show how the Bayesian monitoring can be done with examples based on violin plot idea. These examples will have variable enrollment rates to show agreement of interim/final.
-\item Show frequentist properties of sequential monitoring Bayesian trial when enrollment is slow relative to outcome ascertainment.
-\item Show how the frequentist Type 1 error rate inflates as a function of the \# of times the data are monitored.
-\item Explore alternative distributions for skeptical and enthuastic priors and discuss relationships to OBF and Pocock $\alpha$-spending. The alternative distributions could be mixtures of Betas.
-\end{enumerate}
-\end{itemize}
+
 
 %\bigskip
 \newpage
@@ -453,12 +436,12 @@ Alternatively, the variance could be determined by specifying a desired quantile
 \theta_0=E(\pi_S)=\int_{\Theta}\pi_S(\theta)d\theta=\frac{\alpha}{\alpha+\beta}\text{ and }\lambda=\int_{\theta_A}^{1}\pi_S(\theta)d\theta=\int_{\theta_A}^{1}\frac{\theta^{\alpha-1}(1-\theta)^{\beta-1}}{B(\alpha,\beta)}d\theta,
 \end{align*}
 in which case $\delta=\int_{\Theta_0}\pi_S(\theta)d\theta$ is a deterministic quantity.
-\begin{center}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/ss_skpt}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/ss_enth}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_skpt}
-\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_enth}
-\end{center}
+%\begin{center}
+%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/ss_skpt}
+%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/ss_enth}
+%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_skpt}
+%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_enth}
+%\end{center}
 \section{BibTeX}
 
  \bibliographystyle{agsm}

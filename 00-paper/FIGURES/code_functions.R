@@ -67,21 +67,29 @@ posterior.cov.2<-function(a.s.1,b.s.1,a.s.2,b.s.2,w.s.1,
 }
 
 ## posterior cdf
-posterior.cdf<-function(a1,b1,a2,b2,y0,y1,q){
+posterior.cdf<-function(a1,b1,a2,b2,y0,y1,q,w){
   
-  c<-beta(a1+y1,b1+y0)/beta(a1,b1)/
-    (beta(a1+y1,b1+y0)/beta(a1,b1)+beta(a2+y1,b2+y0)/beta(a2,b2))
+  k1.0<-w
+  k2.0<-1-w
   
-  result<-c*pbeta(q,a1+y1,b1+y0)+(1-c)*pbeta(q,a2+y1,b2+y0)
+  c1<-beta(a1+y1,b1+y0)/beta(a1,b1)
+  c2<-beta(a2+y1,b2+y0)/beta(a2,b2)
+  
+  k1.1<-k1.0*c1/(k1.0*c1+k2.0*c2)
+  k2.1<-k2.0*c1/(k1.0*c1+k2.0*c2)
+  
+  result<-k1.1*pbeta(q,a1+y1,b1+y0)+
+          k2.1*pbeta(q,a2+y1,b2+y0)
   
   return(result)}
 
+# THIS IS WRONG!!
 posterior.cdf.2<-function(a.s.1,b.s.1,a.s.2,b.s.2,w.s.1,
                           a.e.1,b.e.1,a.e.2,b.e.2,w.e.1,
                           y0,y1,q){
   
   k.0<-1/2*c(w.s.1,1-w.s.1,w.e.1,1-w.e.1)
-  
+  # THIS IS WRONG!!
   c<-c(beta(a.s.1+y1,b.s.1+y0)/beta(a.s.1,b.s.1),
        beta(a.s.2+y1,b.s.2+y0)/beta(a.s.2,b.s.2),
        beta(a.e.1+y1,b.e.1+y0)/beta(a.e.1,b.e.1),

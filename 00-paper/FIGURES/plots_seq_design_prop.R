@@ -3,7 +3,7 @@ par(mar=c(5.1+5,4.1,4.1,2.1))
 i<-1
 plot(p.range,outer[i,,"eff.mon.initial"],type='l',ylim=c(0,1),lwd=2,col="blue",
      ylab="Probability",xlab="",
-     main="Sequential Design Properties",
+     main="Default Skeptical Prior, Default Enthuastic Prior",
      axes=FALSE)
 box()
 #text(p.range,outer[i,,"eff.mon.initial"],labels=format(round(outer[i,,"eff.mon.initial"],digits=2),nsmall=2),pos=3)
@@ -58,25 +58,25 @@ for (j in 1:length(p.range)){
                     format(round(outer[i,j,"ss.final"],digits=1),nsmall=1)),
         side=1,line=row+1,at=p.range[j])
 }
-mtext(text="CP",side=1,line=row+1,at=0.125)
-row<-7
-for (j in 1:length(p.range)){
-  mtext(text=paste0("(I) ",
-                    format(round(outer[i,j,"post.mean.initial"],digits=3),nsmall=3),
-                    " (F) ",
-                    format(round(outer[i,j,"post.mean.final"],digits=3),nsmall=3)),
-        side=1,line=row+1,at=p.range[j])
-}
 mtext(text="SS",side=1,line=row+1,at=0.125)
-row<-8
-for (j in 1:length(p.range)){
-  mtext(text=paste0("(I) ",
-                    format(round(outer[i,j,"cov.initial"],digits=3),nsmall=3),
-                    " (F) ",
-                    format(round(outer[i,j,"cov.final"],digits=3),nsmall=3)),
-        side=1,line=row+1,at=p.range[j])
-}
-mtext(text="PM",side=1,line=row+1,at=0.125)
+# row<-7
+# for (j in 1:length(p.range)){
+#   mtext(text=paste0("(I) ",
+#                     format(round(outer[i,j,"post.mean.initial"],digits=3),nsmall=3),
+#                     " (F) ",
+#                     format(round(outer[i,j,"post.mean.final"],digits=3),nsmall=3)),
+#         side=1,line=row+1,at=p.range[j])
+# }
+# mtext(text="CP",side=1,line=row+1,at=0.125)
+# row<-8
+# for (j in 1:length(p.range)){
+#   mtext(text=paste0("(I) ",
+#                     format(round(outer[i,j,"cov.initial"],digits=3),nsmall=3),
+#                     " (F) ",
+#                     format(round(outer[i,j,"cov.final"],digits=3),nsmall=3)),
+#         side=1,line=row+1,at=p.range[j])
+# }
+# mtext(text="PM",side=1,line=row+1,at=0.125)
 
 # column<-1
 # text(locator(1),"Stop Early for Efficacy")

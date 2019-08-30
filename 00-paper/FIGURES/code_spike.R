@@ -9,15 +9,15 @@ invcdf.lower<-function(x,t){t*sqrt(x)}
 invcdf.upper<-function(x,t){1-(1-t)*sqrt(1-x)}
 
 ## PARAMETERS ##
-t.lower<-0.2
-t.upper<-0.55
-cut<-c(0.35,0.45)         # cutoff points determining inner 3 segments
-p<-c(0.05,NA,.4,NA,0.05)  # probabilities of the 5 segments
-target.mean<-0.4          # desired mean
-target.tail<-0.05         # created with lower tail in mind
-target.cutoff<-0.20       # created with lower tail in mind
-mean.tol<-0.4*0.01            
-tail.tol<-0.05*0.01
+t.lower<-0.05
+t.upper<-0.4
+cut<-c(0.15,0.225)         # cutoff points determining inner 3 segments
+p<-c(0.1,NA,.2,NA,0.045)  # probabilities of the 5 segments
+target.mean<-0.2         # desired mean
+target.tail<-0.955         # created with lower tail in mind
+target.cutoff<-t.upper       
+mean.tol<-0.01           
+tail.tol<-0.01
 
 E<-c(t.lower*(2/3),       # expected value of each segment separately
      (t.lower+cut[1])/2,  # used the fact that the end pieces are triangular
@@ -44,7 +44,6 @@ samps<-c(invcdf.lower(x=runif(n=reps*p[1]),t=t.lower),
          cut[1]+runif(n=reps*p[3])*(cut[2]-cut[1]),
          cut[2]+runif(n=reps*p[4])*(t.upper-cut[2]),
          invcdf.upper(x=runif(n=reps*p[5]),t=t.upper))
-
 hist(samps,breaks=seq(0,1,length=100),freq=F)
 mean(samps)
 
@@ -56,7 +55,7 @@ while(cond1>mean.tol | cond2 > tail.tol){
   
 print(i)
   
-reps<-500
+reps<-1000
 samps<-c(invcdf.lower(x=runif(n=reps*p[1]),t=t.lower),
          t.lower+runif(n=reps*p[2])*(cut[1]-t.lower),
          cut[1]+runif(n=reps*p[3])*(cut[2]-cut[1]),
@@ -68,7 +67,7 @@ mean(samps)
 
 d <- data.frame(y=samps[-c(1,length(samps))])
 
-k<-2
+k<-4
 m <- betamix(y ~ 1 | 1, data = d, k = k)
 
 if (length(coef(m))==k*2){
@@ -85,10 +84,11 @@ print(cond2)}
 i<-i+1
 }
 
-
+sum(w*a/(a+b))
+sum(w*pbeta(q=target.cutoff,shape1=a,shape2=b))
 x<-seq(0,1,by=0.01)
 hist(d$y,freq=FALSE,ylim=c(0,10))
 lines(x, dbeta(x, shape1 = a[1], shape2 = b[1]),col = hcl(0, 80, 50), lwd = 2)
 lines(x, dbeta(x, shape1 = a[2], shape2 = b[2]),col = hcl(240, 80, 50), lwd = 2)
 lines(x, w[1]*dbeta(x, shape1 = a[1], shape2 = b[1])+w[2]*dbeta(x, shape1 = a[2], shape2 = b[2]))
-
+lines(x,dbeta(x,alpha.skpt,beta.skpt))
