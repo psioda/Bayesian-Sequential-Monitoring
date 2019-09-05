@@ -1,7 +1,32 @@
-rm(list = ls())
-
 ## posterior coverage probability
 ## assuming equal mixture of priors
+
+posterior.quantile<-function(a1,b1,a2,b2,y0,y1,cred.tail){
+  
+  c<-beta(a1+y1,b1+y0)/beta(a1,b1)/
+    (beta(a1+y1,b1+y0)/beta(a1,b1)+
+       beta(a2+y1,b2+y0)/beta(a2,b2))
+  
+  lower_cr<-0
+  tail <-0
+  while(tail<cred.tail/2){
+    tail<-c*pbeta(lower_cr,a1+y1,b1+y0)+
+      (1-c)*pbeta(lower_cr,a2+y1,b2+y0)
+    if (tail<=cred.tail/2) lower_cr<-lower_cr+1e-3
+  }
+  
+  upper_cr<-1
+  tail <-0
+  while(tail<cred.tail/2){
+    tail<-c*pbeta(upper_cr,a1+y1,b1+y0,lower.tail=FALSE)+
+      (1-c)*pbeta(upper_cr,a2+y1,b2+y0,lower.tail=FALSE)
+    if (tail<=cred.tail/2) upper_cr<-upper_cr-1e-3
+  }
+  
+  result<-c(lower_cr,upper_cr)
+  
+  return(result)}
+
 posterior.cov<-function(a1,b1,a2,b2,y0,y1,p,cred.tail){
   
   c<-beta(a1+y1,b1+y0)/beta(a1,b1)/
@@ -27,6 +52,7 @@ posterior.cov<-function(a1,b1,a2,b2,y0,y1,p,cred.tail){
   result<-(p>=lower_cr & p<=upper_cr)
   
   return(result)}
+
 ## posterior coverage probability
 posterior.cov.2<-function(a.s.1,b.s.1,a.s.2,b.s.2,w.s.1,
                           a.e.1,b.e.1,a.e.2,b.e.2,w.e.1,

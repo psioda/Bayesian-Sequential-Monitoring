@@ -1,30 +1,3 @@
-spike<-0 # spike/slab version or regular version
-
-## Design parameters, usual case ##
-p.skpt<-0.20      # response rate for skeptic, enthusiast, futility
-p.enth<-0.40
-p.intr<-0.30
-tail.skpt<-0.045  # tail probabilities for priors (low, high)
-tail.enth<-0.05
-sig.fut<-0.85     # significant trial result threshold
-sig.eff<-0.95
-cred.tail<-0.05   # credible interval is 1-cred.tail
-max.ss<-76        # maximum sample size
-
-## Simulation parameters ##
-reps<-25000       # number of simulated trials per design
-p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05) # range of response proportion
-#p.range<-0.15                             
-freq.mntr<-2      # frequency of monitoring
-#freq.mntr<-c(1,2,4,8,16,76)
-#freq.mntr<-rep(c(1,2,4,8,16,80),4) 
-enr.shape<-1      # shape gamma dist enrollment
-#enr.shape<-c(rep(1,12),rep(0.25,12))
-#enr.shape<-rep(1,6)
-out.mean<-4       # mean normal dist outcome
-#out.mean<-rep(4,6)
-#out.mean<-rep(c(rep(4,6),rep(8,6)),2)
-
 #################################################################################################
 ## SIMULATIONS ##################################################################################
 #################################################################################################
@@ -67,25 +40,20 @@ for (j in 1:length(p.range)){
     y1<-cumsum(responses)
     y0<-seq(1:length(responses))-y1
     
-    ## monitoring
     if (spike==0){
     futility<-pbeta(p.intr,alpha.enth+y1,beta.enth+y0,lower.tail=TRUE)
     efficacy<-pbeta(p.skpt,alpha.skpt+y1,beta.skpt+y0,lower.tail=TRUE)}
-    if (spike==1){
     
-   
-    # fixed problem  
+    if (spike==1){
     futility<-posterior.cdf(a1=alpha.enth.1,b1=beta.enth.1,
                             a2=alpha.enth.2,b2=beta.enth.2,
                             y0=y0,y1=y1,q=p.intr,w=mix.2)
-      
     efficacy<-posterior.cdf(a1=alpha.skpt.1,b1=beta.skpt.1,
                             a2=alpha.skpt.2,b2=beta.skpt.2,
-                            y0=y0,y1=y1,q=p.skpt,w=mix.1)
+                            y0=y0,y1=y1,q=p.skpt,w=mix.1)}
     
-    }
     n.initial<-min(
-      which((futility>sig.fut) | ((1-efficacy)>sig.eff) & (seq(1:max.ss)%%freq.mntr==0)),
+      which(((futility>sig.fut) | ((1-efficacy)>sig.eff)) & (seq(1:max.ss)%%freq.mntr[i]==0)),
       max.ss,na.rm=TRUE)
     
     cutoff.time<-outcome.times[n.initial]
@@ -99,53 +67,53 @@ for (j in 1:length(p.range)){
     inner[k,paste0("ss.",time[l])]<-n[l]
     inner[k,paste0("phat.",time[l])]<-y1[n[l]]/n[l]
     if (spike==0){
-    # inner[k,paste0("fut.inf.",time[l])]<-(posterior.cdf(a1=alpha.skpt,b1=beta.skpt,
-    #                                        a2=alpha.enth,b2=beta.enth,
-    #                                        y0=y0[n[l]],y1=y1[n[l]],q=p.intr)>sig.fut)
-    # inner[k,paste0("eff.inf.",time[l])]<-(1-posterior.cdf(a1=alpha.skpt,b1=beta.skpt,
-    #                                        a2=alpha.enth,b2=beta.enth,
-    #                                        y0=y0[n[l]],y1=y1[n[l]],q=p.skpt)>sig.eff)
-    # inner[k,paste0("post.mean.",time[l])]<-posterior.mean(a1=alpha.skpt,b1=beta.skpt,
-    #                                                  a2=alpha.enth,b2=beta.enth,
-    #                                                  y1=y1[n[l]],y0=y0[n[l]])
-    # inner[k,paste0("cov.",time[l])]<-posterior.cov(a1=alpha.skpt,b1=beta.skpt,
-    #                                           a2=alpha.enth,b2=beta.enth,
-    #                                           y1=y1[n[l]],y0=y0[n[l]],
-    #                                           p=p.range[j],
-    #                                           cred.tail=cred.tail)
+    inner[k,paste0("fut.inf.",time[l])]<-(posterior.cdf(a1=alpha.skpt,b1=beta.skpt,
+                                           a2=alpha.enth,b2=beta.enth,
+                                           y0=y0[n[l]],y1=y1[n[l]],q=p.intr,w=0.5)>sig.fut)
+    inner[k,paste0("eff.inf.",time[l])]<-(1-posterior.cdf(a1=alpha.skpt,b1=beta.skpt,
+                                           a2=alpha.enth,b2=beta.enth,
+                                           y0=y0[n[l]],y1=y1[n[l]],q=p.skpt,w=0.5)>sig.eff)
+    inner[k,paste0("post.mean.",time[l])]<-posterior.mean(a1=alpha.skpt,b1=beta.skpt,
+                                                     a2=alpha.enth,b2=beta.enth,
+                                                     y1=y1[n[l]],y0=y0[n[l]])
+    inner[k,paste0("cov.",time[l])]<-posterior.cov(a1=alpha.skpt,b1=beta.skpt,
+                                              a2=alpha.enth,b2=beta.enth,
+                                              y1=y1[n[l]],y0=y0[n[l]],
+                                              p=p.range[j],
+                                              cred.tail=cred.tail)
       }
     if (spike==1){
-    # inner[k,paste0("fut.inf.",time[l])]<-(posterior.cdf.2(
-    #                                       a.s.1=alpha.skpt.1,b.s.1=beta.skpt.1,
-    #                                       a.s.2=alpha.skpt.2,b.s.2=beta.skpt.2,
-    #                                       w.s.1=mix.1,
-    #                                       a.e.1=alpha.enth.1,b.e.1=beta.enth.1,
-    #                                       a.e.2=alpha.enth.2,b.e.2=beta.enth.2,
-    #                                       w.e.1=mix.2,
-    #                                       y1=y1[n[l]],y0=y0[n[l]],q=p.intr)>sig.fut)
-    # 
-    # inner[k,paste0("eff.inf.",time[l])]<-(1-posterior.cdf.2(
-    #                                         a.s.1=alpha.skpt.1,b.s.1=beta.skpt.1,
-    #                                         a.s.2=alpha.skpt.2,b.s.2=beta.skpt.2,
-    #                                         w.s.1=mix.1,
-    #                                         a.e.1=alpha.enth.1,b.e.1=beta.enth.1,
-    #                                         a.e.2=alpha.enth.2,b.e.2=beta.enth.2,
-    #                                         w.e.1=mix.2,
-    #                                         y1=y1[n[l]],y0=y0[n[l]],q=p.skpt)>sig.eff)
-    # 
-    # inner[k,paste0("post.mean.",time[l])]<-posterior.mean.2(
-    #     a.s.1=alpha.skpt.1,b.s.1=beta.skpt.1,
-    #     a.s.2=alpha.skpt.2,b.s.2=beta.skpt.2,w.s.1=mix.1,
-    #     a.e.1=alpha.enth.1,b.e.1=beta.enth.1,
-    #     a.e.2=alpha.enth.2,b.e.2=beta.enth.2,w.e.1=mix.2,
-    #     y1=y1[n[l]],y0=y0[n[l]])
-    # 
-    # inner[k,paste0("cov.",time[l])]<-posterior.cov.2(
-    #     a.s.1=alpha.skpt.1,b.s.1=beta.skpt.1,
-    #     a.s.2=alpha.skpt.2,b.s.2=beta.skpt.2,w.s.1=mix.1,
-    #     a.e.1=alpha.enth.1,b.e.1=beta.enth.1,
-    #     a.e.2=alpha.enth.2,b.e.2=beta.enth.2,w.e.1=mix.2,
-    #     y1=y1[n[l]],y0=y0[n[l]],p=p.range[j],cred.tail=cred.tail)
+    inner[k,paste0("fut.inf.",time[l])]<-(posterior.cdf.2(
+                                          a.s.1=alpha.skpt.1,b.s.1=beta.skpt.1,
+                                          a.s.2=alpha.skpt.2,b.s.2=beta.skpt.2,
+                                          w.s.1=mix.1,
+                                          a.e.1=alpha.enth.1,b.e.1=beta.enth.1,
+                                          a.e.2=alpha.enth.2,b.e.2=beta.enth.2,
+                                          w.e.1=mix.2,
+                                          y1=y1[n[l]],y0=y0[n[l]],q=p.intr)>sig.fut)
+
+    inner[k,paste0("eff.inf.",time[l])]<-(1-posterior.cdf.2(
+                                            a.s.1=alpha.skpt.1,b.s.1=beta.skpt.1,
+                                            a.s.2=alpha.skpt.2,b.s.2=beta.skpt.2,
+                                            w.s.1=mix.1,
+                                            a.e.1=alpha.enth.1,b.e.1=beta.enth.1,
+                                            a.e.2=alpha.enth.2,b.e.2=beta.enth.2,
+                                            w.e.1=mix.2,
+                                            y1=y1[n[l]],y0=y0[n[l]],q=p.skpt)>sig.eff)
+
+    inner[k,paste0("post.mean.",time[l])]<-posterior.mean.2(
+        a.s.1=alpha.skpt.1,b.s.1=beta.skpt.1,
+        a.s.2=alpha.skpt.2,b.s.2=beta.skpt.2,w.s.1=mix.1,
+        a.e.1=alpha.enth.1,b.e.1=beta.enth.1,
+        a.e.2=alpha.enth.2,b.e.2=beta.enth.2,w.e.1=mix.2,
+        y1=y1[n[l]],y0=y0[n[l]])
+
+    inner[k,paste0("cov.",time[l])]<-posterior.cov.2(
+        a.s.1=alpha.skpt.1,b.s.1=beta.skpt.1,
+        a.s.2=alpha.skpt.2,b.s.2=beta.skpt.2,w.s.1=mix.1,
+        a.e.1=alpha.enth.1,b.e.1=beta.enth.1,
+        a.e.2=alpha.enth.2,b.e.2=beta.enth.2,w.e.1=mix.2,
+        y1=y1[n[l]],y0=y0[n[l]],p=p.range[j],cred.tail=cred.tail)
     }
     # posterior probability
     inner.p[k,paste0(time[l],".p")]<-(1-efficacy[n[l]])
@@ -153,7 +121,8 @@ for (j in 1:length(p.range)){
     
   }
 outer[i,j,]<-apply(inner,MARGIN=2,FUN=mean)
-outer.p[i,j,]<-quantile(inner.p[,"final.p"][inner.p[,"initial.p"]>sig.eff],probs=probs.p)
+outer.p[i,j,]<-quantile(inner.p[,"final.p"][inner.p[,"initial.p"]>sig.eff & inner.p[,"final.p"]<sig.eff],
+                        probs=probs.p)
 outer.p.agree[i,j,"p.agree"]<-sum((inner.p[,"initial.p"]>sig.eff)==(inner.p[,"final.p"]>sig.eff))/reps
 outer.p.agree[i,j,"efficacy"]<-sum((inner.p[,"initial.p"]>sig.eff) & (inner.p[,"final.p"]>sig.eff))/reps
 outer.p.agree[i,j,"conditional"]<-sum((inner.p[,"initial.p"]>sig.eff) & (inner.p[,"final.p"]>sig.eff))/

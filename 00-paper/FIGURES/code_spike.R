@@ -9,13 +9,14 @@ invcdf.lower<-function(x,t){t*sqrt(x)}
 invcdf.upper<-function(x,t){1-(1-t)*sqrt(1-x)}
 
 ## PARAMETERS ##
-t.lower<-0.05
-t.upper<-0.4
-cut<-c(0.15,0.225)         # cutoff points determining inner 3 segments
-p<-c(0.1,NA,.2,NA,0.045)  # probabilities of the 5 segments
-target.mean<-0.2         # desired mean
-target.tail<-0.955         # created with lower tail in mind
-target.cutoff<-t.upper       
+t.lower<-0.2
+target.cutoff<-t.lower 
+target.mean<-0.4
+t.upper<-0.8
+cut<-c(0.22,0.5)        # cutoff points determining inner 3 segments
+target.tail<-0.05        # created with lower tail in mind
+p<-c(target.tail,NA,.6,NA,0.01)  # probabilities of the 5 segments
+
 mean.tol<-0.01           
 tail.tol<-0.01
 
@@ -29,13 +30,8 @@ E<-c(t.lower*(2/3),       # expected value of each segment separately
 A<-t(matrix(data=c(1,1,(t.lower+cut[1])/2,(cut[2]+t.upper)/2),
           nrow=2,ncol=2))
 b<-c(1-sum(p,na.rm=TRUE),target.mean-sum(E*p,na.rm=TRUE))
-
 p[2]<-solve(a=A,b=b)[1]
 p[4]<-solve(a=A,b=b)[2]
-
-# final check
-sum(p)
-sum(E*p)
 
 # check histogram
 reps<-1E6
