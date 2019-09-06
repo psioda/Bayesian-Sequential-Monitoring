@@ -45,17 +45,17 @@ beta.enth<-(1-(p.enth))*phi_H
 # beta.enth.2<-143.682052
 # mix.2<-0.3426655
 # 
-## Design parameters, default enthuastic, spike/slab skeptical
-alpha.skpt.1<-0.969595
-beta.skpt.1<-2.186593
-alpha.skpt.2<-10.199189
-beta.skpt.2<-46.344410
-mix.1<-0.1421888
-alpha.enth.1<-alpha.enth
-beta.enth.1<-beta.enth
-alpha.enth.2<-alpha.enth
-beta.enth.2<-beta.enth
-mix.2<-0.5
+# ## Design parameters, default enthuastic, spike/slab skeptical
+# alpha.skpt.1<-0.969595
+# beta.skpt.1<-2.186593
+# alpha.skpt.2<-10.199189
+# beta.skpt.2<-46.344410
+# mix.1<-0.1421888
+# alpha.enth.1<-alpha.enth
+# beta.enth.1<-beta.enth
+# alpha.enth.2<-alpha.enth
+# beta.enth.2<-beta.enth
+# mix.2<-0.5
 
 # ## Design parameters, spike/slab case ##
 # alpha.skpt.1<-0.969595  

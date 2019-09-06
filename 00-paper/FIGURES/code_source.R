@@ -11,16 +11,29 @@ tail.skpt<-0.045  # tail probabilities for priors (low, high)
 tail.enth<-0.05
 source("code_headers.R")
 
-spike<-1 # spike/slab version or regular version
 sig.fut<-0.85
 sig.eff<-0.95
 cred.tail<-0.05
 max.ss<-76
-reps<-8000
-p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05) # range of response proportion
-freq.mntr<-2      # frequency of monitoring
-enr.shape<-1      # shape gamma dist enrollment
-out.mean<-4       # mean normal dist outcome
+reps<-50000
+p.range<-0.20
+#p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05)
+freq.mntr<-c(1,2,4,8,16,76)
+enr.shape<-1
+out.mean<-8
+source("code_main_nested.R")
+
+spike<-0 # spike/slab version or regular version
+sig.fut<-0.85
+sig.eff<-0.95
+cred.tail<-0.05
+max.ss<-76
+reps<-10000
+p.range=0.2
+#p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05) # range of response proportion
+freq.mntr<-rep(c(1,2,4,8,16,76),2)     # frequency of monitoring
+enr.shape<-c(rep(1,6),rep(0.25,6))      # shape gamma dist enrollment
+out.mean<-c(rep(4,12))       # mean normal dist outcome
 source("code_main.R")
 label_main=""
 stretch<-0.125

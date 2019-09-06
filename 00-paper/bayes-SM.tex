@@ -296,11 +296,8 @@ Final $P(\theta>0.20|\mathbf{D},\pi_S)< 0.95$&70.7\%&49.0\%&35.5\%&24.7\%&16.8\%
 \hspace{0.5in}Conditional 1st percentile&0.67&0.78&0.81&0.81&0.82&0.82&0.82
 \end{tabular}
 \end{center}
-For example, at a true response rate of $\theta=0.40$, there is an $89.4\%$ that the threshold for a significant result is maintained after the additional subjects complete follow-up, and in the $10.6\%$ of cases that the evidence decreases, the median posterior probability is $0.93$ and only in $10\%$ of cases is the posterior probability lower than $0.88$. Thus there is a slight attenudation with respect to the dichotomous threshold, but little change in the posterior probability overall.
 
-%\subsubsection{Design properties: Slow vs. fast accrual}
-%Add figure for how Type 1 error and power vary based on design schemes.
-%\newpage
+For example, at a true response rate of $\theta=0.40$, there is an $89.4\%$ that the threshold for a significant result is maintained after the additional subjects complete follow-up, and in the $10.6\%$ of cases that the evidence decreases, the median posterior probability is $0.93$ and only in $10\%$ of cases is the posterior probability lower than $0.88$. Thus there is a slight attenudation with respect to the dichotomous threshold, but little change in the posterior probability overall.
 
 %\begin{figure}
 %\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties_2}
@@ -325,7 +322,24 @@ As expected, the probability of stopping enrollment due to a promising interim t
 \caption{Type 1 error rate depending on frequency of sequential monitoring}
 \end{figure}
 
-
+\newpage
+\subsubsection{Type 1 error rate depending on enrollment schemes}
+Consider the same trial but with a longer follow-up length of 8 months rather than 4 months. 
+\begin{center}
+\textbf{Comparision of Efficacy Stopping, Type 1 Error Rate, and Sample Size by follow-up length and frequency of sequential monitoring}
+\begin{tabular}{l | cccccccc}
+Mon Freq  & Eff. Stopping	&		&	T1E Final	&		&	SS Final	&		&	\% Ongoing	&\\
+	&	4 mon	&	8 mon	&	4 mon	&	8 mon	&	4 mon	&	8 mon	&	4 mon	&	8 mon	\\
+\hline
+76	&	0.040	&	0.039	&	0.040	&	0.039	&	76.0	&	76.0	&	0.0\%	&	0.0\%	\\
+16	&	0.058	&	0.056	&	0.047	&	0.042	&	54.8	&	60.0	&	10.4\%	&	18.1\%	\\
+8	&	0.068	&	0.067	&	0.049	&	0.043	&	51.1	&	56.7	&	12.5\%	&	21.3\%	\\
+4	&	0.075	&	0.075	&	0.050	&	0.043	&	48.2	&	54.1	&	13.7\%	&	23.4\%	\\
+2	&	0.095	&	0.094	&	0.050	&	0.043	&	46.4	&	52.8	&	15.1\%	&	25.5\%	\\
+1	&	0.108	&	0.107	&	0.050	&	0.043	&	45.1	&	51.7	&	15.7\%	&	26.8\%	
+\end{tabular}
+\end{center}
+Note that the probability of efficacy stopping and Type 1 error rate increase monotonically for both specifications of follow-up length. The Type 1 error rate is lower for the 8-month follow-up design since there are more subjects in the final sample size.
 %\begin{figure}
 %\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/evidence_decrease.png}
 %\caption{Have the necessary data summaries in R, just need to replicate the plot.}
