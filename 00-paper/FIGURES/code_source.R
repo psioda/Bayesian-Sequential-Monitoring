@@ -9,19 +9,122 @@ p.enth<-0.40
 p.intr<-0.30
 tail.skpt<-0.045  # tail probabilities for priors (low, high)
 tail.enth<-0.05
-source("code_headers.R")
+source("code_headers_beta.R")
+
+lambda0.skpt<-0.95 # spike
+lambda0.enth<-1.3 # spike
+source("code_headers_gen_nrml.R")
+ 
+sig.fut<-0.85
+sig.eff<-0.95
+cred.tail<-0.05
+max.ss<-76
+reps<-20000
+p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05)
+freq.mntr<-2
+enr.shape<-1
+out.mean<-4
+spike<-1 # generalized normal priors
+source("code_main.R")
+
+label_main=""
+stretch<-0.125
+pdf('spike_2019-09-18.pdf',height=6,width=15)
+source("plots_seq_design_prop.R")
+dev.off()
+
+lambda0.skpt<-4 # flat
+lambda0.enth<-5 # flat
+source("code_headers_gen_nrml.R")
 
 sig.fut<-0.85
 sig.eff<-0.95
 cred.tail<-0.05
 max.ss<-76
-reps<-50000
-p.range<-0.20
-#p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05)
-freq.mntr<-c(1,2,4,8,16,76)
+reps<-20000
+p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05)
+freq.mntr<-2
 enr.shape<-1
-out.mean<-8
-source("code_main_nested.R")
+out.mean<-4
+spike<-1 # generalized normal priors
+source("code_main.R")
+
+label_main=""
+stretch<-0.125
+pdf('flat_2019-09-18.pdf',height=6,width=15)
+source("plots_seq_design_prop.R")
+dev.off()
+
+
+
+#########################################################
+### Plot beta and generalized normal REGULAR priors #####
+#########################################################
+par(mfrow = c(1, 2)) 
+lambda0.skpt<-1.45 # regular
+lambda0.enth<-3 # regular
+source("code_headers_gen_nrml.R")
+
+
+x<-seq(0,1,by=0.01)
+plot(x,dbeta(x,alpha.skpt,beta.skpt),type="l",
+     xlab="Response Probability",ylab="Density Value",
+     ylim=c(0,6))
+lines(x,prior.nc.skpt(x),lty='longdash')
+x<-seq(0,1,by=0.01)
+plot(x,dbeta(x,alpha.enth,beta.enth),type="l",
+     xlab="Response Probability",ylab="Density Value",
+     ylim=c(0,6))
+lines(x,prior.nc.enth(x),lty='longdash')
+#########################################################
+
+#########################################################
+### Plot beta and generalized normal SKEPTICAL priors ###
+#########################################################
+lambda0.skpt<-0.95 # spike
+lambda0.enth<-1.3 # spike
+source("code_headers_gen_nrml.R")
+par(mfrow = c(1, 1)) 
+par(mar=c(5.1,4.1,4.1-2,2.1)) #bottom, left, top, and right.
+x<-seq(0,1,by=0.01)
+plot(x,dbeta(x,alpha.skpt,beta.skpt),type="l",
+     xlab="Response Probability",ylab="Density Value",
+     ylim=c(0,6),lwd=2)
+lines(x,prior.nc.skpt(x),lty=2,col='darkgrey',lwd=2)
+
+lambda0.skpt<-4 # flat
+lambda0.enth<-5 # flat
+source("code_headers_gen_nrml.R")
+
+lines(x,prior.nc.skpt(x),lty=3,col="grey",lwd=2)
+legend(0.6, 4, legend=c("Spike/Slab", "Default Beta","Flattened"),
+       col=c("darkgrey", "black", "grey"), lty=c(2,1,3), cex=0.8,lwd=2)
+#########################################################
+
+#########################################################
+### Plot beta and generalized normal ENTHUASTIC priors ##
+#########################################################
+lambda0.skpt<-0.95 # spike
+lambda0.enth<-1.3 # spike
+source("code_headers_gen_nrml.R")
+
+x<-seq(0,1,by=0.01)
+plot(x,dbeta(x,alpha.enth,beta.enth),type="l",
+     xlab="Response Probability",ylab="Density Value",
+     ylim=c(0,5),lwd=2)
+lines(x,prior.nc.enth(x),lty='longdash',col='darkgrey',lwd=2)
+
+lambda0.skpt<-4 # flat
+lambda0.enth<-5 # flat
+source("code_headers_gen_nrml.R")
+
+lines(x,prior.nc.enth(x),lty=3,col="grey",lwd=2)
+legend(0.6, 4*5/6, legend=c("Spike/Slab", "Default Beta","Flattened"),
+       col=c("darkgrey", "black", "grey"), lty=c(2,1,3), cex=0.8,lwd=2)
+#########################################################
+
+
+
 
 spike<-0 # spike/slab version or regular version
 sig.fut<-0.85

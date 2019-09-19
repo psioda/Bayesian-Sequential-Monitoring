@@ -21,19 +21,3 @@ alpha.skpt<-(p.skpt)*phi_L
 beta.skpt<-(1-(p.skpt))*phi_L
 alpha.enth<-(p.enth)*phi_H
 beta.enth<-(1-(p.enth))*phi_H
-
-# Spike and slab prior information
-mu0.skpt<-0.2
-## flat
-# sigma0.skpt<-0.2128
-# lambda0.skpt<-4
-sigma0.skpt<-0.1529
-lambda0.skpt<-1.7
-
-mu0.enth<-0.4
-## flat
-#sigma0.enth<-0.2149
-#lambda0.enth<-4
-## regular
-sigma0.enth<-0.1906
-lambda0.enth<-2.5

@@ -134,8 +134,8 @@ posterior.cdf.2<-function(a.s.1,b.s.1,a.s.2,b.s.2,w.s.1,
 ## posterior mean
 posterior.mean<-function(a1,b1,a2,b2,y0,y1){
   
-  c<-beta(a1+y1,b1+y0)/beta(a1,b1)/
-    (beta(a1+y1,b1+y0)/beta(a1,b1)+beta(a2+y1,b2+y0)/beta(a2,b2))
+  c<-(beta(a1+y1,b1+y0)/beta(a1,b1))/
+     (beta(a1+y1,b1+y0)/beta(a1,b1)+beta(a2+y1,b2+y0)/beta(a2,b2))
   
   result<-c*(a1+y1)/(a1+b1+y1+y0)+(1-c)*(a2+y1)/(a2+b2+y1+y0)
   

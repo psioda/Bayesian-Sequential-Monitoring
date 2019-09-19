@@ -13,8 +13,8 @@ mu0 = 0.4;
 sigma0 = 0.1;
 lambda0 = 2;
 
-n = 20;
-y = 15;
+n = 5;
+y = 2;
 
 scaleValue = 1e-6;
 
