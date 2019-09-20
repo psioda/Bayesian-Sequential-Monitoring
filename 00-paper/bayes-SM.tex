@@ -10,13 +10,13 @@
 % NOTE: To produce blinded version, replace "0" with "1" below.
 \newcommand{\blind}{1}
 % DON'T change margins - should be 1 inch all around.
-\addtolength{\oddsidemargin}{-.5in}%
-\addtolength{\evensidemargin}{-.5in}%
-\addtolength{\textwidth}{1in}%
-\addtolength{\textheight}{-.3in}%
-\addtolength{\topmargin}{-.8in}%
+%\addtolength{\oddsidemargin}{-.5in}%
+%\addtolength{\evensidemargin}{-.5in}%
+%\addtolength{\textwidth}{1in}%
+%\addtolength{\textheight}{-.3in}%
+%\addtolength{\topmargin}{-.8in}%
 
-
+\usepackage[margin=0.5in]{geometry}
 \usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
 
 \newcommand{\cl}[2]{\cellcolor{#1!#2}}
@@ -113,9 +113,6 @@ There is still potential for further utilization of Bayesian methods in the clin
 \end{enumerate}
 
 \section{Methods}
-
-As you introduce ideas that come from or extend other ideas in the literature, cite the relevant literature.
-
 \subsection{Monitoring versus Estimation Priors}
 
 %\begin{itemize}
@@ -147,25 +144,26 @@ Define $\delta\in(0,1)$ as a threshold for \textit{a compelling level of evidenc
 
 
 %Possible simplifying functional relationships between $\theta$ and $\psi$ are conditional independence $\pi(\theta,\psi)=\pi(\theta|\psi)\pi(\psi)$ and independence $\pi(\theta,\psi)=\pi(\theta)\pi(\psi)$. An inference prior is often non-informative or objective in the sense that it does not show preference to $H_0$ or $H_1$. Decisions made using using a non-informative prior are often similar to those made in the frequentist setting. 
-A enthuastic prior is an informative prior that gives preference to $H_1$ such that it is ``all but convinced" that $H_1$ is true a-priori. This prior $\pi_{E}(\theta,\psi)\equiv\pi_{E}$ has the property that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$ (equivalently $P(\theta\in\Theta_0| \pi_{E})<1-\delta$). The choice of $\delta\in(0,1)$ is motivated by \textit{a compelling level of evidence} as it relates to $\theta$, although in this setting the ``evidence" reflects a theoretical opinion rather than empirical judgement. For example, if $\delta=0.95$, then this choice of enthaustic prior places 95\% prior probability that $\theta\in\Theta_1$.  
+A enthuastic prior is an informative prior that gives preference to $H_1$ such that it is ``all but convinced" that $H_1$ is true a-priori. This prior $\pi_{E}(\theta,\psi)\equiv\pi_{E}$ has the property that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$ (equivalently $P(\theta\in\Theta_0| \pi_{E})<1-\delta$). The choice of $\delta\in(0,1)$ is motivated by a \textit{compelling level of evidence} as it relates to $\theta$, although in this setting the ``evidence" reflects a theoretical opinion rather than empirical judgement. For example, if $\delta=0.95$, then this choice of enthaustic prior places 95\% prior probability that $\theta\in\Theta_1$.  
 
-A skeptical prior is an informative prior that does not give strong preference to $H_1$. This prior $\pi_{S}(\theta,\psi)\equiv\pi_{S}$ could have the property that $P(\theta\in\Theta_0| \pi_{S})\geq\delta$, in which case it is ``all but convinced" that $H_0$ is true a-prior, however, this demonstrates such an extreme disbelief in the possibility of a positive effect that conducting the trial at all would be viewed as dubious. Consider a region $\Theta_A\subset\Theta_1$ that demonstrates a sizeable positive effect. The skeptical prior is then constructed such that $P(\theta\in\Theta_A| \pi_{S})<\delta$.
+A skeptical prior is an informative prior that does not give strong preference to $H_1$. This prior $\pi_{S}(\theta,\psi)\equiv\pi_{S}$ could have the property that $P(\theta\in\Theta_0| \pi_{S})\geq\delta$, in which case it is ``all but convinced" that $H_0$ is true a-prior, however, this demonstrates such an extreme disbelief in the possibility of a positive effect that conducting the trial at all would be viewed as dubious. Consider a region $\Theta_A\subset\Theta_1$ that demonstrates a substantial positive effect. The skeptical prior is then constructed such that $P(\theta\in\Theta_A| \pi_{S})<\delta$.
 
 \subsubsection{Sequential monitoring}
 The use of monitoring based on changing the opinion of skeptical and enthuastic priors has been described as overcoming a handicap (\cite{Freedman1989}) and providing a brake (\cite{Fayers1997}) on the premature termination of trials, or constructing ``an adversary who will need to be disillusioned by the data to stop further experimentation" (\cite{Spiegelhalter1994}). Early termination of enrollment is appriopriate if diverse prior opinions about $\theta$ would be in agreement given the interim data (e.g. the skeptical and enthuastic person reach the same conclusion). 
 
 \subsubsection*{Promising interim result}
-In order for interim evidence showing $H_1$ is true to be persuasive, it has to cause the skeptic, who initially held that $P(\theta\in\tilde{\Theta}\subset\Theta_1| \pi_{S})<\delta$, to believe that $P(\theta\in\Theta_1| \pi_{S})\geq\delta$.
+In order for interim evidence showing $H_1$ is true to be persuasive, it has to cause the skeptic, who initially held that $P(\theta\in\Theta_A\subset\Theta_1| \pi_{S})<1-\delta$, to conclude that $P(\theta\in\Theta_1| \pi_{S})\geq\delta$.
 \subsubsection*{Disillusioning interim result}
-In order for interim evidence showing $H_1$ is false to be persuasive, it has to cause the enthusiast, who initially held that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$, to believe that $P(\theta\in\tilde{\Theta}\subset\Theta_1| \pi_{E})<\delta$
+Recall that $\theta\in\Theta_A\subset\Theta_1$ represents a substantial positive effect. A disillusioning interim result not only demonstrates that a substantial positive effect is unlikely, but furthermore demonstrates that a moderate or intermediate positive effect is also unlikely. For this reason, consider $\theta\in\Theta_I\subset\Theta_A$ to demonstrate a moderate positive effect. In order for interim evidence showing $H_1$ is false to be persuasive, it has to cause the enthusiast, who initially held that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$, to conclude that even a moderate positive effect is unlikely, that is, $P(\theta\in\Theta_I| \pi_{E})<1-\delta$
 
 \subsubsection*{Example}
-\begin{figure}
-\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/line_graph}
-\caption{}
-\end{figure}
+Consider the hypothesis $H_0:\theta\leq\theta_0$ vs. $H_1:\theta>\theta_0$. The skeptic initially held that $P(\theta>\theta_A| \pi_{S})<1-\delta$ and a promising interim result would be $P(\theta>\theta_0| \pi_{S})\geq\delta$. The enthusiast initially held that $P(\theta>\theta_0| \pi_{E})\geq\delta$ and a disillusioning interim result would be $P(\theta>\theta_I| \pi_{E})<1-\delta$
 
-Consider the hypothesis $H_0:\theta\leq\theta_0$ vs. $H_1:\theta>\theta_0$. The skeptic initially held that $P(\theta>\theta_A| \pi_{S})<\delta$ and a promising interim result would be $P(\theta>\theta_0| \pi_{S})\geq\delta$. The enthusiast initially held that $P(\theta>\theta_0| \pi_{E})\geq\delta$ and a disillusioning interim result would be $P(\theta>\tilde{\theta}| \pi_{E})<\delta$
+\begin{center}
+\includegraphics[width=4in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/line_graph2}
+
+Figure 1: Graph of null response value ($\theta_0$), intermediate response value ($\theta_I)$ and substantial response value $(\theta_A)$.
+\end{center}
 
 \subsubsection*{Probability of Success}
 %Summarizing~\cite{Spiegelhalter1993} and others:  or that the benefit of treatment is not likely to be what was expected, the probability of \textit{eventually} proving that $H_1$ is true is sufficiently low, or the resources have been exhausted.  
@@ -228,35 +226,28 @@ E(\theta|\mathbf{D},\pi_I)&=\omega\cdot E(\theta|\mathbf{D}, \pi_{S})+(1-\omega)
 
 
 %Stochastic curtailment in frequentist setting.
+\newpage
 \section{Examples}
 
 \subsection{Single-Arm Proof-of-Activity Trial with Binary Endpoint}
 
 \subsubsection{Model formulation \& prior elicitation}
 
-Consider a single-arm oncology proof-of-activity trial with a binary endpoint. The data $\mathbf{D}$ are Binomially distributed and the response rate $\theta$ is the parameter of interest, with higher values of $\theta$ being indicative of proof-of-activity. The formulation is discussed in (cite example) with $\theta_0=0.2$, $\tilde{\theta}=0.3$, $\theta_A=0.4$.
+Consider a single-arm oncology proof-of-activity trial with a binary endpoint. The data $\mathbf{D}$ are binomially distributed and the response rate $\theta$ is the parameter of interest, with higher values of $\theta$ being indicative of proof-of-activity. The formulation is discussed in Section 2.1.3 with $\theta_0=0.2$, $\theta_I=0.3$, $\theta_A=0.4$.
 
-It is intuitive to center the skeptical and enthuastic priors around the quantities $\theta_0$ and $\theta_A$ respectively, so that $E(\pi_S)=\theta_0$ and $E(\pi_E)=\theta_A$.
+Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy. In particular, let $y_1$ be the number of successes and $y_0$ be the number of failures. If the skeptical prior is $\pi_S(\theta)\sim\mathcal{B}(\alpha_S,\beta_S)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_S)\sim\mathcal{B}(\alpha_S+y_1,\beta_S+y_0)$. Similarly, if the enthuastic prior is $\pi_E(\theta)\sim\mathcal{B}(\alpha_E,\beta_E)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_E)\sim\mathcal{B}(\alpha_E+y_1,\beta_E+y_0)$.
 
-Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy (the posterior distribution $p(\theta|\mathbf{D})$ will be Beta distributed). In particular, let $y_1$ be the number of successes and $y_0$ be the number of failures. If the skeptical prior is $\pi_S(\theta)\sim\mathcal{B}(\alpha_S,\beta_S)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_S)\sim\mathcal{B}(\alpha_S+y_1,\beta_S+y_0)$. Similarly, if the enthuastic prior is $\pi_E(\theta)\sim\mathcal{B}(\alpha_E,\beta_E)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_E)\sim\mathcal{B}(\alpha_E+y_1,\beta_E+y_0)$.
+The skeptical prior is Beta distributed with expected value $\theta_0=0.2$ and has $0.045$ prior probability that $\theta>\theta_A=0.4$. The enthuastic prior has expected value $\theta_A=0.4$ and has $0.05$ prior probability that $\theta<\theta_0=0.2$. The quantities $0.045$ and $0.05$ in this setting represent the residual uncertainty that the skeptic and enthusiast have in their beliefs, and are shaded black in Figure 2. The inference prior will be at an equal mixture of the skeptical and enthuastic prior ($\omega=0.5)$.
 
-The skeptical prior is Beta distributed with expected value $\theta_0=0.2$ and has $4.5\%$ prior probability that $\theta>\theta_A=0.4$. The enthuastic prior has expected value $\theta_A=0.4$ and has $5\%$ prior probability that $\theta<\theta_0=0.2$. The inference prior will be at an equal mixture of the skeptical and enthuastic prior ($\omega=0.5)$.
-\begin{figure}
-\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/skpt_prior}
-\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/enth_prior}
-\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/5050mix}
-\caption{(a) Skeptical prior (b) Enthuastic prior (c) 50/50 mixture of skeptical and enthuastic prior}
-\end{figure}
 
-\newpage
-\subsubsection{Sequential monitoring}
-The trial will proceed until one of the following three conditions are satisfied:
-\begin{align*}
-\text{Efficacy criteria: }&P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95\\
-\text{Futility criteria: }&P(\theta\leq 0.30|\mathbf{D},\pi_E)\geq 0.85\\
-\text{Maximum sample size: }&N=76 \text{ patient outcomes obtained}
-\end{align*}
-The maximum sample size is based on a frequentist design that would have $90\%$ power at 0.35.
+
+\begin{center}
+\includegraphics[height=2in,width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/3priors.png}
+
+Figure 2: (a) Skeptical Beta prior (b) Enthuastic Beta prior (c) 50/50 mixture of skeptical and enthuastic Beta priors
+\end{center}
+
+
 
 
 %\begin{center}
@@ -266,30 +257,42 @@ The maximum sample size is based on a frequentist design that would have $90\%$ 
 %\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility.png}
 %\end{center}
 \newpage
+\subsubsection{Sequential monitoring}
+Enrollment proceed until one of the following three conditions are satisfied:
+\begin{align*}
+\text{Efficacy criteria (EFF): }&P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95\\
+\text{Futility criteria (FUT): }&P(\theta\leq 0.30|\mathbf{D},\pi_E)\geq 0.85\\
+\text{Maximum sample size: }&N=76 \text{ patient outcomes obtained}
+\end{align*}
+Assume that the outcomes are ascertained after approximately 4 months of follow-up and 2 patients per month on average are enrolled. If enrollment is terminated due to the efficacy or futility criteria being satisfied, those subjects who are still undergoing follow-up will still have their outcomes considered in the final analysis.
 \subsubsection{Example paths}
-As seen in Figure 3(a), at the second interim analysis the efficacy condition $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$ is satisfied and enrollment is terminated. As shown in Figure 3(b), at the fourth interim analysis the futility condition $P(\theta\leq 0.30|\mathbf{D},\pi_E)\geq 0.85$ is satisfied and enrollment is terminated.
-\begin{figure}
-\includegraphics[width=3.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_efficacy_ekk.png}
-\includegraphics[width=3.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility_ekk.png}
-\caption{(a) Early stopping for efficacy (b) Early stopping for futility}
-\end{figure}
+To demonstrate the monitoring procedure, two example trials are considered. As seen in Figure 3(a), at the second interim analysis the efficacy condition $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$ is satisfied and enrollment is terminated. As shown in Figure 3(b), at the fourth interim analysis the futility condition $P(\theta\leq 0.30|\mathbf{D},\pi_E)\geq 0.85$ is satisfied and enrollment is terminated. In both examples there are subjects with missing outcomes, which are those who are still undergoing follow-up. The final analysis incorporates the final sample.
+\begin{center}
+\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/2violin.png}
+%\includegraphics[width=3.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility_ekk.png}
+
+Figure 3: (a) Early stopping for efficacy (b) Early stopping for futility
+\end{center}
+
 \newpage
 \subsubsection{Design properties: Results}
-Assume that the outcomes are ascertained after approximately 4 months of follow-up and 2 patients per month on average are enrolled. An interim analysis will be completed after every 2 subjects complete follow-up.
-\begin{figure}
+An interim analysis will be completed after every 2 subjects complete follow-up.
+\begin{center}
 \includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/seq_des_pro}
-\caption{}
-\end{figure}
-Let EFF be the probability of the trial stopping early for efficacy, FUT be the probability of the trial stopping early for futility, and INC be the probability of reaching the maximum sample size without a conclusive monitoring result. Let SS be the average sample size at the definitive interim analysis (I) and at the end of follow-up (F), let CP be the coverage probability using the mixture prior, and let PM be the posterior mean an inference prior which is a 50/50 mixture of the skeptical and enthuastic priors.
+
+Figure 4: Sequential design properties of proof-of-activity trial
+%\caption{}
+\end{center}
+Let INC be the probability of reaching the maximum sample size without a conclusive monitoring result, let SS be the average sample size at the definitive interim analysis (I) and at the end of follow-up (F), let CP be the coverage probability using the mixture prior, and let PM be the posterior mean an inference prior which is a 50/50 mixture of the skeptical and enthuastic priors.
 \newpage
 \subsubsection{Agreement between interim and final result}
 \begin{center}
-\textbf{Distribution of final posterior probability given interim stoppage (interim $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$) and evidence decrease.}
+Table 1: Distribution of final posterior probability given interim stoppage (interim $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$) and evidence decrease.
 \begin{tabular}{l|ccccccc}
 &0.15&0.20&0.25&0.30&0.35&0.40&0.45\\
 \hline
-Final $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$ &29.3\%&51.0\%&64.5\%&75.3\%&83.2\%&89.4\%&93.2\% \\ 
-Final $P(\theta>0.20|\mathbf{D},\pi_S)< 0.95$&70.7\%&49.0\%&35.5\%&24.7\%&16.8\%&10.6\%&6.8\%\\  
+Final $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$ &0.293&0.510&0.645&0.753&0.832&0.894&0.932 \\ 
+Final $P(\theta>0.20|\mathbf{D},\pi_S)< 0.95$&0.707&0.490&0.355&0.247&0.168&0.106&0.068\\  
 \hspace{0.5in}Conditional Median&0.91&0.92&0.92&0.93&0.93&0.93&0.93\\  
 \hspace{0.5in}Conditional 25th percentile&0.87&0.89&0.90&0.91&0.91&0.91&0.91\\  
 \hspace{0.5in}Conditional 10th percentile&0.83&0.86&0.87&0.88&0.88&0.88&0.88\\  
@@ -303,7 +306,7 @@ For example, at a true response rate of $\theta=0.40$, there is an $89.4\%$ that
 %\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties_2}
 %\caption{Shows agreement between sequential and final determinations as they relate to the strict cut-offs}
 %\end{figure}
-%\newpage
+\newpage
 \subsubsection{Type 1 error rate by the frequency of data monitoring}
 As expected, the probability of stopping enrollment due to a promising interim trial result and the Type 1 error rate at the final analysis increase with the frequency of interim monitoring, however, the increase is very slight at the final analysis. Regardless of frequency of monitoring there are good Type 1 error rates. Even at the extreme case where an interim analysis is conducted after every outcome, the probability of stopping at the interim due to a promising result when the true response is at the null level is only $0.108$ (about double the nominal rate), and even in this situation the Type 1 error rate once follow-up is complete does not exceed $0.05$. Thus Bayesian sequential monitoring has good frequentist properties even with frequent interim analyses.
 %\begin{itemize}
@@ -317,26 +320,28 @@ As expected, the probability of stopping enrollment due to a promising interim t
 %\item Enrollment rate and \% of ongoing data as operating characteristics are interesting ideas, but focus on the plots already created.
 %\item Mat: Scaling on \# of subjects in each interim analysis rather than \# of interim analyses (e.g. flip X axis). Make labels go vertical or diagonal.
 %\end{itemize}
-\begin{figure}
+\begin{center}
 \includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/type1error_0904.png}
-\caption{Type 1 error rate depending on frequency of sequential monitoring}
-\end{figure}
+
+Figure 5: Type 1 error rate depending on frequency of sequential monitoring
+\end{center}
 
 \newpage
 \subsubsection{Type 1 error rate depending on enrollment schemes}
 Consider the same trial but with a longer follow-up length of 8 months rather than 4 months. 
 \begin{center}
-\textbf{Comparision of Efficacy Stopping, Type 1 Error Rate, and Sample Size by follow-up length and frequency of sequential monitoring}
-\begin{tabular}{l | cccccccc}
-Mon Freq  & Eff. Stopping	&		&	T1E Final	&		&	SS Final	&		&	\% Ongoing	&\\
-	&	4 mon	&	8 mon	&	4 mon	&	8 mon	&	4 mon	&	8 mon	&	4 mon	&	8 mon	\\
-\hline
-76	&	0.040	&	0.039	&	0.040	&	0.039	&	76.0	&	76.0	&	0.0\%	&	0.0\%	\\
-16	&	0.058	&	0.056	&	0.047	&	0.042	&	54.8	&	60.0	&	10.4\%	&	18.1\%	\\
-8	&	0.068	&	0.067	&	0.049	&	0.043	&	51.1	&	56.7	&	12.5\%	&	21.3\%	\\
-4	&	0.075	&	0.075	&	0.050	&	0.043	&	48.2	&	54.1	&	13.7\%	&	23.4\%	\\
-2	&	0.095	&	0.094	&	0.050	&	0.043	&	46.4	&	52.8	&	15.1\%	&	25.5\%	\\
-1	&	0.108	&	0.107	&	0.050	&	0.043	&	45.1	&	51.7	&	15.7\%	&	26.8\%	
+Table 2: Comparison of efficacy stopping, Type 1 Error Rate (efficacy criteria with full data), and sample size by follow-up length and frequency of sequential monitoring.
+\begin{tabular}{l | cccc|cccc}
+	&	4 month FU	&		&		&		&	8 month FU	&		&		&		\\
+															
+\# Interim Analyses	&	EFF	&	T1E	&	SS Final	&	Ongoing	&	EFF	&	T1E	&	SS Final	&	Ongoing	\\
+\hline		
+1	&	0.108	&	0.05	&	45.1	&	15.7\%	&	0.107	&	0.043	&	51.7	&	26.8\%	\\
+2	&	0.095	&	0.05	&	46.4	&	15.1\%	&	0.094	&	0.043	&	52.8	&	25.5\%	\\
+4	&	0.075	&	0.05	&	48.2	&	13.7\%	&	0.075	&	0.043	&	54.1	&	23.4\%	\\
+8	&	0.068	&	0.049	&	51.1	&	12.5\%	&	0.067	&	0.043	&	56.7	&	21.3\%	\\
+16	&	0.058	&	0.047	&	54.8	&	10.4\%	&	0.056	&	0.042	&	60.0	&	18.1\%	\\
+76	&	0.04	&	0.04	&	76	&	0.0\%	&	0.039	&	0.039	&	76	&	0.0\%	
 \end{tabular}
 \end{center}
 Note that the probability of efficacy stopping and Type 1 error rate increase monotonically for both specifications of follow-up length. The Type 1 error rate is lower for the 8-month follow-up design since there are more subjects in the final sample size.
@@ -355,41 +360,49 @@ Note that the probability of efficacy stopping and Type 1 error rate increase mo
 %\end{center}
 \newpage
 \section{Robustness of parameterizations of monitoring priors}
-The spike-slab and flattened priors are both 2-part mixtures of Beta distributions.
-\begin{itemize}
-\item Test the hypothesis that power curves will be identical and what will change is the expected sample sizes and that varying the decay rate will affect bias not Type I/II error
-\item Actually, having one prior ``default" and the other spike-slab changes the monitoring result substantially. When using the spike-slab skeptical prior and the default enthuastic prior, the determination of efficacy at the interim is made less frequently than when using the default skeptical prior. Similarly, when using the spike-slab enthuastic prior and the default skeptical prior, the determination of futility is made less frequently than when using the default enthuastic prior.
-\end{itemize}
+The generalized normal distribution is used to create priors with the same expected value and tail area as the default beta priors, but with densities that are either spike/slab around the expected value or flattened.
 %\begin{figure}
+\begin{center}
 \includegraphics[width=3.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/spike-slab_skeptical}
 \includegraphics[width=3.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/spike-slab_enthuastic}
 % \caption{(a) Skeptical priors (b) Enthuastic priors}
 %\end{figure}
-\tiny
+
+Figure 6: (a) Alternate skeptical priors (b) Alternate enthuastic priors
+\end{center}
+\newpage
 \begin{center}
-\begin{tabular}{ll|ccccccc}
-	&		&	0.15	&	0.2	&	0.25	&	0.3	&	0.35	&	0.4	&	0.45	\\
+\text{Table 3: Sequential design properties using alternative monitoring priors}
+\begin{tabular}{ll|ccc}
+	&		&	0.2	&	0.3	&	0.4	\\
 \hline
-Default	&	EFF	&	1.2\%	&	9.4\%	&	35.3\%	&	69.3\%	&	90.5\%	&	98.1\%	&	99.6\%	\\
-	&	FUT	&	97.6\%	&	82.0\%	&	48.4\%	&	19.3\%	&	5.6\%	&	1.3\%	&	0.3\%	\\
-	&	INC	&	1.2\%	&	8.6\%	&	16.3\%	&	11.4\%	&	3.9\%	&	0.6\%	&	0.1\%	\\
-	&	SS	&	27.9+7.8=35.8	&	38.8+7.0=45.9	&	44.7+6.3=51.0	&	40.9+6.8=47.7	&	32.1+7.5=39.6	&	24.0+7.9=31.9	&	18.6+8.0=26.6	\\
-	&	PM	&	(I) 0.169 (F) 0.167	&	(I) 0.204 (F) 0.206	&	(I) 0.259 (F) 0.258	&	(I) 0.320 (F) 0.314	&	(I) 0.368 (F) 0.361	&	(I) 0.402 (F) 0.398	&	(I) 0.426 (F) 0.429	\\
+Default	&	EFF	&	0.094	&	0.693	&	0.981	\\
+	&	FUT	&	0.820	&	0.193	&	0.013	\\
+	&	INC	&	0.086	&	0.114	&	0.006	\\
+	&	SS	&	38.8 + 7.0 = 45.9	&	40.9 + 6.8 = 47.7	&	24.0 + 7.9 = 31.9	\\
+	&	PM	&	(I) 0.204 (F) 0.206	&	(I) 0.320 (F) 0.314	&	(I) 0.402 (F) 0.398	\\
 \hline
-Spike/Slab	&	EFF	&	0.7\%	&	6.6\%	&	28.9\%	&	63.2\%	&	87.9\%	&	97.8\%	&	99.7\%	\\
-	&	FUT	&	95.9\%	&	73.8\%	&	37.4\%	&	12.7\%	&	2.9\%	&	0.6\%	&	0.1\%	\\
-	&	INC	&	3.4\%	&	19.5\%	&	33.7\%	&	24.1\%	&	9.2\%	&	1.6\%	&	0.1\%	\\
-	&	SS	&	33.4 + 7.6 = 41.0	&	46.5 + 6.1 = 52.6	&	53.2 + 4.9 = 58.1	&	47.7 + 5.8 = 53.5	&	37.1 + 7.0 = 44.1	&	26.8 + 7.8 = 34.6	&	20.4 + 7.9 = 28.3	\\
-	&	PM	&	(I) 0.156 (F) 0.158	&	(I) 0.196 (F) 0.199	&	(I) 0.258 (F) 0.258	&	(I) 0.322 (F) 0.317	&	(I) 0.369 (F) 0.363	&	(I) 0.400 (F) 0.397	&	(I) 0.421 (F) 0.423	\\
+Spike/Slab	&	EFF	&	0.066	&	0.632	&	0.978	\\
+	&	FUT	&	0.738	&	0.127	&	0.006	\\
+	&	INC	&	0.195	&	0.241	&	0.016	\\
+	&	SS	&	46.5 + 6.1 = 52.6	&	47.7 + 5.8 = 53.5	&	26.8 + 7.8 = 34.6	\\
+	&	PM	&	(I) 0.196 (F) 0.199	&	(I) 0.322 (F) 0.317	&	(I) 0.400 (F) 0.397	\\
 \hline
-Flattened	&	EFF	&	2.4\%	&	14.2\%	&	42.4\%	&	73.1\%	&	91.5\%	&	98.2\%	&	99.6\%	\\
-	&	FUT	&	97.1\%	&	82.0\%	&	50.5\%	&	22.0\%	&	6.9\%	&	1.6\%	&	0.4\%	\\
-	&	INC	&	0.5\%	&	3.9\%	&	7.1\%	&	4.8\%	&	1.6\%	&	0.2\%	&	0.0\%	\\
-	&	SS	&	26.4 + 7.9 = 34.3	&	34.6 + 7.5 = 42.2	&	38.1 + 7.3 = 45.3	&	34.2 + 7.5 = 41.7	&	26.9 + 7.8 = 34.7	&	20.6 + 7.9 = 28.5	&	16.1 + 8.0 = 24.1	\\
-	&	PM	&	(I) 0.169 (F) 0.169	&	(I) 0.211 (F) 0.212	&	(I) 0.265 (F) 0.264	&	(I) 0.319 (F) 0.315	&	(I) 0.361 (F) 0.357	&	(I) 0.390 (F) 0.391	&	(I) 0.410 (F) 0.419	\\
+Flattened	&	EFF	&	0.142	&	0.731	&	0.982	\\
+	&	FUT	&	0.820	&	0.22	&	0.016	\\
+	&	INC	&	0.039	&	0.048	&	0.002	\\
+	&	SS	&	34.6 + 7.5 = 42.2	&	34.2 + 7.5 = 41.7	&	20.6 + 7.9 = 28.5	\\
+	&	PM	&	(I) 0.211 (F) 0.212	&	(I) 0.319 (F) 0.315	&	(I) 0.390 (F) 0.391	\\
+\hline
+SS Skeptical	&	EFF	&	0.066	&	0.620	&	0.975	\\
+	&	FUT	&	0.827	&	0.189	&	0.011	\\
+	&	INC	&	0.107	&	0.190	&	0.014	\\
+	&	SS	&	40.3 + 6.8 = 47.1	&	45.1 + 6.2 = 51.3	&	26.9 + 7.8 = 34.7	\\
+	&	PM	&	(I) 0.196 (F) 0.200	&	(I) 0.316 (F) 0.312	&	(I) 0.401 (F) 0.400	\\
+
 \end{tabular}
 \end{center}
-\normalsize
+Use of a spike-slab skeptical prior drastically lowers the probability of terminating enrollment due to efficacy, from 9.4\% in the default case to 6.6\%. This is because there is less probability mass in the immediate area greater than the null value of $0.2$. When using a flattened skeptical prior the probability of terminating enrollment due to efficacy increases to $14.2\%$ since there is more probability mass in the immediate area greater than the null value of $0.2$.
 \newpage
 
 

@@ -3,9 +3,8 @@ library(dplyr)
 library(ggpubr)
 library(grid)
 library(latex2exp)
+library(gridExtra)
 
-## The purpose of this program is to produce violin plots that show sample
-## trajectories of sample data
 
 #################################################################################################
 ## GENERATE DATA ###############################################################################
@@ -17,12 +16,11 @@ mean<-posterior.mean(alpha.skpt,beta.skpt,alpha.enth,beta.enth,y0,y1)
 
 lower<-rep(NA,length=length(n))
 upper<-rep(NA,length=length(n))
-
-
 for (i in 1:length(n)){
 lower[i]<-posterior.quantile(alpha.skpt,beta.skpt,alpha.enth,beta.enth,y0[i],y1[i],0.05)[1]
 upper[i]<-posterior.quantile(alpha.skpt,beta.skpt,alpha.enth,beta.enth,y0[i],y1[i],0.05)[2]
 }
+
 #################################################################################################
 ## CREATE PLOTTING DATAFRAMES ###################################################################
 #################################################################################################
@@ -64,11 +62,13 @@ p<- ggplot(pdat2, aes(dens, loc, fill = m, group = interaction(m, x))) +
   geom_hline(yintercept=seq(0,.8,by=0.2), colour="black")+
   geom_polygon() + theme_classic() +
   # c(bottom, left, top, right)
-  theme(plot.margin = unit(c(0.5,0.5,2,2), "cm"))+ # TRouBLe
+  theme(plot.margin = unit(c(0,0,2,0), "cm"))+ # TRouBLe
   theme(panel.border = element_rect(colour = "black", fill=NA, size=1)) +
   theme(axis.title.x = element_blank())+
   theme(axis.text.x=element_blank())+
-  ylab("Probability of Response")+
+  theme(axis.title.y = element_blank())+
+  theme(axis.text.y=element_blank())+
+  #ylab("Probability of Response")+
   #theme(axis.title.y=element_blank())+
   #theme(axis.text.y="Probability of Success")+
   theme(legend.position="none")+
@@ -96,12 +96,12 @@ p <- p +  geom_segment(x = spacing[2]/2, y = 0,xend = spacing[2]/2, yend = 0.8,
 for (i in 1:length(n)){
 p <- p + annotation_custom(
   grob = textGrob(label =
-  paste0(format(round(futility[i]*100,digits=1),nsmall=1),"%"),
+  paste0(format(round(futility[i],digits=3),nsmall=3)),
   hjust = 0, gp = gpar(cex = 1)),
   ymin = -.18,ymax = -.18,xmin = spacing[i],xmax = spacing[i])+
   annotation_custom(
   grob = textGrob(label =
- paste0(format(round((1-efficacy[i])*100,digits=1),nsmall=1),"%"),
+ paste0(format(round((1-efficacy[i]),digits=3),nsmall=3)),
   hjust = 0, gp = gpar(cex = 1)),
   ymin = -.15,ymax = -.15,xmin = spacing[i],xmax = spacing[i])+
   annotation_custom(
@@ -116,22 +116,22 @@ p <- p + annotation_custom(
 }
 
 
-p <- p + 
-  annotation_custom(
-    grob = textGrob(label =TeX('$P(\\theta\\leq 0.30|\\mathbf{D},\\pi_E)$'), hjust = 0, gp = gpar(cex = 1)),
-    ymin = -.18,ymax = -.18,xmin = -spacing[2]*stretch,xmax = -spacing[2]*stretch)+
-  annotation_custom(
-    grob = textGrob(label = TeX('$P(\\theta>0.20|\\mathbf{D},\\pi_S)$'), hjust = 0, gp = gpar(cex = 1)),
-    ymin = -.15,ymax = -.15,xmin = -spacing[2]*stretch,xmax = -spacing[2]*stretch)+
-  annotation_custom(
-    grob = textGrob(label = "# Missing", hjust = 0, gp = gpar(cex = 1)),
-    ymin = -.12,ymax = -.12,xmin = -spacing[2]*stretch,xmax = -spacing[2]*stretch)+
-  annotation_custom(
-    grob = textGrob(label = "# Successes", hjust = 0, gp = gpar(cex = 1)),
-    ymin = -.09,ymax = -.09,xmin = -spacing[2]*stretch,xmax = -spacing[2]*stretch)+
-  annotation_custom(
-    grob = textGrob(label = "Sample Size", hjust = 0, gp = gpar(cex = 1)),
-    ymin = -.06,ymax = -.06,xmin = -spacing[2]*stretch,xmax = -spacing[2]*stretch)
+# p <- p + 
+#   annotation_custom(
+#     grob = textGrob(label =TeX('$P(\\theta\\leq 0.30|\\mathbf{D},\\pi_E)$'), hjust = 0, gp = gpar(cex = 1)),
+#     ymin = -.18,ymax = -.18,xmin = -spacing[2]*stretch,xmax = -spacing[2]*stretch)+
+#   annotation_custom(
+#     grob = textGrob(label = TeX('$P(\\theta>0.20|\\mathbf{D},\\pi_S)$'), hjust = 0, gp = gpar(cex = 1)),
+#     ymin = -.15,ymax = -.15,xmin = -spacing[2]*stretch,xmax = -spacing[2]*stretch)+
+#   annotation_custom(
+#     grob = textGrob(label = "# Missing", hjust = 0, gp = gpar(cex = 1)),
+#     ymin = -.12,ymax = -.12,xmin = -spacing[2]*stretch,xmax = -spacing[2]*stretch)+
+#   annotation_custom(
+#     grob = textGrob(label = "# Successes", hjust = 0, gp = gpar(cex = 1)),
+#     ymin = -.09,ymax = -.09,xmin = -spacing[2]*stretch,xmax = -spacing[2]*stretch)+
+#   annotation_custom(
+#     grob = textGrob(label = "Sample Size", hjust = 0, gp = gpar(cex = 1)),
+#     ymin = -.06,ymax = -.06,xmin = -spacing[2]*stretch,xmax = -spacing[2]*stretch)
 
 
 #################################################################################################

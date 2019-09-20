@@ -20,5 +20,5 @@ library(latex2exp)
 ## plot elements
 segments(px,py,lx,ly);
 points(px,py,pch=16,xpd=NA);
-text(lx,ly,labels=c(TeX('$\\theta_0$'),TeX('$\\tilde{\\theta}$'),TeX('$\\theta_A$')),pos=3);
+text(lx,ly,labels=c(TeX('$\\theta_0$'),TeX('$\\theta_I$'),TeX('$\\theta_A$')),pos=3);
 
