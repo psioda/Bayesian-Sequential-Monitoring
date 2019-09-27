@@ -52,3 +52,25 @@ title;
 print post_prob[l="Posterior Probability"];
 
 quit;
+
+data person;
+   infile datalines delimiter=','; 
+   input y;
+   datalines;                      
+0
+1
+0
+1
+0
+;
+run;
+proc print data=person; run;
+
+proc mcmc data=person seed=1 nbi=5000 nmc=100000 outpost=regOut;
+parms p;
+prior p ~ beta(1,1);
+model y~binary(p);
+run;
+
+# 0.4283
+# by hand, posterior is beta(3,4), with expected value 3/7=0.42857142857
