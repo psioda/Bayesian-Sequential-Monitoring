@@ -32,20 +32,20 @@ abline(v=c(p.skpt,p.enth),col='grey',lty='dashed')
 #        lwd=3, cex = 0.75, xpd = TRUE)
 row<-2
 for (j in 1:length(p.range)){
-  mtext(text=paste0(format(round(outer[i,j,"eff.mon.initial"]*100,digits=1),nsmall=1),"%"),
+  mtext(text=paste0(format(round(outer[i,j,"eff.mon.initial"],digits=3),nsmall=3)),
         side=1,line=row+1,at=p.range[j])
 }
 mtext(text="EFF",side=1,line=row+1,at=stretch)
 row<-3
 for (j in 1:length(p.range)){
-  mtext(text=paste0(format(round(outer[i,j,"fut.mon.initial"]*100,digits=1),nsmall=1),"%"),
+  mtext(text=paste0(format(round(outer[i,j,"fut.mon.initial"],digits=3),nsmall=3)),
         side=1,line=row+1,at=p.range[j])
 }
 mtext(text="FUT",side=1,line=row+1,at=stretch)
 row<-4
 for (j in 1:length(p.range)){
-  mtext(text=paste0(format(round((1-outer[i,j,"fut.mon.initial"]-outer[i,j,"eff.mon.initial"])*100,digits=1),
-                           nsmall=1),"%"),
+  mtext(text=paste0(format(round(1-outer[i,j,"fut.mon.initial"]-outer[i,j,"eff.mon.initial"],
+                                 digits=3),nsmall=3)),
         side=1,line=row+1,at=p.range[j])
 }
 mtext(text="INC",side=1,line=row+1,at=stretch)

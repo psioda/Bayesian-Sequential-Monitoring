@@ -300,7 +300,7 @@ Final $P(\theta>0.20|\mathbf{D},\pi_S)< 0.95$&0.707&0.490&0.355&0.247&0.168&0.10
 \end{tabular}
 \end{center}
 
-For example, at a true response rate of $\theta=0.40$, there is an $89.4\%$ that the threshold for a significant result is maintained after the additional subjects complete follow-up, and in the $10.6\%$ of cases that the evidence decreases, the median posterior probability is $0.93$ and only in $10\%$ of cases is the posterior probability lower than $0.88$. Thus there is a slight attenudation with respect to the dichotomous threshold, but little change in the posterior probability overall.
+For example, at a true response rate of $\theta=0.40$, there is probability $0.894$ that the threshold for a significant result is maintained after the additional subjects complete follow-up. Conversely, with probability $0.106$ the evidence decreases, and in this case the median posterior probability is $0.93$, and a posterior probability lower than $0.88$ occurs with probability $0.1$. Thus there is a slight attenudation with respect to the dichotomous threshold, but little change in the posterior probability overall.
 
 %\begin{figure}
 %\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties_2}
@@ -387,12 +387,12 @@ Spike/Slab	&	EFF	&	0.066	&	0.632	&	0.978	\\
 	&	INC	&	0.195	&	0.241	&	0.016	\\
 	&	SS	&	46.5 + 6.1 = 52.6	&	47.7 + 5.8 = 53.5	&	26.8 + 7.8 = 34.6	\\
 	&	PM	&	(I) 0.196 (F) 0.199	&	(I) 0.322 (F) 0.317	&	(I) 0.400 (F) 0.397	\\
-\hline
-Flattened	&	EFF	&	0.142	&	0.731	&	0.982	\\
-	&	FUT	&	0.820	&	0.22	&	0.016	\\
-	&	INC	&	0.039	&	0.048	&	0.002	\\
-	&	SS	&	34.6 + 7.5 = 42.2	&	34.2 + 7.5 = 41.7	&	20.6 + 7.9 = 28.5	\\
-	&	PM	&	(I) 0.211 (F) 0.212	&	(I) 0.319 (F) 0.315	&	(I) 0.390 (F) 0.391	\\
+%\hline
+%Flattened	&	EFF	&	0.142	&	0.731	&	0.982	\\
+%	&	FUT	&	0.820	&	0.22	&	0.016	\\
+%	&	INC	&	0.039	&	0.048	&	0.002	\\
+%	&	SS	&	34.6 + 7.5 = 42.2	&	34.2 + 7.5 = 41.7	&	20.6 + 7.9 = 28.5	\\
+%	&	PM	&	(I) 0.211 (F) 0.212	&	(I) 0.319 (F) 0.315	&	(I) 0.390 (F) 0.391	\\
 \hline
 SS Skeptical	&	EFF	&	0.066	&	0.620	&	0.975	\\
 	&	FUT	&	0.827	&	0.189	&	0.011	\\
@@ -402,7 +402,7 @@ SS Skeptical	&	EFF	&	0.066	&	0.620	&	0.975	\\
 
 \end{tabular}
 \end{center}
-Use of a spike-slab skeptical prior drastically lowers the probability of terminating enrollment due to efficacy, from 9.4\% in the default case to 6.6\%. This is because there is less probability mass in the immediate area greater than the null value of $0.2$. When using a flattened skeptical prior the probability of terminating enrollment due to efficacy increases to $14.2\%$ since there is more probability mass in the immediate area greater than the null value of $0.2$.
+Use of a spike-slab skeptical prior drastically lowers the probability of terminating enrollment due to efficacy, from $0.094$ in the default case to $0.066$. This is because there is less probability mass in the immediate area greater than the null value of $0.2$. When using a flattened skeptical prior the probability of terminating enrollment due to efficacy increases to $0.142$ since there is more probability mass in the immediate area greater than the null value of $0.2$.
 \newpage
 
 
@@ -420,52 +420,53 @@ Use of a spike-slab skeptical prior drastically lowers the probability of termin
 %that the number of patients required in each
 %cohort would be 7, 13, or 19, depending on the
 %results obtained."
-\subsection{Parallel Two-Group Superiority Trial /w Continuous Binary Endpoint}
-Interesting because prior is on risk difference [-1,1] while also being non-informative on control group. Will need numerical integration to evalutate posteriors.
-\subsection{Three-Arm, Placebo Controlled Non-Inferiority Trial w/ Continuous Endpoint}
-\begin{align*}
-P&\rightarrow\beta_0 \text{ (placebo)}\\
-C&\rightarrow\beta_0+\beta_1 \text{ (control)}\\
-A&\rightarrow\beta_0+\beta_1+\beta_2 \text{ (active)}\\
-H_0&:\beta_2-\delta\beta_1\leq 0
-\end{align*}
-Parameters of interest $(\beta_1,\beta_2)$, nuisance parameters $(\beta_0,\sigma^2)$.
+\section{Example of Parallel Two-Group Design}
 
-Need priors $\pi(\beta_0), \pi(\beta_1), \pi(\beta_2|\beta_1)$. 
+In this section we consider a sequential monitoring approach in a parallel two-group setting using a binary response endpoint.
 
-Will use MCMC to evaluate posteriors.
-\section{Discussion -- (MATT/EVAN)}
-Q: Why not reverse engineer priors to have exact Type 1 error properties?
+We consider the case where the goal is prove superiority of an investigational product (IP) to a control 
+which could be a placebo.
 
-A: This would basically be a frequentist method, in that the design would have to be adhered to exactly (including number and timing of data monitoring). Philosophically, designing a Bayesian study that requires rigid monitoring rules loses the advantages of Bayes from the likelihood principle.
-%\section{Example of Parallel Two-Group Design}
-%
-%In this section we consider a sequential monitoring approach in a parallel two-group setting using a binary response endpoint.
-%
-%We consider the case where the goal is prove superiority of an investigational product (IP) to a control 
-%which could be a placebo.
-%
-%Let $\pi_0$ represent the response rate the control group and $\pi_1$ represent the response probability for the IP group.
-%
-%Here we wish to elicit pessimistic and enthusiastic priors consistent with the following:
-% \begin{enumerate}
-%  \item The control group response probability is expected to be approximately $0.20$ and investigators are relatively sure
-%		    that the it will be between 0.5 and 0.35.
-%				
-%	\item The IP group response probability is likely to provide an improvement of approximately 0.20.
-%\end{enumerate}
-%
-%In this setting pessimism or optimism is reflected in the induced prior on the difference in proportions $\pi_1 - \pi_0$.
-%
-%One easy way to specify such a prior in this case is to elicit a bivariate normal prior for $\pi_0$ and $\pi_1$ truncated to the unit square.  
+Let $\pi_0$ represent the response rate the control group and $\pi_1$ represent the response probability for the IP group.
+
+Here we wish to elicit pessimistic and enthusiastic priors consistent with the following:
+ \begin{enumerate}
+  \item The control group response probability is expected to be approximately $0.20$ and investigators are relatively sure
+		    that the it will be between 0.5 and 0.35.
+				
+	\item The IP group response probability is likely to provide an improvement of approximately 0.20.
+\end{enumerate}
+
+In this setting pessimism or optimism is reflected in the induced prior on the difference in proportions $\pi_1 - \pi_0$.
+
+One easy way to specify such a prior in this case is to elicit a bivariate normal prior for $\pi_0$ and $\pi_1$ truncated to the unit square.  
 
 
-%
-%		\begin{figure}
-%      \centering\includegraphics[scale=0.70]{./FIGURES/BINARY-PRIORS.pdf}
-%      \caption{Prior for Control Group Response Probability \label{fig:pmp}}
-%    \end{figure}
+		\begin{figure}
+      \centering\includegraphics[scale=0.70]{./FIGURES/BINARY-PRIORS.pdf}
+      \caption{Prior for Control Group Response Probability \label{fig:pmp}}
+    \end{figure}
 			
+
+%\subsection{Three-Arm, Placebo Controlled Non-Inferiority Trial w/ Continuous Endpoint}
+%\begin{align*}
+%P&\rightarrow\beta_0 \text{ (placebo)}\\
+%C&\rightarrow\beta_0+\beta_1 \text{ (control)}\\
+%A&\rightarrow\beta_0+\beta_1+\beta_2 \text{ (active)}\\
+%H_0&:\beta_2-\delta\beta_1\leq 0
+%\end{align*}
+%Parameters of interest $(\beta_1,\beta_2)$, nuisance parameters $(\beta_0,\sigma^2)$.
+%
+%Need priors $\pi(\beta_0), \pi(\beta_1), \pi(\beta_2|\beta_1)$. 
+%
+%Will use MCMC to evaluate posteriors.
+\section{Discussion}
+%Q: Why not reverse engineer priors to have exact Type 1 error properties?
+%
+%A: This would basically be a frequentist method, in that the design would have to be adhered to exactly (including number and timing of data monitoring). Philosophically, designing a Bayesian study that requires rigid monitoring rules loses the advantages of Bayes from the likelihood principle.
+
+
+
 
 
 %\bigskip

@@ -102,13 +102,8 @@ plot(x,dbeta(x,alpha.skpt,beta.skpt),type="l",
      ylim=c(0,6),lwd=2)
 lines(x,prior.nc.skpt(x),lty=2,col='darkgrey',lwd=2)
 
-lambda0.skpt<-4 # flat
-lambda0.enth<-5 # flat
-source("code_headers_gen_nrml.R")
-
-lines(x,prior.nc.skpt(x),lty=3,col="grey",lwd=2)
-legend(0.6, 4, legend=c("Spike/Slab", "Default Beta","Flattened"),
-       col=c("darkgrey", "black", "grey"), lty=c(2,1,3), cex=0.8,lwd=2)
+legend(0.6, 4, legend=c("Spike/Slab", "Default Beta"),
+       col=c("darkgrey", "black", "grey"), lty=c(2,1), cex=0.8,lwd=2)
 #########################################################
 
 #########################################################
@@ -124,13 +119,8 @@ plot(x,dbeta(x,alpha.enth,beta.enth),type="l",
      ylim=c(0,5),lwd=2)
 lines(x,prior.nc.enth(x),lty='longdash',col='darkgrey',lwd=2)
 
-lambda0.skpt<-4 # flat
-lambda0.enth<-5 # flat
-source("code_headers_gen_nrml.R")
-
-lines(x,prior.nc.enth(x),lty=3,col="grey",lwd=2)
-legend(0.6, 4*5/6, legend=c("Spike/Slab", "Default Beta","Flattened"),
-       col=c("darkgrey", "black", "grey"), lty=c(2,1,3), cex=0.8,lwd=2)
+legend(0.6, 4*5/6, legend=c("Spike/Slab", "Default Beta"),
+       col=c("darkgrey", "black"), lty=c(2,1), cex=0.8,lwd=2)
 #########################################################
 
 
@@ -141,12 +131,15 @@ sig.fut<-0.85
 sig.eff<-0.95
 cred.tail<-0.05
 max.ss<-76
-reps<-10000
-p.range=0.2
-#p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05) # range of response proportion
-freq.mntr<-rep(c(1,2,4,8,16,76),2)     # frequency of monitoring
-enr.shape<-c(rep(1,6),rep(0.25,6))      # shape gamma dist enrollment
-out.mean<-c(rep(4,12))       # mean normal dist outcome
+reps<-20000
+#p.range=0.2
+p.range<-seq(p.skpt-0.05,p.enth+0.05,by=0.05) # range of response proportion
+freq.mntr<-2
+enr.shape<-1
+out.mean<-4
+#freq.mntr<-rep(c(1,2,4,8,16,76),2)     # frequency of monitoring
+#enr.shape<-c(rep(1,6),rep(0.25,6))      # shape gamma dist enrollment
+#out.mean<-c(rep(4,12))       # mean normal dist outcome
 source("code_main.R")
 label_main=""
 stretch<-0.125
