@@ -258,7 +258,7 @@ Figure 2: (a) Skeptical Beta prior (b) Enthuastic Beta prior (c) 50/50 mixture o
 %\end{center}
 \newpage
 \subsubsection{Sequential monitoring}
-Enrollment proceed until one of the following three conditions are satisfied:
+Enrollment will proceed until one of the following three conditions are satisfied:
 \begin{align*}
 \text{Efficacy criteria (EFF): }&P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95\\
 \text{Futility criteria (FUT): }&P(\theta\leq 0.30|\mathbf{D},\pi_E)\geq 0.85\\
@@ -359,7 +359,7 @@ Note that the probability of efficacy stopping and Type 1 error rate increase mo
 %\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/power_curves}
 %\end{center}
 \newpage
-\section{Robustness of parameterizations of monitoring priors}
+\subsubsection{Robustness of parameterizations of monitoring priors}
 The generalized normal distribution is used to create priors with the same expected value and tail area as the default beta priors, but with densities that are either spike/slab around the expected value or flattened.
 %\begin{figure}
 \begin{center}
@@ -420,34 +420,91 @@ Use of a spike-slab skeptical prior drastically lowers the probability of termin
 %that the number of patients required in each
 %cohort would be 7, 13, or 19, depending on the
 %results obtained."
-\section{Example of Parallel Two-Group Design}
+\subsection{Parallel Two-Group Design with Binary Endpoint}
+\subsubsection{Model formulation \& prior elicitation}
+In this section we consider a sequential monitoring approach in a parallel two-group setting using a binary response endpoint. We consider the case where the goal is prove superiority of an investigational product (IP) to a control which could be a placebo. Let $\theta_0$ represent the response rate the control group and $\theta_1$ represent the response probability for the IP group. Let $H_0:\theta_1-\theta_0\leq 0.1$ vs. $H_1: \theta_1-\theta_0>0.1$.
 
-In this section we consider a sequential monitoring approach in a parallel two-group setting using a binary response endpoint.
+In this setting pessimism or optimism is reflected in the induced prior on the difference in proportions $\theta_1 - \theta_0$. One easy way to specify such a prior in this case is to elicit a bivariate normal prior for $\theta_0$ and $\theta_1$ truncated to the unit square:
+\begin{align*}
+\pi(\theta_0,\theta_1)\propto& \hspace{0.05in}exp \left\{-\frac{1}{2}\left|\frac{(\theta_1-\theta_0)-\delta}{\sigma}\right|^\alpha\right\}
+\end{align*}
 
-We consider the case where the goal is prove superiority of an investigational product (IP) to a control 
-which could be a placebo.
 
-Let $\pi_0$ represent the response rate the control group and $\pi_1$ represent the response probability for the IP group.
+Let $\sigma=4$, $\alpha=2$, $\delta_{skpt}=0$, and $\delta_{enth}=0.2$. The skeptic believes there is no difference in response rates by treatment group, and the enthusiastic person believes the IP group will have a response rate probability that is 0.2 higher than the placebo group. 
 
-Here we wish to elicit pessimistic and enthusiastic priors consistent with the following:
- \begin{enumerate}
-  \item The control group response probability is expected to be approximately $0.20$ and investigators are relatively sure
-		    that the it will be between 0.5 and 0.35.
-				
-	\item The IP group response probability is likely to provide an improvement of approximately 0.20.
-\end{enumerate}
 
-In this setting pessimism or optimism is reflected in the induced prior on the difference in proportions $\pi_1 - \pi_0$.
+%Here we wish to elicit pessimistic and enthusiastic priors consistent with the following:
+% \begin{enumerate}
+%  \item The control group response probability is expected to be approximately $0.20$ and investigators are relatively sure
+%		    that the it will be between 0.5 and 0.35.
+%				
+%	\item The IP group response probability is likely to provide an improvement of approximately 0.20.
+%\end{enumerate}
 
-One easy way to specify such a prior in this case is to elicit a bivariate normal prior for $\pi_0$ and $\pi_1$ truncated to the unit square.  
+
+
+
+\subsubsection{Sequential monitoring}
+Enrollment will proceed until one of the following three conditions are satisfied:
+\begin{align*}
+\text{Efficacy criteria (EFF): }&P(\theta_1-\theta_0>0.10|\mathbf{D},\pi_S)\geq 0.95\\
+\text{Futility criteria (FUT): }&P(\theta_1-\theta_0 \leq 0.15|\mathbf{D},\pi_E)\geq 0.85\\
+\text{Maximum sample size: }&N=50 \text{ patient outcomes obtained per group}
+\end{align*}
+\newpage
+\subsubsection{Example paths}
+\text{Stopping for efficacy:}
+\begin{center}
+\begin{tabular}{llll|cc}
+\multicolumn{2}{c}{Control}&\multicolumn{2}{c}{IP}&EFF&FUT\\
+\hline
+SS& $\hat{\theta}$ & SS & $\hat{\theta}$ &$P(\theta_1-\theta_0>0.1|\textbf{D},\pi_S(\theta_0,\theta_1))$&$P(\theta_1-\theta_0<0.15|\textbf{D},\pi_E(\theta_0,\theta_1))$\\
+\hline
+0&n/a&0&n/a& 0.401 &0.369\\
+5&0.2&5&0.6& 0.479 & 0.286\\
+10&0.2&10&0.6& 0.635 & 0.194\\
+15&0.2&15&0.6& 0.751 & 0.123\\
+20&0.2&20&0.6& 0.832 & 0.087\\
+25&0.2&25&0.6& 0.887 & 0.058\\
+30&0.2&30&0.6& 0.925 & 0.039\\
+35&0.2&35&0.6& 0.950 & 0.026
+\end{tabular}
+\end{center}
+\text{Stopping for futility:}
+\begin{center}
+\begin{tabular}{llll|cc}
+\multicolumn{2}{c}{Control}&\multicolumn{2}{c}{IP}&EFF&FUT\\
+\hline
+SS& $\hat{\theta}$ & SS & $\hat{\theta}$ &$P(\theta_1-\theta_0>0.1|\textbf{D},\pi_S(\theta_0,\theta_1))$&$P(\theta_1-\theta_0>0.15|\textbf{D},\pi_E(\theta_0,\theta_1))$\\
+\hline
+0&n/a&0&n/a& 0.401 &0.369\\
+5&0.4&5&0.4& 0.260 &0.527\\
+10&0.4&10&0.4& 0.236 & 0.613\\
+15&0.4&15&0.4& 0.219 & 0.681\\
+20&0.4&20&0.4& 0.203 & 0.735\\
+25&0.4&25&0.4& 0.189 & 0.778\\
+30&0.4&30&0.4& 0.175 & 0.813\\
+35&0.4&35&0.4& 0.163 & 0.842\\
+40&0.4&40&0.4& 0.151 & 0.866
+\end{tabular}
+\end{center}		
+\newpage
+Alternatively, consider a prior for the response rates that is also informative based on an anticipated response rate in the placebo group:
+\begin{align*}
+\pi(\theta_0,\theta_1)=&\pi(\theta_0)\times\pi(\theta_1|\theta_0)\\
+\propto&exp\left\{-\frac{1}{2}\left|\frac{\theta_0-\mu}{\sigma}\right|^{\alpha_0}\right\}\times exp\left\{-\frac{1}{2}\left|\frac{(\theta_1-\theta_0)-\delta}{\sigma_1}\right|^{\alpha_1}\right\}
+\end{align*}
+
+Consider $\mu_0=0.50$, $\sigma_0=3.5$, $\sigma_1=7$, $\alpha_0=40$, $\alpha_1=30$, $\delta=0$.
+
 
 
 		\begin{figure}
       \centering\includegraphics[scale=0.70]{./FIGURES/BINARY-PRIORS.pdf}
       \caption{Prior for Control Group Response Probability \label{fig:pmp}}
-    \end{figure}
-			
-
+    \end{figure}	
+\newpage
+\subsubsection{Design properties: Results}
 %\subsection{Three-Arm, Placebo Controlled Non-Inferiority Trial w/ Continuous Endpoint}
 %\begin{align*}
 %P&\rightarrow\beta_0 \text{ (placebo)}\\
