@@ -1,3 +1,15 @@
+# graph bivariate skeptical prior
+denB<-function(x,y){
+  exp(-((sigma*((x-y)-delta.skpt))^2)^alpha)
+}
+denB.nc<-int2(denB,a=c(0,0),b=c(1,1))
+x <- seq(0, 1, length= 100)
+y <- x
+z <- outer(x, y, denB)
+wireframe(z, drape=T, col.regions=rainbow(100))
+
+
+
 rm(list = ls())
 require(rmutil)
 require(lattice)
@@ -5,8 +17,14 @@ require(pracma)
 
 sigma<-4
 alpha<-2
-delta.enth<-0.2
-delta.skpt<-0
+delta.enth<-0.4000
+delta.skpt<-0.4000
+
+# sample data: stop early for futility v.2
+y1.x<-seq(0,50,by=10)
+y0.x<-seq(0,50,by=10)
+y1.y<-seq(0,50,by=10)
+y0.y<-seq(0,50,by=10)
 
 # sample data: stop early for futility
 y1.x<-seq(0,20,by=2)
@@ -15,10 +33,10 @@ y1.y<-seq(0,20,by=2)
 y0.y<-seq(0,30,by=3)
 
 # # sample data: stop early for efficacy
-# y1.x<-c(0,1,2,3,4,5,6,7)
-# y0.x<-c(0,4,8,12,16,20,24,28)
-# y1.y<-c(0,3,6,9,12,15,18,21)
-# y0.y<-c(0,2,4,6,8,10,12,14)
+y1.x<-c(0,1,2,3,4,5,6,7)
+y0.x<-c(0,4,8,12,16,20,24,28)
+y1.y<-c(0,3,6,9,12,15,18,21)
+y0.y<-c(0,2,4,6,8,10,12,14)
 
 eff<-NA
 fut<-NA
@@ -39,11 +57,34 @@ for (i in 1:length(y1.x)){
   }
   posterior.enth.nc<-integral2(posterior.enth,xmin=0,xmax=1,ymin=0,ymax=1)[[1]]
 
-  ymax <- function(x) x+0.1
-  eff[i]<-1-integral2(posterior.skpt,xmin=0,xmax=.9,ymin=.1,ymax)[[1]]/posterior.skpt.nc
+  ymin <- function(x) x+0.1
+  eff[i]<-integral2(posterior.skpt,xmin=0,xmax=0.9,ymin=ymin,ymax=1)[[1]]/posterior.skpt.nc
   
-  ymax <- function(x) x+0.15
-  fut[i]<-integral2(posterior.enth,xmin=0,xmax=.85,ymin=.15,ymax)[[1]]/posterior.enth.nc
+  ymin <- function(x) x+0.15
+  fut[i]<-1-integral2(posterior.enth,xmin=1E-3,xmax=0.85,ymin=ymin,ymax=1)[[1]]/posterior.enth.nc
 }
 eff
 fut
+
+i<-1
+
+
+posterior.skpt<-function(x,y){
+  exp(y1.x[i]*log(x)+y0.x[i]*log(1-x))*
+    exp(y1.y[i]*log(y)+y0.y[i]*log(1-y))*
+    exp(-((sigma*((y-x)-delta.skpt))^2)^alpha)
+}
+posterior.skpt.nc<-integral2(posterior.skpt,xmin=0,xmax=1,ymin=0,ymax=1)[[1]]
+
+posterior.enth<-function(x,y){
+  exp(y1.x[i]*log(x)+y0.x[i]*log(1-x))*
+    exp(y1.y[i]*log(y)+y0.y[i]*log(1-y))*
+    exp(-((sigma*((y-x)-delta.enth))^2)^alpha)
+}
+posterior.enth.nc<-integral2(posterior.enth,xmin=0,xmax=1,ymin=0,ymax=1)[[1]]
+
+ymin <- function(x) x+0.1
+integral2(posterior.skpt,xmin=0,xmax=0.9,ymin=ymin,ymax=1)[[1]]
+
+ymin <- function(x) x+0.15
+integral2(posterior.enth,xmin=1E-3,xmax=0.85,ymin=ymin,ymax=1)[[1]]
