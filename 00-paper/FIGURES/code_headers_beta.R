@@ -2,7 +2,7 @@
 ## PRIOR SPECIFICATION ##########################################################################
 #################################################################################################
 # Step 1: Create grid for possible values of phi
-phi.range<-seq(0,100,by=0.001)
+phi.range<-seq(0,100,by=0.0001)
 
 # Step 2: Compute tail probabilities for every possible choice of phi
 # upper tail probability equal to tail.skpt

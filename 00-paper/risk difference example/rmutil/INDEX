@@ -1,0 +1,65 @@
+%^%                     Power of a Matrix
+DataMethods             Methods for response, tccov, tvcov, and
+                        repeated Data Objects
+capply                  A Fast Simplified Version of 'tapply'
+contr.mean              Contrast Matrix for Constraints about the Mean
+covariates.formulafn    Methods for formulafn Functions
+dbetabinom              Beta Binomial Distribution
+dboxcox                 Box-Cox Distribution
+dburr                   Burr Distribution
+dconsul                 Consul Distribution
+ddoublebinom            Double Binomial Distribution
+ddoublepois             Double Poisson Distribution
+dftorep                 Transform a Dataframe to a repeated Object
+dgammacount             Gamma Count Distribution
+dgextval                Generalized Extreme Value Distribution
+dggamma                 Generalized Gamma Distribution
+dginvgauss              Generalized Inverse Gaussian Distribution
+dglogis                 Generalized Logistic Distribution
+dgweibull               Generalized Weibull Distribution
+dhjorth                 Hjorth Distribution
+dinvgauss               Inverse Gaussian Distribution
+dlaplace                Laplace Distribution
+dlevy                   Levy Distribution
+dmultbinom              Multiplicative Binomial Distribution
+dmultpois               Multiplicative Poisson Distribution
+dpareto                 Pareto Distribution
+dpowexp                 Power Exponential Distribution
+dpvfpois                Power Variance Function Poisson Distribution
+dsimplex                Simplex Distribution
+dskewlaplace            Skew Laplace Distribution
+dtwosidedpower          Two-Sided Power Distribution
+finterp                 Formula Interpreter
+fmobj                   Object Finder
+fnenvir                 Check Covariates and Parameters of a Function
+gauss.hermite           Calculate Gauss-Hermite Quadrature Points
+gettvc                  Find the Most Recent Value of a Time-varying
+                        Covariate Before Each Observed Response
+int                     Vectorized Numerical Integration
+int2                    Vectorized Two-dimensional Numerical
+                        Integration
+iprofile                Produce Individual Time Profiles for Plotting
+lin.diff.eqn            Solution of Autonomous Linear Differential
+                        Equations
+lvna                    Create a repeated Object, Leaving NAs
+mexp                    Matrix Exponentiation
+mprofile                Produce Marginal Time Profiles for Plotting
+pkpd                    Pharmacokinetic Compartment Models
+plot.residuals          Plot Residuals
+read.list               Read a List of Matrices from a File for
+                        Unbalanced Repeated Measurements
+read.rep                Read a Rectangular Data Set from a File to
+                        Create a repeated Object
+read.surv               Read a List of Matrices from a File for
+                        Repeated Times to Events
+restovec                Create a response Object
+rmna                    Create a repeated Object, Removing NAs
+rmutil                  Utilities for Repeated Measurements Library
+runge.kutta             Runge-Kutta Method for Solving Differential
+                        Equations
+tcctomat                Create a Time-constant, Inter-individual
+                        Covariate (tccov) Object
+tvctomat                Create a Time-varying, Intra-individual
+                        Covariate (tvcov) Object
+wr                      Find the Response Vector and Design Matrix for
+                        a W&R Model Formula

@@ -1,0 +1,13 @@
+"","p.range",""
+"eff.mon.initial",0.2,0.1
+"eff.mon.final",0.2,0.1
+"fut.mon.initial",0.2,0.6
+"fut.mon.final",0.2,0.4
+"ss.initial",0.2,270
+"ss.final",0.2,279.6
+"post.mean.initial.IP",0.2,0.206358910005801
+"post.mean.final.IP",0.2,0.208907314783591
+"post.mean.initial.PC",0.2,0.199108509308312
+"post.mean.final.PC",0.2,0.198258671039271
+"cov.initial",0.2,1
+"cov.final",0.2,0.9

@@ -1,158 +1,156 @@
 rm(list = ls())
-require(rmutil)
-require(lattice)
-require(pracma)
 
-## Parameters #############################################################
-sig.fut<-0.85
-sig.eff<-0.95
-cred.tail<-0.05
-max.ss<-100
-reps<-100
+if (.Platform$OS.type == "windows") {
+  root<-"D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/risk difference example"
+  setwd(root)
+  
+  require(rmutil)
+  require(lattice)
+  require(pracma)
+  
+  source("bivariate_functions.R")
+  idx<-1
+  
+  # prior parameters
+  sigma<-8
+  alpha<-2
+  delta.enth<-0.1
+  delta.skpt<-0
+  delta.intr=(delta.skpt+delta.enth)/2
+  mu<-0.2
+  
+  # simulation parameters
+  sig.fut<-0.85
+  sig.eff<-0.95
+  cred.tail<-0.05
+  max.ss<-200
+  reps<-10
+  p.IP<-0.2
+  p.PC<-0.2
+  freq.mntr<-10
+  enr.shape<-1
+  out.mean<-4
+}
 
-p.range<-expand.grid(seq(0.1,0.5,by=0.1),seq(0.1,0.5,by=0.1))
-#p.range<-expand.grid(0.4,0.15)
-freq.mntr<-10
-enr.shape<-1
-out.mean<-4
-sigma<-4
-alpha<-2
-delta.enth<-0.2
-delta.skpt<-0.1
-mu<-0.2
+if (.Platform$OS.type == "unix")    { 
+  # sequence from batch file
+  args<-commandArgs(trailingOnly = TRUE)
+  idx<-as.numeric(args[1]);
+  
+  # set directories
+  root<-"/nas/longleaf/home/ekwiatko/FDA/riskdiff/"
+  rpkgs<-paste0(root,"rkpgs")
+  output<-paste0(root,"output/")
+  setwd(output)
+  
+  # load packages
+  require(rmutil,lib.loc="/nas/longleaf/home/ekwiatko/FDA/riskdiff/rpkgs/")
+  require(lattice)
+  require(pracma,lib.loc="/nas/longleaf/home/ekwiatko/FDA/riskdiff/rpkgs/")
+  
+  # source functions
+  source("/nas/longleaf/home/ekwiatko/FDA/riskdiff/code/functions.R")
+  source("/nas/longleaf/home/ekwiatko/FDA/riskdiff/code/parms.R")
+  
+  # using idx to identify model
+  model<-read.csv(file="/nas/longleaf/home/ekwiatko/FDA/riskdiff/code/model.csv",header=TRUE,sep=",")
+  p.IP<-model$p.IP[idx]
+  p.PC<-model$p.PC[idx]
+  freq.mntr<-model$freq.mntr[idx]
+  enr.shape<-model$enr.shape[idx]
+  out.mean<-model$out.mean[idx]
+}
 
 ## SIMULATIONS ############################################################
 
-matrix.names<-c("eff.mon.initial","eff.mon.final",
+names<-c("eff.mon.initial","eff.mon.final",
                 "fut.mon.initial","fut.mon.final",
-                "ss.initial","ss.final")
-outer<- array(NA,dim = 
-                 c(length(freq.mntr),nrow(p.range),length(matrix.names)),
-                 dimnames = 
-                 list(seq_len(length(freq.mntr)),
-                      seq_len(nrow(p.range)),
-                      matrix.names))
-inner <- array(NA, dim=c(reps,length(matrix.names)), 
-                   dimnames = list(seq_len(reps),matrix.names))
+                "ss.initial","ss.final",
+                "post.mean.initial.IP","post.mean.final.IP",
+                "post.mean.initial.PC","post.mean.final.PC",
+                "cov.initial","cov.final")
+
+inner<-array(NA,dim=c(reps,length(names)),dimnames=list(seq_len(reps),names))
+
+# posterior probability
+probs.p<-c(0,0.01,0.1,0.25,0.5,0.75,0.9,0.99,1)
+inner.p<-array(NA, dim=c(reps,2),dimnames=list(seq_len(reps),c("initial.p","final.p")))
+outer.p.agree<-rep(NA,3)
+names(outer.p.agree)<-c("p.agree","efficacy","conditional")
 
 
-for (i in 1:length(freq.mntr)){
-  for (j in 1:nrow(p.range)){
-    for (k in 1:reps){
-      
-      if (k%%10==0){print(paste0("Freq ",i,", p.range",j,", Simulation ",k))}
-      
-
-      enr.times.IP<-cumsum(rgamma(n=max.ss,shape=enr.shape[i],scale=0.5))
-      outcome.times.IP<-sort(enr.times.IP+rnorm(n=max.ss,mean=out.mean[i],sd=0.25))
-      responses.IP<-rbinom(n=max.ss,size=1,prob=p.range[j,1])
-
-      enr.times.PC<-cumsum(rgamma(n=max.ss,shape=enr.shape[i],scale=0.5))
-      outcome.times.PC<-sort(enr.times.PC+rnorm(n=max.ss,mean=out.mean[i],sd=0.25))
-      responses.PC<-rbinom(n=max.ss,size=1,prob=p.range[j,2])
-
-      outcome.times.all<-sort(c(outcome.times.IP,outcome.times.PC))
-      enr.times.all<-sort(c(enr.times.IP,enr.times.PC))
-      
-      futility<-rep(NA,length=length(seq(freq.mntr,(2*max.ss),by=freq.mntr)))
-      efficacy<-rep(NA,length=length(seq(freq.mntr,(2*max.ss),by=freq.mntr)))
-      
-      for (h in seq(freq.mntr,(2*max.ss),by=freq.mntr)){
-        y1.IP<-sum(responses.IP[outcome.times.IP<=outcome.times.all[h]]==1)
-        y0.IP<-sum(responses.IP[outcome.times.IP<=outcome.times.all[h]]==0)
-        y1.PC<-sum(responses.PC[outcome.times.PC<=outcome.times.all[h]]==1)
-        y0.PC<-sum(responses.PC[outcome.times.PC<=outcome.times.all[h]]==0)        
-        
-        posterior.skpt<-function(x,y){
-            exp(y1.IP*log(y)+y0.IP*log(1-y))*
-            exp(y1.PC*log(x)+y0.PC*log(1-x))*
-            exp(-(sigma*(x-mu)^2)^alpha)*
-            exp(-((sigma*((y-x)-delta.skpt))^2)^alpha)
-        }
-        
-        posterior.skpt.nc<-tryCatch(integral2(posterior.skpt,xmin=0,xmax=1,ymin=0,ymax=1,singular=T)[[1]],
-                  error=function(e) integral2(posterior.skpt,xmin=0,xmax=1,ymin=0,ymax=1,abstol=1E-6)[[1]])
-        
-        posterior.enth<-function(x,y){
-            exp(y1.IP*log(y)+y0.IP*log(1-y))*
-            exp(y1.PC*log(x)+y0.PC*log(1-x))*
-            exp(-(sigma*(x-mu)^2)^alpha)*
-            exp(-((sigma*((y-x)-delta.enth))^2)^alpha)
-        }
-        posterior.enth.nc<-tryCatch(integral2(posterior.enth,xmin=0,xmax=1,ymin=0,ymax=1,singular=T)[[1]],
-                  error=function(e) integral2(posterior.enth,xmin=0,xmax=1,ymin=0,ymax=1,abstol=1E-6)[[1]])
-        
-
-        efficacy[h/freq.mntr]<-tryCatch(
-        integral2(posterior.skpt,xmin=0,xmax=0.9,ymin=function(x) x+0.1,ymax=1,singular=T)[[1]]/posterior.skpt.nc,
-        error=function(e) 
-        integral2(posterior.skpt,xmin=0,xmax=0.9,ymin=function(x) x+0.1,ymax=1,abstol=1E-6)[[1]]/posterior.skpt.nc)
-        
-        futility[h/freq.mntr]<-tryCatch(
-        1-integral2(posterior.enth,xmin=0,xmax=0.85,ymin=function(x) x+0.15,ymax=1,singular=T)[[1]]/posterior.enth.nc,
-        error=function(e) 
-        1-integral2(posterior.enth,xmin=0,xmax=0.85,ymin=function(x) x+0.15,ymax=1,abstol=1E-6)[[1]]/posterior.enth.nc)
-      }
-      
-      n.initial<-min(freq.mntr*which(((futility>sig.fut) | (efficacy>sig.eff))),(2*max.ss),na.rm=TRUE)
-      cutoff.time<-outcome.times.all[n.initial]
-      n.final<-sum(enr.times.all<=cutoff.time)
-      
-      inner[k,paste0("fut.mon.","initial")]<-(futility[n.initial/freq.mntr]>sig.fut)
-      inner[k,paste0("eff.mon.","initial")]<-(efficacy[n.initial/freq.mntr]>sig.eff)
-      
-      ### redo calculations for n.final ###
-      y1.IP<-sum(responses.IP[enr.times.IP<=cutoff.time]==1)
-      y0.IP<-sum(responses.IP[enr.times.IP<=cutoff.time]==0)
-      y1.PC<-sum(responses.PC[enr.times.PC<=cutoff.time]==1)
-      y0.PC<-sum(responses.PC[enr.times.PC<=cutoff.time]==0)        
-      
-      posterior.skpt<-function(x,y){
-          exp(y1.IP*log(y)+y0.IP*log(1-y))*
-          exp(y1.PC*log(x)+y0.PC*log(1-x))*
-          exp(-(sigma*(x-mu)^2)^alpha)*
-          exp(-((sigma*((y-x)-delta.skpt))^2)^alpha)
-      }
-      
-      posterior.skpt.nc<-tryCatch(integral2(posterior.skpt,xmin=0,xmax=1,ymin=0,ymax=1,singular=T)[[1]],
-                                  error=function(e) integral2(posterior.skpt,xmin=0,xmax=1,ymin=0,ymax=1,abstol=1E-6)[[1]])
-      
-      posterior.enth<-function(x,y){
-        exp(y1.IP*log(y)+y0.IP*log(1-y))*
-          exp(y1.PC*log(x)+y0.PC*log(1-x))*
-          exp(-(sigma*(x-mu)^2)^alpha)*
-          exp(-((sigma*((y-x)-delta.enth))^2)^alpha)
-      }
-      posterior.enth.nc<-tryCatch(integral2(posterior.enth,xmin=0,xmax=1,ymin=0,ymax=1,singular=T)[[1]],
-                                  error=function(e) integral2(posterior.enth,xmin=0,xmax=1,ymin=0,ymax=1,abstol=1E-6)[[1]])
-      
-      
-      efficacy.final<-tryCatch(
-        integral2(posterior.skpt,xmin=0,xmax=0.9,ymin=function(x) x+0.1,ymax=1,singular=T)[[1]]/posterior.skpt.nc,
-        error=function(e) 
-          integral2(posterior.skpt,xmin=0,xmax=0.9,ymin=function(x) x+0.1,ymax=1,abstol=1E-6)[[1]]/posterior.skpt.nc)
-      
-      futility.final<-tryCatch(
-        1-integral2(posterior.enth,xmin=0,xmax=0.85,ymin=function(x) x+0.15,ymax=1,singular=T)[[1]]/posterior.enth.nc,
-        error=function(e) 
-          1-integral2(posterior.enth,xmin=0,xmax=0.85,ymin=function(x) x+0.15,ymax=1,abstol=1E-6)[[1]]/posterior.enth.nc)
-      
-      inner[k,paste0("fut.mon.","final")]<-(futility.final>sig.fut)
-      inner[k,paste0("eff.mon.","final")]<-(efficacy.final>sig.eff)
-      
-      ### redo calculations for n.final ###
-      
-      time<-c("initial","final")
-      n<-c(n.initial,n.final)
-      for (l in 1:2){
-        inner[k,paste0("ss.",time[l])]<-n[l]
-      }
-     
+for (k in 1:reps){
+  
+  if (k%%10==0){print(paste0("Simulation ",k))}
+  
+  enr.times.IP<-cumsum(rgamma(n=max.ss,shape=enr.shape,scale=0.5))
+  outcome.times.IP<-sort(enr.times.IP+rnorm(n=max.ss,mean=out.mean,sd=0.25))
+  responses.IP<-rbinom(n=max.ss,size=1,prob=p.IP)
+  
+  enr.times.PC<-cumsum(rgamma(n=max.ss,shape=enr.shape,scale=0.5))
+  outcome.times.PC<-sort(enr.times.PC+rnorm(n=max.ss,mean=out.mean,sd=0.25))
+  responses.PC<-rbinom(n=max.ss,size=1,prob=p.PC)
+  
+  outcome.times.all<-sort(c(outcome.times.IP,outcome.times.PC))
+  enr.times.all<-sort(c(enr.times.IP,enr.times.PC))
+  
+  for (h in seq(freq.mntr,(2*max.ss),by=freq.mntr)){
+    result<-eff_fut(h)
+    futility<-result[2]
+    efficacy<-result[1]
+    if (futility>sig.fut | efficacy>sig.eff){
+      break
     }
-    outer[i,j,]<-apply(inner,MARGIN=2,FUN=mean)
   }
+  
+  ## INITIAL ##
+  n.initial<-h
+  result.initial<-pm_cp(n.initial)
+  inner[k,"fut.mon.initial"]<-(futility>sig.fut)
+  inner[k,"eff.mon.initial"]<-(efficacy>sig.eff)
+  inner[k,"post.mean.initial.PC"]<-result.initial[1]
+  inner[k,"post.mean.initial.IP"]<-result.initial[2]
+  inner[k,"cov.initial"]<-result.initial[3]
+  inner[k,"ss.initial"]<-n.initial  
+  inner.p[k,"initial.p"]<-efficacy
+  
+  ## FINAL ##
+  cutoff.time<-outcome.times.all[n.initial]
+  n.final<-sum(enr.times.all<=cutoff.time)
+  result<-eff_fut(n.final)
+  futility.final<-result[2]
+  efficacy.final<-result[1]
+  result.final<-pm_cp(n.final)
+  
+  inner[k,"fut.mon.final"]<-(futility.final>sig.fut)
+  inner[k,"eff.mon.final"]<-(efficacy.final>sig.eff)
+  inner[k,"post.mean.final.PC"]<-result.final[1]
+  inner[k,"post.mean.final.IP"]<-result.final[2]
+  inner[k,"cov.final"]<-result.final[3]
+  inner[k,"ss.final"]<-n.final  
+  inner.p[k,"final.p"]<-efficacy.final
 }
 
+outer<-apply(inner,MARGIN=2,FUN=mean)
 
-outer[1,,"ss.initial"]
-cbind(p.range,outer[,,])
+outer.p<-quantile(inner.p[,"final.p"][inner.p[,"initial.p"]>sig.eff & inner.p[,"final.p"]<sig.eff],
+                        probs=probs.p)
+
+outer.p.agree["p.agree"]<-
+  sum((inner.p[,"initial.p"]>sig.eff)==(inner.p[,"final.p"]>sig.eff))/reps
+outer.p.agree["efficacy"]<-
+  sum((inner.p[,"initial.p"]>sig.eff) & (inner.p[,"final.p"]>sig.eff))/reps
+outer.p.agree["conditional"]<-
+  sum((inner.p[,"initial.p"]>sig.eff) & (inner.p[,"final.p"]>sig.eff))/sum(inner.p[,"initial.p"]>sig.eff)
+
+# output files
+if (.Platform$OS.type == "windows")    { 
+  write.csv(outer,file=paste0(idx,"Table1.csv"))
+  write.csv(outer.p,file=paste0(idx,"Table2.csv"))
+  write.csv(outer.p.agree,file=paste0(idx,"Table3.csv"))
+}
+if (.Platform$OS.type == "unix")    { 
+write.csv(outer,file=paste0(output,"Table1/",idx,"Table1.csv"))
+write.csv(outer.p,file=paste0(output,"Table2/",idx,"Table2.csv"))
+write.csv(outer.p.agree,file=paste0(output,"Table3/",idx,"Table3.csv"))
+}
