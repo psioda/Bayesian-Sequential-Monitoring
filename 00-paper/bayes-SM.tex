@@ -127,37 +127,49 @@ There is still potential for further utilization of Bayesian methods in the clin
 
 \subsubsection{Bayesian hypothesis testing based on posterior probabilities}
 
-The Bayesian paradigm provides direct inference on a parameter of interest through specification of a model for the data generating mechanism and prior distributions for unknown quantities. Let $\mathbf{D}$ be a random variable representing the data collected in the trial with density $p(\mathbf{D}|\theta,\psi)$ where $\theta$ and $\psi$ are the unknown quantities. Let $\theta$ be the parameter of interest and $\psi$ be the unknown quantities that are not of primary importance (nuisance parameters). Define the sample spaces for the unknown quantities as $\theta\in\Theta$ and $\psi\in\Psi$. 
+The Bayesian paradigm provides direct inference on a parameter of interest through specification of a model for the data and prior distributions for unknown quantities. Let $\mathbf{D}$ be a random variable representing the data collected in the trial with density $p(\mathbf{D}|\theta)$ where $\theta$ is the parameter of interest with sample space $\theta\in\Theta$. 
 
 Suppose the hypothesis for the trial is $H_0:\theta\in\Theta_0$ versus $H_1:\theta\in\Theta_1$. These hypotheses are judged based on posterior probabilities of $\theta$ by evaluating the marginal likelihood 
-\begin{align*}
+\begin{align}
 P(\theta\in\Theta_i|\mathbf{D})=\int_{\Theta_i}p(\theta|\mathbf{D})d\theta\text{ for }i\in\{0,1\},
-\end{align*}
-where $p(\theta|\mathbf{D})=\int_{\Psi}p(\theta,\psi|\mathbf{D})d\psi$ is marginalized over the nuisance parameters.
-
+\end{align}
+where the posterior distribution of $\theta$ depends on the choice of prior distribution $\pi(\theta)$ since $p(\theta|\mathbf{D})=p(\mathbf{D}|\theta)\pi(\theta)/p(\mathbf{D})$ by Bayes rule.
 \subsubsection{Prior elicitation}
-It has been said that ``the purpose of a trial is to collect data that bring to conclusive consensus at termination opinions that had been diverse and indecisive at the \textit{outset}" (Kass and Greenhouse (1989), emphasis added). These opinions manifest as priors $\pi(\theta,\psi)$ based on their relation to $P(\theta\in\Theta_i|\pi(\theta,\psi))$ $i\in\{0,1\}$. Note this quantity does not depend on the data $\mathbf{D}$ and therefore reflects a-priori opinion.
+It has been said that ``the purpose of a trial is to collect data that bring to conclusive consensus at termination opinions that had been diverse and indecisive at the \textit{outset}" (Kass and Greenhouse (1989), emphasis added). These opinions manifest as priors $\pi(\theta)$ based on their relation to $P(\theta\in\Theta_i|\pi(\theta))$ $i\in\{0,1\}$. Note this quantity does not depend on the data $\mathbf{D}$ and therefore reflects a-priori opinion.
 
-The posterior distribution of $\theta$ depends on the choice of prior distribution $\pi(\theta,\psi)$ since $p(\theta,\psi|\mathbf{D})=p(\mathbf{D}|\theta,\psi)\pi(\theta,\psi)/p(\mathbf{D})$ by Bayes rule. The specification of the prior distribution depends on the research objective. An \textit{inference prior} is a prior that is used when the research objective is to make final analysis after data collection is complete. A \textit{monitoring prior} is a prior that is used when the research objective is to see if there is a persuasive result based in the interim data. Stopping for efficacy is ceasing enrollment due to a promising interim result (one that is consistent with $H_1$), and stopping for futility is ceasing enrollment due to a discouraging interim result (one that is consistent with $H_0$).
+ The specification of the prior distribution depends on the research objective. An \textit{inference prior} is a prior that is used when the research objective is to make final analysis after data collection is complete. A \textit{monitoring prior} is a prior that is used when the research objective is to see if there is a persuasive result based in the interim data. Stopping for efficacy is ceasing enrollment due to a promising interim result (one that is consistent with $H_1$), and stopping for futility is ceasing enrollment due to a discouraging interim result (one that is consistent with $H_0$).
 
-Define $\delta\in(0,1)$ as a threshold for \textit{a compelling level of evidence} as it relates to $\theta$. We say that an individual is ``all but convinced" that $H_i$ is true given the observed data if $P(\theta\in\Theta_i|\mathbf{D})\geq\delta$ for $i\in\{0,1\}$. The quantity $1-\delta$ reflects \textit{residual uncertainty} of $H_i$ being true relative to the competing hypothesis. %For example, an individual would be ``all but convinced" of the truth of the alternative hypothesis if $P(\theta\in\Theta_1|\mathbf{D})\geq\delta$.
+Define $1-\epsilon\in(0,1)$ as a threshold for \textit{a compelling level of evidence} as it relates to $\theta$. We say that an individual is ``all but convinced" that $H_i$ is true given the observed data if 
+\begin{align}
+P(\theta\in\Theta_i|\mathbf{D})> 1-\epsilon\text{ for }i\in\{0,1\}.
+\end{align}  The quantity $\epsilon$ reflects \textit{residual uncertainty} of $H_i$ being true relative to the competing hypothesis. %For example, an individual would be ``all but convinced" of the truth of the alternative hypothesis if $P(\theta\in\Theta_1|\mathbf{D})\geq\delta$.
 
 
 %Possible simplifying functional relationships between $\theta$ and $\psi$ are conditional independence $\pi(\theta,\psi)=\pi(\theta|\psi)\pi(\psi)$ and independence $\pi(\theta,\psi)=\pi(\theta)\pi(\psi)$. An inference prior is often non-informative or objective in the sense that it does not show preference to $H_0$ or $H_1$. Decisions made using using a non-informative prior are often similar to those made in the frequentist setting. 
-A enthuastic prior is an informative prior that gives preference to $H_1$ such that it is ``all but convinced" that $H_1$ is true a-priori. This prior $\pi_{E}(\theta,\psi)\equiv\pi_{E}$ has the property that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$ (equivalently $P(\theta\in\Theta_0| \pi_{E})<1-\delta$). The choice of $\delta\in(0,1)$ is motivated by a \textit{compelling level of evidence} as it relates to $\theta$, although in this setting the ``evidence" reflects a theoretical opinion rather than empirical judgement. For example, if $\delta=0.95$, then this choice of enthaustic prior places 95\% prior probability that $\theta\in\Theta_1$.  
+A enthuastic prior is an informative prior that gives preference to $H_1$ such that it is ``all but convinced" that $H_1$ is true a-priori. This prior $\pi_{E}(\theta)\equiv\pi_{E}$ has the property that 
+\begin{align}\label{eq:enth_prior}
+P(\theta\in\Theta_1| \pi_{E})>1-\epsilon
+\end{align} (equivalently $P(\theta\in\Theta_0| \pi_{E})\leq\epsilon$). The choice of $1-\epsilon\in(0,1)$ is motivated by a \textit{compelling level of evidence} as it relates to $\theta$, although in this setting the ``evidence" reflects a theoretical opinion rather than empirical judgement. For example, if $1-\epsilon=0.95$, then this choice of enthaustic prior places 95\% prior probability that $\theta\in\Theta_1$.  
 
-A skeptical prior is an informative prior that does not give strong preference to $H_1$. This prior $\pi_{S}(\theta,\psi)\equiv\pi_{S}$ could have the property that $P(\theta\in\Theta_0| \pi_{S})\geq\delta$, in which case it is ``all but convinced" that $H_0$ is true a-prior, however, this demonstrates such an extreme disbelief in the possibility of a positive effect that conducting the trial at all would be viewed as dubious. Consider a region $\Theta_A\subset\Theta_1$ that demonstrates a substantial positive effect. The skeptical prior is then constructed such that $P(\theta\in\Theta_A| \pi_{S})<\delta$.
+A skeptical prior is an informative prior that does not give strong preference to $H_1$. This prior $\pi_{S}(\theta)\equiv\pi_{S}$ could have the property that $P(\theta\in\Theta_0| \pi_{S})>1-\epsilon$, in which case it is ``all but convinced" that $H_0$ is true a-prior, however, this demonstrates such an extreme disbelief in the possibility of a positive effect that conducting the trial at all would be viewed as dubious. Consider a region $\Theta_A\subset\Theta_1$ that demonstrates a substantial positive effect. The skeptical prior is then constructed such that 
+\begin{align}\label{eq:skpt_prior}
+P(\theta\in\Theta_A| \pi_{S})\leq\epsilon
+\end{align}
 
 \subsubsection{Sequential monitoring}
 The use of monitoring based on changing the opinion of skeptical and enthuastic priors has been described as overcoming a handicap (\cite{Freedman1989}) and providing a brake (\cite{Fayers1997}) on the premature termination of trials, or constructing ``an adversary who will need to be disillusioned by the data to stop further experimentation" (\cite{Spiegelhalter1994}). Early termination of enrollment is appriopriate if diverse prior opinions about $\theta$ would be in agreement given the interim data (e.g. the skeptical and enthuastic person reach the same conclusion). 
 
 \subsubsection*{Promising interim result}
-In order for interim evidence showing $H_1$ is true to be persuasive, it has to cause the skeptic, who initially held that $P(\theta\in\Theta_A\subset\Theta_1| \pi_{S})<1-\delta$, to conclude that $P(\theta\in\Theta_1| \pi_{S})\geq\delta$.
+In order for interim evidence showing $H_1$ is true to be persuasive, it has to cause the skeptic, who initially held that 
+\begin{align}P(\theta\in\Theta_A\subset\Theta_1| \pi_{S})\leq\epsilon\text{ to conclude that }P(\theta\in\Theta_1| \mathbf{D},\pi_{S})>1-\epsilon.
+\end{align}
 \subsubsection*{Disillusioning interim result}
-Recall that $\theta\in\Theta_A\subset\Theta_1$ represents a substantial positive effect. A disillusioning interim result not only demonstrates that a substantial positive effect is unlikely, but furthermore demonstrates that a moderate or intermediate positive effect is also unlikely. For this reason, consider $\theta\in\Theta_I\subset\Theta_A$ to demonstrate a moderate positive effect. In order for interim evidence showing $H_1$ is false to be persuasive, it has to cause the enthusiast, who initially held that $P(\theta\in\Theta_1| \pi_{E})\geq\delta$, to conclude that even a moderate positive effect is unlikely, that is, $P(\theta\in\Theta_I| \pi_{E})<1-\delta$
+Recall that $\theta\in\Theta_A\subset\Theta_1$ represents a substantial positive effect. A disillusioning interim result not only demonstrates that a substantial positive effect is unlikely, but furthermore demonstrates that a moderate or intermediate positive effect is also unlikely. For this reason, consider $\theta\in\Theta_I\subset\Theta_A$ to demonstrate a moderate positive effect. In order for interim evidence showing $H_1$ is false to be persuasive, it has to cause the enthusiast, who initially held that 
+\begin{align}P(\theta\in\Theta_1| \pi_{E})>1-\epsilon\text{ to conclude that }P(\theta\in\Theta_I| \mathbf{D},\pi_{E})\leq\epsilon.
+\end{align}
 
 \subsubsection*{Example}
-Consider the hypothesis $H_0:\theta\leq\theta_0$ vs. $H_1:\theta>\theta_0$. The skeptic initially held that $P(\theta>\theta_A| \pi_{S})<1-\delta$ and a promising interim result would be $P(\theta>\theta_0| \pi_{S})\geq\delta$. The enthusiast initially held that $P(\theta>\theta_0| \pi_{E})\geq\delta$ and a disillusioning interim result would be $P(\theta>\theta_I| \pi_{E})<1-\delta$
+Consider the hypothesis $H_0:\theta\leq\theta_0$ vs. $H_1:\theta>\theta_0$. The skeptic initially held that $P(\theta>\theta_A| \pi_{S})\leq\epsilon$ and a promising interim result would be $P(\theta>\theta_0| \pi_{S})>1-\epsilon$. The enthusiast initially held that $P(\theta>\theta_0| \pi_{E})>1-\epsilon$ and a disillusioning interim result would be $P(\theta>\theta_I| \pi_{E})\leq\epsilon$.
 
 \begin{center}
 \includegraphics[width=4in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/line_graph2}
@@ -173,34 +185,55 @@ Figure 1: Graph of null response value ($\theta_0$), intermediate response value
 %\end{align*}
 %and let $p(\theta|D,\pi)$ denote the posterior distribution of $\theta$ given a particular prior distribution.
 As an alternative strategy to futility analysis, one can monitor the probability of success (POS) for the trial. The probability of getting a convincing result at the end of the trail can be computed using the interim data. Let $p(\theta|\mathbf{D}, \pi_{I})$ denote the posterior distribution for $\theta$ based on the inference prior $ \pi_{I}$ and the current data $\mathbf{D}$. Let $\xi$ denote the POS which is given as follows:
-\begin{align*}
-\xi&=\int_{\mathbf{D_1}:P(\theta\in\Theta_1|\mathbf{D}_1,\mathbf{D}, \pi_{I})\geq \delta}dF(\mathbf{D}_1)\\
+\begin{align}
+\xi&=\int_{\mathbf{D_1}:P(\theta\in\Theta_1|\mathbf{D}_1,\mathbf{D}, \pi_{I})>1-\epsilon}dF(\mathbf{D}_1)=E[1\{P(\theta\in\Theta_1|\mathbf{D}_1,\mathbf{D}, \pi_{I})>1-\epsilon\}]
 %&=\int 1\{P(\theta\in\Theta_1|\mathbf{D}_1,\mathbf{D}, \pi_{I})\geq \delta\} dF(\mathbf{D}_1)\\
 %P[\mathbf{D}_1\in\mathbb{R}^{dim(\mathbf{D}_1)}|P(\theta\in\Theta_1|\mathbf{D}_1,\mathbf{D},\pi_I)\geq\delta]\\
-&=E[1\{P(\theta\in\Theta_1|\mathbf{D}_1,\mathbf{D}, \pi_{I})\geq \delta\}]
-\end{align*}
-where the expectation is taken with respect to the posterior predictive distribution $p(\mathbf{D}_1)$ for future data $\mathbf{D}_1$ (which includes subjects yet to enroll):
-\begin{align*}
-p(\mathbf{D}_1)=\int p(\mathbf{D}_1|\theta) \pi(\theta|\mathbf{D})d\theta.
-\end{align*}
+\end{align}
+where the expectation is taken with respect to the posterior predictive distribution $p(\mathbf{D}_1)$ for future data $\mathbf{D}_1$ (which includes subjects yet to enroll) $p(\mathbf{D}_1)=\int p(\mathbf{D}_1|\theta) \pi(\theta|\mathbf{D})d\theta$.
 One may stop the enrollment if $\xi$ is sufficiently small (i.e. $\xi<0.05$).
 \subsubsection{Final inference}
-Final inference on the parameter of interest is made once all data has been collected. Enrollment was either stopped based on a persuasive interim result or based on the maximum sample size. An inference prior $\pi_{I}(\theta,\psi)\equiv\pi_{I}$ is often less divisive than the skeptical and enthaustic priors, and can be viewed as a balance of the more divisive opinions. We propose use of a mixture prior constructed from the monitoring process as the inference prior:
-\begin{align*}
-\pi_{I}=\omega\pi_{S}+(1-\omega)\pi_E
-\end{align*}
-for $\omega\in[0,1]$. Choosing $\omega=1/2$ for an equal mixture of $\pi_S$ and $\pi_E$ corresponds to an inference prior that equally weights the skeptical and enthuastic opinions. Define $p(\mathbf{D}|\pi(\theta,\psi))=\int p(\mathbf{D}|\theta)\pi(\theta,\psi)d(\theta,\psi)$ to be the marginal likelihood for the data given the prior $\pi(\theta,\psi)$. Choosing $\omega$ based on posterior model probabilities of the null and alternative hypotheses yields $\omega=p(\mathbf{D}| \pi_{S})/(p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E}))$. 
+Final inference on the parameter of interest is made once all data has been collected. Enrollment was either stopped based on a persuasive interim result or based on the maximum sample size. An inference prior $\pi_{I}(\theta)\equiv\pi_{I}$ is often less divisive than the skeptical and enthaustic priors, and can be viewed as a balance of the more divisive opinions. We propose use of a mixture prior constructed from the monitoring process as the inference prior:
+\begin{align}
+\pi_{I}=\omega\cdot\pi_{S}+(1-\omega)\cdot\pi_E
+\end{align}
+for $\omega\in[0,1]$. 
 
+The choice of $\omega$ will be based on posterior model probabilities. In particular,
+\begin{align}
+\omega=p(\pi_S|\mathbf{D})=\frac{p(\mathbf{D}|\pi_S)p(\pi_S)}{p(\mathbf{D}|\pi_S)p(\pi_S)+p(\mathbf{D}|\pi_E)p(\pi_E)}
+\end{align}
+where $p(\pi_S)+p(\pi_E)=1$. The quantities $p(\pi_E)$ and $p(\pi_S)$ reflect prior belief in the distribution of $\theta$. A default option is $p(\pi_S)=p(\pi_E)=\frac{1}{2}$.
+%
+%Choosing $\omega=1/2$ for an equal mixture of $\pi_S$ and $\pi_E$ corresponds to an inference prior that equally weights the skeptical and enthuastic opinions. Define $p(\mathbf{D}|\pi(\theta))=\int p(\mathbf{D}|\theta)\pi(\theta)d\theta$ to be the marginal likelihood for the data given the prior $\pi(\theta)$. Choosing $\omega$ based on posterior model probabilities of the null and alternative hypotheses yields 
+%\begin{align}
+%\omega=\frac{p(\mathbf{D}| \pi_{S})}{p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E})}. 
+%\end{align}
 %The determination of a significant trial result is given by
 %\begin{align*}
 %P(\theta\in\Theta_1|\mathbf{D},\pi_I)\geq\delta.
 %\end{align*} 
 
-All relevant information about $\theta$ can be derived from the marginal posterior distribution with an inference prior (e.g. posterior mean, credible intervals). For example, the posterior mean using the inference prior will be a two-part mixture of the posterior means using the skeptical and enthuastic priors:
+%All relevant information about $\theta$ can be derived from the marginal posterior distribution with an inference prior (e.g. posterior mean, credible intervals). For example, the posterior mean using the inference prior will be a two-part mixture of the posterior means using the skeptical and enthuastic priors: $E(\theta|\mathbf{D},\pi_I)=\omega E(\theta|\mathbf{D}, \pi_{S})+(1-\omega) E(\theta|\mathbf{D}, \pi_{E}).$
+\newpage
+\subsubsection{Normal distribution}
+Normal density:
+\begin{align}
+f(x)=\frac{1}{\sqrt{2\pi}\sigma}exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\}
+\end{align}
+Generalized normal density:
+\begin{align}
+f(x)=K\cdot exp\left\{-\left|\frac{x-\mu}{\sigma}\right|^s\right\}, K=\frac{s}{2\sigma\Gamma(1/s)}
+\end{align}
+One easy way to specify such priors is to use bivariate normal priors truncated to the unit square:
 \begin{align*}
-E(\theta|\mathbf{D},\pi_I)&=\omega E(\theta|\mathbf{D}, \pi_{S})+(1-\omega) E(\theta|\mathbf{D}, \pi_{E})%\\
-%\int_\Theta \theta p(\theta|\mathbf{D},\pi_{I})d\theta&=\omega\cdot \int_\Theta \theta p(\theta|\mathbf{D},\pi_{S})d\theta+(1-\omega)\cdot\int_\Theta \theta %p(\theta|\mathbf{D},\pi_{E})d\theta
+\pi(\theta_0,\theta_1)\propto&exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma}\right)^{2}\right\}\times exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta}{\sigma_1}\right)^{2}\right\}c(\theta_0)
 \end{align*}
+
+
+
+%\\
+%\int_\Theta \theta p(\theta|\mathbf{D},\pi_{I})d\theta&=\omega\cdot \int_\Theta \theta p(\theta|\mathbf{D},\pi_{S})d\theta+(1-\omega)\cdot\int_\Theta \theta %p(\theta|\mathbf{D},\pi_{E})d\theta
 %\begin{align*}
 %\pi_{Inference}=\frac{p(\mathbf{D}| \pi_{S}) \pi_{S}+p(\mathbf{D}| \pi_{E}) \pi_{E}}{p(\mathbf{D}| \pi_{S})+p(\mathbf{D}| \pi_{E})}
 %\end{align*}
@@ -231,13 +264,15 @@ E(\theta|\mathbf{D},\pi_I)&=\omega E(\theta|\mathbf{D}, \pi_{S})+(1-\omega) E(\t
 \newpage
 \section{Examples}
 
-\subsection{Single-Arm Proof-of-Activity Trial with Binary Endpoint}
+\subsection{Single-Arm Proof-of-Activity Trial with Binary Endpoint (UC example)}
 
 \subsubsection{Model formulation \& prior elicitation}
 
 Consider a single-arm oncology proof-of-activity trial with a binary endpoint. The data $\mathbf{D}$ are binomially distributed and the response rate $\theta$ is the parameter of interest, with higher values of $\theta$ being indicative of proof-of-activity. The formulation is discussed in Section 2.1.3 with $\theta_0=0.2$, $\theta_I=0.3$, $\theta_A=0.4$.
 
-Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy. In particular, let $y_1$ be the number of successes and $y_0$ be the number of failures. If the skeptical prior is $\pi_S(\theta)\sim\mathcal{B}(\alpha_S,\beta_S)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_S)\sim\mathcal{B}(\alpha_S+y_1,\beta_S+y_0)$. Similarly, if the enthuastic prior is $\pi_E(\theta)\sim\mathcal{B}(\alpha_E,\beta_E)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_E)\sim\mathcal{B}(\alpha_E+y_1,\beta_E+y_0)$.
+Normal enthuastic and skeptical priors.
+
+%Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy. In particular, let $y_1$ be the number of successes and $y_0$ be the number of failures. If the skeptical prior is $\pi_S(\theta)\sim\mathcal{B}(\alpha_S,\beta_S)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_S)\sim\mathcal{B}(\alpha_S+y_1,\beta_S+y_0)$. Similarly, if the enthuastic prior is $\pi_E(\theta)\sim\mathcal{B}(\alpha_E,\beta_E)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_E)\sim\mathcal{B}(\alpha_E+y_1,\beta_E+y_0)$.
 
 The skeptical prior is Beta distributed with expected value $\theta_0=0.2$ and has $0.045$ prior probability that $\theta>\theta_A=0.4$. The enthuastic prior has expected value $\theta_A=0.4$ and has $0.05$ prior probability that $\theta<\theta_0=0.2$. The quantities $0.045$ and $0.05$ in this setting represent the residual uncertainty that the skeptic and enthusiast have in their beliefs, and are shaded black in Figure 2. The inference prior will be at an equal mixture of the skeptical and enthuastic prior ($\omega=0.5)$.
 
@@ -423,32 +458,38 @@ Use of a spike-slab skeptical prior drastically lowers the probability of termin
 %cohort would be 7, 13, or 19, depending on the
 %results obtained."
 \subsection{Parallel Two-Group Design with Binary Endpoint}
-\subsubsection{Model formulation \& prior elicitation}
-In this section we consider a sequential monitoring approach in a parallel two-group setting using a binary response endpoint. We consider the case where the goal is prove superiority of an investigational product (IP) to a control which could be a placebo. Let $\theta_0$ represent the response rate the control group and $\theta_1$ represent the response probability for the IP group. 
+\subsubsection{Motivating example}
+The Pediatric Lupus Trial of Belimumab Plus Background Standard Therapy (PLUTO) trial, was a multi-center study to evaluate the safety, pharmacokinetics, and efficacy of belimumab intravenous (IV) in pediatric patients 5 to 17 years of age with active systemic lupus erythematosus. 
 
-Consider the following representation of the joint prior for $\theta_1$ and $\theta_0$:
-\begin{align*}
-\pi(\theta_0,\theta_1)=&\pi(\theta_0)\times\pi(\theta_1|\theta_0).
-\end{align*} 
+The goal was to test for superiority of belimumab to placebo. Based on adult studies, a response rate of $0.51$ was expected for belimumab and based on previous research a response rate of $0.39$ was expected for placebo.
 
-The component $\pi(\theta_0)$ reflects prior opinion about the response rate in the placebo group, and the component $\pi(\theta_1|\theta_0)$ can be used to express pessimism or optimism in the difference in proportions $\theta_1 - \theta_0$. One easy way to specify such priors is to use bivariate normal priors truncated to the unit square:
-\begin{align*}
-\pi(\theta_0,\theta_1)\propto&exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma}\right)^{2}\right\}\times exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta}{\sigma_1}\right)^{2}\right\}
-\end{align*}
+The study design included enrollment of 100 subjects, the first 24 subjects randomized in a 5:1 ratio (belimumab:placebo) and the remaining 76 subjects would have been randomized in a 1:1 allocation ratio. Therefore, 58 subjects would have been randomized to belimumab and 42 to placebo. The sample size was based on feasibility constraints rather than a power calculation.
 
-Suppose that $\mu=0.1$ is the estimated response rate in the placebo group.
-Consider the hypothesis
+The binary response endpoint was evaulated at 52 weeks post enrollment. The study start date was September 7, 2012, and the primary completion date was January 24, 2018. Since the follow-up period is 52 weeks the last enrollment is estimated to be a year prior to the primary completition date yielding an average enrollment rate of one enrollment per $17.2$ days.
+\subsubsection{Model formulation}
+Let $\theta_0$ represent the response rate the control group and $\theta_1$ represent the response probability for the investigational product (IP) group. 
+Consider the hypothesis testing of IP superiority to control
 \begin{align*}
 H_0:\theta_1-\theta_0\leq 0\text{ vs. }H_1: \theta_1-\theta_0>0.
 \end{align*}
 
-The skeptic believes there is no difference in response rates by treatment group, and the enthusiastic person believes the IP group will have a response rate probability that is 0.1 higher than the placebo group. This corresponds to $\delta_S=0$ and $\delta_E=0.1$. The skeptical and enthuastic priors are defined as
+Skeptical and enthuastic priors will be developed to satisfy (\ref{eq:enth_prior}) and (\ref{eq:skpt_prior}).
+
+Consider the following representation of the joint prior for $\theta_1$ and $\theta_0$:
 \begin{align*}
-\pi_S(\theta_0,\theta_1)\propto&exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma_S}\right)^{2}\right\}\times exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta_S}{\sigma_{S1}}\right)^{2}\right\},\\
-\pi_E(\theta_0,\theta_1)\propto&exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma_E}\right)^{2}\right\}\times exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta_E}{\sigma_{E1}}\right)^{2}\right\}.
+\pi(\theta_0,\theta_1)=&\pi(\theta_0)\times\pi(\theta_1|\theta_0)\\
+\pi(\theta_0)\propto&exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma}\right)^{2}\right\}\\
+\pi(\theta_1|\theta_0)\propto&exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta}{\sigma_1}\right)^{2}\right\}
+\end{align*}
+The component $\pi(\theta_0)$ reflects prior opinion about the response rate in the placebo group, and the component $\pi(\theta_1|\theta_0)$ can be used to express pessimism or optimism in the difference in proportions $\theta_1 - \theta_0$. 
+
+The skeptic believes there is no difference in response rates by treatment group, and the enthusiastic person believes the IP group will have a response rate probability that is 0.12 higher than the placebo group. This corresponds to $\delta_S=0$ and $\delta_E=0.12$. The skeptical and enthuastic priors are defined as
+\begin{align*}
+\pi_S(\theta_0,\theta_1)=&exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma_S}\right)^{2}\right\}\times exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta_S}{\sigma_{S1}}\right)^{2}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1]) /c_S,\\
+\pi_E(\theta_0,\theta_1)=&exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma_E}\right)^{2}\right\}\times exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta_E}{\sigma_{E1}}\right)^{2}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1]) /c_E
 \end{align*}
 
-The values of $\sigma_S$ and $\sigma_{S1}$ are chosen such that $P(\theta_1-\theta_0>0.1|\pi_S)=0.05$. Similarly, $\sigma_E$ and $\sigma_{E1}$ are chosen such that $P(\theta_1-\theta_0\leq0|\pi_E)=0.05$.
+where $c_S$ and $c_E$ are normalizing constants. The values of $\sigma_S$ and $\sigma_{S1}$ are chosen such that $P(\theta_1-\theta_0>0.1|\pi_S)=0.05$. Similarly, $\sigma_E$ and $\sigma_{E1}$ are chosen such that $P(\theta_1-\theta_0\leq0|\pi_E)=0.05$.
 
 
 %\begin{align*}
@@ -467,19 +508,14 @@ The values of $\sigma_S$ and $\sigma_{S1}$ are chosen such that $P(\theta_1-\the
 %	\item The IP group response probability is likely to provide an improvement of approximately 0.20.
 %\end{enumerate}
 
-
-
-\newpage
-\subsubsection{Sequential monitoring}
 Enrollment will proceed until one of the following three conditions are satisfied:
 \begin{align*}
 \text{Efficacy criteria (EFF): }&P(\theta_1-\theta_0>0|\mathbf{D},\pi_S)\geq 0.95\\
 \text{Futility criteria (FUT): }&P(\theta_1-\theta_0 \leq 0.05|\mathbf{D},\pi_E)\geq 0.85\\
-\text{Maximum sample size: }&N=200 \text{ patient outcomes obtained per group}
+\text{Maximum sample size: }&N=100 \text{ patient outcomes}
 \end{align*}
-The maximum sample size corresponds to a frequentist design with Type 1 Error $0.05$ and Power $0.8$ to detect a difference in proportions of $0.1$ when the control response rate is $0.1$ (i.e. to detect a IP respones rate of $0.2$ when the control response rate is $0.1$).
 
-An interim analysis is compelted after every 10 subjects have completed outcomes. There are on average 4 subjects enrolled per month and follow-up length is 4 months.
+An interim analysis is compelted after every 10 subjects have completed outcomes.
 \newpage
 \begin{center}
 

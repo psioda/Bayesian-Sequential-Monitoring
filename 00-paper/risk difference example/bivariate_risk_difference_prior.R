@@ -23,7 +23,7 @@ if (.Platform$OS.type == "windows") {
   sig.fut<-0.85
   sig.eff<-0.95
   cred.tail<-0.05
-  max.ss<-200
+  max.ss<-100
   reps<-10
   p.IP<-0.2
   p.PC<-0.2
@@ -83,18 +83,32 @@ for (k in 1:reps){
   
   if (k%%10==0){print(paste0("Simulation ",k))}
   
-  enr.times.IP<-cumsum(rgamma(n=max.ss,shape=enr.shape,scale=0.5))
-  outcome.times.IP<-sort(enr.times.IP+rnorm(n=max.ss,mean=out.mean,sd=0.25))
-  responses.IP<-rbinom(n=max.ss,size=1,prob=p.IP)
+  group<-c(sample(c(rep("PC",4),rep("IP",20))),sample(c(rep("PC",38),rep("IP",38))))
+  enr.times.all<-seq(1:100)*17
+  outcome.times.all<-enr.times.all+52
   
-  enr.times.PC<-cumsum(rgamma(n=max.ss,shape=enr.shape,scale=0.5))
-  outcome.times.PC<-sort(enr.times.PC+rnorm(n=max.ss,mean=out.mean,sd=0.25))
-  responses.PC<-rbinom(n=max.ss,size=1,prob=p.PC)
+  enr.times.PC<-enr.times.all[group=="PC"]
+  outcome.times.PC<-outcome.times.all[group=="PC"]
+  responses.PC<-rbinom(n=42,size=1,prob=p.PC)
   
-  outcome.times.all<-sort(c(outcome.times.IP,outcome.times.PC))
-  enr.times.all<-sort(c(enr.times.IP,enr.times.PC))
+  enr.times.IP<-enr.times.all[group=="IP"]
+  outcome.times.IP<-outcome.times.all[group=="IP"]
+  responses.IP<-rbinom(n=58,size=1,prob=p.IP)
   
-  for (h in seq(freq.mntr,(2*max.ss),by=freq.mntr)){
+  # outcome.times.all<-sort(c(outcome.times.IP,outcome.times.PC))
+  # enr.times.all<-sort(c(enr.times.IP,enr.times.PC))
+  # 
+  # enr.times.IP<-cumsum(rgamma(n=max.ss,shape=enr.shape,scale=0.5))
+  # outcome.times.IP<-sort(enr.times.IP+rnorm(n=max.ss,mean=out.mean,sd=0.25))
+  # responses.IP<-rbinom(n=max.ss,size=1,prob=p.IP)
+  # 
+  # enr.times.PC<-cumsum(rgamma(n=max.ss,shape=enr.shape,scale=0.5))
+  # outcome.times.PC<-sort(enr.times.PC+rnorm(n=max.ss,mean=out.mean,sd=0.25))
+  # responses.PC<-rbinom(n=max.ss,size=1,prob=p.PC)
+  
+
+  
+  for (h in seq(freq.mntr,(max.ss),by=freq.mntr)){
     result<-eff_fut(h)
     futility<-result[2]
     efficacy<-result[1]
