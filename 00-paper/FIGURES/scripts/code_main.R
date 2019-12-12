@@ -35,7 +35,7 @@ for (j in 1:length(p.range)){
   
   for (k in 1:reps){
     
-    if (k%%10==0){print(paste0("Model ",i,", Response p=",p.range[j],", Simulation ",k))}
+    if (k%%100==0){print(paste0("Model ",idx,", Response p=",p.range[j],", Simulation ",k))}
     
     enr.times<-cumsum(rgamma(n=max.ss,shape=enr.shape[i],scale=0.5))
     outcome.times<-sort(enr.times+rnorm(n=max.ss,mean=out.mean[i],sd=0.25))
