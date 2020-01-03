@@ -172,13 +172,13 @@ P(\theta\in\Theta_I| \mathbf{D},\pi_{E})\leq\epsilon.
 
 \subsubsection{Final inference}
 An inference prior $\pi_{I}(\theta)\equiv\pi_{I}$ is often less divisive than the skeptical and enthaustic priors, and can be viewed as a balance of the more divisive opinions. Consider a mixture prior constructed from the monitoring process as the inference prior:
-\begin{align}
+\begin{align}\label{eq:inference_prior}
 \pi_{I}=\omega\cdot\pi_{S}+(1-\omega)\cdot\pi_E
 \end{align}
 for $\omega\in[0,1]$. 
 
 The choice of $\omega$ will be based on posterior model probabilities. In particular,
-\begin{align}
+\begin{align}\label{eq:omega_formula}
 \omega=p(\pi_S|\mathbf{D})=\frac{p(\mathbf{D}|\pi_S)p(\pi_S)}{p(\mathbf{D}|\pi_S)p(\pi_S)+p(\mathbf{D}|\pi_E)p(\pi_E)}
 \end{align}
 where $p(\pi_S)+p(\pi_E)=1$. The quantities $p(\pi_E)$ and $p(\pi_S)$ reflect prior belief in the distribution of $\theta$. A default option is $p(\pi_S)=p(\pi_E)=\frac{1}{2}$. The inference prior is used to evaluate the hypotheses in (\ref{eq:equation1}), and distribution of $\theta$ using the inference prior, $p(\theta|\mathbf{D},\pi_I)$, will be used to compute summaries of $\theta$ such as the posterior mean and quantiles.
@@ -222,18 +222,18 @@ The parameters $\mu$, $\alpha$, and $\beta$ create enthuastic and skeptical prio
 
 This prior naturally extends to higher dimensions. For example, let $\theta_0$ and $\theta_1$ be the response proportions for a control and treatment group respectively. Suppose that the risk difference $\theta_1-\theta_0$ is of interest.
 Consider the following representation of the joint prior for $\theta_1$ and $\theta_0$:
-\begin{align*}
-\pi(\theta_0,\theta_1)=&\pi(\theta_0)\times\pi(\theta_1|\theta_0)\\
-\pi(\theta_0)\propto&\exp\left\{\left(\frac{|\theta_0-\mu_0|}{\alpha_0}\right)^{\beta_0}\right\}I(\theta_0\in[0,1])\\
-\pi(\theta_1|\theta_0)\propto&\exp\left\{\left(\frac{|(\theta_1-\theta_0)-\mu_1|}{\alpha_1}\right)^{\beta_1}\right\}I(\theta_1\in[0,1])
-\end{align*}
+\begin{align}
+\pi(\theta_0,\theta_1)=&\pi(\theta_0)\times\pi(\theta_1|\theta_0) \label{eq:generalized_normal_joint}\\
+\pi(\theta_0)\propto&\exp\left\{\left(\frac{|\theta_0-\mu_0|}{\alpha_0}\right)^{\beta_0}\right\}I(\theta_0\in[0,1]) \label{eq:generalized_normal_PC}\\
+\pi(\theta_1|\theta_0)\propto&\exp\left\{\left(\frac{|(\theta_1-\theta_0)-\delta|}{\alpha_1}\right)^{\beta_1}\right\}I(\theta_1\in[0,1]) \label{eq:generalized_normal_IP}
+\end{align}
 The component $\pi(\theta_0)$ reflects prior opinion about the response rate in the placebo group, and the component $\pi(\theta_1|\theta_0)$ can be used to express pessimism or optimism in the difference in proportions $\theta_1 - \theta_0$. 
 \subsubsection*{Notes on computation and simulations}
 %\subsubsection*{Example}
 %Consider the hypothesis $H_0:\theta\leq\theta_0$ vs. $H_1:\theta>\theta_0$. The skeptic initially held that $P(\theta>\theta_A| \pi_{S})\leq\epsilon$ and a promising interim result would be $P(\theta>\theta_0| \pi_{S})>1-\epsilon$. The enthusiast initially held that $P(\theta>\theta_0| \pi_{E})>1-\epsilon$ and a disillusioning interim result would be $P(\theta>\theta_I| \pi_{E})\leq\epsilon$.
 %
 %\begin{center}
-%\includegraphics[width=4in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/line_graph2}
+%\includegraphics[width=4in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/line_graph2}
 %
 %Figure 1: Graph of null response value ($\theta_0$), intermediate response value ($\theta_I)$ and substantial response value $(\theta_A)$.
 %\end{center}
@@ -285,21 +285,23 @@ The default skeptical and enthuastic priors will be of the form (\ref{eq:general
 with $\alpha_S$ and $\alpha_E$ chosen satisfy (\ref{eq:enth_prior}) and (\ref{eq:skpt_prior}), where $\Theta_1=(\theta_0,1]$, $\Theta_A=[\theta_1,1]$, and $\epsilon=0.025$.
 
 Alternative specifications of the priors will be used to concentrate or flatten the distribution around the modal value, which still satisfy conditions (\ref{eq:enth_prior}) and (\ref{eq:skpt_prior}). In particular, the skeptical prior can be concentrated around the modal value $\theta_0$ by increasing the mass located in the interval $[\theta_0,\frac{\theta_0+\theta_1}{2})$ and the enthuastic prior can be flattened around the modal value of $\theta_1$ by decreasing the mass located in the interval $(\frac{\theta_0+\theta_1}{2},\theta_1]$.
-\begin{center}
-\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/4priors.png}
 
-Figure 1: (a) Default skeptical prior ($\beta=2)$ (b) Default enthuastic prior ($\beta=2)$ \\(c) Concentrated skeptical prior (d) Flattened enthaustic prior
+\begin{center}
+\includegraphics[width=6in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure1.png}
+
+Figure 1: (a) Default skeptical prior ($\beta=2)$ (b) Concentrated skeptical prior\\ (c) Default enthuastic prior ($\beta=2)$ (d) Flattened enthaustic prior
 \end{center}
 
 %Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy. In particular, let $y_1$ be the number of successes and $y_0$ be the number of failures. If the skeptical prior is $\pi_S(\theta)\sim\mathcal{B}(\alpha_S,\beta_S)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_S)\sim\mathcal{B}(\alpha_S+y_1,\beta_S+y_0)$. Similarly, if the enthuastic prior is $\pi_E(\theta)\sim\mathcal{B}(\alpha_E,\beta_E)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_E)\sim\mathcal{B}(\alpha_E+y_1,\beta_E+y_0)$.
 
 %\begin{center}
-%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_efficacy.png}
+%\includegraphics[width=5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_efficacy.png}
 %\end{center}
 %\begin{center}
-%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility.png}
+%\includegraphics[width=5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility.png}
 %\end{center}
 
+The following analyses are done with the concentrated skeptical prior and the default enthuastic prior.
 \subsubsection{Sequential monitoring}
 Enrollment will proceed until one of the following three conditions are satisfied:
 \begin{align*}
@@ -308,42 +310,49 @@ Enrollment will proceed until one of the following three conditions are satisfie
 \text{Maximum sample size: }&N=112 \text{ patient outcomes obtained}
 \end{align*}
 Assume that the outcomes are ascertained after approximately 4 months of follow-up and 2 patients per month on average are enrolled. If enrollment is terminated due to the efficacy or futility criteria being satisfied, those subjects who are still undergoing follow-up will still have their outcomes considered in the final analysis.
-\subsubsection{Example paths (needs to be updated)}
-To demonstrate the monitoring procedure, two example trials are considered. As seen in Figure 3(a), at the second interim analysis the efficacy condition $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$ is satisfied and enrollment is terminated. As shown in Figure 3(b), at the fourth interim analysis the futility condition $P(\theta\leq 0.30|\mathbf{D},\pi_E)\geq 0.85$ is satisfied and enrollment is terminated. In both examples there are subjects with missing outcomes, which are those who are still undergoing follow-up. The final analysis incorporates the final sample.
+\subsubsection{Example paths}
+To demonstrate the monitoring procedure, two example trials are considered. 
+%As seen in Figure 3(a), at the second interim analysis the efficacy condition $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$ is satisfied and enrollment is terminated. As shown in Figure 3(b), at the fourth interim analysis the futility condition $P(\theta\leq 0.30|\mathbf{D},\pi_E)\geq 0.85$ is satisfied and enrollment is terminated. In both examples there are subjects with missing outcomes, which are those who are still undergoing follow-up. The final analysis incorporates the final sample.
 \begin{center}
-\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/2violin.png}
-%\includegraphics[width=3.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility_ekk.png}
+\includegraphics[width=4.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure2a.png}
+\includegraphics[width=4.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure2b.png}
+%\includegraphics[width=3.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility_ekk.png}
 
 Figure 3: (a) Early stopping for efficacy (b) Early stopping for futility
 \end{center}
+\newpage
 \subsubsection{Preposterior Analysis of Operating Characteristics}
 An interim analysis will be completed after every 2 subjects complete follow-up.
 \begin{center}
-\includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/seq_des_pro}
-
-Figure 4: Sequential design properties of proof-of-activity trial
+\includegraphics[width=7.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3a.png}
+Figure 4a: Sequential design properties of proof-of-activity trial
 %\caption{}
 \end{center}
 Let INC be the probability of reaching the maximum sample size without a conclusive monitoring result, let SS be the average sample size at the definitive interim analysis (I) and at the end of follow-up (F), let CP be the coverage probability using the mixture prior, and let PM be the posterior mean an inference prior which is a 50/50 mixture of the skeptical and enthuastic priors.
-\subsubsection{Agreement between interim and final result (needs to be updated)}
+\subsubsection{Agreement between interim and final result}
 \begin{center}
-Table 1: Distribution of final posterior probability given interim stoppage (interim $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$) and evidence decrease.
-\begin{tabular}{l|ccccccc}
-&0.15&0.20&0.25&0.30&0.35&0.40&0.45\\
-\hline
-Final $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$ &0.293&0.510&0.645&0.753&0.832&0.894&0.932 \\ 
-Final $P(\theta>0.20|\mathbf{D},\pi_S)< 0.95$&0.707&0.490&0.355&0.247&0.168&0.106&0.068\\  
-\hspace{0.5in}Conditional Median&0.91&0.92&0.92&0.93&0.93&0.93&0.93\\  
-\hspace{0.5in}Conditional 25th percentile&0.87&0.89&0.90&0.91&0.91&0.91&0.91\\  
-\hspace{0.5in}Conditional 10th percentile&0.83&0.86&0.87&0.88&0.88&0.88&0.88\\  
-\hspace{0.5in}Conditional 1st percentile&0.67&0.78&0.81&0.81&0.82&0.82&0.82
-\end{tabular}
+\includegraphics[width=7.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3b.png}
+Figure 4b: Percent agreement between interim and final result is listed in AGR. The lower dot is the 10th percentile, middle dot is 25th percentile, upper dot is 50th percentile/median
+%\caption{}
 \end{center}
+%\begin{center}
+%Table 1: Distribution of final posterior probability given interim stoppage (interim $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$) and evidence decrease.
+%\begin{tabular}{l|ccccccc}
+%&0.15&0.20&0.25&0.30&0.35&0.40&0.45\\
+%\hline
+%Final $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$ &0.293&0.510&0.645&0.753&0.832&0.894&0.932 \\ 
+%Final $P(\theta>0.20|\mathbf{D},\pi_S)< 0.95$&0.707&0.490&0.355&0.247&0.168&0.106&0.068\\  
+%\hspace{0.5in}Conditional Median&0.91&0.92&0.92&0.93&0.93&0.93&0.93\\  
+%\hspace{0.5in}Conditional 25th percentile&0.87&0.89&0.90&0.91&0.91&0.91&0.91\\  
+%\hspace{0.5in}Conditional 10th percentile&0.83&0.86&0.87&0.88&0.88&0.88&0.88\\  
+%\hspace{0.5in}Conditional 1st percentile&0.67&0.78&0.81&0.81&0.82&0.82&0.82
+%\end{tabular}
+%\end{center}
 
-For example, at a true response rate of $\theta=0.40$, there is probability $0.894$ that the threshold for a significant result is maintained after the additional subjects complete follow-up. Conversely, with probability $0.106$ the evidence decreases, and in this case the median posterior probability is $0.93$, and a posterior probability lower than $0.88$ occurs with probability $0.1$. Thus there is a slight attenudation with respect to the dichotomous threshold, but little change in the posterior probability overall.
+%For example, at a true response rate of $\theta=0.40$, there is probability $0.894$ that the threshold for a significant result is maintained after the additional subjects complete follow-up. Conversely, with probability $0.106$ the evidence decreases, and in this case the median posterior probability is $0.93$, and a posterior probability lower than $0.88$ occurs with probability $0.1$. Thus there is a slight attenudation with respect to the dichotomous threshold, but little change in the posterior probability overall.
 
 %\begin{figure}
-%\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties_2}
+%\includegraphics[width=6in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties_2}
 %\caption{Shows agreement between sequential and final determinations as they relate to the strict cut-offs}
 %\end{figure}
 
@@ -359,8 +368,10 @@ For example, at a true response rate of $\theta=0.40$, there is probability $0.8
 %that the number of patients required in each
 %cohort would be 7, 13, or 19, depending on the
 %results obtained."
-\subsubsection{Type 1 error rate by the frequency of data monitoring (needs to be updated)}
-As expected, the probability of stopping enrollment due to a promising interim trial result and the Type 1 error rate at the final analysis increase with the frequency of interim monitoring, however, the increase is very slight at the final analysis. Regardless of frequency of monitoring there are good Type 1 error rates. Even at the extreme case where an interim analysis is conducted after every outcome, the probability of stopping at the interim due to a promising result when the true response is at the null level is only $0.108$ (about double the nominal rate), and even in this situation the Type 1 error rate once follow-up is complete does not exceed $0.05$. Thus Bayesian sequential monitoring has good frequentist properties even with frequent interim analyses.
+\subsubsection{Type 1 error rate by the frequency of data monitoring}
+As expected, the probability of stopping enrollment due to a promising interim trial result and the Type 1 error rate at the final analysis increase with the frequency of interim monitoring, however, the increase is very slight at the final analysis. Regardless of frequency of monitoring there are good Type 1 error rates. 
+
+%Even at the extreme case where an interim analysis is conducted after every outcome, the probability of stopping at the interim due to a promising result when the true response is at the null level is only $0.108$ (about double the nominal rate), and even in this situation the Type 1 error rate once follow-up is complete does not exceed $0.05$. Thus Bayesian sequential monitoring has good frequentist properties even with frequent interim analyses.
 %\begin{itemize}
 %\item The two sides of the discussion: first is what happens during the trial regarding sequential monitoring, such as \% of time stopping early vs. trial done to completion and expected sample size. Second is the final determination of efficacy or futility and how that relates to Type 1 Error and power. 
 %\item  Remember the best case for sequential monitoring is slow enrollment relative to outcome ascertainment. Slow enrollment means there is a benefit to ending trial early and reach a conclusion faster. Outcome ascertainment needs to be somewhat fast to ensure a good \# of outcomes are generated.
@@ -373,17 +384,18 @@ As expected, the probability of stopping enrollment due to a promising interim t
 %\item Mat: Scaling on \# of subjects in each interim analysis rather than \# of interim analyses (e.g. flip X axis). Make labels go vertical or diagonal.
 %\end{itemize}
 \begin{center}
-\includegraphics[width=7in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/type1error_0904.png}
+\includegraphics[width=5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure4.png}
 
-Figure 5: Type 1 error rate depending on frequency of sequential monitoring
+Figure 4: Type 1 error rate depending on frequency of sequential monitoring
 \end{center}
+Monitoring Freq is 1 for fully sequential design and 112 when the only analysis is with all completed outcomes.
 \subsection{Parallel Two-Group Design with Binary Endpoint}
 \subsubsection{Motivating example}
 The Pediatric Lupus Trial of Belimumab Plus Background Standard Therapy (PLUTO) trial, was a multi-center study to evaluate the safety, pharmacokinetics, and efficacy of belimumab intravenous (IV) in pediatric patients 5 to 17 years of age with active systemic lupus erythematosus. 
 
 The goal was to test for superiority of belimumab to placebo. Based on adult studies, a response rate of $0.51$ was expected for belimumab and based on previous research a response rate of $0.39$ was expected for placebo.
 
-The study design included enrollment of 100 subjects, the first 24 subjects randomized in a 5:1 ratio (belimumab:placebo) and the remaining 76 subjects would have been randomized in a 1:1 allocation ratio. Therefore, 58 subjects would have been randomized to belimumab and 42 to placebo. The sample size was based on feasibility constraints rather than a power calculation.
+The study design included enrollment of 100 subjects, the first 24 subjects randomized in a 5:1 ratio (belimumab:placebo) and the remaining 76 subjects would be randomized in a 1:1 allocation ratio. Therefore, 58 subjects would be randomized to belimumab and 42 to placebo. The sample size was based on feasibility constraints rather than a power calculation.
 
 The binary response endpoint was evaulated at 52 weeks post enrollment. The study start date was September 7, 2012, and the primary completion date was January 24, 2018. Since the follow-up period is 52 weeks the last enrollment is estimated to be a year prior to the primary completition date yielding an average enrollment rate of one enrollment per $17.2$ days.
 \subsubsection{Model formulation}
@@ -393,16 +405,36 @@ Consider the hypothesis testing of IP superiority to control
 H_0:\theta_1-\theta_0\leq 0\text{ vs. }H_1: \theta_1-\theta_0>0.
 \end{align*}
 
-Skeptical and enthuastic priors will be developed to satisfy (\ref{eq:enth_prior}) and (\ref{eq:skpt_prior}).
+The priors will be chosen based on the joint specification in (\ref{eq:generalized_normal_joint}). First, a prior on the response probability for the placebo group is given in the form of (\ref{eq:generalized_normal_PC}). This prior is chosen to be flat in the region $0.39\pm 0.10$.
 
-The skeptic believes there is no difference in response rates by treatment group, and the enthusiastic person believes the IP group will have a response rate probability that is 0.12 higher than the placebo group. This corresponds to $\delta_S=0$ and $\delta_E=0.12$. The skeptical and enthuastic priors are defined as
-\begin{align*}
-\pi_S(\theta_0,\theta_1)=&\exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma_S}\right)^{2}\right\}\times \exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta_S}{\sigma_{S1}}\right)^{2}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1]) /c_S,\\
-\pi_E(\theta_0,\theta_1)=&\exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma_E}\right)^{2}\right\}\times \exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta_E}{\sigma_{E1}}\right)^{2}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1]) /c_E
-\end{align*}
+		\begin{center}
+\includegraphics[scale=0.50]{./FIGURES/figure5a.png}
+\text{Figure 5a: Prior on placebo response probability in the form of (\ref{eq:generalized_normal_PC}) $(\mu_0=0.39, \alpha_0=0.26, \beta_0=5.3)$}
+    \end{center}	
 
-where $c_S$ and $c_E$ are normalizing constants. The values of $\sigma_S$ and $\sigma_{S1}$ are chosen such that $P(\theta_1-\theta_0>0.1|\pi_S)=0.05$. Similarly, $\sigma_E$ and $\sigma_{E1}$ are chosen such that $P(\theta_1-\theta_0\leq0|\pi_E)=0.05$.
 
+
+
+To complete the joint specification of (\ref{eq:generalized_normal_joint}), skeptical and enthuastic priors of the form (\ref{eq:generalized_normal_IP}) will be parameterized as to satisfy (\ref{eq:enth_prior}) and (\ref{eq:skpt_prior}). The skeptic believes there is no difference in response rates by treatment group, and the enthusiastic person believes the IP group will have a response rate probability that is 0.12 higher than the placebo group. 
+
+%This corresponds to $\delta_S=0$ and $\delta_E=0.12$. The skeptical and enthuastic priors are defined as
+%\begin{align*}
+%\pi_S(\theta_0,\theta_1)=&\exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma_S}\right)^{2}\right\}\times \exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta_S}{\sigma_{S1}}\right)^{2}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1]) /c_S,\\
+%\pi_E(\theta_0,\theta_1)=&\exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma_E}\right)^{2}\right\}\times \exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta_E}{\sigma_{E1}}\right)^{2}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1]) /c_E
+%\end{align*}
+%
+%where $c_S$ and $c_E$ are normalizing constants. The values of $\sigma_S$ and $\sigma_{S1}$ are chosen such that $P(\theta_1-\theta_0>0.1|\pi_S)=0.05$. Similarly, $\sigma_E$ and $\sigma_{E1}$ are chosen such that $P(\theta_1-\theta_0\leq0|\pi_E)=0.05$.
+
+		\begin{center}
+\includegraphics[scale=0.50]{./FIGURES/figure5b.png}
+\text{Figure 5b: Skeptical prior on response difference in form of (\ref{eq:generalized_normal_IP}) $(\delta=0,\alpha_1=0.03,\beta_1=1.6)$}
+    \end{center}	
+
+		\begin{center}
+\includegraphics[scale=0.50]{./FIGURES/figure5c.png}
+
+\text{Figure 5c: Enthuastic prior on response difference in form of (\ref{eq:generalized_normal_IP}) $(\delta=0.12,\alpha_1=0.087,\beta_1=2)$}
+    \end{center}	
 
 %\begin{align*}
 %\pi(\theta_0,\theta_1)\propto& \hspace{0.05in}exp \left\{-\frac{1}{2}\left|\frac{(\theta_1-\theta_0)-\delta}{\sigma}\right|^\alpha\right\}
@@ -422,49 +454,49 @@ where $c_S$ and $c_E$ are normalizing constants. The values of $\sigma_S$ and $\
 
 Enrollment will proceed until one of the following three conditions are satisfied:
 \begin{align*}
-\text{Efficacy criteria (EFF): }&P(\theta_1-\theta_0>0|\mathbf{D},\pi_S)\geq 0.95\\
-\text{Futility criteria (FUT): }&P(\theta_1-\theta_0 \leq 0.05|\mathbf{D},\pi_E)\geq 0.85\\
+\text{Efficacy criteria (EFF): }&P(\theta_1-\theta_0>0|\mathbf{D},\pi_S)\geq 0.975\\
+\text{Futility criteria (FUT): }&P(\theta_1-\theta_0 \leq 0.06|\mathbf{D},\pi_E)\geq 0.975\\
 \text{Maximum sample size: }&N=100 \text{ patient outcomes}
 \end{align*}
 
 An interim analysis is compelted after every 10 subjects have completed outcomes.
 
-\begin{center}
-
-Table 1: Interim monitoring results (IP respones rate columns, PC response rate rows)
-
-\begin{tabular}{ll|ccccc}
-	&		&	0.05	&	0.1	&	0.15	&	0.2	&	0.25	\\
-\hline													
-0.05	&	EFF	&	0.12	&	0.72	&	0.97	&		&		\\
-	&	FUT	&	0.87	&	0.23	&	0.02	&		&		\\
-	&	SS initial	&	157	&	198	&	153	&		&		\\
-	&	SS final	&	173	&	213	&	169	&		&		\\
-\hline													
-0.1	&	EFF	&		&	0.18	&	0.60	&	0.92	&		\\
-	&	FUT	&		&	0.72	&	0.21	&	0.02	&		\\
-	&	SS initial	&		&	226	&	255	&	197	&		\\
-	&	SS final	&		&	240	&	268	&	212	&		\\
-\hline													
-0.15	&	EFF	&		&		&	0.14	&	0.53	&	0.82	\\
-	&	FUT	&		&		&	0.62	&	0.15	&	0.02	\\
-	&	SS initial	&		&		&	267	&	302	&	256	\\
-	&	SS final	&		&		&	279	&	311	&	269	\\
-\hline													
-										
-
-\end{tabular}
-
-
-
-\begin{tabular}{|c|}
-\hline
-EFF:$P(\theta_1-\theta_0>0|\textbf{D},\pi_S)\geq 0.95$\\
-\hline
-FUT:$P(\theta_1-\theta_0<0.05|\textbf{D},\pi_E)\geq 0.85$\\
-\hline
-\end{tabular}
-\end{center}
+%\begin{center}
+%
+%Table 1: Interim monitoring results (IP respones rate columns, PC response rate rows)
+%
+%\begin{tabular}{ll|ccccc}
+%	&		&	0.05	&	0.1	&	0.15	&	0.2	&	0.25	\\
+%\hline													
+%0.05	&	EFF	&	0.12	&	0.72	&	0.97	&		&		\\
+%	&	FUT	&	0.87	&	0.23	&	0.02	&		&		\\
+%	&	SS initial	&	157	&	198	&	153	&		&		\\
+%	&	SS final	&	173	&	213	&	169	&		&		\\
+%\hline													
+%0.1	&	EFF	&		&	0.18	&	0.60	&	0.92	&		\\
+%	&	FUT	&		&	0.72	&	0.21	&	0.02	&		\\
+%	&	SS initial	&		&	226	&	255	&	197	&		\\
+%	&	SS final	&		&	240	&	268	&	212	&		\\
+%\hline													
+%0.15	&	EFF	&		&		&	0.14	&	0.53	&	0.82	\\
+%	&	FUT	&		&		&	0.62	&	0.15	&	0.02	\\
+%	&	SS initial	&		&		&	267	&	302	&	256	\\
+%	&	SS final	&		&		&	279	&	311	&	269	\\
+%\hline													
+%										
+%
+%\end{tabular}
+%
+%
+%
+%\begin{tabular}{|c|}
+%\hline
+%EFF:$P(\theta_1-\theta_0>0|\textbf{D},\pi_S)\geq 0.95$\\
+%\hline
+%FUT:$P(\theta_1-\theta_0<0.05|\textbf{D},\pi_E)\geq 0.85$\\
+%\hline
+%\end{tabular}
+%\end{center}
 
 %\newpage
 %\subsubsection{Example paths}
@@ -509,10 +541,9 @@ FUT:$P(\theta_1-\theta_0<0.05|\textbf{D},\pi_E)\geq 0.85$\\
 
 
 
-		\begin{center}
-      \includegraphics[scale=0.70]{./FIGURES/BINARY-PRIORS.pdf}
-      \text{Prior for Control Group Response Probability \label{fig:pmp}}
-    \end{center}	
+
+      %\text{Prior for Control Group Response Probability \label{fig:pmp}}
+
 
 \subsubsection{Design properties: Results}
 %\subsection{Three-Arm, Placebo Controlled Non-Inferiority Trial w/ Continuous Endpoint}
@@ -527,6 +558,16 @@ FUT:$P(\theta_1-\theta_0<0.05|\textbf{D},\pi_E)\geq 0.85$\\
 %Need priors $\pi(\beta_0), \pi(\beta_1), \pi(\beta_2|\beta_1)$. 
 %
 %Will use MCMC to evaluate posteriors.
+
+Simulations were run fixing the placebo response rate at $\theta_0=0.39$ and varying the treatment response rate $\theta_1\in[0.39,0.51]$. Due to the low maximum sample size, no simulations resulted in the efficacy criteria $(P(\theta_1-\theta_0>0|\mathbf{D},\pi_S)\geq 0.975)$ being satisfied. Instead of the skeptical prior $\pi_S$ being used for the efficacy critera, an inference prior $\pi_I$ of the form (\ref{eq:inference_prior}) is used where the choice of $\omega$ in (\ref{eq:omega_formula}) is determined based on varying $p(\pi_S)$ and $p(\pi_E)$ at the outset.
+\begin{center}
+\includegraphics[width=5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure6.png}
+
+Figure 6: Probability of efficacy with three specifications of inference prior:\\
+(1) $p(\pi_S)=1$, $p(\pi_E)=0$ (usual skeptical prior, lower line)\\
+(2) $p(\pi_S)=0.75$, $p(\pi_E)=0.25$ (middle line)\\
+(3) $p(\pi_S)=p(\pi_E)=0.5$ (upper line)
+\end{center}
 \section{Discussion}
 %Q: Why not reverse engineer priors to have exact Type 1 error properties?
 %
@@ -538,80 +579,82 @@ FUT:$P(\theta_1-\theta_0<0.05|\textbf{D},\pi_E)\geq 0.85$\\
 \section{Supplementary material}
 
 
-\subsubsection{Type 1 error rate depending on enrollment schemes (needs to be updated)}
+\subsubsection{Type 1 error rate depending on enrollment schemes}
 Consider the same trial but with a longer follow-up length of 8 months rather than 4 months. 
 \begin{center}
 Table 2: Comparison of efficacy stopping, Type 1 Error Rate (efficacy criteria with full data), and sample size by follow-up length and frequency of sequential monitoring.
 \begin{tabular}{l | cccc|cccc}
 	&	4 month FU	&		&		&		&	8 month FU	&		&		&		\\
 															
-\# Interim Analyses	&	EFF	&	T1E	&	SS Final	&	Ongoing	&	EFF	&	T1E	&	SS Final	&	Ongoing	\\
+\# Monitoring Freq	&	EFF	&	T1E	&	SS Final	&	Ongoing	&	EFF	&	T1E	&	SS Final	&	Ongoing	\\
 \hline		
-1	&	0.108	&	0.05	&	45.1	&	15.7\%	&	0.107	&	0.043	&	51.7	&	26.8\%	\\
-2	&	0.095	&	0.05	&	46.4	&	15.1\%	&	0.094	&	0.043	&	52.8	&	25.5\%	\\
-4	&	0.075	&	0.05	&	48.2	&	13.7\%	&	0.075	&	0.043	&	54.1	&	23.4\%	\\
-8	&	0.068	&	0.049	&	51.1	&	12.5\%	&	0.067	&	0.043	&	56.7	&	21.3\%	\\
-16	&	0.058	&	0.047	&	54.8	&	10.4\%	&	0.056	&	0.042	&	60.0	&	18.1\%	\\
-76	&	0.04	&	0.04	&	76	&	0.0\%	&	0.039	&	0.039	&	76	&	0.0\%	
+1&0.046&0.018& 77.1& 8.1\%&0.045&0.014& 94.0&24.6\%\\
+2&0.039&0.018& 79.2& 7.7\%&0.039&0.014& 95.4&23.4\%\\
+3&0.037&0.019& 79.9& 7.5\%&0.038&0.014& 96.0&22.8\%\\
+5&0.034&0.017& 82.2& 7.2\%&0.035&0.014& 97.3&22.1\%\\
+10&0.030&0.019& 85.3& 6.7\%&0.030&0.013& 99.5&19.8\%\\
+20&0.024&0.017& 90.6& 5.9\%&0.021&0.012&102.7&17.2\%\\
+61&0.019&0.015& 98.3& 2.6\%&0.019&0.014&106.3& 9.8\%\\
+112&0.012&0.012&112.0& 0.0\%&0.012&0.012&112.0& 0.0\%\\
 \end{tabular}
 \end{center}
+Monitoring Freq is 1 for fully sequential design and 112 when the only analysis is with all completed outcomes.
+
 Note that the probability of efficacy stopping and Type 1 error rate increase monotonically for both specifications of follow-up length. The Type 1 error rate is lower for the 8-month follow-up design since there are more subjects in the final sample size.
 %\begin{figure}
-%\includegraphics[width=6in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/evidence_decrease.png}
+%\includegraphics[width=6in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/evidence_decrease.png}
 %\caption{Have the necessary data summaries in R, just need to replicate the plot.}
 %\end{figure}
 
 %The inference priors will be of the form $\pi_{I}=\omega\cdot\pi_{S}+(1-\omega)\cdot\pi_E$ with $\omega\in\{0,1/4,1/2,3/4,1\}$.
 %\begin{center}
-%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_2.png}
+%\includegraphics[width=5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3_2.png}
 %\end{center}
 
 %\begin{center}
-%\includegraphics[width=3in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/power_curves}
+%\includegraphics[width=3in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/power_curves}
 %\end{center}
-\subsubsection{Robustness of parameterizations of monitoring priors (needs to be updated)}
-The generalized normal distribution is used to create priors with the same expected value and tail area as the default beta priors, but with densities that are either spike/slab around the expected value or flattened.
+\newpage
+\subsubsection{Robustness of parameterizations of monitoring priors}
+%The generalized normal distribution is used to create priors with the same expected value and tail area as the default beta priors, but with densities that are either spike/slab around the expected value or flattened.
 %\begin{figure}
-\begin{center}
-\includegraphics[width=3.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/spike-slab_skeptical}
-\includegraphics[width=3.5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/spike-slab_enthuastic}
-% \caption{(a) Skeptical priors (b) Enthuastic priors}
-%\end{figure}
-
-Figure 6: (a) Alternate skeptical priors (b) Alternate enthuastic priors
-\end{center}
+%\begin{center}
+%\includegraphics[width=3.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/spike-slab_skeptical}
+%\includegraphics[width=3.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/spike-slab_enthuastic}
+%% \caption{(a) Skeptical priors (b) Enthuastic priors}
+%%\end{figure}
+%
+%Figure 6: (a) Alternate skeptical priors (b) Alternate enthuastic priors
+%\end{center}
+Model "1" corresponds to default skeptical and enthuasic priors, "2" is concentrated skeptical and default enthuastic (the case considered in the main text), "3" is default skeptical and flattened enthaustic, and "4" is concentrated skeptical and flattened enthaustic.
 \begin{center}
 \text{Table 3: Sequential design properties using alternative monitoring priors}
-\begin{tabular}{ll|ccc}
-	&		&	0.2	&	0.3	&	0.4	\\
+\begin{tabular}{ll|ccccc}
+&&0.4&0.4675&0.535&0.6025&0.67\\
 \hline
-Default	&	EFF	&	0.094	&	0.693	&	0.981	\\
-	&	FUT	&	0.820	&	0.193	&	0.013	\\
-	&	INC	&	0.086	&	0.114	&	0.006	\\
-	&	SS	&	38.8 + 7.0 = 45.9	&	40.9 + 6.8 = 47.7	&	24.0 + 7.9 = 31.9	\\
-	&	PM	&	(I) 0.204 (F) 0.206	&	(I) 0.320 (F) 0.314	&	(I) 0.402 (F) 0.398	\\
+1&EFF&0.073&0.418&0.869&0.993&1.000\\
+1&FUT&0.755&0.255&0.026&0.001&0.000\\
+1&INC&0.172&0.326&0.105&0.005&0.000\\
+1&SS&71.0 + 6.3 = 77.3&79.3 + 5.1 = 84.4&56.9 + 7.0 = 63.9&34.4 + 8.0 = 42.4&23.0 + 8.0 = 31.0\\
 \hline
-Spike/Slab	&	EFF	&	0.066	&	0.632	&	0.978	\\
-	&	FUT	&	0.738	&	0.127	&	0.006	\\
-	&	INC	&	0.195	&	0.241	&	0.016	\\
-	&	SS	&	46.5 + 6.1 = 52.6	&	47.7 + 5.8 = 53.5	&	26.8 + 7.8 = 34.6	\\
-	&	PM	&	(I) 0.196 (F) 0.199	&	(I) 0.322 (F) 0.317	&	(I) 0.400 (F) 0.397	\\
-%\hline
-%Flattened	&	EFF	&	0.142	&	0.731	&	0.982	\\
-%	&	FUT	&	0.820	&	0.22	&	0.016	\\
-%	&	INC	&	0.039	&	0.048	&	0.002	\\
-%	&	SS	&	34.6 + 7.5 = 42.2	&	34.2 + 7.5 = 41.7	&	20.6 + 7.9 = 28.5	\\
-%	&	PM	&	(I) 0.211 (F) 0.212	&	(I) 0.319 (F) 0.315	&	(I) 0.390 (F) 0.391	\\
+2&EFF&0.039&0.313&0.805&0.988&1.000\\
+2&FUT&0.765&0.252&0.026&0.001&0.000\\
+2&INC&0.196&0.435&0.169&0.011&0.000\\
+2&SS&72.9 + 6.2 = 79.1&87.5 + 4.1 = 91.7&67.1 + 6.3 = 73.5&41.4 + 7.8 = 49.3&27.7 + 8.0 = 35.7\\
 \hline
-SS Skeptical	&	EFF	&	0.066	&	0.620	&	0.975	\\
-	&	FUT	&	0.827	&	0.189	&	0.011	\\
-	&	INC	&	0.107	&	0.190	&	0.014	\\
-	&	SS	&	40.3 + 6.8 = 47.1	&	45.1 + 6.2 = 51.3	&	26.9 + 7.8 = 34.7	\\
-	&	PM	&	(I) 0.196 (F) 0.200	&	(I) 0.316 (F) 0.312	&	(I) 0.401 (F) 0.400	\\
+3&EFF&0.071&0.415&0.871&0.994&1.000\\
+3&FUT&0.811&0.314&0.036&0.001&0.000\\
+3&INC&0.118&0.271&0.093&0.005&0.000\\
+3&SS&66.5 + 6.8 = 73.4&76.6 + 5.5 = 82.1&56.3 + 7.1 = 63.3&34.5 + 8.0 = 42.5&23.0 + 8.0 = 31.0\\
+\hline
+4&EFF&0.040&0.313&0.803&0.987&1.000\\
+4&FUT&0.815&0.321&0.038&0.002&0.000\\
+4&INC&0.144&0.366&0.159&0.011&0.000\\
+4&SS&68.8 + 6.7 = 75.5&84.1 + 4.7 = 88.9&66.5 + 6.5 = 72.9&41.9 + 7.9 = 49.8&27.7 + 8.0 = 35.7\\
 
 \end{tabular}
 \end{center}
-Use of a spike-slab skeptical prior drastically lowers the probability of terminating enrollment due to efficacy, from $0.094$ in the default case to $0.066$. This is because there is less probability mass in the immediate area greater than the null value of $0.2$. When using a flattened skeptical prior the probability of terminating enrollment due to efficacy increases to $0.142$ since there is more probability mass in the immediate area greater than the null value of $0.2$.
+%Use of a spike-slab skeptical prior drastically lowers the probability of terminating enrollment due to efficacy, from $0.094$ in the default case to $0.066$. This is because there is less probability mass in the immediate area greater than the null value of $0.2$. When using a flattened skeptical prior the probability of terminating enrollment due to efficacy increases to $0.142$ since there is more probability mass in the immediate area greater than the null value of $0.2$.
 %\bigskip
 %\newpage
 %\begin{center}
@@ -630,10 +673,10 @@ Use of a spike-slab skeptical prior drastically lowers the probability of termin
 %\end{align*}
 %in which case $\delta=\int_{\Theta_0}\pi_S(\theta)d\theta$ is a deterministic quantity.
 %\begin{center}
-%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/ss_skpt}
-%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/ss_enth}
-%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_skpt}
-%\includegraphics[width=5in]{D:/Users/ekwiatko/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_enth}
+%\includegraphics[width=5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/ss_skpt}
+%\includegraphics[width=5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/ss_enth}
+%\includegraphics[width=5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_skpt}
+%\includegraphics[width=5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/damp_enth}
 %\end{center}
 \section{BibTeX}
 
