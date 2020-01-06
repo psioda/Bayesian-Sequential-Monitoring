@@ -2,22 +2,31 @@
 #### Figure 1, One Arm Prior Plots ####
 #######################################
 rm(list = ls())
-root<-"P:/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+library(latex2exp)
+root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 
 source("code_functions.R")
 source("args_model.R")
 
-png('../../figure1.png')
-par(mfrow = c(2,2)) #c(bottom, left, top, right)
+png('../../figure1.png',width = 650, height = 650,pointsize=16)
+par(mfrow = c(2,2),mai=c(0.7,0.7,0.1,0.1)) #c(bottom, left, top, right)
+
 prior.nc.skpt<-skpt_prior_default()
 source("plots/plots_prior_skpt.R")
+mtext(text="A",side=2,line=2,at=6,las=1)
+
 prior.nc.skpt<-skpt_prior_custom(scale=1.15)
 source("plots/plots_prior_skpt.R")
+mtext(text="B",side=2,line=2,at=6,las=1)
+
 prior.nc.enth<-enth_prior_default()
 source("plots/plots_prior_enth.R")
+mtext(text="C",side=2,line=2,at=3,las=1)
+
 prior.nc.enth<-enth_prior_custom(scale=0.85)
 source("plots/plots_prior_enth.R")
+mtext(text="D",side=2,line=2,at=3,las=1)
 dev.off()
 
 ########################################
@@ -31,7 +40,7 @@ library(grid)
 library(latex2exp)
 library(gridExtra)
 
-root<-"P:/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 
 source("code_functions.R")
@@ -77,7 +86,7 @@ dev.off()
 #### Figure 3a, One Arm Sequential Design Properties ####
 #########################################################
 rm(list = ls())
-root<-"P:/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 
 source("args_model.R")
@@ -96,7 +105,7 @@ dev.off()
 #### Figure 3b, One Arm Evidence Decrease ####
 ##############################################
 rm(list = ls())
-root<-"P:/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 
 source("args_model.R")
@@ -107,7 +116,7 @@ combined2<-merge(args_simulation,Table2,by.x="X",by.y="idx")
 Table3<-read.csv(file="../output/Table3_merged.csv",header=TRUE,sep=",")
 combined3<-merge(combined2,Table3,by.x="X",by.y="idx")
 
-png('../../figure3b.png',height=(480*2)*.25,width=(480*5)*.25)
+png('../../figure3b.png',height=(480*4)*.25,width=(480*4)*.25)
 source("plots/plots_decrease.R")
 dev.off()
 
@@ -115,7 +124,7 @@ dev.off()
 #### Figure 4, One Arm T1E ####
 ###############################
 rm(list = ls())
-root<-"P:/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 
 source("args_model.R")
@@ -134,7 +143,7 @@ dev.off()
 #### Figure S1, One Arm Enrollment Schemes #### 
 ###############################################
 rm(list = ls())
-root<-"P:/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 
 source("args_model.R")
@@ -180,7 +189,7 @@ write.table(t(all), "../../figureS1.csv", sep="&", col.names=T)
 #### Figure S2, One Arm Robustness #### 
 #######################################
 rm(list = ls())
-root<-"P:/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 
 source("args_model.R")

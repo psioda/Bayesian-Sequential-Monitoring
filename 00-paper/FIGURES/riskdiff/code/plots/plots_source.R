@@ -2,7 +2,7 @@
 #### Figure 5, Risk Diff Prior Plots ####
 #########################################
 rm(list = ls())
-root<-"P:/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code"
+root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code"
 setwd(root)
 
 require(rmutil)
@@ -24,10 +24,15 @@ prior.skpt.nc<-skpt_tail_area()
 x <- seq(0, 1, length= 100)
 y <- x
 z <- outer(x, y, prior.skpt.nc)
+#wireframe(z, drape=T, col.regions=rainbow(100))
 #heatmap(z,Rowv=NA,Colv=NA)
 png('../../figure5b.png')
 par(mfrow = c(1,1))
-wireframe(z, drape=T, col.regions=rainbow(100))
+levelplot(z, col.regions = gray.colors(100),
+          xlab=bquote(theta[0]),
+          ylab=bquote(theta[1]),
+          scales=list(x=list(at=seq(0,100,by=10),labels=seq(0,1,by=0.1)),
+                      y=list(at=seq(0,100,by=10),labels=seq(0,1,by=0.1))))
 dev.off()
 
 prior.enth.nc<-enth_tail_area()
@@ -35,16 +40,21 @@ x <- seq(0, 1, length= 100)
 y <- x
 z <- outer(x, y, prior.enth.nc)
 #heatmap(z,Rowv=NA,Colv=NA)
+#wireframe(z, drape=T, col.regions=rainbow(100))
 png('../../figure5c.png')
 par(mfrow = c(1,1))
-wireframe(z, drape=T, col.regions=rainbow(100))
+levelplot(z, col.regions = gray.colors(100),
+          xlab=bquote(theta[0]),
+          ylab=bquote(theta[1]),
+          scales=list(x=list(at=seq(0,100,by=10),labels=seq(0,1,by=0.1)),
+                      y=list(at=seq(0,100,by=10),labels=seq(0,1,by=0.1))))
 dev.off()
 
 #############################################
 #### Figure 6, Risk Diff Inference Plots ####
 #############################################
 rm(list = ls())
-root<-"P:\GitHub\Bayesian-Sequential-Monitoring\00-paper\FIGURES\riskdiff\code"
+root<-"P:\git\Bayesian-Sequential-Monitoring\00-paper\FIGURES\riskdiff\code"
 setwd(root)
 
 source("args_model.R")

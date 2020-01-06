@@ -25,9 +25,24 @@ plot(x,prior.nc.skpt(x),type="l",
      ylab="",
      main="",
      #xaxt="n",
-     #yaxt="n",
+     #yaxt="n,"
      ylim=c(0,6)) # 20-01-02
+title(ylab="Response Probability", line=2, #cex.lab=1.2
+      )
+title(xlab="Density Value",line=2)
 #axis(2,at=c(0,1,2,3),labels=c(0,1,2,3))
 polygon(c(0,x[x<=p.enth],p.enth),c(0,prior.nc.skpt(x)[x<=p.enth],0),col="lightgrey")
 polygon(c(p.enth,x[x>=p.enth],1),c(0,prior.nc.skpt(x)[x>=p.enth],0),col="black")
 segments(x0=p.skpt,y0=0,y1=prior.nc.skpt(p.skpt))
+
+legend('topright',
+       legend= c(as.expression(bquote(P(theta>.(p.enth))==.(tail.skpt))), 
+                as.expression(bquote(mu == .(p.skpt))),
+                as.expression(bquote(alpha == .(sigma0.skpt))),
+                as.expression(bquote(beta == .(lambda0.skpt)))),
+       #inset=c(0.01,0.01)
+       )
+#text(x=0.7,y=5,labels=bquote(P(theta>.(p.enth))==.(tail.skpt)))
+#text(x=0.7,y=4,labels=bquote(mu == .(p.skpt)),adj=0)
+#text(x=0.7,y=3,labels=bquote(alpha == .(sigma0.skpt)),adj=0)
+#text(x=0.7,y=2,labels=bquote(beta == .(lambda0.skpt)),adj=0)

@@ -289,7 +289,7 @@ Alternative specifications of the priors will be used to concentrate or flatten 
 \begin{center}
 \includegraphics[width=6in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure1.png}
 
-Figure 1: (a) Default skeptical prior ($\beta=2)$ (b) Concentrated skeptical prior\\ (c) Default enthuastic prior ($\beta=2)$ (d) Flattened enthaustic prior
+Figure 1: (a) Default skeptical prior (b) Concentrated skeptical prior\\ (c) Default enthuastic prior (d) Flattened enthaustic prior
 \end{center}
 
 %Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy. In particular, let $y_1$ be the number of successes and $y_0$ be the number of failures. If the skeptical prior is $\pi_S(\theta)\sim\mathcal{B}(\alpha_S,\beta_S)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_S)\sim\mathcal{B}(\alpha_S+y_1,\beta_S+y_0)$. Similarly, if the enthuastic prior is $\pi_E(\theta)\sim\mathcal{B}(\alpha_E,\beta_E)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_E)\sim\mathcal{B}(\alpha_E+y_1,\beta_E+y_0)$.
@@ -325,14 +325,15 @@ Figure 3: (a) Early stopping for efficacy (b) Early stopping for futility
 An interim analysis will be completed after every 2 subjects complete follow-up.
 \begin{center}
 \includegraphics[width=7.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3a.png}
-Figure 4a: Sequential design properties of proof-of-activity trial
+Figure 3a: Sequential design properties of proof-of-activity trial
 %\caption{}
 \end{center}
 Let INC be the probability of reaching the maximum sample size without a conclusive monitoring result, let SS be the average sample size at the definitive interim analysis (I) and at the end of follow-up (F), let CP be the coverage probability using the mixture prior, and let PM be the posterior mean an inference prior which is a 50/50 mixture of the skeptical and enthuastic priors.
 \subsubsection{Agreement between interim and final result}
 \begin{center}
-\includegraphics[width=7.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3b.png}
-Figure 4b: Percent agreement between interim and final result is listed in AGR. The lower dot is the 10th percentile, middle dot is 25th percentile, upper dot is 50th percentile/median
+\includegraphics[width=5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3b.png}
+
+Figure 3b: Distribution of Final Posterior Probability Given Interim Stoppage and Evidence Decrease
 %\caption{}
 \end{center}
 %\begin{center}
@@ -384,7 +385,7 @@ As expected, the probability of stopping enrollment due to a promising interim t
 %\item Mat: Scaling on \# of subjects in each interim analysis rather than \# of interim analyses (e.g. flip X axis). Make labels go vertical or diagonal.
 %\end{itemize}
 \begin{center}
-\includegraphics[width=5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure4.png}
+\includegraphics[width=7.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure4.png}
 
 Figure 4: Type 1 error rate depending on frequency of sequential monitoring
 \end{center}
