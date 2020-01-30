@@ -1,10 +1,4 @@
-#### Type I error graphs ####
-#c(bottom, left, top, right)
-par(mar=c(5.1+4,4.1+2,2.1,2.1))
-par(mfrow = c(1, 1)) 
-k1<-c(4)
-k2<-c(1)
-plot(rev(figure4$freq.mntr[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]]),
+plot(log2(figure4$freq.mntr[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]]),
      figure4$eff.mon.initial[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]],
      type='l',
      ylim=c(0,0.05),
@@ -19,10 +13,20 @@ abline(h=seq(0,0.05,by=0.01),col='grey')
 box()
 
 for (i in length(k1)){
-lines(rev(figure4$freq.mntr[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]]),
-      figure4$eff.mon.final[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]],
+points(log2(figure4$freq.mntr[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]]),
+      figure4$eff.mon.initial[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]],
       lwd=2)
+points(log2(figure4$freq.mntr[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]]),
+      figure4$eff.mon.final[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]],
+      lwd=2,pch=20)
 }
+
+text(log2(figure4$freq.mntr),figure4$eff.mon.initial,
+     labels=format(round(figure4$eff.mon.initial,digits=3),nsmall=3),pos=1)
+
+
+lines(log2(figure4$freq.mntr),figure4$eff.mon.initial)
+lines(log2(figure4$freq.mntr),figure4$eff.mon.final)
 
 # text(1/figure4$freq.mntr[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]],
 #      figure4$eff.mon.initial[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]],
@@ -36,9 +40,8 @@ lines(rev(figure4$freq.mntr[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]])
 # yaxixs
 axis(2,las=2,at=seq(0,.15,by=0.01),labels=format(seq(0,.15,by=0.01),nsmall=2))
 # x axis
-axis(1,las=0,
-     at=c(1,seq(10,100,by=10),max.ss),
-     labels=rev(c(1,seq(10,100,by=10),max.ss)))
+axis(1,las=0,at=log2(figure4$freq.mntr[figure4$freq.mntr %in% mntr.pts]),
+     labels=figure4$freq.mntr[figure4$freq.mntr %in% mntr.pts])
 
 # # manual x-axis
 # mtext(text=figure4$freq.mntr,side=1,
@@ -46,26 +49,26 @@ axis(1,las=0,
 #       at=figure4$freq.mntr[figure4$out.mean==k1 & figure4$enr.shape==k2])
 # 
 
-mtext(text="Monitor Freq",side=1,line=1,at=-15)
-mtext(text="SS Interim",side=1,line=2,at=-15)
-mtext(text="Follow-up",side=1,line=3,at=-15)
-mtext(text="SS Final",side=1,line=4,at=-15)
+mtext(text="Monitor Freq",side=1,line=1,at=stretch,adj=0)
+mtext(text="SS",side=1,line=2,at=stretch,adj=0)
+mtext(text="Follow-up",side=1,line=3,at=stretch,adj=0)
+mtext(text="SS Final",side=1,line=4,at=stretch,adj=0)
 
 # sample size information
-mtext(text=paste0(format(round(figure4$ss.initial[c(1,seq(10,100,by=10),max.ss)],digits=1),nsmall=1)),
+mtext(text=paste0(
+   format(round(figure4$ss.initial[figure4$freq.mntr %in% mntr.pts],digits=1),nsmall=1)),
       side=1,
       line=2,
-      at=rev(figure4$freq.mntr[c(1,seq(10,100,by=10),max.ss)]))
+      at=log2(figure4$freq.mntr[figure4$freq.mntr %in% mntr.pts]))
 
-mtext(text=paste0(format(round(figure4$ss.final[c(1,seq(10,100,by=10),max.ss)]-
-                               figure4$ss.initial[c(1,seq(10,100,by=10),max.ss)],digits=1),nsmall=1)),
-      side=1,
-      line=3,
-      at=rev(figure4$freq.mntr[c(1,seq(10,100,by=10),max.ss)]))
+mtext(text=paste0(format(round(figure4$ss.final[figure4$freq.mntr %in% mntr.pts]-
+                                   figure4$ss.initial[figure4$freq.mntr %in% mntr.pts],digits=1),nsmall=1)),
+    side=1,
+    line=3,
+    at=log2(figure4$freq.mntr[figure4$freq.mntr %in% mntr.pts]))
 
-mtext(text=paste0(format(round(figure4$ss.final[c(1,seq(10,100,by=10),max.ss)],digits=1),nsmall=1)),
-      side=1,
-      line=4,
-      at=rev(figure4$freq.mntr[c(1,seq(10,100,by=10),max.ss)]))
-
+mtext(text=paste0(format(round(figure4$ss.final[figure4$freq.mntr %in% mntr.pts],digits=1),nsmall=1)),
+    side=1,
+    line=4,
+    at=log2(figure4$freq.mntr[figure4$freq.mntr %in% mntr.pts]))
 

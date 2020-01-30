@@ -8,7 +8,7 @@ sig.fut<-0.975
 sig.eff<-0.975
 epsilon<-0 # used to stop numerical error from integration
 max.ss<-112
-reps<-10
+reps<-100000
 
 mu0.skpt<-p.skpt
 mu0.enth<-p.enth

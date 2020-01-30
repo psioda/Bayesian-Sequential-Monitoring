@@ -5,6 +5,9 @@
 \usepackage{natbib}
 \usepackage{url} % not crucial - just used below for the URL 
 \usepackage{ifthen}
+\usepackage{subcaption}
+
+
 
 %\pdfminorversion=4
 % NOTE: To produce blinded version, replace "0" with "1" below.
@@ -286,11 +289,31 @@ with $\alpha_S$ and $\alpha_E$ chosen satisfy (\ref{eq:enth_prior}) and (\ref{eq
 
 Alternative specifications of the priors will be used to concentrate or flatten the distribution around the modal value, which still satisfy conditions (\ref{eq:enth_prior}) and (\ref{eq:skpt_prior}). In particular, the skeptical prior can be concentrated around the modal value $\theta_0$ by increasing the mass located in the interval $[\theta_0,\frac{\theta_0+\theta_1}{2})$ and the enthuastic prior can be flattened around the modal value of $\theta_1$ by decreasing the mass located in the interval $(\frac{\theta_0+\theta_1}{2},\theta_1]$.
 
-\begin{center}
-\includegraphics[width=6in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure1.png}
-
-Figure 1: (a) Default skeptical prior (b) Concentrated skeptical prior\\ (c) Default enthuastic prior (d) Flattened enthaustic prior
-\end{center}
+\begin{figure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure1a.png}
+    \caption{Caption text 1}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure1b.png}
+    \caption{Caption text 2}
+  \end{subfigure}
+ 
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure1c.png}
+    \caption{Caption text 3}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure1d.png}
+    \caption{Caption text 4}
+  \end{subfigure}
+\end{figure}
+ 
+%\begin{center}
+%\includegraphics[width=6in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure1.png}
+%
+%Figure 1: (a) Default skeptical prior (b) Concentrated skeptical prior\\ (c) Default enthuastic prior (d) Flattened enthaustic prior
+%\end{center}
 
 %Beta priors for $\theta$ will be used to provide closed-form expressions of the posterior distributions via Beta-Binomial conjugacy. In particular, let $y_1$ be the number of successes and $y_0$ be the number of failures. If the skeptical prior is $\pi_S(\theta)\sim\mathcal{B}(\alpha_S,\beta_S)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_S)\sim\mathcal{B}(\alpha_S+y_1,\beta_S+y_0)$. Similarly, if the enthuastic prior is $\pi_E(\theta)\sim\mathcal{B}(\alpha_E,\beta_E)$ then the associated posterior is $p(\theta|\mathbf{D},\pi_E)\sim\mathcal{B}(\alpha_E+y_1,\beta_E+y_0)$.
 
@@ -313,29 +336,38 @@ Assume that the outcomes are ascertained after approximately 4 months of follow-
 \subsubsection{Example paths}
 To demonstrate the monitoring procedure, two example trials are considered. 
 %As seen in Figure 3(a), at the second interim analysis the efficacy condition $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$ is satisfied and enrollment is terminated. As shown in Figure 3(b), at the fourth interim analysis the futility condition $P(\theta\leq 0.30|\mathbf{D},\pi_E)\geq 0.85$ is satisfied and enrollment is terminated. In both examples there are subjects with missing outcomes, which are those who are still undergoing follow-up. The final analysis incorporates the final sample.
-\begin{center}
-\includegraphics[width=4.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure2a.png}
-\includegraphics[width=4.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure2b.png}
-%\includegraphics[width=3.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/violin_futility_ekk.png}
 
-Figure 3: (a) Early stopping for efficacy (b) Early stopping for futility
-\end{center}
+\begin{figure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure2a.png}
+    \caption{Caption text 1}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure2b.png}
+    \caption{Caption text 2}
+  \end{subfigure}
+ 
+\end{figure}
+
 \newpage
 \subsubsection{Preposterior Analysis of Operating Characteristics}
 An interim analysis will be completed after every 2 subjects complete follow-up.
-\begin{center}
-\includegraphics[width=7.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3a.png}
-Figure 3a: Sequential design properties of proof-of-activity trial
-%\caption{}
-\end{center}
+\begin{figure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3a.png}
+    \caption{Caption text 1}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3b.png}
+    \caption{Caption text 2}
+  \end{subfigure}
+ 
+\end{figure}
+
 Let INC be the probability of reaching the maximum sample size without a conclusive monitoring result, let SS be the average sample size at the definitive interim analysis (I) and at the end of follow-up (F), let CP be the coverage probability using the mixture prior, and let PM be the posterior mean an inference prior which is a 50/50 mixture of the skeptical and enthuastic priors.
 \subsubsection{Agreement between interim and final result}
-\begin{center}
-\includegraphics[width=5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3b.png}
 
-Figure 3b: Distribution of Final Posterior Probability Given Interim Stoppage and Evidence Decrease
-%\caption{}
-\end{center}
+
 %\begin{center}
 %Table 1: Distribution of final posterior probability given interim stoppage (interim $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$) and evidence decrease.
 %\begin{tabular}{l|ccccccc}
@@ -383,12 +415,19 @@ As expected, the probability of stopping enrollment due to a promising interim t
 %\item ``Only bad thing to do is to stop learning"
 %\item Enrollment rate and \% of ongoing data as operating characteristics are interesting ideas, but focus on the plots already created.
 %\item Mat: Scaling on \# of subjects in each interim analysis rather than \# of interim analyses (e.g. flip X axis). Make labels go vertical or diagonal.
-%\end{itemize}
-\begin{center}
-\includegraphics[width=7.5in]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure4.png}
+%\end{itemize}.
+\begin{figure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure4.png}
+    \caption{Caption text 1}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure4.png}
+    \caption{Caption text 2}
+  \end{subfigure}
+ 
+\end{figure}
 
-Figure 4: Type 1 error rate depending on frequency of sequential monitoring
-\end{center}
 Monitoring Freq is 1 for fully sequential design and 112 when the only analysis is with all completed outcomes.
 \subsection{Parallel Two-Group Design with Binary Endpoint}
 \subsubsection{Motivating example}
@@ -408,13 +447,6 @@ H_0:\theta_1-\theta_0\leq 0\text{ vs. }H_1: \theta_1-\theta_0>0.
 
 The priors will be chosen based on the joint specification in (\ref{eq:generalized_normal_joint}). First, a prior on the response probability for the placebo group is given in the form of (\ref{eq:generalized_normal_PC}). This prior is chosen to be flat in the region $0.39\pm 0.10$.
 
-		\begin{center}
-\includegraphics[scale=0.50]{./FIGURES/figure5a.png}
-\text{Figure 5a: Prior on placebo response probability in the form of (\ref{eq:generalized_normal_PC}) $(\mu_0=0.39, \alpha_0=0.26, \beta_0=5.3)$}
-    \end{center}	
-
-
-
 
 To complete the joint specification of (\ref{eq:generalized_normal_joint}), skeptical and enthuastic priors of the form (\ref{eq:generalized_normal_IP}) will be parameterized as to satisfy (\ref{eq:enth_prior}) and (\ref{eq:skpt_prior}). The skeptic believes there is no difference in response rates by treatment group, and the enthusiastic person believes the IP group will have a response rate probability that is 0.12 higher than the placebo group. 
 
@@ -426,16 +458,22 @@ To complete the joint specification of (\ref{eq:generalized_normal_joint}), skep
 %
 %where $c_S$ and $c_E$ are normalizing constants. The values of $\sigma_S$ and $\sigma_{S1}$ are chosen such that $P(\theta_1-\theta_0>0.1|\pi_S)=0.05$. Similarly, $\sigma_E$ and $\sigma_{E1}$ are chosen such that $P(\theta_1-\theta_0\leq0|\pi_E)=0.05$.
 
-		\begin{center}
-\includegraphics[scale=0.50]{./FIGURES/figure5b.png}
-\text{Figure 5b: Skeptical prior on response difference in form of (\ref{eq:generalized_normal_IP}) $(\delta=0,\alpha_1=0.03,\beta_1=1.6)$}
-    \end{center}	
 
-		\begin{center}
-\includegraphics[scale=0.50]{./FIGURES/figure5c.png}
 
-\text{Figure 5c: Enthuastic prior on response difference in form of (\ref{eq:generalized_normal_IP}) $(\delta=0.12,\alpha_1=0.087,\beta_1=2)$}
-    \end{center}	
+\begin{figure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure5a.png}
+    \caption{Caption text 1}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure5b.png}
+    \caption{Caption text 2}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure5c.png}
+    \caption{Caption text 2}
+  \end{subfigure}
+ \end{figure}
 
 %\begin{align*}
 %\pi(\theta_0,\theta_1)\propto& \hspace{0.05in}exp \left\{-\frac{1}{2}\left|\frac{(\theta_1-\theta_0)-\delta}{\sigma}\right|^\alpha\right\}
@@ -582,23 +620,7 @@ Figure 6: Probability of efficacy with three specifications of inference prior:\
 
 \subsubsection{Type 1 error rate depending on enrollment schemes}
 Consider the same trial but with a longer follow-up length of 8 months rather than 4 months. 
-\begin{center}
-Table 2: Comparison of efficacy stopping, Type 1 Error Rate (efficacy criteria with full data), and sample size by follow-up length and frequency of sequential monitoring.
-\begin{tabular}{l | cccc|cccc}
-	&	4 month FU	&		&		&		&	8 month FU	&		&		&		\\
-															
-\# Monitoring Freq	&	EFF	&	T1E	&	SS Final	&	Ongoing	&	EFF	&	T1E	&	SS Final	&	Ongoing	\\
-\hline		
-1&0.046&0.018& 77.1& 8.1\%&0.045&0.014& 94.0&24.6\%\\
-2&0.039&0.018& 79.2& 7.7\%&0.039&0.014& 95.4&23.4\%\\
-3&0.037&0.019& 79.9& 7.5\%&0.038&0.014& 96.0&22.8\%\\
-5&0.034&0.017& 82.2& 7.2\%&0.035&0.014& 97.3&22.1\%\\
-10&0.030&0.019& 85.3& 6.7\%&0.030&0.013& 99.5&19.8\%\\
-20&0.024&0.017& 90.6& 5.9\%&0.021&0.012&102.7&17.2\%\\
-61&0.019&0.015& 98.3& 2.6\%&0.019&0.014&106.3& 9.8\%\\
-112&0.012&0.012&112.0& 0.0\%&0.012&0.012&112.0& 0.0\%\\
-\end{tabular}
-\end{center}
+
 Monitoring Freq is 1 for fully sequential design and 112 when the only analysis is with all completed outcomes.
 
 Note that the probability of efficacy stopping and Type 1 error rate increase monotonically for both specifications of follow-up length. The Type 1 error rate is lower for the 8-month follow-up design since there are more subjects in the final sample size.
@@ -627,34 +649,26 @@ Note that the probability of efficacy stopping and Type 1 error rate increase mo
 %
 %Figure 6: (a) Alternate skeptical priors (b) Alternate enthuastic priors
 %\end{center}
-Model "1" corresponds to default skeptical and enthuasic priors, "2" is concentrated skeptical and default enthuastic (the case considered in the main text), "3" is default skeptical and flattened enthaustic, and "4" is concentrated skeptical and flattened enthaustic.
-\begin{center}
-\text{Table 3: Sequential design properties using alternative monitoring priors}
-\begin{tabular}{ll|ccccc}
-&&0.4&0.4675&0.535&0.6025&0.67\\
-\hline
-1&EFF&0.073&0.418&0.869&0.993&1.000\\
-1&FUT&0.755&0.255&0.026&0.001&0.000\\
-1&INC&0.172&0.326&0.105&0.005&0.000\\
-1&SS&71.0 + 6.3 = 77.3&79.3 + 5.1 = 84.4&56.9 + 7.0 = 63.9&34.4 + 8.0 = 42.4&23.0 + 8.0 = 31.0\\
-\hline
-2&EFF&0.039&0.313&0.805&0.988&1.000\\
-2&FUT&0.765&0.252&0.026&0.001&0.000\\
-2&INC&0.196&0.435&0.169&0.011&0.000\\
-2&SS&72.9 + 6.2 = 79.1&87.5 + 4.1 = 91.7&67.1 + 6.3 = 73.5&41.4 + 7.8 = 49.3&27.7 + 8.0 = 35.7\\
-\hline
-3&EFF&0.071&0.415&0.871&0.994&1.000\\
-3&FUT&0.811&0.314&0.036&0.001&0.000\\
-3&INC&0.118&0.271&0.093&0.005&0.000\\
-3&SS&66.5 + 6.8 = 73.4&76.6 + 5.5 = 82.1&56.3 + 7.1 = 63.3&34.5 + 8.0 = 42.5&23.0 + 8.0 = 31.0\\
-\hline
-4&EFF&0.040&0.313&0.803&0.987&1.000\\
-4&FUT&0.815&0.321&0.038&0.002&0.000\\
-4&INC&0.144&0.366&0.159&0.011&0.000\\
-4&SS&68.8 + 6.7 = 75.5&84.1 + 4.7 = 88.9&66.5 + 6.5 = 72.9&41.9 + 7.9 = 49.8&27.7 + 8.0 = 35.7\\
-
-\end{tabular}
-\end{center}
+\begin{figure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figureS2a.png}
+    \caption{Caption text 1}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figureS2b.png}
+    \caption{Caption text 2}
+  \end{subfigure}
+ 
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figureS2c.png}
+    \caption{Caption text 3}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figureS2d.png}
+    \caption{Caption text 4}
+  \end{subfigure}
+\end{figure}
+ 
 %Use of a spike-slab skeptical prior drastically lowers the probability of terminating enrollment due to efficacy, from $0.094$ in the default case to $0.066$. This is because there is less probability mass in the immediate area greater than the null value of $0.2$. When using a flattened skeptical prior the probability of terminating enrollment due to efficacy increases to $0.142$ since there is more probability mass in the immediate area greater than the null value of $0.2$.
 %\bigskip
 %\newpage
