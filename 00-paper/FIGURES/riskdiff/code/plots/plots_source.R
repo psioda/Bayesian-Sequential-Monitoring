@@ -23,7 +23,7 @@ png('../../../figure5a.png',
     pointsize = 16,
     res = 300)
 source("figure5a.R")
-mtext("(A)",
+mtext("(B)",
       side = 2,
       line = 1,
       at = 1,
@@ -42,7 +42,7 @@ png('../../../figure5b.png',
     pointsize = 16,
     res = 300)
 source("figure5b.R")
-mtext("(B)",
+mtext("(D)",
       side=2,
       line=1,
       at=1,
@@ -61,7 +61,7 @@ png('../../../figure5c.png',
     pointsize=16,
     res=300)
 source("figure5c.R")
-mtext("(C)",side=2,line=1,at=2.1,las=1)
+mtext("(A)",side=2,line=1,at=2.1,las=1)
 dev.off()
 
 png('../../../figure5d.png',
@@ -70,7 +70,7 @@ png('../../../figure5d.png',
     pointsize = 16,
     res = 300)
 source("figure5d.R")
-mtext("(D)",
+mtext("(C)",
       side = 2,
       line = 1,
       at = 9.25,
