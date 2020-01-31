@@ -27,8 +27,6 @@
 
 \begin{document}
 
-%\bibliographystyle{natbib}
-
 \def\spacingset#1{\renewcommand{\baselinestretch}%
 {#1}\small\normalsize} \spacingset{1}
 
@@ -174,7 +172,7 @@ Continuing the trial setup from Section \ref{sec:preliminaries}, suppose every s
 
 The purpose of monitoring priors to is help answer the question ``Is the evidence compelling enough to end the trial early?'' Monitoring priors are used for interim analyses on the data from subjects who completed follow-up while additional outcomes are pending. A promising interim result that shows clear efficacy of the treatment would justify stopping the enrollment of additional subjects, while enrolled subjects would continue receiving the presumed effective treatment during the follow-up period. A discouraging interim result that shows clear futility of the treatment would justify stopping the enrollment of additional subjects, and may call for enrolled patients undergoing follow-up to stop receiving the presumed ineffective treatment. 
 
-To have either efficacy or futility to be ``clear" the evidence must be convincing to individuals with diverse opinions of $\theta$. The judgment of efficacy must be convincing even to an individual who was initially skeptical about the benefit of the treatment. Likewise, the judgment of futility must be convincing to an invidual was was initially optimistic. For this reason monitoring priors generally represent relatively extreme (but still plausible) beliefs about $\theta$. If a skeptic has become confident that the treatment is efficacious, 
+To have either efficacy or futility to be ``clear" the evidence must be convincing to individuals with diverse opinions of $\theta$. The judgment of efficacy must be convincing even to an individual who was initially skeptical about the benefit of the treatment. Likewise, the judgment of futility must be convincing to an individual was initially optimistic. For this reason monitoring priors generally represent relatively extreme (but still plausible) beliefs about $\theta$. If a skeptic has become confident that the treatment is efficacious, 
 that implies essentially anyone with some degree of equipoise would also be convinced, hence individuals with diverse opinions have a consensus. Alternatively, if an enthusiast has become convinced that the treatment is ineffective, then essentially everyone will share that opinion. 
 
 %It has been said that ``the purpose of a trial is to collect data that bring to conclusive consensus at termination opinions that had been diverse and indecisive at the \textit{outset}" (Kass and Greenhouse (1989), emphasis added). 
@@ -200,7 +198,7 @@ Instead, we define the skeptical prior $\pi_S(\theta)$ to be centered around $\t
 P(\theta>\theta_1| \pi_{S})<\epsilon.
 \end{align}
 
-The enthuastic and skeptical conditions defined in (\ref{eq:enthprior}), (\ref{eq:skptprior}) will be referred to as tail-probability constraints.
+The enthusiastic and skeptical conditions defined in (\ref{eq:enthprior}), (\ref{eq:skptprior}) will be referred to as tail-probability constraints.
 
 \subsubsection{Criteria for Early Stoppage}
 The use of monitoring based on changing the opinion of skeptical and enthusiastic priors has been described as overcoming a handicap (\cite{Freedman1989}) and providing a brake (\cite{Fayers1997}) on the premature termination of trials, or constructing ``an adversary who will need to be disillusioned by the data to stop further experimentation" (\cite{Spiegelhalter1994}). Early termination of enrollment is appropriate if diverse prior opinions about $\theta$ would be in agreement given the interim data (e.g. the skeptical and enthusiastic person reach the same conclusion). 
@@ -217,12 +215,12 @@ P(\theta>\theta_0|\pi_{E})>1-\epsilon\Rightarrow P\left(\theta<\frac{\theta_0+\t
 %
 \subsection{Monitoring Prior Specification}
 \subsubsection{The Generalized Normal Family of Distributions}
-The enthuastic and skeptical priors defined in (\ref{eq:enthprior}), (\ref{eq:skptprior}) each have a required center (modal value) and tail-probability constraint, however, there are still many ways to parameterize such distributions. The specification of the mean and variance of a normal distribution completely specifies the modal value and tail-probability constraints, and is therefore sufficient for defining enthusiastic and skeptical priors. However, for additional flexibility, we will consider the generalized normal distribution for prior specification.
+The enthusiastic and skeptical priors defined in (\ref{eq:enthprior}), (\ref{eq:skptprior}) each have a required center (modal value) and tail-probability constraint, however, there are still many ways to parameterize such distributions. The specification of the mean and variance of a normal distribution completely specifies the modal value and tail-probability constraints, and is therefore sufficient for defining enthusiastic and skeptical priors. However, for additional flexibility, we will consider the generalized normal distribution for prior specification.
 
 Consider the univariate generalized normal kernel 
 \begin{align}\label{eq:generalizednormalkernel}
-\exp\left\{-\left(\frac{|\theta-\mu|}{\alpha}\right)^\beta\right\}
-\end{align} where $\mu\in\mathbb{R}$ is a location parameter, $\alpha>0$ is a scale parameter, and $\beta>0$ is a shape parameter. Note that $\beta=2$ corresponds to the normal distribution. 
+\exp\left\{-\left(\frac{|\theta-\mu|}{\sigma}\right)^\beta\right\}
+\end{align} where $\mu\in\mathbb{R}$ is a location parameter, $\sigma>0$ is a scale parameter, and $\beta>0$ is a shape parameter. Note that $\beta=2$ corresponds to the normal distribution. 
 
 In the case of $\beta=2$, this distribution is symmetric around $\mu$ and the combination of location and scale parameter can accommodate the required modal value and tail area probability requirement (i.e. (\ref{eq:enthprior}), (\ref{eq:skptprior})). 
 
@@ -230,7 +228,7 @@ The modification of $\beta$ can be used to concentrate or flatten the distributi
 
 %Continuing the trial setup from Section \ref{sec:preliminaries}, it is necessary to truncate the generalized normal distribution to the range $[0,1]$. When truncated to the unit interval, this density becomes
 %\begin{align}\label{eq:generalized_normal_univariate}
-%\pi(\theta)\propto \exp\left\{-\frac{|\theta-\mu|}{\alpha}^\beta\right\} I(\theta\in[0,1]).
+%\pi(\theta)\propto \exp\left\{-\frac{|\theta-\mu|}{\sigma}^\beta\right\} I(\theta\in[0,1]).
 %\end{align} 
 %
 
@@ -247,8 +245,7 @@ The modification of $\beta$ can be used to concentrate or flatten the distributi
 
 %
 \subsubsection{Application to higher dimensions}
-The generalized normal distribution can be used to parameterize skeptical and enthuastic priors for trials with multiple unknown quantities of interest. Suppose the trial from Section \ref{sec:preliminaries} has added a control arm, and let $\theta_0$ and $\theta_1$ be the response proportions for a control and treatment group respectively. Suppose that the risk difference $\theta_1-\theta_0$ is of interest. Let $\delta_{S}$ denote a null risk difference and $\delta_{E}$ denote a highly efficacious risk difference.
-
+The generalized normal distribution can be used to parameterize skeptical and enthusiastic priors for trials with multiple unknown quantities of interest. Suppose the trial from Section \ref{sec:preliminaries} has added a control arm, and let $\theta_0$ and $\theta_1$ be the response proportions for a control and treatment group respectively. Suppose that the risk difference $\theta_1-\theta_0$ is of interest. Let $\delta_0$ denote a null risk difference and $\delta_1$ denote a highly efficacious risk difference.
 
 Consider the following representation of the joint prior for $\theta_1$ and $\theta_0$:
 \begin{align}
@@ -257,20 +254,20 @@ Consider the following representation of the joint prior for $\theta_1$ and $\th
 
 Each of these components can be represented in the form of (\ref{eq:generalizednormalkernel}) by
 \begin{align}
-\pi(\theta_0)\propto&\exp\left\{-\left(\frac{|\theta_0-\mu_0|}{\alpha_0}\right)^{\beta_0}\right\} \label{eq:generalized_normal_PC}\\
-\pi(\theta_1|\theta_0)\propto&\exp\left\{-\left(\frac{|(\theta_1-\theta_0)-\delta|}{\alpha_1}\right)^{\beta_1}\right\}f(\theta_0). \label{eq:generalized_normal_IP}
+\pi(\theta_0)\propto&\exp\left\{-\left(\frac{|\theta_0-\mu_0|}{\sigma_0}\right)^{\beta_0}\right\} \label{eq:genNormPlacebo}\\
+\pi(\theta_1|\theta_0)\propto&\exp\left\{-\left(\frac{|(\theta_1-\theta_0)-\delta|}{\sigma_1}\right)^{\beta_1}\right\}f(\theta_0). \label{eq:genNormRd}
 \end{align}
 
 The component $\pi(\theta_0)$ reflects prior opinion about the response rate in the placebo group, and the component $\pi(\theta_1|\theta_0)$ can be used to express pessimism or optimism in the difference in proportions $\theta_1 - \theta_0$. 
 
-The enthusiastic prior condition from (\ref{eq:enthprior}) becomes
-\begin{align}
-P(\theta_1-\theta_0>\delta_S)=1-\epsilon.
+The enthusiastic prior condition from (\ref{eq:enthprior}) become
+\begin{align}\label{eq:ex2enthcondition}
+P(\theta_1-\theta_0>\delta_0)=1-\epsilon.
 \end{align}
 
-The skeptical prior condition from (\ref{eq:skptprior}) becomes
-\begin{align}
-P(\theta_1-\theta_0<\delta_E)=1-\epsilon.
+The skeptical prior condition from (\ref{eq:skptprior}) become
+\begin{align}\label{eq:ex2skptcondition}
+P(\theta_1-\theta_0<\delta_1)=1-\epsilon.
 \end{align}
 
 
@@ -284,7 +281,7 @@ Examples of skeptical and enthusiastic priors are displayed in Figure \ref{fig:f
 
 \includegraphics[width=3in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure5b.png}
 \includegraphics[width=3in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure5e.png}
-\caption{A, Prior on $\theta_1$. B, Skeptical joint prior. C, Skeptical marginal prior for $\theta_1-\theta_0$. D, Enthusiastic joint prior. E, Enthusiastic marginal prior for $\theta_1-\theta_0$.}
+\caption{A, Univariate prior $\pi(\theta_0)$. B, Skeptical joint prior $\pi_S(\theta_0,\theta_1)$. C, Skeptical marginal prior $\pi_S(\theta_1-\theta_0$. D, Enthusiastic joint prior $\pi_E(\theta_0,\theta_1)$. E, Enthusiastic marginal prior $\pi_E(\theta_1-\theta_0$).}
 \label{fig:figure5}
  \end{figure}
 \subsection{Mixture Inference Priors}
@@ -388,60 +385,47 @@ as a mixing weight that dynamically gives preference to the prior that has the h
 
 \subsection{Single-Arm Proof-of-Activity Trial with Binary Endpoint}
 \subsubsection{Motivating example}
-\textcolor{green}{You need more details on the motivating example. Describe the trial, cite papers about the trial. 
-%
-The current writeup leaves out way to much background.
-%
-What was the outcome -- currently the writeup does not even say? At what time point was the primary outcome assessed?
-%
-Start by describing the trial(s) pediatric and adult that are used for this motivation. 
-%
-That should come first. If that is done adequately the first paragraph below will be unneeded as it will have been made clear by the motivating example description.
-}
+Consider the T72 pediatric trial ``A Study of the Safety and Efficacy of Infliximab (REMICADE) in Pediatric Patients With Moderately to Severely Active Ulcerative Colitis" (NCT00336492) ~\cite{Hyams2012}. Infliximab was given to all subjects at the 5mg/kg dose at weeks 0, 2, and 6, and the primary end point was response at week 8. Response was measured by improvement in disease severity scores.
 
-Consider a single-arm proof-of-activity trial with a binary endpoint. The data $\mathbf{D}$ are binomially distributed and the response rate $\theta$ is the parameter of interest, with higher values of $\theta$ being indicative of proof-of-activity. 
+The initial enrollment occurred on August 25, 2006, and the last assessment was June 24, 2010. If the patient showed improvement at week 8 then they continued treatment and would have their last assessment at week 54. The response rate at 8 weeks was $73.3\%$ $(N=60)$, so it is likely that the last assessment was at week 54, and we can infer enrollment took place over approximately 33.5 months (approximately 1 enrollment per 17 days). 
 
-An example application is based on the drug iniximab, which is FDA approved for the treatment of several diseases, including ulcerative colitis (UC). The goal of the trial is to test the hypothesis: $H_0:\theta\leq\theta_0=0.40$ versus $H_1:\theta>\theta_0$. From adult data $\theta_1=0.67$. Based on the 54-week follow-up period, we can infer enrollment took place over approximately 33 months (approximately 1 patient per 0.55 months).
+The sample size of $60$ patients was chosen to ensure $12\%$ precision in estimating the true response proportion with at $95\%$ CI, assuming a response rate of $67\%$ as was observed among adults from the ACT 1 and ACT 2 trials ~\cite{Rutgeerts2005} at the same 5mg/kg dose $(N=242)$. A $95\%$ confidence interval that excluded $0.40$ was determined to be a clinically significant result.
 
 \subsubsection{Model formulation \& prior elicitation}
-The default skeptical and enthusiastic priors will be of the form (\ref{eq:generalizednormalkernel}) with $\beta=2$ corresponding to truncated normal distributions
+The data $\mathbf{D}$ are assumed to be independent Bernoulli random variables with common response probability $\theta$. The null response value is $\theta_0=0.40$ and a highly efficacious response probability is $\theta_1=0.67$. The hypothesis for this trial is $H_0:\leq \theta_0$ vs $H_1:\theta > \theta_0$.
+
+The default skeptical and enthusiastic priors will be of the form (\ref{eq:generalizednormalkernel}) and are truncated to the unit interval. 
 \begin{align}
-\pi_S(\theta)&\propto \exp\left\{-\frac{(\theta-\theta_0)}{\alpha_S}^2\right\} I(\theta\in[0,1])\\
-\pi_E(\theta)&\propto \exp\left\{-\frac{(\theta-\theta_1)}{\alpha_E}^2\right\} I(\theta\in[0,1])
+\pi_S(\theta)&\propto \exp\left\{-\frac{|\theta-\theta_0|}{\sigma_S}^{\beta_S}\right\} I(\theta\in[0,1]) \label{eq:ex1skptprior}\\
+\pi_E(\theta)&\propto \exp\left\{-\frac{|\theta-\theta_1|}{\sigma_E}^{\beta_E}\right\} I(\theta\in[0,1])\label{eq:ex1enthprior}
 \end{align}
-with $\alpha_S$ and $\alpha_E$ chosen satisfy (\ref{eq:enthprior}) and (\ref{eq:skptprior}) with $\epsilon=0.025$.
 
-\textcolor{green}{All figures should be referenced in text and discussed.}
+The values $\beta_S$ and $\beta_E$ are pre-specified and $\sigma_S$ and $\sigma_E$ are chosen to satisfy the tail-probability conditions 
+(\ref{eq:enthprior})-(\ref{eq:skptprior}).
 
+The skeptical prior is shown in Figure \ref{fig:figure1}(B), which has added concentration around the null response value $\theta_0$ by pre-specifying $\beta_S>2$. The enthusiastic prior is shown in Figure \ref{fig:figure1}(C) with a default choice of $\beta_E=2$. The level of residual uncertainty is given by $\epsilon=0.025$. The skeptical prior was chosen to have additional Type 1 error control. A comparison of the various combinations of the monitoring priors in Figure~\ref{fig:figure1} is provided in Appendix \ref{sec:priorRobustness}.
 
- 
-
-The following illustrations and analyses were performed using the concentrated skeptical prior and the default enthusiastic prior.
-\textcolor{green}{Question from reviewer: Then why are the others shown? Why are you recommending practitioners use these? Are results for other combinations somewhere?
-%
-If so, you should have: A comparison of the various combinations of the monitoring priors in Figure~\ref{f:figure1} is provided in Supplemental Appendix X.}
-\subsubsection{Sequential monitoring}
 Enrollment will proceed until one of the following three conditions are satisfied:
-\begin{align*}
-\text{Efficacy criteria (EFF): }&P(\theta>\theta_0|\mathbf{D},\pi_S)\geq 0.975\\
-\text{Futility criteria (FUT): }&P\left(\theta\leq\frac{\theta_0+\theta_1}{2} \Big|\mathbf{D},\pi_E\right)\geq 0.975\\
-\text{Maximum sample size: }&N=112 \text{ patient outcomes obtained}
-\end{align*}
+\begin{align}
+\text{Efficacy criteria (EFF): }&P(\theta>\theta_0|\mathbf{D},\pi_S)\geq 1-\epsilon \label{eq:ex1efficacy}\\
+\text{Futility criteria (FUT): }&P\left(\theta\leq\frac{\theta_0+\theta_1}{2} \Big|\mathbf{D},\pi_E\right)\geq 1-\epsilon \label{eq:ex1futility}\\
+\text{Maximum sample size: }&N=112 \text{ patient outcomes obtained}\label{eq:ex1maxss}
+\end{align}
 
-(describe reason for maximum sample size)
+where the maximum sample size was chosen based on a frequentist design to have $80\%$ power at a true response proportion of $\frac{\theta_0+\theta_1}{2}=0.535$.
 
-Assume that the outcomes are ascertained after approximately 4 months of follow-up and 2 patients per month on average are enrolled. If enrollment is terminated due to the efficacy or futility criteria being satisfied, those subjects who are still undergoing follow-up will still have their outcomes considered in the final analysis. (describe enrollment and follow-up distributions used in the simulations)
+If enrollment is terminated due to the efficacy or futility criteria being satisfied, those subjects who are still undergoing follow-up will still have their outcomes considered in the final analysis.
 
 \subsubsection{Example paths}
-Figure \ref{fig:figure2a} shows the results of a hypothetical trial with the initial prior specification (first panel), three interim analyses (middle panels), and a final analysis (last panel).
+Violin plots are used to show the results of a simulated trials with the initial prior specification (first panel), three interim analyses (middle panels), and a final analysis (last panel), where interim analyses are conducted after every 10 completed outcomes. The first panel shows the skeptical and enthusiastic prior distributions from (\ref{eq:ex1skptprior}), (\ref{eq:ex1enthprior}), which are the same as introduced in Figure \ref{fig:figure1}(b) and (c). The other panels show the posterior distributions using the skeptical and enthusiastic priors respectively. An inference prior is defined as the mixture (\ref{eq:inference_prior}) with $\omega=0.5$, and its mean and $95\%$ credible intervals are shown.
 
-Old write-up below: needs to be updated:
+Figure \ref{fig:figure2a} shows the results of a trial where at the third interim analysis the efficacy condition (\ref{eq:ex1efficacy}) is satisfied and enrollment is terminated. Note that in the final analysis the efficacy condition is no longer at the $1-\epsilon$ threshold. A discussion of this type of ``evidence decrease" is given in Section \ref{sec:ex1operatingcharacteristics}.
 
-As seen in Figure 3(a), at the second interim analysis the efficacy condition $P(\theta>0.20|\mathbf{D},\pi_S)\geq 0.95$ is satisfied and enrollment is terminated. As shown in Figure 3(b), at the fourth interim analysis the futility condition $P(\theta\leq 0.30|\mathbf{D},\pi_E)\geq 0.85$ is satisfied and enrollment is terminated. In both examples there are subjects with missing outcomes, which are those who are still undergoing follow-up. The final analysis incorporates the final sample.
+Figure \ref{fig:figure2b} shows the results of a trial where at the third interim analysis the futility condition (\ref{eq:ex1futility}) is satisfied and enrollment is terminated. 
 \begin{figure}
   \begin{subfigure}{7in}
     \centering\includegraphics[width=7in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure2a.png}
-    \caption{An example path - early stopage for efficacy.}
+    \caption{An example path - early stoppage for efficacy.}
 	\label{fig:figure2a}
   \end{subfigure}
   \begin{subfigure}{7in}
@@ -452,29 +436,29 @@ As seen in Figure 3(a), at the second interim analysis the efficacy condition $P
  
 \end{figure}
 \newpage
-\subsubsection{Preposterior Analysis of Operating Characteristics}
-An interim analysis will be completed after every 2 subjects complete follow-up.
+\subsubsection{Preposterior Analysis of Operating Characteristics}\label{sec:ex1operatingcharacteristics}
+An interim analysis will be completed after every 2 subjects complete follow-up. The inference prior is defined as the mixture (\ref{eq:inference_prior}) with $\omega=0.5$ is used in evaluating the posterior mean and coverage probability.
+
+Figure \ref{fig:ex1operatingcharacteristics} shows the operating characters of this particular trial design. Stopping early for efficacy refers to satisfying (\ref{eq:ex1efficacy}), stopping early for futility refers to satisfying (\ref{eq:ex1futility}), and inconclusive findings refers to (\ref{eq:ex1maxss}). 
+
+When the true response probability is $\theta=\theta_0$, there is a $3.9\%$ probability of stopping the trial early for efficacy. The posterior mean shows a slight bias towards the alternative hypothesis.
+
+Figure \ref{fig:ex1evidencedecrease} addresses the particular situation of when the efficacy criteria (\ref{eq:ex1efficacy}) is satisfied at an interim analysis triggering termination of enrollment of additional subjects, but once the outcomes of subjects undergoing follow-up are ascertained the criteria is no longer satisfied. The distribution of the efficacy criteria given the final data for these cases are shown. The probability of these cases occurring is reflected by the percent agreement between interim and final results, and it is shown that as $\theta$ increases there is a higher probability of agreement and therefore a lower probability of evidence decrease.
+
+The median efficacy criteria is very close to $1-\epsilon$ and in the vast majority of cases (greater than 10th percentile) the efficacy criteria is still very high. Therefore, for this trial design, the interim and final results are not highly discrepant with respect to the efficacy criteria in these cases.
 \begin{figure}
-  \begin{subfigure}{7in}
-    \centering\includegraphics[width=7in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3a.png}
-    \caption{Caption text 1}
+  \begin{subfigure}{6in}
+    \centering\includegraphics[width=6in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3a.png}
+    \caption{Sequential design properties. SS; sample size, PM; posterior mean, CP; coverage probability, (I); interim analysis, (F); final analysis}.
+	\label{fig:ex1operatingcharacteristics}
   \end{subfigure}
-  \begin{subfigure}{7in}
-    \centering\includegraphics[width=7in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3b.png}
-    \caption{Caption text 2}
+  \begin{subfigure}{6in}
+    \centering\includegraphics[width=6in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure3b.png}
+    \caption{Distribution of final posterior probability given interim stoppage and evidence decrease. $\%$ AGR; Percent of agreement between final and interim posterior probabilities relative to $1-\epsilon$ threshold.}
+	\label{fig:ex1evidencedecrease}
   \end{subfigure}
  
 \end{figure}
-
-Let INC be the probability of reaching the maximum sample size without a conclusive monitoring result, let SS be the average sample size at the definitive interim analysis (I) and at the end of follow-up (F), let CP be the coverage probability using the mixture prior, and let PM be the posterior mean an inference prior which is a 50/50 mixture of the skeptical and enthusiastic priors.
-%\subsubsection{Agreement between interim and final result}
-
-%For example, at a true response rate of $\theta=0.40$, there is probability $0.894$ that the threshold for a significant result is maintained after the additional subjects complete follow-up. Conversely, with probability $0.106$ the evidence decreases, and in this case the median posterior probability is $0.93$, and a posterior probability lower than $0.88$ occurs with probability $0.1$. Thus there is a slight attenuation with respect to the dichotomous threshold, but little change in the posterior probability overall.
-
-%\begin{figure}
-%\includegraphics[width=6in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/sequential_design_properties_2}
-%\caption{Shows agreement between sequential and final determinations as they relate to the strict cut-offs}
-%\end{figure}
 
 %\subsubsection*{Vemurafenib Trial }
 %``In this study, a response rate of 15\% at week
@@ -490,7 +474,21 @@ Let INC be the probability of reaching the maximum sample size without a conclus
 %results obtained."
 
 \subsubsection{Type 1 error rate by the frequency of data monitoring}
-As expected, the probability of stopping enrollment due to a promising interim trial result and the Type 1 error rate at the final analysis increase with the frequency of interim monitoring, however, the increase is very slight at the final analysis. Regardless of frequency of monitoring there are good Type 1 error rates. 
+Figure \ref{fig:ex1t1e} shows the probability of the efficacy criteria (\ref{eq:ex1efficacy}) being satisfied at an interim or final analysis when $\theta=\theta_0$. The monitoring frequency is 1 when an interim analysis is made after every completed outcome (i.e. fully sequential), and is 112 (the maximum sample size) if the only analysis is done at the maximum sample size. 
+
+The probability of the efficacy criteria being (errantly) satisfied is the highest for a fully sequential design, and decreases as the monitoring frequency decreases. However, the probability of the efficacy criteria being satisfied with the final data is very low for any type of sequential monitoring (under 0.02 in all cases).
+\begin{figure}
+  \begin{subfigure}{6in}
+    \centering\includegraphics[width=6in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure4.png}
+    \caption{Probability of efficacy criteria being satisfied when $\theta=\theta_0$. SS; sample size. Monitor Freq; monitoring frequency.}
+	\label{fig:ex1t1e}
+  \end{subfigure}
+%  \begin{subfigure}{7in}
+%    \centering\includegraphics[width=7in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figureS1.png}
+%    \caption{Caption text 2}
+%  \end{subfigure}
+ 
+\end{figure}
 
 %Even at the extreme case where an interim analysis is conducted after every outcome, the probability of stopping at the interim due to a promising result when the true response is at the null level is only $0.108$ (about double the nominal rate), and even in this situation the Type 1 error rate once follow-up is complete does not exceed $0.05$. Thus Bayesian sequential monitoring has good frequentist properties even with frequent interim analyses.
 %\begin{itemize}
@@ -504,49 +502,47 @@ As expected, the probability of stopping enrollment due to a promising interim t
 %\item Enrollment rate and \% of ongoing data as operating characteristics are interesting ideas, but focus on the plots already created.
 %\item Mat: Scaling on \# of subjects in each interim analysis rather than \# of interim analyses (e.g. flip X axis). Make labels go vertical or diagonal.
 %\end{itemize}
-\begin{figure}
-  \begin{subfigure}{7in}
-    \centering\includegraphics[width=7in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figure4.png}
-    \caption{Caption text 1}
-  \end{subfigure}
-  \begin{subfigure}{7in}
-    \centering\includegraphics[width=7in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figureS1.png}
-    \caption{Caption text 2}
-  \end{subfigure}
- 
-\end{figure}
 
-Monitoring Freq \textcolor{green}{never abbreviate words} is 1 for fully sequential design and 112 when the only analysis is with all completed outcomes.
 \subsection{Parallel Two-Group Design with Binary Endpoint}
 \subsubsection{Motivating example}
-The Pediatric Lupus Trial of Belimumab Plus Background Standard Therapy (PLUTO) trial, was a multi-center study to evaluate the safety, pharmacokinetics, and efficacy of belimumab intravenous (IV) in pediatric patients 5 to 17 years of age with active systemic lupus erythematosus. 
+Consider the trial ``The Pediatric Lupus Trial of Belimumab Plus Background Standard Therapy (PLUTO)" (NCT01649765). Subjects were randomized to Belimumab 10mg/kg or placebo, and the primary endpoint was response at week 52. Response was measured by improvement in disease severity scores. The goal was to test for superiority of Belimumab to placebo. 
 
-The goal was to test for superiority of belimumab to placebo. Based on adult studies, a response rate of $0.51$ was expected for belimumab and based on previous research a response rate of $0.39$ was expected for placebo.
+The study start date was September 7, 2012, and the primary completion date was January 24, 2018. Since the follow-up period is 52 weeks the last enrollment is estimated to be a year prior to the primary competition date yielding an average enrollment rate of one enrollment per $17.2$ days.
 
-The study design included enrollment of 100 subjects, the first 24 subjects randomized in a 5:1 ratio (belimumab:placebo) and the remaining 76 subjects would be randomized in a 1:1 allocation ratio. Therefore, 58 subjects would be randomized to belimumab and 42 to placebo. The sample size was based on feasibility constraints rather than a power calculation.
+The study design included enrollment of 100 subjects, the first 24 subjects randomized in a 5:1 ratio (Belimumab:placebo) and the remaining 76 subjects would be randomized in a 1:1 allocation ratio. Therefore, 58 subjects would be randomized to Belimumab and 42 to placebo. The sample size was based on feasibility constraints rather than a power calculation, and the study was terminated after 93 subjects enrolled.
 
-The binary response endpoint was evaluated at 52 weeks post enrollment. The study start date was September 7, 2012, and the primary completion date was January 24, 2018. Since the follow-up period is 52 weeks the last enrollment is estimated to be a year prior to the primary competition date yielding an average enrollment rate of one enrollment per $17.2$ days.
-\subsubsection{Model formulation}
-Let $\theta_0$ represent the response rate the control group and $\theta_1$ represent the response probability for the investigational product (IP) group. 
-Consider the hypothesis testing of IP superiority to control
-\begin{align*}
-H_0:\theta_1-\theta_0\leq 0\text{ vs. }H_1: \theta_1-\theta_0>0.
-\end{align*}
+\subsubsection{Model formulation \& prior elicitation}
+The data $\mathbf{D}$ are assumed to be independent Bernoulli random variables with response probability $\theta_0$ for the placebo group and $\theta_1$ for the treatment (IP for investigational product) group. The null response value for the difference $\delta=\theta_1-\theta_0=0$ is  and a highly efficacious response probability is $\delta=\theta_1-\theta_0=0.12$. Consider the hypothesis testing of IP superiority to control $H_0:\theta_1-\theta_0\leq 0\text{ vs. }H_1: \theta_1-\theta_0>0$. An estimate for the treatment probability from adult trials is $\theta_1=0.51$.
 
-The priors will be chosen based on the joint specification in (\ref{eq:generalized_normal_joint}). First, a prior on the response probability for the placebo group is given in the form of (\ref{eq:generalized_normal_PC}). This prior is chosen to be flat in the region $0.39\pm 0.10$.
+The priors will be chosen based on the generalized normal distribution (\ref{eq:generalizednormalkernel}) based on the joint specification in (\ref{eq:generalized_normal_joint}) and truncated to the unit square 
 
-To complete the joint specification of (\ref{eq:generalized_normal_joint}), skeptical and enthusiastic priors of the form (\ref{eq:generalized_normal_IP}) will be parameterized as to satisfy (\ref{eq:enthprior}) and (\ref{eq:skptprior}). The skeptic believes there is no difference in response rates by treatment group, and the enthusiastic person believes the IP group will have a response rate probability that is 0.12 higher than the placebo group. 
+The skeptical and enthusiastic priors will have the same component for
+\begin{align}
+\pi(\theta_0)\propto \exp\left\{-\left(\frac{|\theta_0-\mu|}{\sigma}\right)^{\beta}\right\}\times I(\theta_0 \in [0,1])
+\end{align}
+The location parameter is chosen to be $\mu=\theta_1-\delta_E=0.39$. The shape and scale parameters $\sigma$ and $\beta$ are chosen so that the prior is flat in the region $\mu\pm 0.10$ and is shown in Figure \ref{fig:figure5}(E). 
 
-%This corresponds to $\delta_S=0$ and $\delta_E=0.12$. The skeptical and enthusiastic priors are defined as
-%\begin{align*}
-%\pi_S(\theta_0,\theta_1)=&\exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma_S}\right)^{2}\right\}\times \exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta_S}{\sigma_{S1}}\right)^{2}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1]) /c_S,\\
-%\pi_E(\theta_0,\theta_1)=&\exp\left\{-\frac{1}{2}\left(\frac{\theta_0-\mu}{\sigma_E}\right)^{2}\right\}\times \exp\left\{-\frac{1}{2}\left(\frac{(\theta_1-\theta_0)-\delta_E}{\sigma_{E1}}\right)^{2}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1]) /c_E
-%\end{align*}
+The skeptical and enthusiastic priors are differentiated by their parameterizations for 
+\begin{align}
+\pi_S(\theta_1|\theta_0)\propto&\exp\left\{-\left(\frac{|\theta_1-\theta_0-\delta_0|}{\sigma_S}\right)^{\beta_S}\right\}\times f_S(\theta_0) \times I((\theta_0,\theta_1)\in [0,1]\times[0,1])\\
+\pi_E(\theta_1|\theta_0)\propto&\exp\left\{-\left(\frac{|\theta_1-\theta_0-\delta_1|}{\sigma_E}\right)^{\beta_E}\right\}\times f_E(\theta_0) \times I((\theta_0,\theta_1)\in [0,1]\times[0,1])
+\end{align}
+
+The values $\beta_S$ and $\beta_E$ are pre-specified and $\sigma_S$ and $\sigma_E$ are chosen to satisfy the tail-probability conditions 
+(\ref{eq:ex2enthcondition})-(\ref{eq:ex2skptcondition}).
+
+The complete skeptical and enthusiastic priors are then given by 
+\begin{align}
+\pi_S(\theta_0,\theta_1)\propto&\exp\left\{-\left(\frac{|\theta_0-\mu|}{\sigma}\right)^{\beta}\right\}\times \exp\left\{-\left(\frac{|\theta_1-\theta_0-\delta_0|}{\sigma_S}\right)^{\beta_S}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1])\label{eq:ex2skpt}\\
+\pi_E(\theta_0,\theta_1)\propto&\exp\left\{-\left(\frac{|\theta_0-\mu|}{\sigma}\right)^{\beta}\right\}\times \exp\left\{-\left(\frac{|\theta_1-\theta_0-\delta_1|}{\sigma_E}\right)^{\beta_E}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1])\label{eq:ex2enth}.
+\end{align}
+
+The joint priors $\pi_S(\theta_0,\theta_1)$ $\pi_E(\theta_0,\theta_1$ as well as the marginal priors $\pi_S(\theta_1-\theta_0)$, $\pi_E(\theta_1-\theta_0)$ are shown in Figure \ref{fig:figure5}.
 %
 %where $c_S$ and $c_E$ are normalizing constants. The values of $\sigma_S$ and $\sigma_{S1}$ are chosen such that $P(\theta_1-\theta_0>0.1|\pi_S)=0.05$. Similarly, $\sigma_E$ and $\sigma_{E1}$ are chosen such that $P(\theta_1-\theta_0\leq0|\pi_E)=0.05$.
 
 %\begin{align*}
-%\pi(\theta_0,\theta_1)\propto& \hspace{0.05in}exp \left\{-\frac{1}{2}\left|\frac{(\theta_1-\theta_0)-\delta}{\sigma}\right|^\alpha\right\}
+%\pi(\theta_0,\theta_1)\propto& \hspace{0.05in}exp \left\{-\frac{1}{2}\left|\frac{(\theta_1-\theta_0)-\delta}{\sigma}\right|^\sigma\right\}
 %\end{align*}
 
 
@@ -559,11 +555,11 @@ To complete the joint specification of (\ref{eq:generalized_normal_joint}), skep
 %\end{enumerate}
 
 Enrollment will proceed until one of the following three conditions are satisfied:
-\begin{align*}
-\text{Efficacy criteria (EFF): }&P(\theta_1-\theta_0>0|\mathbf{D},\pi_S)\geq 0.975\\
-\text{Futility criteria (FUT): }&P(\theta_1-\theta_0 \leq 0.06|\mathbf{D},\pi_E)\geq 0.975\\
+\begin{align}
+\text{Efficacy criteria (EFF): }&P(\theta_1-\theta_0>\delta_0|\mathbf{D},\pi_S)\geq 1-\epsilon\\
+\text{Futility criteria (FUT): }&P\left(\theta_1-\theta_0 \leq \frac{\delta_0+\delta_1}{2}\Big|\mathbf{D},\pi_E\right)\geq 1-\epsilon\\
 \text{Maximum sample size: }&N=100 \text{ patient outcomes}
-\end{align*}
+\end{align}
 
 An interim analysis is competed after every 10 subjects have completed outcomes.
 
@@ -586,7 +582,7 @@ Text.
 \subsubsection{Type 1 error rate depending on enrollment schemes}
 
 \newpage
-\subsubsection{Robustness of parameterizations of monitoring priors}
+\subsubsection{Robustness of parameterizations of monitoring priors}\label{sec:priorRobustness}
 \begin{figure}
   \begin{subfigure}{7in}
     \centering\includegraphics[width=7in]{P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/figureS2a.png}
@@ -608,9 +604,9 @@ Text.
   \end{subfigure}
 \end{figure}
 
-\section{BibTeX}
+%\section{BibTeX}
 
  \bibliographystyle{agsm}
- \bibliography{./References}		
+ \bibliography{./References}	
 
 \end{document}

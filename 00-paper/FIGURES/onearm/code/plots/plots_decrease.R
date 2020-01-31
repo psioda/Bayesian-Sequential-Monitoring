@@ -77,7 +77,7 @@ lines(x=c(p.skpt,p.enth),rep(0.975,2))
 #}
 stretch<-0.37
 mtext(bquote(theta),side=1,line=1,at=stretch)
-mtext(text="Agreement",side=1,line=2,at=stretch)
+mtext(text="% AGR",side=1,line=2,at=stretch)
 leg <-legend("bottomright",
        c("Median","P10-P90","P25-75","P90-P100"), 
        fill=c("black","lightgray","darkgray","black"),

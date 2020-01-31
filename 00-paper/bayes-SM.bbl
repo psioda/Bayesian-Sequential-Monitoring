@@ -34,25 +34,34 @@ Freedman, L.~S. \harvardand\ Spiegelhalter, D.~J.  \harvardyearleft
   11}(1),~23--35.
 \newline\harvardurl{http://doi.wiley.com/10.1002/sim.4780110105}
 
-\harvarditem[Hyman et~al.]{Hyman, Puzanov, Subbiah, Faris, Chau, Blay, Wolf,
-  Raje, Diamond, Hollebecque, Gervais, Elez-Fernandez, Italiano, Hofheinz,
-  Hidalgo, Chan, Schuler, Lasserre, Makrutzki, Sirzen, Veronese, Tabernero
-  \harvardand\ Baselga}{2015}{Hyman2015}
-Hyman, D.~M., Puzanov, I., Subbiah, V., Faris, J.~E., Chau, I., Blay, J.-Y.,
-  Wolf, J., Raje, N.~S., Diamond, E.~L., Hollebecque, A., Gervais, R.,
-  Elez-Fernandez, M.~E., Italiano, A., Hofheinz, R.-D., Hidalgo, M., Chan, E.,
-  Schuler, M., Lasserre, S.~F., Makrutzki, M., Sirzen, F., Veronese, M.~L.,
-  Tabernero, J. \harvardand\ Baselga, J.  \harvardyearleft
-  2015\harvardyearright , `{Vemurafenib in Multiple Nonmelanoma Cancers with
-  {\textless}i{\textgreater}BRAF{\textless}/i{\textgreater} V600 Mutations}',
-  {\em New England Journal of Medicine} {\bf 373}(8),~726--736.
-\newline\harvardurl{http://www.nejm.org/doi/10.1056/NEJMoa1502309}
+\harvarditem[Hyams et~al.]{Hyams, Damaraju, Blank, Johanns, Guzzo, Winter,
+  Kugathasan, Cohen, Markowitz, Escher, Veereman–Wauters, Crandall,
+  Baldassano \harvardand\ Griffiths}{2012}{Hyams2012}
+Hyams, J., Damaraju, L., Blank, M., Johanns, J., Guzzo, C., Winter, H.~S.,
+  Kugathasan, S., Cohen, S., Markowitz, J., Escher, J.~C., Veereman–Wauters,
+  G., Crandall, W., Baldassano, R. \harvardand\ Griffiths, A.  \harvardyearleft
+  2012\harvardyearright , `Induction and maintenance therapy with infliximab
+  for children with moderate to severe ulcerative colitis', {\em Clinical
+  Gastroenterology and Hepatology} {\bf 10}(4),~391 -- 399.e1.
+\newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S1542356511012845}
 
 \harvarditem{Neyman \harvardand\ Greenhouse}{1967}{Neyman1967}
 Neyman, J. \harvardand\ Greenhouse, S.~W.  \harvardyearleft
   1967\harvardyearright , {\em {Proceedings of the Berkeley Symposium on
   Mathematical Statistics and Probability.}}, University of California Press.
 \newline\harvardurl{https://projecteuclid.org/euclid.bsmsp/1200513830}
+
+\harvarditem[Rutgeerts et~al.]{Rutgeerts, Sandborn, Feagan, Reinisch, Olson,
+  Johanns, Travers, Rachmilewitz, Hanauer, Lichtenstein, de~Villiers, Present,
+  Sands \harvardand\ Colombel}{2005}{Rutgeerts2005}
+Rutgeerts, P., Sandborn, W.~J., Feagan, B.~G., Reinisch, W., Olson, A.,
+  Johanns, J., Travers, S., Rachmilewitz, D., Hanauer, S.~B., Lichtenstein,
+  G.~R., de~Villiers, W.~J., Present, D., Sands, B.~E. \harvardand\ Colombel,
+  J.~F.  \harvardyearleft 2005\harvardyearright , `Infliximab for induction and
+  maintenance therapy for ulcerative colitis', {\em New England Journal of
+  Medicine} {\bf 353}(23),~2462--2476.
+\newblock PMID: 16339095.
+\newline\harvardurl{https://doi.org/10.1056/NEJMoa050516}
 
 \harvarditem[Spiegelhalter et~al.]{Spiegelhalter, Freedman \harvardand\
   Parmar}{1993}{Spiegelhalter1993}

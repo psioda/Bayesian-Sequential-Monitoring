@@ -136,7 +136,7 @@ mtext(#text=as.expression(bquote(P(theta>(theta[0]+theta[1])/2 *"|"* bold(D) , p
       text="Efficacy Criteria",
       side=1,line=row,at=label.x,adj=0)
 for (i in 1:length(n)){
-  mtext(text=paste0(format(round(efficacy[i],digits=3),nsmall=3)),side=1,line=row,at=spacing[i],adj=0)
+  mtext(text=paste0(format(round(1 - efficacy[i],digits=3),nsmall=3)),side=1,line=row,at=spacing[i],adj=0)
 }
 
 row<-5

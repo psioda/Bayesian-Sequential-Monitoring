@@ -3,7 +3,7 @@
 #######################################
 dev.off()
 rm(list = ls())
-root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 source("code_functions.R")
 source("args_model.R")
@@ -15,7 +15,7 @@ mtext("(A)",side=2,line=1,at=6,las=1)
 dev.off()
 
 rm(list = ls())
-root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 source("code_functions.R")
 source("args_model.R")
@@ -27,7 +27,7 @@ mtext("(B)",side=2,line=1,at=6,las=1)
 dev.off()
 
 rm(list = ls())
-root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 source("code_functions.R")
 source("args_model.R")
@@ -39,7 +39,7 @@ mtext("(C)",side=2,line=1,at=3,las=1)
 dev.off()
 
 rm(list = ls())
-root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 source("code_functions.R")
 source("args_model.R")
@@ -54,7 +54,7 @@ dev.off()
 #### Figure 2, One Arm Violin Plots ####
 ########################################
 rm(list = ls())
-root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 source("code_functions.R")
 source("args_model.R")
@@ -69,7 +69,7 @@ par(mar=c(5.1+1,4.1,2.1,2.1)) #c(bottom, left, top, right)
 # Efficacy example
 miss<-c(0,2,3  ,4 ,0)
 n<-   c(0,10,20,30,34)
-y1<-  c(0,7,12 ,21,25)
+y1<-  c(0,7,12 ,21,21)
 y0=n-y1
 spacing<-(seq(1:length(n))-1)*12
 source("plots/plots_violin_v2.R")
@@ -89,7 +89,7 @@ legend("bottomright",
 dev.off()
 
 rm(list = ls())
-root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 source("code_functions.R")
 source("args_model.R")
@@ -103,7 +103,7 @@ png('../../figure2b.png',width = 450*width.scale, height = 300*width.scale,point
 par(mar=c(5.1+1,4.1,2.1,2.1)) #c(bottom, left, top, right)
 # Futility example
 n<-   c(0,10,20,30,37)
-y1<-  c(0,6 ,7 ,7 ,10)
+y1<-  c(0,6 ,7 ,7 ,9)
 miss<-c(0,2 ,4 ,7 ,0)
 y0=n-y1
 spacing<-(seq(1:length(n))-1)*12
@@ -130,7 +130,7 @@ dev.off()
 dev.off()
 par(mar=c(5.1,4.1,2.1,2.1)) #c(bottom, left, top, right)
 rm(list = ls())
-root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 
 source("args_model.R")
@@ -159,7 +159,7 @@ dev.off()
 ##############################################
 dev.off()
 rm(list = ls())
-root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 
 source("args_model.R")
@@ -168,6 +168,8 @@ args_simulation<-read.csv(file="args_simulation.csv",header=TRUE,sep=",")
 Table2<-read.csv(file="../output/Table2_merged.csv",header=TRUE,sep=",")
 combined2<-merge(args_simulation,Table2,by.x="X",by.y="idx")
 Table3<-read.csv(file="../output/Table3_merged.csv",header=TRUE,sep=",")
+
+# need to fix warning message
 combined3<-merge(combined2,Table3,by.x="X",by.y="idx")
 
 figure3b<-combined3[combined3$model==1 & combined3$skpt_spike==1 & combined3$enth_flat==0,]
@@ -183,7 +185,7 @@ dev.off()
 #### Figure 4, One Arm T1E ####
 ###############################
 rm(list = ls())
-root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 
 source("args_model.R")
@@ -220,7 +222,7 @@ dev.off()
 ### Figure S1, NEW One Arm Enrollment Schemes ####
 ##################################################
 rm(list = ls())
-root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 
 source("args_model.R")
@@ -250,7 +252,7 @@ dev.off()
 #### Figure S1, One Arm Enrollment Schemes #### 
 ###############################################
 # rm(list = ls())
-# root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+# root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 # setwd(root)
 # 
 # source("args_model.R")
@@ -296,7 +298,7 @@ dev.off()
 #### Figure S2, One Arm Robustness #### 
 #######################################
 # rm(list = ls())
-# root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+# root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 # setwd(root)
 # 
 # source("args_model.R")
@@ -352,7 +354,7 @@ dev.off()
 #### Figure S2, NEW: ONE ARM ROBUSTNESS #### 
 ############################################ 
 rm(list = ls())
-root<-"P:/Git/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 
 source("args_model.R")
