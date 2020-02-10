@@ -4,17 +4,18 @@
 ##################################
 rm(list = ls())
 
-simulation <- expand.grid(seq(0.39, 0.51, by = 0.01), # p.IP
+simulation <- expand.grid(
+                    .39,  #seq(0.39, 0.51, by = 0.01), # p.IP
                      .39, # p.PC
                      2,   # freq.mntr
                      1,   # enr.shape
                      4,   # out.mean
                      0,   # fut.mix.prob (how much weight given to skeptical prior for futility analysis)
-                     seq(1,0,by=-0.25),   # eff.mix.prob (how much weight given to skeptical prior for efficacy analysis)
+                     c(1,NA),   # eff.mix.prob (how much weight given to skeptical prior for efficacy analysis)
                      0.5,  # inf.mix.prob
                      0.05, # cred.tail
                      100,  # max.ss
-                     50)   # reps
+                     1000)   # reps
 
 names(simulation) <- c("p.IP",
                   "p.PC",

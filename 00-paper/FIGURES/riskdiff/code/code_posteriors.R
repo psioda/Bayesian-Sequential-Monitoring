@@ -78,6 +78,22 @@ enth.nc.sc <- integrate_debug(fun = enth.post.sc,
                                 xmax = 1,
                                 ymin = 0,
                                 ymax = 1)
+
+# # prior mixing weights (Feb 10, 2020)
+if (is.na(eff.mix.prob)){
+  if (min(y1.IP,y0.IP,y1.PC,y0.PC) > 0){
+    PC.mle <- y1.PC/sum(y0.PC, y1.PC)
+    IP.mle <- y1.IP/sum(y0.IP, y1.IP)
+  }
+  else {
+    PC.mle <- p.PC
+    IP.mle <- p.IP
+    }
+  skpt.lik <- skpt.post.sc(PC.mle, IP.mle)
+  enth.lik <- enth.post.sc(PC.mle, IP.mle)
+  eff.mix.prob <- skpt.lik/sum(skpt.lik, enth.lik)
+}
+
 # posterior mixing weights
 # http://www.mas.ncl.ac.uk/~nmf16/teaching/mas3301/week11.pdf
 fut.skpt.wt <- fut.mix.prob*skpt.nc.sc/(fut.mix.prob*skpt.nc.sc + (1 - fut.mix.prob)*enth.nc.sc)

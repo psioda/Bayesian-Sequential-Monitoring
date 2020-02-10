@@ -3,7 +3,7 @@
 ##################################
 
 # Posterior Mean & Coverage Probability  ---
-pm_cp <- function(index, inf.mix.prob){
+pm_cp <- function(index){
   
   y1.IP <- sum(responses.IP[outcome.times.IP <= outcome.times.all[index]] == 1)
   y0.IP <- sum(responses.IP[outcome.times.IP <= outcome.times.all[index]] == 0)
@@ -47,11 +47,14 @@ pm_cp <- function(index, inf.mix.prob){
   # is grid point in credible interval?
   coverage <- (grid.eval[grid.index] >= sort(grid.eval)[grid.index2]) 
   
-  return(data.frame(cbind(pm.mean.x,pm.mean.y,coverage)))
+  mle.IP <- y1.IP/sum(y0.IP, y1.IP)
+  mle.PC <- y1.PC/sum(y0.PC, y1.PC)
+  
+  return(data.frame(cbind(pm.mean.x, pm.mean.y, coverage, mle.PC, mle.IP)))
 }
 
 # Monitoring ---
-monitoring <- function(index, fut.mix.prob, eff.mix.prob, inf.mix.prob){
+monitoring <- function(index){
   
   y1.IP <- sum(responses.IP[outcome.times.IP <= outcome.times.all[index]] == 1)
   y0.IP <- sum(responses.IP[outcome.times.IP <= outcome.times.all[index]] == 0)
@@ -89,7 +92,7 @@ monitoring <- function(index, fut.mix.prob, eff.mix.prob, inf.mix.prob){
   inf.prob <- inf.skpt.wt*(eff.prob.skpt/skpt.nc.sc) + (1 - inf.skpt.wt)*(eff.prob.enth/enth.nc.sc)
   fut.prob <- fut.skpt.wt*((1 - fut.prob.enth/enth.nc.sc) + (1 - fut.skpt.wt)*(1 - fut.prob.enth/enth.nc.sc))
   # bug caught 2/1/20, (1 - fut.prob.skpt)) must be computed before dividing by normalizing constant
-  # bug caught 2/2/20, 1-fut.prob.enth/enth.nc.sc NOT (1-fut.prob.enth)/enth.nc.sc
+  # bug caught 2/2/20, 1 - fut.prob.enth/enth.nc.sc NOT (1 - fut.prob.enth)/enth.nc.sc
   
   return(data.frame(cbind(eff.prob, inf.prob, fut.prob)))
 }

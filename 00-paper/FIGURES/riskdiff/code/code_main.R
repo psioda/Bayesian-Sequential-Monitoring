@@ -1,14 +1,18 @@
 ##################################
 ### Risk difference simulations
 ### Evan Kwiatkowski, Feb 2020
+###
+### # If changes made to functions then re-run args_model.R
+###
 ##################################
-rm(list = ls())
 
-for (idx in 1:65){
+rm(list = ls())
+library(pracma)
+for (idx in 1:2){
 
 # if (.Platform$OS.type == "windows") {
-#   library(pracma)
-#   idx <- 53
+#  library(pracma)
+#  idx <- 13
 # }
 
 if (.Platform$OS.type == "unix")    { 
@@ -19,7 +23,6 @@ if (.Platform$OS.type == "unix")    {
 
 # Model information, including all functions used. 
 # The only additional source file to be called is "code_enrollment.R"
-# Important! If changes made to functions then this file needs to be re-run!
 load(file = 'args_model.RData') # loads all model information include prior parameters
 
 # Simulation information
@@ -28,7 +31,6 @@ for(i in 1:ncol(simulation)){
   assign(names(simulation)[i], simulation[idx, names(simulation)[i]])
 }
 
-
 # Simulations ---
 names <- c("eff.mon.initial",
          "eff.mon.final",
@@ -36,6 +38,10 @@ names <- c("eff.mon.initial",
          "fut.mon.final",
          "ss.initial",
          "ss.final",
+         "mle.initial.IP",
+         "mle.final.IP",
+         "mle.initial.PC",
+         "mle.final.PC",
          "post.mean.initial.IP",
          "post.mean.final.IP",
          "post.mean.initial.PC",
@@ -63,10 +69,7 @@ for (i in 1:reps){
   
   for (j in c(seq(freq.mntr, max.ss, by = freq.mntr), max.ss)){
     
-    mon.result.initial <- monitoring(index = j, 
-                             fut.mix.prob = fut.mix.prob, 
-                             eff.mix.prob = eff.mix.prob,
-                             inf.mix.prob = inf.mix.prob)
+    mon.result.initial <- monitoring(index = j)
     futility <- mon.result.initial$fut.prob
     efficacy <- mon.result.initial$eff.prob
 
@@ -80,9 +83,11 @@ for (i in 1:reps){
   inner[i, "fut.mon.initial"] <- (futility > sig.fut)
   inner[i, "eff.mon.initial"] <- (efficacy > sig.eff)
   
-  pm.cp.result.initial <- pm_cp(index = n.initial, inf.mix.prob = inf.mix.prob)
+  pm.cp.result.initial <- pm_cp(index = n.initial)
   inner[i, "post.mean.initial.PC"] <- pm.cp.result.initial$pm.mean.x
   inner[i, "post.mean.initial.IP"] <- pm.cp.result.initial$pm.mean.y
+  inner[i, "mle.initial.PC"] <- pm.cp.result.initial$mle.PC
+  inner[i, "mle.initial.IP"] <- pm.cp.result.initial$mle.IP
   inner[i, "cov.initial"] <- pm.cp.result.initial$coverage
   
   inner[i, "ss.initial"] <- n.initial  
@@ -92,19 +97,18 @@ for (i in 1:reps){
   cutoff.time <- outcome.times.all[n.initial]
   n.final <- sum(enr.times.all <= cutoff.time)
   
-  mon.result.final <- monitoring(index = n.final, 
-                           fut.mix.prob = fut.mix.prob, 
-                           eff.mix.prob = eff.mix.prob,
-                           inf.mix.prob = inf.mix.prob)
+  mon.result.final <- monitoring(index = n.final)
   futility.final <- mon.result.final$fut.prob
   efficacy.final <- mon.result.final$eff.prob
   inner[i,"fut.mon.final"] <- (futility.final > sig.fut)
   inner[i,"eff.mon.final"] <- (efficacy.final > sig.eff)
   
-  pm.cp.result.final <- pm_cp(index = n.final, inf.mix.prob = inf.mix.prob)
+  pm.cp.result.final <- pm_cp(index = n.final)
   inner[i, "post.mean.final.PC"] <- pm.cp.result.final$pm.mean.x
   inner[i, "post.mean.final.IP"] <- pm.cp.result.final$pm.mean.y
   inner[i, "cov.final"] <- pm.cp.result.final$coverage
+  inner[i, "mle.final.PC"] <- pm.cp.result.final$mle.PC
+  inner[i, "mle.final.IP"] <- pm.cp.result.final$mle.IP
   
   inner[i,"ss.final"] <- n.final  
   inner.p[i,"final.p"] <- efficacy.final
@@ -129,5 +133,4 @@ write.csv(Table2, file = paste0("../output/Table2/", idx, "Table2.csv"))
 Table3<-data.frame(t(outer.p.agree))
 Table3$idx <- idx
 write.csv(Table3, file = paste0("../output/Table3/", idx, "Table3.csv"))
-
 }
