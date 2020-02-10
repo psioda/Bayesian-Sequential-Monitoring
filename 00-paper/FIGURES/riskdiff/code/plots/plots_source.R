@@ -91,11 +91,13 @@ mtext("(E)",
 dev.off()
 
 
-################## FIGURE 6 ###########################
+#############################################
+#### Figure 6, Risk Diff Inference Plots ####
+#############################################
 
 rm(list = ls())
 width.scale<-7
-png('../../figure6.png',
+png('../../../figure6.png',
     width = 450*width.scale, 
     height = 300*width.scale,
     pointsize=16,
@@ -103,9 +105,7 @@ png('../../figure6.png',
 par(mar=c(5.1+1,4.1+1,2.1,2.1)) #c(bottom, left, top, right)
 
 stretch <- 0.365
-#############################################
-#### Figure 6, Risk Diff Inference Plots ####
-#############################################
+
 load(file = '../args_model.RData') # loads all model information include prior parameters
 args_simulation <- read.csv(file = "../args_simulation.csv", header = TRUE, sep = ",")
 
