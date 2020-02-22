@@ -7,13 +7,11 @@
 ##################################
 
 rm(list = ls())
-library(pracma)
-for (idx in 1:2){
 
-# if (.Platform$OS.type == "windows") {
-#  library(pracma)
-#  idx <- 13
-# }
+if (.Platform$OS.type == "windows") {
+  library(pracma)
+  idx <- 25
+ }
 
 if (.Platform$OS.type == "unix")    { 
   library(pracma, lib.loc = "../rpkgs/")
@@ -100,8 +98,13 @@ for (i in 1:reps){
   mon.result.final <- monitoring(index = n.final)
   futility.final <- mon.result.final$fut.prob
   efficacy.final <- mon.result.final$eff.prob
-  inner[i,"fut.mon.final"] <- (futility.final > sig.fut)
-  inner[i,"eff.mon.final"] <- (efficacy.final > sig.eff)
+  inner[i, "fut.mon.final"] <- (futility.final > sig.fut)
+  inner[i, "eff.mon.final"] <- (efficacy.final > sig.eff)
+  
+  ####### Valentine's Day Debug  ####### 
+  #source("valentine.R")
+  #valentine(index = n.final)
+  ######################################
   
   pm.cp.result.final <- pm_cp(index = n.final)
   inner[i, "post.mean.final.PC"] <- pm.cp.result.final$pm.mean.x
@@ -133,4 +136,3 @@ write.csv(Table2, file = paste0("../output/Table2/", idx, "Table2.csv"))
 Table3<-data.frame(t(outer.p.agree))
 Table3$idx <- idx
 write.csv(Table3, file = paste0("../output/Table3/", idx, "Table3.csv"))
-}

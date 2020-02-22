@@ -1,21 +1,23 @@
 ##################################
 # Simulation parameters
 # Evan Kwiatkowski, Feb 2020
+#
+# The mix.prob weights are those assigned to the SKEPTICAL component
 ##################################
 rm(list = ls())
 
 simulation <- expand.grid(
-                    .39,  #seq(0.39, 0.51, by = 0.01), # p.IP
+                    seq(.39, 0.63, length = 25),  #seq(0.39, 0.51, by = 0.01), # p.IP
                      .39, # p.PC
                      2,   # freq.mntr
                      1,   # enr.shape
                      4,   # out.mean
                      0,   # fut.mix.prob (how much weight given to skeptical prior for futility analysis)
-                     c(1,NA),   # eff.mix.prob (how much weight given to skeptical prior for efficacy analysis)
+                     c(seq(1, 0.25, by = -0.25),NA), # eff.mix.prob (how much weight given to skeptical prior for efficacy analysis)
                      0.5,  # inf.mix.prob
                      0.05, # cred.tail
                      100,  # max.ss
-                     1000)   # reps
+                     25000)   # reps
 
 names(simulation) <- c("p.IP",
                   "p.PC",
@@ -29,8 +31,5 @@ names(simulation) <- c("p.IP",
                   "max.ss",
                   "reps")
 
-write.csv(simulation, 
+write.csv(x    = simulation, 
           file = "args_simulation.csv")
-
-# NOTES:
-# The mix.prob weights are those assigned to the SKEPTICAL component

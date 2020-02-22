@@ -67,11 +67,11 @@
 
 \bigskip
 \begin{abstract}
-The text of your abstract. 200 or fewer words.
+Conclusions from Bayesian sequential monitoring are coherent when specification of prior distributions are intuitively related to the research objectives. A compelling level of evidence is required to terminate enrollment for either efficacy or futility. This paper defines monitoring priors using generalized normal distributions parameterized via three specified quantities (mode and two tail probabilities), which reflect prior belief defined using a consistent definition of compelling level of evidence. These concepts are demonstrated through simulations based on a single-arm proof-of-activity trial in pediatric ulcerative colitis and a parallel two-group design in pediatric lupis.
 \end{abstract}
 
 \noindent%
-{\it Keywords:}  3 to 6 keywords, that do not appear in the title
+{\it Keywords:}  Generalized normal distribution, monitoring priors, real world evidence
 \vfill
 
 \newpage
@@ -79,27 +79,14 @@ The text of your abstract. 200 or fewer words.
 
 \section{Introduction}
 
+A goal of the 21st Century Cures Act \citep{USCongress2016} is to expedite the approval process for new drugs and devices through the incorporation of real-world evidence into clinical trial data summaries. Similarly, an objective of the Prescription Drug User Fee Act VI  is to enhance the capacity to review ``complex adaptive, Bayesian, and other novel clinical trial designs." \citep{FDA2017} Bayesian designs are natural for incorportating external evidence through prior distributions. This is useful in areas where clinical trials would take a lot of time due to slow enrollment or long follow-up periods, and where relevant external data exists. For example, a treatment for a rare pediatric disease might have difficulties with enrollment, and there may be relevant data from adult trials which could augument the trial findings and lead to a conclusion of efficacy sooner. Group sequential designs also have the possible benefits of leading to conclusions earlier, saving time and resources, as well as reducing the exposure of patients to inferior treatments. Bayesian sequential designs which incorporate external evidence therefore have a much increased capacity to expedite the approval process for effective treatments, but they most be carefully planned. The effects of interim analyses and the informativeness of the priors must be well understood. This paper presents a structured or default way to determine prior distributions based on the trial design. Our major contribution is to present methods for the default or automatic selection of prior distributions in a way that is applicable to a wide array of clinical trial designs.
 
-(21\textsuperscript{st} Century Cures Act \& PDUFA VI reauthorization)
-%\item Berry A Case for Bayesianism, Cornfield The Bayesian outlook, classical arguments for Bayes in clinical trials, not sequential monitoring in particular
-%\item (1) Berry Monitoring Accumulating Data, (2) Cornfield/Greenhouse On certain aspects, (3) Cornfield Sequential Trials, (4) A Bayesian Test of Some Classical Hypotheses, with Applications to Sequential Clinical Trials Jerome Cornfield 
-%\item Bayes \& monitoring, based on posterior distributions
-%\item First papers in Bayes sequential monitoring. Bayesian inferences not affected by frequent or continual monitoring by the likelihood principle.
-%\item Papers which compare to frequentist stopping rules \& increased interpretation on role of priors.
-%\item \cite{Spiegelhalter1994}
-%\item \cite{Spiegelhalter1993} predictive distributions as basis for monitoring
-%\item \cite{Freedman1992} choice of prior explained by showing its impact on percentiles of posterior distribution
-%\item \cite{Freedman1989} The need to overcome this `\textbf{handicap}' prevents unduly early termination.
-%\item \cite{Fayers1997} Choosing these two priors (skeptical, enthusiastic) provides a useful \textbf{brake} against the premature termination of trials.
-%\item Bayesian Adaptive Methods for Clinical Trials Berry, Carlin, Etc.
 
-The theoretical foundations for the Bayesian clinical trials has been long established \cite{Cornfield1966}~\cite{Cornfield1966a}~\cite{Neyman1967}. A comprehensive framework for interpretation of results was developed through specifying prior distributions that are naturally and intuitively related to the research objectives (e.g. skeptical and enthusiastic priors) \cite{Freedman1989}~\cite{Freedman1992}~\cite{Spiegelhalter1993}~\cite{Spiegelhalter1994}~\cite{Fayers1997}.
+The likelihood principle asserts that any data with the same likelihood function should lead to the same conclusion \citep{Berger1988}. In the context of sequential analysis of clinical trials, the stopping rule that led to the termination of data collection is irrelevant to the conclusion \citep{Barnard1947,Anscombe1963,Cornfield1966a,Cornfield1966b}. It is most succinctly as ``It is entirely appropriate to collect data until a point has been proven or disproven, or until the data collector runs out of time, money, or patience."\citep{Edwards1963}. Bayesian conclusions are not affected by frequent or even continual monitoring of the data, and such interim analyses should be encouraged to terminate data collection if appropriate \citep{Berry1989,Berry1993,Spiegelhalter1994}.
 
-There is still potential for further utilization of Bayesian methods in the clinical trial setting. While the framework for interpretation of Bayesian clinical trials is well developed, the details of specifying prior distributions in a natural and intuitive way is lacking. This paper presents a structured or default way to determine prior distributions based on the trial design. Our major contribution is to present methods for the default or automatic selection of prior distributions in a way that is applicable to a wide array of clinical trial designs.
+Interpretation of conclusions from the Bayesian perspective is natural when specification of prior distributions are intuitively related to the research objectives (e.g. skeptical and enthusiastic priors)  \citep{Freedman1989,Freedman1992,Spiegelhalter1993,Fayers1997} which is necessary for regulatory agencies \citep{Parmar1993}. Bayesian monitoring is further formalized by specifying the loss function via decision theory \citep{Carlin1998}.
 
-Section \ref{sec:methods} contains a brief review of Bayesian hypothesis testing using posterior probabilities, and describes the method for defining monitoring and inference priors.
-
-Examples are in Section \ref{sec:examples}, with Section \ref{sec:example1} containing a one-arm study and Section \ref{sec:example2} a two-arm study.
+This paper is organized as follows: Section \ref{sec:methods} contains a brief review of Bayesian hypothesis testing using posterior probabilities, and describes the method for defining monitoring and inference priors. Examples are in Section \ref{sec:examples}, with Section \ref{sec:example1} containing a one-arm study and Section \ref{sec:example2} a two-arm study.
 
 \section{Methods}\label{sec:methods}
 %\subsection{Monitoring versus Estimation Priors}
@@ -590,6 +577,8 @@ Figure \ref{fig:ex2varyomega} shows the probability of stopping early for effica
 
 
 \section{Discussion}
+
+
 
 \section{Supplementary material}
 

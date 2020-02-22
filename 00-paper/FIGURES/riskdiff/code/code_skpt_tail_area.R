@@ -1,7 +1,7 @@
 skpt_tail_area <- function(){
   
   alpha0.seq <- seq(1E-2, 1, length = 1000)
-  beta0.seq <- 1.5
+  beta0.seq <- 2
   result1 <- matrix(NA, nrow = length(alpha0.seq), ncol = length(beta0.seq))
   result2 <- matrix(NA, nrow = length(alpha0.seq), ncol = length(beta0.seq))
   

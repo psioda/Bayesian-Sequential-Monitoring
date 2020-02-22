@@ -6,7 +6,7 @@ group <- c(sample(c(rep("PC", 4),
                     rep("IP", 20))),
            sample(c(rep("PC", 38),
                     rep("IP", 38))))
-enr.times.all <- seq(1:100) * 17
+enr.times.all <- seq(1:100) * 17.2
 outcome.times.all <- enr.times.all + 52
 
 enr.times.PC <- enr.times.all[group == "PC"]

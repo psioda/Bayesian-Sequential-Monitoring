@@ -1,36 +1,70 @@
 \begin{thebibliography}{xx}
 
-\harvarditem{Cornfield}{1966{\em a}}{Cornfield1966}
-Cornfield, J.  \harvardyearleft 1966{\em a}\harvardyearright , `{A Bayesian
-  Test of Some Classical Hypotheses, with Applications to Sequential Clinical
-  Trials}', {\em Journal of the American Statistical Association} {\bf
-  61}(315),~577.
-\newline\harvardurl{https://www.jstor.org/stable/2282772?origin=crossref}
+\harvarditem{Anscombe}{1963}{Anscombe1963}
+Anscombe, F.~J.  \harvardyearleft 1963\harvardyearright , `Sequential medical
+  trials', {\em Journal of the American Statistical Association} {\bf
+  58}(302),~365--383.
+\newline\harvardurl{https://www.tandfonline.com/doi/abs/10.1080/01621459.1963.10500851}
 
-\harvarditem{Cornfield}{1966{\em b}}{Cornfield1966a}
-Cornfield, J.  \harvardyearleft 1966{\em b}\harvardyearright , `{Sequential
-  Trials, Sequential Analysis and the Likelihood Principle}', {\em The American
-  Statistician} {\bf 20}(2),~18.
-\newline\harvardurl{https://www.jstor.org/stable/2682711?origin=crossref}
+\harvarditem{Barnard}{1947}{Barnard1947}
+Barnard, G.~A.  \harvardyearleft 1947\harvardyearright , `A review of
+  sequential analysis by abraham wald.', {\em Journal of the American
+  Statistical Association} (42),~658--669.
+
+\harvarditem{Berger \harvardand\ Wolpert}{1988}{Berger1988}
+Berger, J.~O. \harvardand\ Wolpert, R.~L.  \harvardyearleft
+  1988\harvardyearright , {\em The likelihood principle (2nd ed.).}, Hayward
+  (CA): Institute of Mathematical Statistics.
+
+\harvarditem{Berry}{1989}{Berry1989}
+Berry, D.~A.  \harvardyearleft 1989\harvardyearright , `Monitoring accumulating
+  data in a clinical trial', {\em Biometrics} {\bf 45}(4),~1197.
+\newline\harvardurl{https://www.jstor.org/stable/2531771?origin=crossref}
+
+\harvarditem{Berry}{1993}{Berry1993}
+Berry, D.~A.  \harvardyearleft 1993\harvardyearright , `A case for bayesianism
+  in clinical trials', {\em Statistics in Medicine} {\bf
+  12}(15-16),~1377--1404.
+
+\harvarditem[Carlin et~al.]{Carlin, Kadane \harvardand\
+  Gelfand}{1998}{Carlin1998}
+Carlin, B.~P., Kadane, J.~B. \harvardand\ Gelfand, A.~E.  \harvardyearleft
+  1998\harvardyearright , `Approaches for optimal sequential decision analysis
+  in clinical trials', {\em Biometrics} {\bf 54}(3),~964--975.
+
+\harvarditem{Cornfield}{1966{\em a}}{Cornfield1966a}
+Cornfield, J.  \harvardyearleft 1966{\em a}\harvardyearright , `A bayesian test
+  of some classical hypotheses, with applications to sequential clinical
+  trials', {\em Journal of the American Statistical Association} {\bf
+  61}(315),~577.
+
+\harvarditem{Cornfield}{1966{\em b}}{Cornfield1966b}
+Cornfield, J.  \harvardyearleft 1966{\em b}\harvardyearright , `Sequential
+  trials, sequential analysis and the likelihood principle', {\em The American
+  Statistician} {\bf 20}(2),~18--23.
+
+\harvarditem[Edwards et~al.]{Edwards, Lindman \harvardand\
+  Savage}{1963}{Edwards1963}
+Edwards, W., Lindman, H. \harvardand\ Savage, L.~J.  \harvardyearleft
+  1963\harvardyearright , `Bayesian statistical inference for psychological
+  research', {\em Psychological Review} {\bf 70}(3),~193--242.
 
 \harvarditem[Fayers et~al.]{Fayers, Ashby \harvardand\
   Parmar}{1997}{Fayers1997}
 Fayers, P.~M., Ashby, D. \harvardand\ Parmar, M. K.~B.  \harvardyearleft
-  1997\harvardyearright , `{Tutorial in Biostatistics: Bayesian Data Monitoring
-  in Clinical Trials}', {\em Statistics in Medicine} {\bf 16}(12),~1413--1430.
-\newline\harvardurl{http://doi.wiley.com/10.1002/{\%}28SICI{\%}291097-0258{\%}2819970630{\%}2916{\%}3A12{\%}3C1413{\%}3A{\%}3AAID-SIM578{\%}3E3.0.CO{\%}3B2-U}
+  1997\harvardyearright , `Tutorial in biostatistics: Bayesian data monitoring
+  in clinical trials', {\em Statistics in Medicine} {\bf 16}(12),~1413--1430.
 
 \harvarditem{Freedman \harvardand\ Spiegelhalter}{1989}{Freedman1989}
 Freedman, L.~S. \harvardand\ Spiegelhalter, D.~J.  \harvardyearleft
-  1989\harvardyearright , `{Comparison of Bayesian with group sequential
-  methods for monitoring clinical trials}', {\em Controlled Clinical Trials}
-  {\bf 10}(4),~357--367.
-\newline\harvardurl{https://www.sciencedirect.com/science/article/pii/0197245689900019?via{\%}3Dihub}
+  1989\harvardyearright , `Comparison of bayesian with group sequential methods
+  for monitoring clinical trials', {\em Controlled Clinical Trials} {\bf
+  10}(4),~357--367.
 
 \harvarditem{Freedman \harvardand\ Spiegelhalter}{1992}{Freedman1992}
 Freedman, L.~S. \harvardand\ Spiegelhalter, D.~J.  \harvardyearleft
-  1992\harvardyearright , `{Application of bayesian statistics to decision
-  making during a clinical trial}', {\em Statistics in Medicine} {\bf
+  1992\harvardyearright , `Application of bayesian statistics to decision
+  making during a clinical trial', {\em Statistics in Medicine} {\bf
   11}(1),~23--35.
 \newline\harvardurl{http://doi.wiley.com/10.1002/sim.4780110105}
 
@@ -43,13 +77,12 @@ Hyams, J., Damaraju, L., Blank, M., Johanns, J., Guzzo, C., Winter, H.~S.,
   2012\harvardyearright , `Induction and maintenance therapy with infliximab
   for children with moderate to severe ulcerative colitis', {\em Clinical
   Gastroenterology and Hepatology} {\bf 10}(4),~391 -- 399.e1.
-\newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S1542356511012845}
 
-\harvarditem{Neyman \harvardand\ Greenhouse}{1967}{Neyman1967}
-Neyman, J. \harvardand\ Greenhouse, S.~W.  \harvardyearleft
-  1967\harvardyearright , {\em {Proceedings of the Berkeley Symposium on
-  Mathematical Statistics and Probability.}}, University of California Press.
-\newline\harvardurl{https://projecteuclid.org/euclid.bsmsp/1200513830}
+\harvarditem{Parmar \harvardand\ Machin}{1993}{Parmar1993}
+Parmar, M.~K. \harvardand\ Machin, D.  \harvardyearleft 1993\harvardyearright ,
+  `Monitoring clinical trials: experience of, and proposals under consideration
+  by, the cancer therapy committee of the british medical research council',
+  {\em Statistics in Medicine} {\bf 12}(5-6),~497--504.
 
 \harvarditem[Rutgeerts et~al.]{Rutgeerts, Sandborn, Feagan, Reinisch, Olson,
   Johanns, Travers, Rachmilewitz, Hanauer, Lichtenstein, de~Villiers, Present,
@@ -60,23 +93,28 @@ Rutgeerts, P., Sandborn, W.~J., Feagan, B.~G., Reinisch, W., Olson, A.,
   J.~F.  \harvardyearleft 2005\harvardyearright , `Infliximab for induction and
   maintenance therapy for ulcerative colitis', {\em New England Journal of
   Medicine} {\bf 353}(23),~2462--2476.
-\newblock PMID: 16339095.
-\newline\harvardurl{https://doi.org/10.1056/NEJMoa050516}
 
 \harvarditem[Spiegelhalter et~al.]{Spiegelhalter, Freedman \harvardand\
   Parmar}{1993}{Spiegelhalter1993}
 Spiegelhalter, D.~J., Freedman, L.~S. \harvardand\ Parmar, M. K.~B.
-  \harvardyearleft 1993\harvardyearright , `{Applying Bayesian ideas in drug
-  development and clinical trials}', {\em Statistics in Medicine} {\bf
+  \harvardyearleft 1993\harvardyearright , `Applying bayesian ideas in drug
+  development and clinical trials', {\em Statistics in Medicine} {\bf
   12}(15-16),~1501--1511.
-\newline\harvardurl{http://doi.wiley.com/10.1002/sim.4780121516}
 
 \harvarditem[Spiegelhalter et~al.]{Spiegelhalter, Freedman \harvardand\
   Parmar}{1994}{Spiegelhalter1994}
 Spiegelhalter, D.~J., Freedman, L.~S. \harvardand\ Parmar, M. K.~B.
-  \harvardyearleft 1994\harvardyearright , `{Bayesian Approaches to Randomized
-  Trials}', {\em Journal of the Royal Statistical Society. Series A (Statistics
-  in Society)} {\bf 157}(3),~357.
-\newline\harvardurl{https://www.jstor.org/stable/10.2307/2983527?origin=crossref}
+  \harvardyearleft 1994\harvardyearright , `Bayesian approaches to randomized
+  trials', {\em Journal of the Royal Statistical Society. Series A (Statistics
+  in Society)} {\bf 157}(3),~357--416.
+
+\harvarditem{{U.S. Congress}}{2016}{USCongress2016}
+{U.S. Congress}  \harvardyearleft 2016\harvardyearright , `21st century cures
+  act (pubic law 114-255, 130 stat 1033-1344)'.
+
+\harvarditem{{U.S. Food and Drug Administration}}{n.d.}{FDA2017}
+{U.S. Food and Drug Administration}  \harvardyearleft n.d.\harvardyearright ,
+  `Pdufa reauthorization performance goals and procedures fiscal years 2018
+  through 2022'.
 
 \end{thebibliography}

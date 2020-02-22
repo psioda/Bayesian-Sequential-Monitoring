@@ -24,6 +24,60 @@
 #    inf.enth.wt
 # Notes: Anything with "post" refers to a function
 
+# (un-normalized) prior density
+
+#options(digits = 2)
+
+skpt.prior <- function(x, y){
+  exp(- (abs(x - mu)/placebo.alpha0)^placebo.beta0 - 
+        (abs((y - x) - delta.skpt)/skpt.alpha0)^skpt.beta0
+  )
+}
+enth.prior <- function(x, y){
+  exp(- (abs(x - mu)/placebo.alpha0)^placebo.beta0 - 
+        (abs((y - x) - delta.enth)/enth.alpha0)^enth.beta0
+  )
+}
+
+# normalizing constants for prior densities
+skpt.nc <- integrate_debug(fun = skpt.prior,
+                                 xmin = 0,
+                                 xmax = 1,
+                                 ymin = 0,
+                                 ymax = 1)
+enth.nc <- integrate_debug(fun = enth.prior,
+                                 xmin = 0,
+                                 xmax = 1,
+                                 ymin = 0,
+                                 ymax = 1)
+
+# normalized prior distributions
+skpt.prior.nc <- function(x, y){
+  exp(- (abs(x - mu)/placebo.alpha0)^placebo.beta0 - 
+        (abs((y - x) - delta.skpt)/skpt.alpha0)^skpt.beta0
+  )/skpt.nc
+}
+enth.prior.nc <- function(x, y){
+  exp(- (abs(x - mu)/placebo.alpha0)^placebo.beta0 - 
+        (abs((y - x) - delta.enth)/enth.alpha0)^enth.beta0
+  )/enth.nc
+}
+
+# # prior mixing weights (Feb 10, 2020)
+if (is.na(eff.mix.prob)){
+  if (min(y1.IP,y0.IP,y1.PC,y0.PC) > 0){
+    PC.mle <- y1.PC/sum(y0.PC, y1.PC)
+    IP.mle <- y1.IP/sum(y0.IP, y1.IP)
+  }
+  else {
+    PC.mle <- p.PC
+    IP.mle <- p.IP
+  }
+  skpt.lik <- skpt.prior.nc(PC.mle, IP.mle)
+  enth.lik <- enth.prior.nc(PC.mle, IP.mle)
+  eff.mix.prob <- skpt.lik/sum(skpt.lik, enth.lik)
+}
+
 # log (un-normalized) posterior density
 skpt.post.log <- function(x, y){
   y1.PC*log(x) + y0.PC*log(1 - x) + 
@@ -78,21 +132,6 @@ enth.nc.sc <- integrate_debug(fun = enth.post.sc,
                                 xmax = 1,
                                 ymin = 0,
                                 ymax = 1)
-
-# # prior mixing weights (Feb 10, 2020)
-if (is.na(eff.mix.prob)){
-  if (min(y1.IP,y0.IP,y1.PC,y0.PC) > 0){
-    PC.mle <- y1.PC/sum(y0.PC, y1.PC)
-    IP.mle <- y1.IP/sum(y0.IP, y1.IP)
-  }
-  else {
-    PC.mle <- p.PC
-    IP.mle <- p.IP
-    }
-  skpt.lik <- skpt.post.sc(PC.mle, IP.mle)
-  enth.lik <- enth.post.sc(PC.mle, IP.mle)
-  eff.mix.prob <- skpt.lik/sum(skpt.lik, enth.lik)
-}
 
 # posterior mixing weights
 # http://www.mas.ncl.ac.uk/~nmf16/teaching/mas3301/week11.pdf
