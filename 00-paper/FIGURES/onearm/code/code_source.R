@@ -6,9 +6,10 @@ if (.Platform$OS.type == "unix"){
   idx<-as.numeric(args[1])}
 
 if (.Platform$OS.type == "windows") {
-  root<-"P:/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/code"
+  root <- "P:/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/code"
   setwd(root)
-  idx<-170}
+  idx <- 26
+  }
 
 source("code_functions.R")
 source("args_model.R")

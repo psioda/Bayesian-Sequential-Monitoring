@@ -68,6 +68,12 @@ Freedman, L.~S. \harvardand\ Spiegelhalter, D.~J.  \harvardyearleft
   11}(1),~23--35.
 \newline\harvardurl{http://doi.wiley.com/10.1002/sim.4780110105}
 
+\harvarditem{Grieve}{2016}{Grieve2016}
+Grieve, A.~P.  \harvardyearleft 2016\harvardyearright , `Idle thoughts of a
+  ‘well-calibrated’ bayesian in clinical drug development',  {\bf
+  15}(2),~96--108.
+\newline\harvardurl{https://onlinelibrary.wiley.com/doi/abs/10.1002/pst.1736}
+
 \harvarditem[Hyams et~al.]{Hyams, Damaraju, Blank, Johanns, Guzzo, Winter,
   Kugathasan, Cohen, Markowitz, Escher, Veereman–Wauters, Crandall,
   Baldassano \harvardand\ Griffiths}{2012}{Hyams2012}
@@ -78,11 +84,31 @@ Hyams, J., Damaraju, L., Blank, M., Johanns, J., Guzzo, C., Winter, H.~S.,
   for children with moderate to severe ulcerative colitis', {\em Clinical
   Gastroenterology and Hepatology} {\bf 10}(4),~391 -- 399.e1.
 
+\harvarditem[Kopp-Schneider et~al.]{Kopp-Schneider, Wiesenfarth, Witt,
+  Edelmann, Witt \harvardand\ Abel}{2019}{Kopp-Schneider2019}
+Kopp-Schneider, A., Wiesenfarth, M., Witt, R., Edelmann, D., Witt, O.
+  \harvardand\ Abel, U.  \harvardyearleft 2019\harvardyearright , `Monitoring
+  futility and efficacy in phase ii trials with bayesian posterior
+  distributions—a calibration approach',  {\bf 61}(3),~488--502.
+\newline\harvardurl{https://onlinelibrary.wiley.com/doi/abs/10.1002/bimj.201700209}
+
+\harvarditem{O'Brien \harvardand\ Fleming}{1979}{OBrien1979}
+O'Brien, P.~C. \harvardand\ Fleming, T.~R.  \harvardyearleft
+  1979\harvardyearright , `A multiple testing procedure for clinical trials',
+  {\em Biometrics} {\bf 35}(3),~549--556.
+\newline\harvardurl{www.jstor.org/stable/2530245}
+
 \harvarditem{Parmar \harvardand\ Machin}{1993}{Parmar1993}
 Parmar, M.~K. \harvardand\ Machin, D.  \harvardyearleft 1993\harvardyearright ,
   `Monitoring clinical trials: experience of, and proposals under consideration
   by, the cancer therapy committee of the british medical research council',
   {\em Statistics in Medicine} {\bf 12}(5-6),~497--504.
+
+\harvarditem{Pocock}{1977}{Pocock1977}
+Pocock, S.~J.  \harvardyearleft 1977\harvardyearright , `Group sequential
+  methods in the design and analysis of clinical trials', {\em Biometrika} {\bf
+  64}(2),~191--199.
+\newline\harvardurl{www.jstor.org/stable/2335684}
 
 \harvarditem[Rutgeerts et~al.]{Rutgeerts, Sandborn, Feagan, Reinisch, Olson,
   Johanns, Travers, Rachmilewitz, Hanauer, Lichtenstein, de~Villiers, Present,

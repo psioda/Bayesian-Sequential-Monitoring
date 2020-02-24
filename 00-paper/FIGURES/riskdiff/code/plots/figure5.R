@@ -6,8 +6,8 @@
 # (un-normalized) prior density
 skpt.prior <- function(x, y){
   exp(
-    - (abs(x - mu)/placebo.sigma0)^placebo.lambda0 - 
-      (abs((y - x) - delta.skpt)/skpt.sigma0)^skpt.lambda0
+    - (abs(x - mu)/placebo.alpha0)^placebo.beta0 - 
+      (abs((y - x) - delta.skpt)/skpt.alpha0)^skpt.beta0
   )
 }
 # normalizing constant for prior density
@@ -21,8 +21,8 @@ skpt.prior.nc <- integrate_debug(fun = skpt.prior,
 # (un-normalized) prior density
 enth.prior <- function(x, y){
   exp(
-    - (abs(x - mu)/placebo.sigma0)^placebo.lambda0 - 
-      (abs((y - x) - delta.enth)/enth.sigma0)^enth.lambda0
+    - (abs(x - mu)/placebo.alpha0)^placebo.beta0 - 
+      (abs((y - x) - delta.enth)/enth.alpha0)^enth.beta0
   )
 }
 
@@ -52,16 +52,16 @@ grid.enth$z <- enth.prior(grid.enth$x, grid.enth$y)/enth.prior.nc
 # (un-normalized) marginal density
 marginal.u.skpt <- function(v){
   exp(
-    -(abs(v - mu)/placebo.sigma0)^placebo.lambda0 -
-      (abs(u - delta.skpt)/skpt.sigma0)^skpt.lambda0
+    -(abs(v - mu)/placebo.alpha0)^placebo.beta0 -
+      (abs(u - delta.skpt)/skpt.alpha0)^skpt.beta0
   )
 }
 
 # (un-normalized) marginal density
 marginal.u.enth <- function(v){
   exp(
-    -(abs(v - mu)/placebo.sigma0)^placebo.lambda0 -
-      (abs(u - delta.enth)/enth.sigma0)^enth.lambda0
+    -(abs(v - mu)/placebo.alpha0)^placebo.beta0 -
+      (abs(u - delta.enth)/enth.alpha0)^enth.beta0
   )
 }
 
@@ -106,16 +106,16 @@ for (i in 1:length(grid1d)){
   x<-grid1d[i]
   marginal.x <- function(y){
     exp(
-      -(abs(x - mu)/placebo.sigma0)^placebo.lambda0 - 
-      (abs((y-x) - delta.skpt)/skpt.sigma0)^skpt.lambda0
+      -(abs(x - mu)/placebo.alpha0)^placebo.beta0 - 
+      (abs((y-x) - delta.skpt)/skpt.alpha0)^skpt.beta0
     )
     }
   skpt.x[i]<-(integrate(marginal.x,lower=0,upper=1)$value)/skpt.prior.nc
   
   y<-grid1d[i]
   marginal.y <- function(x){
-    exp(-(abs(x - mu)/placebo.sigma0)^placebo.lambda0 - 
-          (abs((y - x)-delta.skpt)/skpt.sigma0)^skpt.lambda0
+    exp(-(abs(x - mu)/placebo.alpha0)^placebo.beta0 - 
+          (abs((y - x)-delta.skpt)/skpt.alpha0)^skpt.beta0
     )
     }
   skpt.y[i] <- (integrate(marginal.y,lower=0,upper=1)$value)/skpt.prior.nc
@@ -124,16 +124,16 @@ for (i in 1:length(grid1d)){
   x <- grid1d[i]
   marginal.x<-function(y){
     exp(
-      -(abs(x - mu)/placebo.sigma0)^placebo.lambda0 - 
-        (abs((y - x)-delta.enth)/enth.sigma0)^enth.lambda0
+      -(abs(x - mu)/placebo.alpha0)^placebo.beta0 - 
+        (abs((y - x)-delta.enth)/enth.alpha0)^enth.beta0
     )
     }
   enth.x[i] <- (integrate(marginal.x,lower=0,upper=1)$value)/enth.prior.nc
   
   y <- grid1d[i]
   marginal.y <- function(x){
-    exp(-(abs(x - mu)/placebo.sigma0)^placebo.lambda0 - 
-          (abs((y - x)-delta.enth)/enth.sigma0)^enth.lambda0
+    exp(-(abs(x - mu)/placebo.alpha0)^placebo.beta0 - 
+          (abs((y - x)-delta.enth)/enth.alpha0)^enth.beta0
     )
     }
   enth.y[i] <- (integrate(marginal.y,lower=0,upper=1)$value)/enth.prior.nc

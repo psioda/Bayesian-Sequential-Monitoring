@@ -86,6 +86,10 @@ The likelihood principle asserts that any data with the same likelihood function
 
 Interpretation of conclusions from the Bayesian perspective is natural when specification of prior distributions are intuitively related to the research objectives (e.g. skeptical and enthusiastic priors)  \citep{Freedman1989,Freedman1992,Spiegelhalter1993,Fayers1997} which is necessary for regulatory agencies \citep{Parmar1993}. Bayesian monitoring is further formalized by specifying the loss function via decision theory \citep{Carlin1998}.
 
+The most common Bayesian metrics for assessing evidence at interim analyses are posterior probabilities and predictive probabilities, and the choice of metric depends on research objective. Posterior probabilities assess the level of evidence in favor of the null or alternative hypothesis, and predictive probabilities determine the capacity for the trial to show convincing evidence in favor of the alternative hypothesis if more outcomes are ascertained. This paper uses posterior probabilities to highlight how the level of evidence at interim analyses is linked to monitoring prior specification.
+
+Frequentist group sequential designs use spending functions associated with Type I and Type II error \citep{Pocock1977,OBrien1979}. While it is possible to calibrate a Bayesian design to have exact pre-specified frequentist properties \citep{Kopp-Schneider2019}, this re-introduces inflexibility (e.g. interim analyses must be pre-specified) that is unnecessary using a fully Bayesian method. Therefore, the objective is to present operating characteristics generally that are ``well-calibrated" \citep{Grieve2016} but not motivated by strict adherence to pre-specified thresholds.
+
 This paper is organized as follows: Section \ref{sec:methods} contains a brief review of Bayesian hypothesis testing using posterior probabilities, and describes the method for defining monitoring and inference priors. Examples are in Section \ref{sec:examples}, with Section \ref{sec:example1} containing a one-arm study and Section \ref{sec:example2} a two-arm study.
 
 \section{Methods}\label{sec:methods}

@@ -1,6 +1,6 @@
 enth_tail_area <- function(){
   
-  alpha0.seq <- seq(1E-3, 1, length = 1000)
+  alpha0.seq <- seq(1E-3, 1, length = 5000)
   enth.beta0 <- 2
   result1 <- matrix(NA, ncol=length(alpha0.seq))
 

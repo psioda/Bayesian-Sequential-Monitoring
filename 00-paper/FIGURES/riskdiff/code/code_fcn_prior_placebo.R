@@ -1,6 +1,6 @@
 fcn_prior_placebo <- function(){
   
-  alpha0.seq <- seq(1E-2, 1, length = 10000)
+  alpha0.seq <- seq(1E-2, 1, length = 50000)
   beta0.seq <- 5
   
   result1 <- matrix(NA, nrow = length(alpha0.seq), ncol = length(beta0.seq))

@@ -1,6 +1,6 @@
 ##################################
 # Model parameters
-# Evan Kwiatkowski, Feb 2020
+# Evan Kwiatkowski, Feb 23, 2020
 ##################################
 rm(list = ls())
 

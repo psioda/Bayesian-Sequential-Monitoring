@@ -4,16 +4,12 @@
 rm(list = ls())
 
 library(pracma)
-source("../args_model.R")
+
+load(file = '../args_model.RData') # loads all model information include prior parameters
+
 source("../code_functions.R")
 source("../code_integrate.R")
-source("../code_fcn_prior_placebo.R")
-source("../code_skpt_tail_area.R")
-source("../code_enth_tail_area.R")
 
-fcn_prior_placebo()
-skpt_tail_area()
-enth_tail_area()
 width.scale <- 6
 source("figure5.R")
 
@@ -109,14 +105,14 @@ stretch <- 0.365
 load(file = '../args_model.RData') # loads all model information include prior parameters
 args_simulation <- read.csv(file = "../args_simulation.csv", header = TRUE, sep = ",")
 
-Table1 <- read.csv(file = "../../output/Table1_merged.csv", header = TRUE, sep = ",")
+Table1 <- read.csv(file = "../../output/Table1_merged_200223.csv", header = TRUE, sep = ",")
 combined1 <- merge(args_simulation, Table1, by.x = "X", by.y = "idx")
 figure3 <- combined1
 
 plot(figure3$p.IP[figure3$eff.mix.prob==0.25],
      figure3$eff.mon.initial[figure3$eff.mix.prob==0.25],
      type='l',
-     ylim=c(0,0.5),
+     ylim=c(0,1),
      lwd=1,
      ylab="Probability",
      xlab="",
@@ -129,22 +125,32 @@ box()
 probs <- seq(0.25, 1, by = 0.25)
 for (i in 1:length(probs)){
   row <- i + 1
-  temp <- figure3[figure3$eff.mix.prob==probs[i],]
+  
+  temp <- figure3[is.na(figure3$eff.mix.prob) == FALSE,]
+  temp <- temp[temp$eff.mix.prob == probs[i],]
   
   lines(temp$p.IP,temp$eff.mon.initial)
   
   for (j in seq(1,length(temp$p.IP), by=3)){
-    mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
-                      " + ",
-                      format(round(temp$ss.final[j]-
-                                     temp$ss.initial[j],digits=1),nsmall=1),
-                      " = ",
+    mtext(text=paste0(#format(round(temp$ss.initial[j],digits=1),nsmall=1),
+                      #" + ",
+                      #format(round(temp$ss.final[j]-
+                      #               temp$ss.initial[j],digits=1),nsmall=1),
+                      #" = ",
                       format(round(temp$ss.final[j],digits=1),nsmall=1)),
           side=1,line=row,at=temp$p.IP[j])
   }
   mtext(text=c(as.expression(bquote(omega == .(probs[i])))),side=1,line=row,at=stretch,adj=0)
   
 }
+
+
+#### NOW FOR NA EFF.MON.PROB ####
+temp <- figure3[is.na(figure3$eff.mix.prob) == TRUE,]
+
+lines(temp$p.IP,temp$eff.mon.initial)
+
+
 
 axis(1,las=0,at=temp$p.IP[seq(1,length(temp$p.IP),by=3)],
      labels=format(temp$p.IP[seq(1,length(temp$p.IP),by=3)],nsmall=2))

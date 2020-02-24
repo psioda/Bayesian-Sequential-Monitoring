@@ -37,6 +37,6 @@ lines(c(0,1),c(0,1))
 legend('topleft',
        legend= c(#as.expression(bquote(mu == .(p.enth))),
          #as.expression(bquote(delta[S] == .(delta.skpt)~","~delta[E] == .(delta.enth))),
-         #as.expression(bquote(mu[0] == .(mu)*","~alpha[0] == .(sigma0.placebo)*","~beta[0] == .(lambda0.placebo))),
-         #as.expression(bquote(delta == delta[S]*","~alpha[1] == .(sigma0.skpt)*","~beta[1] == .(lambda0.skpt))),
+         #as.expression(bquote(mu[0] == .(mu)*","~alpha[0] == .(alpha0.placebo)*","~beta[0] == .(beta0.placebo))),
+         #as.expression(bquote(delta == delta[S]*","~alpha[1] == .(alpha0.skpt)*","~beta[1] == .(beta0.skpt))),
          as.expression(bquote(P(theta[1]>theta[0]+delta[E])==.(1-sig.eff)))))

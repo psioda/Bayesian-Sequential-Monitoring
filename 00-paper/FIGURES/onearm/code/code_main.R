@@ -14,7 +14,7 @@ inner<-array(NA,
              dimnames=list(seq_len(reps),matrix.names))
 
 # probs.p <- c(0,0.01,0.1,0.25,0.5,0.75,0.9,0.99,1)
-probs.p <- seq(0, 1, by = 0.1)
+probs.p <- seq(0, 1, by = 0.01)
 
 outer.p<-array(NA,
                dim=c(length(freq.mntr),length(p.range),length(probs.p)),
