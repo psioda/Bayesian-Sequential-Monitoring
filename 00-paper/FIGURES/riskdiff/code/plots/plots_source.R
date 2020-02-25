@@ -100,7 +100,7 @@ png('../../../figure6.png',
     res=300)
 par(mar=c(5.1+1,4.1+1,2.1,2.1)) #c(bottom, left, top, right)
 
-stretch <- 0.365
+stretch <- 0.34
 
 load(file = '../args_model.RData') # loads all model information include prior parameters
 args_simulation <- read.csv(file = "../args_simulation.csv", header = TRUE, sep = ",")
@@ -140,20 +140,21 @@ for (i in 1:length(probs)){
                       format(round(temp$ss.final[j],digits=1),nsmall=1)),
           side=1,line=row,at=temp$p.IP[j])
   }
-  mtext(text=c(as.expression(bquote(omega == .(probs[i])))),side=1,line=row,at=stretch,adj=0)
-  
+  mtext(text=paste0(probs[i],": SS"),side=1,line=row,at=stretch,adj=0)
 }
 
-
-#### NOW FOR NA EFF.MON.PROB ####
-temp <- figure3[is.na(figure3$eff.mix.prob) == TRUE,]
-
-lines(temp$p.IP,temp$eff.mon.initial)
-
-
-
+# 
+# #### NOW FOR NA EFF.MON.PROB ####
+# temp <- figure3[is.na(figure3$eff.mix.prob) == TRUE,]
+# 
+# lines(temp$p.IP,temp$eff.mon.initial)
+# 
+# 
+# 
 axis(1,las=0,at=temp$p.IP[seq(1,length(temp$p.IP),by=3)],
      labels=format(temp$p.IP[seq(1,length(temp$p.IP),by=3)],nsmall=2))
+
+mtext(text=c(as.expression(bquote(theta))),side=1,line=1,at=stretch,adj=0)
 
 legend('topleft',
        legend= c(as.expression(bquote(omega == 0.25)),

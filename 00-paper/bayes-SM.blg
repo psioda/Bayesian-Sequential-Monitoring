@@ -1,5 +1,9 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: bayes-SM.aux
 The style file: agsm.bst
 Database file #1: ./References.bib
+I was expecting a `,' or a `}'---line 344 of file ./References.bib
+ :    author 
+ :           = {Gupta, A. K. and Varga, T.},
+I'm skipping whatever remains of this entry
 Warning--there's a number but no volume in Barnard1947
-(There was 1 warning)
+(There was 1 error message)
