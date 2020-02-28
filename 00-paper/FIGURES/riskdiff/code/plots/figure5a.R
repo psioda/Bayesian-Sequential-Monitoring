@@ -1,4 +1,5 @@
 par(mar=c(5.1, 4.1, 4.1, 2.1)) # c(bottom, left, top, right))
+
 plot(grid.skpt$x,grid.skpt$y,
      xlab="",
      ylab="",
@@ -24,6 +25,7 @@ for (i in 1:length(cuts)-1){
           col=colors[i], 
           border = NA)
 }
+
 ## FILL IN LAST SEGMENT
 polygon(c(outer.x,outer.x[1]),
         c(outer.y,outer.y[1]),
@@ -40,3 +42,4 @@ legend('topleft',
          #as.expression(bquote(mu[0] == .(mu)*","~alpha[0] == .(alpha0.placebo)*","~beta[0] == .(beta0.placebo))),
          #as.expression(bquote(delta == delta[S]*","~alpha[1] == .(alpha0.skpt)*","~beta[1] == .(beta0.skpt))),
          as.expression(bquote(P(theta[1]>theta[0]+delta[E])==.(1-sig.eff)))))
+

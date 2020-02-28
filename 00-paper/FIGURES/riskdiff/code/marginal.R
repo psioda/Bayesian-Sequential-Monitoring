@@ -1,4 +1,4 @@
-fcn_prior_placebo <- function(){
+marginal <- function(){
   
   alpha0.seq <- seq(1E-4, 10, length = 1000)
   beta0.seq  <- seq(1E-1, 4,  length = 10)
@@ -13,21 +13,17 @@ fcn_prior_placebo <- function(){
       placebo.beta0  <- beta0.seq[j]
       
       placebo.prior <- function(x){
-        exp(-(abs(x-mu)/placebo.alpha0)^placebo.beta0)*
+        exp(-(abs(x - delta.skpt)/placebo.alpha0)^placebo.beta0)*
           placebo.beta0/(2*placebo.alpha0*gamma(1/placebo.beta0))/
-          (pgnorm(q = 1, mu = mu, alpha = placebo.alpha0, beta = placebo.beta0) -
-           pgnorm(q = 0, mu = mu, alpha = placebo.alpha0, beta = placebo.beta0))
+          (pgnorm(q = 1,  mu = delta.skpt, alpha = placebo.alpha0, beta = placebo.beta0) -
+          pgnorm(q = -1, mu = delta.skpt, alpha = placebo.alpha0, beta = placebo.beta0))
       }
-
-      result1[i,j] <- (integrate(placebo.prior,
-                                lower = mu - delta.enth,
-                                upper = mu + delta.enth)$value)
-      result2[i,j] <- (integrate(placebo.prior,
-                                lower = mu - delta.intr,
-                                upper = mu + delta.intr)$value)
+      
+      result1[i,j] <- integrate(placebo.prior, lower = delta.enth, upper = 1)$value
+      result2[i,j] <- integrate(placebo.prior, lower = delta.intr, upper = 1)$value
     }
     if (i%%100 == 0){print(paste0("Simulation ", i))}
-    if (i%%100 == 0){print(integrate(placebo.prior, lower = 0, upper = 1)$value)}
+    if (i%%100 == 0){print(integrate(placebo.prior, lower = -1, upper = 1)$value)}
   }
   
   result3 <- (result1 - q.outer)^2 + (result2 - q.inner)^2

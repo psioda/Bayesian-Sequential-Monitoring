@@ -5,17 +5,14 @@
 ## SKEPTICAL PRIORS ##
 # (un-normalized) prior density
 skpt.prior <- function(x, y){
-  exp(
+  (exp(
     - (abs(x - mu)/placebo.alpha0)^placebo.beta0 - 
-      (abs((y - x) - delta.skpt)/skpt.alpha0)^skpt.beta0
+      (abs((y - x) - delta.skpt)/skpt.alpha0)^skpt.beta0)/
+     (pgnorm(q = 1, mu = x + delta.skpt, alpha = skpt.alpha0, beta = skpt.beta0) -
+        pgnorm(q = 0, mu = x + delta.skpt, alpha = skpt.alpha0, beta = skpt.beta0))
   )
 }
-# normalizing constant for prior density
-skpt.prior.nc <- integrate_debug(fun = skpt.prior,
-                                 xmin = 0,
-                                 xmax = 1,
-                                 ymin = 0,
-                                 ymax = 1)
+skpt.prior.nc <- integrate_debug(fun = skpt.prior, xmin = 0, xmax = 1, ymin = 0, ymax = 1)
 
 ## ENTHUASTIC PRIORS ##
 # (un-normalized) prior density
