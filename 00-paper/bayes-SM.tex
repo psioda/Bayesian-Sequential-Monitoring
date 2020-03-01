@@ -316,59 +316,50 @@ In this section discussed a family of probability distributions using which we d
 specifications of the priors above.
 
 
-defined in \eqref{eq:enthprior}, \eqref{eq:skptprior} each have a required 
+The distributions defined in \eqref{eq:enthprior}, \eqref{eq:skptprior} each have a required 
 center (modal value) and tail-probability constraint, however, there are still many ways to parametrize such distributions. 
 %
 The specification of the mean and variance of a normal distribution completely specifies the modal value and tail-probability constraints, and is therefore sufficient for defining enthusiastic and skeptical priors.
-
-
 
 \subsubsection{Normal Family of Distributions}
-The enthusiastic and skeptical priors defined in \eqref{eq:enthprior}, \eqref{eq:skptprior} each have a required 
-center (modal value) and tail-probability constraint, however, there are still many ways to parametrize such distributions. 
-%
-The specification of the mean and variance of a normal distribution completely specifies the modal value and tail-probability constraints, and is therefore sufficient for defining enthusiastic and skeptical priors.
+The specification of the mean and variance of a normal distribution completely specifies the modal value and a tail-probability constraint, and is therefore sufficient for defining enthusiastic and skeptical priors.
 
-Consider the normal distribution for a random variable $\theta$
-\begin{align}
-p(\theta;\mu,\sigma)=\frac{1}{\sigma\sqrt{2\pi}}exp\left\{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)\right\}^2
-\end{align}
-with quantile function for $p\in(0,1)$
-\begin{align}
-Q(p;\mu,\sigma)=\mu+\sigma\sqrt{2}erf^{-1}(2p-1)
-\end{align}
-where $erf^{-1}$ is the inverse of the error function.
+Consider specifying a skeptical prior as a normal distribution $\mathcal{N}(\mu,\sigma)$ with modal value $\theta_0$ satisfying $P(\theta<\theta_1)=1-\epsilon$ with $\theta_0<\theta_1$. The mean and the mode align so $\mu=\theta_0$, and it is left to specify $\sigma$. Let $\Phi$ denote the cumulative distribution function for a standard normal distribution, and $\Phi^{-1}$ denote the quantile function. The standard deviation $\sigma$ is specified as $\sigma=\frac{\theta_1-\theta_0}{\Phi^{-1}(1-\epsilon)}$. It follows that $(\mu,\sigma)$ can always be specified to have a desired modal value and tail-probability constraint, and therefore can be used to specify skeptical and enthusiastic priors.
 
-Consider creating an enthusiastic prior that is centered around $\theta_1$ and satisfies the tail-probability condition of \eqref{eq:enthprior}, which is expressed as $Q(\theta_0;\mu=\theta_1,\sigma)=\epsilon$. This is the normal distribution 
-\begin{align}\label{eq:enthsd}
-\pi_E(\theta)\sim N\left(\mu=\theta_1,\sigma=\frac{\theta_0-\theta_1}{\sqrt{2}erf^{-1}(2\epsilon-1)}\right)
+Recall that $\theta_m$ represented a less than desireable treatment effect between $\theta_0$ and $\theta_1$ (e.g. $\theta_m=\frac{\theta_0+\theta_1}{2}$). Since the normal distribution is completely specified by $(\mu, \sigma)$, quantities such as $P(\theta<\theta_m)$ are also specified. For example, for the skeptical prior defined above with $P(\theta<\theta_1)=1-\epsilon$ it follows that $P(\theta<\frac{\theta_0+\theta_1}{2})=\Phi(\frac{\Phi^{-1}(1-\epsilon)}{2})$. In particular, if $P(\theta<\theta_1)=0.975$, then $P(\theta<\frac{\theta_0+\theta_1}{2})=0.836$, equivalently, $P(\theta\in(\frac{\theta_0+\theta_1}{2},\theta_1))=0.139$. Let $\gamma=P(\theta\in(\frac{\theta_0+\theta_1}{2},\theta_1))$. 
+A second tail-probability constraint for a skeptical prior is
+\begin{align}\label{eq:skptpriortail}
+P(\theta<\frac{\theta_0+\theta_1}{2})=\epsilon+\gamma
 \end{align}
-
-By symmetry, a skeptical prior that is centered around $\theta_0$ and satisfies the tail-probability condition of \eqref{eq:skptprior}, which is expressed as $Q(\theta_1;\mu=\theta_0,\sigma)=1-\epsilon$, is the normal distribution with $\mu=\theta_0$ and the same variance as \eqref{eq:enthsd}.
+for $\gamma>\epsilon$. 
+As discussed above, the quantity $\gamma$ is determined by the choice of $(\mu,\sigma)$ in the normal distribution, but it can be specified by a distribution that has three parameters, as shown in the next section. The flexibility to modify $\gamma$ can change the prior to be flatter or more concentrated around the modal value. If $\gamma>\Phi(\frac{\Phi^{-1}(1-\epsilon)}{2})$ then the distribution will be more concentrated around the modal value, and if $\gamma<\Phi(\frac{\Phi^{-1}(1-\epsilon)}{2})$ then the distribution will be flatter around the modal value.
 
 \subsubsection{The Generalized Normal Family of Distributions}
-For additional flexibility, we will consider the generalized normal distribution \citep{Nadarajah2005} for prior specification. Consider the generalized normal distribution for a random variable $\theta$ 
+We will consider the generalized normal distribution \citep{Nadarajah2005} for prior specification. The density for a generalized normal distribution $\mathcal{GN}(\mu,\alpha,\beta)$ is
 \begin{align}\label{eq:generalizednormalkernel}
-p(\theta;\mu,\alpha,\beta)=\frac{\beta}{2\alpha\Gamma(1/\beta)}\exp\left\{-\left(\frac{|\theta-\mu|}{\alpha}\right)^\beta\right\}
-\end{align} where $\mu\in\mathbb{R}$ is a location parameter, $\alpha>0$ is a scale parameter, and $\beta>0$ is a shape parameter. Note that $\beta=2$ corresponds to the normal distribution. 
+f(\theta)=\frac{\beta}{2\alpha\Gamma(1/\beta)}\exp\left\{-\left(\frac{|\theta-\mu|}{\alpha}\right)^\beta\right\}
+\end{align} where $\mu\in\mathbb{R}$ is a location parameter, $\alpha>0$ is a scale parameter, and $\beta>0$ is a shape parameter. Note that $\beta=2$ corresponds to the normal distribution. Let $F_{\mu,\alpha,\beta}$ denote the cumulative distribution function of $\mathcal{GN}(\mu,\alpha,\beta)$. An expression for $F_{\mu,\alpha,\beta}$ is provided in the appendix.
+%The quantile function for $p\in (0,1)$ is 
+%\begin{align}
+%Q(p;\mu,\alpha,\beta)=sign(p-0.5) g\left(2|p-0.5|;\frac{1}{\beta}\left(\frac{1}{\alpha}\right)^{\beta}\right)^{1-\beta}+\mu,
+%\end{align}
+%where $g\left(2|p-0.5|;\frac{1}{\beta}\left(\frac{1}{\alpha}\right)^{\beta}\right)$ refers to the inverse CDF for a gamma distribution with shape $\frac{1}{\beta}$ and rate $(\frac{1}{\alpha})^\beta$ evaluated at $2|p-0.5|$.
 
-The quantile function for $p\in (0,1)$ is 
-\begin{align}
-Q(p;\mu,\alpha,\beta)=sign(p-0.5) g\left(2|p-0.5|;\frac{1}{\beta}\left(\frac{1}{\alpha}\right)^{\beta}\right)^{1-\beta}+\mu,
-\end{align}
-where $g\left(2|p-0.5|;\frac{1}{\beta}\left(\frac{1}{\alpha}\right)^{\beta}\right)$ refers to the inverse CDF for a gamma distribution with shape $\frac{1}{\beta}$ and rate $(\frac{1}{\alpha})^\beta$ evaluated at $2|p-0.5|$.
+Consider creating a skeptical prior that is centered around $\theta_0$ and satisfies the tail-probability conditions of \eqref{eq:skptprior} and \eqref{eq:skptpriortail}. As with the normal distribution, $\mu=\theta_0$. We minimize the function $(F_{\mu,\alpha,\beta}(\theta_1)-(1-\epsilon))^2+(F_{\mu,\alpha,\beta}(\frac{\theta_0+\theta_1}{2})-(1-(\epsilon+\gamma)))^2$ with respect to $(\alpha,\beta)$ to find the scale and shape parameters.
 
-Consider creating an enthusiastic prior that is centered around $\theta_1$ and satisfies the tail-probability condition of \eqref{eq:enthprior}, which is expressed as 
-\begin{align}\label{eq:enthprior_tail1}
-Q(\theta_0:\mu=\theta_1,\alpha,\beta)=\epsilon
-\end{align} and that also satisfies a second tail-probability condition 
-\begin{align}
-Q\left(\frac{\theta_0+\theta_1}{2};\mu=\theta_1,\alpha,\beta\right)=\epsilon+\gamma \label{eq:enthprior_tail2}
-\end{align}
-for $\gamma>\epsilon$. There is a unique combination of $\alpha$ and $\beta$ that satisfy \eqref{eq:enthprior_tail1} and \eqref{eq:enthprior_tail2}.
+These distributions can be truncated to represent the domain of $\theta$ (e.g. a response probability in (0,1)) as demonstrated in Section \ref{sec:example1model} and \ref{sec:example2model}.
 
-
-The modification of $\beta$ can be used to concentrate or flatten the distribution around the modal value. If $\beta<2$ then the distribution becomes more peaked relative to a normal distribution, and if $\beta>2$ then the distribution becomes flatter. Examples of skeptical and enthusiastic priors for a single parameter $\theta$ based on the trial from Section \ref{sec:preliminaries} are displayed in Figure \ref{fig:figure1}. The location and shape parameters are pre-specified, and the scale parameter is chosen to satisfy the tail-probability constraints \eqref{eq:enthprior}, \eqref{eq:skptprior}.
+Examples of skeptical and enthusiastic priors are displayed in Figure \ref{fig:figure5}.
+%\begin{align}\label{eq:enthprior_tail1}
+%Q(\theta_0:\mu=\theta_1,\alpha,\beta)=\epsilon
+%\end{align} and that also satisfies a second tail-probability condition 
+%\begin{align}
+%Q\left(\frac{\theta_0+\theta_1}{2};\mu=\theta_1,\alpha,\beta\right)=\epsilon+\gamma \label{eq:enthprior_tail2}
+%\end{align}
+%for $\gamma>\epsilon$. There is a unique combination of $\alpha$ and $\beta$ that satisfy \eqref{eq:enthprior_tail1} and \eqref{eq:enthprior_tail2}.
+%
+%
+%The modification of $\beta$ can be used to concentrate or flatten the distribution around the modal value. If $\beta<2$ then the distribution becomes more peaked relative to a normal distribution, and if $\beta>2$ then the distribution becomes flatter. Examples of skeptical and enthusiastic priors for a single parameter $\theta$ based on the trial from Section \ref{sec:preliminaries} are displayed in Figure \ref{fig:figure1}. The location and shape parameters are pre-specified, and the scale parameter is chosen to satisfy the tail-probability constraints \eqref{eq:enthprior}, \eqref{eq:skptprior}.
 
 %Continuing the trial setup from Section \ref{sec:preliminaries}, it is necessary to truncate the generalized normal distribution to the range $[0,1]$. When truncated to the unit interval, this density becomes
 %\begin{align}\label{eq:generalized_normal_univariate}
@@ -387,35 +378,33 @@ The modification of $\beta$ can be used to concentrate or flatten the distributi
 \label{fig:figure1}
 \end{center}\end{figure}
 
-The normal and generalized normal family of distributions can be truncated to a restricted domain that reflects the research quantity of interest (e.g. a response probability on [0,1]).
+%The normal and generalized normal family of distributions can be truncated to a restricted domain that reflects the research quantity of interest (e.g. a response probability on [0,1]).
 \subsubsection{Application to higher dimensions}
-The generalized normal distribution can be used to parameterize skeptical and enthusiastic priors for trials with multiple unknown quantities of interest. Suppose the trial from Section \ref{sec:preliminaries} has added a control arm, and let $\theta_0$ and $\theta_1$ be the response proportions for a control and treatment group respectively. Suppose that the risk difference $\theta_1-\theta_0$ is of interest. Let $\delta_0$ denote a null risk difference and $\delta_1$ denote a highly efficacious risk difference.
+%Suppose the trial from Section \ref{sec:preliminaries} has added a control arm, and let $\eta_0$ and $\eta_1$ be the response proportions for a control and treatment group respectively. Suppose that the risk difference $\theta=\eta_1-\eta_0$ is the parameter of interest, and let $\eta_0$ be a nuisance parameter. Let $\delta_0$ denote a null risk difference and $\delta_1$ denote a highly efficacious risk difference.
 
-Consider the following representation of the joint prior for $\theta_1$ and $\theta_0$:
+The generalized normal distribution can be used to parameterize skeptical and enthusiastic priors for trials with multiple unknown quantities of interest. Let $\theta$ be the parameter of interest and $\eta$ be the nuisance parameters. Consider the following representation of the joint prior for $\theta$ and $\eta$:
 \begin{align}
-\pi(\theta_0,\theta_1)=&\pi(\theta_0)\times\pi(\theta_1|\theta_0). \label{eq:generalized_normal_joint}
+\pi(\theta,\eta)=&\pi(\theta)\times\pi(\eta|\theta). \label{eq:generalized_normal_joint}
 \end{align}
 
 Each of these components can be represented in the form of \eqref{eq:generalizednormalkernel} by
 \begin{align}
-\pi(\theta_0)\propto&\exp\left\{-\left(\frac{|\theta_0-\mu_0|}{\alpha_0}\right)^{\beta_0}\right\} \label{eq:genNormPlacebo}\\
-\pi(\theta_1|\theta_0)\propto&\exp\left\{-\left(\frac{|(\theta_1-\theta_0)-\delta|}{\alpha_1}\right)^{\beta_1}\right\}f(\theta_0). \label{eq:genNormRd}
+\pi(\theta)&\sim\mathcal{GN}(\mu_\theta,\alpha_\theta,\beta_\theta) \label{eq:genNormPlacebo}\\
+\pi(\eta|\theta)&\sim\mathcal{GN}(\mu_\eta,\alpha_\eta,\beta_\eta) \label{eq:genNormRd}
 \end{align}
 
-The component $\pi(\theta_0)$ reflects prior opinion about the response rate in the placebo group, and the component $\pi(\theta_1|\theta_0)$ can be used to express pessimism or optimism in the difference in proportions $\theta_1 - \theta_0$. 
-
-The enthusiastic prior condition from \eqref{eq:enthprior} become
-\begin{align}\label{eq:ex2enthcondition}
-P(\theta_1-\theta_0>\delta_0)=1-\epsilon.
-\end{align}
-
-The skeptical prior condition from \eqref{eq:skptprior} become
-\begin{align}\label{eq:ex2skptcondition}
-P(\theta_1-\theta_0<\delta_1)=1-\epsilon.
-\end{align}
-
-
-Examples of skeptical and enthusiastic priors are displayed in Figure \ref{fig:figure5}.
+Section \ref{sec:example2model} uses this representation of the joint prior.
+%The component $\pi(\theta_0)$ reflects prior opinion about the response rate in the placebo group, and the component $\pi(\theta_1|\theta_0)$ can be used to express pessimism or optimism in the difference in proportions $\theta_1 - \theta_0$. 
+%
+%The enthusiastic prior condition from \eqref{eq:enthprior} become
+%\begin{align}\label{eq:ex2enthcondition}
+%P(\theta_1-\theta_0>\delta_0)=1-\epsilon.
+%\end{align}
+%
+%The skeptical prior condition from \eqref{eq:skptprior} become
+%\begin{align}\label{eq:ex2skptcondition}
+%P(\theta_1-\theta_0<\delta_1)=1-\epsilon.
+%\end{align}
 
 \begin{figure}\begin{center}
 \includegraphics[width=3in]{./FIGURES/figure5c.png}
@@ -535,16 +524,15 @@ The initial enrollment occurred on August 25, 2006, and the last assessment was 
 
 The sample size of $60$ patients was chosen to ensure $12\%$ precision in estimating the true response proportion with at $95\%$ CI, assuming a response rate of $67\%$ as was observed among adults from the ACT 1 and ACT 2 trials ~\citep{Rutgeerts2005} at the same 5mg/kg dose $(N=242)$. A $95\%$ confidence interval that excluded $0.40$ was determined to be a clinically significant result.
 
-\subsubsection{Model formulation \& prior elicitation}
+\subsubsection{Model formulation \& prior elicitation}\label{sec:example1model}
 The data $\mathbf{D}$ are assumed to be independent Bernoulli random variables with common response probability $\theta$. The null response value is $\theta_0=0.40$ and a highly efficacious response probability is $\theta_1=0.67$. The hypothesis for this trial is $H_0:\leq \theta_0$ vs $H_1:\theta > \theta_0$.
 
 The default skeptical and enthusiastic priors will be of the form \eqref{eq:generalizednormalkernel} and are truncated to the unit interval. 
 \begin{align}
-\pi_S(\theta)&\propto \exp\left\{-\frac{|\theta-\theta_0|}{\alpha_S}^{\beta_S}\right\} I(\theta\in[0,1]) \label{eq:ex1skptprior}\\
-\pi_E(\theta)&\propto \exp\left\{-\frac{|\theta-\theta_1|}{\alpha_E}^{\beta_E}\right\} I(\theta\in[0,1])\label{eq:ex1enthprior}
+\pi_S(\theta)&=c_S \exp\left\{-\frac{|\theta-\theta_0|}{\alpha_S}^{\beta_S}\right\}{I(\theta\in[0,1])} \label{eq:ex1skptprior}\\
+\pi_E(\theta)&=c_E\exp\left\{-\frac{|\theta-\theta_1|}{\alpha_E}^{\beta_E}\right\}{I(\theta\in[0,1])}\label{eq:ex1enthprior}
 \end{align}
-
-The values $\beta_S$ and $\beta_E$ are pre-specified and $\alpha_S$ and $\alpha_E$ are chosen to satisfy the tail-probability conditions 
+where $c_S=\frac{\beta_S}{2\alpha_S \Gamma(1/\beta_S)({F_{\theta_0,\alpha_S,\beta_S}(1)-F_{\theta_0,\alpha_S,\beta_S}(0)})}$ and $c_E=\frac{\beta_E}{2\alpha_E \Gamma(1/\beta_E)({F_{\theta_1,\alpha_E,\beta_E}(1)-F_{\theta_1,\alpha_E,\beta_E}(0)})}$. The values $\beta_S$ and $\beta_E$ are pre-specified and $\alpha_S$ and $\alpha_E$ are chosen to satisfy the tail-probability conditions 
 \eqref{eq:enthprior}-\eqref{eq:skptprior}.
 
 The skeptical prior is shown in Figure \ref{fig:figure1}(B), which has added concentration around the null response value $\theta_0$ by pre-specifying $\beta_S>2$. The enthusiastic prior is shown in Figure \ref{fig:figure1}(C) with a default choice of $\beta_E=2$. The level of residual uncertainty is given by $\epsilon=0.025$. The skeptical prior was chosen to have additional Type 1 error control. A comparison of the various combinations of the monitoring priors in Figure~\ref{fig:figure1} is provided in Appendix \ref{sec:priorRobustness}.
@@ -645,33 +633,40 @@ The study start date was September 7, 2012, and the primary completion date was 
 
 The study design included enrollment of 100 subjects, the first 24 subjects randomized in a 5:1 ratio (Belimumab:placebo) and the remaining 76 subjects would be randomized in a 1:1 allocation ratio. Therefore, 58 subjects would be randomized to Belimumab and 42 to placebo. The sample size was based on feasibility constraints rather than a power calculation, and the study was terminated after 93 subjects enrolled.
 
-\subsubsection{Model formulation \& prior elicitation}
-The data $\mathbf{D}$ are assumed to be independent Bernoulli random variables with response probability $\theta_0$ for the placebo group and $\theta_1$ for the treatment (IP for investigational product) group. The null response value for the difference $\delta=\theta_1-\theta_0=0$ is  and a highly efficacious response probability is $\delta=\theta_1-\theta_0=0.12$. Consider the hypothesis testing of IP superiority to control $H_0:\theta_1-\theta_0\leq 0\text{ vs. }H_1: \theta_1-\theta_0>0$. An estimate for the treatment probability from adult trials is $\theta_1=0.51$.
+\subsubsection{Model formulation \& prior elicitation}\label{sec:example2model}
+The data $\mathbf{D}$ are assumed to be independent Bernoulli random variables with response probability $\eta_0$ for the placebo group and $\eta_1$ for the treatment (IP for investigational product) group. The null response value for the difference $\theta_0=0$ and a highly efficacious difference is $\theta_1=0.12$. Consider the hypothesis testing of IP superiority to control $H_0:\theta\leq 0\text{ vs. }H_1: \theta>0$. An estimate for the treatment probability from adult trials is $\eta_1=0.51$.
 
-The priors will be chosen based on the generalized normal distribution \eqref{eq:generalizednormalkernel} based on the joint specification in \eqref{eq:generalized_normal_joint} and truncated to the unit square 
+The priors will be chosen based on the generalized normal distribution \eqref{eq:generalizednormalkernel} based on the joint specification in \eqref{eq:generalized_normal_joint} and truncated to the domain of a difference in response proportion $(-1, 1)$.
 
-The skeptical and enthusiastic priors will have the same component for
-\begin{align}
-\pi(\theta_0)\propto \exp\left\{-\left(\frac{|\theta_0-\mu|}{\alpha}\right)^{\beta}\right\}\times I(\theta_0 \in [0,1])
-\end{align}
-The location parameter is chosen to be $\mu=\theta_1-\delta_E=0.39$. The shape and scale parameters $\alpha$ and $\beta$ are chosen so that the prior is flat in the region $\mu\pm 0.10$ and is shown in Figure \ref{fig:figure5}(E). 
+\begin{align*}
+\pi_S(\theta)&=c_S \exp\left\{-\frac{|\theta-\theta_0|}{\alpha_S}^{\beta_S}\right\}{I(\theta\in[-1,1])}\\
+\pi_E(\theta)&=c_E\exp\left\{-\frac{|\theta-\theta_1|}{\alpha_E}^{\beta_E}\right\}{I(\theta\in[-1,1])}
+\end{align*}
+where $c_S=\frac{\beta_S}{2\alpha_S \Gamma(1/\beta_S)({F_{\theta_0,\alpha_S,\beta_S}(1)-F_{\theta_0,\alpha_S,\beta_S}(-1)})}$ and $c_E=\frac{\beta_E}{2\alpha_E \Gamma(1/\beta_E)({F_{\theta_1,\alpha_E,\beta_E}(1)-F_{\theta_1,\alpha_E,\beta_E}(-1)})}$. The values $\beta_S$ and $\beta_E$ are pre-specified and $\alpha_S$ and $\alpha_E$ are chosen to satisfy the tail-probability conditions 
+\eqref{eq:enthprior}-\eqref{eq:skptprior}.
 
-The skeptical and enthusiastic priors are differentiated by their parameterizations for 
-\begin{align}
-\pi_S(\theta_1|\theta_0)\propto&\exp\left\{-\left(\frac{|\theta_1-\theta_0-\delta_0|}{\alpha_S}\right)^{\beta_S}\right\}\times f_S(\theta_0) \times I((\theta_0,\theta_1)\in [0,1]\times[0,1])\\
-\pi_E(\theta_1|\theta_0)\propto&\exp\left\{-\left(\frac{|\theta_1-\theta_0-\delta_1|}{\alpha_E}\right)^{\beta_E}\right\}\times f_E(\theta_0) \times I((\theta_0,\theta_1)\in [0,1]\times[0,1])
-\end{align}
+The skeptical and enthusiastic priors will have the same component for $\pi(\eta|\theta)$ which is truncated to $[0,1-\theta)$ if $\theta\geq 0$ and $(-\theta,1)$ if $\theta < 0$: 
+\begin{align*}
+\pi(\eta|\theta)=c_\eta\text{exp}\left\{\frac{|\eta-\mu_\eta|^{\beta_\eta}}{\alpha_\eta}\right\}\left(\frac{I(\theta\in[0,1], \eta\in[0,1])}{F_{\mu_\eta,\alpha_\eta,\beta_\eta}(1-\theta)-F_{\mu_\eta,\alpha_\eta,\beta_\eta}(0)}+\frac{I(\theta\in[-1,0], \eta\in[0,1])}{F_{\mu_\eta,\alpha_\eta,\beta_\eta}(1)-F_{\mu_\eta,\alpha_\eta,\beta_\eta}(-\theta)}\right)
+\end{align*}
+where $c_\eta=\frac{\beta_\eta}{2\alpha_\eta\Gamma(\beta_\eta)}$. Then the full joint priors are $\pi_S(\theta,\eta)=\pi_S(\theta)\pi(\eta|\theta)$ and $\pi_E(\theta,\eta)=\pi_E(\theta)\pi(\eta|\theta)$.
+%The location parameter is chosen to be $\mu=\theta_1-\delta_E=0.39$. The shape and scale parameters $\alpha$ and $\beta$ are chosen so that the prior is flat in the region $\mu\pm 0.10$ and is shown in Figure \ref{fig:figure5}(E). 
 
-The values $\beta_S$ and $\beta_E$ are pre-specified and $\alpha_S$ and $\alpha_E$ are chosen to satisfy the tail-probability conditions 
-\eqref{eq:ex2enthcondition}-\eqref{eq:ex2skptcondition}.
+%The skeptical and enthusiastic priors are differentiated by their parameterizations for 
+%\begin{align}
+%\pi_S(\theta_1|\theta_0)\propto&\exp\left\{-\left(\frac{|\theta_1-\theta_0-\delta_0|}{\alpha_S}\right)^{\beta_S}\right\}\times f_S(\theta_0) \times I((\theta_0,\theta_1)\in [0,1]\times[0,1])\\
+%\pi_E(\theta_1|\theta_0)\propto&\exp\left\{-\left(\frac{|\theta_1-\theta_0-\delta_1|}{\alpha_E}\right)^{\beta_E}\right\}\times f_E(\theta_0) \times I((\theta_0,\theta_1)\in [0,1]\times[0,1])
+%\end{align}
 
-The complete skeptical and enthusiastic priors are then given by 
-\begin{align}
-\pi_S(\theta_0,\theta_1)\propto&\exp\left\{-\left(\frac{|\theta_0-\mu|}{\alpha}\right)^{\beta}\right\}\times \exp\left\{-\left(\frac{|\theta_1-\theta_0-\delta_0|}{\alpha_S}\right)^{\beta_S}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1])\label{eq:ex2skpt}\\
-\pi_E(\theta_0,\theta_1)\propto&\exp\left\{-\left(\frac{|\theta_0-\mu|}{\alpha}\right)^{\beta}\right\}\times \exp\left\{-\left(\frac{|\theta_1-\theta_0-\delta_1|}{\alpha_E}\right)^{\beta_E}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1])\label{eq:ex2enth}.
-\end{align}
+%The values $\beta_S$ and $\beta_E$ are pre-specified and $\alpha_S$ and $\alpha_E$ are chosen to satisfy the tail-probability conditions.
 
-The joint priors $\pi_S(\theta_0,\theta_1)$ $\pi_E(\theta_0,\theta_1)$ as well as the marginal priors $\pi_S(\theta_1-\theta_0)$, $\pi_E(\theta_1-\theta_0)$ are shown in Figure \ref{fig:figure5}.
+%The complete skeptical and enthusiastic priors are then given by 
+%\begin{align}
+%\pi_S(\theta_0,\theta_1)\propto&\exp\left\{-\left(\frac{|\theta_0-\mu|}{\alpha}\right)^{\beta}\right\}\times \exp\left\{-\left(\frac{|\theta_1-\theta_0-\delta_0|}{\alpha_S}\right)^{\beta_S}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1])\label{eq:ex2skpt}\\
+%\pi_E(\theta_0,\theta_1)\propto&\exp\left\{-\left(\frac{|\theta_0-\mu|}{\alpha}\right)^{\beta}\right\}\times \exp\left\{-\left(\frac{|\theta_1-\theta_0-\delta_1|}{\alpha_E}\right)^{\beta_E}\right\}\times I((\theta_0,\theta_1)\in [0,1]\times[0,1])\label{eq:ex2enth}.
+%\end{align}
+%
+%The joint priors $\pi_S(\theta_0,\theta_1)$ $\pi_E(\theta_0,\theta_1)$ as well as the marginal priors $\pi_S(\theta_1-\theta_0)$, $\pi_E(\theta_1-\theta_0)$ are shown in Figure \ref{fig:figure5}.
 %
 %where $c_S$ and $c_E$ are normalizing constants. The values of $\alpha_S$ and $\alpha_{S1}$ are chosen such that $P(\theta_1-\theta_0>0.1|\pi_S)=0.05$. Similarly, $\alpha_E$ and $\alpha_{E1}$ are chosen such that $P(\theta_1-\theta_0\leq0|\pi_E)=0.05$.
 
@@ -689,12 +684,14 @@ The joint priors $\pi_S(\theta_0,\theta_1)$ $\pi_E(\theta_0,\theta_1)$ as well a
 %\end{enumerate}
 
 Enrollment will proceed until one of the following three conditions are satisfied:
-\begin{align}
-\text{Efficacy criteria (EFF): }&P(\theta_1-\theta_0>\delta_0|\mathbf{D},\pi_S)\geq 1-\epsilon \label{eq:ex2efficacy}\\
-\text{Futility criteria (FUT): }&P\left(\theta_1-\theta_0 \leq \frac{\delta_0+\delta_1}{2}\Big|\mathbf{D},\pi_E\right)\geq 1-\epsilon
-\label{eq:ex2futility}\\
-\text{Maximum sample size: }&N=100 \text{ patient outcomes}\label{eq:ex2maxss}
-\end{align}
+\begin{align*}
+\text{Efficacy criteria (EFF): }&P(\theta>\delta_0|\mathbf{D},\pi_S)\geq 1-\epsilon %\label{eq:ex2efficacy}
+\\
+\text{Futility criteria (FUT): }&P\left(\theta \leq \frac{\delta_0+\delta_1}{2}\Big|\mathbf{D},\pi_E\right)\geq 1-\epsilon
+%\label{eq:ex2futility}
+\\
+\text{Maximum sample size: }&N=100 \text{ patient outcomes}%\label{eq:ex2maxss}
+\end{align*}
 
 An interim analysis is competed after every 2 subjects have completed outcomes.
 
