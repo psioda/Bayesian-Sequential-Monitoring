@@ -15,5 +15,3 @@ skpt_joint()
 
 source("enth_joint.R")
 enth_joint()
-
-

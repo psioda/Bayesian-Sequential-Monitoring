@@ -4,7 +4,7 @@ q.outer    <- 0.025  # y > x + delta.enth
 scale      <- 0.75
 q.inner    <- (1 - 0.8364525-q.outer)*scale   # y > x + delta.intr (major typo caught!)
 
-source("skpt_marginal.R", local = TRUE)
+source("priors/skpt_marginal.R", local = TRUE)
 marginal()
 
 f1 <- function(a){   # q.outer
@@ -55,8 +55,7 @@ skpt.rd.beta0  <- a2[2]
 assign("skpt.rd.alpha0",skpt.rd.alpha0,envir = .GlobalEnv)
 assign("skpt.rd.beta0",skpt.rd.beta0,envir = .GlobalEnv)
 
-source("../code_integrate.R")
-source("skpt_conditional.R", local = TRUE)
+source("priors/skpt_conditional.R", local = TRUE)
 q.outer    <- 0.025  # y > x + delta.enth
 scale      <- 1
 q.inner    <- (1-0.8364525-q.outer)*scale   # y > x + delta.intr (major typo caught!)

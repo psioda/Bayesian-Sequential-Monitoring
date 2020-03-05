@@ -4,7 +4,7 @@ q.outer    <- 0.025  # y > x + delta.enth
 scale      <- 1
 q.inner    <- (1 - 0.8364525-q.outer)*scale   # y > x + delta.intr (major typo caught!)
 
-source("enth_marginal.R", local = TRUE)
+source("priors/enth_marginal.R", local = TRUE)
 marginal()
 
 f1 <- function(a){   # q.outer
@@ -55,8 +55,7 @@ enth.rd.beta0  <- a2[2]
 assign("enth.rd.alpha0",enth.rd.alpha0,envir = .GlobalEnv)
 assign("enth.rd.beta0",enth.rd.beta0,envir = .GlobalEnv)
 
-source("../code_integrate.R")
-source("enth_conditional.R", local = TRUE)
+source("priors/enth_conditional.R", local = TRUE)
 q.outer    <- 0.1  # y > x + delta.enth
 scale      <- 1
 q.inner    <- (pnorm(qnorm(q.outer)/2)-q.outer)*scale   # y > x + delta.intr (major typo caught!)

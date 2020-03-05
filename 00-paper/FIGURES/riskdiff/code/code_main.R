@@ -10,13 +10,14 @@ rm(list = ls())
 
 if (.Platform$OS.type == "windows") {
   library(pracma)
-  idx <- 25
+  library(gnorm)
  }
 
 if (.Platform$OS.type == "unix")    { 
   library(pracma, lib.loc = "../rpkgs/")
-  args<-commandArgs(trailingOnly = TRUE)  # sequence from batch file
-  idx<-as.numeric(args[1]);
+  library(gnorm,  lib.loc = "../rpkgs/")
+  args <- commandArgs(trailingOnly = TRUE)  # sequence from batch file
+  idx  <- as.numeric(args[1]);
 }
 
 # Model information, including all functions used. 
@@ -61,11 +62,11 @@ names(outer.p.agree) <- c("p.agree","efficacy","conditional")
 
 for (i in 1:reps){
   
-  {print(paste0("Simulation ", i))}
+  {print(paste0("IDX ", idx, ", Simulation ", i))}
   
   source("code_enrollment.R")
   
-  for (j in c(seq(freq.mntr, max.ss, by = freq.mntr), max.ss)){
+  for (j in c(seq(min.ss, max.ss, by = freq.mntr), max.ss)){
     
     mon.result.initial <- monitoring(index = j)
     futility <- mon.result.initial$fut.prob

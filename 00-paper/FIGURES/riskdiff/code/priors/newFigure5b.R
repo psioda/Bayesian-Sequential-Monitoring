@@ -26,7 +26,6 @@ grid.enth <- grid
 for (i in 1:nrow(grid)){
   if (grid.enth$x[i] >= 0 && (grid.enth$x[i] < (1 - grid.enth$y[i]))) {
     grid.enth$z[i] <- enth.prior.1(grid.enth$x[i], grid.enth$y[i])
-    
   } else if (grid.enth$x[i] <= 0 && (grid.enth$x[i] > -grid.enth$y[i])) {
     grid.enth$z[i] <- enth.prior.2(grid.enth$x[i], grid.enth$y[i])
   } else {
@@ -43,8 +42,8 @@ plot(grid.enth$x,grid.enth$y,
      xaxt='n',
      yaxt='n')
 
-title(ylab=as.expression(bquote("Response Probability" ~eta)),line=1)
-title(xlab=as.expression(bquote("Risk Difference" ~theta)),line=1)
+title(ylab=as.expression(bquote("Response Probability")), line = 3)
+title(xlab=as.expression(bquote("Risk Difference")), line = 3)
 
 cuts<-c(0,1E-11,1E-12,1E-10,1E-9,1E-8,1E-7,1E-6,1E-5,1E-4,1E-3,1E-2,1E-1,1,10,20,30)
 colors<-gray.colors(length(cuts)-1, start = 0.9, end = 0)
@@ -62,8 +61,12 @@ for (i in 1:length(cuts)-1){
           border = NA)
 }
 
-abline(h=c(0))
-abline(v=0)
+axis(1,at=c(delta.skpt,delta.enth),
+     labels=c(as.expression(bquote(theta[0])),as.expression(bquote(theta[1]))))
+
+axis(2,at=c(mu),
+     labels=c(as.expression(bquote(mu[0]))))
+
 ## FILL IN LAST SEGMENT
 polygon(c(outer.x,outer.x[1]),
         c(outer.y,outer.y[1]),

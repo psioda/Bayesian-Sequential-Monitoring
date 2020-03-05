@@ -6,10 +6,12 @@ rm(list = ls())
 
 if (.Platform$OS.type == "windows") {
   library(pracma)
+  library(gnorm)
 }
 
 if (.Platform$OS.type == "unix")    { 
   library(pracma, lib.loc = "../rpkgs/")
+  library(gnorm,  lib.loc = "../rpkgs/")
 }
 
 delta.enth <- 0.12
@@ -21,12 +23,11 @@ sig.eff    <- 0.975
 
 source("code_integrate.R")
 source("code_functions.R") # contains nested source("code_posteriors.R", local = TRUE)
-source("code_fcn_prior_placebo.R")
-source("code_skpt_tail_area.R")
-source("code_enth_tail_area.R")
 
-fcn_prior_placebo()
-skpt_tail_area()
-enth_tail_area()
+source("priors/skpt_joint.R")
+skpt_joint()
+
+source("priors/enth_joint.R")
+enth_joint()
 
 save.image(file = 'args_model.RData')

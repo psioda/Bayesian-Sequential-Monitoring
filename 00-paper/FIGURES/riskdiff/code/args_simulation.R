@@ -19,7 +19,8 @@ simulation <- expand.grid(
                      0.5,  # inf.mix.prob
                      0.05, # cred.tail
                      100,  # max.ss
-                     20000)   # reps
+                     70,   # min.ss
+                     1000)   # reps
 
 names(simulation) <- c(
                   "p.IP",
@@ -32,6 +33,7 @@ names(simulation) <- c(
                   "inf.mix.prob",
                   "cred.tail",
                   "max.ss",
+                  "min.ss",
                   "reps")
 
 write.csv(x    = simulation, 
