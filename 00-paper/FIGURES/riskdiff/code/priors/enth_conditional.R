@@ -1,7 +1,7 @@
 enth_tail_area <- function(){
   
-  alpha0.seq <- seq(0.125,  1,   length = 10)
-  beta0.seq  <- seq(2,      6,  length = 10)
+  alpha0.seq <- seq(0.125,  1, length = 10)
+  beta0.seq  <- seq(2,      6, length = 10)
   
   result1 <- matrix(NA, nrow = length(alpha0.seq), ncol = length(beta0.seq))
   result2 <- matrix(NA, nrow = length(alpha0.seq), ncol = length(beta0.seq))
@@ -13,7 +13,7 @@ enth_tail_area <- function(){
       enth.beta0  <- beta0.seq[j]
       
       # normalized prior density
-      enth.prior.1 <- function(x, y){ # for x > 0 (gamma > 0)
+      enth.prior.1 <- function(x, y){ # for x > 0 (theta > 0)
         exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
           exp(-(abs(y - mu)/enth.alpha0)^enth.beta0)/(2*enth.alpha0*gamma(1/enth.beta0)/enth.beta0)/
           (pgnorm(q = 1,  mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
@@ -21,7 +21,7 @@ enth_tail_area <- function(){
           (pgnorm(q = 1 - x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
              pgnorm(q = 0,   mu = mu, alpha = enth.alpha0, beta  = enth.beta0))
       }
-      enth.prior.2 <- function(x, y){ # for x < 0 (gamma < 0)
+      enth.prior.2 <- function(x, y){ # for x < 0 (theta < 0)
         exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
           exp(-(abs(y - mu)/enth.alpha0)^enth.beta0)/(2*enth.alpha0*gamma(1/enth.beta0)/enth.beta0)/
           (pgnorm(q = 1,  mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -

@@ -11,6 +11,7 @@ rm(list = ls())
 if (.Platform$OS.type == "windows") {
   library(pracma)
   library(gnorm)
+  idx <- 1
  }
 
 if (.Platform$OS.type == "unix")    { 

@@ -61,14 +61,15 @@ for (i in 1:length(cuts)-1){
           border = NA)
 }
 
-axis(1,at=c(delta.skpt,delta.enth),
-     labels=c(as.expression(bquote(theta[0])),as.expression(bquote(theta[1]))))
+axis(1,at=c(delta.skpt,delta.enth,-1,1),
+     labels=c(as.expression(bquote(theta[0])),as.expression(bquote(theta[1])),-1,1))
 
-axis(2,at=c(mu),
-     labels=c(as.expression(bquote(mu[0]))))
+axis(2,at=c(mu,0,1),
+     labels=c(as.expression(bquote(mu[0])),0,1))
 
 ## FILL IN LAST SEGMENT
 polygon(c(outer.x,outer.x[1]),
         c(outer.y,outer.y[1]),
         col=colors[i], 
         border = NA)
+

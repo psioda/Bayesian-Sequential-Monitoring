@@ -377,7 +377,14 @@ Examples of skeptical and enthusiastic priors are displayed in Figure \ref{fig:f
 \caption{A, Skeptical prior, normal distribution. B, Skeptical prior, generalized normal distribution with added concentration around modal value. C, Enthusiastic prior, normal distribution. D, Enthusiastic prior, generalized normal distribution with added flattening around modal value.}
 \label{fig:figure1}
 \end{center}\end{figure}
-
+\subsubsection{One Arm Example}
+The default skeptical and enthusiastic priors will be of the form \eqref{eq:generalizednormalkernel} and are truncated to the unit interval. 
+\begin{align}
+\pi_S(\theta)&=c_S \exp\left\{-\frac{|\theta-\theta_0|}{\alpha_S}^{\beta_S}\right\}{I(\theta\in[0,1])} \label{eq:ex1skptprior}\\
+\pi_E(\theta)&=c_E\exp\left\{-\frac{|\theta-\theta_1|}{\alpha_E}^{\beta_E}\right\}{I(\theta\in[0,1])}\label{eq:ex1enthprior}
+\end{align}
+where $c_S=\frac{\beta_S}{2\alpha_S \Gamma(1/\beta_S)({F_{\theta_0,\alpha_S,\beta_S}(1)-F_{\theta_0,\alpha_S,\beta_S}(0)})}$ and $c_E=\frac{\beta_E}{2\alpha_E \Gamma(1/\beta_E)({F_{\theta_1,\alpha_E,\beta_E}(1)-F_{\theta_1,\alpha_E,\beta_E}(0)})}$. The values $\beta_S$ and $\beta_E$ are pre-specified and $\alpha_S$ and $\alpha_E$ are chosen to satisfy the tail-probability conditions 
+\eqref{eq:enthprior}-\eqref{eq:skptprior}.
 %The normal and generalized normal family of distributions can be truncated to a restricted domain that reflects the research quantity of interest (e.g. a response probability on [0,1]).
 \subsubsection{Application to higher dimensions}
 %Suppose the trial from Section \ref{sec:preliminaries} has added a control arm, and let $\eta_0$ and $\eta_1$ be the response proportions for a control and treatment group respectively. Suppose that the risk difference $\theta=\eta_1-\eta_0$ is the parameter of interest, and let $\eta_0$ be a nuisance parameter. Let $\delta_0$ denote a null risk difference and $\delta_1$ denote a highly efficacious risk difference.
@@ -393,6 +400,22 @@ Each of these components can be represented in the form of \eqref{eq:generalized
 \pi(\eta|\theta)&\sim\mathcal{GN}(\mu_\eta,\alpha_\eta,\beta_\eta) \label{eq:genNormRd}
 \end{align}
 
+\subsubsection{Example: 2 arm risk difference}
+
+The priors will be chosen based on the generalized normal distribution \eqref{eq:generalizednormalkernel} based on the joint specification in \eqref{eq:generalized_normal_joint} and truncated to the domain of a difference in response proportion $(-1, 1)$.
+
+\begin{align*}
+\pi_S(\theta)&=c_S \exp\left\{-\frac{|\theta-\theta_0|}{\alpha_S}^{\beta_S}\right\}{I(\theta\in[-1,1])}\\
+\pi_E(\theta)&=c_E\exp\left\{-\frac{|\theta-\theta_1|}{\alpha_E}^{\beta_E}\right\}{I(\theta\in[-1,1])}
+\end{align*}
+where $c_S=\frac{\beta_S}{2\alpha_S \Gamma(1/\beta_S)({F_{\theta_0,\alpha_S,\beta_S}(1)-F_{\theta_0,\alpha_S,\beta_S}(-1)})}$ and $c_E=\frac{\beta_E}{2\alpha_E \Gamma(1/\beta_E)({F_{\theta_1,\alpha_E,\beta_E}(1)-F_{\theta_1,\alpha_E,\beta_E}(-1)})}$. The values $\beta_S$ and $\beta_E$ are pre-specified and $\alpha_S$ and $\alpha_E$ are chosen to satisfy the tail-probability conditions 
+\eqref{eq:enthprior}-\eqref{eq:skptprior}.
+
+The skeptical and enthusiastic priors will have the same component for $\pi(\eta|\theta)$ which is truncated to $[0,1-\theta)$ if $\theta\geq 0$ and $(-\theta,1)$ if $\theta < 0$: 
+\begin{align*}
+\pi(\eta|\theta)=c_\eta\text{exp}\left\{\frac{|\eta-\mu_\eta|^{\beta_\eta}}{\alpha_\eta}\right\}\left(\frac{I(\text{max}(-\theta,0)\leq\eta\leq \text{min}(1,1+\theta))}{F_{\mu_\eta,\alpha_\eta,\beta_\eta}(\text{min}(1,1+\theta))-F_{\mu_\eta,\alpha_\eta,\beta_\eta}(\text{max}(0,-\theta))}\right)
+\end{align*}
+where $c_\eta=\frac{\beta_\eta}{2\alpha_\eta\Gamma(\beta_\eta)}$. Then the full joint priors are $\pi_S(\theta,\eta)=\pi_S(\theta)\pi(\eta|\theta)$ and $\pi_E(\theta,\eta)=\pi_E(\theta)\pi(\eta|\theta)$.
 Section \ref{sec:example2model} uses this representation of the joint prior.
 %The component $\pi(\theta_0)$ reflects prior opinion about the response rate in the placebo group, and the component $\pi(\theta_1|\theta_0)$ can be used to express pessimism or optimism in the difference in proportions $\theta_1 - \theta_0$. 
 %
@@ -480,7 +503,7 @@ where $p(\mathbf{D}|\pi_S)=\int p(\mathbf{D}|\theta)\pi_S(\theta)d\theta$ and $p
 \subsubsection{Incorporating Prior Information in the Monitoring Priors}
 The skeptical and enthusiastic monitoring priors can be viewed as a weighted combination such as in the inference prior \eqref{eq:inference_prior} with weights $\omega=1$ and $\omega=0$ respectively. This weighted combination can be used as a replacement for the monitoring prior for any fixed weight $\omega$. For example, a ``not-as-skeptical" prior can be defined as $\tilde{\pi_S}(\theta)=0.75\cdot\pi_S(\theta)+0.25\cdot\pi_E(\theta)$. 
 
-Alternatively, $\omega$ can be informed by the data. Let $\hat{\theta}=argmax \{p(\mathbf{D}|\theta)\}$ be the maximum likelihood estimator of $\theta$ given the data. Define
+Alternatively, $\omega$ can be informed by the data. Let $\hat{\theta}=\text{argmax} \{p(\mathbf{D}|\theta)\}$ be the maximum likelihood estimator of $\theta$ given the data. Define
 \begin{align}
 \omega=\frac{\pi_S(\hat{\theta})}{\pi_S(\hat{\theta})+\pi_E(\hat{\theta})}
 \end{align}
@@ -526,14 +549,6 @@ The sample size of $60$ patients was chosen to ensure $12\%$ precision in estima
 
 \subsubsection{Model formulation \& prior elicitation}\label{sec:example1model}
 The data $\mathbf{D}$ are assumed to be independent Bernoulli random variables with common response probability $\theta$. The null response value is $\theta_0=0.40$ and a highly efficacious response probability is $\theta_1=0.67$. The hypothesis for this trial is $H_0:\leq \theta_0$ vs $H_1:\theta > \theta_0$.
-
-The default skeptical and enthusiastic priors will be of the form \eqref{eq:generalizednormalkernel} and are truncated to the unit interval. 
-\begin{align}
-\pi_S(\theta)&=c_S \exp\left\{-\frac{|\theta-\theta_0|}{\alpha_S}^{\beta_S}\right\}{I(\theta\in[0,1])} \label{eq:ex1skptprior}\\
-\pi_E(\theta)&=c_E\exp\left\{-\frac{|\theta-\theta_1|}{\alpha_E}^{\beta_E}\right\}{I(\theta\in[0,1])}\label{eq:ex1enthprior}
-\end{align}
-where $c_S=\frac{\beta_S}{2\alpha_S \Gamma(1/\beta_S)({F_{\theta_0,\alpha_S,\beta_S}(1)-F_{\theta_0,\alpha_S,\beta_S}(0)})}$ and $c_E=\frac{\beta_E}{2\alpha_E \Gamma(1/\beta_E)({F_{\theta_1,\alpha_E,\beta_E}(1)-F_{\theta_1,\alpha_E,\beta_E}(0)})}$. The values $\beta_S$ and $\beta_E$ are pre-specified and $\alpha_S$ and $\alpha_E$ are chosen to satisfy the tail-probability conditions 
-\eqref{eq:enthprior}-\eqref{eq:skptprior}.
 
 The skeptical prior is shown in Figure \ref{fig:figure1}(B), which has added concentration around the null response value $\theta_0$ by pre-specifying $\beta_S>2$. The enthusiastic prior is shown in Figure \ref{fig:figure1}(C) with a default choice of $\beta_E=2$. The level of residual uncertainty is given by $\epsilon=0.025$. The skeptical prior was chosen to have additional Type 1 error control. A comparison of the various combinations of the monitoring priors in Figure~\ref{fig:figure1} is provided in Appendix \ref{sec:priorRobustness}.
 
@@ -636,20 +651,6 @@ The study design included enrollment of 100 subjects, the first 24 subjects rand
 \subsubsection{Model formulation \& prior elicitation}\label{sec:example2model}
 The data $\mathbf{D}$ are assumed to be independent Bernoulli random variables with response probability $\eta_0$ for the placebo group and $\eta_1$ for the treatment (IP for investigational product) group. The null response value for the difference $\theta_0=0$ and a highly efficacious difference is $\theta_1=0.12$. Consider the hypothesis testing of IP superiority to control $H_0:\theta\leq 0\text{ vs. }H_1: \theta>0$. An estimate for the treatment probability from adult trials is $\eta_1=0.51$.
 
-The priors will be chosen based on the generalized normal distribution \eqref{eq:generalizednormalkernel} based on the joint specification in \eqref{eq:generalized_normal_joint} and truncated to the domain of a difference in response proportion $(-1, 1)$.
-
-\begin{align*}
-\pi_S(\theta)&=c_S \exp\left\{-\frac{|\theta-\theta_0|}{\alpha_S}^{\beta_S}\right\}{I(\theta\in[-1,1])}\\
-\pi_E(\theta)&=c_E\exp\left\{-\frac{|\theta-\theta_1|}{\alpha_E}^{\beta_E}\right\}{I(\theta\in[-1,1])}
-\end{align*}
-where $c_S=\frac{\beta_S}{2\alpha_S \Gamma(1/\beta_S)({F_{\theta_0,\alpha_S,\beta_S}(1)-F_{\theta_0,\alpha_S,\beta_S}(-1)})}$ and $c_E=\frac{\beta_E}{2\alpha_E \Gamma(1/\beta_E)({F_{\theta_1,\alpha_E,\beta_E}(1)-F_{\theta_1,\alpha_E,\beta_E}(-1)})}$. The values $\beta_S$ and $\beta_E$ are pre-specified and $\alpha_S$ and $\alpha_E$ are chosen to satisfy the tail-probability conditions 
-\eqref{eq:enthprior}-\eqref{eq:skptprior}.
-
-The skeptical and enthusiastic priors will have the same component for $\pi(\eta|\theta)$ which is truncated to $[0,1-\theta)$ if $\theta\geq 0$ and $(-\theta,1)$ if $\theta < 0$: 
-\begin{align*}
-\pi(\eta|\theta)=c_\eta\text{exp}\left\{\frac{|\eta-\mu_\eta|^{\beta_\eta}}{\alpha_\eta}\right\}\left(\frac{I(\theta\in[0,1], \eta\in[0,1])}{F_{\mu_\eta,\alpha_\eta,\beta_\eta}(1-\theta)-F_{\mu_\eta,\alpha_\eta,\beta_\eta}(0)}+\frac{I(\theta\in[-1,0], \eta\in[0,1])}{F_{\mu_\eta,\alpha_\eta,\beta_\eta}(1)-F_{\mu_\eta,\alpha_\eta,\beta_\eta}(-\theta)}\right)
-\end{align*}
-where $c_\eta=\frac{\beta_\eta}{2\alpha_\eta\Gamma(\beta_\eta)}$. Then the full joint priors are $\pi_S(\theta,\eta)=\pi_S(\theta)\pi(\eta|\theta)$ and $\pi_E(\theta,\eta)=\pi_E(\theta)\pi(\eta|\theta)$.
 %The location parameter is chosen to be $\mu=\theta_1-\delta_E=0.39$. The shape and scale parameters $\alpha$ and $\beta$ are chosen so that the prior is flat in the region $\mu\pm 0.10$ and is shown in Figure \ref{fig:figure5}(E). 
 
 %The skeptical and enthusiastic priors are differentiated by their parameterizations for 

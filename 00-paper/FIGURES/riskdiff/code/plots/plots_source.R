@@ -105,7 +105,7 @@ stretch <- 0.34
 load(file = '../args_model.RData') # loads all model information include prior parameters
 args_simulation <- read.csv(file = "../args_simulation.csv", header = TRUE, sep = ",")
 
-Table1 <- read.csv(file = "../../output/Table1_merged_200223.csv", header = TRUE, sep = ",")
+Table1 <- read.csv(file = "../../output/Table1_merged.csv", header = TRUE, sep = ",")
 combined1 <- merge(args_simulation, Table1, by.x = "X", by.y = "idx")
 figure3 <- combined1
 

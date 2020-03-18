@@ -77,32 +77,32 @@ if (is.na(eff.mix.prob)){
 # SECTION 3: POSTERIOR DENSITIES
 # log (un-normalized) posterior density
 skpt.post.log.1 <- function(x, y){
-  y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-  y1.IP*log(y)     + y0.IP*log(1 - y) -
+  y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+  y1.PC*log(y)     + y0.PC*log(1 - y) -
   (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
   (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
   log(pgnorm(q = 1 - x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
       pgnorm(q = 0,     mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0))
 }
 skpt.post.log.2 <- function(x, y){
-  y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-  y1.IP*log(y)     + y0.IP*log(1 - y) -
+  y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+  y1.PC*log(y)     + y0.PC*log(1 - y) -
   (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
   (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
   log(pgnorm(q = 1,  mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
       pgnorm(q = -x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0))
 }
 enth.post.log.1 <- function(x, y){
-  y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-  y1.IP*log(y)     + y0.IP*log(1 - y) -
+  y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+  y1.PC*log(y)     + y0.PC*log(1 - y) -
   (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
   (abs(y - mu)/enth.alpha0)^enth.beta0 -
   log(pgnorm(q = 1 - x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
       pgnorm(q = 0,     mu = mu, alpha = enth.alpha0, beta  = enth.beta0))
 }
 enth.post.log.2 <- function(x, y){
-  y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-  y1.IP*log(y)     + y0.IP*log(1 - y) -
+  y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+  y1.PC*log(y)     + y0.PC*log(1 - y) -
   (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
   (abs(y - mu)/enth.alpha0)^enth.beta0 -
   log(pgnorm(q = 1,  mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
@@ -119,8 +119,8 @@ if (IP.mle >= PC.mle){
 # scaled (un-normalized) posterior density
 skpt.post.sc.1 <- function(x, y){
   exp(
-    y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-    y1.IP*log(y)     + y0.IP*log(1 - y) -
+    y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+    y1.PC*log(y)     + y0.PC*log(1 - y) -
     (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
     (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
     log(pgnorm(q = 1 - x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
@@ -130,8 +130,8 @@ skpt.post.sc.1 <- function(x, y){
 }
 skpt.post.sc.2 <- function(x, y){
   exp(
-    y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-    y1.IP*log(y)     + y0.IP*log(1 - y) -
+    y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+    y1.PC*log(y)     + y0.PC*log(1 - y) -
     (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
     (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
     log(pgnorm(q = 1,  mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
@@ -141,8 +141,8 @@ skpt.post.sc.2 <- function(x, y){
 }
 enth.post.sc.1 <- function(x, y){
   exp(
-    y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-    y1.IP*log(y)     + y0.IP*log(1 - y) -
+    y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+    y1.PC*log(y)     + y0.PC*log(1 - y) -
     (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
     (abs(y - mu)/enth.alpha0)^enth.beta0 -
     log(pgnorm(q = 1 - x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
@@ -152,8 +152,8 @@ enth.post.sc.1 <- function(x, y){
 }
 enth.post.sc.2 <- function(x, y){
   exp(
-    y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-    y1.IP*log(y)     + y0.IP*log(1 - y) -
+    y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+    y1.PC*log(y)     + y0.PC*log(1 - y) -
     (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
     (abs(y - mu)/enth.alpha0)^enth.beta0 -
     log(pgnorm(q = 1,  mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
@@ -197,8 +197,8 @@ inf.skpt.wt <- inf.mix.prob*skpt.nc.sc/(inf.mix.prob*skpt.nc.sc + (1 - inf.mix.p
 skpt.post.x.sc.1 <- function(x, y){
   x*
     exp(
-      y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-        y1.IP*log(y)     + y0.IP*log(1 - y) -
+      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+        y1.PC*log(y)     + y0.PC*log(1 - y) -
         (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
         (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
         log(pgnorm(q = 1 - x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
@@ -209,8 +209,8 @@ skpt.post.x.sc.1 <- function(x, y){
 skpt.post.x.sc.2 <- function(x, y){
   x*
     exp(
-      y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-        y1.IP*log(y)     + y0.IP*log(1 - y) -
+      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+        y1.PC*log(y)     + y0.PC*log(1 - y) -
         (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
         (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
         log(pgnorm(q = 1,  mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
@@ -221,8 +221,8 @@ skpt.post.x.sc.2 <- function(x, y){
 enth.post.x.sc.1 <- function(x, y){
   x*
     exp(
-      y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-        y1.IP*log(y)     + y0.IP*log(1 - y) -
+      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+        y1.PC*log(y)     + y0.PC*log(1 - y) -
         (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
         (abs(y - mu)/enth.alpha0)^enth.beta0 -
         log(pgnorm(q = 1 - x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
@@ -233,8 +233,8 @@ enth.post.x.sc.1 <- function(x, y){
 enth.post.x.sc.2 <- function(x, y){
   x*
     exp(
-      y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-        y1.IP*log(y)     + y0.IP*log(1 - y) -
+      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+        y1.PC*log(y)     + y0.PC*log(1 - y) -
         (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
         (abs(y - mu)/enth.alpha0)^enth.beta0 -
         log(pgnorm(q = 1,  mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
@@ -245,8 +245,8 @@ enth.post.x.sc.2 <- function(x, y){
 skpt.post.y.sc.1 <- function(x, y){
   y*
     exp(
-      y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-        y1.IP*log(y)     + y0.IP*log(1 - y) -
+      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+        y1.PC*log(y)     + y0.PC*log(1 - y) -
         (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
         (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
         log(pgnorm(q = 1 - x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
@@ -257,8 +257,8 @@ skpt.post.y.sc.1 <- function(x, y){
 skpt.post.y.sc.2 <- function(x, y){
   y*
     exp(
-      y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-        y1.IP*log(y)     + y0.IP*log(1 - y) -
+      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+        y1.PC*log(y)     + y0.PC*log(1 - y) -
         (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
         (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
         log(pgnorm(q = 1,  mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
@@ -269,8 +269,8 @@ skpt.post.y.sc.2 <- function(x, y){
 enth.post.y.sc.1 <- function(x, y){
   y*
     exp(
-      y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-        y1.IP*log(y)     + y0.IP*log(1 - y) -
+      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+        y1.PC*log(y)     + y0.PC*log(1 - y) -
         (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
         (abs(y - mu)/enth.alpha0)^enth.beta0 -
         log(pgnorm(q = 1 - x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
@@ -281,8 +281,8 @@ enth.post.y.sc.1 <- function(x, y){
 enth.post.y.sc.2 <- function(x, y){
   y*
     exp(
-      y1.PC*log(x + y) + y0.PC*log(1 - (x + y)) + 
-        y1.IP*log(y)     + y0.IP*log(1 - y) -
+      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
+        y1.PC*log(y)     + y0.PC*log(1 - y) -
         (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
         (abs(y - mu)/enth.alpha0)^enth.beta0 -
         log(pgnorm(q = 1,  mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
