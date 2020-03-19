@@ -21,13 +21,12 @@ mu         <- 0.39
 sig.fut    <- 0.975
 sig.eff    <- 0.975
 
-source("code_integrate.R")
-source("code_functions.R") # contains nested source("code_posteriors.R", local = TRUE)
+source("03_code_integrate.R")
+source("06_code_functions.R") # contains nested source("code_posteriors.R", local = TRUE)
 
-source("priors/skpt_joint.R")
-skpt_joint()
-
-source("priors/enth_joint.R")
+source("priors/03_enth_joint.R")
 enth_joint()
 
+source("priors/06_skpt_joint.R")
+skpt_joint()
 save.image(file = 'args_model.RData')

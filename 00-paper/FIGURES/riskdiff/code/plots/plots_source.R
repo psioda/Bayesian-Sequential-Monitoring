@@ -98,9 +98,9 @@ png('../../../figure6.png',
     height = 300*width.scale,
     pointsize=16,
     res=300)
-par(mar=c(5.1+1,4.1+1,2.1,2.1)) #c(bottom, left, top, right)
+par(mar=c(6.1+1,4.1+1,2.1,2.1)) #c(bottom, left, top, right)
 
-stretch <- 0.34
+stretch <- 0.37
 
 load(file = '../args_model.RData') # loads all model information include prior parameters
 args_simulation <- read.csv(file = "../args_simulation.csv", header = TRUE, sep = ",")
@@ -120,11 +120,9 @@ plot(figure3$p.IP[figure3$eff.mix.prob==0.25],
      xaxt="n")
 box()
 
-
-
 probs <- seq(0.25, 1, by = 0.25)
 for (i in 1:length(probs)){
-  row <- i + 1
+  row <- i + 2
   
   temp <- figure3[is.na(figure3$eff.mix.prob) == FALSE,]
   temp <- temp[temp$eff.mix.prob == probs[i],]
@@ -140,28 +138,44 @@ for (i in 1:length(probs)){
                       format(round(temp$ss.final[j],digits=1),nsmall=1)),
           side=1,line=row,at=temp$p.IP[j])
   }
-  mtext(text=paste0(probs[i],": SS"),side=1,line=row,at=stretch,adj=0)
+  text(temp$p.IP[j], temp$eff.mon.initial[j], i + 1)
+  mtext(text=paste0(i + 1),side=1,line=row,at=stretch,adj=0)
 }
 
-# 
-# #### NOW FOR NA EFF.MON.PROB ####
-# temp <- figure3[is.na(figure3$eff.mix.prob) == TRUE,]
-# 
-# lines(temp$p.IP,temp$eff.mon.initial)
-# 
-# 
-# 
+#### NOW FOR NA EFF.MON.PROB ####
+for (i in 5){
+  row <- i - 3
+  
+  temp <- figure3[is.na(figure3$eff.mix.prob) == TRUE,]
+  
+  lines(temp$p.IP,temp$eff.mon.initial)
+  
+  for (j in seq(1,length(temp$p.IP), by=3)){
+    mtext(text=paste0(#format(round(temp$ss.initial[j],digits=1),nsmall=1),
+      #" + ",
+      #format(round(temp$ss.final[j]-
+      #               temp$ss.initial[j],digits=1),nsmall=1),
+      #" = ",
+      format(round(temp$ss.final[j],digits=1),nsmall=1)),
+      side=1,line=row,at=temp$p.IP[j])
+  }
+  mtext(text=paste0(1),side=1,line=row,at=stretch,adj=0)
+  text(temp$p.IP[j], temp$eff.mon.initial[j], 1)
+  
+}
+
 axis(1,las=0,at=temp$p.IP[seq(1,length(temp$p.IP),by=3)],
      labels=format(temp$p.IP[seq(1,length(temp$p.IP),by=3)],nsmall=2))
+
+#axis(2,las=0,at=seq(0,1,by=0.1), labels=seq(0,1,by=0.1))
 
 mtext(text=c(as.expression(bquote(theta))),side=1,line=1,at=stretch,adj=0)
 
 legend('topleft',
-       legend= c(as.expression(bquote(omega == 0.25)),
-                 as.expression(bquote(omega == 0.5)),
-                 as.expression(bquote(omega == 0.75)),
-                 as.expression(bquote(omega == 1))))
-
+       legend= c("1: Adaptive Weight Mixture",
+                 "2: 75:25 Mixture (Mostly Enthusiastic)",
+                 "3: 50:50 Mixture",
+                 "4: 25:75 Mixture",
+                 "5: 100:0 Mixture (Default, All Skeptical)"))
 
 dev.off()
-

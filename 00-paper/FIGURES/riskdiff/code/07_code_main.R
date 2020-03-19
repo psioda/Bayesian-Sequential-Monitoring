@@ -65,7 +65,7 @@ for (i in 1:reps){
   
   {print(paste0("IDX ", idx, ", Simulation ", i))}
   
-  source("code_enrollment.R")
+  source("04_code_enrollment.R")
   
   for (j in c(seq(min.ss, max.ss, by = freq.mntr), max.ss)){
     
@@ -102,11 +102,6 @@ for (i in 1:reps){
   efficacy.final <- mon.result.final$eff.prob
   inner[i, "fut.mon.final"] <- (futility.final > sig.fut)
   inner[i, "eff.mon.final"] <- (efficacy.final > sig.eff)
-  
-  ####### Valentine's Day Debug  ####### 
-  #source("valentine.R")
-  #valentine(index = n.final)
-  ######################################
   
   pm.cp.result.final <- pm_cp(index = n.final)
   inner[i, "post.mean.final.PC"] <- pm.cp.result.final$pm.mean.x

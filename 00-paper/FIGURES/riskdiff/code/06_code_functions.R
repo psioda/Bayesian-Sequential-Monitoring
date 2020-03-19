@@ -10,7 +10,7 @@ pm_cp <- function(index){
   y1.PC <- sum(responses.PC[outcome.times.PC <= outcome.times.all[index]] == 1)
   y0.PC <- sum(responses.PC[outcome.times.PC <= outcome.times.all[index]] == 0)
 
-  source("code_posteriors.R", local = TRUE)
+  source("05_code_posteriors.R", local = TRUE)
   
   # posterior means
   skpt.pm.x <- (integrate_debug(skpt.post.x.sc.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
@@ -88,7 +88,7 @@ monitoring <- function(index){
   y1.PC <- sum(responses.PC[outcome.times.PC <= outcome.times.all[index]] == 1)
   y0.PC <- sum(responses.PC[outcome.times.PC <= outcome.times.all[index]] == 0)
   
-  source("code_posteriors.R", local = TRUE)
+  source("05_code_posteriors.R", local = TRUE)
   
   ## efficacy probability using skeptical prior (scaled)
   #  integrate joint prior from [delta.skpt, 1], stop if greater than 1 - epsilon

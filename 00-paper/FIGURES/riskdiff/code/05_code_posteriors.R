@@ -25,7 +25,7 @@
 # Notes: Anything with "post" refers to a function
 
 # SECTION 1: PRIORS (normalized)
-skpt.prior.1 <- function(x, y){ # for x > 0 (gamma > 0)
+skpt.prior.1 <- function(x, y){ # for x > 0 (theta > 0)
   exp(-(abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0)/(2*skpt.rd.alpha0*gamma(1/skpt.rd.beta0)/skpt.rd.beta0)*
   exp(-(abs(y - mu)/skpt.alpha0)^skpt.beta0)/(2*skpt.alpha0*gamma(1/skpt.beta0)/skpt.beta0)/
     (pgnorm(q = 1,     mu = delta.skpt, alpha = skpt.rd.alpha0, beta = skpt.rd.beta0) -
@@ -33,7 +33,7 @@ skpt.prior.1 <- function(x, y){ # for x > 0 (gamma > 0)
     (pgnorm(q = 1 - x, mu = mu,         alpha = skpt.alpha0,    beta  = skpt.beta0) -
      pgnorm(q = 0,     mu = mu,         alpha = skpt.alpha0,    beta  = skpt.beta0))
 }
-skpt.prior.2 <- function(x, y){ # for x < 0 (gamma < 0)
+skpt.prior.2 <- function(x, y){ # for x < 0 (theta < 0)
   exp(-(abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0)/(2*skpt.rd.alpha0*gamma(1/skpt.rd.beta0)/skpt.rd.beta0)*
   exp(-(abs(y - mu)/skpt.alpha0)^skpt.beta0)/(2*skpt.alpha0*gamma(1/skpt.beta0)/skpt.beta0)/
     (pgnorm(q = 1,  mu = delta.skpt, alpha = skpt.rd.alpha0, beta = skpt.rd.beta0) -
@@ -41,7 +41,7 @@ skpt.prior.2 <- function(x, y){ # for x < 0 (gamma < 0)
     (pgnorm(q = 1,  mu = mu,         alpha = skpt.alpha0,    beta  = skpt.beta0) -
      pgnorm(q = -x, mu = mu,         alpha = skpt.alpha0,    beta  = skpt.beta0))
 }
-enth.prior.1 <- function(x, y){ # for x > 0 (gamma > 0)
+enth.prior.1 <- function(x, y){ # for x > 0 (theta > 0)
   exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
   exp(-(abs(y - mu)/enth.alpha0)^enth.beta0)/(2*enth.alpha0*gamma(1/enth.beta0)/enth.beta0)/
     (pgnorm(q = 1,     mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
@@ -49,7 +49,7 @@ enth.prior.1 <- function(x, y){ # for x > 0 (gamma > 0)
     (pgnorm(q = 1 - x, mu = mu,         alpha = enth.alpha0,    beta  = enth.beta0) -
      pgnorm(q = 0,     mu = mu,         alpha = enth.alpha0,    beta  = enth.beta0))
 }
-enth.prior.2 <- function(x, y){ # for x < 0 (gamma < 0)
+enth.prior.2 <- function(x, y){ # for x < 0 (theta < 0)
   exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
     exp(-(abs(y - mu)/enth.alpha0)^enth.beta0)/(2*enth.alpha0*gamma(1/enth.beta0)/enth.beta0)/
     (pgnorm(q = 1,  mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -

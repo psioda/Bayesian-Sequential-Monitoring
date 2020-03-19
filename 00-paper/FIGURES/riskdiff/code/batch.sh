@@ -14,4 +14,4 @@
 module add r/3.6.0
 
 ## run R command
-R CMD BATCH "--no-save --args $SLURM_ARRAY_TASK_ID" code_main.R ../logs/log$SLURM_ARRAY_TASK_ID.Rout
+R CMD BATCH "--no-save --args $SLURM_ARRAY_TASK_ID" 07_code_main.R ../logs/log$SLURM_ARRAY_TASK_ID.Rout
