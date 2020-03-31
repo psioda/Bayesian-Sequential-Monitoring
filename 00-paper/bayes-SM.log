@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2020.2.12)  25 FEB 2020 08:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2020.2.12)  26 MAR 2020 16:58
 entering extended mode
 **./bayes-SM.tex
 (bayes-SM.tex
@@ -353,84 +353,68 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
 
 {C:/Users/ekwiatko/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] 
 [4] [5] [6] [7]
-[8]
-<./FIGURES/figure1a.png, id=44, 433.62pt x 433.62pt>
+<./FIGURES/figure1a.png, id=40, 433.62pt x 433.62pt>
 File: ./FIGURES/figure1a.png Graphic file (type png)
 <use ./FIGURES/figure1a.png>
-Package pdftex.def Info: ./FIGURES/figure1a.png  used on input line 380.
+Package pdftex.def Info: ./FIGURES/figure1a.png  used on input line 381.
 (pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<./FIGURES/figure1b.png, id=45, 433.62pt x 433.62pt>
+<./FIGURES/figure1b.png, id=41, 433.62pt x 433.62pt>
 File: ./FIGURES/figure1b.png Graphic file (type png)
 <use ./FIGURES/figure1b.png>
-Package pdftex.def Info: ./FIGURES/figure1b.png  used on input line 381.
+Package pdftex.def Info: ./FIGURES/figure1b.png  used on input line 382.
 (pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<./FIGURES/figure1c.png, id=46, 433.62pt x 433.62pt>
+<./FIGURES/figure1c.png, id=42, 433.62pt x 433.62pt>
 File: ./FIGURES/figure1c.png Graphic file (type png)
 <use ./FIGURES/figure1c.png>
-Package pdftex.def Info: ./FIGURES/figure1c.png  used on input line 383.
+Package pdftex.def Info: ./FIGURES/figure1c.png  used on input line 384.
 (pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<./FIGURES/figure1d.png, id=47, 433.62pt x 433.62pt>
+<./FIGURES/figure1d.png, id=43, 433.62pt x 433.62pt>
 File: ./FIGURES/figure1d.png Graphic file (type png)
 <use ./FIGURES/figure1d.png>
-Package pdftex.def Info: ./FIGURES/figure1d.png  used on input line 384.
+Package pdftex.def Info: ./FIGURES/figure1d.png  used on input line 385.
 (pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<./FIGURES/figure5c.png, id=48, 433.62pt x 433.62pt>
-File: ./FIGURES/figure5c.png Graphic file (type png)
-<use ./FIGURES/figure5c.png>
-Package pdftex.def Info: ./FIGURES/figure5c.png  used on input line 421.
-(pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<./FIGURES/figure5a.png, id=49, 433.62pt x 433.62pt>
+
+[8] [9 <./FIGURES/figure1a.png> <./FIGURES/figure1b.png> <./FIGURES/figure1c.pn
+g> <./FIGURES/figure1d.png>]
+<./FIGURES/figure5a.png, id=55, 397.485pt x 470.50781pt>
 File: ./FIGURES/figure5a.png Graphic file (type png)
 <use ./FIGURES/figure5a.png>
-Package pdftex.def Info: ./FIGURES/figure5a.png  used on input line 423.
-(pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<./FIGURES/figure5d.png, id=50, 433.62pt x 433.62pt>
-File: ./FIGURES/figure5d.png Graphic file (type png)
-<use ./FIGURES/figure5d.png>
-Package pdftex.def Info: ./FIGURES/figure5d.png  used on input line 424.
-(pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<./FIGURES/figure5b.png, id=51, 433.62pt x 433.62pt>
+Package pdftex.def Info: ./FIGURES/figure5a.png  used on input line 445.
+(pdftex.def)             Requested size: 216.81pt x 256.64781pt.
+<./FIGURES/figure5b.png, id=56, 397.485pt x 470.50781pt>
 File: ./FIGURES/figure5b.png Graphic file (type png)
 <use ./FIGURES/figure5b.png>
-Package pdftex.def Info: ./FIGURES/figure5b.png  used on input line 426.
-(pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<./FIGURES/figure5e.png, id=52, 433.62pt x 433.62pt>
-File: ./FIGURES/figure5e.png Graphic file (type png)
-<use ./FIGURES/figure5e.png>
-Package pdftex.def Info: ./FIGURES/figure5e.png  used on input line 427.
-(pdftex.def)             Requested size: 216.81pt x 216.80946pt.
- [9] [10 <./FIGURES/figure1a.png> <./FIGURES/figure1b.png> <./FIGURES/figure1c.
-png> <./FIGURES/figure1d.png>] [11 <./FIGURES/figure5c.png> <./FIGURES/figure5a
-.png (PNG copy)> <./FIGURES/figure5d.png> <./FIGURES/figure5b.png (PNG copy)> <
-./FIGURES/figure5e.png>] [12] [13]
-<./FIGURES/figure2a.png, id=76, 758.835pt x 505.89pt>
+Package pdftex.def Info: ./FIGURES/figure5b.png  used on input line 448.
+(pdftex.def)             Requested size: 216.81pt x 256.64781pt.
+ [10] [11] [12 <./FIGURES/figure5a.png> <./FIGURES/figure5b.png>] [13]
+<./FIGURES/figure2a.png, id=72, 758.835pt x 505.89pt>
 File: ./FIGURES/figure2a.png Graphic file (type png)
 <use ./FIGURES/figure2a.png>
-Package pdftex.def Info: ./FIGURES/figure2a.png  used on input line 571.
+Package pdftex.def Info: ./FIGURES/figure2a.png  used on input line 593.
 (pdftex.def)             Requested size: 505.89pt x 337.26173pt.
-<./FIGURES/figure2b.png, id=77, 758.835pt x 505.89pt>
+<./FIGURES/figure2b.png, id=73, 758.835pt x 505.89pt>
 File: ./FIGURES/figure2b.png Graphic file (type png)
 <use ./FIGURES/figure2b.png>
-Package pdftex.def Info: ./FIGURES/figure2b.png  used on input line 572.
+Package pdftex.def Info: ./FIGURES/figure2b.png  used on input line 594.
 (pdftex.def)             Requested size: 505.89pt x 337.26173pt.
  [14] [15 <./FIGURES/figure2a.png> <./FIGURES/figure2b.png>]
-<./FIGURES/figure3a.png, id=86, 758.835pt x 505.89pt>
+<./FIGURES/figure3a.png, id=82, 758.835pt x 505.89pt>
 File: ./FIGURES/figure3a.png Graphic file (type png)
 <use ./FIGURES/figure3a.png>
-Package pdftex.def Info: ./FIGURES/figure3a.png  used on input line 590.
+Package pdftex.def Info: ./FIGURES/figure3a.png  used on input line 612.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-<./FIGURES/figure3b.png, id=87, 758.835pt x 505.89pt>
+<./FIGURES/figure3b.png, id=83, 758.835pt x 505.89pt>
 File: ./FIGURES/figure3b.png Graphic file (type png)
 <use ./FIGURES/figure3b.png>
-Package pdftex.def Info: ./FIGURES/figure3b.png  used on input line 591.
+Package pdftex.def Info: ./FIGURES/figure3b.png  used on input line 613.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-<./FIGURES/figure4.png, id=88, 758.835pt x 505.89pt>
+<./FIGURES/figure4.png, id=84, 758.835pt x 505.89pt>
 File: ./FIGURES/figure4.png Graphic file (type png)
 <use ./FIGURES/figure4.png>
-Package pdftex.def Info: ./FIGURES/figure4.png  used on input line 616.
+Package pdftex.def Info: ./FIGURES/figure4.png  used on input line 638.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
 
-Overfull \hbox (1.42079pt too wide) in paragraph at lines 642--643
+Overfull \hbox (1.42079pt too wide) in paragraph at lines 664--665
 \OT1/cmr/m/n/12 Consider the trial ``The Pe-di-atric Lu-pus Trial of Be-li-muma
 b Plus Back-ground Stan-dard Ther-apy (PLUTO)"
  []
@@ -439,46 +423,52 @@ b Plus Back-ground Stan-dard Ther-apy (PLUTO)"
 re4.png>]
 
 LaTeX Warning: Reference `fig:ex2varyomega' on page 19 undefined on input line 
-704.
+721.
+
+
+LaTeX Warning: Reference `eq:ex2efficacy' on page 19 undefined on input line 72
+1.
 
 [19]
-<./FIGURES/figure6.png, id=105, 758.835pt x 505.89pt>
+<./FIGURES/figure6.png, id=101, 758.835pt x 505.89pt>
 File: ./FIGURES/figure6.png Graphic file (type png)
 <use ./FIGURES/figure6.png>
-Package pdftex.def Info: ./FIGURES/figure6.png  used on input line 707.
+Package pdftex.def Info: ./FIGURES/figure6.png  used on input line 725.
 (pdftex.def)             Requested size: 505.89pt x 337.26173pt.
-<./FIGURES/figureS1.png, id=106, 758.835pt x 505.89pt>
+<./FIGURES/figureS1.png, id=102, 758.835pt x 505.89pt>
 File: ./FIGURES/figureS1.png Graphic file (type png)
 <use ./FIGURES/figureS1.png>
-Package pdftex.def Info: ./FIGURES/figureS1.png  used on input line 722.
+Package pdftex.def Info: ./FIGURES/figureS1.png  used on input line 740.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
- [20 <./FIGURES/figure6.png>] [21 <./FIGURES/figureS1.png>]
-<./FIGURES/figureS2a.png, id=115, 758.835pt x 505.89pt>
+ [20 <./FIGURES/figure6.png>]
+<./FIGURES/figureS2a.png, id=107, 758.835pt x 505.89pt>
 File: ./FIGURES/figureS2a.png Graphic file (type png)
 <use ./FIGURES/figureS2a.png>
-Package pdftex.def Info: ./FIGURES/figureS2a.png  used on input line 740.
+Package pdftex.def Info: ./FIGURES/figureS2a.png  used on input line 758.
 (pdftex.def)             Requested size: 505.89pt x 337.26173pt.
-<./FIGURES/figureS2b.png, id=116, 758.835pt x 505.89pt>
+<./FIGURES/figureS2b.png, id=108, 758.835pt x 505.89pt>
 File: ./FIGURES/figureS2b.png Graphic file (type png)
 <use ./FIGURES/figureS2b.png>
-Package pdftex.def Info: ./FIGURES/figureS2b.png  used on input line 741.
+Package pdftex.def Info: ./FIGURES/figureS2b.png  used on input line 759.
 (pdftex.def)             Requested size: 505.89pt x 337.26173pt.
 
 
-LaTeX Warning: Float too large for page by 41.07346pt on input line 744.
+LaTeX Warning: Float too large for page by 41.07346pt on input line 762.
 
-<./FIGURES/figureS2c.png, id=117, 758.835pt x 505.89pt>
+[21 <./FIGURES/figureS1.png>]
+<./FIGURES/figureS2c.png, id=113, 758.835pt x 505.89pt>
 File: ./FIGURES/figureS2c.png Graphic file (type png)
 <use ./FIGURES/figureS2c.png>
-Package pdftex.def Info: ./FIGURES/figureS2c.png  used on input line 748.
+Package pdftex.def Info: ./FIGURES/figureS2c.png  used on input line 766.
 (pdftex.def)             Requested size: 505.89pt x 337.26173pt.
-<./FIGURES/figureS2d.png, id=118, 758.835pt x 505.89pt>
+<./FIGURES/figureS2d.png, id=114, 758.835pt x 505.89pt>
 File: ./FIGURES/figureS2d.png Graphic file (type png)
 <use ./FIGURES/figureS2d.png>
-Package pdftex.def Info: ./FIGURES/figureS2d.png  used on input line 749.
+Package pdftex.def Info: ./FIGURES/figureS2d.png  used on input line 767.
 (pdftex.def)             Requested size: 505.89pt x 337.26173pt.
 
-LaTeX Warning: Float too large for page by 41.07346pt on input line 752.
+
+LaTeX Warning: Float too large for page by 41.07346pt on input line 770.
 
 [22] [23 <./FIGURES/figureS2a.png> <./FIGURES/figureS2b.png>] [24 <./FIGURES/fi
 gureS2c.png> <./FIGURES/figureS2d.png>] (bayes-SM.bbl
@@ -502,32 +492,32 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5091 strings out of 493305
- 74731 string characters out of 3138865
- 149076 words of memory out of 3000000
- 8534 multiletter control sequences out of 15000+200000
+ 5070 strings out of 493305
+ 74284 string characters out of 3138865
+ 149015 words of memory out of 3000000
+ 8516 multiletter control sequences out of 15000+200000
  15978 words of font info for 60 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  45i,13n,40p,1685b,344s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/s
 ymbols/msbm10.pfb>
-Output written on bayes-SM.pdf (27 pages, 1251111 bytes).
+Output written on bayes-SM.pdf (27 pages, 1056102 bytes).
 PDF statistics:
- 195 PDF objects out of 1000 (max. 8388607)
+ 191 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 86 words of extra memory for PDF output out of 10000 (max. 10000000)
 

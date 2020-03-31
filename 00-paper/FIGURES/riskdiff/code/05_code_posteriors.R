@@ -71,7 +71,7 @@ if (is.na(eff.mix.prob)){
   skpt.lik <- skpt.prior.2(IP.mle - PC.mle, PC.mle)
   enth.lik <- enth.prior.2(IP.mle - PC.mle, PC.mle)
   }
-  eff.mix.prob <- skpt.lik/sum(skpt.lik, enth.lik)
+  eff.mix.prob <- 0.25 + 0.75*(skpt.lik/sum(skpt.lik, enth.lik)) # 3-19-20 update
 }
 
 # SECTION 3: POSTERIOR DENSITIES

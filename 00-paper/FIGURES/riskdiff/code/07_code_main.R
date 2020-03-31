@@ -6,12 +6,11 @@
 ###
 ##################################
 
-rm(list = ls())
-
+for (idx in 101){
+  
 if (.Platform$OS.type == "windows") {
   library(pracma)
   library(gnorm)
-  idx <- 1
  }
 
 if (.Platform$OS.type == "unix")    { 
@@ -47,7 +46,8 @@ names <- c("eff.mon.initial",
          "post.mean.initial.PC",
          "post.mean.final.PC",
          "cov.initial",
-         "cov.final")
+         "cov.final",
+         "eff.mix.prob")
 
 inner <- array(NA, 
              dim = c(reps, length(names)), 
@@ -102,6 +102,7 @@ for (i in 1:reps){
   efficacy.final <- mon.result.final$eff.prob
   inner[i, "fut.mon.final"] <- (futility.final > sig.fut)
   inner[i, "eff.mon.final"] <- (efficacy.final > sig.eff)
+  inner[i, "eff.mix.prob"]  <- mon.result.final$eff.mix.prob
   
   pm.cp.result.final <- pm_cp(index = n.final)
   inner[i, "post.mean.final.PC"] <- pm.cp.result.final$pm.mean.x
@@ -122,6 +123,10 @@ outer.p.agree["p.agree"] <- sum((inner.p[,"initial.p"] > sig.eff) == (inner.p[,"
 outer.p.agree["efficacy"] <- sum((inner.p[,"initial.p"] > sig.eff) & (inner.p[,"final.p"] > sig.eff)) / reps
 outer.p.agree["conditional"] <- sum((inner.p[,"initial.p"] > sig.eff) & (inner.p[,"final.p"] > sig.eff)) / sum(inner.p[,"initial.p"] > sig.eff)
 
+Table0 <- data.frame(t(inner))
+Table0$idx <- idx
+write.csv(Table0, file = paste0("../output/Table0/", idx, "Table0.csv"))
+
 Table1 <- data.frame(t(outer))
 Table1$idx <- idx
 write.csv(Table1, file = paste0("../output/Table1/", idx, "Table1.csv"))
@@ -133,3 +138,5 @@ write.csv(Table2, file = paste0("../output/Table2/", idx, "Table2.csv"))
 Table3<-data.frame(t(outer.p.agree))
 Table3$idx <- idx
 write.csv(Table3, file = paste0("../output/Table3/", idx, "Table3.csv"))
+
+}

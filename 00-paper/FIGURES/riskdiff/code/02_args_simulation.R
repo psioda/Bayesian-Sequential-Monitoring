@@ -20,7 +20,7 @@ simulation <- expand.grid(
                      0.05, # cred.tail
                      100,  # max.ss
                      70,   # min.ss
-                     3000)   # reps
+                     2000)   # reps
 
 names(simulation) <- c(
                   "p.IP",

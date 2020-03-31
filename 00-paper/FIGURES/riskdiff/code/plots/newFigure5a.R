@@ -34,6 +34,8 @@ for (i in 1:nrow(grid)){
 }
 
 par(mar=c(5.1, 4.1, 4.1, 2.1)) # c(bottom, left, top, right))
+width.scale<-6
+png('figure5a.png',width = 300*2*width.scale, height = 300*width.scale,pointsize=16,res=300)
 
 plot(grid.skpt$x,grid.skpt$y,
      xlab="",
@@ -42,7 +44,7 @@ plot(grid.skpt$x,grid.skpt$y,
      xaxt='n',
      yaxt='n')
 
-title(ylab=as.expression(bquote("Response Probability")),line=3)
+title(ylab=as.expression(bquote("Control Response")),line=3)
 title(xlab=as.expression(bquote("Risk Difference")),line=3)
 
 cuts<-c(0,1E-11,1E-12,1E-10,1E-9,1E-8,1E-7,1E-6,1E-5,1E-4,1E-3,1E-2,1E-1,1,10,20,30)
@@ -69,9 +71,53 @@ polygon(c(outer.x,outer.x[1]),
         col=colors[i], 
         border = NA)
 
+# segments(x0=delta.enth,
+#          x1=delta.enth,
+#          y0=0,
+#          y1=1-delta.enth)
+# 
+# 
+# segments(x0=delta.intr,
+#          x1=delta.intr,
+#          y0=0,
+#          y1=1-delta.intr)
 
-axis(1,at=c(delta.skpt,delta.enth,-1,1),
-     labels=c(as.expression(bquote(theta[0])),as.expression(bquote(theta[1])),-1,1))
+mu1 <- mu + 0.2
+mu2 <- mu + 0.1
 
-axis(2,at=c(mu,0,1),
-     labels=c(as.expression(bquote(mu[0])),0,1))
+# segments(y0=mu1,
+#          y1=mu1,
+#          x0=-mu1,
+#          x1=1-mu1)
+# 
+# segments(y0=mu2,
+#          y1=mu2,
+#          x0=-mu2,
+#          x1=1-mu2)
+
+tail.enth <- 0.025
+scale     <- 1
+legend("topright",
+       legend= c(as.expression(bquote(mode(eta) == eta[0])),
+                 as.expression(bquote(P(eta< eta[1])==.(1-tail.enth))),
+                 as.expression(bquote(P(eta %in% (eta[1]*","*(eta[0]+eta[1])/2)==.(round((pnorm(qnorm(tail.enth)/2)-tail.enth)*scale,3)))))))
+
+legend("bottomleft",
+       legend= c(as.expression(bquote(mode(theta) == theta[0])),
+                 as.expression(bquote(P(theta< theta[1])==.(1-tail.enth))),
+                 as.expression(bquote(P(theta %in% (theta[1]*","*(theta[0]+theta[1])/2)==.(round((pnorm(qnorm(tail.enth)/2)-tail.enth)*scale,3)))))))
+
+axis(1,at=c(delta.skpt,delta.enth,-1,1,delta.intr),
+     labels=c(as.expression(bquote(theta[0])),as.expression(bquote(theta[1])),-1,1,as.expression(bquote(theta[m]))))
+
+axis(2,at=c(mu,
+            0,
+            1,
+            mu1,
+            mu2),
+     labels=c(as.expression(bquote(eta[0])),
+              0,
+              1,
+              as.expression(bquote(eta[1])),
+              as.expression(bquote(eta[m]))))
+dev.off()

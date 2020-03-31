@@ -102,7 +102,8 @@ par(mar=c(6.1+1,4.1+1,2.1,2.1)) #c(bottom, left, top, right)
 
 stretch <- 0.37
 
-load(file = '../args_model.RData') # loads all model information include prior parameters
+#load(file = '../args_model.RData') # loads all model information include prior parameters
+setwd("P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code/plots")
 args_simulation <- read.csv(file = "../args_simulation.csv", header = TRUE, sep = ",")
 
 Table1 <- read.csv(file = "../../output/Table1_merged.csv", header = TRUE, sep = ",")
@@ -142,11 +143,16 @@ for (i in 1:length(probs)){
   mtext(text=paste0(i + 1),side=1,line=row,at=stretch,adj=0)
 }
 
+
+Table1 <- read.csv(file = "../../output/Table0_merged.csv", header = TRUE, sep = ",")
+combined1 <- merge(args_simulation, Table1, by.x = "X", by.y = "idx")
+figure3 <- combined1
+
 #### NOW FOR NA EFF.MON.PROB ####
 for (i in 5){
   row <- i - 3
   
-  temp <- figure3[is.na(figure3$eff.mix.prob) == TRUE,]
+  temp <- figure3[is.na(figure3$eff.mix.prob.x) == TRUE,]
   
   lines(temp$p.IP,temp$eff.mon.initial)
   
@@ -172,10 +178,11 @@ axis(1,las=0,at=temp$p.IP[seq(1,length(temp$p.IP),by=3)],
 mtext(text=c(as.expression(bquote(theta))),side=1,line=1,at=stretch,adj=0)
 
 legend('topleft',
-       legend= c("1: Adaptive Weight Mixture",
-                 "2: 75:25 Mixture (Mostly Enthusiastic)",
-                 "3: 50:50 Mixture",
-                 "4: 25:75 Mixture",
-                 "5: 100:0 Mixture (Default, All Skeptical)"))
+       legend= c("1: Adaptive Weight Mixture (25% maximum)",
+                 "2: 25% Skeptical (Mostly Enthusiastic)",
+                 "3: 50% Skeptical",
+                 "4: 75% Skeptical Mixture",
+                 "5: 100% Skeptical (Default)"))
 
 dev.off()
+
