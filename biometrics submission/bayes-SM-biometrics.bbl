@@ -1,0 +1,171 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Anscombe}{Anscombe}{1963}]{Anscombe1963}
+Anscombe, F.~J. (1963).
+\newblock Sequential medical trials.
+\newblock {\em Journal of the American Statistical Association} {\bf 58,}
+  365--383.
+
+\bibitem[\protect\citeauthoryear{Barnard}{Barnard}{1947}]{Barnard1947}
+Barnard, G.~A. (1947).
+\newblock A review of sequential analysis by abraham wald.
+\newblock {\em Journal of the American Statistical Association} pages 658--669.
+
+\bibitem[\protect\citeauthoryear{Berger and Wolpert}{Berger and
+  Wolpert}{1988}]{Berger1988}
+Berger, J.~O. and Wolpert, R.~L. (1988).
+\newblock {\em The likelihood principle (2nd ed.).}
+\newblock Hayward (CA): Institute of Mathematical Statistics.
+
+\bibitem[\protect\citeauthoryear{Berry}{Berry}{1989}]{Berry1989}
+Berry, D.~A. (1989).
+\newblock Monitoring accumulating data in a clinical trial.
+\newblock {\em Biometrics} {\bf 45,} 1197.
+
+\bibitem[\protect\citeauthoryear{Berry}{Berry}{1993}]{Berry1993}
+Berry, D.~A. (1993).
+\newblock A case for bayesianism in clinical trials.
+\newblock {\em Statistics in Medicine} {\bf 12,} 1377--1404.
+
+\bibitem[\protect\citeauthoryear{Borchers}{Borchers}{2019}]{Borchers2019}
+Borchers, H.~W. (2019).
+\newblock pracma: Practical numerical math functions.
+
+\bibitem[\protect\citeauthoryear{Byrd, Lu, Nocedal, and Zhu}{Byrd
+  et~al.}{1995}]{Byrd1995}
+Byrd, R.~H., Lu, P., Nocedal, J., and Zhu, C. (1995).
+\newblock A limited memory algorithm for bound constrained optimization.
+\newblock {\em SIAM Journal on Scientific Computing} {\bf 16,} 1190--1208.
+
+\bibitem[\protect\citeauthoryear{Cornfield}{Cornfield}{1966a}]{Cornfield1966a}
+Cornfield, J. (1966a).
+\newblock A bayesian test of some classical hypotheses, with applications to
+  sequential clinical trials.
+\newblock {\em Journal of the American Statistical Association} {\bf 61,} 577.
+
+\bibitem[\protect\citeauthoryear{Cornfield}{Cornfield}{1966b}]{Cornfield1966b}
+Cornfield, J. (1966b).
+\newblock Sequential trials, sequential analysis and the likelihood principle.
+\newblock {\em The American Statistician} {\bf 20,} 18--23.
+
+\bibitem[\protect\citeauthoryear{Edwards, Lindman, and Savage}{Edwards
+  et~al.}{1963}]{Edwards1963}
+Edwards, W., Lindman, H., and Savage, L.~J. (1963).
+\newblock Bayesian statistical inference for psychological research.
+\newblock {\em Psychological Review} {\bf 70,} 193--242.
+
+\bibitem[\protect\citeauthoryear{Fayers, Ashby, and Parmar}{Fayers
+  et~al.}{1997}]{Fayers1997}
+Fayers, P.~M., Ashby, D., and Parmar, M. K.~B. (1997).
+\newblock Tutorial in biostatistics: Bayesian data monitoring in clinical
+  trials.
+\newblock {\em Statistics in Medicine} {\bf 16,} 1413--1430.
+
+\bibitem[\protect\citeauthoryear{Freedman and Spiegelhalter}{Freedman and
+  Spiegelhalter}{1989}]{Freedman1989}
+Freedman, L.~S. and Spiegelhalter, D.~J. (1989).
+\newblock Comparison of bayesian with group sequential methods for monitoring
+  clinical trials.
+\newblock {\em Controlled Clinical Trials} {\bf 10,} 357--367.
+
+\bibitem[\protect\citeauthoryear{Freedman and Spiegelhalter}{Freedman and
+  Spiegelhalter}{1992}]{Freedman1992}
+Freedman, L.~S. and Spiegelhalter, D.~J. (1992).
+\newblock Application of bayesian statistics to decision making during a
+  clinical trial.
+\newblock {\em Statistics in Medicine} {\bf 11,} 23--35.
+
+\bibitem[\protect\citeauthoryear{Grieve}{Grieve}{2016}]{Grieve2016}
+Grieve, A.~P. (2016).
+\newblock Idle thoughts of a ‘well-calibrated’ bayesian in clinical drug
+  development.
+\newblock {\em Pharmaceutical Statistics} {\bf 15,} 96--108.
+
+\bibitem[\protect\citeauthoryear{Griffin}{Griffin}{2018}]{Griffin2018}
+Griffin, M. (2018).
+\newblock Working with the exponential power distribution using gnorm.
+
+\bibitem[\protect\citeauthoryear{Hyams, Damaraju, Blank, Johanns, Guzzo,
+  Winter, Kugathasan, Cohen, Markowitz, Escher, Veereman–Wauters, Crandall,
+  Baldassano, and Griffiths}{Hyams et~al.}{2012}]{Hyams2012}
+Hyams, J., Damaraju, L., Blank, M., Johanns, J., Guzzo, C., Winter, H.~S.,
+  Kugathasan, S., Cohen, S., Markowitz, J., Escher, J.~C., Veereman–Wauters,
+  G., Crandall, W., Baldassano, R., and Griffiths, A. (2012).
+\newblock Induction and maintenance therapy with infliximab for children with
+  moderate to severe ulcerative colitis.
+\newblock {\em Clinical Gastroenterology and Hepatology} {\bf 10,} 391 --
+  399.e1.
+
+\bibitem[\protect\citeauthoryear{Kopp-Schneider, Wiesenfarth, Witt, Edelmann,
+  Witt, and Abel}{Kopp-Schneider et~al.}{2019}]{Kopp-Schneider2019}
+Kopp-Schneider, A., Wiesenfarth, M., Witt, R., Edelmann, D., Witt, O., and
+  Abel, U. (2019).
+\newblock Monitoring futility and efficacy in phase ii trials with bayesian
+  posterior distributions—a calibration approach.
+\newblock {\em Biometrical Journal} {\bf 61,} 488--502.
+
+\bibitem[\protect\citeauthoryear{Nadarajah}{Nadarajah}{2005}]{Nadarajah2005}
+Nadarajah, S. (2005).
+\newblock A generalized normal distribution.
+\newblock {\em Journal of Applied Statistics} {\bf 32,} 685--694.
+
+\bibitem[\protect\citeauthoryear{O'Brien and Fleming}{O'Brien and
+  Fleming}{1979}]{OBrien1979}
+O'Brien, P.~C. and Fleming, T.~R. (1979).
+\newblock A multiple testing procedure for clinical trials.
+\newblock {\em Biometrics} {\bf 35,} 549--556.
+
+\bibitem[\protect\citeauthoryear{Parmar and Machin}{Parmar and
+  Machin}{1993}]{Parmar1993}
+Parmar, M.~K. and Machin, D. (1993).
+\newblock Monitoring clinical trials: experience of, and proposals under
+  consideration by, the cancer therapy committee of the british medical
+  research council.
+\newblock {\em Statistics in Medicine} {\bf 12,} 497--504.
+
+\bibitem[\protect\citeauthoryear{Pocock}{Pocock}{1977}]{Pocock1977}
+Pocock, S.~J. (1977).
+\newblock Group sequential methods in the design and analysis of clinical
+  trials.
+\newblock {\em Biometrika} {\bf 64,} 191--199.
+
+\bibitem[\protect\citeauthoryear{{R Core Team}}{{R Core Team}}{2017}]{R2017}
+{R Core Team} (2017).
+\newblock R: A language and environment for statistical computing.
+
+\bibitem[\protect\citeauthoryear{Rutgeerts, Sandborn, Feagan, Reinisch, Olson,
+  Johanns, Travers, Rachmilewitz, Hanauer, Lichtenstein, de~Villiers, Present,
+  Sands, and Colombel}{Rutgeerts et~al.}{2005}]{Rutgeerts2005}
+Rutgeerts, P., Sandborn, W.~J., Feagan, B.~G., Reinisch, W., Olson, A.,
+  Johanns, J., Travers, S., Rachmilewitz, D., Hanauer, S.~B., Lichtenstein,
+  G.~R., de~Villiers, W.~J., Present, D., Sands, B.~E., and Colombel, J.~F.
+  (2005).
+\newblock Infliximab for induction and maintenance therapy for ulcerative
+  colitis.
+\newblock {\em New England Journal of Medicine} {\bf 353,} 2462--2476.
+
+\bibitem[\protect\citeauthoryear{Spiegelhalter, Freedman, and
+  Parmar}{Spiegelhalter et~al.}{1993}]{Spiegelhalter1993}
+Spiegelhalter, D.~J., Freedman, L.~S., and Parmar, M. K.~B. (1993).
+\newblock Applying bayesian ideas in drug development and clinical trials.
+\newblock {\em Statistics in Medicine} {\bf 12,} 1501--1511.
+
+\bibitem[\protect\citeauthoryear{Spiegelhalter, Freedman, and
+  Parmar}{Spiegelhalter et~al.}{1994}]{Spiegelhalter1994}
+Spiegelhalter, D.~J., Freedman, L.~S., and Parmar, M. K.~B. (1994).
+\newblock Bayesian approaches to randomized trials.
+\newblock {\em Journal of the Royal Statistical Society. Series A (Statistics
+  in Society)} {\bf 157,} 357--416.
+
+\bibitem[\protect\citeauthoryear{{U.S. Congress}}{{U.S.
+  Congress}}{2016}]{USCongress2016}
+{U.S. Congress} (2016).
+\newblock 21st century cures act (pubic law 114-255, 130 stat 1033-1344).
+
+\bibitem[\protect\citeauthoryear{{U.S. Food and Drug Administration}}{{U.S.
+  Food and Drug Administration}}{2017}]{FDA2017}
+{U.S. Food and Drug Administration} (2017).
+\newblock Pdufa reauthorization performance goals and procedures fiscal years
+  2018 through 2022.
+
+\end{thebibliography}
