@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2020.2.12)  8 APR 2020 12:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2020.2.12)  22 APR 2020 00:22
 entering extended mode
 **./bayes-SM-biometrics.tex
 (bayes-SM-biometrics.tex
@@ -299,9 +299,6 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [2]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 3
  []
@@ -328,12 +325,15 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [6]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 7
  []
 
 [7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1314) has occurred while \output is active []
 
 
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
@@ -341,6 +341,9 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [8]
+Underfull \vbox (badness 2158) has occurred while \output is active []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 9
  []
@@ -351,7 +354,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [10]
-Overfull \hbox (8.11914pt too wide) in paragraph at lines 542--546
+Overfull \hbox (8.11914pt too wide) in paragraph at lines 546--550
  \OT1/cmr/m/n/12 2.2.1 \OT1/cmr/m/it/12 Nor-mal Dis-tri-bu-tion $\OMS/cmsy/m/n/
 12 N[]\OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 ; q\OT1/cmr/m/n/12 )$\OT1/cmr/m/it/12
  . [] \OT1/cmr/m/n/12 De-fine $\OML/cmm/m/it/12  \OMS/cmsy/m/n/12  N[]\OT1/cm
@@ -373,7 +376,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [12]
-Overfull \hbox (33.91699pt too wide) in paragraph at lines 567--568
+Overfull \hbox (33.91699pt too wide) in paragraph at lines 571--572
 [][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; ; \OT1/cmr/m/n/12 )$, is $\OML/cmm/m
 /it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12
  c \OMS/cmsy/m/n/12  [] [] []$ \OT1/cmr/m/n/12 where $\OML/cmm/m/it/12 c \OT1/
@@ -383,6 +386,9 @@ cmr/m/n/12 = []([])[]$.
 \openout3 = `bayes-SM-biometrics.fff'.
 
 (bayes-SM-biometrics.fff)
+Underfull \vbox (badness 4967) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 13
  []
@@ -403,7 +409,12 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [16]
-Overfull \hbox (33.48555pt too wide) in paragraph at lines 702--703
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 17
+ []
+
+[17]
+Overfull \hbox (33.48555pt too wide) in paragraph at lines 710--711
 []\OT1/cmr/m/n/12 The skep-ti-cal mon-i-tor-ing prior is $\OML/cmm/m/it/12 []\
 OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 []
 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12  \OML/cm
@@ -414,19 +425,11 @@ m/m/it/12 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 []\OMS/cmsy/m/n/12 j\OML/cmm/m/it
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 17
- []
-
-[17]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 18
  []
 
 [18] (bayes-SM-biometrics.bbl
-Underfull \vbox (badness 2020) has occurred while \output is active []
+Underfull \vbox (badness 3724) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -639,42 +642,38 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 [32
 
  <../00-paper/FIGURES/figureS2c.png> <../00-paper/FIGURES/figureS2d.png>])
-(bayes-SM-biometrics.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+(bayes-SM-biometrics.aux) ) 
 Here is how much of TeX's memory you used:
- 3311 strings out of 493305
- 44894 string characters out of 3138865
- 112818 words of memory out of 3000000
- 6781 multiletter control sequences out of 15000+200000
+ 3302 strings out of 493305
+ 44726 string characters out of 3138865
+ 110659 words of memory out of 3000000
+ 6772 multiletter control sequences out of 15000+200000
  21119 words of font info for 75 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,34p,1770b,330s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib7.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
-6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on bayes-SM-biometrics.pdf (33 pages, 1180724 bytes).
+ 41i,9n,34p,1770b,326s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cmextra/cmbsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmb
+x12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cmextra/cmmib7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+mr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><
+C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti1
+2.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on bayes-SM-biometrics.pdf (33 pages, 1180612 bytes).
 PDF statistics:
  234 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

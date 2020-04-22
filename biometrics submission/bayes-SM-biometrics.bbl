@@ -48,12 +48,6 @@ Cornfield, J. (1966b).
 \newblock Sequential trials, sequential analysis and the likelihood principle.
 \newblock {\em The American Statistician} {\bf 20,} 18--23.
 
-\bibitem[\protect\citeauthoryear{Edwards, Lindman, and Savage}{Edwards
-  et~al.}{1963}]{Edwards1963}
-Edwards, W., Lindman, H., and Savage, L.~J. (1963).
-\newblock Bayesian statistical inference for psychological research.
-\newblock {\em Psychological Review} {\bf 70,} 193--242.
-
 \bibitem[\protect\citeauthoryear{Fayers, Ashby, and Parmar}{Fayers
   et~al.}{1997}]{Fayers1997}
 Fayers, P.~M., Ashby, D., and Parmar, M. K.~B. (1997).
@@ -115,14 +109,6 @@ O'Brien, P.~C. and Fleming, T.~R. (1979).
 \newblock A multiple testing procedure for clinical trials.
 \newblock {\em Biometrics} {\bf 35,} 549--556.
 
-\bibitem[\protect\citeauthoryear{Parmar and Machin}{Parmar and
-  Machin}{1993}]{Parmar1993}
-Parmar, M.~K. and Machin, D. (1993).
-\newblock Monitoring clinical trials: experience of, and proposals under
-  consideration by, the cancer therapy committee of the british medical
-  research council.
-\newblock {\em Statistics in Medicine} {\bf 12,} 497--504.
-
 \bibitem[\protect\citeauthoryear{Pocock}{Pocock}{1977}]{Pocock1977}
 Pocock, S.~J. (1977).
 \newblock Group sequential methods in the design and analysis of clinical
@@ -157,15 +143,12 @@ Spiegelhalter, D.~J., Freedman, L.~S., and Parmar, M. K.~B. (1994).
 \newblock {\em Journal of the Royal Statistical Society. Series A (Statistics
   in Society)} {\bf 157,} 357--416.
 
-\bibitem[\protect\citeauthoryear{{U.S. Congress}}{{U.S.
-  Congress}}{2016}]{USCongress2016}
-{U.S. Congress} (2016).
-\newblock 21st century cures act (pubic law 114-255, 130 stat 1033-1344).
-
-\bibitem[\protect\citeauthoryear{{U.S. Food and Drug Administration}}{{U.S.
-  Food and Drug Administration}}{2017}]{FDA2017}
-{U.S. Food and Drug Administration} (2017).
-\newblock Pdufa reauthorization performance goals and procedures fiscal years
-  2018 through 2022.
+\bibitem[\protect\citeauthoryear{Travis, Neuner, Rothwell, Levin, Nie, Niu,
+  Marathe, and Nikolov}{Travis et~al.}{2019}]{Travis2019}
+Travis, J., Neuner, R., Rothwell, R., Levin, G., Nie, L., Niu, J., Marathe, A.,
+  and Nikolov, N. (2019).
+\newblock Application of bayesian statistics to support approval of intravenous
+  belimumab in children with systemic lupus erythematosus in the united states.
+\newblock In {\em 2019 ACR/ARP Annual Meeting}.
 
 \end{thebibliography}
