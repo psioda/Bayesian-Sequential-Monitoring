@@ -200,11 +200,11 @@ Silver Spring, Maryland, USA}
 %  put the summary for your paper here
 
 \begin{abstract}
-\tcr{
-This introduction is much too generic. The introduction needs to (1) briefly highlight the motivation (using one or two sentences; valuee of sequential monitoring and incorporating external information into the design prospectively), (2) fully describe \textit{all} novel aspects of the paper (this is go a long way to getting the paper accepted or rejected), and (3) how the method is demonstrated in the paper. I have modified the final sentence which I think is good to keep but feel free to tweak.
-}
-
-Conclusions from Bayesian clinical trials are most useful when specification of prior distributions are intuitively related to the research objectives. This paper defines monitoring priors using generalized normal distributions which reflect prior belief defined using a standardized definition of compelling level of evidence. The generalized normal distribution adds a layer of flexibility to the foundational normal distribution to reflect prior belief, which has a tangible impact on the operating characteristics of a clinical trial design. \tcb{The proposed method is  demonstrated by designing a simple single-arm proof-of-activity trial in pediatric ulcerative colitis and a two-group randomized controlled trial in pediatric lupus with both designs incorporating information from adult trials to varying degrees.}
+\begin{enumerate}
+\item briefly highlight the motivation (using one or two sentences; valuee of sequential monitoring and incorporating external information into the design prospectively)
+\item fully describe \textit{all} novel aspects of the paper (this is go a long way to getting the paper accepted or rejected)
+\item The proposed method is  demonstrated by designing a simple single-arm proof-of-activity trial in pediatric ulcerative colitis and a two-group randomized controlled trial in pediatric lupus with both designs incorporating information from adult trials to varying degrees.
+\end{enumerate}
 \end{abstract}
 
 %  Please place your key words in alphabetical order, separated
@@ -240,39 +240,25 @@ Conclusions from Bayesian clinical trials are most useful when specification of 
 %  For that matter, please do not attempt to redefine anything!
 
 \section{Introduction}
-In the clinical development of a therapeutic product, \tcb{often challenges} impede a clinical trial from reaching its \tcb{primary objectives} (e.g. difficulty in enrolling, limited patient populations, long latency in observing the outcome of interest, etc.). In settings where \tcb{pertinent existing data are available, Bayesian designs offer a natural approach for incorporating that information into the design and analysis of future trials}. \tcb{An example where Bayesian methods could be valuable is in the area of pediatric clinical trials where enrollment is often difficult and where relevant data from adult trials are often available}. Utilizing information from the adult trials may result in pediatric trials \tcb{that are more efficient (e.g., increased power, fewer subjects required and/or shorter trial durations)}.
+In the clinical development of a therapeutic product, it is often a challenge to obtain sufficient outcomes for the primary objective (e.g. difficulty in enrolling, limited patient populations). Bayesian sequential methods are ideal to address this uncertainty in outcome ascertainment by allowing the possibility for conclusions to be made earlier without inherent restrictions for frequent or even continual data monitoring. The advantages of sequential monitoring are especially apparent when there are additional difficulties in obtaining outcomes (e.g. long latency in observing the outcome, substantial financial cost associated with each patient). In settings where pertinent existing data are available, Bayesian designs offer a natural approach for incorporating that information into the design and analysis of future trials. An example where sequential Bayesian methods are valuable is in the area of pediatric clinical trials, where enrollment is often difficult and where relevant data from adult trials are often available. Utilizing information from the adult trials may result in pediatric trials that are more efficient (e.g., increased power, fewer subjects required and/or shorter trial durations).
 
-\tcr{This above paragraph should briefly introduce sequential monitoring. As it is, the first paragraph seems to imply Bayesian methods are all about information borrowing but the sequential monitoring aspect is also very important. The total paragraph length should be no longer than twice the current one.}
+We present a framework for sequential monitoring that makes structured use of external data and can be consistently applied to a wide range of clinical trial applications. Such standardization of fundamental concepts relating to the trial design provides for coherent interpretation that is appealing to regulators. The basis for this framework is the requirement that parameterization of the monitoring priors and specification of stopping criteria are algorithmic byproducts of the trial hypothesis and relevant external data summaries. This framework defines monitoring priors with a unifying distribution applicable to a wide array of data types (i.e. generalized normal distribution with optional truncation). A procedure for conditional-marginal specification is presented as the default option in multi-parameter settings. This paper uses posterior probabilities to highlight how the level of evidence at interim analyses is linked to monitoring prior specification. 
 
-\vspace{1cm}
-\tcr{At this point in the introduction you need to discuss our methodological innovations. What is our method (at a high level) and how can it be helpful in practice. This revised abstract can pull heavily from this section. We cannot get more than a few paragraphs into the paper without telling the reader what we are doing that is novel. You will lose the reviewer! It is critical in this portion that we are attempting to develop a framework for sequential monitoring that can be applied broadly and consistently which may be appealing to regulators. That is a big point.
-%
-In this section you can take some of what you have below to contrast the Bayesian approach and frequentist approaches but you don't want to dwell on that too much. Flip the order -- focus on Bayes and explain how frequentist methods are different and make sure anything you say about frequentist methods is precisely correct.
-For example, I do not think the statement about pre-specified interim analyses / alpha spending functions is correct and we will get slammed if we make false claims. Alpha spending functions were developed to make the rigidity of a fixed number of analyses and fixed timing go away were they not -- read up on this before revising.}
-
-\vspace{1cm}
-\tcb{Add material... customize this...
-Conclusions from Bayesian inferences are not affected by the frequency with which the data are monitored, and such interim analyses should be encouraged to terminate data collection if appropriate \citep{Berry1989,Berry1993,Spiegelhalter1994}. The Bayesian perspective is based on the likelihood principle which asserts that any data with the same likelihood function should lead to the same conclusion \citep{Berger1988}. In the context of sequential analysis of clinical trials, the stopping rule that leads to the termination of data collection is irrelevant to the conclusion \citep{Barnard1947,Anscombe1963,Cornfield1966a,Cornfield1966b}. In contrast ... add stuff Frequentist group sequential designs rely on pre-specified interim analyses and spending functions to maintain desired trial operating characteristics \citep{Pocock1977,OBrien1979}. }
-
-\tcr{At this point point in the introduction you can be into the recent literature on sequential trials. Where have these methods been used post-2000? You don't need to describe methods in depth but do need to show you have knowledge of what has been done recently (relevant stuff). If there is little that is fine.} 
-
-\vspace{1cm}
-\tcr{Much of the text in orange can be wove in above, referenced elsewhere in the paper or cut.}
-
-\vspace{0.25cm}
-\tcr{ General advice...
-The last sentence in the orange text illustrates a style of writing you want to try and avoid when writing statistical papers. The entire paragraph describes an approach for doing something and then the last sentence says we use that approach. The better strategy is to say exactly what we are doing and give credit through name or citation to ideas that first came from others}
-
-\vspace{0.25cm}
-\tco{
-Interpretation of conclusions from the Bayesian perspective is natural when specification of prior distributions are intuitively related to the research objectives. Skeptical and enthusiastic monitoring priors are used to evaluate efficacy and futility at an interim analysis \citep{Freedman1989,Freedman1992,Spiegelhalter1993,Fayers1997}. The most common Bayesian metrics for assessing evidence at interim analyses are posterior probabilities and predictive probabilities, and the choice of metric depends on the research objective. Posterior probabilities assess the level of evidence in favor of the null or alternative hypothesis, and predictive probabilities determine the capacity for the trial to show convincing evidence in favor of the alternative hypothesis if more outcomes are ascertained. This paper uses posterior probabilities to highlight how the level of evidence at interim analyses is linked to monitoring prior specification.}
-
-\vspace{1cm}
-\tcr{As noted above, the below type of paragraph needs to cover very early in the paper and needs to be specific about what are are doing. This is very general and also not perfectly precise. For example, I'm not sure the framework addresses how to specify the trial hypotheses really.}
-
-This paper presents a structured framework to determine the major components of a Bayesian sequentially monitored clinical trial, including the trial hypothesis, monitoring priors, and stopping criteria. It is shown that the generalized normal distribution is an intuitive and flexible choice for monitoring prior specification.
+The frequentist properties of trial designs using this framework are explored. Bayesian group sequential designs are often restricted to have explicit frequentist properties \citep{Ventz2015, Zhu2015}. In fact, recent work has shown these restrictions can result in Bayesian and frequentist group sequential designs to have stopping rules that are nearly identical \citep{Stallard2020, Kopp-Schneider2019, Zhu2019}.
+While it is possible to calibrate a Bayesian design to have exact pre-specified frequentist properties, this re-introduces inflexibility (e.g. restrictions on interim analyses) that is unnecessary using a fully Bayesian method. Therefore, our objective is to present operating characteristics generally that are ``well-calibrated" \citep{Grieve2016} but not motivated by strict adherence to pre-specified thresholds.
 
 This paper is organized as follows: Section \ref{sec:methods} contains a brief review of Bayesian hypothesis testing using posterior probabilities, and describes the method for defining monitoring and inference priors. Examples are in Section \ref{sec:examples}, with Section \ref{sec:example1} containing a one-arm study and Section \ref{sec:example2} a two-arm study.
+
+%Conclusions from Bayesian inferences are not affected by the frequency with which the data are monitored, and such interim analyses should be encouraged to terminate data collection if appropriate \citep{Berry1989,Berry1993,Spiegelhalter1994}. The Bayesian perspective is based on the likelihood principle which asserts that any data with the same likelihood function should lead to the same conclusion \citep{Berger1988}. In the context of sequential analysis of clinical trials, the stopping rule that leads to the termination of data collection is irrelevant to the conclusion \citep{Barnard1947,Anscombe1963,Cornfield1966a,Cornfield1966b}. 
+
+
+
+%In contrast ... add stuff Frequentist group sequential designs rely on pre-specified interim analyses and spending functions to maintain desired trial operating characteristics \citep{Pocock1977,OBrien1979}.
+
+
+
+
+%Interpretation of conclusions from the Bayesian perspective is natural when specification of prior distributions are intuitively related to the research objectives. Skeptical and enthusiastic monitoring priors are used to evaluate efficacy and futility at an interim analysis \citep{Freedman1989,Freedman1992,Spiegelhalter1993,Fayers1997}. The most common Bayesian metrics for assessing evidence at interim analyses are posterior probabilities and predictive probabilities, and the choice of metric depends on the research objective. Posterior probabilities assess the level of evidence in favor of the null or alternative hypothesis, and predictive probabilities determine the capacity for the trial to show convincing evidence in favor of the alternative hypothesis if more outcomes are ascertained. 
 
 \section{Methods}\label{sec:methods}
 
@@ -751,8 +737,7 @@ Figure \ref{fig:ex2varyomega} shows the probability of stopping early for effica
  \end{center}
 \end{figure}
 \section{Discussion}
-Bayesian methods are well suited for sequentially monitored clinical trials because of their natural interpretations and ability to incorporate external evidence through prior distributions. Monitoring priors used for efficacy and futility stopping fundamentally determine the operating characteristics of the trial, in addition to factors such as the frequency of data monitoring and number of patients in progress at enrollment termination. While it is possible to calibrate a Bayesian design to have exact pre-specified frequentist properties \citep{Kopp-Schneider2019}, this re-introduces inflexibility (e.g. interim analyses must be pre-specified) that is unnecessary using a fully Bayesian method. Therefore, the objective is to present operating characteristics generally that are ``well-calibrated" \citep{Grieve2016} but not motivated by strict adherence to pre-specified thresholds.
-
+Bayesian methods are well suited for sequentially monitored clinical trials because of their natural interpretations and ability to incorporate external evidence through prior distributions. Monitoring priors used for efficacy and futility stopping fundamentally determine the operating characteristics of the trial, in addition to factors such as the frequency of data monitoring and number of patients in progress at enrollment termination. 
 
 This paper presents a structured framework for designing a Bayesian sequentially monitored clinical trial. The generalized normal distribution gives a flexible and intuitive way to create monitoring priors. It is required that the practitioner specify the modal value, a quantile condition, and an additional parameter which can concentrate or flatten the distribution around the modal value (with the normal distribution as the default case). This paper demonstrates how the operating characteristics are affected by the choice of monitoring priors.
  

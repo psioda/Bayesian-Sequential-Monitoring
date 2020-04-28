@@ -365,13 +365,50 @@ Randomized Controlled Trials as Topic},
    type = {Generic}
 }
 
+@article{Gsponer2014,
+   author = {Gsponer, Thomas and Gerber, Florian and Bornkamp, Björn and Ohlssen, David and Vandemeulebroecke, Marc and Schmidli, Heinz},
+   title = {A practical guide to Bayesian group sequential designs},
+   journal = {Pharmaceutical Statistics},
+   volume = {13},
+   number = {1},
+   pages = {71-80},
+   abstract = {AbstractBayesian approaches to the monitoring of group sequential designs have two main advantages compared with classical group sequential designs: first, they facilitate implementation of interim success and futility criteria that are tailored to the subsequent decision making, and second, they allow inclusion of prior information on the treatment difference and on the control group. A general class of Bayesian group sequential designs is presented, where multiple criteria based on the posterior distribution can be defined to reflect clinically meaningful decision criteria on whether to stop or continue the trial at the interim analyses. To evaluate the frequentist operating characteristics of these designs, both simulation methods and numerical integration methods are proposed, as implemented in the corresponding R package gsbDesign. Normal approximations are used to allow fast calculation of these characteristics for various endpoints. The practical implementation of the approach is illustrated with several clinical trial examples from different phases of drug development, with various endpoints, and informative priors. Copyright ? 2013 John Wiley & Sons, Ltd.},
+   keywords = {adaptive design
+Bayesian inference
+gsbDesign
+group sequential design
+operating characteristics
+prior},
+   ISSN = {1539-1604},
+   DOI = {10.1002/pst.1593},
+   url = {https://doi.org/10.1002/pst.1593},
+   year = {2014},
+   type = {Journal Article}
+}
+
 @book{Gupta1993,
-   author = {Gupta, A K and Varga, T},
+   author = {Gupta, A. K. and Varga, T.},
    title = {Elliptically contoured models in statistics},
    publisher = {Kluwer Academic Publishers},
    ISBN = {0792321154},
    year = {1993},
-   type = {Book}}
+   type = {Book}
+}
+
+@article{Heitjan1997,
+   author = {Heitjan, Daniel F.},
+   title = {Bayesian interim analysis of phase II cancer clinical trials},
+   journal = {Statistics in Medicine},
+   volume = {16},
+   number = {16},
+   pages = {1791-1802},
+   abstract = {Abstract Many popular sequential phase II clinical trial designs optimize some criterion subject to constraints on the error probabilities at null and alternative values of the response rate. Such designs may forfeit optimality if one fails to conduct analyses strictly according to plan. Moreover, a decision, say, to accept the experimental therapy at one interim analysis does not necessarily imply the same degree of evidence as the same decision when made at another analysis. I propose an alternative design that bases decisions on the ability of the data to persuade either a sceptic or an enthusiast. My standard of evidence, called the persuasion probability, is based on the Bayesian posterior probability that the experimental treatment is superior to the standard. The design calls for termination at any interim analysis at which an observed persuasion probability exceeds its critical value. I investigate the standards of evidence implied by some frequentist procedures and calculate frequentist properties of persuasion-probability designs. ? 1997 John Wiley & Sons, Ltd.},
+   ISSN = {0277-6715},
+   DOI = {10.1002/(SICI)1097-0258(19970830)16:16<1791::AID-SIM609>3.0.CO;2-E},
+   url = {https://doi.org/10.1002/(SICI)1097-0258(19970830)16:16<1791::AID-SIM609>3.0.CO;2-E},
+   year = {1997},
+   type = {Journal Article}
+}
 
 @article{Hyams2012,
    author = {Hyams, Jeffrey and Damaraju, Lakshmi and Blank, Marion and Johanns, Jewel and Guzzo, Cynthia and Winter, Harland S. and Kugathasan, Subra and Cohen, Stanley and Markowitz, James and Escher, Johanna C. and Veereman–Wauters, Gigi and Crandall, Wallace and Baldassano, Robert and Griffiths, Anne},
@@ -610,11 +647,131 @@ optimization},
    type = {Journal Article}
 }
 
+@article{Stallard2020,
+   author = {Stallard, Nigel and Todd, Susan and Ryan, Elizabeth G. and Gates, Simon},
+   title = {Comparison of Bayesian and frequentist group-sequential clinical trial designs},
+   journal = {BMC Medical Research Methodology},
+   volume = {20},
+   number = {1},
+   pages = {4},
+   abstract = {There is a growing interest in the use of Bayesian adaptive designs in late-phase clinical trials. This includes the use of stopping rules based on Bayesian analyses in which the frequentist type I error rate is controlled as in frequentist group-sequential designs.},
+   ISSN = {1471-2288},
+   DOI = {10.1186/s12874-019-0892-8},
+   url = {https://doi.org/10.1186/s12874-019-0892-8},
+   year = {2020},
+   type = {Journal Article}
+}
+
+@article{Thall1994,
+   author = {Thall, Peter F. and Simon, Richard},
+   title = {Practical Bayesian Guidelines for Phase IIB Clinical Trials},
+   journal = {Biometrics},
+   volume = {50},
+   number = {2},
+   pages = {337-349},
+   abstract = {[A Phase IIB clinical trial typically is a single-arm study aimed at deciding whether a new treatment E is sufficiently promising, relative to a standard therapy, S, to include in a large-scale randomized trial. Thus, Phase IIB trials are inherently comparative even though a standard therapy arm usually is not included. Uncertainty regarding the response rate Θs of S is rarely made explicit, either in planning the trial or interpreting its results. We propose practical Bayesian guidelines for deciding whether E is promising relative to S in settings where patient response is binary and the data are monitored continuously. The design requires specification of an informative prior for Θs, a targeted improvement for E, and bounds on the allowed sample size. No explicit specification of a loss function is required. Sampling continues until E is shown to be either promising or not promising relative to S with high posterior probability, or the maximum sample size is reached. The design provides decision boundaries, a probability distribution for the sample size at termination, and operating characteristics under fixed response probabilities with E.]},
+   ISSN = {0006341X, 15410420},
+   DOI = {10.2307/2533377},
+   url = {www.jstor.org/stable/2533377},
+   year = {1994},
+   type = {Journal Article}
+}
+
+@article{Thall1995,
+   author = {Thall, Peter F. and Simon, Richard M. and Estey, Elihu H.},
+   title = {Bayesian sequential monitoring designs for single-arm clinical trials with multiple outcomes},
+   journal = {Statistics in Medicine},
+   volume = {14},
+   number = {4},
+   pages = {357-379},
+   abstract = {Abstract We present a Bayesian approach for monitoring multiple outcomes in single-arm clinical trials. Each patient's response may include both adverse events and efficacy outcomes, possibly occurring at different study times. We use a Dirichlet-multinomial model to accommodate general discrete multivariate responses. We present Bayesian decision criteria and monitoring boundaries for early termination of studies with unacceptably high rates of adverse outcomes or with low rates of desirable outcomes. Each stopping rule is constructed either to maintain equivalence or to achieve a specified level of improvement of a particular event rate for the experimental treatment, compared with that of standard therapy. We avoid explicit specification of costs and a loss function. We evaluate the joint behaviour of the multiple decision rules using frequentist criteria. One chooses a design by considering several parameterizations under relevant fixed values of the multiple outcome probability vector. Applications include trials where response is the cross-product of multiple simultaneous binary outcomes, and hierarchical structures that reflect successive stages of treatment response, disease progression and survival. We illustrate the approach with a variety of single-arm cancer trials, including bio-chemotherapy acute leukaemia trials, bone marrow transplantation trials, and an anti-infection trial. The number of elementary patient outcomes in each of these trials varies from three to seven, with as many as four monitoring boundaries running simultaneously. We provide general guidelines for eliciting and parameterizing Dirichlet priors and for specifying design parameters.},
+   ISSN = {0277-6715},
+   DOI = {10.1002/sim.4780140404},
+   url = {https://doi.org/10.1002/sim.4780140404},
+   year = {1995},
+   type = {Journal Article}
+}
+
 @inproceedings{Travis2019,
    author = {Travis, James  and Neuner, Rosemarie  and Rothwell, Rebecca  and Levin, Gregory  and Nie, Lei  and Niu, Jing  and Marathe, Anshu  and Nikolov, Nikolay },
    title = {Application of Bayesian Statistics to Support Approval of Intravenous Belimumab in Children with Systemic Lupus Erythematosus in the United States},
    booktitle = {2019 ACR/ARP Annual Meeting},
    year = {2019},
    type = {Conference Proceedings}
+}
+
+@article{Ventz2015,
+   author = {Ventz, Steffen and Trippa, Lorenzo},
+   title = {Bayesian designs and the control of frequentist characteristics: A practical solution},
+   journal = {Biometrics},
+   volume = {71},
+   number = {1},
+   pages = {218-226},
+   abstract = {Summary Frequentist concepts, such as the control of the type I error or the false discovery rate, are well established in the medical literature and often required by regulators. Most Bayesian designs are defined without explicit considerations of frequentist characteristics. Once the Bayesian design is structured, statisticians use simulations and adjust tuning parameters to comply with a set of targeted operating characteristics. These adjustments affect the use of prior information and utility functions. Here we consider a Bayesian decision theoretic approach for experimental designs with explicit frequentist requisites. We define optimal designs under a set of constraints required by a regulator. Our approach combines the use of interpretable utility functions with frequentist criteria, and selects an optimal design that satisfies a set of required operating characteristics. We illustrate the approach using a group-sequential multi-arm Phase II trial and a bridging trial.},
+   keywords = {Bayesian design
+Clinical trials
+Decision theory
+Frequentist constraints},
+   ISSN = {0006-341X},
+   DOI = {10.1111/biom.12226},
+   url = {https://doi.org/10.1111/biom.12226},
+   year = {2015},
+   type = {Journal Article}
+}
+
+@article{Zheng2020,
+   author = {Zheng, Haiyan and Hampson, Lisa V.},
+   title = {A Bayesian decision-theoretic approach to incorporate preclinical information into phase I oncology trials},
+   journal = {Biometrical Journal},
+   volume = {n/a},
+   number = {n/a},
+   abstract = {Abstract Leveraging preclinical animal data for a phase I oncology trial is appealing yet challenging. In this paper, we use animal data to improve decision-making in a model-based dose-escalation procedure. We make a proposal for how to measure and address a prior-data conflict in a sequential study with a small sample size. Animal data are incorporated via a robust two-component mixture prior for the parameters of the human dose?toxicity relationship. The weights placed on each component of the prior are chosen empirically and updated dynamically as the trial progresses and more data accrue. After completion of each cohort, we use a Bayesian decision-theoretic approach to evaluate the predictive utility of the animal data for the observed human toxicity outcomes, reflecting the degree of agreement between dose?toxicity relationships in animals and humans. The proposed methodology is illustrated through several data examples and an extensive simulation study.},
+   keywords = {Bayesian logistic regression
+decision theory
+historical data
+phase I dose-finding
+prior-data conflict},
+   ISSN = {0323-3847},
+   DOI = {10.1002/bimj.201900161},
+   url = {https://doi.org/10.1002/bimj.201900161},
+   year = {2020},
+   type = {Journal Article}
+}
+
+@article{Zhu2015,
+   author = {Zhu, Han and Yu, Qingzhao},
+   title = {A Bayesian sequential design using alpha spending function to control type I error},
+   journal = {Statistical Methods in Medical Research},
+   volume = {26},
+   number = {5},
+   pages = {2184-2196},
+   abstract = {We propose in this article a Bayesian sequential design using alpha spending functions to control the overall type I error in phase III clinical trials. We provide algorithms to calculate critical values, power, and sample sizes for the proposed design. Sensitivity analysis is implemented to check the effects from different prior distributions, and conservative priors are recommended. We compare the power and actual sample sizes of the proposed Bayesian sequential design with different alpha spending functions through simulations. We also compare the power of the proposed method with frequentist sequential design using the same alpha spending function. Simulations show that, at the same sample size, the proposed method provides larger power than the corresponding frequentist sequential design. It also has larger power than traditional Bayesian sequential design which sets equal critical values for all interim analyses. When compared with other alpha spending functions, O?Brien-Fleming alpha spending function has the largest power and is the most conservative in terms that at the same sample size, the null hypothesis is the least likely to be rejected at early stage of clinical trials. And finally, we show that adding a step of stop for futility in the Bayesian sequential design can reduce the overall type I error and reduce the actual sample sizes.},
+   ISSN = {0962-2802},
+   DOI = {10.1177/0962280215595058},
+   url = {https://doi.org/10.1177/0962280215595058},
+   year = {2015},
+   type = {Journal Article}
+}
+
+@article{Zhu2019,
+   author = {Zhu, Lin and Yu, Qingzhao and Mercante, Donald E.},
+   title = {A Bayesian Sequential Design for Clinical Trials with Time-to-Event Outcomes},
+   journal = {Statistics in biopharmaceutical research},
+   volume = {11},
+   number = {4},
+   pages = {387-397},
+   note = {32226580[pmid]
+PMC7100880[pmcid]},
+   abstract = {There is increasing interest in Bayesian group sequential design because of its potential to improve efficiency in clinical trials, to shorten drug development time, and to enhance statistical inference precision without undermining the clinical trial's integrity or validity. We propose a Bayesian sequential design for clinical trials with time-to-event outcomes and use alpha spending functions to control the overall type I error rate. Bayes factor is adapted for decision-making at interim analyses. Algorithms are presented to make decision rules and to calculate power of the proposed tests. Sensitivity analysis is implemented to evaluate the impact of different choices of prior parameters on choosing critical values. The power of tests, the expected event size of the proposed design, and the quality of estimators are studied through simulations, and compared with the frequentist group sequential design. Simulations show that at fixed total number of events, the proposed design can achieve greater power and require smaller expected event size when appropriate priors are chosen, compared with the frequentist group sequential design. The feasibility of the proposed design is further illustrated on a real data set.},
+   keywords = {Alpha spending function
+Multiple stage analysis
+Survival data
+Type I error rate},
+   ISSN = {1946-6315},
+   DOI = {10.1080/19466315.2019.1629996},
+   url = {https://pubmed.ncbi.nlm.nih.gov/32226580
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7100880/},
+   year = {2019},
+   type = {Journal Article}
 }
 

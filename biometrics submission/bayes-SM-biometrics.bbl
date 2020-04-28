@@ -79,6 +79,13 @@ Grieve, A.~P. (2016).
 Griffin, M. (2018).
 \newblock Working with the exponential power distribution using gnorm.
 
+\bibitem[\protect\citeauthoryear{Gsponer, Gerber, Bornkamp, Ohlssen,
+  Vandemeulebroecke, and Schmidli}{Gsponer et~al.}{2014}]{Gsponer2014}
+Gsponer, T., Gerber, F., Bornkamp, B., Ohlssen, D., Vandemeulebroecke, M., and
+  Schmidli, H. (2014).
+\newblock A practical guide to bayesian group sequential designs.
+\newblock {\em Pharmaceutical Statistics} {\bf 13,} 71--80.
+
 \bibitem[\protect\citeauthoryear{Hyams, Damaraju, Blank, Johanns, Guzzo,
   Winter, Kugathasan, Cohen, Markowitz, Escher, Veereman–Wauters, Crandall,
   Baldassano, and Griffiths}{Hyams et~al.}{2012}]{Hyams2012}
@@ -143,6 +150,13 @@ Spiegelhalter, D.~J., Freedman, L.~S., and Parmar, M. K.~B. (1994).
 \newblock {\em Journal of the Royal Statistical Society. Series A (Statistics
   in Society)} {\bf 157,} 357--416.
 
+\bibitem[\protect\citeauthoryear{Stallard, Todd, Ryan, and Gates}{Stallard
+  et~al.}{2020}]{Stallard2020}
+Stallard, N., Todd, S., Ryan, E.~G., and Gates, S. (2020).
+\newblock Comparison of bayesian and frequentist group-sequential clinical
+  trial designs.
+\newblock {\em BMC Medical Research Methodology} {\bf 20,} 4.
+
 \bibitem[\protect\citeauthoryear{Travis, Neuner, Rothwell, Levin, Nie, Niu,
   Marathe, and Nikolov}{Travis et~al.}{2019}]{Travis2019}
 Travis, J., Neuner, R., Rothwell, R., Levin, G., Nie, L., Niu, J., Marathe, A.,
@@ -150,5 +164,26 @@ Travis, J., Neuner, R., Rothwell, R., Levin, G., Nie, L., Niu, J., Marathe, A.,
 \newblock Application of bayesian statistics to support approval of intravenous
   belimumab in children with systemic lupus erythematosus in the united states.
 \newblock In {\em 2019 ACR/ARP Annual Meeting}.
+
+\bibitem[\protect\citeauthoryear{Ventz and Trippa}{Ventz and
+  Trippa}{2015}]{Ventz2015}
+Ventz, S. and Trippa, L. (2015).
+\newblock Bayesian designs and the control of frequentist characteristics: A
+  practical solution.
+\newblock {\em Biometrics} {\bf 71,} 218--226.
+
+\bibitem[\protect\citeauthoryear{Zhu and Yu}{Zhu and Yu}{2015}]{Zhu2015}
+Zhu, H. and Yu, Q. (2015).
+\newblock A bayesian sequential design using alpha spending function to control
+  type i error.
+\newblock {\em Statistical Methods in Medical Research} {\bf 26,} 2184--2196.
+
+\bibitem[\protect\citeauthoryear{Zhu, Yu, and Mercante}{Zhu
+  et~al.}{2019}]{Zhu2019}
+Zhu, L., Yu, Q., and Mercante, D.~E. (2019).
+\newblock A bayesian sequential design for clinical trials with time-to-event
+  outcomes.
+\newblock {\em Statistics in biopharmaceutical research} {\bf 11,} 387--397.
+\newblock 32226580[pmid] PMC7100880[pmcid].
 
 \end{thebibliography}
