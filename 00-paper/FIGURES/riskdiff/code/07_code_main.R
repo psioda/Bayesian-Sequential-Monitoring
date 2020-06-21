@@ -6,7 +6,7 @@
 ###
 ##################################
 
-for (idx in 1){ # check here
+#for (idx in 1){ # check here
   
 if (.Platform$OS.type == "windows") {
   library(pracma)
@@ -143,4 +143,5 @@ write.csv(Table2, file = paste0("../output/Table2/", idx, "Table2.csv"))
 Table3<-data.frame(t(outer.p.agree))
 Table3$idx <- idx
 write.csv(Table3, file = paste0("../output/Table3/", idx, "Table3.csv"))
+
 #}
