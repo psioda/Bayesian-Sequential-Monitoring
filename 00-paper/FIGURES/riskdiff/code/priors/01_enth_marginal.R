@@ -15,10 +15,9 @@ marginal <- function(){
       
       # closed form
       enth.rd.prior <- function(x){
-        exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)*
-          enth.rd.beta0/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0))/
-         (pgnorm(q =  1, mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
-          pgnorm(q = -1, mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0))
+        dgnorm(x,           delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+          (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+             pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))
       }
       
       # P(theta < theta_0) (called delta.skpt for historical reasons)

@@ -15,20 +15,20 @@ skpt_tail_area <- function(){
       
       # normalized prior density
       skpt.prior.1 <- function(x, y){ # for x > 0 (theta > 0)
-        exp(-(abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0)/(2*skpt.rd.alpha0*gamma(1/skpt.rd.beta0)/skpt.rd.beta0)*
-        exp(-(abs(y - mu)/skpt.alpha0)^skpt.beta0)/(2*skpt.alpha0*gamma(1/skpt.beta0)/skpt.beta0)/
-          (pgnorm(q = 1,  mu = delta.skpt, alpha = skpt.rd.alpha0, beta = skpt.rd.beta0) -
-           pgnorm(q = -1, mu = delta.skpt, alpha = skpt.rd.alpha0, beta = skpt.rd.beta0))/
-          (pgnorm(q = 1 - x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
-             pgnorm(q = 0,   mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0))
+        dgnorm(x,           delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)/
+          (pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
+             pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0))*
+          dgnorm(y,          mu,        skpt.alpha0,    skpt.beta0)/
+          (pgnorm(q = 1 - x, mu,        skpt.alpha0,    skpt.beta0) -
+             pgnorm(q = 0,   mu,        skpt.alpha0,    skpt.beta0))
       }
       skpt.prior.2 <- function(x, y){ # for x < 0 (theta < 0)
-        exp(-(abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0)/(2*skpt.rd.alpha0*gamma(1/skpt.rd.beta0)/skpt.rd.beta0)*
-        exp(-(abs(y - mu)/skpt.alpha0)^skpt.beta0)/(2*skpt.alpha0*gamma(1/skpt.beta0)/skpt.beta0)/
-          (pgnorm(q = 1,  mu = delta.skpt, alpha = skpt.rd.alpha0, beta = skpt.rd.beta0) -
-           pgnorm(q = -1, mu = delta.skpt, alpha = skpt.rd.alpha0, beta = skpt.rd.beta0))/
-          (pgnorm(q = 1,  mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
-           pgnorm(q = -x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0))
+        dgnorm(x,           delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)/
+          (pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
+             pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0))*
+          dgnorm(y,         mu,         skpt.alpha0,    skpt.beta0)/
+          (pgnorm(q = 1,    mu,         skpt.alpha0,    skpt.beta0) -
+             pgnorm(q = -x, mu,         skpt.alpha0,    skpt.beta0))
       }
 
       # tail probabilities

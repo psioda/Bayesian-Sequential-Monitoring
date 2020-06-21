@@ -15,20 +15,20 @@ enth_tail_area <- function(){
       
       # normalized prior density
       enth.prior.1 <- function(x, y){ # for x > 0 (theta > 0)
-        exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
-        exp(-(abs(y - mu)/enth.alpha0)^enth.beta0)/(2*enth.alpha0*gamma(1/enth.beta0)/enth.beta0)/
-          (pgnorm(q = 1,  mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
-           pgnorm(q = -1, mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0))/
-          (pgnorm(q = 1 - x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
-           pgnorm(q = 0,     mu = mu, alpha = enth.alpha0, beta  = enth.beta0))
+        dgnorm(x,           delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+          (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+             pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+          dgnorm(y,          mu,enth.alpha0, enth.beta0)/
+          (pgnorm(q = 1 - x, mu, enth.alpha0, enth.beta0) -
+             pgnorm(q = 0,   mu, enth.alpha0, enth.beta0))
       }
       enth.prior.2 <- function(x, y){ # for x < 0 (theta < 0)
-        exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
-        exp(-(abs(y - mu)/enth.alpha0)^enth.beta0)/(2*enth.alpha0*gamma(1/enth.beta0)/enth.beta0)/
-          (pgnorm(q = 1,  mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
-           pgnorm(q = -1, mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0))/
-          (pgnorm(q = 1,  mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
-           pgnorm(q = -x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0))
+        dgnorm(x,           delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+          (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+             pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+          dgnorm(y,          mu,enth.alpha0, enth.beta0)/
+          (pgnorm(q = 1,     mu, enth.alpha0, enth.beta0) -
+             pgnorm(q = -x,  mu, enth.alpha0, enth.beta0))
       }
 
       # tail probabilities

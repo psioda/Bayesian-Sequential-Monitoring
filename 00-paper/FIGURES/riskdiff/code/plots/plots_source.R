@@ -106,12 +106,13 @@ stretch <- 0.37
 setwd("P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code/plots")
 args_simulation <- read.csv(file = "../args_simulation.csv", header = TRUE, sep = ",")
 
-Table1 <- read.csv(file = "../../output/Table1_merged.csv", header = TRUE, sep = ",")
+Table1 <- read.csv(file = "../../output/old/output/Table1_merged.csv", header = TRUE, sep = ",")
+#Table1 <- read.csv(file = "../../output/Table1_merged.csv", header = TRUE, sep = ",")
 combined1 <- merge(args_simulation, Table1, by.x = "X", by.y = "idx")
 figure3 <- combined1
 
-plot(figure3$p.IP[figure3$eff.mix.prob==0.25],
-     figure3$eff.mon.initial[figure3$eff.mix.prob==0.25],
+plot(figure3$p.IP[figure3$eff.mix.prob.x==0.25],
+     figure3$eff.mon.initial[figure3$eff.mix.prob.x==0.25],
      type='l',
      ylim=c(0,1),
      lwd=1,
@@ -125,12 +126,13 @@ probs <- seq(0.25, 1, by = 0.25)
 for (i in 1:length(probs)){
   row <- i + 2
   
-  temp <- figure3[is.na(figure3$eff.mix.prob) == FALSE,]
-  temp <- temp[temp$eff.mix.prob == probs[i],]
+  temp <- figure3[is.na(figure3$eff.mix.prob.x) == FALSE,]
+  temp <- temp[temp$eff.mix.prob.x == probs[i],]
   
   lines(temp$p.IP,temp$eff.mon.initial)
   
-  for (j in seq(1,length(temp$p.IP), by=3)){
+  for (j in seq(1,length(temp$p.IP)#, by=3
+                )){
     mtext(text=paste0(#format(round(temp$ss.initial[j],digits=1),nsmall=1),
                       #" + ",
                       #format(round(temp$ss.final[j]-
@@ -144,9 +146,9 @@ for (i in 1:length(probs)){
 }
 
 
-Table1 <- read.csv(file = "../../output/Table0_merged.csv", header = TRUE, sep = ",")
-combined1 <- merge(args_simulation, Table1, by.x = "X", by.y = "idx")
-figure3 <- combined1
+# Table1 <- read.csv(file = "../../output/Table0_merged.csv", header = TRUE, sep = ",")
+# combined1 <- merge(args_simulation, Table1, by.x = "X", by.y = "idx")
+# figure3 <- combined1
 
 #### NOW FOR NA EFF.MON.PROB ####
 for (i in 5){
@@ -156,7 +158,8 @@ for (i in 5){
   
   lines(temp$p.IP,temp$eff.mon.initial)
   
-  for (j in seq(1,length(temp$p.IP), by=3)){
+  for (j in seq(1,length(temp$p.IP)#, by=3
+                )){
     mtext(text=paste0(#format(round(temp$ss.initial[j],digits=1),nsmall=1),
       #" + ",
       #format(round(temp$ss.final[j]-
@@ -170,8 +173,10 @@ for (i in 5){
   
 }
 
-axis(1,las=0,at=temp$p.IP[seq(1,length(temp$p.IP),by=3)],
-     labels=format(temp$p.IP[seq(1,length(temp$p.IP),by=3)],nsmall=2))
+axis(1,las=0,at=temp$p.IP[seq(1,length(temp$p.IP)#,by=3
+                              )],
+     labels=format(temp$p.IP[seq(1,length(temp$p.IP)#,by=3
+                                 )],nsmall=2))
 
 #axis(2,las=0,at=seq(0,1,by=0.1), labels=seq(0,1,by=0.1))
 

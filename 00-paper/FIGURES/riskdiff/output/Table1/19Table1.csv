@@ -1,2 +1,2 @@
-"","eff.mon.initial","eff.mon.final","fut.mon.initial","fut.mon.final","ss.initial","ss.final","mle.initial.IP","mle.final.IP","mle.initial.PC","mle.final.PC","post.mean.initial.IP","post.mean.final.IP","post.mean.initial.PC","post.mean.final.PC","cov.initial","cov.final","idx"
-"1",0,0,0,0,100,100,0.660919540229885,0.660919540229885,0.444444444444444,0.444444444444444,0.545371599305598,0.545371599305598,-0.0164922418034397,-0.0164922418034397,0,0,19
+"","eff.mon.initial","eff.mon.final","fut.mon.initial","fut.mon.final","ss.initial","ss.final","mle.initial.IP","mle.final.IP","mle.initial.PC","mle.final.PC","post.mean.initial.IP","post.mean.final.IP","post.mean.initial.PC","post.mean.final.PC","cov.initial","cov.final","eff.mix.prob","idx"
+"1",0.2,0.2,0,0,96,96.6,0.534782608695652,0.536170212765957,0.363585434173669,0.365873015873016,0.401848711395769,0.403025011907183,0.103631694357473,0.103960773555289,0,0,0.670882183650322,19

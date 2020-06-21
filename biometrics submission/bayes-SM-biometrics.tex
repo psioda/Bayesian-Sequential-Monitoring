@@ -536,6 +536,29 @@ Define
 \end{equation}
 as a mixing weight that dynamically gives preference to the prior that has the higher density evaluated at $\hat{\theta}$ with a minimum weight $\omega_{min}$ given to the skeptical component with $\omega_{min}\in[0,1]$.
 %%\end{mydef}
+
+Prior information can also be incorporated into the monitoring priors by using the predictive distribution of the data under the skeptical and enthusiastic priors. Let $\mathcal{L}(\theta,\eta|\mathbf{D})$ be the likelihood for the new trial data at some point in time.
+
+Compute the two predictive distributions as follows
+\begin{equation}
+p^{(h)}(\mathbf{D})=\int \int \mathcal{L}(\theta,\eta|\mathbf{D})\pi^{(h)}(\theta,\eta)d\theta d\eta
+\end{equation}
+
+with $h\in\{S,E\}$ for the skeptical and enthusiastic prior respectively.
+Consider $\mathbf{D}_{obs}$ to be the observed data at some point in time. For each predictive density, we compute the following:
+\begin{equation}
+\psi^{(h)}(\mathbf{D})=\sum_{\mathbf{D}}p^{(h)}(\mathbf{D})1[p^{(h)}(\mathbf{D})\leq p^{(h)}(\mathbf{D}_{obs})]
+\end{equation}
+
+This can be interpreted as the probability of observing data as or more extreme given the predictive distribution (either skeptical or enthusiastic predictive distribution).
+
+Based on this, we can set the mixing weight as
+
+\begin{equation}
+w^{(E)}(\mathbf{D})=\text{max}(\psi^{(E)}(\mathbf{D})-\psi^{(S)}(\mathbf{D}),0)
+\end{equation}
+
+with $w^{(S)}(\mathbf{D})=1-w^{(E)}(\mathbf{D})$.
 \subsubsection{Operating Characteristics}
 Suppose that the trial has interim analyses based on the number of completed outcomes. Let $n_{initial}$ be the first instance where either the efficacy criteria or futility criteria are satisfied, or $n_{max}$ if the efficacy criteria or futility criteria are not satisfied at any point. Let $n_{final}$ be the final sample size which includes patients whose outcomes were in progress at the time of enrollment termination. Let $\bmath{D}(n)$ denote the data after $n$ completed outcomes are ascertained. Type 1 error and power are computed based on $\rmn{eff}(\bmath{D}(n_{initial}))$ and $\rmn{eff}(\bmath{D}(n_{final}))$, respectively. The posterior mean and credible intervals for $\theta$ are also evaluated for both $\bmath{D}(n_{initial})$ and $\bmath{D}(n_{final})$.
 

@@ -9,10 +9,9 @@ marginal()
 
 f1 <- function(a){   # q.outer
   enth.rd.prior <- function(x){
-    exp(-(abs(x - delta.enth)/a[1])^a[2])*
-      a[2]/(2*a[1]*gamma(1/a[2]))/
-      (pgnorm(q = 1,  mu = delta.enth, alpha = a[1], beta = a[2]) -
-       pgnorm(q = -1, mu = delta.enth, alpha = a[1], beta = a[2]))
+    dgnorm(x,           delta.enth, a[1], a[2])/
+      (pgnorm(q = 1,    delta.enth, a[1], a[2]) -
+         pgnorm(q = -1, delta.enth, a[1], a[2]))
   }
   
   # P(theta < theta_0) (called delta.skpt for historical reasons)
@@ -22,10 +21,9 @@ f1 <- function(a){   # q.outer
 }
 f2 <- function(a){   # q.inner
   enth.rd.prior <- function(x){
-    exp(-(abs(x - delta.enth)/a[1])^a[2])*
-      a[2]/(2*a[1]*gamma(1/a[2]))/
-      (pgnorm(q = 1,  mu = delta.enth, alpha = a[1], beta = a[2]) -
-       pgnorm(q = -1, mu = delta.enth, alpha = a[1], beta = a[2]))
+    dgnorm(x,           delta.enth, a[1], a[2])/
+      (pgnorm(q = 1,    delta.enth, a[1], a[2]) -
+         pgnorm(q = -1, delta.enth, a[1], a[2]))
   }
   
   # P(theta_0 < theta < (theta_1+theta_0)/2) (called delta.intr for historical reasons)
@@ -74,20 +72,20 @@ enth_tail_area()
 
 f1 <- function(a){
   enth.prior.1 <- function(x, y){ # for x > 0 (theta > 0)
-    exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
-    exp(-(abs(y - mu)/a[1])^a[2])/(2*a[1]*gamma(1/a[2])/a[2])/
-      (pgnorm(q = 1,  mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
-       pgnorm(q = -1, mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0))/
-      (pgnorm(q = 1 - x, mu = mu, alpha = a[1], beta  = a[2]) -
-       pgnorm(q = 0,     mu = mu, alpha = a[1], beta  = a[2]))
+    dgnorm(x,           delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+      (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+         pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+      dgnorm(y,          mu, a[1], a[2])/
+      (pgnorm(q = 1 - x, mu, a[1], a[2]) -
+         pgnorm(q = 0,   mu, a[1], a[2]))
   }
   enth.prior.2 <- function(x, y){ # for x < 0 (theta < 0)
-    exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
-    exp(-(abs(y - mu)/a[1])^a[2])/(2*a[1]*gamma(1/a[2])/a[2])/
-      (pgnorm(q = 1,  mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
-       pgnorm(q = -1, mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0))/
-      (pgnorm(q = 1,  mu = mu, alpha = a[1], beta  = a[2]) -
-       pgnorm(q = -x, mu = mu, alpha = a[1], beta  = a[2]))
+    dgnorm(x,           delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+      (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+         pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+      dgnorm(y,         mu, a[1], a[2])/
+      (pgnorm(q = 1,    mu, a[1], a[2]) -
+         pgnorm(q = -x, mu, a[1], a[2]))
   }
   # window around mu +/- delta.enth
   c1 <- integrate_debug(enth.prior.1, xmin = 0,    xmax = 1 - mu1, ymin = mu1,            ymax = function(x) 1 - x)
@@ -102,21 +100,21 @@ f1 <- function(a){
   }
 
 f2 <- function(a){
-  enth.prior.1 <- function(x, y){ # for x > 0 (gamma > 0)
-    exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
-    exp(-(abs(y - mu)/a[1])^a[2])/(2*a[1]*gamma(1/a[2])/a[2])/
-      (pgnorm(q = 1,  mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
-       pgnorm(q = -1, mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0))/
-      (pgnorm(q = 1 - x, mu = mu, alpha = a[1], beta  = a[2]) -
-         pgnorm(q = 0,     mu = mu, alpha = a[1], beta  = a[2]))
+  enth.prior.1 <- function(x, y){ # for x > 0 (theta > 0)
+    dgnorm(x,           delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+      (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+         pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+      dgnorm(y,          mu, a[1], a[2])/
+      (pgnorm(q = 1 - x, mu, a[1], a[2]) -
+         pgnorm(q = 0,   mu, a[1], a[2]))
   }
-  enth.prior.2 <- function(x, y){ # for x < 0 (gamma < 0)
-    exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
-    exp(-(abs(y - mu)/a[1])^a[2])/(2*a[1]*gamma(1/a[2])/a[2])/
-      (pgnorm(q = 1,  mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
-       pgnorm(q = -1, mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0))/
-      (pgnorm(q = 1,  mu = mu, alpha = a[1], beta  = a[2]) -
-       pgnorm(q = -x, mu = mu, alpha = a[1], beta  = a[2]))
+  enth.prior.2 <- function(x, y){ # for x < 0 (theta < 0)
+    dgnorm(x,           delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+      (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+         pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+      dgnorm(y,         mu, a[1], a[2])/
+      (pgnorm(q = 1,    mu, a[1], a[2]) -
+         pgnorm(q = -x, mu, a[1], a[2]))
   }
   # window around mu +/- delta.intr
   c1 <- integrate_debug(enth.prior.1, xmin = 0,    xmax = 1 - mu1, ymin = mu1,            ymax = function(x) 1 - x)
@@ -167,20 +165,20 @@ assign("enth.beta0",  enth.beta0,  envir = .GlobalEnv)
 
 # assemble final prior
 enth.prior.1 <- function(x, y){ # for x > 0 (gamma > 0)
-  exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
-  exp(-(abs(y - mu)/enth.alpha0)^enth.beta0)/(2*enth.alpha0*gamma(1/enth.beta0)/enth.beta0)/
-    (pgnorm(q = 1,  mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
-     pgnorm(q = -1, mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0))/
-    (pgnorm(q = 1 - x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
-     pgnorm(q = 0,     mu = mu, alpha = enth.alpha0, beta  = enth.beta0))
+  dgnorm(x,           delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+    (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+       pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+    dgnorm(y,          mu, enth.alpha0, enth.beta0)/
+    (pgnorm(q = 1 - x, mu, enth.alpha0, enth.beta0) -
+       pgnorm(q = 0,   mu, enth.alpha0, enth.beta0))
 }
 enth.prior.2 <- function(x, y){ # for x < 0 (gamma < 0)
-  exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
-  exp(-(abs(y - mu)/enth.alpha0)^enth.beta0)/(2*enth.alpha0*gamma(1/enth.beta0)/enth.beta0)/
-    (pgnorm(q = 1,  mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
-     pgnorm(q = -1, mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0))/
-    (pgnorm(q = 1,  mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
-     pgnorm(q = -x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0))
+  dgnorm(x,           delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+    (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+       pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+    dgnorm(y,          mu, enth.alpha0, enth.beta0)/
+    (pgnorm(q = 1,     mu, enth.alpha0, enth.beta0) -
+       pgnorm(q = -x,  mu, enth.alpha0, enth.beta0))
 }
 
 ## CHECK MARGINAL CONDITIONS

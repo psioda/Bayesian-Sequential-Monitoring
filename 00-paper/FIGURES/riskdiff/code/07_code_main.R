@@ -6,7 +6,7 @@
 ###
 ##################################
 
-for (idx in 101){
+for (idx in 1){ # check here
   
 if (.Platform$OS.type == "windows") {
   library(pracma)
@@ -23,6 +23,9 @@ if (.Platform$OS.type == "unix")    {
 # Model information, including all functions used. 
 # The only additional source file to be called is "code_enrollment.R"
 load(file = 'args_model.RData') # loads all model information include prior parameters
+
+#  05-19-2020
+set.seed(idx*06202020)
 
 # Simulation information
 simulation <- read.csv(file = "args_simulation.csv", header = TRUE, sep = ",")
@@ -66,8 +69,10 @@ for (i in 1:reps){
   {print(paste0("IDX ", idx, ", Simulation ", i))}
   
   source("04_code_enrollment.R")
-  
-  for (j in c(seq(min.ss, max.ss, by = freq.mntr), max.ss)){
+
+  for (j in unique(c(seq(min.ss, max.ss, by = freq.mntr), max.ss))){
+    
+    {print(paste0("Inner loop: ", j))}
     
     mon.result.initial <- monitoring(index = j)
     futility <- mon.result.initial$fut.prob
@@ -83,7 +88,7 @@ for (i in 1:reps){
   inner[i, "fut.mon.initial"] <- (futility > sig.fut)
   inner[i, "eff.mon.initial"] <- (efficacy > sig.eff)
   
-  pm.cp.result.initial <- pm_cp(index = n.initial)
+  pm.cp.result.initial <- pm_cp(index = n.initial) # calls prior_data_conflict(), takes time
   inner[i, "post.mean.initial.PC"] <- pm.cp.result.initial$pm.mean.x
   inner[i, "post.mean.initial.IP"] <- pm.cp.result.initial$pm.mean.y
   inner[i, "mle.initial.PC"] <- pm.cp.result.initial$mle.PC
@@ -97,14 +102,14 @@ for (i in 1:reps){
   cutoff.time <- outcome.times.all[n.initial]
   n.final <- sum(enr.times.all <= cutoff.time)
   
-  mon.result.final <- monitoring(index = n.final)
+  mon.result.final <- monitoring(index = n.final) # calls prior_data_conflict(), takes time
   futility.final <- mon.result.final$fut.prob
   efficacy.final <- mon.result.final$eff.prob
   inner[i, "fut.mon.final"] <- (futility.final > sig.fut)
   inner[i, "eff.mon.final"] <- (efficacy.final > sig.eff)
   inner[i, "eff.mix.prob"]  <- mon.result.final$eff.mix.prob
   
-  pm.cp.result.final <- pm_cp(index = n.final)
+  pm.cp.result.final <- pm_cp(index = n.final) # calls prior_data_conflict(), takes time
   inner[i, "post.mean.final.PC"] <- pm.cp.result.final$pm.mean.x
   inner[i, "post.mean.final.IP"] <- pm.cp.result.final$pm.mean.y
   inner[i, "cov.final"] <- pm.cp.result.final$coverage
@@ -138,5 +143,4 @@ write.csv(Table2, file = paste0("../output/Table2/", idx, "Table2.csv"))
 Table3<-data.frame(t(outer.p.agree))
 Table3$idx <- idx
 write.csv(Table3, file = paste0("../output/Table3/", idx, "Table3.csv"))
-
-}
+#}

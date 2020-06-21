@@ -26,36 +26,36 @@
 
 # SECTION 1: PRIORS (normalized)
 skpt.prior.1 <- function(x, y){ # for x > 0 (theta > 0)
-  exp(-(abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0)/(2*skpt.rd.alpha0*gamma(1/skpt.rd.beta0)/skpt.rd.beta0)*
-  exp(-(abs(y - mu)/skpt.alpha0)^skpt.beta0)/(2*skpt.alpha0*gamma(1/skpt.beta0)/skpt.beta0)/
-    (pgnorm(q = 1,     mu = delta.skpt, alpha = skpt.rd.alpha0, beta = skpt.rd.beta0) -
-     pgnorm(q = -1,    mu = delta.skpt, alpha = skpt.rd.alpha0, beta = skpt.rd.beta0))/
-    (pgnorm(q = 1 - x, mu = mu,         alpha = skpt.alpha0,    beta  = skpt.beta0) -
-     pgnorm(q = 0,     mu = mu,         alpha = skpt.alpha0,    beta  = skpt.beta0))
+    dgnorm(x,         delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)/
+    (pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
+       pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0))*
+    dgnorm(y,          mu, skpt.alpha0, skpt.beta0)/
+    (pgnorm(q = 1 - x, mu, skpt.alpha0, skpt.beta0) -
+       pgnorm(q = 0,   mu, skpt.alpha0, skpt.beta0))
 }
 skpt.prior.2 <- function(x, y){ # for x < 0 (theta < 0)
-  exp(-(abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0)/(2*skpt.rd.alpha0*gamma(1/skpt.rd.beta0)/skpt.rd.beta0)*
-  exp(-(abs(y - mu)/skpt.alpha0)^skpt.beta0)/(2*skpt.alpha0*gamma(1/skpt.beta0)/skpt.beta0)/
-    (pgnorm(q = 1,  mu = delta.skpt, alpha = skpt.rd.alpha0, beta = skpt.rd.beta0) -
-     pgnorm(q = -1, mu = delta.skpt, alpha = skpt.rd.alpha0, beta = skpt.rd.beta0))/
-    (pgnorm(q = 1,  mu = mu,         alpha = skpt.alpha0,    beta  = skpt.beta0) -
-     pgnorm(q = -x, mu = mu,         alpha = skpt.alpha0,    beta  = skpt.beta0))
+  dgnorm(x,           delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)/
+    (pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
+       pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0))*
+    dgnorm(y,         mu,         skpt.alpha0,    skpt.beta0)/
+    (pgnorm(q = 1,    mu,         skpt.alpha0,    skpt.beta0) -
+       pgnorm(q = -x, mu,         skpt.alpha0,    skpt.beta0))
 }
 enth.prior.1 <- function(x, y){ # for x > 0 (theta > 0)
-  exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
-  exp(-(abs(y - mu)/enth.alpha0)^enth.beta0)/(2*enth.alpha0*gamma(1/enth.beta0)/enth.beta0)/
-    (pgnorm(q = 1,     mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
-     pgnorm(q = -1,    mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0))/
-    (pgnorm(q = 1 - x, mu = mu,         alpha = enth.alpha0,    beta  = enth.beta0) -
-     pgnorm(q = 0,     mu = mu,         alpha = enth.alpha0,    beta  = enth.beta0))
+  dgnorm(x,           delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+    (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+       pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+    dgnorm(y,          mu,enth.alpha0, enth.beta0)/
+    (pgnorm(q = 1 - x, mu, enth.alpha0, enth.beta0) -
+       pgnorm(q = 0,   mu, enth.alpha0, enth.beta0))
 }
 enth.prior.2 <- function(x, y){ # for x < 0 (theta < 0)
-  exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
-    exp(-(abs(y - mu)/enth.alpha0)^enth.beta0)/(2*enth.alpha0*gamma(1/enth.beta0)/enth.beta0)/
-    (pgnorm(q = 1,  mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0) -
-     pgnorm(q = -1, mu = delta.enth, alpha = enth.rd.alpha0, beta = enth.rd.beta0))/
-    (pgnorm(q = 1,  mu = mu,         alpha = enth.alpha0,    beta  = enth.beta0) -
-     pgnorm(q = -x, mu = mu,         alpha = enth.alpha0,    beta  = enth.beta0))
+  dgnorm(x,           delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+    (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+       pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+    dgnorm(y,          mu,enth.alpha0, enth.beta0)/
+    (pgnorm(q = 1,     mu, enth.alpha0, enth.beta0) -
+       pgnorm(q = -x,  mu, enth.alpha0, enth.beta0))
 }
 
 # SECTION 1.1 FIND MLEs (assuming nonzero cell counts in each)
@@ -74,115 +74,165 @@ if (is.na(eff.mix.prob)){
   eff.mix.prob <- 0.25 + 0.75*(skpt.lik/sum(skpt.lik, enth.lik)) # 3-19-20 update
 }
 
+prior_dat_conflict <- function(y1.IP, y0.IP, y1.PC, y0.PC){
+  
+  skpt.post.nc       <- matrix(NA, 
+                               nrow = y1.IP + y0.IP + 1, 
+                               ncol = y1.PC + y0.PC + 1)
+  enth.post.nc       <- matrix(NA, 
+                               nrow = y1.IP + y0.IP + 1, 
+                               ncol = y1.PC + y0.PC + 1)
+  print(paste0("Interim analysis ", sum(y1.IP,y0.IP,y1.PC,y0.PC)))
+  
+  for (i in 1:(y1.IP + y0.IP + 1)){
+    for (j in 1:(y1.PC + y0.PC + 1)){
+      skpt.post.1   <- function(x, y){
+        exp(
+          dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
+            dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) + 
+            dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) - 
+            log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) - 
+                  pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)) +
+            dgnorm(y,            mu, skpt.alpha0, skpt.beta0, log = TRUE) - 
+            log(pgnorm(q = 1-x,  mu, skpt.alpha0, skpt.beta0) - 
+                  pgnorm(q = 0,  mu, skpt.alpha0, skpt.beta0))
+        )
+      }
+      skpt.post.2   <- function(x, y){
+        exp(
+          dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
+            dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) + 
+            dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) - 
+            log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) - 
+                  pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)) +
+            dgnorm(y,            mu, skpt.alpha0, skpt.beta0, log = TRUE) - 
+            log(pgnorm(q = 1,    mu, skpt.alpha0, skpt.beta0) - 
+                  pgnorm(q = -x, mu, skpt.alpha0, skpt.beta0))
+        )
+      }
+      skpt.post.nc[i, j] <- integrate_debug(skpt.post.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
+        integrate_debug(skpt.post.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
+      
+      enth.post.1   <- function(x, y){
+        exp(
+          dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
+            dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) + 
+            dgnorm(x,            delta.enth, enth.rd.alpha0, enth.rd.beta0, log = TRUE) - 
+            log(pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) - 
+                  pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0)) +
+            dgnorm(y,            mu, enth.alpha0, enth.beta0, log = TRUE) - 
+            log(pgnorm(q = 1-x,  mu, enth.alpha0, enth.beta0) - 
+                  pgnorm(q = 0,  mu, enth.alpha0, enth.beta0))
+        )
+      }
+      enth.post.2   <- function(x, y){
+        exp(
+          dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
+            dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) + 
+            dgnorm(x,            delta.enth, enth.rd.alpha0, enth.rd.beta0, log = TRUE) - 
+            log(pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) - 
+                  pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0)) +
+            dgnorm(y,            mu, enth.alpha0, enth.beta0, log = TRUE) - 
+            log(pgnorm(q = 1,    mu, enth.alpha0, enth.beta0) - 
+                  pgnorm(q = -x, mu, enth.alpha0, enth.beta0))
+        )
+      }
+      enth.post.nc[i, j] <- integrate_debug(enth.post.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
+        integrate_debug(enth.post.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
+    }
+  }
+  
+  # prior data conflict for skeptical prior
+  skpt.psi <- sum(skpt.post.nc[skpt.post.nc <= skpt.post.nc[y1.IP + 1, y1.PC + 1]])
+  print(paste0("Sum marginal prob of data with enth prior (should be 1): ", sum(skpt.post.nc)))
+  print(paste0("Skeptical prior compatibility: ", skpt.psi))
+  
+  # prior data conflict for enthusiastic prior
+  enth.psi <- sum(enth.post.nc[enth.post.nc <= enth.post.nc[y1.IP + 1, y1.PC + 1]])
+  print(paste0("Sum marginal prob of data with enth prior (should be 1): ", sum(enth.post.nc)))
+  print(paste0("Enthuastic prior compatibility: ", enth.psi))
+  
+  # compute SKEPTICAL COMPONENT mixing weight
+  eff.mix.prob <- 1 - max(enth.psi - skpt.psi, 0)
+  print(paste0("Efficacy mixing weight for skeptical component: ", eff.mix.prob))
+  return(eff.mix.prob)
+}
+
+if (eff.mix.prob == 10){
+  eff.mix.prob <- prior_dat_conflict(y1.IP, y0.IP, y1.PC, y0.PC)
+}
 # SECTION 3: POSTERIOR DENSITIES
 # log (un-normalized) posterior density
-skpt.post.log.1 <- function(x, y){
-  y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-  y1.PC*log(y)     + y0.PC*log(1 - y) -
-  (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
-  (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
-  log(pgnorm(q = 1 - x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
-      pgnorm(q = 0,     mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0))
-}
-skpt.post.log.2 <- function(x, y){
-  y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-  y1.PC*log(y)     + y0.PC*log(1 - y) -
-  (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
-  (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
-  log(pgnorm(q = 1,  mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
-      pgnorm(q = -x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0))
-}
-enth.post.log.1 <- function(x, y){
-  y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-  y1.PC*log(y)     + y0.PC*log(1 - y) -
-  (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
-  (abs(y - mu)/enth.alpha0)^enth.beta0 -
-  log(pgnorm(q = 1 - x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
-      pgnorm(q = 0,     mu = mu, alpha = enth.alpha0, beta  = enth.beta0))
-}
-enth.post.log.2 <- function(x, y){
-  y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-  y1.PC*log(y)     + y0.PC*log(1 - y) -
-  (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
-  (abs(y - mu)/enth.alpha0)^enth.beta0 -
-  log(pgnorm(q = 1,  mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
-      pgnorm(q = -x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0))
-}
+# Deemed unnecessary on 5/7/2020
 
 # scale factor: average of estimated maximum of log (un-normalized) posterior densities
-if (IP.mle >= PC.mle){
-  sc <- (skpt.post.log.1(IP.mle - PC.mle, PC.mle) + enth.post.log.1(IP.mle - PC.mle, PC.mle))/2
-} else {
-  sc <- (skpt.post.log.2(IP.mle - PC.mle, PC.mle) + enth.post.log.2(IP.mle - PC.mle, PC.mle))/2
-}
+# Deemed unnecessary on 5/7/2020
 
 # scaled (un-normalized) posterior density
+# Edited on 5/7/2020
+# Still should be on log scale
 skpt.post.sc.1 <- function(x, y){
   exp(
-    y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-    y1.PC*log(y)     + y0.PC*log(1 - y) -
-    (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
-    (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
-    log(pgnorm(q = 1 - x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
-        pgnorm(q = 0,     mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0)) -
-    sc
+    dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+      dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
+      dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) - 
+      log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) - 
+            pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)) +
+      dgnorm(y,            mu, skpt.alpha0, skpt.beta0, log = TRUE) - 
+      log(pgnorm(q = 1-x,  mu, skpt.alpha0, skpt.beta0) - 
+            pgnorm(q = 0,  mu, skpt.alpha0, skpt.beta0))
   )
 }
 skpt.post.sc.2 <- function(x, y){
   exp(
-    y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-    y1.PC*log(y)     + y0.PC*log(1 - y) -
-    (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
-    (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
-    log(pgnorm(q = 1,  mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
-        pgnorm(q = -x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0)) -
-    sc
+    dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+      dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
+      dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) - 
+      log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) - 
+            pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)) +
+      dgnorm(y,            mu, skpt.alpha0, skpt.beta0, log = TRUE) - 
+      log(pgnorm(q = 1,    mu, skpt.alpha0, skpt.beta0) - 
+            pgnorm(q = -x, mu, skpt.alpha0, skpt.beta0))
   )
 }
 enth.post.sc.1 <- function(x, y){
   exp(
-    y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-    y1.PC*log(y)     + y0.PC*log(1 - y) -
-    (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
-    (abs(y - mu)/enth.alpha0)^enth.beta0 -
-    log(pgnorm(q = 1 - x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
-        pgnorm(q = 0,     mu = mu, alpha = enth.alpha0, beta  = enth.beta0)) -
-    sc
+    dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+      dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
+      dgnorm(x,            delta.enth, enth.rd.alpha0, enth.rd.beta0, log = TRUE) - 
+      log(pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) - 
+            pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0)) +
+      dgnorm(y,            mu, enth.alpha0, enth.beta0, log = TRUE) - 
+      log(pgnorm(q = 1-x,  mu, enth.alpha0, enth.beta0) - 
+            pgnorm(q = 0,  mu, enth.alpha0, enth.beta0))
   )
 }
 enth.post.sc.2 <- function(x, y){
   exp(
-    y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-    y1.PC*log(y)     + y0.PC*log(1 - y) -
-    (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
-    (abs(y - mu)/enth.alpha0)^enth.beta0 -
-    log(pgnorm(q = 1,  mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
-        pgnorm(q = -x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0)) -
-    sc
+    dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+      dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
+      dgnorm(x,            delta.enth, enth.rd.alpha0, enth.rd.beta0, log = TRUE) - 
+      log(pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) - 
+            pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0)) +
+      dgnorm(y,            mu, enth.alpha0, enth.beta0, log = TRUE) - 
+      log(pgnorm(q = 1,    mu, enth.alpha0, enth.beta0) - 
+            pgnorm(q = -x, mu, enth.alpha0, enth.beta0))
   )
 }
 
-# # check posterior.kernel(IP.mle - PC.mle, PC.mle)/exp(sc) = 1 (approx)
-# if (IP.mle >= PC.mle){
-#   print(paste0("post kernel at MLE :", 
-#                (skpt.post.sc.1(IP.mle - PC.mle, PC.mle) + enth.post.sc.1(IP.mle - PC.mle, PC.mle))/2))
-# } else {
-#   print(paste0("post kernel at MLE :", 
-#                (skpt.post.sc.2(IP.mle - PC.mle, PC.mle) + enth.post.sc.2(IP.mle - PC.mle, PC.mle))/2))
-# }
-
 # scaled normalizing constant for posterior density
+# No longer scaled on 5/7/2020, just regular probability of data
 skpt.nc.sc <- integrate_debug(skpt.post.sc.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
               integrate_debug(skpt.post.sc.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
 enth.nc.sc <- integrate_debug(enth.post.sc.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
               integrate_debug(enth.post.sc.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
 
 # check that posterior is normalized
-#print(paste0("skpt posterior integral: ",
+# print(paste0("skpt posterior integral: ",
 #      (integrate_debug(skpt.post.sc.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
 #       integrate_debug(skpt.post.sc.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1))/
 #       skpt.nc.sc))
-#print(paste0("enth posterior integral: ",
+# print(paste0("enth posterior integral: ",
 #      (integrate_debug(enth.post.sc.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
 #       integrate_debug(enth.post.sc.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1))/
 #       enth.nc.sc))
@@ -194,99 +244,92 @@ eff.skpt.wt <- eff.mix.prob*skpt.nc.sc/(eff.mix.prob*skpt.nc.sc + (1 - eff.mix.p
 inf.skpt.wt <- inf.mix.prob*skpt.nc.sc/(inf.mix.prob*skpt.nc.sc + (1 - inf.mix.prob)*enth.nc.sc)
 
 # scaled (un-normalized) marginal distributions
+## STILL NEED TO BE FIXED, BUT SKIP FOR NOW
 skpt.post.x.sc.1 <- function(x, y){
   x*
-    exp(
-      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-        y1.PC*log(y)     + y0.PC*log(1 - y) -
-        (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
-        (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
-        log(pgnorm(q = 1 - x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
-              pgnorm(q = 0,     mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0)) -
-        sc
-  )
+    dbinom(y1.IP, y1.IP + y0.IP, x + y)*
+    dbinom(y1.PC, y1.PC + y0.PC, y)*
+    dgnorm(x,         delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)/
+    (pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
+       pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0))*
+    dgnorm(y,          mu,skpt.alpha0, skpt.beta0)/
+    (pgnorm(q = 1 - x, mu, skpt.alpha0, skpt.beta0) -
+       pgnorm(q = 0,   mu, skpt.alpha0, skpt.beta0))
 }
 skpt.post.x.sc.2 <- function(x, y){
   x*
-    exp(
-      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-        y1.PC*log(y)     + y0.PC*log(1 - y) -
-        (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
-        (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
-        log(pgnorm(q = 1,  mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
-              pgnorm(q = -x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0)) -
-        sc
-    )
+    dbinom(y1.IP, y1.IP + y0.IP, x + y)*
+    dbinom(y1.PC, y1.PC + y0.PC, y)*
+    dgnorm(x,         delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)/
+    (pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
+       pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0))*
+    dgnorm(y,          mu,skpt.alpha0, skpt.beta0)/
+    (pgnorm(q = 1,     mu, skpt.alpha0, skpt.beta0) -
+       pgnorm(q = -x,  mu, skpt.alpha0, skpt.beta0))
 }
 enth.post.x.sc.1 <- function(x, y){
   x*
-    exp(
-      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-        y1.PC*log(y)     + y0.PC*log(1 - y) -
-        (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
-        (abs(y - mu)/enth.alpha0)^enth.beta0 -
-        log(pgnorm(q = 1 - x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
-              pgnorm(q = 0,     mu = mu, alpha = enth.alpha0, beta  = enth.beta0)) -
-        sc
-    )
+    dbinom(y1.IP, y1.IP + y0.IP, x + y)*
+    dbinom(y1.PC, y1.PC + y0.PC, y)*
+    dgnorm(x,         delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+    (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+       pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+    dgnorm(y,          mu,enth.alpha0, enth.beta0)/
+    (pgnorm(q = 1 - x, mu, enth.alpha0, enth.beta0) -
+       pgnorm(q = 0,   mu, enth.alpha0, enth.beta0))
 }
 enth.post.x.sc.2 <- function(x, y){
   x*
-    exp(
-      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-        y1.PC*log(y)     + y0.PC*log(1 - y) -
-        (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
-        (abs(y - mu)/enth.alpha0)^enth.beta0 -
-        log(pgnorm(q = 1,  mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
-              pgnorm(q = -x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0)) -
-        sc
-    )
+    dbinom(y1.IP, y1.IP + y0.IP, x + y)*
+    dbinom(y1.PC, y1.PC + y0.PC, y)*
+    dgnorm(x,         delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+    (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+       pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+    dgnorm(y,          mu,enth.alpha0, enth.beta0)/
+    (pgnorm(q = 1,     mu, enth.alpha0, enth.beta0) -
+       pgnorm(q = -x,  mu, enth.alpha0, enth.beta0))
 }
 skpt.post.y.sc.1 <- function(x, y){
   y*
-    exp(
-      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-        y1.PC*log(y)     + y0.PC*log(1 - y) -
-        (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
-        (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
-        log(pgnorm(q = 1 - x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
-              pgnorm(q = 0,     mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0)) -
-        sc
-    )
+    dbinom(y1.IP, y1.IP + y0.IP, x + y)*
+    dbinom(y1.PC, y1.PC + y0.PC, y)*
+    dgnorm(x,         delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)/
+    (pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
+       pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0))*
+    dgnorm(y,          mu,skpt.alpha0, skpt.beta0)/
+    (pgnorm(q = 1 - x, mu, skpt.alpha0, skpt.beta0) -
+       pgnorm(q = 0,   mu, skpt.alpha0, skpt.beta0))
 }
 skpt.post.y.sc.2 <- function(x, y){
   y*
-    exp(
-      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-        y1.PC*log(y)     + y0.PC*log(1 - y) -
-        (abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0 -
-        (abs(y - mu)/skpt.alpha0)^skpt.beta0 -
-        log(pgnorm(q = 1,  mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0) -
-              pgnorm(q = -x, mu = mu, alpha = skpt.alpha0, beta  = skpt.beta0)) -
-        sc
-    )
+    dbinom(y1.IP, y1.IP + y0.IP, x + y)*
+    dbinom(y1.PC, y1.PC + y0.PC, y)*
+    dgnorm(x,         delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)/
+    (pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
+       pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0))*
+    dgnorm(y,          mu,skpt.alpha0, skpt.beta0)/
+    (pgnorm(q = 1,     mu, skpt.alpha0, skpt.beta0) -
+       pgnorm(q = -x,  mu, skpt.alpha0, skpt.beta0))
 }
 enth.post.y.sc.1 <- function(x, y){
   y*
-    exp(
-      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-        y1.PC*log(y)     + y0.PC*log(1 - y) -
-        (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
-        (abs(y - mu)/enth.alpha0)^enth.beta0 -
-        log(pgnorm(q = 1 - x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
-              pgnorm(q = 0,     mu = mu, alpha = enth.alpha0, beta  = enth.beta0)) -
-        sc
-    )
+    dbinom(y1.IP, y1.IP + y0.IP, x + y)*
+    dbinom(y1.PC, y1.PC + y0.PC, y)*
+    dgnorm(x,         delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+    (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+       pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+    dgnorm(y,          mu,enth.alpha0, enth.beta0)/
+    (pgnorm(q = 1 - x, mu, enth.alpha0, enth.beta0) -
+       pgnorm(q = 0,   mu, enth.alpha0, enth.beta0))
 }
 enth.post.y.sc.2 <- function(x, y){
   y*
-    exp(
-      y1.IP*log(x + y) + y0.IP*log(1 - (x + y)) + 
-        y1.PC*log(y)     + y0.PC*log(1 - y) -
-        (abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0 -
-        (abs(y - mu)/enth.alpha0)^enth.beta0 -
-        log(pgnorm(q = 1,  mu = mu, alpha = enth.alpha0, beta  = enth.beta0) -
-              pgnorm(q = -x, mu = mu, alpha = enth.alpha0, beta  = enth.beta0)) -
-        sc
-    )
+    dbinom(y1.IP, y1.IP + y0.IP, x + y)*
+    dbinom(y1.PC, y1.PC + y0.PC, y)*
+    dgnorm(x,         delta.enth, enth.rd.alpha0, enth.rd.beta0)/
+    (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
+       pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))*
+    dgnorm(y,          mu,enth.alpha0, enth.beta0)/
+    (pgnorm(q = 1,     mu, enth.alpha0, enth.beta0) -
+       pgnorm(q = -x,  mu, enth.alpha0, enth.beta0))
 }
