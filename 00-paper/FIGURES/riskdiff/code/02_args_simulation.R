@@ -51,8 +51,8 @@ rm(list = ls())
 #                     1000)   # reps
 
 simulation2 <- expand.grid(
-                   seq(.39, 0.63, length = 5), # p.IP
-                    .39, # p.PC
+                   seq(.39, 0.63, length = 9), # p.IP
+                    rep(.39, 20), # p.PC
                     2,   # freq.mntr
                     1,   # enr.shape
                     4,   # out.mean
@@ -62,7 +62,7 @@ simulation2 <- expand.grid(
                     0.05, # cred.tail
                     100,  # max.ss
                     70,   # min.ss
-                    100)   # reps
+                    1)   # reps
 
 #simulation <- rbind(simulation1, simulation2)
 simulation  <- simulation2
