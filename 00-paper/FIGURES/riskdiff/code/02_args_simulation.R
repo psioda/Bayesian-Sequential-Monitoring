@@ -57,12 +57,12 @@ simulation2 <- expand.grid(
                     1,   # enr.shape
                     4,   # out.mean
                     0,   # fut.mix.prob
-                    rep(10, 160),  # eff.mix.prob (10 means prior data conflcit)
+                    c(seq(1,0.25,by=-0.25)),  # eff.mix.prob (10 means prior data conflcit)
                     0.5,  # inf.mix.prob
                     0.05, # cred.tail
                     100,  # max.ss
                     70,   # min.ss
-                    63)   # reps
+                    100)   # reps
 
 #simulation <- rbind(simulation1, simulation2)
 simulation  <- simulation2

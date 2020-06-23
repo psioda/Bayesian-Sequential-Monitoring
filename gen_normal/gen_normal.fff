@@ -1,9 +1,0 @@
-\begin{figure}
-\begin{center}
-\includegraphics[width=3in]{../00-paper/FIGURES/figure1a.png}
-\includegraphics[width=3in]{../00-paper/FIGURES/figure1b.png}
-\includegraphics[width=3in]{../00-paper/FIGURES/figure1c.png}
-\caption{A, $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$. B, $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=0.75)$, C, $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1.5)$}
-\label{fig:figure1}
-\end{center}
-\end{figure}

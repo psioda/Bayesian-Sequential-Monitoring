@@ -1,5 +1,8 @@
 ##################################
 ### Evan Kwiatkowski, Feb 2020
+###
+### contains nested source("code_posteriors.R", local = TRUE)
+###
 ##################################
 
 # Posterior Mean & Coverage Probability  ---

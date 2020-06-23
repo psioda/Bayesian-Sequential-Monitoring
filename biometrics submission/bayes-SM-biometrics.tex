@@ -612,9 +612,9 @@ For example, consider creating skeptical and enthusiastic priors for a response 
 \pi_E(\theta)=\mathcal{GN}_{p=\epsilon,\Theta=[0,1]}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$ respectively.
 \begin{figure}
 \begin{center}
-\includegraphics[width=3in]{../00-paper/FIGURES/figure1a.png}
-\includegraphics[width=3in]{../00-paper/FIGURES/figure1b.png}
-\includegraphics[width=3in]{../00-paper/FIGURES/figure1c.png}
+\includegraphics[width=3in]{figure1a.png}
+\includegraphics[width=3in]{figure1b.png}
+\includegraphics[width=3in]{figure1c.png}
 \caption{A, $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$. B, $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=0.75)$, C, $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1.5)$}
 \label{fig:figure1}
 \end{center}
@@ -629,11 +629,11 @@ The generalized normal distribution can be used to parameterize skeptical and en
 
 
 \begin{figure}\begin{center}
-%\includegraphics[width=3in]{../00-paper/FIGURES/figure5c.png}
-\includegraphics[width=6in]{../00-paper/FIGURES/figure5a.png}
-%\includegraphics[width=3in]{../00-paper/FIGURES/figure5d.png}
-%\includegraphics[width=3in]{../00-paper/FIGURES/figure5b.png}
-%\includegraphics[width=3in]{../00-paper/FIGURES/figure5e.png}
+%\includegraphics[width=3in]{figure5c.png}
+\includegraphics[width=6in]{figure5a.png}
+%\includegraphics[width=3in]{figure5d.png}
+%\includegraphics[width=3in]{figure5b.png}
+%\includegraphics[width=3in]{figure5e.png}
 \caption{Joint distribution $\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$, where $
 \pi(\theta)\sim\mathcal{GN}_{p=0.975,\Theta=[-1,1]}(\tilde{\mu}=\theta_0,q=\theta_1,\gamma=1)$ and $\pi(\eta|\theta)\sim \mathcal{GN}_{p=0.975,H=[\rmn{max}(-\theta,0),\rmn{min}(1,1+\theta)]}(\tilde{\mu}=\eta_0,q=\eta_1,\gamma=1)$.}
 \label{fig:figure5}
@@ -674,8 +674,8 @@ Figure \ref{fig:figure2}(a) shows the results of a trial where at the third inte
 Figure \ref{fig:figure2}(b) shows the results of a trial where at the third interim analysis the futility condition is satisfied and enrollment is terminated. 
 
 \begin{figure}\begin{center}
-    \includegraphics[width=6in]{../00-paper/FIGURES/figure2a.png}
-    \includegraphics[width=6in]{../00-paper/FIGURES/figure2b.png}
+    \includegraphics[width=6in]{figure2a.png}
+    \includegraphics[width=6in]{figure2b.png}
     \caption{Example paths for the trial described in Section \ref{sec:example1model}. A, Early stoppage for efficacy. B, early stoppage for futility.}
 	\label{fig:figure2}
 \end{center}
@@ -696,8 +696,8 @@ Figure \ref{fig:ex1.1}(b) addresses the particular situation when the efficacy c
 The median efficacy criteria is very close to $1-\epsilon$ and in the vast majority of cases (greater than 10th percentile) the efficacy criteria is still very high. Therefore, for this trial design, the interim and final results are not highly discrepant with respect to the efficacy criteria in the case of evidence decrease.
 \begin{figure}\begin{center}
 
-    \includegraphics[width=6in]{../00-paper/FIGURES/figure3a.png}
-    \includegraphics[width=6in]{../00-paper/FIGURES/figure3b.png}
+    \includegraphics[width=6in]{figure3a.png}
+    \includegraphics[width=6in]{figure3b.png}
     \caption{A, Sequential design properties. (SS; sample size, PM; posterior mean, CP; coverage probability, (I); interim analysis, (F); final analysis) B, Distribution of final posterior probability given interim stoppage and evidence decrease ($\%$ AGR; Percent of agreement between final and interim posterior probabilities relative to $1-\epsilon$ threshold)}
 	\label{fig:ex1.1}
 
@@ -711,12 +711,12 @@ The monitoring frequency is 1 when an interim analysis is made after every compl
 The probability of the efficacy criteria being (errantly) satisfied is the highest for a fully sequential design, and decreases as the monitoring frequency decreases. However, the probability of the efficacy criteria being satisfied with the final data is very low for any type of sequential monitoring (under 0.02 in all cases).
 \begin{figure}\begin{center}
 
-    \includegraphics[width=6in]{../00-paper/FIGURES/figure4.png}
+    \includegraphics[width=6in]{figure4.png}
     \caption{Probability of efficacy criteria being satisfied when $\theta=\theta_0$. SS; sample size. Monitor Freq; monitoring frequency.}
 	\label{fig:ex1t1e}
 
 %  \begin{subfigure}{7in}
-%    \centering\includegraphics[width=6in]{../00-paper/FIGURES/figureS1.png}
+%    \centering\includegraphics[width=6in]{figureS1.png}
 %    \caption{Caption text 2}
 %  \end{subfigure}
  
@@ -752,7 +752,7 @@ A mixture prior of the form \eqref{eq:inference_prior} is used for efficacy moni
 Figure \ref{fig:ex2varyomega} shows the probability of stopping early for efficacy based on the choice of $\omega$ used in the mixture prior for efficiency monitoring, and the associated sample sizes. Note that only in the case of $\omega=0.25$ is the probability of stopping the trial early for efficacy near 50\% when $\theta=\theta_1$. Also, only in the case of $\omega=0.25$ is the expected sample size less than 90. Therefore, for this design, the monitoring prior for efficacy has to be mostly enthusiastic in order for reasonable efficacy conditions.
 
 \begin{figure}\begin{center}
-    \centering\includegraphics[width=6in]{../00-paper/FIGURES/figure6.png}
+    \centering\includegraphics[width=6in]{figure6.png}
     \caption{Probability of stopping for efficacy and associated sample sizes by true IP response rate $\theta$ with different choices of efficacy monitoring prior.}
 \label{fig:ex2varyomega}
  \end{center}
@@ -857,7 +857,7 @@ The restrictions on the choice of $(p,\tilde{\mu},q,\gamma)$ for the $\theta\sim
 Recall Figure \ref{fig:ex1t1e} from Section \ref{sec:example1} which showed Type 1 error properties for the single-arm design. Figure \ref{fig:ex1t1e_longer} shows results from a design that has a longer follow-up period. The interim sample sizes are the same for each monitoring frequency, however, the final sample sizes under the longer follow-up designs are much larger (over 20 patients in follow-up for monitoring frequencies of 8 or fewer, compared to approximately 6 patients in the shorter follow-up designs). The final probability of efficacy criteria being satisfied is generally slightly lower in the longer follow-up design, which is what we would expect since the larger final sample size contains more data consistent with a null result.
 \begin{figure}\begin{center}
 
-   \includegraphics[width=6in]{../00-paper/FIGURES/figureS1.png}
+   \includegraphics[width=6in]{figureS1.png}
     \caption{Single arm design from Example \ref{sec:example1} with a longer follow-up period. Probability of efficacy criteria being satisfied when $\theta=\theta_0$. SS; sample size. Monitor Freq; monitoring frequency.}
 	\label{fig:ex1t1e_longer}
 
@@ -874,16 +874,16 @@ The choice of skeptical and enthusiastic prior affects the analysis, and their s
 
 \begin{figure}\begin{center}
 
- \includegraphics[width=6in]{../00-paper/FIGURES/figureS2a.png}
- \includegraphics[width=6in]{../00-paper/FIGURES/figureS2b.png}
+ \includegraphics[width=6in]{figureS2a.png}
+ \includegraphics[width=6in]{figureS2b.png}
  \caption{Modification of enthusiastic prior parameterization in Example \ref{sec:example1}. A, default enthusiastic prior (Figure \ref{fig:figure1}(c)). B, flattened enthusiastic prior (Figure \ref{fig:figure1}(d)). Both designs use concentrated skeptical prior (Figure \ref{fig:figure1}(b)).}
 \label{fig:robustness1}
 \end{center}
 \end{figure}
 \begin{figure}\begin{center}
 
- \includegraphics[width=6in]{../00-paper/FIGURES/figureS2c.png}
- \includegraphics[width=6in]{../00-paper/FIGURES/figureS2d.png}
+ \includegraphics[width=6in]{figureS2c.png}
+ \includegraphics[width=6in]{figureS2d.png}
  \caption{Modification of enthusiastic prior parameterization in Example \ref{sec:example1}. A, default enthusiastic prior (Figure \ref{fig:figure1}(c)). B, flattened enthusiastic prior (Figure \ref{fig:figure1}(d)). Both designs use default skeptical prior (Figure \ref{fig:figure1}(a)).}
 \label{fig:robustness2}
 \end{center}
