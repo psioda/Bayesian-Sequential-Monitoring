@@ -17,7 +17,7 @@
 %  
 \documentclass[useAMS,usenatbib,referee]{biom}
 \usepackage{graphicx}
-\usepackage{amsmath}
+\usepackage{amsmath,amsfonts}
 \usepackage{xcolor}
 %\usepackage{amssymb}
 %documentclass[useAMS]{biom}
@@ -238,26 +238,27 @@ The Bayesian paradigm is naturally suited for sequentially monitoring clinical t
 %  For that matter, please do not attempt to redefine anything!
 
 \section{Introduction}
-In the clinical development of a therapeutic product, it is often a challenge to obtain sufficient outcomes for the primary objective (e.g. difficulty in enrolling, limited patient populations). Bayesian sequential methods are ideal to address this uncertainty in outcome ascertainment by allowing the possibility for conclusions to be made earlier without inherent restrictions for frequent or even continual data monitoring. The advantages of sequential monitoring are especially apparent when there are additional difficulties in obtaining outcomes (e.g. long latency in observing the outcome, substantial financial cost associated with each patient). In settings where pertinent existing data are available, Bayesian designs offer a natural approach for incorporating that information into the design and analysis of future trials. An example where sequential Bayesian methods are valuable is in the area of pediatric clinical trials, where enrollment is often difficult and where relevant data from adult trials are often available. Utilizing information from the adult trials may result in pediatric trials that are more efficient (e.g., increased power, fewer subjects required and/or shorter trial durations).
+In the clinical development of a therapeutic product, it is often a challenge to obtain sufficient outcomes for the primary objective (e.g. difficulty in enrolling, limited patient populations). Bayesian sequential methods are ideal to address this uncertainty in outcome ascertainment by allowing the possibility for conclusions to be made earlier without inherent restrictions for frequent or even continual data monitoring. The advantages of sequential monitoring are especially apparent when there are additional difficulties in obtaining outcomes (e.g. long latency in observing the outcome, substantial financial cost associated with each patient). In settings where pertinent existing data are available, Bayesian designs offer a natural approach for incorporating that information into the design and analysis of future trials. An example where sequential Bayesian methods are valuable is in the area of pediatric clinical trials, where enrollment is often difficult and where relevant data from adult trials are often available. Utilizing information from the adult trials may result in pediatric trials that are more efficient (e.g., increased power, fewer subjects required, shorter trial duration).
 
-We present a framework for sequential monitoring that makes structured use of external data and can be consistently applied to a wide range of clinical trial applications. Such standardization of fundamental concepts relating to the trial design provides for coherent interpretation that is appealing to regulators. The basis for this framework is the requirement that parameterization of the monitoring priors and specification of stopping criteria are algorithmic byproducts of the trial hypothesis and relevant external data summaries. This framework defines monitoring priors with a unifying distribution applicable to a wide array of data types (i.e. generalized normal distribution with optional truncation). A procedure for conditional-marginal specification is presented as the default option in multi-parameter settings. This paper uses posterior probabilities to highlight how the level of evidence at interim analyses is linked to monitoring prior specification. 
+We present a framework for sequential monitoring that makes structured use of external data and can be consistently applied to a wide range of clinical trial applications. Such standardization of fundamental concepts relating to the trial design provides for coherent interpretation that is appealing to regulators. The basis for this framework is the requirement that parameterization of the monitoring priors and specification of stopping criteria are algorithmic byproducts of the trial hypothesis and relevant external data summaries. In particular, the following quantities are required:
+
+\begin{enumerate}
+\item Null level for the treatment effect
+\item Highly efficacious but plausible level for treatment effect
+\item Threshold for determining substantial evidence (Section \ref{sec:sub_evid})
+\end{enumerate}
+
+These quantities are sufficient for defining monitoring priors and stoppage criteria for a sequentially monitored clinical trial. Skeptical and enthusiastic priors are defined with a unifying distribution applicable to a wide array of data types (i.e. generalized normal distribution with optional truncation). The framework includes the capacity to adjust the monitoring priors to reflect nuanced prior opinion about the treatment effect (Section \ref{sec:gen_normal}) and to be adjusted dynamically based on observed responses (Section \ref{sec:incorporating}). A procedure for conditional-marginal specification is presented as the default option in multi-parameter settings (Section \ref{sec:cond_marg}). This paper uses posterior probabilities to highlight how the level of evidence at interim analyses is linked to monitoring prior specification. 
 
 The frequentist properties of trial designs using this framework are explored. Bayesian group sequential designs are often restricted to have explicit frequentist properties \citep{Ventz2015, Zhu2015}. In fact, recent work has shown these restrictions can result in Bayesian and frequentist group sequential designs to have stopping rules that are nearly identical \citep{Stallard2020, Kopp-Schneider2019, Zhu2019}.
-While it is possible to calibrate a Bayesian design to have exact pre-specified frequentist properties, this re-introduces inflexibility (e.g. restrictions on interim analyses) that is unnecessary using a fully Bayesian method. Therefore, our objective is to present operating characteristics generally that are ``well-calibrated" \citep{Grieve2016} but not motivated by strict adherence to pre-specified thresholds.
+While it is possible to calibrate a Bayesian design to have exact pre-specified frequentist properties, this re-introduces inflexibility (e.g. restrictions on interim analyses) that is unnecessary using a fully Bayesian method. Therefore, our objective is to present operating characteristics generally that are ``well-calibrated" \citep{Grieve2016} but not motivated by strict adherence to pre-specified thresholds. 
+
+This paper explores the operating characteristics of a sequentially monitored clinical trial including probability of stopping early for efficacy or futility at an interim or at the final analysis, expected sample size and trial duration, and posterior mean and coverage probability for the treatment effect. The distribution of the final posterior probability of efficacy given interim stoppage is explored in cases that final data dampens the conclusion for efficacy that was made at an interim analysis. Impact of frequency of data monitoring on determination of efficacy is shown.
 
 This paper is organized as follows: Section \ref{sec:methods} contains a brief review of Bayesian hypothesis testing using posterior probabilities, and describes the method for defining monitoring and inference priors. Examples are in Section \ref{sec:examples}, with Section \ref{sec:example1} containing a one-arm study and Section \ref{sec:example2} a two-arm study.
-
 %Conclusions from Bayesian inferences are not affected by the frequency with which the data are monitored, and such interim analyses should be encouraged to terminate data collection if appropriate \citep{Berry1989,Berry1993,Spiegelhalter1994}. The Bayesian perspective is based on the likelihood principle which asserts that any data with the same likelihood function should lead to the same conclusion \citep{Berger1988}. In the context of sequential analysis of clinical trials, the stopping rule that leads to the termination of data collection is irrelevant to the conclusion \citep{Barnard1947,Anscombe1963,Cornfield1966a,Cornfield1966b}. 
-
-
-
 %In contrast ... add stuff Frequentist group sequential designs rely on pre-specified interim analyses and spending functions to maintain desired trial operating characteristics \citep{Pocock1977,OBrien1979}.
-
-
-
-
 %Interpretation of conclusions from the Bayesian perspective is natural when specification of prior distributions are intuitively related to the research objectives. Skeptical and enthusiastic monitoring priors are used to evaluate efficacy and futility at an interim analysis \citep{Freedman1989,Freedman1992,Spiegelhalter1993,Fayers1997}. The most common Bayesian metrics for assessing evidence at interim analyses are posterior probabilities and predictive probabilities, and the choice of metric depends on the research objective. Posterior probabilities assess the level of evidence in favor of the null or alternative hypothesis, and predictive probabilities determine the capacity for the trial to show convincing evidence in favor of the alternative hypothesis if more outcomes are ascertained. 
-
 \section{Methods}\label{sec:methods}
 
 \subsection{Preliminaries}\label{sec:preliminaries}
@@ -278,47 +279,17 @@ indicator of response for patient $i$ and $z_i$ is an indicator for whether pati
 We use the generic representation $p(\bmath{D}|\theta,\eta)$ to reflect the density or mass function for the collective data $\bmath{D}$ as a function of $\theta$ and potential nuisance parameters
 $\eta$ which could be multi-dimensional.
 %
-For example, for the two-arm trial example above $\eta$ would correspond to the response probability for patients receiving the control treatment.
+For example, for the two-arm trial example above $\eta$ would correspond to the response probability for patients receiving the control treatment. For ease of exposition, for the remainder of Section~\ref{sec:preliminaries}, we will focus on the case where $\theta$ is the only unknown parameter and ignore $\eta$.
 
-
-Consider the hypotheses $H_0:\theta\in\Theta_{0}$ versus $H_1:\theta\in\Theta_{1}$ where $\Theta_{0}\bigcup \Theta_{1} = \Theta$ and $\Theta_{0} \bigcap \Theta_{1} = \emptyset$.
-%
-Formal Bayesian hypothesis testing requires the specification of prior probabilities on the hypotheses (e.g., $p(H_i)$ for $i=0,1$)
-and prior distributions for $\left(\theta,\eta\right)$ specified over the parameter space defined with respect to each of the 
-hypotheses (e.g. $\pi\left(\theta,\eta \big| H_i\right)$ for $i=0,1$). 
-%
-For ease of exposition, for the remainder of Section~\ref{sec:preliminaries}, we will focus on the case where $\theta$ is the 
-only unknown parameter and ignore $\eta$.
-
-The posterior probability of hypothesis $H_i$ is given by 
-\begin{equation}\label{eq:equation1}
-p(H_i|\bmath{D})=\frac{p(\bmath{D}|H_i)\cdot p(H_i)}{p(\bmath{D}|H_0)\cdot p(H_0)+p(\bmath{D}|H_1)\cdot p(H_1)},
-\end{equation}
-where $p(\bmath{D}|H_i) = \int_{\Theta_i} p(\bmath{D}|\theta)\pi(\theta|H_i)d\theta$ is the marginal likelihood associated with hypothesis $H_i$.
-%
-In practice, most Bayesian methods for clinical trials perform hypothesis testing based on the posterior probability of the \textit{event defining $H_i$}.
-%
-For this approach, one simply needs to specify a prior $\pi\left(\theta\right)$ representing belief about $\theta$ overall and compute the posterior distribution.
-%
-The posterior probability that $\theta\in\Theta_i$ is given by
-\begin{equation}\label{eq:equation2}
+Consider the hypotheses $H_0:\theta\in\Theta_{0}$ versus $H_1:\theta\in\Theta_{1}$. The posterior probability that $\theta\in\Theta_i$ is given by
+\begin{equation}
 P(\theta\in\Theta_i|\bmath{D})
 =\frac{\int_{\Theta_i} p(\bmath{D}|\theta)\pi (\theta)d\theta}{\int_{\Theta}p(\bmath{D}|\theta)\pi(\theta) d\theta}
-=\frac{\int_{\Theta_i} p(\bmath{D}|\theta)\pi (\theta|\theta\in\Theta_i)d\theta\cdot P(\theta\in\Theta_i)}
-      { \sum_{j=0,1} \int_{\Theta_j}p(\bmath{D}|\theta)\pi (\theta|\theta\in\Theta_j)d\theta\cdot P(\theta\in\Theta_j) }
 \end{equation}
-where $P(\theta\in\Theta_i)=\int_{\Theta_i}\pi(\theta)d\theta$. 
-%
-We can readily see that the $P(\theta\in\Theta_i|\bmath{D})$ is equal to $p(H_i|\bmath{D})$ if one takes
-$p(H_i) =P(\theta\in\Theta_i)$ and $\pi\left(\theta \big| H_i\right) = \pi\left(\theta\big|\theta \in \Theta_i\right)$ for $i=0,1$.
-%
-If in fact $\pi\left(\theta\right)$ does represent belief about $\theta$, these choices are perhaps the most intuitive and thus 
-we should have no reservation referring to $P(\theta\in\Theta_i|\bmath{D})$ as the probability that hypothesis $H_i$ is true.
-%
-For these reasons, in what follows we will refer to the quantity $P(\theta\in\Theta_i|\bmath{D})$ 
-as the posterior probability of $H_i$ for ease of exposition.
+where $p(\bmath{D}|\theta)$ is also referred to as the likelihood $\mathcal{L}(\theta|\mathbf{D})$.
+We will also refer to $P(\theta\in\Theta_i|\bmath{D})$ as the posterior probability of hypothesis $H_i$ (see \eqref{eq:equation1} and \eqref{eq:equation2} in Appendix Section \ref{sec:hypothesis}).
 
-\subsubsection{Formalizing the Statistical Concept of Substantial Evidence}
+\subsubsection{Formalizing the Statistical Concept of Substantial Evidence}\label{sec:sub_evid}
 For testing one-sided hypotheses such as $H_0: \theta \le \theta_0$ versus $H_1: \theta > \theta_0$ using posterior probabilities, the null hypothesis 
 is rejected when $P(\theta > \theta_0 |\bmath{D})$ exceeds a predefined threshold.
 %
@@ -366,7 +337,7 @@ A key contribution of this work is to give rationale for definitions of a priori
 in favor of efficacy and futility, respectively.
 
 
-For ease of exposition, consider the hypotheses $H_0: \theta \le \theta_0$ versus $H_0: \theta > \theta_0$ where $\theta$ represents a treatment effect of interest and let $\theta_1>\theta_0$ 
+For ease of exposition, consider the hypotheses $H_0: \theta \le \theta_0$ versus $H_0: \theta > \theta_0$ where $\theta_0$ represents a treatment effect of interest and let $\theta_1>\theta_0$ 
 represent a plausible, clinically meaningful effect.
 
 %%\begin{mydef}
@@ -421,7 +392,7 @@ advice for specifying a maximum sample size for the trial.
 Although sequentially monitored trials in principle require no fixed sample size, in practice due to resource 
 constraints it will almost always be the case that a maximum sample size exists. 
 %
-Resources permitting, the maximum sample size, denoted by $n_{max}$, should be chosen so that there is a 
+Resources permitting, the maximum sample size, denoted by $n_{\text{max}}$, should be chosen so that there is a 
 high probability that the trial generates substantial evidence from the perspective of the skeptic when in 
 fact $\theta \approx \theta_1$ in a scenario where the data are only examined once when the full set of 
 outcomes are ascertained.
@@ -454,7 +425,7 @@ Define the efficacy criteria for data $\bmath{D}$ as
 \end{equation}
 %
 and the threshold for substantial evidence to be 
-\begin{equation}
+\begin{equation}\label{eq:eff_evidence}
 \rmn{eff}(\bmath{D})>1-\epsilon
 \end{equation}
 %%\end{mydef}
@@ -473,11 +444,10 @@ $P_E(\theta\le\theta_0| \bmath{D}) \rightarrow 0.5$ for large samples sizes.
 %
 For this reason, we consider a different approach.
 %
-Recalling that $\theta_1$ represents a plausible, clinically meaningful treatment effect, we define $\theta_{m}= c \cdot \theta_0 + (1-c) \cdot \theta_1$ for 
-$c \in [0,1]$ to be a less than desirable treatment effect such that if it is the case that $P_E\left(\theta<\theta_{m}| \bmath{D}\right)>1-\epsilon$, 
+Recalling that $\theta_1$ represents a plausible, clinically meaningful treatment effect, we define $\theta_m=(\theta_0+\theta_1)/2$ to be a less than desirable treatment effect such that if it is the case that $P_E\left(\theta<\theta_{m}| \bmath{D}\right)>1-\epsilon$, 
 the trial may be stopped due to having a low probability of reaching a meaningful treatment effect.
 %
-For example applications in this paper, we consider $c=0.5$, so that $\theta_m=(\theta_0+\theta_1)/2$.
+%For example applications in this paper, we consider $c=0.5$, so that $\theta_m=(\theta_0+\theta_1)/2$.
 
 %%\begin{mydef}
 Define the futility criteria for data $\bmath{D}$ as
@@ -485,131 +455,38 @@ Define the futility criteria for data $\bmath{D}$ as
 \rmn{fut}(\bmath{D})=P_E(\theta\leq\theta_m |\bmath{D})
 \end{equation}
 and the threshold for substantial evidence to be
-\begin{equation}
+\begin{equation}\label{eq:fut_evidence}
 \rmn{fut}(\bmath{D})>1-\epsilon
 \end{equation}
 %%\end{mydef}
 
-\subsubsection{Mixture Inference Prior}
-The purpose of the inference prior is to synthesize the posterior inferences from the a priori diverse perspectives to facilitate interpretation of the data once it has been obtained. In this paper we propose using an inference prior that is a combination of the skeptical and enthusiastic priors that were used for monitoring.
 
-The skeptical and enthusiastic monitoring priors defined in Section~\ref{sec:MP} represent extreme but plausible beliefs about $\theta$.
-%
-While analysis with these priors provides a rational perspective from which one can determine whether interim data are sufficient 
-to cease enrolling patients, the a priori belief of most stakeholders will likely fall somewhere in between the two perspectives.
-%
-Thus, when interpreting the final data once in hand, intermediate perspectives should be considered.
-%
-To that end, we define an inference prior as a mixture prior constructed by mixing the monitoring priors.
-
-%%\begin{mydef}
-Define the inference prior associated with mixing weight $\omega$ as
-\begin{equation}\label{eq:inference_prior}
-\pi_{I}\left(\theta\right)=\omega\cdot\pi_{S}\left(\theta\right)+(1-\omega) \cdot \pi_E\left(\theta\right),
-\end{equation}
-where $\omega\in[0,1]$. 
-%%\end{mydef}
-%
-The specification of $\omega$ is done a priori, and the value $\omega=1/2$ will be referred to as an agnostic inference prior since it gives equal weight to the skeptical and enthusiastic prior.
-%
-The distribution of $\theta$ using the inference 
-prior, $p(\theta|\bmath{D},\pi_I)$, will be used to compute summaries of $\theta$ such as the posterior mean and quantiles. The posterior distribution for $\theta$ using \eqref{eq:inference_prior} is
-\begin{equation}
-p(\theta|\bmath{D},\pi_I)=\hat{\omega}\cdot p(\theta|\bmath{D},\pi_S)+(1-\hat{\omega})\cdot p(\theta|\bmath{D},\pi_E)
-\end{equation}
-where the updated mixing weight is
-\begin{equation}
-\hat{\omega}=\frac{\omega\cdot p(\bmath{D}|\pi_S)}{\omega\cdot p(\bmath{D}|\pi_S)+(1-\omega)\cdot p(\bmath{D}|\pi_E)}
-\end{equation}
-where $p(\bmath{D}|\pi_S)=\int p(\bmath{D}|\theta)\pi_S(\theta)d\theta$ and $p(\bmath{D}|\pi_E)=\int p(\bmath{D}|\theta)\pi_S(\theta)d\theta$. 
-
-
-\subsubsection{Incorporating Prior Information in the Monitoring Priors}
-The skeptical and enthusiastic monitoring priors can be viewed as a weighted combination such as in the inference prior \eqref{eq:inference_prior} with weights $\omega=1$ and $\omega=0$ respectively. This weighted combination can be used as a replacement for the monitoring prior for any fixed weight $\omega$. For example, a ``not-as-skeptical" prior can be defined as $\tilde{\pi_S}(\theta)=0.75\cdot\pi_S(\theta)+0.25\cdot\pi_E(\theta)$. 
-
-Alternatively, $\omega$ can be informed by the data. Let $\hat{\theta}=\rmn{argmax} \{p(\bmath{D}|\theta)\}$ be the maximum likelihood estimator of $\theta$ given the data.
-%
-%%\begin{mydef}
-Define
-\begin{equation}\label{eq:dynamic_omega}
-\omega=\omega_{min}+(1-\omega_{min})\frac{\pi_S(\hat{\theta})}{\pi_S(\hat{\theta})+\pi_E(\hat{\theta})}
-\end{equation}
-as a mixing weight that dynamically gives preference to the prior that has the higher density evaluated at $\hat{\theta}$ with a minimum weight $\omega_{min}$ given to the skeptical component with $\omega_{min}\in[0,1]$.
-%%\end{mydef}
-
-Prior information can also be incorporated into the monitoring priors by using the predictive distribution of the data under the skeptical and enthusiastic priors. Let $\mathcal{L}(\theta,\eta|\mathbf{D})$ be the likelihood for the new trial data at some point in time.
-
-Compute the two predictive distributions as follows
-\begin{equation}
-p^{(h)}(\mathbf{D})=\int \int \mathcal{L}(\theta,\eta|\mathbf{D})\pi^{(h)}(\theta,\eta)d\theta d\eta
-\end{equation}
-
-with $h\in\{S,E\}$ for the skeptical and enthusiastic prior respectively.
-Consider $\mathbf{D}_{obs}$ to be the observed data at some point in time. For each predictive density, we compute the following:
-\begin{equation}
-\psi^{(h)}(\mathbf{D})=\sum_{\mathbf{D}}p^{(h)}(\mathbf{D})1[p^{(h)}(\mathbf{D})\leq p^{(h)}(\mathbf{D}_{obs})]
-\end{equation}
-
-This can be interpreted as the probability of observing data as or more extreme given the predictive distribution (either skeptical or enthusiastic predictive distribution).
-
-Based on this, we can set the mixing weight as
-
-\begin{equation}
-w^{(E)}(\mathbf{D})=\text{max}(\psi^{(E)}(\mathbf{D})-\psi^{(S)}(\mathbf{D}),0)
-\end{equation}
-
-with $w^{(S)}(\mathbf{D})=1-w^{(E)}(\mathbf{D})$.
-\subsubsection{Operating Characteristics}
-Suppose that the trial has interim analyses based on the number of completed outcomes. Let $n_{initial}$ be the first instance where either the efficacy criteria or futility criteria are satisfied, or $n_{max}$ if the efficacy criteria or futility criteria are not satisfied at any point. Let $n_{final}$ be the final sample size which includes patients whose outcomes were in progress at the time of enrollment termination. Let $\bmath{D}(n)$ denote the data after $n$ completed outcomes are ascertained. Type 1 error and power are computed based on $\rmn{eff}(\bmath{D}(n_{initial}))$ and $\rmn{eff}(\bmath{D}(n_{final}))$, respectively. The posterior mean and credible intervals for $\theta$ are also evaluated for both $\bmath{D}(n_{initial})$ and $\bmath{D}(n_{final})$.
-
-There is the possibility for disagreement between $\rmn{eff}(\bmath{D}(n_{initial}))$ and $\rmn{eff}(\bmath{D}(n_{final}))$. Of particular interest are cases when $\rmn{eff}(\bmath{D}(n_{initial}))>1-\epsilon$ and $\rmn{eff}(\bmath{D}(n_{final}))\leq1-\epsilon$, that is, the threshold for substantial evidence is satisfied for an interim analysis but is no longer satisfied once outcomes from patients in progress are ascertained.
-\subsubsection{Computation}
-The efficacy criteria \eqref{eq:efficacy_criteria} and futility criteria \eqref{eq:futility_criteria}, as well as any quantity involving the posterior distribution of $\theta$ requires evaluating integrals of the dimension of $\theta$ (or the dimension of $(\theta,\eta)$ in the case of nuisance parameters). In the examples in Section \ref{sec:examples}, these quantities are $1-$ and $2-$dimensional integrals which are evaluated using numerical integration in R \citep{R2017}, in particular using the pracma package \citep{Borchers2019}. MCMC would likely be necessary if the dimension of $(\theta,\eta)$ is greater than 2.
 
 \subsection{Monitoring Prior Parameterization}
+\subsubsection{Generalized Normal Distribution}\label{sec:gen_normal}
+Skeptical and enthusiastic monitoring priors defined in Section \ref{sec:MP} have a required modal value and tail-probability constraint. There are many distributions which satisfy these conditions. The normal distribution will be used as a default choice. The specification of the mean and variance of a normal distribution completely specifies the modal value and tail-probability constraints, and is therefore sufficient for defining skeptical and enthusiastic priors. Using a normal distribution as the monitoring prior is also motivated by the Bayesian Central Limit Theorem which states under general conditions that the posterior distribution for $\theta$ approaches normality as the sample size increases, regardless of the initial choice of prior. Therefore, a normally distributed monitoring prior is of the same family of distribution as a posterior which is the result of a large sample collection of data.
 
-Skeptical and enthusiastic monitoring priors defined in Section \ref{sec:MP} have a required modal value and tail-probability constraint, however, there are still many ways to parameterize such distributions. 
-%
-The specification of the mean and variance of a normal distribution completely specifies the modal value and tail-probability constraints, and is therefore sufficient for defining skeptical and enthusiastic priors.
+There is the possibility to change local behavior of the monitoring prior distribution around the modal value while still satisfying the mode and tail probability constraints. The generalized normal distribution, which is an extension of the normal distribution, is able to change the local behavior around the modal value as compared to the default normally distributed monitoring prior, while still satisfying the modal value and tail probability constraints. The generalized normal distribution has three parameters: location, shape, and scale. Fixing the location parameter to be the modal value and changing the shape and scale parameters in conjunction can maintain the tail probability constraint while also changing the behavior around the modal value (see Appendix Section \ref{sec:gen_normal_details}). A flattened monitoring is locally uniform around the modal value and a concentrated monitoring is peaked around the modal value. The flattened and concentrated priors have different levels of local dispersion around the modal value than what would be expected from a large sample collection of data according to the Bayesian Central Limit Theorem.
 
-\subsubsection{Normal Distribution $\mathcal{N}_p(\tilde{\mu},q)$}
-%The specification of the mean and variance of a normal distribution completely specifies the modal value and a tail-probability constraint, and is therefore sufficient for defining enthusiastic and skeptical priors.
+An example of flattened and concentrated enthusiastic priors are shown in Figure \ref{fig:figure1}. Choosing a flattened distribution is appropriate when $\theta$ is more likely to be in a wide range of values around $\theta_1$, while maintaining the same residual uncertainty that $\theta<\theta_0$. Choosing a concentrated distribution is appropriate when prior belief reflects a higher degree of certainty that $\theta$ is in a narrow range around $\theta_1$, while maintaining residual uncertainty that $\theta<\theta_0$. 
 
-%\begin{mydef}\label{def:normal}
-Define $\theta\sim\mathcal{N}_p(\tilde{\mu},q)$ as the normal distribution $\mathcal{N}(\mu,\sigma)$ that satisfies $\rmn{mode}(\theta)=\tilde{\mu}$ and $P(\theta\leq q)=p$.
-%\end{mydef}
-%
-The values for the mean and standard deviation are $\mu=\tilde{\mu}$ and $\sigma=\frac{q-\mu}{\Phi^{-1}(p)}$, where $\Phi$ denotes the cumulative distribution function for a standard normal distribution, and $\Phi^{-1}$ denotes its quantile function. The distribution $\mathcal{N}_p(\tilde{\mu},q)$ is well-defined for values $(\mu,q,p)$ that satisfy $\frac{q-\mu}{p-0.5}>0$.
+The flattened and enthusiastic priors will be parameterized by inflating or deflating the probability mass in the interval between $\theta_0$ and $\frac{\theta_0+\theta_1}{2}$ as compared to a normal distribution. The inflation/deflation of the area in this interval is shaded gray in Figure \ref{fig:figure1}. The flattened enthusiastic prior is defined as the generalized normal distribution that satisfies the modal value and tail probability constraints that has 25\% less mass in the interval between $\theta_0$ and $\frac{\theta_0+\theta_1}{2}$ as compared to a normal distribution which satisfies the modal value and tail probability constraints. Reducing the mass in this interval forces a peak around the modal value. Similarly, the flattened enthusiastic prior has 50\% more mass in the interval between $\theta_0$ and $\frac{\theta_0+\theta_1}{2}$, which forces a flattening around the modal value. These values of are chosen based on the intuitive graphical properties of the distribution (e.g. noticeably peaked around $\theta_1$, relatively flat around $\theta_1$). There are other inflation/deflation percentages which would achieve the same purpose, but these values will be used henceforth to demonstrate the concepts. Alternatively, the choice of shape and scale parameters could be specified to identify an additional probability constraint exactly (e.g. $P(\theta\in(\theta_0,\frac{\theta_0+\theta_1}{2}))=0.1$). The default, flattened, and concentrated priors can all be truncated while maintaining the mode and tail probability constraints. Details are in the appendix (Section \ref{sec:gen_normal_details}).
+
+%\item If $\gamma>1$ then the probability that $\theta\in(q,\frac{q+\mu}{2})$ increases and the concentration of $\theta$ around the modal value $\mu$ accordingly decreases, resulting in a flatter distribution around the modal value. 
+%\item If $\gamma<1$ then the probability that $\theta\in(q,\frac{q+\mu}{2})$ decreases and the concentration of $\theta$ around the modal value $\mu$ accordingly increases, resulting in a more concentrated distribution around the modal value. 
+%\item Flattening or concentrating the distribution around the modal value is useful for specifying monitoring priors that reflect varying opinions about the dispersion of $\theta$. 
+%\item An example of parameterizing an enthusiastic prior with a $\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ distribution is demonstrated in Figure \ref{fig:figure1}. 
+%\item Choosing a concentrated distribution is appropriate when prior belief reflects a higher degree of certainty that $\theta$ is in a narrow range around $\theta_1$, while maintaining residual uncertainty that $\theta<\theta_0$. 
+%\item This decreases the variance of the distribution, and can be seen to reflect a conservative opinion about the values of $\theta$. 
+%\item Choosing a flattened distribution is appropriate when $\theta$ is more likely to be in a wide range of values around $\theta_1$, while maintaining the same residual uncertainty that $\theta<\theta_0$. 
+%\item This increases the variance of the distribution, and can be seen to reflect a liberal opinion about the values of $\theta$. 
+
+%\item The impact of flattening or concentrating the distribution of a monitoring prior on the operating characteristics of a trial is shown in Section \ref{sec:examples}.
+%For example, consider creating skeptical and enthusiastic priors for a response probability on domain $[0,1]$, as $
+%\pi_S(\theta)=\mathcal{GN}_{p=1-\epsilon,\Theta=[0,1]}(\tilde{\mu}=\theta_0,q=\theta_1,\gamma=1)$ and $
+%\pi_E(\theta)=\mathcal{GN}_{p=\epsilon,\Theta=[0,1]}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$ respectively.
 
 
- Since the normal distribution is completely specified by $(\mu, \sigma)$, quantities such as $P(\theta\leq\tilde{q})$ are also specified for any $\tilde{q}$. In particular, if $\theta\sim\mathcal{N}_p(\tilde{\mu},q)$ then $P(\theta\leq\frac{q+\mu}{2})=\Phi(\frac{\Phi^{-1}(p)}{2})$. Furthermore, $P(\theta\in(\mu,\frac{q+\mu}{2}))=|p-\Phi(\frac{\Phi^{-1}(p)}{2})|$. 
-
-\subsubsection{Generalized Normal Distributions $\mathcal{GN}_p(\tilde{\mu},q,\gamma)$}
-The density for a generalized normal distribution $\mathcal{GN}(\mu,\alpha,\beta)$ is
-$
-f(\theta)=\frac{\beta}{2\alpha\Gamma(1/\beta)}\exp\{-(\frac{|\theta-\mu|}{\alpha})^\beta\}
-$ where $\mu$ is a location parameter, $\alpha>0$ is a scale parameter, and $\beta>0$ is a shape parameter \citep{Nadarajah2005}. Let $F_{\mu,\alpha,\beta}$ denote the cumulative distribution function of $\mathcal{GN}(\mu,\alpha,\beta)$. An expression for $F_{\mu,\alpha,\beta}$ is provided in the appendix, and computations involving $F_{\mu,\alpha,\beta}$ are done using the gnorm package \citep{Griffin2018}.
-
-%\begin{mydef}\label{def:gennormal}
-Define $\theta\sim\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ as the generalized normal distribution $\mathcal{GN}(\mu,\alpha,\beta)$ that satisfies mode$(\theta)=\tilde{\mu}$, $P(\theta\leq q)=p$, and $P(\theta\in(q,\frac{q+\mu}{2}))=\gamma\cdot|p-\Phi(\frac{\Phi^{-1}(p)}{2})|$.
-%\end{mydef}
-%
-The mode is equal to $\mu=\tilde{\mu}$, and $\alpha$ and $\beta$ are determined to minimize the function $(F_{\mu,\alpha,\beta}(q)-p)^2+(F_{\mu,\alpha,\beta}(\frac{q+\mu}{2})-\gamma\cdot|p-\Phi(\frac{\Phi^{-1}(p)}{2})|)^2$ with box-constrained optimization \citep{Byrd1995}. The restrictions on well-defined choices of $(p,\tilde{\mu},q,\gamma)$ for the $\theta\sim\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ distribution are described in the appendix.
-
-The flexibility to modify $\gamma$ can change the distribution to be flatter or more concentrated around the modal value. Choosing $\gamma=1$ corresponds to the normal distribution which is viewed as a default choice. If $\gamma>1$ then the probability that $\theta\in(q,\frac{q+\mu}{2})$ increases and the concentration of $\theta$ around the modal value $\mu$ accordingly decreases, resulting in a flatter distribution around the modal value. If $\gamma<1$ then the probability that $\theta\in(q,\frac{q+\mu}{2})$ decreases and the concentration of $\theta$ around the modal value $\mu$ accordingly increases, resulting in a more concentrated distribution around the modal value. Note that the tail probability $P(\theta\leq q)=p$ is maintained regardless of the choice of $\gamma$. 
-
-Flattening or concentrating the distribution around the modal value is useful for specifying monitoring priors that reflect varying opinions about the dispersion of $\theta$. An example of parameterizing an enthusiastic prior with a $\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ distribution is demonstrated in Figure \ref{fig:figure1}. Choosing a concentrated distribution is appropriate when prior belief reflects a higher degree of certainty that $\theta$ is in a narrow range around $\theta_1$, while maintaining residual uncertainty that $\theta<\theta_0$. This decreases the variance of the distribution, and can be seen to reflect a conservative opinion about the values of $\theta$. Choosing a flattened distribution is appropriate when $\theta$ is more likely to be in a wide range of values around $\theta_1$, while maintaining the same residual uncertainty that $\theta<\theta_0$. This increases the variance of the distribution, and can be seen to reflect a liberal opinion about the values of $\theta$. The specification of $\gamma=0.75$ will be used henceforth as a pre-determined value for creating a concentrated distribution, and $\gamma=1.5$ will be used for creating a flattened distribution. These values of $\gamma$ are chosen based on the intuitive graphical properties of the distribution (e.g. noticeably peaked around $\theta_1$, relatively flat around $\theta_1$). Alternatively, the choice of $\gamma$ could be specified to identify an additional probability constraint exactly (e.g. $P(\theta\in(\theta_0,\frac{\theta_0+\theta_1}{2}))=0.1$). The impact of flattening or concentrating the distribution of a monitoring prior on the operating characteristics of a trial is shown in Section \ref{sec:examples}.
-
-\subsubsection{Truncated Generalized Normal Distribution $\mathcal{GN}_{p,\Theta}(\tilde{\mu},q,\gamma)$}
-The density for a generalized normal distribution truncated to the interval domain $\Theta=(\theta_{min},\theta_{max})$, denoted by $\mathcal{GN}_\Theta(\mu,\alpha,\beta)$, is $f(\theta)=c\cdot\exp\left\{-\frac{|\theta-\mu|}{\alpha}^{\beta}\right\}{I(\theta\in \Theta)}$ where $c=\frac{\beta}{2\alpha \Gamma(1/\beta)}({F_{\mu,\alpha,\beta}(\theta_{max})-F_{\mu,\alpha,\beta}(\theta_{min})})^{-1}$. 
-
-%\begin{mydef}\label{def:gennormaltruncated}
-Define $\theta\sim\mathcal{GN}_{p,\Theta}(\tilde{\mu},q,\gamma)$ as the truncated generalized normal distribution $\mathcal{GN}_\Theta(\mu,\alpha,\beta)$ that satisfies mode$(\theta)=\tilde{\mu}$, $P(\theta\leq q)=p$, and $P(\theta\in(q,\frac{q+\mu}{2}))=\gamma|p-\Phi(\frac{\Phi^{-1}(p)}{2})|$.
-%\end{mydef}
-%
-For example, consider creating skeptical and enthusiastic priors for a response probability on domain $[0,1]$, as $
-\pi_S(\theta)=\mathcal{GN}_{p=1-\epsilon,\Theta=[0,1]}(\tilde{\mu}=\theta_0,q=\theta_1,\gamma=1)$ and $
-\pi_E(\theta)=\mathcal{GN}_{p=\epsilon,\Theta=[0,1]}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$ respectively.
 \begin{figure}
 \begin{center}
 \includegraphics[width=3in]{figure1a.png}
@@ -623,11 +500,6 @@ For example, consider creating skeptical and enthusiastic priors for a response 
 %\subsubsection{Application to higher dimensions}
 %Suppose the trial from Section \ref{sec:preliminaries} has added a control arm, and let $\eta_0$ and $\eta_1$ be the response proportions for a control and treatment group respectively. Suppose that the risk difference $\theta=\eta_1-\eta_0$ is the parameter of interest, and let $\eta_0$ be a nuisance parameter. Let $\delta_0$ denote a null risk difference and $\delta_1$ denote a highly efficacious risk difference.
 
-The generalized normal distribution can be used to parameterize skeptical and enthusiastic priors for trials with multiple unknown quantities of interest. Let $\theta$ be the parameter of interest and $\eta$ be the nuisance parameters. Consider the following representation of the joint prior for $\theta$ and $\eta$: $\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$. For example, suppose that $\theta$ is the risk difference between response probabilities of the treatment group and the placebo group $\eta$. The distribution for the risk difference is $
-\pi(\theta)\sim\mathcal{GN}_{p,\Theta=[-1,1]}()$. The domain of $\eta$ is $[0,1-\theta)$ if $\theta\geq 0$ and $(-\theta,1)$ if $\theta < 0$. Define the prior for $\eta$ to be $\pi(\eta|\theta)\sim \mathcal{GN}_{p,H=[\rmn{max}(-\theta,0),\rmn{min}(1,1+\theta)]}()$. This prior specification is demonstrated in Figure \ref{fig:figure5}, and Section \ref{sec:example2model} uses this representation of the joint prior.
-
-
-
 \begin{figure}\begin{center}
 %\includegraphics[width=3in]{figure5c.png}
 \includegraphics[width=6in]{figure5a.png}
@@ -639,37 +511,131 @@ The generalized normal distribution can be used to parameterize skeptical and en
 \label{fig:figure5}
  \end{center}
 \end{figure}
+
+
+
+\subsubsection{Incorporating Prior Information in the Monitoring Priors}\label{sec:incorporating}
+Prior information can be incorporated into the monitoring priors resulting in a mixture distribution with mixing weight $\omega$ of the form
+\begin{equation}\label{eq:inference_prior}
+\pi\left(\theta\right)=\omega\cdot\pi_{S}\left(\theta\right)+(1-\omega) \cdot \pi_E\left(\theta\right),
+\end{equation}
+where $\omega\in[0,1]$. 
+
+The mixing weight $\omega$ is determined by an assessment of prior-data conflict using the prior predictive distribution of the data \citep{Box1980}.
+The prior-predictive distribution of the data gives the probability of future observations of the data given initial assumptions about $\theta$, and is defined as
+\begin{equation}\label{eq:pred_dist}
+p(\mathbf{D})=\int \mathcal{L}(\theta|\mathbf{D})\pi(\theta)d\theta
+\end{equation}
+
+Let $\mathbf{D}_{obs}$ be the observed data at some point in time. For each predictive density, we compute the following:
+%\begin{equation}
+%p=P(p(y)\leq p(y_{obs}))
+%\end{equation}
+\begin{equation}\label{eq:box_p}
+\psi(\mathbf{D})=\int 1[p(\mathbf{D})\leq p(\mathbf{D}_{obs})] d(\mathbf{D})
+%\sum_{\mathbf{D}}p^{(h)}(\mathbf{D})1[p^{(h)}(\mathbf{D})\leq p^{(h)}(\mathbf{D}_{obs})]
+\end{equation}
+which in the case of discrete data is equal to $\psi(\mathbf{D})=\sum_{\mathbf{D}}p(\mathbf{D})1[p(\mathbf{D})\leq p(\mathbf{D}_{obs})]$.
+This can be interpreted as the probability of observing data as or more extreme given the predictive distribution. Small values of $\psi(\mathbf{D})$ indicate inconsistency between the prior and the data. 
+
+The skeptical and enthusiastic priors will be used in \eqref{eq:pred_dist} and \eqref{eq:box_p} to create compatibility measurements $\psi^{(S)}(\mathbf{D})$ and $\psi^{(E)}(\mathbf{D})$ which will be used to determine the mixing weight in \eqref{eq:inference_prior}. If $\psi^{(E)}(\mathbf{D})>\psi^{(S)}(\mathbf{D})$, then the data are more consistent with the enthusiastic prior, which should be given a greater weight in the mixture. Similarly, if $\psi^{(S)}(\mathbf{D})>\psi^{(E)}(\mathbf{D})$ then the skeptical prior should be given a greater weight in the mixture.
+
+A conservative choice of mixing weight which gives full weight to the skeptical prior (i.e. $\omega=1$) whenever $\psi^{(E)}(\mathbf{D})\leq \psi^{(S)}(\mathbf{D})$ is
+\begin{equation}\label{eq:adaptive_prior}
+\omega=\begin{cases} 
+      1 & \text{if }\psi^{(E)}(\mathbf{D})\leq \psi^{(S)}(\mathbf{D}) \\
+      1-(\psi^{(E)}(\mathbf{D})-\psi^{(S)}(\mathbf{D})) &\text{if } \psi^{(E)}(\mathbf{D})>\psi^{(S)}(\mathbf{D})
+   \end{cases}
+\end{equation}
+The weight given to the enthusiastic prior is $\psi^{(E)}(\mathbf{D})-\psi^{(S)}(\mathbf{D})$ which is equal to how much more the data is compatible with the enthusiastic prior than it is the skeptical prior.
+%
+%Bayesian predictive model checking: model checking statistic and reference predictive distribution.
+
+
+
+
+%
+
+%
+
+
+%Alternatively, $\omega$ can be informed by the data. Let $\hat{\theta}=\rmn{argmax} \{p(\bmath{D}|\theta)\}$ be the maximum likelihood estimator of $\theta$ given the data.
+%%
+%%%\begin{mydef}
+%Define
+%\begin{equation}\label{eq:dynamic_omega}
+%\omega=\omega_{min}+(1-\omega_{min})\frac{\pi_S(\hat{\theta})}{\pi_S(\hat{\theta})+\pi_E(\hat{\theta})}
+%\end{equation}
+%as a mixing weight that dynamically gives preference to the prior that has the higher density evaluated at $\hat{\theta}$ with a minimum weight $\omega_{min}$ given to the skeptical component with $\omega_{min}\in[0,1]$.
+%%%\end{mydef}
+
+\subsubsection{Mixture Inference Prior}
+The purpose of the inference prior is to synthesize the posterior inferences from the a priori diverse perspectives to facilitate interpretation of the data once it has been obtained. The skeptical and enthusiastic monitoring priors defined in Section~\ref{sec:MP} represent extreme but plausible beliefs about $\theta$.
+%
+While analysis with these priors provides a rational perspective from which one can determine whether interim data are sufficient 
+to cease enrolling patients, the a priori belief of most stakeholders will likely fall somewhere in between the two perspectives.
+%
+Thus, when interpreting the final data once in hand, intermediate perspectives should be considered.
+%
+To that end, we define an inference prior as a mixture prior constructed by mixing the monitoring priors.
+
+Using the mixture prior specification of \eqref{eq:inference_prior}, a fixed value of $\omega=1/2$ will be referred to as an agnostic inference prior since it gives equal weight to the skeptical and enthusiastic prior.
+%
+%The posterior distribution for $\theta$ using \eqref{eq:inference_prior} is
+%\begin{equation}
+%p(\theta|\bmath{D},\pi_I)=\hat{\omega}\cdot p(\theta|\bmath{D},\pi_S)+(1-\hat{\omega})\cdot p(\theta|\bmath{D},\pi_E)
+%\end{equation}
+%where the updated mixing weight is
+%\begin{equation}
+%\hat{\omega}=\frac{\omega\cdot p(\bmath{D}|\pi_S)}{\omega\cdot p(\bmath{D}|\pi_S)+(1-\omega)\cdot p(\bmath{D}|\pi_E)}
+%\end{equation}
+%where $p(\bmath{D}|\pi_S)=\int p(\bmath{D}|\theta)\pi_S(\theta)d\theta$ and $p(\bmath{D}|\pi_E)=\int p(\bmath{D}|\theta)\pi_S(\theta)d\theta$. 
+
+\subsubsection{Marginal-Conditional Specification}\label{sec:cond_marg}
+In the case of multiple unknown parameters, marginal-conditional specification will be used. Let $\theta$ be the parameter of interest and $\eta$ be the nuisance parameters. Consider the following representation of the joint prior for $\theta$ and $\eta$: $\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$. Then priors for both $\pi(\theta)$ and $\pi(\eta|\theta)$ will be given that satisfy the modal value and tail probability constraints. For example, suppose that $\theta$ is the risk difference between response probabilities of the treatment group and the placebo group, and denote the  probability of the placebo group by $\eta$. This prior specification is demonstrated in Figure \ref{fig:figure5}, and Section \ref{sec:example2model} uses this representation of the joint prior.
+\subsection{Operating Characteristics}
+\subsubsection{Expected sample size and trial duration}
+Suppose that the trial has interim analyses based on the number of completed outcomes. Let $\bmath{D}(n)$ denote the data after $n$ completed outcomes are ascertained. Let $n_{\text{initial}}$ be the first instance where either the efficacy criteria \eqref{eq:efficacy_criteria} or futility criteria \eqref{eq:futility_criteria} are satisfied and enrollment is henceforth terminated, or $n_{\text{max}}$ if the efficacy criteria or futility criteria are not satisfied at any point. Let $n_{\text{final}}$ be the final sample size which includes patients whose outcomes were in progress at the time of enrollment termination. The expected trial duration is determined based the projected time needed for subject enrollment and outcome ascertainment for a number of subjects equal to the expected sample size.
+
+\subsubsection{Posterior mean and coverage probability}
+Any prior of the form \eqref{eq:inference_prior} and the data likelihood $\mathcal{L}(\theta|\mathbf{D})$ are used to evaluate the posterior distribution for $\theta$ denoted $\pi(\theta|\mathbf{D})$. The posterior mean at the final sample size is $E(\pi(\theta|\mathbf{D}(n_{\text{final}}))$. The coverage probability, determined via simulation, is the probability of the generating value of $\theta$ to be in an equal-tailed $100(1-\alpha)\%$ credible interval, which is the interval $[\theta^{(\alpha/2)},\theta^{(1-\alpha/2)}]$ based on the quantiles of the posterior distribution $\pi(\theta|\mathbf{D}(n_{\text{final}})$.
+
+\subsubsection{Probability of efficacy, futility, and inconclusive findings}
+The probability of stopping early for efficacy and futility, determined via simulation, are the probability that the efficacy criteria \eqref{eq:efficacy_criteria} or futility criteria \eqref{eq:futility_criteria} are satisfied at an interim analysis with data $\mathbf{D}(n_{\text{initial}})$. The final determination of efficacy and futility refer to the corresponding criteria begin satisfied with data $\mathbf{D}(n_{\text{final}})$. To evaluate the frequentist properties of Bayesian designs, type I error and power are based on $\rmn{eff}(\bmath{D}(n_{\text{initial}}))$ and $\rmn{eff}(\bmath{D}(n_{\text{final}}))$, respectively.  Inconclusive findings refers to situations where the efficacy and futility criteria are not satisfied with data $\mathbf{D}(n_{\text{final}})$.
+
+\subsubsection{Distribution of final posterior probability of efficacy given interim stoppage}\label{sec:evid_decrease}
+Given that the efficacy criteria was satisfied as an interim analysis, it is of interest to compare the associated value once subjects in follow-up have completed outcomes.  It is of particular interest when $\rmn{eff}(\bmath{D}(n_{\text{initial}}))>1-\epsilon$ and $\rmn{eff}(\bmath{D}(n_{\text{final}}))\leq1-\epsilon$, that is, the threshold for substantial evidence is satisfied for an interim analysis but is no longer satisfied once outcomes from patients in progress are ascertained. The probability of such an occurrence and the difference between the efficacy criteria evaluated at the different time points is determined via simulation.
+
+\subsection{Computation}
+The efficacy criteria \eqref{eq:efficacy_criteria} and futility criteria \eqref{eq:futility_criteria}, as well as any quantity involving the posterior distribution of $\theta$ requires evaluating integrals of the dimension of $\theta$ (or the dimension of $(\theta,\eta)$ in the case of nuisance parameters). In the examples in Section \ref{sec:examples}, these quantities are $1-$ and $2-$dimensional integrals which are evaluated using numerical integration in R \citep{R2017}, in particular using the pracma package \citep{Borchers2019}. MCMC would likely be necessary if the dimension of $(\theta,\eta)$ is greater than 2.
+
 \section{Examples}\label{sec:examples}
 
 \subsection{Single-Arm Proof-of-Activity Trial with Binary Endpoint}\label{sec:example1}
 \subsubsection{Motivating Example}
-Consider the T72 pediatric trial ``A Study of the Safety and Efficacy of Infliximab (REMICADE) in Pediatric Patients With Moderately to Severely Active Ulcerative Colitis" (NCT00336492) ~\citep{Hyams2012}. Infliximab was given to all patients at the 5mg/kg dose at weeks 0, 2, and 6, and the primary endpoint was response at week 8. Response was measured by improvement in disease severity scores.
-
-The trial was conducted between August 2006 and June 2010. Patients were enrolled over approximately 33.5 months (1 patient enrolled per 17 days)
-
-The sample size of 60 patients was chosen to ensure 12\% precision in estimating the true
+Consider the T72 pediatric trial ``A Study of the Safety and Efficacy of Infliximab (REMICADE) in Pediatric Patients With Moderately to Severely Active Ulcerative Colitis" (NCT00336492) ~\citep{Hyams2012}. Infliximab was given to all patients at the 5mg/kg dose at weeks 0, 2, and 6, and the primary endpoint was response at week 8. Response was measured by improvement in disease severity scores. The trial was conducted between August 2006 and June 2010. Patients were enrolled over approximately 33.5 months (approximately 1 patient enrolled per 17 days). The sample size of 60 patients was chosen to ensure 12\% precision in estimating the true
 response proportion with 95\% confidence interval, assuming a response rate of 0.67 as was observed among adults from the ACT 1 and ACT 2 trials \citep{Rutgeerts2005} at the same 5mg/kg dose (N = 242). A 95\% confidence interval that excluded 0.40 was determined to be a clinically significant result. At week 8, clinical response was observed in 44 out of 60 (73.3\%) patients.
 
 
-\subsubsection{Model Formulation \& Prior Elicitation}\label{sec:example1model}
-The data $\bmath{D}$ are assumed to be independent Bernoulli random variables with common response probability $\theta$. 
+\subsubsection{Model Formulation \& Prior Elicitation}\label{sec:example1model} We use this trial as a template to demonstrate our framework for sequential monitoring. The data $\bmath{D}$ are assumed to be independent Bernoulli random variables with common response probability $\theta$. 
 %
-The null response value is $\theta_0=0.4$, a highly efficacious response probability is $\theta_1=0.67$. The hypothesis for this trial is $H_0:\theta\leq \theta_0$ vs $H_1:\theta > \theta_0$. The intermediate response value is $\theta_m=0.535$.
+This trial has a superiority hypothesis with null response value is $\theta_0=0.4$. For purposes of monitoring, a highly efficacious response probability is $\theta_1=0.67$ and an intermediate response value is $\theta_m=0.535$.
 %
-The skeptical prior is $\pi_S(\theta)\sim\mathcal{GN}_{p=0.975,\Theta=[0,1]}(\tilde{\mu}=\theta_0,q=\theta_1,\gamma=0.75)$. The scaling factor $\gamma<1$ was chosen to concentrate the distribution around the modal value to provide additional Type 1 error control. 
+The monitoring priors used are a concentrated skeptical prior and a default enthusiastic prior.
+%The skeptical prior is $\pi_S(\theta)\sim\mathcal{GN}_{p=0.975,\Theta=[0,1]}(\tilde{\mu}=\theta_0,q=\theta_1,\gamma=0.75)$. The scaling factor $\gamma<1$ was chosen to concentrate the distribution around the modal value to provide additional Type 1 error control. 
 %
-The enthusiastic prior is $\pi_E(\theta)\sim\mathcal{GN}_{p=0.025,\Theta=[0,1]}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$. The scaling factor $\gamma=1$ was chosen as a default value corresponding to the truncated normal distribution.
+%The enthusiastic prior is $\pi_E(\theta)\sim\mathcal{GN}_{p=0.025,\Theta=[0,1]}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$. The scaling factor $\gamma=1$ was chosen as a default value corresponding to the truncated normal distribution.
 %
 A comparison of the various combinations of the monitoring priors is provided in Appendix \ref{sec:priorRobustness}.
 %
 An inference prior is defined as the mixture \eqref{eq:inference_prior} with $\omega=0.5$.
 %
-The maximum sample size was increased from $60$ to increase the probability of stopping the trial early due to efficacy at response proportion values between the null $\theta_0=0.4$ and the adult data $\theta_1=0.67$. The sample size of $n_{max}=112$ based on a frequentist design to have $80\%$ power to conclude efficacy with the skeptical monitoring prior at a true response proportion of $\theta_m=0.535$. This increased power provides a better setting to demonstrate how the flattening or concentration of the skeptical monitoring prior impacts the operating characteristics.
+The maximum sample size was increased from $60$ to increase the probability of stopping the trial early due to efficacy at response proportion values between the null $\theta_0=0.4$ and the adult data $\theta_1=0.67$. The sample size of $n_{\text{max}}=112$ based on a frequentist design to have $80\%$ power to conclude efficacy with the skeptical monitoring prior at a true response proportion of $\theta_m=0.535$. This increased power provides a better setting to demonstrate how the flattening or concentration of the skeptical monitoring prior impacts the operating characteristics.
 
 \subsubsection{Example Paths}
 Violin plots are used to show the results of simulated trials with the initial prior specification (first set of distributions), three interim analyses (middle sets), and a final analysis (last set), where interim analyses are conducted after every 10 completed outcomes. 
 
-Figure \ref{fig:figure2}(a) shows the results of a trial where at the third interim analysis the efficacy condition is satisfied and enrollment is terminated. Note that in the final analysis the efficacy condition is no longer at the $1-\epsilon$ threshold. A discussion of this type of ``evidence decrease" is given in Section \ref{sec:ex1.1}.
+Figure \ref{fig:figure2}(a) shows the results of a trial where at the third interim analysis the efficacy condition is satisfied and enrollment is terminated. Note that in the final analysis the efficacy condition is no longer at the $1-\epsilon$ threshold. A discussion of this type of ``evidence decrease" is given in Section \ref{sec:evid_decrease}.
 %
 Figure \ref{fig:figure2}(b) shows the results of a trial where at the third interim analysis the futility condition is satisfied and enrollment is terminated. 
 
@@ -681,17 +647,16 @@ Figure \ref{fig:figure2}(b) shows the results of a trial where at the third inte
 \end{center}
 \end{figure}
 \subsubsection{Preposterior Analysis of Operating Characteristics}\label{sec:ex1.1}
-Consider more frequent monitoring with an interim analysis occuring after every 2 patients complete follow-up. The following are generated from $10,000$ simulations for the trial described in Section \ref{sec:example1model}.
+Consider an interim analysis occurring after every 2 patients complete follow-up. The following are generated from $10,000$ simulations for the trial described in Section \ref{sec:example1model}.
 
 Figure \ref{fig:ex1.1}(a) shows the operating characters of this particular trial design.
 %
-Inconclusive findings refers to situations where the efficacy and futility criteria are not satisfied for any interim analysis.
 %
 When the true response probability is $\theta=\theta_0$, there is a $3.9\%$ probability of stopping the trial early for efficacy. 
 %
 The posterior mean shows bias towards the alternative hypothesis.
 
-Figure \ref{fig:ex1.1}(b) addresses the particular situation when the efficacy criteria  is satisfied at an interim analysis triggering termination of enrollment of additional patients, but once the outcomes of patients undergoing follow-up are ascertained the criteria is no longer satisfied. The distribution of the efficacy criteria given the final data for these cases are shown. The probability of these cases occurring is reflected by the percent agreement between interim and final results, and it is shown that as $\theta$ increases there is a higher probability of agreement and therefore a lower probability of evidence decrease.
+Figure \ref{fig:ex1.1}(b) addresses the ``evidence decrease" described in Section \ref{sec:evid_decrease}. The distribution of the efficacy criteria given the final data for these cases are shown. The probability of these cases occurring is reflected by the percent agreement between interim and final results, and it is shown that as $\theta$ increases there is a higher probability of agreement and therefore a lower probability of evidence decrease.
 %
 The median efficacy criteria is very close to $1-\epsilon$ and in the vast majority of cases (greater than 10th percentile) the efficacy criteria is still very high. Therefore, for this trial design, the interim and final results are not highly discrepant with respect to the efficacy criteria in the case of evidence decrease.
 \begin{figure}\begin{center}
@@ -704,10 +669,10 @@ The median efficacy criteria is very close to $1-\epsilon$ and in the vast major
 \end{center}
 \end{figure}
 \subsubsection{Type 1 Error Rate by the Frequency of Data Monitoring}
-Figure \ref{fig:ex1t1e} shows the probability of the efficacy criteria being satisfied at an interim and final analysis when $\theta=\theta_0$. The initial sample size is the sample size when the efficacy criteria is satisfied and enrollment is henceforth terminated. The final sample size includes outcomes from those patients in progress at time of trial termination. If the efficacy criteria is not satisfied at any of the interim analyses, then the initial and final sample sizes are equal to the maximum sample size.
-
+Figure \ref{fig:ex1t1e} shows the probability of the efficacy criteria being satisfied at an interim and final analysis when $\theta=\theta_0$. 
+%
 The monitoring frequency is 1 when an interim analysis is made after every completed outcome (i.e. fully sequential), and is 112 (the maximum sample size) if the only analysis is done at the maximum sample size. 
-
+%
 The probability of the efficacy criteria being (errantly) satisfied is the highest for a fully sequential design, and decreases as the monitoring frequency decreases. However, the probability of the efficacy criteria being satisfied with the final data is very low for any type of sequential monitoring (under 0.02 in all cases).
 \begin{figure}\begin{center}
 
@@ -728,28 +693,26 @@ The probability of the efficacy criteria being (errantly) satisfied is the highe
 \subsection{Parallel Two-Group Design with Binary Endpoint}\label{sec:example2}
 \subsubsection{Motivating Example}
 Consider the trial ``The Pediatric Lupus Trial of Belimumab Plus Background Standard Therapy (PLUTO)" (NCT01649765). Patients were randomized to belimumab 10mg/kg or placebo, and the primary endpoint was response at week 52. Response was measured by improvement in disease severity scores. The goal was to test for superiority of belimumab to placebo. 
-
-The study start date was September 7, 2012, and the primary completion date was January 24, 2018. Since the follow-up period is 52 weeks the last enrollment is estimated to be a year prior to the primary competition date yielding an average enrollment rate of one enrollment per $17.2$ days.
-
-The study design included enrollment of 100 patients, the first 24 patients randomized in a 5:1 ratio (belimumab:placebo) and the remaining 76 patients would be randomized in a 1:1 allocation ratio. Therefore, 58 patients would be randomized to belimumab and 42 to placebo. The sample size was based on feasibility constraints rather than a power calculation, and the study was terminated after 93 patients enrolled.
+The study start date was September 7, 2012, and the primary completion date was January 24, 2018. Since the follow-up period is 52 weeks the last enrollment is estimated to be a year prior to the primary competition date yielding an average enrollment rate of one enrollment per $17$ days. The study design included enrollment of 100 patients, the first 24 patients randomized in a 5:1 ratio (belimumab:placebo) and the remaining 76 patients would be randomized in a 1:1 allocation ratio. Therefore, 58 patients would be randomized to belimumab and 42 to placebo. The sample size was based on feasibility constraints rather than a power calculation, and the study was terminated after 93 patients enrolled.
 
 The results of this trial were inconclusive with the 93 patients. A post-hoc Bayesian analysis that gave $55\%$ weight to adult data with response rate $0.51$ was sufficient to provide evidence of positive treatment effect \citep{Travis2019}. Our method contrasts such a post-hoc analysis with the prospective use of a monitoring prior for efficacy which gives weight to the adult data.
 
 \subsubsection{Model Formulation \& Prior Elicitation}\label{sec:example2model}
-The data $\bmath{D}$ are assumed to be independent Bernoulli random variables with response probability $\eta_0$ for the placebo group and $\eta_1$ for the treatment (IP for investigational product) group. 
+We use this trial as a template to demonstrate our framework, in particular the performance of our response-adaptive monitoring prior \eqref{eq:adaptive_prior}. The adaptive prior is useful in this setting because the trial is underpowered and the prospective use of an informative monitoring prior for efficacy provides a different perspective than a post-hoc analysis with an informative prior. The data $\bmath{D}$ are assumed to be independent Bernoulli random variables with response probability $\eta_0$ for the placebo group and $\eta_1$ for the treatment (IP for investigational product) group. 
 %
-The null response value for the difference $\theta_0=0$ and a highly efficacious difference is $\theta_1=0.12$. The hypothesis testing of IP superiority to control $H_0:\theta\leq \theta_0$ v.s. $H_1: \theta>\theta_0$. The intermediate response value is $\theta_m=0.06$. An estimate for the pediatric response rate is $\eta_0=0.39$, which is $0.12$ less than the adult data response rate.
+This trial has a superiority hypothesis of IP to control with null treatment difference value of $\theta_0=0$. For purposes of monitoring, a highly efficacious difference probability is $\theta_1=0.12$ \citep{Travis2019} and an intermediate response value is $\theta_m=0.06$ An estimate for the pediatric response rate is $\eta_0=0.39$, which is $0.12$ less than the adult data response rate.
 
-The skeptical monitoring prior is $\pi_S(\theta,\eta_0)=\pi_S(\theta)\times\pi(\eta_0|\theta)$, where $\pi_S(\theta)\sim\mathcal{GN}_{p=0.975,\Theta=[-1,1]}(\tilde{\mu}=\theta_0,q=\theta_1,\gamma=0.75)$. The value $\gamma=0.75$ reflects a concentrated distribution which was chosen to reflect a conservative opinion for added Type 1 error control. The enthusiastic monitoring prior is $\pi_E(\theta,\eta_0)=\pi_E(\theta)\times\pi(\eta_0|\theta)$, where $\pi_E(\theta)\sim\mathcal{GN}_{p=0.025,\Theta=[-1,1]}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$. The value $\gamma=1$ was chosen as the default value. For both the skeptical and enthusiastic monitoring prior,$\pi(\eta_0|\theta)\sim\mathcal{GN}_{p=0.975,H=[max(-\theta,0),min(1,1+\theta)]}(\tilde{\mu}=0.39,q=0.59,\gamma=1.5)$. The value $\gamma=1.5$ was chosen to reflect a liberal opinion about the distribution of $\eta_0$. In general, it is recommended to use flattened priors for nuisance parameters.
+The skeptical monitoring prior is $\pi_S(\theta,\eta_0)=\pi_S(\theta)\times\pi(\eta_0|\theta)$, where $\pi_S(\theta)$ is a concentrated skeptical prior. The enthusiastic monitoring prior is $\pi_E(\theta,\eta_0)=\pi_E(\theta)\times\pi(\eta_0|\theta)$, where $\pi_E(\theta)$ is a default enthusiastic prior. For both the skeptical and enthusiastic monitoring prior,$\pi(\eta_0|\theta)$ is a flattened prior with modal value $0.39$ and tail probability condition $P(\eta_0>0.59 | \theta)=0.025$.
 
-A maximum sample size of $n_{max}=100$ was chosen based on the trial protocol. A minimum sample size of $n_{min}=70$ was chosen to provide an adequate number of placebo controls to be enrolled given the initial 5:1 allocation to the treatment group.
+%, where $\pi_S(\theta)\sim\mathcal{GN}_{p=0.975,\Theta=[-1,1]}(\tilde{\mu}=\theta_0,q=\theta_1,\gamma=0.75)$. The value $\gamma=0.75$ reflects a concentrated distribution which was chosen to reflect a conservative opinion for added Type 1 error control. The enthusiastic monitoring prior is $\pi_E(\theta,\eta_0)=\pi_E(\theta)\times\pi(\eta_0|\theta)$, where $\pi_E(\theta)\sim\mathcal{GN}_{p=0.025,\Theta=[-1,1]}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$. The value $\gamma=1$ was chosen as the default value. For both the skeptical and enthusiastic monitoring prior,$\pi(\eta_0|\theta)\sim\mathcal{GN}_{p=0.975,H=[max(-\theta,0),min(1,1+\theta)]}(\tilde{\mu}=0.39,q=0.59,\gamma=1.5)$. The value $\gamma=1.5$ was chosen to reflect a liberal opinion about the distribution of $\eta_0$. In general, it is recommended to use flattened priors for nuisance parameters.
+
+A maximum sample size of $n_{\text{max}}=100$ was chosen based on the trial protocol. A minimum sample size of $n_{min}=70$ was chosen to provide an adequate number of placebo controls to be enrolled given the initial 5:1 allocation to the treatment group.
 %
 An interim analysis is competed after every 2 patients have completed outcomes beginning at $n_{min}$.
 
-\subsubsection{Preposterior Analysis of Operating Characteristics}\label{sec:ex2operatingcharacteristics}
-A mixture prior of the form \eqref{eq:inference_prior} is used for efficacy monitoring where the choice of $\omega$ is chosen at the outset to be in the set $\{0.25,0.5,0.75,1\}$. Note that $\omega=1$ corresponds to the traditional skeptical prior and $\omega=0.5$ gives equal weight to the skeptical and enthusiastic components. When $\omega=0.25$ most of the weight is applied to the enthusiastic component. Additionally, a mixture prior with dynamic weight of the form \eqref{eq:dynamic_omega} is used with $\omega_{min}=0.25$.
+\subsubsection{Preposterior Analysis of Operating Characteristics}\label{sec:ex2operatingcharacteristics} The probability of concluding efficacy is made using a mixture prior with dynamic weight of the form \eqref{eq:adaptive_prior}. For comparison, a fixed weight mixture prior of the form \eqref{eq:inference_prior} is used for efficacy monitoring where the choice of $\omega$ is chosen at the outset to be in the set $\{0.25,0.5,0.75,1\}$. Note that $\omega=1$ corresponds to the traditional skeptical prior and $\omega=0.5$ gives equal weight to the skeptical and enthusiastic components. When $\omega=0.25$ most of the weight is applied to the enthusiastic component. 
 
-Figure \ref{fig:ex2varyomega} shows the probability of stopping early for efficacy based on the choice of $\omega$ used in the mixture prior for efficiency monitoring, and the associated sample sizes. Note that only in the case of $\omega=0.25$ is the probability of stopping the trial early for efficacy near 50\% when $\theta=\theta_1$. Also, only in the case of $\omega=0.25$ is the expected sample size less than 90. Therefore, for this design, the monitoring prior for efficacy has to be mostly enthusiastic in order for reasonable efficacy conditions.
+Figure \ref{fig:ex2varyomega} shows the probability of stopping early for efficacy based on the choice of $\omega$ used in the mixture prior for efficiency monitoring, and the associated sample sizes. Since this trial was underpowered, using the default skeptical monitoring prior results in a probability of $<1\%$ to determine efficacy at $\eta_1=0.51$., and using the ``mostly enthusiastic" 25\% skeptical monitoring prior gives a 40\% probability to determine efficacy. The adaptive weight mixture behaves similar to using a fixed weight prior that equally weighs the skeptical and enthusiastic prior.
 
 \begin{figure}\begin{center}
     \centering\includegraphics[width=6in]{figure6.png}
@@ -761,9 +724,10 @@ Figure \ref{fig:ex2varyomega} shows the probability of stopping early for effica
 Bayesian methods are well suited for sequentially monitored clinical trials because of their natural interpretations and ability to incorporate external evidence through prior distributions. Monitoring priors used for efficacy and futility stopping fundamentally determine the operating characteristics of the trial, in addition to factors such as the frequency of data monitoring and number of patients in progress at enrollment termination. 
 
 This paper presents a structured framework for designing a Bayesian sequentially monitored clinical trial. The generalized normal distribution gives a flexible and intuitive way to create monitoring priors. It is required that the practitioner specify the modal value, a quantile condition, and an additional parameter which can concentrate or flatten the distribution around the modal value (with the normal distribution as the default case). This paper demonstrates how the operating characteristics are affected by the choice of monitoring priors.
- 
 
-Examples included binomially distributed data with response probabilities as the parameter of interest. The generalized normal distribution with optional truncation can be used for any parameter of interest on an interval domain. Future work includes using the generalized normal distribution for priors in Bayesian clinical trials with survival outcomes.
+Presentation of these concepts was simplified by generic choices for design parameters. The same quantity $1-\epsilon$ was used as the threshold for substantial evidence in efficacy and futility monitoring \eqref{eq:eff_evidence} and \eqref{eq:fut_evidence}. In practice, the value of $\epsilon$ could be different for these two purposes (e.g. $\epsilon_{\text{eff}}=0.025$, $\epsilon_{\text{fut}}=0.05$). The intermediate effect size $\theta_m$ used in futility monitoring \eqref{eq:futility_criteria} was chosen to be $\theta_m=(\theta_0+\theta_1)/2$, but another effect size between $\theta_0$ and $\theta_1$ could be considered. Different assessments of prior-data conflict could be used to create a dynamic prior \eqref{eq:inference_prior}. Other distributions than the generalized normal could be used to create monitoring priors with the desired modal value and tail probability constraint (Section \ref{sec:gen_normal}). Each of these quantities could be modified to better suit the needs of the practitioner. 
+
+Although the examples provided are superiority trials with binary data and response probabilities as the parameter of interest, the framework applies to any type of data likelihood and parameter of interest on an interval domain. Future work will involve demonstrating the framework in Bayesian clinical trials with survival outcomes.
 
 %\begin{table}
 %\caption{This is a simple table.}
@@ -813,7 +777,7 @@ Examples included binomially distributed data with response probabilities as the
 %  environment below by 
 %
 \bibliographystyle{biom} 
-\bibliography{mybibilo}
+\bibliography{fda_bib_062420}
 
 %\begin{thebibliography}{}
 %
@@ -832,7 +796,7 @@ Examples included binomially distributed data with response probabilities as the
 %  website http://www.biometrics.tibs.org
 
 
-\section*{Supporting Information}
+%\section*{Supporting Information}
 
 \vspace*{-8pt}
 
@@ -845,13 +809,67 @@ Examples included binomially distributed data with response probabilities as the
 
 \section{Supplementary Material}
 
-\subsection{Generalized Normal Cumulative Distribution Function}
-The CDF of a generalized normal random variable $\theta\sim\mathcal{GN}(\mu,\alpha,\beta)$ can be expressed as \citep{Griffin2018}
+\subsection{Bayesian Hypothesis Testing}\label{sec:hypothesis}
+Consider the hypotheses $H_0:\theta\in\Theta_{0}$ versus $H_1:\theta\in\Theta_{1}$ where $\Theta_{0}\bigcup \Theta_{1} = \Theta$ and $\Theta_{0} \bigcap \Theta_{1} = \emptyset$.
+%
+Formal Bayesian hypothesis testing requires the specification of prior probabilities on the hypotheses (e.g., $p(H_i)$ for $i=0,1$)
+and prior distributions for $\left(\theta,\eta\right)$ specified over the parameter space defined with respect to each of the 
+hypotheses (e.g. $\pi\left(\theta,\eta \big| H_i\right)$ for $i=0,1$). 
+%
+
+The posterior probability of hypothesis $H_i$ is given by 
+\begin{equation}\label{eq:equation1}
+p(H_i|\bmath{D})=\frac{p(\bmath{D}|H_i)\cdot p(H_i)}{p(\bmath{D}|H_0)\cdot p(H_0)+p(\bmath{D}|H_1)\cdot p(H_1)},
+\end{equation}
+where $p(\bmath{D}|H_i) = \int_{\Theta_i} p(\bmath{D}|\theta)\pi(\theta|H_i)d\theta$ is the marginal likelihood associated with hypothesis $H_i$.
+%
+In practice, most Bayesian methods for clinical trials perform hypothesis testing based on the posterior probability of the \textit{event defining $H_i$}.
+%
+For this approach, one simply needs to specify a prior $\pi\left(\theta\right)$ representing belief about $\theta$ overall and compute the posterior distribution.
+%
+The posterior probability that $\theta\in\Theta_i$ is given by
+\begin{equation}\label{eq:equation2}
+P(\theta\in\Theta_i|\bmath{D})
+%=\frac{\int_{\Theta_i} p(\bmath{D}|\theta)\pi (\theta)d\theta}{\int_{\Theta}p(\bmath{D}|\theta)\pi(\theta) d\theta}
+=\frac{\int_{\Theta_i} p(\bmath{D}|\theta)\pi (\theta|\theta\in\Theta_i)d\theta\cdot P(\theta\in\Theta_i)}
+      { \sum_{j=0,1} \int_{\Theta_j}p(\bmath{D}|\theta)\pi (\theta|\theta\in\Theta_j)d\theta\cdot P(\theta\in\Theta_j) }
+\end{equation}
+where $P(\theta\in\Theta_i)=\int_{\Theta_i}\pi(\theta)d\theta$. 
+%
+We can readily see that the $P(\theta\in\Theta_i|\bmath{D})$ is equal to $p(H_i|\bmath{D})$ if one takes
+$p(H_i) =P(\theta\in\Theta_i)$ and $\pi\left(\theta \big| H_i\right) = \pi\left(\theta\big|\theta \in \Theta_i\right)$ for $i=0,1$.
+%
+If in fact $\pi\left(\theta\right)$ does represent belief about $\theta$, these choices are perhaps the most intuitive and thus 
+we should have no reservation referring to $P(\theta\in\Theta_i|\bmath{D})$ as the probability that hypothesis $H_i$ is true.
+\subsection{Monitoring Prior Parameterization}\label{sec:gen_normal_details}
+
+\subsubsection{Normal Distribution $\mathcal{N}_p(\tilde{\mu},q)$}
+%The specification of the mean and variance of a normal distribution completely specifies the modal value and a tail-probability constraint, and is therefore sufficient for defining enthusiastic and skeptical priors.
+
+Suppose $\theta\sim\mathcal{N}(\mu,\sigma)$ is a normal random variable that satisfies $\rmn{mode}(\theta)=\tilde{\mu}$ and $P(\theta\leq q)=p$. The values for the mean and standard deviation are $\mu=\tilde{\mu}$ and $\sigma=\frac{q-\mu}{\Phi^{-1}(p)}$, where $\Phi$ denotes the cumulative distribution function for a standard normal distribution and $\Phi^{-1}$ denotes its quantile function. Therefore we can denote the distribution with the desired mode and tail probability constraint as  $\theta\sim\mathcal{N}_p(\tilde{\mu},q)$, which is well-defined for values $(\mu,q,p)$ that satisfy $\frac{q-\mu}{p-0.5}>0$. Since the normal distribution is completely specified by $(\mu, \sigma)$, quantities such as $P(\theta\leq\tilde{q})$ are also specified for any $\tilde{q}\in\mathbb{R}$. In particular, if $\theta\sim\mathcal{N}_p(\tilde{\mu},q)$ then $P(\theta\leq\frac{q+\mu}{2})=\Phi(\frac{\Phi^{-1}(p)}{2})$. Furthermore, $P(\theta\in(\mu,\frac{q+\mu}{2}))=|p-\Phi(\frac{\Phi^{-1}(p)}{2})|$. 
+
+\subsubsection{Generalized Normal Distributions $\mathcal{GN}_p(\tilde{\mu},q,\gamma)$}
+The density for a generalized normal distribution $\mathcal{GN}(\mu,\alpha,\beta)$ is
+$
+f(\theta)=\frac{\beta}{2\alpha\Gamma(1/\beta)}\exp\{-(\frac{|\theta-\mu|}{\alpha})^\beta\}
+$ where $\mu$ is a location parameter, $\alpha>0$ is a scale parameter, and $\beta>0$ is a shape parameter \citep{Nadarajah2005}. Let $F_{\mu,\alpha,\beta}$ denote the cumulative distribution function of $\mathcal{GN}(\mu,\alpha,\beta)$. The CDF of a generalized normal random variable $\theta\sim\mathcal{GN}(\mu,\alpha,\beta)$ can be expressed as \citep{Griffin2018}
 \begin{equation}
 P(\theta\leq q|\mu,\alpha,\beta)=\frac{1}{2}+\frac{\rmn{sign}(q-\mu)}{2}\int_0^{|q-\mu|^\beta}\frac{w^{1/\beta-1}}{\alpha\Gamma(1/\beta)}\rmn{exp}\left\{-\left(\frac{1}{\alpha}\right)^\beta w\right\} dw
 \end{equation}
-\subsection{Parameterizing the $\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ Distribution}
-The restrictions on the choice of $(p,\tilde{\mu},q,\gamma)$ for the $\theta\sim\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ distribution to be well-defined:
+%Computations involving $F_{\mu,\alpha,\beta}$ are done using the gnorm package \citep{Griffin2018}. 
+Define $\theta\sim\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ as the generalized normal distribution $\mathcal{GN}(\mu,\alpha,\beta)$ that satisfies mode$(\theta)=\tilde{\mu}$, $P(\theta\leq q)=p$, and $P(\theta\in(q,\frac{q+\mu}{2}))=\gamma\cdot|p-\Phi(\frac{\Phi^{-1}(p)}{2})|$.
+%\end{mydef}
+%
+The mode is equal to $\mu=\tilde{\mu}$, and $\alpha$ and $\beta$ are determined to minimize the function $(F_{\mu,\alpha,\beta}(q)-p)^2+(F_{\mu,\alpha,\beta}(\frac{q+\mu}{2})-\gamma\cdot|p-\Phi(\frac{\Phi^{-1}(p)}{2})|)^2$ with box-constrained optimization \citep{Byrd1995}. %The restrictions on well-defined choices of $(p,\tilde{\mu},q,\gamma)$ for the $\theta\sim\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ distribution are described in the appendix.
+
+\subsubsection{Truncated Generalized Normal Distribution $\mathcal{GN}_{p,\Theta}(\tilde{\mu},q,\gamma)$}
+The density for a generalized normal distribution truncated to the interval domain $\Theta=(\theta_{min},\theta_{max})$, denoted by $\mathcal{GN}_\Theta(\mu,\alpha,\beta)$, is $f(\theta)=c\cdot\exp\left\{-\frac{|\theta-\mu|}{\alpha}^{\beta}\right\}{I(\theta\in \Theta)}$ where $c=\frac{\beta}{2\alpha \Gamma(1/\beta)}({F_{\mu,\alpha,\beta}(\theta_{max})-F_{\mu,\alpha,\beta}(\theta_{min})})^{-1}$. 
+%\begin{mydef}\label{def:gennormaltruncated}
+Define $\theta\sim\mathcal{GN}_{p,\Theta}(\tilde{\mu},q,\gamma)$ as the truncated generalized normal distribution $\mathcal{GN}_\Theta(\mu,\alpha,\beta)$ that satisfies mode$(\theta)=\tilde{\mu}$, $P(\theta\leq q)=p$, and $P(\theta\in(q,\frac{q+\mu}{2}))=\gamma|p-\Phi(\frac{\Phi^{-1}(p)}{2})|$.
+%\end{mydef}
+%
+%\subsection{Parameterizing the $\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ Distribution}
+%The restrictions on the choice of $(p,\tilde{\mu},q,\gamma)$ for the $\theta\sim\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ distribution to be well-defined:
 
 \subsection{Type 1 Error Rate Depending on Enrollment Schemes}
 Recall Figure \ref{fig:ex1t1e} from Section \ref{sec:example1} which showed Type 1 error properties for the single-arm design. Figure \ref{fig:ex1t1e_longer} shows results from a design that has a longer follow-up period. The interim sample sizes are the same for each monitoring frequency, however, the final sample sizes under the longer follow-up designs are much larger (over 20 patients in follow-up for monitoring frequencies of 8 or fewer, compared to approximately 6 patients in the shorter follow-up designs). The final probability of efficacy criteria being satisfied is generally slightly lower in the longer follow-up design, which is what we would expect since the larger final sample size contains more data consistent with a null result.
@@ -864,7 +882,7 @@ Recall Figure \ref{fig:ex1t1e} from Section \ref{sec:example1} which showed Type
 \end{center}
 \end{figure}
 \subsection{Robustness of Parameterizations of Monitoring Priors}\label{sec:priorRobustness}
-The analyses done in Section \ref{sec:example1} used a concentrate skeptical prior and default enthusiastic prior. In this section we show the four possible designs using the combinations of skeptical and enthusiastic prior given in Figure \ref{fig:figure1}.
+The analyses done in Section \ref{sec:example1} used a concentrated skeptical prior and default enthusiastic prior. In this section we show the four possible designs using the combinations of skeptical and enthusiastic prior given in Figure \ref{fig:figure1}.
 
 Figures \ref{fig:robustness1}-\ref{fig:robustness2} shows what happens when the enthusiastic prior shifts from default to flattened, with the skeptical prior remaining fixed. Note that in the region between $\theta_0$ and $\frac{\theta_0+\theta_1}{2}$ as the enthusiastic prior shifts from default to flattened, (a) the probability of stopping early for futility increases (b) the probability of inconclusive findings decreases and (c) the intermediate and final sample sizes decrease. This is because the enthusiastic prior gives more mass in for this region of $\theta$. The flattened enthusiastic prior was used in Section \ref{sec:example1} to enhance the ability of futility monitoring to reduce the sample size.
 

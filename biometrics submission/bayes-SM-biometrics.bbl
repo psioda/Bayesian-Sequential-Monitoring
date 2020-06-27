@@ -1,52 +1,20 @@
 \begin{thebibliography}{}
 
-\bibitem[\protect\citeauthoryear{Anscombe}{Anscombe}{1963}]{Anscombe1963}
-Anscombe, F.~J. (1963).
-\newblock Sequential medical trials.
-\newblock {\em Journal of the American Statistical Association} {\bf 58,}
-  365--383.
-
-\bibitem[\protect\citeauthoryear{Barnard}{Barnard}{1947}]{Barnard1947}
-Barnard, G.~A. (1947).
-\newblock A review of sequential analysis by abraham wald.
-\newblock {\em Journal of the American Statistical Association} pages 658--669.
-
-\bibitem[\protect\citeauthoryear{Berger and Wolpert}{Berger and
-  Wolpert}{1988}]{Berger1988}
-Berger, J.~O. and Wolpert, R.~L. (1988).
-\newblock {\em The likelihood principle (2nd ed.).}
-\newblock Hayward (CA): Institute of Mathematical Statistics.
-
-\bibitem[\protect\citeauthoryear{Berry}{Berry}{1989}]{Berry1989}
-Berry, D.~A. (1989).
-\newblock Monitoring accumulating data in a clinical trial.
-\newblock {\em Biometrics} {\bf 45,} 1197.
-
-\bibitem[\protect\citeauthoryear{Berry}{Berry}{1993}]{Berry1993}
-Berry, D.~A. (1993).
-\newblock A case for bayesianism in clinical trials.
-\newblock {\em Statistics in Medicine} {\bf 12,} 1377--1404.
-
 \bibitem[\protect\citeauthoryear{Borchers}{Borchers}{2019}]{Borchers2019}
 Borchers, H.~W. (2019).
 \newblock pracma: Practical numerical math functions.
+
+\bibitem[\protect\citeauthoryear{Box}{Box}{1980}]{Box1980}
+Box, G. E.~P. (1980).
+\newblock Sampling and bayes' inference in scientific modelling and robustness.
+\newblock {\em Journal of the Royal Statistical Society. Series A (General)}
+  {\bf 143,} 383--430.
 
 \bibitem[\protect\citeauthoryear{Byrd, Lu, Nocedal, and Zhu}{Byrd
   et~al.}{1995}]{Byrd1995}
 Byrd, R.~H., Lu, P., Nocedal, J., and Zhu, C. (1995).
 \newblock A limited memory algorithm for bound constrained optimization.
 \newblock {\em SIAM Journal on Scientific Computing} {\bf 16,} 1190--1208.
-
-\bibitem[\protect\citeauthoryear{Cornfield}{Cornfield}{1966a}]{Cornfield1966a}
-Cornfield, J. (1966a).
-\newblock A bayesian test of some classical hypotheses, with applications to
-  sequential clinical trials.
-\newblock {\em Journal of the American Statistical Association} {\bf 61,} 577.
-
-\bibitem[\protect\citeauthoryear{Cornfield}{Cornfield}{1966b}]{Cornfield1966b}
-Cornfield, J. (1966b).
-\newblock Sequential trials, sequential analysis and the likelihood principle.
-\newblock {\em The American Statistician} {\bf 20,} 18--23.
 
 \bibitem[\protect\citeauthoryear{Fayers, Ashby, and Parmar}{Fayers
   et~al.}{1997}]{Fayers1997}
@@ -62,13 +30,6 @@ Freedman, L.~S. and Spiegelhalter, D.~J. (1989).
   clinical trials.
 \newblock {\em Controlled Clinical Trials} {\bf 10,} 357--367.
 
-\bibitem[\protect\citeauthoryear{Freedman and Spiegelhalter}{Freedman and
-  Spiegelhalter}{1992}]{Freedman1992}
-Freedman, L.~S. and Spiegelhalter, D.~J. (1992).
-\newblock Application of bayesian statistics to decision making during a
-  clinical trial.
-\newblock {\em Statistics in Medicine} {\bf 11,} 23--35.
-
 \bibitem[\protect\citeauthoryear{Grieve}{Grieve}{2016}]{Grieve2016}
 Grieve, A.~P. (2016).
 \newblock Idle thoughts of a ‘well-calibrated’ bayesian in clinical drug
@@ -78,13 +39,6 @@ Grieve, A.~P. (2016).
 \bibitem[\protect\citeauthoryear{Griffin}{Griffin}{2018}]{Griffin2018}
 Griffin, M. (2018).
 \newblock Working with the exponential power distribution using gnorm.
-
-\bibitem[\protect\citeauthoryear{Gsponer, Gerber, Bornkamp, Ohlssen,
-  Vandemeulebroecke, and Schmidli}{Gsponer et~al.}{2014}]{Gsponer2014}
-Gsponer, T., Gerber, F., Bornkamp, B., Ohlssen, D., Vandemeulebroecke, M., and
-  Schmidli, H. (2014).
-\newblock A practical guide to bayesian group sequential designs.
-\newblock {\em Pharmaceutical Statistics} {\bf 13,} 71--80.
 
 \bibitem[\protect\citeauthoryear{Hyams, Damaraju, Blank, Johanns, Guzzo,
   Winter, Kugathasan, Cohen, Markowitz, Escher, Veereman–Wauters, Crandall,
@@ -110,18 +64,6 @@ Nadarajah, S. (2005).
 \newblock A generalized normal distribution.
 \newblock {\em Journal of Applied Statistics} {\bf 32,} 685--694.
 
-\bibitem[\protect\citeauthoryear{O'Brien and Fleming}{O'Brien and
-  Fleming}{1979}]{OBrien1979}
-O'Brien, P.~C. and Fleming, T.~R. (1979).
-\newblock A multiple testing procedure for clinical trials.
-\newblock {\em Biometrics} {\bf 35,} 549--556.
-
-\bibitem[\protect\citeauthoryear{Pocock}{Pocock}{1977}]{Pocock1977}
-Pocock, S.~J. (1977).
-\newblock Group sequential methods in the design and analysis of clinical
-  trials.
-\newblock {\em Biometrika} {\bf 64,} 191--199.
-
 \bibitem[\protect\citeauthoryear{{R Core Team}}{{R Core Team}}{2017}]{R2017}
 {R Core Team} (2017).
 \newblock R: A language and environment for statistical computing.
@@ -136,12 +78,6 @@ Rutgeerts, P., Sandborn, W.~J., Feagan, B.~G., Reinisch, W., Olson, A.,
 \newblock Infliximab for induction and maintenance therapy for ulcerative
   colitis.
 \newblock {\em New England Journal of Medicine} {\bf 353,} 2462--2476.
-
-\bibitem[\protect\citeauthoryear{Spiegelhalter, Freedman, and
-  Parmar}{Spiegelhalter et~al.}{1993}]{Spiegelhalter1993}
-Spiegelhalter, D.~J., Freedman, L.~S., and Parmar, M. K.~B. (1993).
-\newblock Applying bayesian ideas in drug development and clinical trials.
-\newblock {\em Statistics in Medicine} {\bf 12,} 1501--1511.
 
 \bibitem[\protect\citeauthoryear{Spiegelhalter, Freedman, and
   Parmar}{Spiegelhalter et~al.}{1994}]{Spiegelhalter1994}

@@ -1,3 +1,48 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: bayes-SM-biometrics.aux
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: bayes-SM-biometrics.aux
+Reallocating 'name_of_file' (item size: 1) to 5 items.
 The style file: biom.bst
-Database file #1: mybibilo.bib
+Reallocating 'name_of_file' (item size: 1) to 15 items.
+Database file #1: fda_bib_062420.bib
+You've used 18 entries,
+            2146 wiz_defined-function locations,
+            648 strings with 7987 characters,
+and the built_in function-call counts, 8937 in all, are:
+= -- 758
+> -- 628
+< -- 9
++ -- 221
+- -- 213
+* -- 898
+:= -- 1628
+add.period$ -- 52
+call.type$ -- 18
+change.case$ -- 161
+chr.to.int$ -- 18
+cite$ -- 18
+duplicate$ -- 258
+empty$ -- 487
+format.name$ -- 237
+if$ -- 1643
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 15
+newline$ -- 91
+num.names$ -- 72
+pop$ -- 125
+preamble$ -- 1
+purify$ -- 161
+quote$ -- 0
+skip$ -- 171
+stack$ -- 0
+substring$ -- 536
+swap$ -- 113
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 108
+warning$ -- 0
+while$ -- 68
+width$ -- 0
+write$ -- 228
