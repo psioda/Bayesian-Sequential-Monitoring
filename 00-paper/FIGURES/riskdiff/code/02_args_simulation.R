@@ -8,6 +8,37 @@
 
 rm(list = ls())
 
+# simulation1 <- expand.grid(
+#   seq(.39, 0.63, length = 5), # p.IP
+#   .39, # p.PC
+#   2,   # freq.mntr
+#   1,   # enr.shape
+#   4,   # out.mean
+#   0,   # fut.mix.prob
+#   c(seq(1, 0.25, by = -0.25)), # eff.mix.prob
+#   0.5,  # inf.mix.prob
+#   0.05, # cred.tail
+#   100,  # max.ss
+#   70,   # min.ss
+#   10000)   # reps
+# 
+# simulation2 <- expand.grid(
+#   seq(.39, 0.63, length = 5), # p.IP
+#   .39, # p.PC
+#   2,   # freq.mntr
+#   1,   # enr.shape
+#   4,   # out.mean
+#   0,   # fut.mix.prob
+#   rep(10,156), # eff.mix.prob
+#   0.5,  # inf.mix.prob
+#   0.05, # cred.tail
+#   100,  # max.ss
+#   70,   # min.ss
+#   65)   # reps
+# 
+# simulation <- rbind(simulation1, simulation2)
+
+
 simulation1 <- expand.grid(
   seq(.39, 0.63, length = 5), # p.IP
   .39, # p.PC
@@ -20,21 +51,21 @@ simulation1 <- expand.grid(
   0.05, # cred.tail
   100,  # max.ss
   70,   # min.ss
-  10000)   # reps
+  1)   # reps
 
 simulation2 <- expand.grid(
   seq(.39, 0.63, length = 5), # p.IP
   .39, # p.PC
-  2,   # freq.mntr
+  15,   # freq.mntr
   1,   # enr.shape
   4,   # out.mean
   0,   # fut.mix.prob
-  rep(10,156), # eff.mix.prob
+  10, # eff.mix.prob
   0.5,  # inf.mix.prob
   0.05, # cred.tail
   100,  # max.ss
   70,   # min.ss
-  65)   # reps
+  5)   # reps
 
 simulation <- rbind(simulation1, simulation2)
 

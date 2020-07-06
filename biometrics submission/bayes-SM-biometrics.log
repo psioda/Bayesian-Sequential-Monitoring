@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  27 JUN 2020 00:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  2 JUL 2020 08:43
 entering extended mode
 **./bayes-SM-biometrics.tex
 (bayes-SM-biometrics.tex
@@ -237,20 +237,20 @@ File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
 ) (bayes-SM-biometrics.aux)
 \openout1 = `bayes-SM-biometrics.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 153.
-LaTeX Font Info:    ... okay on input line 153.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 154.
+LaTeX Font Info:    ... okay on input line 154.
  (endrotfloat.sty
 Package: endrotfloat 2007/01/23 v1.0 LaTeX2e package puts sideways figures and 
 tables at end
@@ -276,21 +276,21 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 )
-LaTeX Font Info:    Trying to load font information for U+eur on input line 220
+LaTeX Font Info:    Trying to load font information for U+eur on input line 221
 .
 
 ("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/ueur.fd
 "
 File: ueur.fd 2013/01/14 v3.01 Euler Roman
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 220
+LaTeX Font Info:    Trying to load font information for U+msa on input line 221
 .
 
 ("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd
 "
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 220
+LaTeX Font Info:    Trying to load font information for U+msb on input line 221
 .
 
 ("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd
@@ -314,7 +314,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 [1
 
 ]
-Overfull \hbox (1.54567pt too wide) in paragraph at lines 256--257
+Overfull \hbox (1.54567pt too wide) in paragraph at lines 257--258
 \OT1/cmr/m/n/12 analysis, expected sample size and trial duration, and posterio
 r mean and coverage probability
  []
@@ -328,13 +328,13 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [2]
-Overfull \hbox (0.39626pt too wide) in paragraph at lines 266--273
+Overfull \hbox (0.39626pt too wide) in paragraph at lines 267--274
  \OT1/cmr/m/n/12 2.1.1 \OT1/cmr/m/it/12 Bayesian Hypothesis Testing. [] \OT1/cm
 r/m/n/12 Consider a clinical trial application where the primary
  []
 
 
-Overfull \hbox (11.1414pt too wide) in paragraph at lines 266--273
+Overfull \hbox (11.1414pt too wide) in paragraph at lines 267--274
 \OT1/cmr/m/n/12 receiving the investigational treatment and those receiving the
  control treatment (e.g., placebo). 
  []
@@ -345,7 +345,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [3]
-Overfull \hbox (25.47514pt too wide) in paragraph at lines 314--325
+Overfull \hbox (25.47514pt too wide) in paragraph at lines 315--326
  \OT1/cmr/m/n/12 2.1.3 \OT1/cmr/m/it/12 Skeptical and Enthusiastic Monitoring P
 riors. [] \OT1/cmr/m/n/12 Having formalized concepts for \OT1/cmr/m/it/12 subst
 antial
@@ -378,13 +378,13 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [7]
-Overfull \hbox (11.3396pt too wide) in paragraph at lines 467--468
+Overfull \hbox (11.3396pt too wide) in paragraph at lines 468--469
  \OT1/cmr/m/n/12 2.2.1 \OT1/cmr/m/it/12 Generalized Normal Distribution. [] \OT
 1/cmr/m/n/12 Skeptical and enthusiastic monitoring priors defined
  []
 
 
-Overfull \hbox (0.8929pt too wide) in paragraph at lines 467--468
+Overfull \hbox (0.8929pt too wide) in paragraph at lines 468--469
 \OT1/cmr/m/n/12 increases, regardless of the initial choice of prior. Therefore
 , a normally distributed monitoring
  []
@@ -541,6 +541,20 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [22]
+Overfull \hbox (4.36946pt too wide) in paragraph at lines 852--856
+ \OT1/cmr/m/n/12 5.2.2 \OT1/cmr/m/it/12 Generalized Normal Distributions $[][]\
+OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 ; q; \OT1/cmr/m/n/12 )$\OT1/cmr/m/it/12 . [
+] \OT1/cmr/m/n/12 The density for a generalized normal
+ []
+
+
+Overfull \hbox (23.87877pt too wide) in paragraph at lines 866--873
+ \OT1/cmr/m/n/12 5.2.3 \OT1/cmr/m/it/12 Truncated Generalized Normal Distributi
+on $[][]\OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 ; q; \OT1/cmr/m/n/12 )$\OT1/cmr/m/
+it/12 . [] \OT1/cmr/m/n/12 The density for a generalized
+ []
+
+
 Overfull \hbox (16.37509pt too wide) in paragraph at lines 866--873
 \OT1/cmr/m/n/12 normal distribution truncated to the interval domain $ = (\OML
 /cmm/m/it/12 []; []\OT1/cmr/m/n/12 )$, denoted by $[][](\OML/cmm/m/it/12 ; 
@@ -715,7 +729,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 Here is how much of TeX's memory you used:
  3602 strings out of 482730
  48084 string characters out of 2947761
- 292459 words of memory out of 3000000
+ 292465 words of memory out of 3000000
  19297 multiletter control sequences out of 15000+200000
  551059 words of font info for 91 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
@@ -752,7 +766,7 @@ ibrary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm
 lic/amsfonts/cm/cmti9.pfb></Library/Application Support/MiKTeX/texmfs/install/f
 onts/type1/public/amsfonts/symbols/msam10.pfb></Library/Application Support/MiK
 TeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on bayes-SM-biometrics.pdf (35 pages, 1428663 bytes).
+Output written on bayes-SM-biometrics.pdf (35 pages, 1428608 bytes).
 PDF statistics:
  249 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

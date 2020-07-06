@@ -10,11 +10,11 @@
 \efloatseparator
  
 \begin{figure}\begin{center}
-%\includegraphics[width=3in]{figure5c.png}
+%\includegraphics[width=6in]{figure5c.png}
 \includegraphics[width=6in]{figure5a.png}
-%\includegraphics[width=3in]{figure5d.png}
-%\includegraphics[width=3in]{figure5b.png}
-%\includegraphics[width=3in]{figure5e.png}
+%\includegraphics[width=6in]{figure5d.png}
+%\includegraphics[width=6in]{figure5b.png}
+%\includegraphics[width=6in]{figure5e.png}
 \caption{Joint distribution $\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$, where $
 \pi(\theta)\sim\mathcal{GN}_{p=0.975,\Theta=[-1,1]}(\tilde{\mu}=\theta_0,q=\theta_1,\gamma=1)$ and $\pi(\eta|\theta)\sim \mathcal{GN}_{p=0.975,H=[\rmn{max}(-\theta,0),\rmn{min}(1,1+\theta)]}(\tilde{\mu}=\eta_0,q=\eta_1,\gamma=1)$.}
 \label{fig:figure5}
@@ -58,7 +58,7 @@
 \efloatseparator
  
 \begin{figure}\begin{center}
-    \centering\includegraphics[width=6in]{figure6.png}
+   \includegraphics[width=6in]{figure6.png}
     \caption{Probability of stopping for efficacy and associated sample sizes by true IP response rate $\theta$ with different choices of efficacy monitoring prior.}
 \label{fig:ex2varyomega}
  \end{center}

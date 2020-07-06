@@ -59,10 +59,13 @@ enth.prior.2 <- function(x, y){ # for x < 0 (theta < 0)
 }
 
 # SECTION 1.1 FIND MLEs (assuming nonzero cell counts in each)
-PC.mle <- y1.PC/sum(y0.PC, y1.PC)
-IP.mle <- y1.IP/sum(y0.IP, y1.IP)
+PC.mle        <- y1.PC/sum(y0.PC, y1.PC)
+IP.mle        <- y1.IP/sum(y0.IP, y1.IP)
+risk.diff.mle <- IP.mle - PC.mle
 
 # SECTION 2: PRIOR MIXING WEIGHTS (only if eff.mix.prob == NA)
+skpt.psi <- NA
+enth.psi <- NA
 if (is.na(eff.mix.prob)){
   if (IP.mle >= PC.mle){
   skpt.lik <- skpt.prior.1(IP.mle - PC.mle, PC.mle)
@@ -155,12 +158,15 @@ prior_dat_conflict <- function(y1.IP, y0.IP, y1.PC, y0.PC){
   # compute SKEPTICAL COMPONENT mixing weight
   eff.mix.prob <- 1 - max(enth.psi - skpt.psi, 0)
   print(paste0("Efficacy mixing weight for skeptical component: ", eff.mix.prob))
-  return(eff.mix.prob)
+  return(cbind(eff.mix.prob, skpt.psi, enth.psi))
 }
 
 if (eff.mix.prob == 10){
-  eff.mix.prob <- prior_dat_conflict(y1.IP, y0.IP, y1.PC, y0.PC)
-}
+  prior_data_conflict_result <- prior_dat_conflict(y1.IP, y0.IP, y1.PC, y0.PC)
+  eff.mix.prob               <- prior_data_conflict_result[,"eff.mix.prob"]
+  skpt.psi                   <- prior_data_conflict_result[,"skpt.psi"]
+  enth.psi                   <- prior_data_conflict_result[,"enth.psi"]
+  }
 # SECTION 3: POSTERIOR DENSITIES
 # log (un-normalized) posterior density
 # Deemed unnecessary on 5/7/2020

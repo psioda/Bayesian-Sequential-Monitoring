@@ -126,5 +126,5 @@ monitoring <- function(index){
   # bug caught 3/3/20, first term of fut.prob was fut.skpt.wt*((1 - fut.prob.enth/enth.nc.sc)
                                       # should be fut.skpt.wt*((1 - fut.prob.skpt/skpt.nc.sc)
   
-  return(data.frame(cbind(eff.prob, inf.prob, fut.prob, eff.mix.prob)))
+  return(data.frame(cbind(eff.prob, inf.prob, fut.prob, eff.mix.prob, risk.diff.mle, skpt.psi, enth.psi)))
 }

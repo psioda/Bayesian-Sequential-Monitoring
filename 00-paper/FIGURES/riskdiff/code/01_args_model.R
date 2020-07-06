@@ -4,7 +4,7 @@
 ##################################
 rm(list = ls())
 
-if (.Platform$OS.type == "windows") {
+if (Sys.getenv("USER") == "kwiatkoe") {
   library(pracma)
   library(gnorm)
 }

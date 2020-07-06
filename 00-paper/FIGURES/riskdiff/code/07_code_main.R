@@ -3,10 +3,18 @@
 ### Evan Kwiatkowski, Feb 2020
 ###
 ### # If changes made to functions then re-run args_model.R
-###
+### # If changes made to functions then re-run args_model.R
+### # If changes made to functions then re-run args_model.R
+### # If changes made to functions then re-run args_model.R
+### # If changes made to functions then re-run args_model.R
+### # If changes made to functions then re-run args_model.R
+### # If changes made to functions then re-run args_model.R
+### # If changes made to functions then re-run args_model.R
+### # If changes made to functions then re-run args_model.R
+### # If changes made to functions then re-run args_model.R
 ##################################
 
-#for (idx in 1:10){ # check here
+for (idx in 23:25){ # check here
 
   if (Sys.getenv("USER") == "kwiatkoe") {
     library(pracma)
@@ -35,7 +43,10 @@ names <- c("eff.mon.initial","eff.mon.final","fut.mon.initial","fut.mon.final",
            "post.mean.initial.IP","post.mean.final.IP","post.mean.initial.PC","post.mean.final.PC",
            "cov.initial","cov.final",
            "eff.mix.prob", 
-           "initial.p", "final.p")
+           "initial.p", "final.p",
+           "box.skpt.initial", "box.skpt.final",
+           "box.enth.initial", "box.enth.final",
+           "risk.diff.initial", "risk.diff.final")
 
 inner <- array(NA, 
                dim = c(reps, length(names)), 
@@ -69,27 +80,33 @@ for (i in 1:reps){
   inner[i, "cov.initial"]          <- pm.cp.result.initial$coverage
   inner[i, "ss.initial"]           <- n.initial  
   inner[i, "initial.p"]            <- efficacy
+  inner[i, "risk.diff.initial"]    <- mon.result.initial$risk.diff.mle
+  inner[i, "box.skpt.initial"]     <- mon.result.initial$skpt.psi
+  inner[i, "box.enth.initial"]     <- mon.result.initial$enth.psi
   
   # Final ---
-  cutoff.time                    <- outcome.times.all[n.initial]
-  n.final                        <- sum(enr.times.all <= cutoff.time)
-  mon.result.final               <- monitoring(index = n.final) # calls prior_data_conflict(), takes time
-  futility.final                 <- mon.result.final$fut.prob
-  efficacy.final                 <- mon.result.final$eff.prob
-  inner[i, "fut.mon.final"]      <- (futility.final > sig.fut)
-  inner[i, "eff.mon.final"]      <- (efficacy.final > sig.eff)
-  inner[i, "eff.mix.prob"]       <- mon.result.final$eff.mix.prob
-  pm.cp.result.final             <- pm_cp(index = n.final) # calls prior_data_conflict(), takes time
-  inner[i, "post.mean.final.PC"] <- pm.cp.result.final$pm.mean.x
-  inner[i, "post.mean.final.IP"] <- pm.cp.result.final$pm.mean.y
-  inner[i, "cov.final"]          <- pm.cp.result.final$coverage
-  inner[i, "mle.final.PC"]       <- pm.cp.result.final$mle.PC
-  inner[i, "mle.final.IP"]       <- pm.cp.result.final$mle.IP
-  inner[i,"ss.final"]            <- n.final  
-  inner[i,"final.p"]             <- efficacy.final
+  cutoff.time                      <- outcome.times.all[n.initial]
+  n.final                          <- sum(enr.times.all <= cutoff.time)
+  mon.result.final                 <- monitoring(index = n.final) # calls prior_data_conflict(), takes time
+  futility.final                   <- mon.result.final$fut.prob
+  efficacy.final                   <- mon.result.final$eff.prob
+  inner[i, "fut.mon.final"]        <- (futility.final > sig.fut)
+  inner[i, "eff.mon.final"]        <- (efficacy.final > sig.eff)
+  inner[i, "eff.mix.prob"]         <- mon.result.final$eff.mix.prob
+  pm.cp.result.final               <- pm_cp(index = n.final) # calls prior_data_conflict(), takes time
+  inner[i, "post.mean.final.PC"]   <- pm.cp.result.final$pm.mean.x
+  inner[i, "post.mean.final.IP"]   <- pm.cp.result.final$pm.mean.y
+  inner[i, "cov.final"]            <- pm.cp.result.final$coverage
+  inner[i, "mle.final.PC"]         <- pm.cp.result.final$mle.PC
+  inner[i, "mle.final.IP"]         <- pm.cp.result.final$mle.IP
+  inner[i,"ss.final"]              <- n.final  
+  inner[i,"final.p"]               <- efficacy.final
+  inner[i, "risk.diff.final"]      <- mon.result.final$risk.diff.mle
+  inner[i, "box.skpt.final"]       <- mon.result.final$skpt.psi
+  inner[i, "box.enth.final"]       <- mon.result.final$enth.psi
 }
 
 Table0     <- data.frame(t(inner))
 Table0$idx <- idx
 write.csv(Table0, file = paste0("../output/Table0/", idx, "Table0.csv"))
-#}
+}
