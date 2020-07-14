@@ -66,6 +66,7 @@ risk.diff.mle <- IP.mle - PC.mle
 # SECTION 2: PRIOR MIXING WEIGHTS (only if eff.mix.prob == NA)
 skpt.psi <- NA
 enth.psi <- NA
+ni.psi   <- NA
 if (is.na(eff.mix.prob)){
   if (IP.mle >= PC.mle){
   skpt.lik <- skpt.prior.1(IP.mle - PC.mle, PC.mle)
@@ -83,6 +84,9 @@ prior_dat_conflict <- function(y1.IP, y0.IP, y1.PC, y0.PC){
                                nrow = y1.IP + y0.IP + 1, 
                                ncol = y1.PC + y0.PC + 1)
   enth.post.nc       <- matrix(NA, 
+                               nrow = y1.IP + y0.IP + 1, 
+                               ncol = y1.PC + y0.PC + 1)
+  ni.post.nc         <- matrix(NA, 
                                nrow = y1.IP + y0.IP + 1, 
                                ncol = y1.PC + y0.PC + 1)
   print(paste0("Interim analysis ", sum(y1.IP,y0.IP,y1.PC,y0.PC)))
@@ -142,9 +146,35 @@ prior_dat_conflict <- function(y1.IP, y0.IP, y1.PC, y0.PC){
       }
       enth.post.nc[i, j] <- integrate_debug(enth.post.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
         integrate_debug(enth.post.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
+      
+      ni.post.1 <- function(x, y){ # for x > 0 (theta > 0)
+        exp(
+          dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
+            dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) + 
+        dgnorm(x,            delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0, log = TRUE) -
+          log(pgnorm(q = 1,  delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0) -
+             pgnorm(q = -1,  delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0)) +
+          dgnorm(y,          mu,            ni.alpha0,    ni.beta0, log = TRUE) -
+          log(pgnorm(q = 1-x,mu,            ni.alpha0,    ni.beta0) -
+             pgnorm(q = 0,   mu,            ni.alpha0,    ni.beta0))
+        )
+      }
+      ni.post.2 <- function(x, y){ # for x < 0 (theta < 0)
+        exp(
+          dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
+            dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) + 
+        dgnorm(x,           delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0, log = TRUE) -
+          log(pgnorm(q = 1, delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0) -
+             pgnorm(q = -1, delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0)) + 
+          dgnorm(y,         mu,            ni.alpha0,    ni.beta0, log = TRUE) -
+          log(pgnorm(q = 1, mu,            ni.alpha0,    ni.beta0) -
+             pgnorm(q = -x, mu,            ni.alpha0,    ni.beta0))
+        )
+      }
+      ni.post.nc[i, j] <- integrate_debug(ni.post.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
+                          integrate_debug(ni.post.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
     }
   }
-  
   # prior data conflict for skeptical prior
   skpt.psi <- sum(skpt.post.nc[skpt.post.nc <= skpt.post.nc[y1.IP + 1, y1.PC + 1]])
   print(paste0("Sum marginal prob of data with enth prior (should be 1): ", sum(skpt.post.nc)))
@@ -155,10 +185,15 @@ prior_dat_conflict <- function(y1.IP, y0.IP, y1.PC, y0.PC){
   print(paste0("Sum marginal prob of data with enth prior (should be 1): ", sum(enth.post.nc)))
   print(paste0("Enthuastic prior compatibility: ", enth.psi))
   
+  # prior data conflict for non-informative prior
+  ni.psi <- sum(ni.post.nc[ni.post.nc <= ni.post.nc[y1.IP + 1, y1.PC + 1]])
+  print(paste0("Sum marginal prob of data with ni prior (should be 1): ", sum(ni.post.nc)))
+  print(paste0("Non-informative prior compatibility: ", ni.psi))
+  
   # compute SKEPTICAL COMPONENT mixing weight
   eff.mix.prob <- 1 - max(enth.psi - skpt.psi, 0)
   print(paste0("Efficacy mixing weight for skeptical component: ", eff.mix.prob))
-  return(cbind(eff.mix.prob, skpt.psi, enth.psi))
+  return(cbind(eff.mix.prob, skpt.psi, enth.psi, ni.psi))
 }
 
 if (eff.mix.prob == 10){
@@ -166,6 +201,7 @@ if (eff.mix.prob == 10){
   eff.mix.prob               <- prior_data_conflict_result[,"eff.mix.prob"]
   skpt.psi                   <- prior_data_conflict_result[,"skpt.psi"]
   enth.psi                   <- prior_data_conflict_result[,"enth.psi"]
+  ni.psi                     <- prior_data_conflict_result[,"ni.psi"]
   }
 # SECTION 3: POSTERIOR DENSITIES
 # log (un-normalized) posterior density

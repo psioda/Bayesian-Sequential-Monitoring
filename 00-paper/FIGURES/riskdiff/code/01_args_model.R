@@ -7,6 +7,7 @@ rm(list = ls())
 if (Sys.getenv("USER") == "kwiatkoe") {
   library(pracma)
   library(gnorm)
+  setwd("/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code")
 }
 
 if (.Platform$OS.type == "unix")    { 
@@ -29,4 +30,11 @@ enth_joint()
 
 source("priors/06_skpt_joint.R")
 skpt_joint()
+
+delta.ni.enth <- 0.36
+delta.ni.skpt <- 0.06
+delta.ni.intr <- (delta.ni.skpt+delta.ni.enth)/2
+source("priors/09_ni_joint.R")
+ni_joint()
+
 save.image(file = 'args_model.RData')

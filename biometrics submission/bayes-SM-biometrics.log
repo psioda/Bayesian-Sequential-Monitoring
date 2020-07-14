@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  2 JUL 2020 08:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  14 JUL 2020 12:08
 entering extended mode
 **./bayes-SM-biometrics.tex
 (bayes-SM-biometrics.tex
@@ -297,7 +297,11 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 221
 "
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \vbox (10.83334pt too high) has occurred while \output is active []
+
+LaTeX Warning: Reference `lastpage' on page 1 undefined on input line 221.
+
+
+Overfull \vbox (10.94447pt too high) has occurred while \output is active []
 
 
 [1{/Users/kwiatkoe/Library/Application Support/MiKTeX/texmfs/data/pdftex/config
@@ -395,6 +399,13 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [8]
+
+LaTeX Warning: Reference `fig:figure1' on page 9 undefined on input line 472.
+
+
+LaTeX Warning: Reference `fig:figure1' on page 9 undefined on input line 474.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -416,6 +427,10 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [11]
+
+LaTeX Warning: Reference `fig:figure5' on page 12 undefined on input line 595.
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 12
  []
@@ -443,15 +458,26 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [14]
+
+LaTeX Warning: Reference `fig:figure2' on page 15 undefined on input line 638.
+
+
+LaTeX Warning: Reference `fig:figure2' on page 15 undefined on input line 640.
+
+
+LaTeX Warning: Reference `fig:ex1.1' on page 15 undefined on input line 652.
+
+
+LaTeX Warning: Reference `fig:ex1.1' on page 15 undefined on input line 659.
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 15
  []
 
 [15]
-Overfull \hbox (14.72641pt too wide) in paragraph at lines 672--677
- \OT1/cmr/m/n/12 3.1.5 \OT1/cmr/m/it/12 Type 1 Error Rate by the Frequency of D
-ata Monitoring. [] \OT1/cmr/m/n/12 Figure 5[] shows the probability
- []
+
+LaTeX Warning: Reference `fig:ex1t1e' on page 16 undefined on input line 672.
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -470,6 +496,11 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [17]
+
+LaTeX Warning: Reference `fig:ex2varyomega' on page 18 undefined on input line 
+715.
+
+
 Overfull \hbox (7.61644pt too wide) in paragraph at lines 724--725
 \OT1/cmr/m/n/12 natural interpretations and ability to incorporate external evi
 dence through prior distributions.
@@ -562,16 +593,47 @@ Overfull \hbox (16.37509pt too wide) in paragraph at lines 866--873
  []
 
 
+LaTeX Warning: Reference `fig:ex1t1e' on page 23 undefined on input line 875.
+
+
+LaTeX Warning: Reference `fig:ex1t1e_longer' on page 23 undefined on input line
+ 875.
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 23
  []
 
 [23]
+
+LaTeX Warning: Reference `fig:figure1' on page 24 undefined on input line 885.
+
+
+LaTeX Warning: Reference `fig:robustness1' on page 24 undefined on input line 8
+87.
+
+
+LaTeX Warning: Reference `fig:robustness2' on page 24 undefined on input line 8
+87.
+
+
+LaTeX Warning: Reference `fig:robustness1' on page 24 undefined on input line 8
+89.
+
+
+LaTeX Warning: Reference `fig:robustness2' on page 24 undefined on input line 8
+89.
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 24
  []
 
-[24] AED endfloat: Processing end Figures and Tables
+[24] (../00-paper/FIGURES/4comparison.tex
+\openout4 = `bayes-SM-biometrics.ttt'.
+
+ (bayes-SM-biometrics.ttt))
+AED endfloat: Processing end Figures and Tables
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 25
  []
@@ -686,6 +748,24 @@ Package pdftex.def Info: figureS2b.png  used on input line 81.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
 
 
+LaTeX Warning: Reference `fig:figure1' on page 33 undefined on input line 82.
+
+
+LaTeX Warning: Reference `fig:figure1' on page 33 undefined on input line 82.
+
+
+LaTeX Warning: Reference `fig:figure1' on page 33 undefined on input line 82.
+
+
+LaTeX Warning: Reference `fig:figure1' on page 33 undefined on input line 82.
+
+
+LaTeX Warning: Reference `fig:figure1' on page 33 undefined on input line 82.
+
+
+LaTeX Warning: Reference `fig:figure1' on page 33 undefined on input line 82.
+
+
 LaTeX Warning: Text page 33 contains only floats.
 
 
@@ -716,6 +796,24 @@ Package pdftex.def Info: figureS2d.png  used on input line 91.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
 
 
+LaTeX Warning: Reference `fig:figure1' on page 34 undefined on input line 92.
+
+
+LaTeX Warning: Reference `fig:figure1' on page 34 undefined on input line 92.
+
+
+LaTeX Warning: Reference `fig:figure1' on page 34 undefined on input line 92.
+
+
+LaTeX Warning: Reference `fig:figure1' on page 34 undefined on input line 92.
+
+
+LaTeX Warning: Reference `fig:figure1' on page 34 undefined on input line 92.
+
+
+LaTeX Warning: Reference `fig:figure1' on page 34 undefined on input line 92.
+
+
 LaTeX Warning: Text page 34 contains only floats.
 
 
@@ -725,50 +823,65 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 
 [34
 
- <./figureS2c.png> <./figureS2d.png>]) (bayes-SM-biometrics.aux) ) 
+ <./figureS2c.png> <./figureS2d.png>]) (bayes-SM-biometrics.ttt)
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 35
+ []
+
+[35
+
+
+] (bayes-SM-biometrics.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3602 strings out of 482730
- 48084 string characters out of 2947761
- 292465 words of memory out of 3000000
- 19297 multiletter control sequences out of 15000+200000
+ 3613 strings out of 482730
+ 48537 string characters out of 2947761
+ 292373 words of memory out of 3000000
+ 19300 multiletter control sequences out of 15000+200000
  551059 words of font info for 91 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 33i,9n,38p,1683b,308s stack positions out of 5000i,500n,10000p,200000b,50000s
-</Library/App
-lication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cmextra/cmbs
-y7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/a
-msfonts/cm/cmbx10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts
-/type1/public/amsfonts/cm/cmbx12.pfb></Library/Application Support/MiKTeX/texmf
-s/install/fonts/type1/public/amsfonts/cm/cmbx7.pfb></Library/Application Suppor
-t/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx8.pfb></Library/Appl
-ication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmcsc10.pf
-b></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfon
-ts/cm/cmex10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type
-1/public/amsfonts/cm/cmmi12.pfb></Library/Application Support/MiKTeX/texmfs/ins
-tall/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Library/Application Support/MiK
-TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Library/Applicati
-on Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmib10.pfb></L
+ 33i,9n,38p,1683b,320s stack positions out of 5000i,500n,10000p,200000b,50000s
+</Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfon
+ts/cmextra/cmbsy7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts
+/type1/public/amsfonts/cm/cmbx10.pfb></Library/Application Support/MiKTeX/texmf
+s/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Library/Application Suppo
+rt/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx7.pfb></Library/App
+lication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx8.pfb
+></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfont
+s/cm/cmcsc10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type
+1/public/amsfonts/cm/cmex10.pfb></Library/Application Support/MiKTeX/texmfs/ins
+tall/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Library/Application Support/Mi
+KTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Library/Applicat
+ion Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Li
+brary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/
+cmmib10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/pub
+lic/amsfonts/cmextra/cmmib7.pfb></Library/Application Support/MiKTeX/texmfs/ins
+tall/fonts/type1/public/amsfonts/cm/cmr10.pfb></Library/Application Support/MiK
+TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Library/Applicati
+on Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Libr
+ary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cm
+r7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/a
+msfonts/cm/cmr8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/t
+ype1/public/amsfonts/cm/cmr9.pfb></Library/Application Support/MiKTeX/texmfs/in
+stall/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Library/Application Support/M
+iKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb></Library/Applica
+tion Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></L
 ibrary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm
-extra/cmmib7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type
-1/public/amsfonts/cm/cmr10.pfb></Library/Application Support/MiKTeX/texmfs/inst
-all/fonts/type1/public/amsfonts/cm/cmr12.pfb></Library/Application Support/MiKT
-eX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Library/Application
- Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></Librar
-y/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8
-.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/ams
-fonts/cm/cmr9.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb></Library/Application Support/MiKTeX/texmfs/in
-stall/fonts/type1/public/amsfonts/cm/cmsy6.pfb></Library/Application Support/Mi
-KTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Library/Applicat
-ion Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb></L
-ibrary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm
-/cmti12.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/pub
-lic/amsfonts/cm/cmti9.pfb></Library/Application Support/MiKTeX/texmfs/install/f
-onts/type1/public/amsfonts/symbols/msam10.pfb></Library/Application Support/MiK
-TeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on bayes-SM-biometrics.pdf (35 pages, 1428608 bytes).
+/cmti10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/pub
+lic/amsfonts/cm/cmti12.pfb></Library/Application Support/MiKTeX/texmfs/install/
+fonts/type1/public/amsfonts/cm/cmti9.pfb></Library/Application Support/MiKTeX/t
+exmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb></Library/Applicat
+ion Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.pf
+b>
+Output written on bayes-SM-biometrics.pdf (36 pages, 1430121 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
+ 252 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
