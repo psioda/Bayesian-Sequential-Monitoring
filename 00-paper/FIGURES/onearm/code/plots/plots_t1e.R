@@ -4,7 +4,7 @@ plot(log2(figure4$freq.mntr[figure4$out.mean==k1[1] & figure4$enr.shape==k2[1]])
      ylim=c(0,0.05),
      lwd=2,
      lty='longdash',
-     ylab="Type 1 Error Rate",
+     ylab="Probability",
      xlab="",
      main="",
      axes=FALSE)

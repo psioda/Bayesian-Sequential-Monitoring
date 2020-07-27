@@ -147,32 +147,32 @@ prior_dat_conflict <- function(y1.IP, y0.IP, y1.PC, y0.PC){
       enth.post.nc[i, j] <- integrate_debug(enth.post.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
         integrate_debug(enth.post.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
       
-      ni.post.1 <- function(x, y){ # for x > 0 (theta > 0)
-        exp(
-          dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
-            dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) + 
-        dgnorm(x,            delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0, log = TRUE) -
-          log(pgnorm(q = 1,  delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0) -
-             pgnorm(q = -1,  delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0)) +
-          dgnorm(y,          mu,            ni.alpha0,    ni.beta0, log = TRUE) -
-          log(pgnorm(q = 1-x,mu,            ni.alpha0,    ni.beta0) -
-             pgnorm(q = 0,   mu,            ni.alpha0,    ni.beta0))
-        )
-      }
-      ni.post.2 <- function(x, y){ # for x < 0 (theta < 0)
-        exp(
-          dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
-            dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) + 
-        dgnorm(x,           delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0, log = TRUE) -
-          log(pgnorm(q = 1, delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0) -
-             pgnorm(q = -1, delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0)) + 
-          dgnorm(y,         mu,            ni.alpha0,    ni.beta0, log = TRUE) -
-          log(pgnorm(q = 1, mu,            ni.alpha0,    ni.beta0) -
-             pgnorm(q = -x, mu,            ni.alpha0,    ni.beta0))
-        )
-      }
-      ni.post.nc[i, j] <- integrate_debug(ni.post.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
-                          integrate_debug(ni.post.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
+      # ni.post.1 <- function(x, y){ # for x > 0 (theta > 0)
+      #   exp(
+      #     dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
+      #       dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) + 
+      #   dgnorm(x,            delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0, log = TRUE) -
+      #     log(pgnorm(q = 1,  delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0) -
+      #        pgnorm(q = -1,  delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0)) +
+      #     dgnorm(y,          mu,            ni.alpha0,    ni.beta0, log = TRUE) -
+      #     log(pgnorm(q = 1-x,mu,            ni.alpha0,    ni.beta0) -
+      #        pgnorm(q = 0,   mu,            ni.alpha0,    ni.beta0))
+      #   )
+      # }
+      # ni.post.2 <- function(x, y){ # for x < 0 (theta < 0)
+      #   exp(
+      #     dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
+      #       dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) + 
+      #   dgnorm(x,           delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0, log = TRUE) -
+      #     log(pgnorm(q = 1, delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0) -
+      #        pgnorm(q = -1, delta.ni.skpt, ni.rd.alpha0, ni.rd.beta0)) + 
+      #     dgnorm(y,         mu,            ni.alpha0,    ni.beta0, log = TRUE) -
+      #     log(pgnorm(q = 1, mu,            ni.alpha0,    ni.beta0) -
+      #        pgnorm(q = -x, mu,            ni.alpha0,    ni.beta0))
+      #   )
+      # }
+      # ni.post.nc[i, j] <- integrate_debug(ni.post.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
+      #                     integrate_debug(ni.post.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
     }
   }
   # prior data conflict for skeptical prior

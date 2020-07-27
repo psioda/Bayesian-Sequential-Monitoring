@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -r ../error/
-rm -r ../logs/
-rm -r ../slurm/
-rm -r ../output/Table0/
+rm -rf ../error/*
+rm -rf ../logs/*
+rm -rf ../slurm/*
+rm -rf ../output/Table0/*

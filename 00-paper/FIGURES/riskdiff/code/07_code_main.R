@@ -14,7 +14,7 @@
 ### # If changes made to functions then re-run args_model.R
 ##################################
 
-#for (idx in 1:5){ # check here
+for (idx in 41){ # check here
 
 if (Sys.getenv("USER") == "kwiatkoe") {
   library(pracma)
@@ -72,4 +72,4 @@ for (i in 1:reps){
 Table0     <- data.frame(t(inner))
 Table0$idx <- idx
 write.csv(Table0, file = paste0("../output/Table0/", idx, "Table0.csv"))
-#}
+}

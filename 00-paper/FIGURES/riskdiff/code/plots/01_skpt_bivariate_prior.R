@@ -1,3 +1,5 @@
+output_png <- FALSE
+
 # assemble final prior
 skpt.prior.1 <- function(x, y){ # for x > 0 (gamma > 0)
   exp(-(abs(x - delta.skpt)/skpt.rd.alpha0)^skpt.rd.beta0)/(2*skpt.rd.alpha0*gamma(1/skpt.rd.beta0)/skpt.rd.beta0)*
@@ -35,7 +37,7 @@ for (i in 1:nrow(grid)){
 
 par(mar=c(5.1, 4.1, 4.1, 2.1)) # c(bottom, left, top, right))
 width.scale<-6
-png('figure5a.png',width = 300*2*width.scale, height = 300*width.scale,pointsize=16,res=300)
+if(output_png){png('figure5a.png',width = 300*2*width.scale, height = 300*width.scale,pointsize=16,res=300)}
 
 plot(grid.skpt$x,grid.skpt$y,
      xlab="",
@@ -120,4 +122,4 @@ axis(2,at=c(mu,
               1,
               as.expression(bquote(eta[1])),
               as.expression(bquote(eta[m]))))
-dev.off()
+if(output_png){dev.off()}

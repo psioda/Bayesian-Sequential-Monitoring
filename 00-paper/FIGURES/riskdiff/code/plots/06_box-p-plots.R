@@ -30,9 +30,14 @@ lines(x[ix], myPredict[ix], col="blue", lwd=2 )
 abline(v=0, col="grey")
 abline(v=0.12, col="grey")
 
-omega.skpt <- Table0$box.skpt.initial/(Table0$box.skpt.initial+Table0$box.enth.initial+Table0$box.ni.initial)
-omega.enth <- Table0$box.enth.initial/(Table0$box.skpt.initial+Table0$box.enth.initial+Table0$box.ni.initial)
-omega.ni   <- Table0$box.ni.initial / (Table0$box.skpt.initial+Table0$box.enth.initial+Table0$box.ni.initial)
+omega.skpt <- Table0$box.skpt.initial
+omega.enth <- Table0$box.enth.initial
+omega.ni   <- Table0$box.ni.initial
+omega.ni   <- pmax(omega.ni-pmax(omega.skpt,omega.enth),0)
+omega.sum  <- omega.skpt+omega.enth+omega.ni
+omega.skpt <- omega.skpt/omega.sum
+omega.enth <- omega.enth/omega.sum
+omega.ni   <- omega.ni/omega.sum
 
 x <- c(Table0$risk.diff.initial)
 y <- omega.skpt
@@ -49,7 +54,7 @@ myPredict <- predict( model )
 ix <- sort(x,index.return=T)$ix
 lines(x[ix], myPredict[ix], lwd=2, col = 2)
 
-y <- pmax(omega.ni-pmax(omega.skpt,omega.enth),0)
+y <- omega.ni
 points(x,y, col="blue", pch = 19, cex = 0.25)
 model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
 myPredict <- predict( model ) 

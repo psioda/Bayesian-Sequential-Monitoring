@@ -31,9 +31,14 @@ enth_joint()
 source("priors/06_skpt_joint.R")
 skpt_joint()
 
-delta.ni.enth <- 0.36
-delta.ni.skpt <- 0.06
-delta.ni.intr <- (delta.ni.skpt+delta.ni.enth)/2
+## based on skpt prior -- measures upper tail and upper half
+delta.ni.enth <- 0.42   ## new upper 
+delta.ni.skpt <- 0.06   ## new modal value
+delta.ni.intr <- 0.24   ## new halfway point
+
+#delta.ni.enth <- (3*delta.enth-delta.skpt)/2 ## new upper 
+#delta.ni.skpt <- (delta.skpt+delta.enth)/2   ## new modal value
+#delta.ni.intr <- delta.enth                  ## new halfway point
 source("priors/09_ni_joint.R")
 ni_joint()
 

@@ -1,9 +1,20 @@
+\begin{figure}\begin{center}
+    \includegraphics[width=6in]{figure2a.png}
+    \includegraphics[width=6in]{figure2b.png}
+    \caption{Example paths for the trial described in Section \ref{sec:example1model}. A, Early stoppage for efficacy. B, early stoppage for futility.}
+\label{fig:figure2}
+\end{center}
+\end{figure}
+\efloatseparator
+ 
 \begin{figure}
 \begin{center}
 \includegraphics[width=3in]{figure1a.png}
 \includegraphics[width=3in]{figure1b.png}
 \includegraphics[width=3in]{figure1c.png}
-\caption{A, $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$. B, $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=0.75)$, C, $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1.5)$}
+\includegraphics[width=3in]{figure1d.png}
+\caption{A, Default enthusiastic prior. B, Concentrated enthusiastic prior. C, Flattened enthusiastic prior. D, Locally non-informative prior}
+
 \label{fig:figure1}
 \end{center}
 \end{figure}
@@ -15,19 +26,9 @@
 %\includegraphics[width=6in]{figure5d.png}
 %\includegraphics[width=6in]{figure5b.png}
 %\includegraphics[width=6in]{figure5e.png}
-\caption{Joint distribution $\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$, where $
-\pi(\theta)\sim\mathcal{GN}_{p=0.975,\Theta=[-1,1]}(\tilde{\mu}=\theta_0,q=\theta_1,\gamma=1)$ and $\pi(\eta|\theta)\sim \mathcal{GN}_{p=0.975,H=[\rmn{max}(-\theta,0),\rmn{min}(1,1+\theta)]}(\tilde{\mu}=\eta_0,q=\eta_1,\gamma=1)$.}
+\caption{Joint distribution $\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$, where $\pi(\theta)$ is a default skeptical prior truncated to $[-1,1]$, and $\pi(\eta|\theta)$ is a default skeptical prior truncated to $[\rmn{max}(-\theta,0),\rmn{min}(1,1+\theta)]$.}
 \label{fig:figure5}
  \end{center}
-\end{figure}
-\efloatseparator
- 
-\begin{figure}\begin{center}
-    \includegraphics[width=6in]{figure2a.png}
-    \includegraphics[width=6in]{figure2b.png}
-    \caption{Example paths for the trial described in Section \ref{sec:example1model}. A, Early stoppage for efficacy. B, early stoppage for futility.}
-\label{fig:figure2}
-\end{center}
 \end{figure}
 \efloatseparator
  
@@ -59,7 +60,9 @@
  
 \begin{figure}\begin{center}
    \includegraphics[width=6in]{figure6.png}
-    \caption{Probability of stopping for efficacy and associated sample sizes by true IP response rate $\theta$ with different choices of efficacy monitoring prior.}
+      \includegraphics[width=6in]{figure9.png}
+\includegraphics[width=6in]{3-part-compatibility.png}
+    \caption{A;. B; Probability of stopping for efficacy and associated sample sizes by true IP response rate $\theta$ with different choices of efficacy monitoring prior. C; $\psi^{(S)}$, $\psi^{(E)}$, $\psi^{(NI)}$. B; $\omega_S$, $\omega_{E}$, $\omega_{NI}$.}
 \label{fig:ex2varyomega}
  \end{center}
 \end{figure}

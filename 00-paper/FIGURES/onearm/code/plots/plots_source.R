@@ -206,7 +206,7 @@ v<-floor(max.ss/figure4$freq.mntr)
 width.scale<-7
 
 # run plot
-png('../../figure4.png',width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
+#png('../../figure4.png',width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
 label_main=""
 stretch<- (-1.15)
 
@@ -215,7 +215,7 @@ mntr.pts<-c(1,2,4,8,16,56,112)
 source("plots/plots_t1e.R")
 legend("right",c("Initial","Final"),lty=c(5,1))
 
-dev.off()
+#dev.off()
 
 
 ##################################################
