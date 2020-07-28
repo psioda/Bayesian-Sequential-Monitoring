@@ -36,7 +36,7 @@
 
     \includegraphics[width=6in]{figure3a.png}
     \includegraphics[width=6in]{figure3b.png}
-    \caption{A, Sequential design properties. (SS; sample size, PM; posterior mean, CP; coverage probability, (I); interim analysis, (F); final analysis) B, Distribution of final posterior probability given interim stoppage and evidence decrease ($\%$ AGR; Percent of agreement between final and interim posterior probabilities relative to $1-\epsilon$ threshold)}
+    \caption{A, Sequential design properties. (SS; sample size, PM; posterior mean, CP; coverage probability, (I); interim analysis, (F); final analysis). B, Distribution of final posterior probability given interim stoppage and evidence decrease ($\%$ AGR; Percent of agreement between final and interim posterior probabilities relative to $1-\epsilon$ threshold)}
 \label{fig:ex1.1}
 
 \end{center}
@@ -59,11 +59,19 @@
 \efloatseparator
  
 \begin{figure}\begin{center}
-   \includegraphics[width=6in]{figure6.png}
       \includegraphics[width=6in]{figure9.png}
-\includegraphics[width=6in]{3-part-compatibility.png}
-    \caption{A;. B; Probability of stopping for efficacy and associated sample sizes by true IP response rate $\theta$ with different choices of efficacy monitoring prior. C; $\psi^{(S)}$, $\psi^{(E)}$, $\psi^{(NI)}$. B; $\omega_S$, $\omega_{E}$, $\omega_{NI}$.}
+   \includegraphics[width=6in]{figure6.png}
+    \caption{A, Sequential design properties using adaptive weight monitoring prior. (SS; sample size, PM; posterior mean, CP; coverage probability, (I); interim analysis, (F); final analysis). B, Probability of stopping for efficacy and associated sample sizes by true IP response rate $\theta$ with different choices of efficacy monitoring prior.}
 \label{fig:ex2varyomega}
+ \end{center}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}\begin{center}
+\includegraphics[width=6in]{3-part-compatibility-1.png}
+\includegraphics[width=6in]{3-part-compatibility-2.png}
+    \caption{A; Prior-data compatibility assessments $\psi^{(S)}$, $\psi^{(E)}$, $\psi^{(NI)}$ by observed risk difference. B; 3-part mixture inference prior weights $\omega_S$, $\omega_{E}$, $\omega_{NI}$ by observed risk difference.}
+\label{fig:3-part-compatibility}
  \end{center}
 \end{figure}
 \efloatseparator

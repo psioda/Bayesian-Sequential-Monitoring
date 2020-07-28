@@ -202,7 +202,23 @@ Silver Spring, Maryland, USA}
 
 \begin{abstract}
 
-The Bayesian paradigm is naturally suited for sequentially monitoring clinical trials and incorporating external data. We present a framework for Bayesian sequential monitoring that makes structured use of external data that can be consistently applied for a wide range of clinical trial applications. The basis for this framework is the requirement that parameterization of monitoring priors and specification of stopping criteria are algorithmic byproducts of the trial hypotheses and relevant external data summaries. The monitoring priors are defined using the family of generalized normal distributions which provide a unified approach for prior specification and interpretation for a wide array of data types. Mixtures of these monitoring priors using fixed or adaptive weights are explored for controlling the influence of the external data. The standardization of these fundamental concepts relating to the trial design provides for coherent inference on trial hypotheses. The proposed method is applied in two scenarios (1) a simple single-arm proof-of-activity trial and (2) a two-group randomized controlled trial. Both scenarios are modeled after completed trials in pediatrics and the designs incorporate information from adult trials to varying degrees. The frequentist properties of the trial designs using this framework are explored to illustrate that the highly interpretable Bayesian approaches proposed provide good frequentist operating characteristics without explicit focus on such criteria.
+The Bayesian paradigm is naturally suited for sequentially monitoring clinical trials and incorporating 
+external data. We present a Bayesian framework for sequential monitoring that makes use of external data that 
+can be consistently applied for a wide range of clinical trial applications. The basis for this framework is the 
+idea that specification of priors used for sequential monitoring and the stopping criteria can be semi-algorithmic 
+byproducts of the trial hypotheses and relevant external data, decreasing the degree of subjectivity in prior elicitation. 
+Monitoring priors are defined using the family of generalized normal distributions which provide a flexible approach for 
+prior specification, naturally allowing one to construct a prior that is more peaked or flat about the most plausible 
+parameter values compared to a normal prior. External data are incorporated into the monitoring process though mixing an 
+a priori skeptical prior with an enthusiastic one using a weight that can be fixed or adaptively estimated. 
+%
+\textcolor{red}{Cut the following sentence. This is a good example of a sentence that really does not say anything specific 
+and therefore really doesn't add much. These types of sentences almost always lead to reviewer questions.}
+\textcolor{blue}{The standardization of these fundamental concepts relating to the trial design provides for coherent inference on trial hypotheses.}
+The proposed method is applied in two examples (1) a simple single-arm proof-of-concept trial and (2) a two-group randomized 
+controlled trial. Both examples are modeled after completed pediatric trials and the designs incorporate information from adult 
+trials to varying degrees. Preposterior analysis of each trial design is performed to illustrate that the proposed Bayesian 
+approaches proposed provide good frequentist operating characteristics without having that explicit focus.
 
 \end{abstract}
 
@@ -239,9 +255,44 @@ The Bayesian paradigm is naturally suited for sequentially monitoring clinical t
 %  For that matter, please do not attempt to redefine anything!
 
 \section{Introduction}
-In the clinical development of a therapeutic product, it is often a challenge to obtain sufficient outcomes for the primary objective (e.g. difficulty in enrolling, limited patient populations). Bayesian sequential methods are ideal to address this uncertainty in outcome ascertainment by adhering to the likelihood principle, which includes no intrinsic restrictions for frequent or even continual data monitoring. The advantages of sequential monitoring are especially apparent when there are additional difficulties in obtaining outcomes (e.g. long latency in observing the outcome, substantial financial cost associated with each patient). In settings where pertinent existing data are available, Bayesian designs offer a natural approach for incorporating that information into the design and analysis of future trials. An example where sequential Bayesian methods are valuable is in the area of pediatric clinical trials, where enrollment is often difficult and where relevant data from adult trials are often available. Utilizing information from the adult trials may result in pediatric trials that are more efficient (e.g., increased power, fewer subjects required, shorter trial duration).
+Enrolling the number of patients needed to adequately address objectives of a clinical trial can be difficult.
+% 
+This challenge is especially apparent in cases where the disease for which the investigational product (IP) is an 
+intended treatment is rare or where the focus is on pediatric disease.
+%
+There is increased interest in innovative ways to perform trials in these settings to facilitate obtaining substantial
+evidence of treatment benefit as efficiently as possible given the challenge of enrolling patients in a timely fashion.
+%
+Indeed, this is exemplified by in the draft guidance from the United States Food and Drug Administration (FDA) which outlines
+procedures for interacting with FDA on complex innovative trial designs \citep{FDA_CID}, abbreviated CID, and the FDA CID Pilot 
+Program which was initiated to fulfill a performance goal set forth under the PDUFA IV legislation.
+%
+In the draft guidance (see Section II) it is noted that CID are defined as ``trial designs that have rarely or never been used 
+to date to provide substantial evidence of effectiveness in new drug applications or biologics license applications''.
+%
+The potential use of Bayesian methods are discussed throughout the draft guidance and, in particular, the use of Bayesian methods
+to extrapolate information from adult patients to pediatric settings is given as one type of CID for which there is interest (see Section 
+II, Part C).
 
-We present a constructive method of designing Bayesian sequentially monitored clinical trials by eliciting monitoring priors and stopping criteria from the following: the null level for the treatment effect, a highly efficacious but plausible level for the treatment effect, and a threshold for determining substantial evidence. The highly efficacious but plausible level could be derived from a relevant external data summary. Skeptical and enthusiastic priors are defined with the generalized normal distribution which is applicable to a wide array of data types. 
+In settings where patients are difficult to enroll, and therefore meaningful numbers of patients will complete follow up prior to 
+the trial reaching full enrollment, the concept of frequently monitoring interim data to determine whether a trial 
+(or enrollment) can be stopped becomes appealing. 
+%
+In the author's opinion, the use of Bayesian sequential methods, rooted in the likelihood principle and thus completely consistent with 
+frequent or even continual data monitoring (provided it is logistically feasible), provide an ideal basis from which to develop CIDs 
+for these settings.
+%
+Moreover, in settings where pertinent preexisting data are available, Bayesian methods inarguably provide a natural approach for incorporating 
+that information via a prior distribution into the design and analysis of a future trial. 
+
+In this paper, we propose a strategy for designing Bayesian sequentially monitored clinical trials that entails eliciting priors used to monitor 
+enrollment or data collection (i.e., monitoring priors) and stopping criteria that can be derived in semi-automatic fashion based on standard inputs
+needed for trial planning. These inputs include (1) the null boundary value for the treatment effect, (2) a plausible, clinically meaningful value for 
+the treatment effect, and (3) a criteria for defining substantial evidence of efficacy. In principle, the plausible, clinically meaningful value for 
+the treatment effect could and should be informed from a relevant external data, when available. 
+
+
+Skeptical and enthusiastic priors are defined with the generalized normal distribution which is applicable to a wide array of data types. 
 
 The framework includes the capacity to adjust the monitoring priors to reflect nuanced prior opinion about the treatment effect (Section \ref{sec:gen_normal}) and to be adjusted dynamically based on observed responses (Section \ref{sec:incorporating}). A procedure for conditional-marginal specification is presented as the default option in multi-parameter settings (Section \ref{sec:cond_marg}). This paper uses posterior probabilities to highlight how the level of evidence at interim analyses is linked to monitoring prior specification. 
 
