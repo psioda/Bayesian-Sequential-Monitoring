@@ -69,6 +69,13 @@ Nadarajah, S. (2005).
 \newblock A generalized normal distribution.
 \newblock {\em Journal of Applied Statistics} {\bf 32,} 685--694.
 
+\bibitem[\protect\citeauthoryear{Psioda and Ibrahim}{Psioda and
+  Ibrahim}{2019}]{Psioda2018}
+Psioda, M.~A. and Ibrahim, J.~G. (2019).
+\newblock {Bayesian clinical trial design using historical data that inform the
+  treatment effect}.
+\newblock {\em Biostatistics} {\bf 20,} 400--415.
+
 \bibitem[\protect\citeauthoryear{{R Core Team}}{{R Core Team}}{2017}]{R2017}
 {R Core Team} (2017).
 \newblock R: A language and environment for statistical computing.

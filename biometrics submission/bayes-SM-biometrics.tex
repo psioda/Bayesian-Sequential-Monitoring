@@ -150,6 +150,8 @@ $^{2}$Division of Biometrics VII, Office of Biostatistics, \\
 Center for Drug Evaluation and Research, US Food and Drug Administration, \\
 Silver Spring, Maryland, USA}
 
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 \begin{document}
 
@@ -213,7 +215,7 @@ parameter values compared to a normal prior. External data are incorporated into
 a priori skeptical prior with an enthusiastic one using a weight that can be fixed or adaptively estimated. 
 %
 \textcolor{red}{Cut the following sentence. This is a good example of a sentence that really does not say anything specific 
-and therefore really doesn't add much. These types of sentences almost always lead to reviewer questions.}
+and therefore really doesn't add much. These types of sentences almost always lead to reviewer questions regarding what is meant.}
 \textcolor{blue}{The standardization of these fundamental concepts relating to the trial design provides for coherent inference on trial hypotheses.}
 The proposed method is applied in two examples (1) a simple single-arm proof-of-concept trial and (2) a two-group randomized 
 controlled trial. Both examples are modeled after completed pediatric trials and the designs incorporate information from adult 
@@ -282,24 +284,63 @@ In the author's opinion, the use of Bayesian sequential methods, rooted in the l
 frequent or even continual data monitoring (provided it is logistically feasible), provide an ideal basis from which to develop CIDs 
 for these settings.
 %
-Moreover, in settings where pertinent preexisting data are available, Bayesian methods inarguably provide a natural approach for incorporating 
-that information via a prior distribution into the design and analysis of a future trial. 
+Moreover, in settings where pertinent preexisting data are available, Bayesian methods inarguably provide a natural 
+approach for incorporating that information via a prior distribution into the design and analysis of a future trial. 
 
-In this paper, we propose a strategy for designing Bayesian sequentially monitored clinical trials that entails eliciting priors used to monitor 
-enrollment or data collection (i.e., monitoring priors) and stopping criteria that can be derived in semi-automatic fashion based on standard inputs
-needed for trial planning. These inputs include (1) the null boundary value for the treatment effect, (2) a plausible, clinically meaningful value for 
-the treatment effect, and (3) a criteria for defining substantial evidence of efficacy. In principle, the plausible, clinically meaningful value for 
-the treatment effect could and should be informed from a relevant external data, when available. 
+In this paper, we propose a strategy for designing sequentially monitored clinical trials that entails eliciting 
+priors used to monitor enrollment and/or data collection (i.e., monitoring priors) and stopping criteria that can 
+be derived in semi-automatic fashion based on standard inputs for trial planning. 
+%
+These inputs include (1) the boundary null value for the treatment effect, (2) a plausible, clinically meaningful 
+value for the treatment effect, and (3) a criteria for defining what constitutes substantial evidence of efficacy. 
+%
+In principle, the plausible, clinically meaningful value for the treatment effect should be informed from a 
+relevant external data, when available. 
 
 
-Skeptical and enthusiastic priors are defined with the generalized normal distribution which is applicable to a wide array of data types. 
+Skeptical and enthusiastic priors are developed using the generalized normal family of distributions. 
+	%
+This flexible family includes the normal distribution and provides the capacity to construct monitoring 
+priors that reflect nuanced prior opinion about the treatment effect (Section \ref{sec:gen_normal}). 
+	%
+A conditional-marginal prior factorization is proposed for settings where there are one or more nuisance 
+parameters (Section \ref{sec:cond_marg}) and we illustrate how prior information can be use in both marginal 
+distribution for the treatment effect and conditional distribution for the nuisance parameters, if desired. 
 
-The framework includes the capacity to adjust the monitoring priors to reflect nuanced prior opinion about the treatment effect (Section \ref{sec:gen_normal}) and to be adjusted dynamically based on observed responses (Section \ref{sec:incorporating}). A procedure for conditional-marginal specification is presented as the default option in multi-parameter settings (Section \ref{sec:cond_marg}). This paper uses posterior probabilities to highlight how the level of evidence at interim analyses is linked to monitoring prior specification. 
+We perform preposterior analysis to examine a variety of operating characteristics for the proposed design
+and to understand how key operating characteristics are influenced by the frequency of monitoring.
+	%
+\textcolor{red}{General feedback: Compare this text against the previous version. There was a good deal of 
+confusing/inaccurate language -- e.g.,  coverage probability for the treatment effect or probability of early stopping
+at an interim or final analysis. We need all sentences to be 100\% conceptually and mathematically precise.}
+	%
+Specifically, we estimate the probability of stopping early for efficacy or futility at an interim analysis, 
+the expected sample size and trial duration, the average posterior mean, and the coverage probabilities for 
+95\% credible intervals for the treatment effect. 
+	%
+In most cases, patients will be ongoing in the trial at the time interim data are obtained that lead to 
+ending enrollment as a result of their being substantial evidence of efficacy. 
+	%
+It is our assumption that in many cases these patients will complete the study protocol and, accordingly, we also explore 
+the degree that interim evidence attenuates on average, once final data are available.	
 
-The frequentist properties of trial designs using this framework are explored. Bayesian group sequential designs are often restricted to have explicit frequentist properties \citep{Ventz2015, Zhu2015}. In fact, recent work has shown these restrictions can result in Bayesian and frequentist group sequential designs to have stopping rules that are nearly identical \citep{Stallard2020, Kopp-Schneider2019, Zhu2019}.
-While it is possible to calibrate a Bayesian design to have exact pre-specified frequentist properties, this re-introduces inflexibility (e.g. restrictions on interim analyses) that is unnecessary using a fully Bayesian method. Therefore, our objective is to present operating characteristics generally that are ``well-calibrated" \citep{Grieve2016} but not motivated by strict adherence to pre-specified thresholds. 
+Bayesian sequential designs are often restricted to have explicit frequentist properties \citep{Ventz2015, Zhu2015}. 
+	%
+Prior work has shown such restrictions can result in Bayesian and frequentist designs that have stopping rules which are 
+nearly identical \citep{Stallard2020, Kopp-Schneider2019, Zhu2019}.
+	%
+While it is possible to calibrate a Bayesian design to have specific frequentist operating characteristics, we do not advocate
+for that strategy.
+	%
+Instead, we propose Bayesian framework that leverages what the authors argue is an intuitive criteria for stopping enrollment 
+and/or data collection at any point (based on posterior inference using a consistent criteria for substantial evidence) without 
+explicit focus on strict type I error control -- something that is not achievable when prior information are incorporated into 
+the analysis \citep{Psioda2018}.
+	%
+\textcolor{green}{Please check the accuracy of the following claim.}
+As will be illustrated, when prior information is not incorporated into the analysis, the designs operating characteristics 
+are ``well-calibrated" as discussed by \cite{Grieve2016}. 
 
-This paper explores the operating characteristics of a sequentially monitored clinical trial including probability of stopping early for efficacy or futility at an interim or at the final analysis, expected sample size and trial duration, and posterior mean and coverage probability for the treatment effect. The distribution of the final posterior probability of efficacy given interim stoppage is explored in cases that final data dampens the conclusion for efficacy that was made at an interim analysis. Impact of frequency of data monitoring on determination of efficacy is shown.
 
 This paper is organized as follows: Section \ref{sec:methods} contains a brief review of Bayesian hypothesis testing using posterior probabilities, and describes the method for defining monitoring and inference priors. Examples are in Section \ref{sec:examples}, with Section \ref{sec:example1} containing a one-arm study and Section \ref{sec:example2} a two-arm study.
 %Conclusions from Bayesian inferences are not affected by the frequency with which the data are monitored, and such interim analyses should be encouraged to terminate data collection if appropriate \citep{Berry1989,Berry1993,Spiegelhalter1994}. The Bayesian perspective is based on the likelihood principle which asserts that any data with the same likelihood function should lead to the same conclusion \citep{Berger1988}. In the context of sequential analysis of clinical trials, the stopping rule that leads to the termination of data collection is irrelevant to the conclusion \citep{Barnard1947,Anscombe1963,Cornfield1966a,Cornfield1966b}. 
@@ -325,23 +366,39 @@ indicator of response for patient $i$ and $z_i$ is an indicator for whether pati
 We use the generic representation $p(\bmath{D}|\theta,\eta)$ to reflect the density or mass function for the collective data $\bmath{D}$ as a function of $\theta$ and potential nuisance parameters
 $\eta$ which could be multi-dimensional.
 %
-For example, for the two-arm trial example above $\eta$ would correspond to the response probability for patients receiving the control treatment. For ease of exposition, for the remainder of Section~\ref{sec:preliminaries}, we will focus on the case where $\theta$ is the only unknown parameter and ignore $\eta$.
+For the two-arm trial example, $\eta$ would correspond to the response probability for patients receiving the control treatment. For ease of exposition, for the remainder of Section~\ref{sec:preliminaries}, we will focus on the case where $\theta$ is the only unknown parameter and ignore $\eta$.
 
 Consider the hypothesis $H_0:\theta\in\Theta_{0}$ versus $H_1:\theta\in\Theta_{1}$. The posterior probability that $\theta\in\Theta_i$ is given by
 \begin{equation}
 P(\theta\in\Theta_i|\bmath{D})
 =\frac{\int_{\Theta_i} p(\bmath{D}|\theta)\pi (\theta)d\theta}{\int_{\Theta}p(\bmath{D}|\theta)\pi(\theta) d\theta}
 \end{equation}
-where $p(\bmath{D}|\theta)$ is also referred to as the likelihood $\mathcal{L}(\theta|\mathbf{D})$.
-We will also refer to $P(\theta\in\Theta_i|\bmath{D})$ as the posterior probability of hypothesis $H_i$ (see \eqref{eq:equation1} and \eqref{eq:equation2} in Appendix Section \ref{sec:hypothesis}).
+where $p(\bmath{D}|\theta)$ is also referred to as the likelihood and denoted by $\mathcal{L}(\theta|\mathbf{D})$.
+%
+\textcolor{red}{All of the appendices need to be moved to Supplemental Online Appendices in the format of the Biometrics paper I sent. If not, they are 
+considered an appendix to the paper and also considered towards the length maximum. Hence, we have to move them to a separate PDF file. }
+%
+We will also refer to $P(\theta\in\Theta_i|\bmath{D})$ as the posterior probability of hypothesis $H_i$.
+%
+\textcolor{blue}{
+See Appendix XX of the Supplementary Materials for a brief discussion of the appropriateness of referring to $P(\theta\in\Theta_i|\bmath{D})$
+as the posterior probability of hypothesis $H_i$.}
+
+%see \eqref{eq:equation1} and \eqref{eq:equation2} in Appendix Section \ref{sec:hypothesis}).
 
 \subsubsection{Formalizing the Statistical Concept of Substantial Evidence}\label{sec:sub_evid}
-For testing one-sided hypotheses such as $H_0: \theta \le \theta_0$ versus $H_1: \theta > \theta_0$ using posterior probabilities, the null hypothesis 
-is rejected when $P(\theta > \theta_0 |\bmath{D})$ exceeds a predefined threshold.
+Consider the one-sided hypotheses $H_0: \theta \le \theta_0$ versus $H_1: \theta > \theta_0$ for fixed $\theta_0$.
+	%
+Often in Bayesian hypothesis testing, one rejects the null hypothesis when $P(\theta > \theta_0 |\bmath{D})$ exceeds 
+a prespecified threshold.
 %
-Let $\epsilon$ be the threshold for insignificant $\textit{residual uncertainty}$, and define
-the posterior probability threshold $1-\epsilon$ to be the threshold for what constitutes 
-\textit{substantial evidence} in favor of a claim (e.g., that $\theta > \theta_0$). Leveraging common practice, we will use $\epsilon=0.025$ for the examples in this paper so that $1-\epsilon=0.975$ is the threshold for substantial evidence.
+Let $\epsilon$ represent the \textit{residual uncertainty} regarding a claim and define
+$1-\epsilon$ to be the threshold such that posterior probabilities in favor of a claim 
+(e.g., that $\theta > \theta_0$) that exceed $1-\epsilon$ are viewed as providing \textit{substantial evidence} 
+that the claim is true. 
+%
+Leveraging common practice, we will use $\epsilon=0.025$ for the examples presented herein 
+so that $1-\epsilon=0.975$ is the threshold that determines when evidence of a claim is substantial.
 %
 Our purpose in this paper is not to debate the appropriateness of using $0.975$ as a threshold for defining substantial evidence but rather to 
 develop a strategy for prior elicitation that leverages an accepted threshold to make prior elicitation more structured for sequentially monitored 
@@ -362,7 +419,7 @@ we can now develop a structured framework for constructing skeptical and enthusi
 determine early stopping rules for efficacy and futility, respectively.
 %
 The use of monitoring based on changing the opinion of skeptical and enthusiastic observers has been described as overcoming a 
-handicap \citep{Freedman1989} and providing a brake \citep{Fayers1997} on the premature termination of trials, and as 
+handicap \citep{Freedman1989} and providing a brake on the premature termination of trials \citep{Fayers1997}, and as 
 constructing ``an adversary who will need to be disillusioned by the data to stop further experimentation" \citep{Spiegelhalter1994}. 
 %
 Skeptical and enthusiastic monitoring priors represent two extreme but plausible beliefs about the quantity of interest $\theta$ relative to the hypotheses to be tested.
@@ -379,57 +436,56 @@ who are ongoing in the trial to be transitioned off the investigational treatmen
 %
 For the Bayesian, the question becomes ``From what prior perspective must the evidence be substantial to justify one of the two actions described above?''.
 %
-A key contribution of this work is to give rationale for definitions of a priori skeptical and enthusiastic perspectives that can be used for early stopping decisions 
-in favor of efficacy and futility, respectively.
+A key contribution of this work is to give rational definitions for skeptical and enthusiastic perspectives that can be used 
+to inform early stopping decisions in favor of efficacy and futility, respectively.
 
 
-For ease of exposition, consider the hypotheses $H_0: \theta \le \theta_0$ versus $H_0: \theta > \theta_0$ where $\theta_0$ represents a treatment effect of interest and let $\theta_1>\theta_0$ 
-represent a plausible, clinically meaningful effect.
-
-%%\begin{mydef}
-Define an enthusiastic prior $\pi_{E}(\theta)$ as a prior that suggests $\theta_1$ is the most likely value of $\theta$ (e.g. modal value)
-and that reflects the belief of an observer who is \textit{all but convinced} that $H_1$ is true a priori. 
+For ease of exposition, consider the hypotheses $H_0: \theta \le \theta_0$ versus $H_0: \theta > \theta_0$ where $\theta_0$ represents a 
+treatment effect of interest and let $\theta_1>\theta_0$ represent a plausible, clinically meaningful effect.
 %
-Formally, this is defined as the prior $\pi_S(\theta)$ satisfying
-\begin{equation}\label{eq:skptprior}
-\text{argmax}_\theta P_E(\theta)=\theta_1 \text{ and }P_E(\theta >\theta_0)=1-\epsilon,
-\end{equation}
-where the subscript $E$ indicates that the probability is based on $\pi_{E}(\theta)$.
-
-%%\end{mydef}
-%%\begin{mydef}
-Define a skeptical prior $\pi_{S}(\theta)$ as a prior that suggests $\theta_0$ is the most likely value of $\theta$ 
-and that reflects the belief of an observer who is \textit{all but convinced} that $\theta <\theta_1$ is true a priori. 
+Define an enthusiastic prior, denoted as $\pi_{E}(\theta)$, as a prior consistent with $\theta_1$ being the most 
+likely value of $\theta$ (i.e., the mode) and that reflects the belief of an observer who is 
+\textit{all but convinced} that $H_1$ is true a priori. 
+%
+Formally, this is defined as the prior $\pi_E(\theta)$ satisfying (i) $\text{argmax}_\theta~\pi_E(\theta)=\theta_1$
+and (ii) $P_E(\theta >\theta_0)=1-\epsilon$, where the subscript $E$ indicates that the probability is 
+based on $\pi_{E}(\theta)$.
+%
+Similarly, define a skeptical prior, denoted as $\pi_{S}(\theta)$, as a prior consistent with $\theta_0$ being the most 
+likely value of $\theta$ and that reflects the belief of an observer who is \textit{all but convinced} that 
+$\theta <\theta_1$ is true a priori. 
 %
 Formally, this is defined as the prior $\pi_{S}(\theta)$ satisfying
-\begin{equation}\label{eq:enthprior}
-\text{argmax}_\theta P_S(\theta)=\theta_0 \text{ and }P_S(\theta <\theta_1)=1-\epsilon.
-\end{equation}
+(iii) $\text{argmax}_\theta~\pi_S(\theta)=\theta_0$  and (iv) $P_S(\theta <\theta_1)=1-\epsilon$.
 %
-%%\end{mydef}
-In what follows we refer to \eqref{eq:skptprior} and \eqref{eq:enthprior} as \textit{modal value and tail-probability constraints}.
+In what follows we refer to (i) and (iii) as \textit{mode value constraints} and (ii) and (iv) as \textit{tail-probability constraints}, respectively.
 
-Note that the development of the skeptical prior does not generally reflect skepticism that the alternative hypothesis is true. 
+Note that the proposed development of the skeptical prior does not generally reflect skepticism regarding whether the alternative hypothesis is true. 
 %
-Indeed, in most cases the \textit{induced} prior model probabilities based on \eqref{eq:equation1} will be such that $p(H_0) \approx p(H_1)$.
+Indeed, assuming a symmetric skeptical prior is elicited (as we discuss subsequently), the \textit{induced} prior probabilities on the hypotheses
+satisfy $p(H_0) =  p(H_1)$.
 %
-The skeptical prior simply reflects that $\theta >\theta_1$ is exceedingly unlikely and is therefore 
-consistent with their being clinical equipoise about the two hypotheses.
+See Appendix XX of the Supplemental Materials for more exposition on this point.
+%
+\textcolor{red}{Please make sure the first appendix touches on this point.}
+%
+Thus, the skeptical prior simply reflects skepticism regarding the possibility of large treatment effects but is
+otherwise consistent with clinical equipoise regarding which of the two hypotheses is true.
 %
 
-Unlike the frequentist approach, the degree to which evidence in favor of a hypothesis is substantial is influenced by 
-the prior distribution on the quantity of interest.
+Unlike the frequentist approach, the degree to which the totality of evidence in favor of a hypothesis is substantial is influenced by 
+the prior distribution used for analysis.
 %
-It is natural that one would stop a trial early in favor of efficacy or futility when the evidence in favor of that claim is compelling
+It is natural that one would stop a trial early in favor of efficacy or futility when the evidence in favor of the appropriate claim is compelling
 to an a priori skeptic or enthusiastic observer, respectively, as defined above.
 %
-For example, if at any point data sufficiently convince an observer whose prior belief is in accordance with $\pi_{S}(\theta)$ that in fact
-the alternative is true, then most any rational observer would also be convinced and therefore ceasing the collection of data
-to prove that claim would be reasonable.
+For example, if at any point data sufficiently convince an observer whose prior belief is in accordance with $\pi_{S}(\theta)$ that 
+the alternative is true, then any less skeptical observer would also be convinced. Therefore, ceasing enrollment and possibly collection 
+of additional data in order to assess whether the treatment is beneficial would be a reasonable action from most any rational perspective.
 %
-Similarly, if at any point data sufficiently convince an observer whose prior belief is in accordance with $\pi_{E}(\theta)$ that in fact
-the effect of interest is less than what was originally believed, then most any rational observer would also be convinced and therefore ceasing 
-the collection of data altogether would be reasonable.
+Similarly, if at any point data sufficiently convince an observer whose prior belief is in accordance with $\pi_{E}(\theta)$ that 
+the effect of interest is significantly less than what was originally believed, then any less enthusiastic observer would be similarly convinced.
+Therefore, ceasing the collection of data altogether would be a reasonable action from most any rational perspective.
 
 \subsubsection{Maximum Sample Size and Formal Stoppage Criteria}
 In this section we formalize a stopping criteria for futility and efficacy and give general 
