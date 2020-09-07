@@ -673,31 +673,21 @@ probability constraints.
 This will be necessary when the parameter of interest has bounded support (e.g., $\theta$ is a response probability).
 }
 
-\textcolor{red}{Note that I am changing the notation to what I think will make it more understandable but the graphs need to change too. I also struggle
-with how the definition given forces the distribution to be locally non-informative. It seems like the flattening criteria is what causes that. I recommend
-adding in the criteria $\pi_{NI}(\theta_0) \approx \pi_{NI}(\theta_1)$ \textit{as part of the definition} and revising this section accordingly. Another
-take on it would be to require $\pi_{NI}(\theta)$ be approximately equal for all $\theta \in \left[\theta_0,\theta_1\right]$ as a part of the definition.}
-\textcolor{blue}{
-We define a \textit{locally non-informative prior} as a prior that is relatively flat over a wide range of plausible values of $\theta$ (in particular, flat 
+
+We define a \textit{locally non-informative prior} as a prior that is relatively flat over a wide range of plausible values of $\theta$ (in particular, approximately flat 
 over the interval $\left[\theta_0,\theta_1\right])$.
 %
 Let $\delta_{\theta} = 2\left(\theta_1 - \theta_0\right)$ (i.e., twice the difference between $\theta_1$ and $\theta_0$).
 %
-Specifically, we consider the locally non-informative prior, denoted by $\pi_{NI}(\theta)$, that suggests $\theta_{m}=\frac{\theta_0+\theta_1}{2}$ is the most likely value of $\theta$ 
-and that reflects the belief of an observer who is all but convinced that $\theta>\theta_{m} -\delta_{\theta}$ a priori and 
-all but convinced that $\theta < \theta_{m} +\delta_{\theta}$. 
+Specifically, we consider the locally non-informative prior, denoted by $\pi_{NI}(\theta)$, that suggests $\frac{\theta_0+\theta_1}{2}$ is the most likely value of $\theta$ 
+and that reflects the belief of an observer who is \textit{all but convinced} that $\theta>\frac{\theta_0+\theta_1}{2}-\delta_{\theta}$ a priori and 
+\textit{all but convinced} that $\theta < \frac{\theta_0+\theta_1}{2}+\delta_{\theta}$. 
 %
 Formally, this is defined as the prior $\pi_{NI}(\theta)$ satisfying
 \begin{equation}\label{eq:niprior}
-\text{argmax}_\theta~\pi_{NI}(\theta)=\frac{\theta_0+\theta_1}{2}\text{ and } 
-  P_{NI}\left(\theta>\theta_{m}-\delta_{\theta}\right)=P_{NI}\left(\theta< \theta_{m}+\delta_{\theta}\right) =1-\epsilon.
+\text{argmax}_\theta~\pi_{NI}(\theta)=\frac{\theta_0+\theta_1}{2}\text{ and } P_{NI}\left(\theta>\frac{\theta_0+\theta_1}{2}-\delta_{\theta}\right)=1-\epsilon.
 \end{equation}
-This proposed prior is flattened such that there is $50\%$ more mass in the intervals $\left[\theta_{m}-\delta_{\theta},\theta_0\right]$ 
-and $\left[\theta_1,\theta_{m}+\delta_{\theta}\right]$ as compared to a normal distribution having the same mode value and tail probability constraints. 
-%
-The locally non-informative prior is shown in Figure \ref{fig:figure1}, and the technical definition is in Section \ref{sec:gen_norm_appendix}.
-}
-
+This prior will be flattened such that there is $50\%$ more mass in the interval $(\frac{3\theta_0-\theta_1}{2},\theta_0)$ as compared to a normal distribution with the same mode value and tail probability constraint. The locally non-informative prior is shown in Figure \ref{fig:figure1}, and the technical definition is in Section \ref{sec:gen_norm_appendix}.
 %\item If $\gamma>1$ then the probability that $\theta\in(q,\frac{q+\mu}{2})$ increases and the concentration of $\theta$ around the mode value $\mu$ accordingly decreases, resulting in a flatter distribution around the mode value. 
 %\item If $\gamma<1$ then the probability that $\theta\in(q,\frac{q+\mu}{2})$ decreases and the concentration of $\theta$ around the mode value $\mu$ accordingly increases, resulting in a more concentrated distribution around the mode value. 
 %\item Flattening or concentrating the distribution around the mode value is useful for specifying monitoring priors that reflect varying opinions about the dispersion of $\theta$. 
@@ -717,28 +707,13 @@ The locally non-informative prior is shown in Figure \ref{fig:figure1}, and the 
 %Suppose the trial from Section \ref{sec:preliminaries} has added a control arm, and let $\eta_0$ and $\eta_1$ be the response proportions for a control and treatment group respectively. Suppose that the risk difference $\theta=\eta_1-\eta_0$ is the parameter of interest, and let $\eta_0$ be a nuisance parameter. Let $\delta_0$ denote a null risk difference and $\delta_1$ denote a highly efficacious risk difference.
 
 \subsubsection{Incorporating Prior Information in the Monitoring Priors}\label{sec:incorporating}
-\textcolor{red}{This section needs some type of lead in to help the reader with the big picture. Feel free to revise my edits.}
-\textcolor{blue}{
-%
-As described previously, prior information may be directly used in the construction of the enthusiastic prior (e.g., to choose $\theta_1$).
-It may also be desirable to incorporate prior information into the monitoring process when making a determination of when to stop enrollment 
-early for efficacy. To facilitate this, we introduce a procedure for modifying the skeptical prior such that, if the enthusiastic prior is congruent 
-with observed data, the degree of skepticism can be adaptively lessened.
-	%
-We propose incorporating prior information into the monitoring process for efficacy, when desirable, through constructing a mixture prior
-from the skeptical and enthusiastic priors previously discussed using a mixing weight that is constructed from measures of congruency between the
-observed data and the skeptical and enthusiastic priors. 
-	%
-We define the \textit{adaptive skeptical monitoring prior} as the mixture distribution	
+Prior information can be incorporated into the monitoring priors resulting in a mixture distribution with mixing weight $\omega$ of the form
 \begin{equation}\label{eq:inference_prior}
-	\pi_{AS}\left(\theta\right)=\omega\cdot\pi_{S}\left(\theta\right)+(1-\omega) \cdot \pi_E\left(\theta\right),
+\pi\left(\theta\right)=\omega\cdot\pi_{S}\left(\theta\right)+(1-\omega) \cdot \pi_E\left(\theta\right),
 \end{equation}
-where $\omega\in[0,1]$ is an adaptively determined mixing weight. 
-}
+where $\omega\in[0,1]$. 
 
-The mixing weight $\omega$ is determined by an assessment of prior-data conflict using the prior predictive distribution of the data \citep{Box1980} defined, in our case,
-with respect to the skeptical and enthusiastic monitoring priors.
-	%
+The mixing weight $\omega$ is determined by an assessment of prior-data conflict using the prior predictive distribution of the data \citep{Box1980}.
 The prior-predictive distribution of the data gives the probability of future observations of the data given initial assumptions about $\theta$, and is defined as
 \begin{equation}\label{eq:pred_dist}
 p(\mathbf{D})=\int \mathcal{L}(\theta|\mathbf{D})\pi(\theta)d\theta
