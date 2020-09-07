@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.9.17)  7 SEP 2020 13:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.9.17)  7 SEP 2020 14:57
 entering extended mode
 **./bayes-SM-biometrics.tex
 (bayes-SM-biometrics.tex
@@ -402,9 +402,6 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [14]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 15
  []
@@ -416,16 +413,16 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 
 [16]
 
-LaTeX Warning: Reference `eq:skptprior' on page 17 undefined on input line 829.
+LaTeX Warning: Reference `eq:skptprior' on page 17 undefined on input line 840.
 
 
-LaTeX Warning: Reference `eq:enthprior' on page 17 undefined on input line 829.
+LaTeX Warning: Reference `eq:enthprior' on page 17 undefined on input line 840.
 
 
-LaTeX Warning: Reference `eq:efficacy_criteria' on page 17 undefined on input line 844.
+LaTeX Warning: Reference `eq:efficacy_criteria' on page 17 undefined on input line 855.
 
 
-LaTeX Warning: Reference `eq:futility_criteria' on page 17 undefined on input line 844.
+LaTeX Warning: Reference `eq:futility_criteria' on page 17 undefined on input line 855.
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -434,10 +431,10 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 
 [17]
 
-LaTeX Warning: Reference `eq:efficacy_criteria' on page 18 undefined on input line 850.
+LaTeX Warning: Reference `eq:efficacy_criteria' on page 18 undefined on input line 861.
 
 
-LaTeX Warning: Reference `eq:futility_criteria' on page 18 undefined on input line 850.
+LaTeX Warning: Reference `eq:futility_criteria' on page 18 undefined on input line 861.
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -446,10 +443,10 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 
 [18]
 
-LaTeX Warning: Reference `eq:efficacy_criteria' on page 19 undefined on input line 865.
+LaTeX Warning: Reference `eq:efficacy_criteria' on page 19 undefined on input line 876.
 
 
-LaTeX Warning: Reference `eq:futility_criteria' on page 19 undefined on input line 865.
+LaTeX Warning: Reference `eq:futility_criteria' on page 19 undefined on input line 876.
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -494,13 +491,13 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 
 [25]
 
-LaTeX Warning: Reference `eq:eff_evidence' on page 26 undefined on input line 990.
+LaTeX Warning: Reference `eq:eff_evidence' on page 26 undefined on input line 1001.
 
 
-LaTeX Warning: Reference `eq:fut_evidence' on page 26 undefined on input line 990.
+LaTeX Warning: Reference `eq:fut_evidence' on page 26 undefined on input line 1001.
 
 
-LaTeX Warning: Reference `eq:futility_criteria' on page 26 undefined on input line 990.
+LaTeX Warning: Reference `eq:futility_criteria' on page 26 undefined on input line 1001.
 
 (bayes-SM-biometrics.bbl
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -529,7 +526,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [29]
-Overfull \hbox (33.91699pt too wide) in paragraph at lines 1126--1129
+Overfull \hbox (33.91699pt too wide) in paragraph at lines 1137--1140
 [][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; ; \OT1/cmr/m/n/12 )$, is $\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
  \OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 c \OMS/cmsy/m/n/12  [] [] []$ \OT1/cmr/m/n/12 where $\OML/cmm/m/it/12 c \OT1/cmr
 /m/n/12 = []([])[]$.
@@ -733,6 +730,9 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
  3848 strings out of 492969
@@ -758,7 +758,7 @@ TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fo
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmti9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on bayes-SM-biometrics.pdf (43 pages, 2137194 bytes).
+Output written on bayes-SM-biometrics.pdf (43 pages, 2137639 bytes).
 PDF statistics:
  285 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

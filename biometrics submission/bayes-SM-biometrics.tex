@@ -726,7 +726,7 @@ early for efficacy. To facilitate this, we introduce a procedure for modifying t
 with observed data, the degree of skepticism can be adaptively lessened.
 	%
 We propose incorporating prior information into the monitoring process for efficacy, when desirable, through constructing a mixture prior
-from the skeptical and enthusiastic priors previously discussed using a mixing weight that is constructed from measures of congruency between the
+from the skeptical and enthusiastic priors previously discussed using a mixing weight that is constructed from measures of compatibility between the
 observed data and the skeptical and enthusiastic priors. 
 	%
 We define the \textit{adaptive skeptical monitoring prior} as the mixture distribution	
@@ -736,35 +736,46 @@ We define the \textit{adaptive skeptical monitoring prior} as the mixture distri
 where $\omega\in[0,1]$ is an adaptively determined mixing weight. 
 }
 
-The mixing weight $\omega$ is determined by an assessment of prior-data conflict using the prior predictive distribution of the data \citep{Box1980} defined, in our case,
-with respect to the skeptical and enthusiastic monitoring priors.
+The mixing weight $\omega$ is determined by an assessment of prior-data conflict, proposed by Box \citep{Box1980}, derived using the prior predictive distribution of 
+the data which is defined (in our case) using the skeptical and enthusiastic monitoring priors.
 	%
-The prior-predictive distribution of the data gives the probability of future observations of the data given initial assumptions about $\theta$, and is defined as
+The prior-predictive distribution for data $\mathbf{D}$ (also called the marginal likelihood) reflects the probability of observing $\mathbf{D}$ given 
+the assumed prior distribution for $\theta$ and is defined formally as
 \begin{equation}\label{eq:pred_dist}
-p(\mathbf{D})=\int \mathcal{L}(\theta|\mathbf{D})\pi(\theta)d\theta
+p(\mathbf{D})=\int \mathcal{L}(\theta|\mathbf{D})\pi(\theta)d\theta.
 \end{equation}
-
-Let $\mathbf{D}_{\text{obs}}$ be the observed data at some point in time. For each predictive density, we compute the following:
+	%
+Let $\mathbf{D}_{\text{obs}}$ be the observed data at some point in time in an ongoing trial. 
+	%
+We define \textit{Box's p-value} as the following:
 %\begin{equation}
 %p=P(p(y)\leq p(y_{obs}))
 %\end{equation}
 \begin{equation}\label{eq:box_p}
-\psi(\mathbf{D})=\int 1[p(\mathbf{D})\leq p(\mathbf{D}_{\text{obs}})] d(\mathbf{D})
+\psi(\textcolor{red}{\mathbf{D}_{\text{obs}}})=\int \textcolor{red}{p(\mathbf{D})}  1[p(\mathbf{D})\leq p(\mathbf{D}_{\text{obs}})] d(\mathbf{D})
 %\sum_{\mathbf{D}}p^{(h)}(\mathbf{D})1[p^{(h)}(\mathbf{D})\leq p^{(h)}(\mathbf{D}_{\text{obs}})]
 \end{equation}
-which in the case of discrete data is equal to $\psi(\mathbf{D})=\sum_{\mathbf{D}}p(\mathbf{D})1[p(\mathbf{D})\leq p(\mathbf{D}_{\text{obs}})]$.
-This can be interpreted as the probability of observing data as or more extreme given the predictive distribution. Small values of $\psi(\mathbf{D})$ indicate inconsistency between the prior and the data. 
+which in the case of discrete data is equal to $\psi(\textcolor{red}{\mathbf{D}_{\text{obs}}})=\sum_{\mathbf{D}}p(\mathbf{D})1[p(\mathbf{D})\leq p(\mathbf{D}_{\text{obs}})]$.
+%
+Box's p-value can be interpreted as the probability of observing data as or more extreme than $\mathbf{D}_{\text{obs}}$, given the predictive distribution. 
+%
+Small values of $\psi(\textcolor{red}{\mathbf{D}_{\text{obs}}})$ indicate a lack of compatibility between the prior and the data. 
+%
+\textcolor{red}{Note, please fix all the references to use $\mathbf{D}_{\text{obs}}$}.
 
-The skeptical and enthusiastic priors $\pi_S(\theta)$ and $\pi_E(\theta)$ will be used in \eqref{eq:pred_dist} and \eqref{eq:box_p} to create compatibility measurements $\psi^{(S)}(\mathbf{D})$ and $\psi^{(E)}(\mathbf{D})$ which will be used to determine the mixing weight in \eqref{eq:inference_prior}. If $\psi^{(E)}(\mathbf{D})>\psi^{(S)}(\mathbf{D})$, then the data are more consistent with the enthusiastic prior, which should be given a greater weight in the mixture. Similarly, if $\psi^{(S)}(\mathbf{D})>\psi^{(E)}(\mathbf{D})$ then the skeptical prior should be given a greater mixing weight.
+We propose using the skeptical and enthusiastic priors $\pi_S(\theta)$ and $\pi_E(\theta)$ to compute the quantities in \eqref{eq:pred_dist} and \eqref{eq:box_p} to create compatibility measurements $\psi^{(S)}(\mathbf{D})$ and $\psi^{(E)}(\mathbf{D})$ which are used to determine the mixing weight in \eqref{eq:inference_prior}. 
+%
+If $\psi^{(E)}(\mathbf{D})>\psi^{(S)}(\mathbf{D})$, then the observed data are more consistent with the enthusiastic prior, which should be given a greater weight in the mixture. Similarly, if $\psi^{(S)}(\mathbf{D})>\psi^{(E)}(\mathbf{D})$ then the skeptical prior should be given a greater mixing weight.
 
-A conservative choice of mixing weight which gives full weight to the skeptical prior (i.e. $\omega=1$) whenever $\psi^{(S)}(\mathbf{D})\geq \psi^{(E)}(\mathbf{D})$ is
+We propose a conservative choice of mixing weight which gives full weight to the skeptical prior (i.e. $\omega=1$) whenever $\psi^{(S)}(\mathbf{D})\geq \psi^{(E)}(\mathbf{D})$ is
 \begin{equation}\label{eq:adaptive_prior}
 \omega=\begin{cases} 
       1 & \text{if } \psi^{(S)}(\mathbf{D})\geq \psi^{(E)}(\mathbf{D}) \\
-      1-(\psi^{(E)}(\mathbf{D})-\psi^{(S)}(\mathbf{D})) &\text{if } \psi^{(S)}(\mathbf{D})< \psi^{(E)}(\mathbf{D}
+      1-(\psi^{(E)}(\mathbf{D})-\psi^{(S)}(\mathbf{D})) &\text{if } \psi^{(S)}(\mathbf{D})< \psi^{(E)}(\mathbf{D})
    \end{cases}
 \end{equation}
-The weight given to the enthusiastic prior is $\psi^{(E)}(\mathbf{D})-\psi^{(S)}(\mathbf{D})$ which is equal to how much more the data is compatible with the enthusiastic prior than it is the skeptical prior.
+%
+As can be seen, for the proposed approach the weight given to the enthusiastic component is the \textit{excess} probability in favor of the enthusiastic prior.
 %
 %Bayesian predictive model checking: model checking statistic and reference predictive distribution.
 
@@ -794,7 +805,7 @@ to cease enrolling patients, the a priori belief of most stakeholders will likel
 %
 Thus, when interpreting the final data once in hand, intermediate perspectives should be considered.
 %
-To that end, we define an inference prior as a mixture prior constructed by mixing the monitoring priors.
+To that end, we define an inference prior as a mixture prior constructed by mixing the monitoring priors along with a locally non-informative prior to provided added robustness.
 
 Using the mixture prior specification of \eqref{eq:inference_prior}, a fixed value of $\omega=1/2$ will be referred to as an agnostic inference prior since it gives equal weight to the skeptical and enthusiastic prior.
 
