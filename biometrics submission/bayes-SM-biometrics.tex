@@ -797,6 +797,7 @@ As can be seen, for the proposed approach the weight given to the enthusiastic c
 %as a mixing weight that dynamically gives preference to the prior that has the higher density evaluated at $\hat{\theta}$ with a minimum weight $\omega_{min}$ given to the skeptical component with $\omega_{min}\in[0,1]$.
 %%%\end{mydef}
 
+\textcolor{red}{COME BACK TO THIS POINT}
 \subsubsection{Mixture Inference Prior}
 The purpose of the inference prior is to synthesize the posterior inferences from the a priori diverse perspectives to facilitate interpretation of the data once it has been obtained. The skeptical and enthusiastic monitoring priors defined in Section~\ref{sec:MP} represent extreme but plausible beliefs about $\theta$.
 %
@@ -875,40 +876,78 @@ Given that the efficacy criteria was satisfied as an interim analysis, it is of 
 \subsection{Computation}
 The efficacy criteria \eqref{eq:efficacy_criteria} and futility criteria \eqref{eq:futility_criteria}, as well as any quantity involving the posterior distribution of $\theta$ requires evaluating integrals of the dimension of $\theta$ (or the dimension of $(\theta,\eta)$ in the case of nuisance parameters). In the examples in Section \ref{sec:examples}, these quantities are $1-$ and $2-$dimensional integrals which are evaluated using numerical integration in R \citep{R2017}, in particular using the pracma package \citep{Borchers2019}.
 
+\textcolor{red}{STARTING WITH THIS SECTION}
 \section{Examples}\label{sec:examples}
 
 \subsection{Single-Arm Proof-of-Activity Trial with Binary Endpoint}\label{sec:example1}
 \subsubsection{Motivating Example}
-Consider the T72 pediatric trial ``A Study of the Safety and Efficacy of Infliximab (REMICADE) in Pediatric Patients With Moderately to Severely Active Ulcerative Colitis" (NCT00336492) ~\citep{Hyams2012}. Infliximab was given to all patients at the 5mg/kg dose at weeks 0, 2, and 6, and the primary endpoint was response at week 8. Response was measured by improvement in disease severity scores. The trial was conducted between August 2006 and June 2010. Patients were enrolled over approximately 33.5 months (approximately 1 patient enrolled per 17 days). The sample size of 60 patients was chosen to ensure 12\% precision in estimating the true
-response proportion with 95\% confidence interval, assuming a response rate of 0.67 as was observed among adults from the ACT 1 and ACT 2 trials \citep{Rutgeerts2005} at the same 5mg/kg dose (N = 242). A 95\% confidence interval that excluded 0.40 was determined to be a clinically significant result. At week 8, clinical response was observed in 44 out of 60 (73.3\%) patients.
+\textcolor{red}{Some suggestions:
+(1) can you say more than just ``primary endpoint was response at week 8'' -- specifically, what type of response -- clinical, objective, etc? There is commonly a qualifier.
+(2) What does 12\% precision mean? Can you use more well-defined statistical language? For example does 12\% precision mean 0.12 CI width or something like that?
+%
+}
+Consider the T72 pediatric trial ``A Study of the Safety and Efficacy of Infliximab (REMICADE) in Pediatric Patients With Moderately to Severely Active Ulcerative Colitis" (NCT00336492) ~\citep{Hyams2012} which was conducted between August 2006 and June 2010.
+%
+In the trial, a 5mg/kg dose of infliximab was given to all patients at weeks 0, 2, and 6, and the primary endpoint was clinical response based on the Mayo score which was measured at week 8. 
+%
+Patients were enrolled over approximately 33.5 months (approximately 1 patient enrolled per 17 days). 
+%
+The sample size of 60 patients was chosen to ensure 12\% precision in estimating the true response proportion based on a 95\% confidence interval, assuming a response rate 
+of 0.67 as was observed among adults in the ACT 1 and ACT 2 trials \citep{Rutgeerts2005} at the same 5mg/kg dose (N = 242). Obtaining a 95\% confidence interval that 
+excluded 0.40 was used as the criterion for classifying the results as clinically significant. At week 8, clinical response was observed in 44 out of 60 (73.3\%) patients.
 
 
-\subsubsection{Model Formulation \& Prior Elicitation}\label{sec:example1model} We use this trial as a template to demonstrate our framework for sequential monitoring. The data $\bmath{D}$ are assumed to be independent Bernoulli random variables with common response probability $\theta$. 
+\subsubsection{Model Formulation \& Prior Elicitation}\label{sec:example1model} We use this trial as a motivating example to demonstrate the proposed 
+framework for sequential monitoring. The data $\bmath{D}$ are assumed to be comprised of independent Bernoulli random variables having common response 
+probability $\theta$. 
 %
-This trial has a superiority hypothesis with null response value is $\theta_0=0.4$. For purposes of monitoring, a highly efficacious response probability is $\theta_1=0.67$ and an intermediate response value is $\theta_m=0.535$. 
+As mentioned above, the primary hypotheses evaluated in the trial were $H_0:\theta \le 0.4$ and $H_1: \theta>0.4$.
 %
-The monitoring priors used are a concentrated skeptical prior and a default enthusiastic prior.
-%The skeptical prior is $\pi_S(\theta)\sim\mathcal{GN}_{p=0.975,\Theta=[0,1]}(\tilde{\mu}=\theta_0,q=\theta_1,\gamma=0.75)$. The scaling factor $\gamma<1$ was chosen to concentrate the distribution around the mode value to provide additional Type 1 error control. 
+For purposes of monitoring, we took $\theta_1=0.67$ consistent with the ACT 1 and ACT 2 trial data which results in $\theta_m=0.535$. 
 %
-%The enthusiastic prior is $\pi_E(\theta)\sim\mathcal{GN}_{p=0.025,\Theta=[0,1]}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$. The scaling factor $\gamma=1$ was chosen as a default value corresponding to the truncated normal distribution.
+The example presented in this section make use of a concentrated skeptical prior and a default enthusiastic prior for monitoring.
 %
-A comparison of the various combinations of the monitoring priors is provided in Appendix \ref{sec:priorRobustness}.
+\textcolor{red}{Make sure this is moved to supplemental appendix and appropriately referenced. See my recent paper in biometrics for examples for how to write references to the online supplementary materials.}
+%
+A comparison of design properties based on  various combinations of the monitoring priors is given in Supplemental Appendix \ref{sec:priorRobustness}.
+%
+In this example, we consider an inference prior defined as the mixture \eqref{eq:inference_prior} using the fixed value $\omega=0.5$ (i.e., a non-adaptive inference prior).
 
-An inference prior is defined as the mixture \eqref{eq:inference_prior} with $\omega=0.5$.
-%
-The maximum sample size was increased from $60$ to increase the probability of stopping the trial early due to efficacy at response proportion values between the null $\theta_0=0.4$ and the adult data $\theta_1=0.67$. The sample size of $n_{\text{max}}=112$ based on a frequentist design to have $80\%$ power to conclude efficacy with the skeptical monitoring prior at a true response proportion of $\theta_m=0.535$. This increased power provides a better setting to demonstrate how the flattening or concentration of the skeptical monitoring prior impacts the operating characteristics. Consider an interim analysis occurring after every 2 patients complete follow-up.
+\textcolor{red}{This does not seem to fit with the subsection. Consider adding a different subsection label. Also, I think the first sentence can be cut and you can just start this subsection by saying, ``We considered a maximum sample size $n_{\text{max}}=112$ ...'' With that said, I do not understand the following ``based on a frequentist design to have $80\%$ power to conclude efficacy with the skeptical monitoring prior'' Frequentist analysis would not use a prior. What do you mean here? This needs to be 100\% precise. A Bayesian design would not choose a maximum sample size based on anything frequentist. Also, the choice of 112 cannot be based on providing a ``better setting to demonstrate how the flattening or concentration of the skeptical monitoring prior impacts the operating characteristics'', as this makes the example seem artificial and our point here is to provide a real example application.
+}
+The maximum sample size was increased from $60$ to increase the probability of stopping the trial early due to efficacy at response proportion values between the null $\theta_0=0.4$ and the adult data $\theta_1=0.67$. The sample size of $n_{\text{max}}=112$ based on a frequentist design to have $80\%$ power to conclude efficacy with the skeptical monitoring prior at a true response proportion of $\theta_m=0.535$. This increased power provides a better setting to demonstrate how the flattening or concentration of the skeptical monitoring prior impacts the operating characteristics. For sequential monitoring, we consider analyzing the accumulating data after every 2 patients complete follow-up.
 
 \subsubsection{Preposterior Analysis of Operating Characteristics}\label{sec:ex1.1}
-The following are generated from $10,000$ simulations for the trial described in Section \ref{sec:example1model}. Figure \ref{fig:ex1.1}(a) shows the operating characters of this particular trial design.
+\textcolor{red}{I edited this sentence some but is the 10,000 per value of $\theta$? If so, please correct.}
+The estimated operating characteristics presented in this section based based on $10,000$ simulated trials using the trial design as described in Section \ref{sec:example1model}. 
 %
-
-When the true response probability is $\theta_0=0.4$, there is a $3.9\%$ probability of stopping the trial early for efficacy. This is higher than the nominal rate of $0.025$ due to the frequent data monitoring after every 2 completed outcomes (see also Section \ref{sec:ex1t1e}). When the true response probability is $\theta_m=0.535$, there is a $80.8\%$ probability of stopping the trial early for efficacy, which is comparable to a frequentist design with one analysis at the maximum sample size of $112$. The probability of stopping the trial for efficacy approaches $100\%$ for response values at $\theta_1=0.67$, and accordingly the expected number of 35.8 patients is the lowest.
+\textcolor{red}{note that the panels need to be labeled (A) and (B) in the graph. They are not.}
+Figure \ref{fig:ex1.1}(a) shows key operating characteristics for this particular trial design.
 %
-The probability of stopping early for futility is the highest at the null response rate of $\theta_0=0.4$, and then decreases as data is shown to be compatible with the alternative hypothesis that $\theta>\theta_0$. The impact of futility monitoring at $\theta_0=0.4$ is an expected sample size of 79.2.
+When the true response probability is $\theta_0=0.4$, the probability of stopping the trial early for efficacy is equal to $0.039$, higher than the nominal rate of 
+$0.025$ due to the high frequency data monitoring (see also Section \ref{sec:ex1t1e}). 
+%
+\textcolor{red}{You cannot refer to another section (Above) without giving some reason why. 
+(Below) Should you say Bayesian design with one analysis using the skeptical prior as the analysis prior?}
+%
+When the true response probability is $\theta_m=0.535$, there is a $80.8\%$ probability of stopping the trial early for efficacy, which is comparable to a frequentist design with one analysis at the maximum sample size of $112$. 
+%
+The probability of stopping the trial for efficacy approaches $100\%$ for response values at $\theta_1=0.67$, and accordingly the expected number of 35.8 patients is the lowest.
+%
+\textcolor{red}{Operating characteristics represent average behaviors -- you should not say ``then decreases as data is shown...'' as this suggests a single dataset phenomenon.}
+%
+The probability of stopping early for futility is the highest at the null response rate of $\theta_0=0.4$, and then decreases as data is shown to be compatible with the alternative hypothesis that $\theta>\theta_0$. 
+%
+\textcolor{red}{These sentence suggests the only thing causing the expected sample size to be what it is is futility monitoring. This seems like an over statement. Consider rephrasing.}
+%
+The impact of futility monitoring at $\theta_0=0.4$ is an expected sample size of 79.2.
 %
 The probability of inconclusive findings is the greatest at $\theta=0.4675$, where there is often modest evidence that $\theta>\theta_0$ but not enough to satisfy the efficacy criteria at by the chosen maximum sample size. Accordingly, the expected sample size of 91.4 patients is the highest at this value.
 
-For all the generating true response probabilities considered, the expected sample size is much less than the maximum of 112. The trial reaches the maximum sample size it at most 42\% of cases at the response rate of $\theta=0.4675$. Therefore this design benefits from reaching conclusions of efficacy at acceptable levels while reaching them sooner than the maximum sample size.
+For all the generating true response probabilities considered, the expected sample size is much less than the maximum of 112. The trial reaches the maximum sample size it at most 42\% of cases at the response rate of $\theta=0.4675$. 
+\textcolor{red}{What is meant by acceptable levels? Please be more precise. Sooner relates to time, not sample size. Please revise.}
+%
+Therefore this design benefits from reaching conclusions of efficacy at acceptable levels while reaching them sooner than the maximum sample size.
 
 A mixture prior that equally weighs the skeptical and enthusiastic monitoring priors was used to derive the posterior mean and coverage probabilities. For the generating values of $\theta$ considered, the posterior mean shows bias towards the alternative hypothesis. This is because the inference prior is still informative towards to alternative hypothesis. The coverage probability of an equal-tailed $95\%$ credible interval is shown to cover the true generating value of $\theta$ with more than $95\%$ probability when $\theta$ is near $\theta_0$ or $\theta_1$, and less than $95\%$ of the time when $\theta$ is an intermediate value (e.g. final coverage probability of $93.1\%$ when $\theta=0.535$. This is because the mixture prior places high prior probability near $\theta_0$ and $\theta_1$ and less prior probability at intermediate values.
 

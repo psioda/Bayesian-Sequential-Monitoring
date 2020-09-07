@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.9.17)  7 SEP 2020 14:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.9.17)  7 SEP 2020 16:51
 entering extended mode
 **./bayes-SM-biometrics.tex
 (bayes-SM-biometrics.tex
@@ -413,16 +413,16 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 
 [16]
 
-LaTeX Warning: Reference `eq:skptprior' on page 17 undefined on input line 840.
+LaTeX Warning: Reference `eq:skptprior' on page 17 undefined on input line 841.
 
 
-LaTeX Warning: Reference `eq:enthprior' on page 17 undefined on input line 840.
+LaTeX Warning: Reference `eq:enthprior' on page 17 undefined on input line 841.
 
 
-LaTeX Warning: Reference `eq:efficacy_criteria' on page 17 undefined on input line 855.
+LaTeX Warning: Reference `eq:efficacy_criteria' on page 17 undefined on input line 856.
 
 
-LaTeX Warning: Reference `eq:futility_criteria' on page 17 undefined on input line 855.
+LaTeX Warning: Reference `eq:futility_criteria' on page 17 undefined on input line 856.
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -431,10 +431,10 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 
 [17]
 
-LaTeX Warning: Reference `eq:efficacy_criteria' on page 18 undefined on input line 861.
+LaTeX Warning: Reference `eq:efficacy_criteria' on page 18 undefined on input line 862.
 
 
-LaTeX Warning: Reference `eq:futility_criteria' on page 18 undefined on input line 861.
+LaTeX Warning: Reference `eq:futility_criteria' on page 18 undefined on input line 862.
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -443,10 +443,10 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 
 [18]
 
-LaTeX Warning: Reference `eq:efficacy_criteria' on page 19 undefined on input line 876.
+LaTeX Warning: Reference `eq:efficacy_criteria' on page 19 undefined on input line 877.
 
 
-LaTeX Warning: Reference `eq:futility_criteria' on page 19 undefined on input line 876.
+LaTeX Warning: Reference `eq:futility_criteria' on page 19 undefined on input line 877.
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -459,15 +459,12 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [20]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 21
  []
 
 [21]
-Underfull \vbox (badness 1728) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -490,21 +487,24 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [25]
-
-LaTeX Warning: Reference `eq:eff_evidence' on page 26 undefined on input line 1001.
-
-
-LaTeX Warning: Reference `eq:fut_evidence' on page 26 undefined on input line 1001.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-LaTeX Warning: Reference `eq:futility_criteria' on page 26 undefined on input line 1001.
-
-(bayes-SM-biometrics.bbl
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 26
  []
 
 [26]
+
+LaTeX Warning: Reference `eq:eff_evidence' on page 27 undefined on input line 1040.
+
+
+LaTeX Warning: Reference `eq:fut_evidence' on page 27 undefined on input line 1040.
+
+
+LaTeX Warning: Reference `eq:futility_criteria' on page 27 undefined on input line 1040.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -512,208 +512,179 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 27
  []
 
-[27])
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
+[27] (bayes-SM-biometrics.bbl
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 28
  []
 
 [28]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 29
  []
 
-[29]
-Overfull \hbox (33.91699pt too wide) in paragraph at lines 1137--1140
+[29])
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 30
+ []
+
+[30]
+Overfull \hbox (33.91699pt too wide) in paragraph at lines 1176--1179
 [][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; ; \OT1/cmr/m/n/12 )$, is $\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
  \OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 c \OMS/cmsy/m/n/12  [] [] []$ \OT1/cmr/m/n/12 where $\OML/cmm/m/it/12 c \OT1/cmr
 /m/n/12 = []([])[]$.
  []
 
 
-Underfull \vbox (badness 1189) has occurred while \output is active []
-
-
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 30
- []
-
-[30]
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 31
  []
 
-[31] AED endfloat: Processing end Figures and Tables
+[31]
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 32
  []
 
-[32] (bayes-SM-biometrics.fff
-<figure2a.png, id=132, 758.835pt x 505.89pt>
+[32] AED endfloat: Processing end Figures and Tables
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 33
+ []
+
+[33] (bayes-SM-biometrics.fff
+<figure2a.png, id=135, 758.835pt x 505.89pt>
 File: figure2a.png Graphic file (type png)
 <use figure2a.png>
 Package pdftex.def Info: figure2a.png  used on input line 2.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-<figure2b.png, id=133, 758.835pt x 505.89pt>
+<figure2b.png, id=136, 758.835pt x 505.89pt>
 File: figure2b.png Graphic file (type png)
 <use figure2b.png>
 Package pdftex.def Info: figure2b.png  used on input line 3.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 33
+\OT1/cmr/m/n/9 34
  []
 
-[33 <./figure2a.png> <./figure2b.png>]
-<figure1a.png, id=139, 433.62pt x 433.62pt>
+[34 <./figure2a.png> <./figure2b.png>]
+<figure1a.png, id=142, 433.62pt x 433.62pt>
 File: figure1a.png Graphic file (type png)
 <use figure1a.png>
 Package pdftex.def Info: figure1a.png  used on input line 12.
 (pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<figure1b.png, id=140, 433.62pt x 433.62pt>
+<figure1b.png, id=143, 433.62pt x 433.62pt>
 File: figure1b.png Graphic file (type png)
 <use figure1b.png>
 Package pdftex.def Info: figure1b.png  used on input line 13.
 (pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<figure1c.png, id=141, 433.62pt x 433.62pt>
+<figure1c.png, id=144, 433.62pt x 433.62pt>
 File: figure1c.png Graphic file (type png)
 <use figure1c.png>
 Package pdftex.def Info: figure1c.png  used on input line 14.
 (pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<figure1d.png, id=142, 1806.75pt x 1806.75pt>
+<figure1d.png, id=145, 1806.75pt x 1806.75pt>
 File: figure1d.png Graphic file (type png)
 <use figure1d.png>
 Package pdftex.def Info: figure1d.png  used on input line 15.
 (pdftex.def)             Requested size: 216.81pt x 216.80064pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 34
+\OT1/cmr/m/n/9 35
  []
 
-[34 <./figure1a.png> <./figure1b.png> <./figure1c.png> <./figure1d.png>]
-<figure5a.png, id=151, 867.24pt x 433.62pt>
+[35 <./figure1a.png> <./figure1b.png> <./figure1c.png> <./figure1d.png>]
+<figure5a.png, id=154, 867.24pt x 433.62pt>
 File: figure5a.png Graphic file (type png)
 <use figure5a.png>
 Package pdftex.def Info: figure5a.png  used on input line 25.
 (pdftex.def)             Requested size: 433.62pt x 216.80946pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 35
+\OT1/cmr/m/n/9 36
  []
 
-[35 <./figure5a.png>]
-<figure3a.png, id=156, 758.835pt x 505.89pt>
+[36 <./figure5a.png>]
+<figure3a.png, id=160, 758.835pt x 505.89pt>
 File: figure3a.png Graphic file (type png)
 <use figure3a.png>
 Package pdftex.def Info: figure3a.png  used on input line 37.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-<figure3b.png, id=157, 758.835pt x 505.89pt>
+<figure3b.png, id=161, 758.835pt x 505.89pt>
 File: figure3b.png Graphic file (type png)
 <use figure3b.png>
 Package pdftex.def Info: figure3b.png  used on input line 38.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 36
+\OT1/cmr/m/n/9 37
  []
 
-[36 <./figure3a.png> <./figure3b.png>]
-<figure4.png, id=164, 758.835pt x 505.89pt>
+[37 <./figure3a.png> <./figure3b.png>]
+<figure4.png, id=167, 758.835pt x 505.89pt>
 File: figure4.png Graphic file (type png)
 <use figure4.png>
 Package pdftex.def Info: figure4.png  used on input line 48.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 37
+\OT1/cmr/m/n/9 38
  []
 
-[37 <./figure4.png>]
-<figure9.png, id=169, 3161.8125pt x 2107.875pt>
+[38 <./figure4.png>]
+<figure9.png, id=172, 3161.8125pt x 2107.875pt>
 File: figure9.png Graphic file (type png)
 <use figure9.png>
 Package pdftex.def Info: figure9.png  used on input line 62.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure6.png, id=170, 3161.8125pt x 2107.875pt>
+<figure6.png, id=173, 3161.8125pt x 2107.875pt>
 File: figure6.png Graphic file (type png)
 <use figure6.png>
 Package pdftex.def Info: figure6.png  used on input line 63.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 38
+\OT1/cmr/m/n/9 39
  []
 
-[38 <./figure9.png> <./figure6.png>]
-<3-part-compatibility-1.png, id=176, 3161.8125pt x 2107.875pt>
+[39 <./figure9.png> <./figure6.png>]
+<3-part-compatibility-1.png, id=179, 3161.8125pt x 2107.875pt>
 File: 3-part-compatibility-1.png Graphic file (type png)
 <use 3-part-compatibility-1.png>
 Package pdftex.def Info: 3-part-compatibility-1.png  used on input line 71.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<3-part-compatibility-2.png, id=177, 3161.8125pt x 2107.875pt>
+<3-part-compatibility-2.png, id=180, 3161.8125pt x 2107.875pt>
 File: 3-part-compatibility-2.png Graphic file (type png)
 <use 3-part-compatibility-2.png>
 Package pdftex.def Info: 3-part-compatibility-2.png  used on input line 72.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 39
+\OT1/cmr/m/n/9 40
  []
 
-[39 <./3-part-compatibility-1.png> <./3-part-compatibility-2.png>]
-<figureS1.png, id=183, 758.835pt x 505.89pt>
+[40 <./3-part-compatibility-1.png> <./3-part-compatibility-2.png>]
+<figureS1.png, id=186, 758.835pt x 505.89pt>
 File: figureS1.png Graphic file (type png)
 <use figureS1.png>
 Package pdftex.def Info: figureS1.png  used on input line 81.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 40
+\OT1/cmr/m/n/9 41
  []
 
-[40 <./figureS1.png>]
-<figureS2a.png, id=188, 758.835pt x 505.89pt>
+[41 <./figureS1.png>]
+<figureS2a.png, id=191, 758.835pt x 505.89pt>
 File: figureS2a.png Graphic file (type png)
 <use figureS2a.png>
 Package pdftex.def Info: figureS2a.png  used on input line 91.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-<figureS2b.png, id=189, 758.835pt x 505.89pt>
+<figureS2b.png, id=192, 758.835pt x 505.89pt>
 File: figureS2b.png Graphic file (type png)
 <use figureS2b.png>
 Package pdftex.def Info: figureS2b.png  used on input line 92.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-
-
-LaTeX Warning: Text page 41 contains only floats.
-
-
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 41
- []
-
-[41
-
-
-
-
-
-
-
-
-
-
- <./figureS2a.png> <./figureS2b.png>]
-<figureS2c.png, id=195, 758.835pt x 505.89pt>
-File: figureS2c.png Graphic file (type png)
-<use figureS2c.png>
-Package pdftex.def Info: figureS2c.png  used on input line 101.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-<figureS2d.png, id=196, 758.835pt x 505.89pt>
-File: figureS2d.png Graphic file (type png)
-<use figureS2d.png>
-Package pdftex.def Info: figureS2d.png  used on input line 102.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
 
 
@@ -726,22 +697,50 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 
 [42
 
+
+
+
+
+
+
+
+
+
+ <./figureS2a.png> <./figureS2b.png>]
+<figureS2c.png, id=199, 758.835pt x 505.89pt>
+File: figureS2c.png Graphic file (type png)
+<use figureS2c.png>
+Package pdftex.def Info: figureS2c.png  used on input line 101.
+(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
+<figureS2d.png, id=200, 758.835pt x 505.89pt>
+File: figureS2d.png Graphic file (type png)
+<use figureS2d.png>
+Package pdftex.def Info: figureS2d.png  used on input line 102.
+(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
+
+
+LaTeX Warning: Text page 43 contains only floats.
+
+
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 43
+ []
+
+[43
+
  <./figureS2c.png> <./figureS2d.png>]) (bayes-SM-biometrics.aux)
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
  3848 strings out of 492969
  50019 string characters out of 3135798
- 128486 words of memory out of 3000000
+ 127486 words of memory out of 3000000
  7622 multiletter control sequences out of 15000+200000
  21660 words of font info for 79 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,35p,1197b,312s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,9n,35p,1197b,328s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb>
@@ -758,9 +757,9 @@ TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fo
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmti9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on bayes-SM-biometrics.pdf (43 pages, 2137639 bytes).
+Output written on bayes-SM-biometrics.pdf (44 pages, 2141003 bytes).
 PDF statistics:
- 285 PDF objects out of 1000 (max. 8388607)
+ 288 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  96 words of extra memory for PDF output out of 10000 (max. 10000000)
 
