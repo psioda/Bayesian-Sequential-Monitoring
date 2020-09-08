@@ -797,7 +797,7 @@ As can be seen, for the proposed approach the weight given to the enthusiastic c
 %as a mixing weight that dynamically gives preference to the prior that has the higher density evaluated at $\hat{\theta}$ with a minimum weight $\omega_{min}$ given to the skeptical component with $\omega_{min}\in[0,1]$.
 %%%\end{mydef}
 
-\subsubsection{Inference Priors}
+\subsubsection{Mixture Inference Prior}
 The purpose of the inference prior is to synthesize the posterior inferences from the a priori diverse perspectives to 
 facilitate interpretation of the data once it has been obtained. 
 %
@@ -850,18 +850,7 @@ We then let the mixing weights $\omega^{(E)}$, $\omega^{(S)}$, and $\omega^{(NI)
 This type of inference prior is used in Section \ref{sec:example2}.
 }
 
-\subsubsection{Prior Specification for Nuisance Parameters}\label{sec:cond_marg}
-\textcolor{red}{This section confuses me a good deal. In reference to the figure (and hypotheses to be tested), what are $\eta_0$ and $\eta_1$. These things have not be defined.
-	%
-Second, it seems like one would elicit $\pi(\theta)$ to satisfy tail probability constraints but it is not clear how or why they would do that for $\pi(\eta|\theta)$ since 
-this is a conditional distribution for nuisance parameters. 
-	%
-Third, why would $\pi(\eta|\theta)$ be a default skeptical prior as stated in the figure caption. That does not make sense as $\eta$ has nothing to do with the 
-hypotheses being tested.
-	%
-I think this entire section needs to be rewritten and perhaps simulations redone. It is hard for me to tell based on what is written here.
-}
-	%
+\subsubsection{Marginal-Conditional Specification}\label{sec:cond_marg}
 In the case of nuisance parameters, marginal-conditional factorization of the joint prior $\pi(\theta,\eta)$ will be used. Let $\theta$ be the parameter of interest and $\eta$ be the nuisance parameters. Consider the following representation of the joint prior for $\theta$ and $\eta$: $\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$. Then priors for both $\pi(\theta)$ and $\pi(\eta|\theta)$ will be given that satisfy the mode value and tail probability constraints \eqref{eq:skptprior}-\eqref{eq:enthprior} (see details in Section \ref{sec:gen_norm_appendix}). For example, suppose that $\theta$ is the risk difference between response probabilities of the treatment group and the placebo group, and denote the  probability of the placebo group by $\eta$. This prior specification is demonstrated in Figure \ref{fig:figure5}, and Section \ref{sec:example2model} uses this representation of the joint prior.
 
 \begin{figure}\begin{center}
@@ -876,13 +865,7 @@ In the case of nuisance parameters, marginal-conditional factorization of the jo
 \end{figure}
 
 \subsection{Operating Characteristics}
-\textcolor{red}{All of the concepts in this Section are basic and need not take up space in the main paper. I would cut this entire section. Still, I give some comments
-to help with clarity for the future (still, cut this all). There is some useful information in this section but it can be sprinkled in much more briefly when results are presented
-with notation revised according to the changes I made before. Keep the content of Section 2.3.4. Perhaps that can be a brief subsection of its own. The rest can go keeping on minimal discussion where the associated results are first presented.}
-
 \subsubsection{Expected sample size and trial duration}
-\textcolor{red}{I do not understand what this paragraph is saying. Neither the expected sample size or expected trial duration are rigorously defined. In the absence of that, 
-there is no point for this subsection.}
 Suppose that the trial has interim analyses based on the number of completed outcomes. Let $\bmath{D}(n)$ denote the data after $n$ completed outcomes are ascertained. Let $n_{\text{initial}}$ be the first instance where either the efficacy criteria \eqref{eq:efficacy_criteria} or futility criteria \eqref{eq:futility_criteria} are satisfied and enrollment is henceforth terminated, or $n_{\text{max}}$ if the efficacy criteria or futility criteria are not satisfied at any point. Let $n_{\text{final}}$ be the final sample size which includes patients whose outcomes were in progress at the time of enrollment termination. The expected trial duration is determined based the projected time needed for subject enrollment and outcome ascertainment for a number of subjects equal to the expected sample size.
 
 \subsubsection{Posterior mean and coverage probability}
@@ -971,10 +954,6 @@ The probability of stopping early for futility is the highest at the null respon
 \textcolor{red}{These sentence suggests the only thing causing the expected sample size to be what it is is futility monitoring. This seems like an over statement. Consider rephrasing.}
 %
 The impact of futility monitoring at $\theta_0=0.4$ is an expected sample size of 79.2.
-%
-\textcolor{red}{The large expected sample size under the null is going to be the death knell for the paper. 
-	I think the issue is a bad approach for futility monitoring. See the email I sent you. We need to try that and then discuss. 
-	}
 %
 The probability of inconclusive findings is the greatest at $\theta=0.4675$, where there is often modest evidence that $\theta>\theta_0$ but not enough to satisfy the efficacy criteria at by the chosen maximum sample size. Accordingly, the expected sample size of 91.4 patients is the highest at this value.
 
