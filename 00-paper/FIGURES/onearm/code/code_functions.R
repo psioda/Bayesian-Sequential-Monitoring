@@ -17,7 +17,7 @@ eff_fut<-function(index){
   posterior.nc.enth<-function(x){
     exp(y1[index]*log(x)+y0[index]*log(1-x)-((abs(x-mu0.enth)/sigma0.enth)^lambda0.enth))/enth.nc
   }
-  futility<-integrate(posterior.nc.enth,lower=0+epsilon,upper=p.intr)[[1]]
+  futility<-integrate(posterior.nc.enth,lower=0+epsilon,upper=p.enth)[[1]] # changed on 2020-09-09 upper = p.intr changed to upper = p.enth
   
   return(cbind(efficacy,futility))
 }
@@ -168,8 +168,8 @@ enth_prior_default<-function(){
 skpt_prior_custom<-function(scale){
   
   mu0.skpt<-p.skpt
-  sigma0.seq<-seq(.01,2,by=0.01)
-  lambda0.seq<-seq(0.01,2,by=0.1)
+  sigma0.seq<-seq(.01,2,by=0.001)
+  lambda0.seq<-seq(0.01,2,by=0.01)
   result1<-matrix(NA,nrow=length(sigma0.seq),ncol=length(lambda0.seq))
   result2<-matrix(NA,nrow=length(sigma0.seq),ncol=length(lambda0.seq))
   
@@ -188,10 +188,10 @@ skpt_prior_custom<-function(scale){
       }
       
       result1[i,j]<-integrate(prior.nc.skpt,lower=p.enth,upper=1-epsilon)[[1]]
-      result2[i,j]<-integrate(prior.nc.skpt,lower=p.skpt,upper=p.intr)[[1]]
+      result2[i,j]<-integrate(prior.nc.skpt,lower=p.intr,upper=p.enth)[[1]]
     }
   }
-  result3=abs(result1-tail.skpt)+abs(result2-0.3370991*scale)
+  result3=abs(result1-tail.skpt)+abs(result2-(pnorm(qnorm(tail.skpt)/2) - tail.skpt)*scale)
   index<-which(result3 == min(result3), arr.ind = TRUE)
   
   i<-index[1]
@@ -222,8 +222,8 @@ skpt_prior_custom<-function(scale){
 enth_prior_custom<-function(scale){
   
   mu0.enth<-p.enth
-  sigma0.seq<-seq(.01,0.5,by=0.01)
-  lambda0.seq<-seq(2,7,by=0.1)
+  sigma0.seq<-seq(.01,0.5,by=0.001)
+  lambda0.seq<-seq(2,7,by=0.01)
   result1<-matrix(NA,nrow=length(sigma0.seq),ncol=length(lambda0.seq))
   result2<-matrix(NA,nrow=length(sigma0.seq),ncol=length(lambda0.seq))
   
@@ -242,10 +242,10 @@ enth_prior_custom<-function(scale){
       }
       
       result1[i,j]<-integrate(prior.nc.enth,lower=0+epsilon,upper=p.skpt)[[1]]
-      result2[i,j]<-integrate(prior.nc.enth,lower=p.intr,upper=p.enth)[[1]]
+      result2[i,j]<-integrate(prior.nc.enth,lower=p.skpt,upper=p.intr)[[1]]
     }
   }
-  result3=abs(result1-tail.enth)+abs(result2-0.3396372*scale)
+  result3=abs(result1-tail.enth)+abs(result2 - (pnorm(qnorm(tail.enth)/2) - tail.enth)*scale)
   index<-which(result3 == min(result3), arr.ind = TRUE)
   
   i<-index[1]

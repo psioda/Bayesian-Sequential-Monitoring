@@ -55,7 +55,7 @@ text(figure3_table$p.range[seq(1,length(figure3_table$p.range))],
      labels=format(round(
        figure3_table$eff.mon.initial[seq(1,length(figure3_table$p.range))],
        digits=3),nsmall=3),
-     pos=1)
+     pos=3)
 
 legend("right",#text.width=0.05,
        legend=c("Stop Early for Efficacy",

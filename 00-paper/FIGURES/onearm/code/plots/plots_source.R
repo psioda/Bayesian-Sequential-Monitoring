@@ -139,7 +139,7 @@ args_simulation<-read.csv(file="args_simulation.csv",header=TRUE,sep=",")
 Table1<-read.csv(file="../output/Table1_merged.csv",header=TRUE,sep=",")
 combined1<-merge(args_simulation,Table1,by.x="X",by.y="idx")
 
-figure3<-combined1[combined1$model==1 & combined1$skpt_spike==1 & combined1$enth_flat==0,]
+figure3<-combined1[combined1$model==1 & combined1$skpt_spike==0 & combined1$enth_flat==0,] # change here
 figure3_table<-figure3[seq(1,length(figure3$p.range),length=5),]
 
 label_main=""
@@ -147,11 +147,12 @@ stretch<-p.skpt*0.9
 width.scale<-7
 
 png('../../figure3a.png',
-    width = 450*width.scale, 
+    width = 450*width.scale,
     height = 300*width.scale,
     pointsize=16,
     res=300)
 source("plots/plots_seq_design_prop.R")
+mtext("(A)", side = 2, line = 3, at = 1, las = 1)
 dev.off()
 
 ##############################################
@@ -179,6 +180,7 @@ width.scale<-7
 
 png('../../figure3b.png',width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
 source("plots/plots_decrease.R")
+mtext("(B)", side = 2, line = 3, at = 0.975, las = 1)
 dev.off()
 
 ###############################
@@ -206,7 +208,7 @@ v<-floor(max.ss/figure4$freq.mntr)
 width.scale<-7
 
 # run plot
-#png('../../figure4.png',width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
+png('../../figure4.png',width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
 label_main=""
 stretch<- (-1.15)
 
@@ -215,7 +217,7 @@ mntr.pts<-c(1,2,4,8,16,56,112)
 source("plots/plots_t1e.R")
 legend("right",c("Initial","Final"),lty=c(5,1))
 
-#dev.off()
+dev.off()
 
 
 ##################################################

@@ -1,12 +1,3 @@
-\begin{figure}\begin{center}
-    \includegraphics[width=6in]{figure2a.png}
-    \includegraphics[width=6in]{figure2b.png}
-    \caption{Example paths for the trial described in Section \ref{sec:example1model}. A, Early stoppage for efficacy. B, early stoppage for futility.}
-\label{fig:figure2}
-\end{center}
-\end{figure}
-\efloatseparator
- 
 \begin{figure}
 \begin{center}
 \includegraphics[width=3in]{figure1a.png}
@@ -29,6 +20,15 @@
 \caption{Joint distribution $\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$, where $\pi(\theta)$ is a default skeptical prior truncated to $[-1,1]$, and $\pi(\eta|\theta)$ is a default skeptical prior truncated to $[\rmn{max}(-\theta,0),\rmn{min}(1,1+\theta)]$.}
 \label{fig:figure5}
  \end{center}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}\begin{center}
+    \includegraphics[width=6in]{figure2a.png}
+    \includegraphics[width=6in]{figure2b.png}
+    \caption{Example paths for the trial described in Section \ref{sec:example1model}. A, Early stoppage for efficacy. B, early stoppage for futility.}
+\label{fig:figure2}
+\end{center}
 \end{figure}
 \efloatseparator
  
@@ -73,34 +73,4 @@
     \caption{A; Prior-data compatibility assessments $\psi^{(S)}$, $\psi^{(E)}$, $\psi^{(NI)}$ by observed risk difference. B; 3-part mixture inference prior weights $\omega_S$, $\omega_{E}$, $\omega_{NI}$ by observed risk difference.}
 \label{fig:3-part-compatibility}
  \end{center}
-\end{figure}
-\efloatseparator
- 
-\begin{figure}\begin{center}
-
-   \includegraphics[width=6in]{figureS1.png}
-    \caption{Single arm design from Example \ref{sec:example1} with a longer follow-up period. Probability of efficacy criteria being satisfied when $\theta=\theta_0$. SS; sample size. Monitor Freq; monitoring frequency.}
-\label{fig:ex1t1e_longer}
-
-\end{center}
-\end{figure}
-\efloatseparator
- 
-\begin{figure}\begin{center}
-
- \includegraphics[width=6in]{figureS2a.png}
- \includegraphics[width=6in]{figureS2b.png}
- \caption{Modification of enthusiastic prior parameterization in Example \ref{sec:example1}. A, default enthusiastic prior (Figure \ref{fig:figure1}(c)). B, flattened enthusiastic prior (Figure \ref{fig:figure1}(d)). Both designs use concentrated skeptical prior (Figure \ref{fig:figure1}(b)).}
-\label{fig:robustness1}
-\end{center}
-\end{figure}
-\efloatseparator
- 
-\begin{figure}\begin{center}
-
- \includegraphics[width=6in]{figureS2c.png}
- \includegraphics[width=6in]{figureS2d.png}
- \caption{Modification of enthusiastic prior parameterization in Example \ref{sec:example1}. A, default enthusiastic prior (Figure \ref{fig:figure1}(c)). B, flattened enthusiastic prior (Figure \ref{fig:figure1}(d)). Both designs use default skeptical prior (Figure \ref{fig:figure1}(a)).}
-\label{fig:robustness2}
-\end{center}
 \end{figure}

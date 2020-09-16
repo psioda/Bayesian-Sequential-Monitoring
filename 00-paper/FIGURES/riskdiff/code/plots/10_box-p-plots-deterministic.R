@@ -161,3 +161,119 @@ Table0$risk.diff <- Table0$y1.IP/(Table0$y1.IP + Table0$y0.IP) - Table0$y1.PC/(T
 ############################################################################################################################################
 ############################################################################################################################################
 ############################################################################################################################################
+
+
+output_png <- TRUE
+width.scale <- 7
+
+if(output_png){png('../../../3-part-compatibility-1.png',
+                   width = 450*width.scale, 
+                   height = 300*width.scale,
+                   pointsize=16,
+                   res=300)}
+
+x <- c(Table0$risk.diff)
+y <- c(Table0$box.skpt)
+plot(x, y, xlab = "Observed Response Difference", ylab = "Box's p-value", pch = 19, cex = 0.25, type = 'l',
+     lty='longdash', yaxt='n')
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], lwd=2 )  
+
+y <- c(Table0$box.enth)
+lines(x,y, lty='dotted')
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], col=2, lwd=2 )  
+
+y <- c(Table0$box.ni)
+lines(x,y, lty="solid")
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], col="blue", lwd=2 )  
+
+abline(v=0, col="grey")
+abline(v=0.12, col="grey")
+axis(2,
+     las = 2,
+     at = seq(0, 1, by = 0.1),
+     labels = format(seq(0, 1, by = 0.1), nsmall = 1))
+abline(h = seq(0, 1, by = 0.1),
+       col = 'grey')
+
+legend("topright",#text.width = 0.05,
+       legend = c("Locally non-informative",
+                  "Skeptical",
+                  "Enthusiastic"),
+       lty = c('solid','longdash','dotted'))
+
+if(output_png){dev.off()}
+
+if(output_png){png('../../../3-part-compatibility-2.png',
+                   width = 450*width.scale, 
+                   height = 300*width.scale,
+                   pointsize = 16,
+                   res = 300)}
+
+omega.skpt <- Table0$box.skpt
+omega.enth <- Table0$box.enth
+omega.ni   <- Table0$box.ni
+omega.ni   <- pmax(omega.ni-pmax(omega.skpt,omega.enth),0)
+omega.sum  <- omega.skpt+omega.enth+omega.ni
+omega.skpt <- omega.skpt/omega.sum
+omega.enth <- omega.enth/omega.sum
+omega.ni   <- omega.ni/omega.sum
+
+x <- c(Table0$risk.diff)
+y <- omega.skpt
+plot(x,y, pch = 19, cex = 0.25, ylim = c(0,1), xlab = "Observed Response Difference", ylab = "Mixture Weights", type = 'l',
+     lty='longdash', yaxt='n')
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], lwd=2 )  
+
+y <- omega.enth
+points(x,y, col=2, pch = 19, cex = 0.25, type = 'l', lty='dotted')
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], lwd=2, col = 2)
+
+y <- omega.ni
+points(x,y, lty='solid', pch = 19, cex = 0.25, type = 'l')
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], lwd=2, col = "blue")  
+
+## Used for 7/2/20 plot
+# y1 <- c(Table0$box.skpt.initial,Table0$box.skpt.final)
+# y2 <- c(Table0$box.enth.initial,Table0$box.enth.final)
+# y  <- y2 - y1
+# plot(x, y, xlab = "Observed Risk Difference", ylab = "Difference in Box's p-value")
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], lwd=2 )  
+# abline(v=0, col="grey")
+# abline(v=0.12, col="grey")
+# abline(h=0)
+
+axis(2,
+     las = 2,
+     at = seq(0, 1, by = 0.1),
+     labels = format(seq(0, 1, by = 0.1), nsmall = 1))
+abline(h = seq(0, 1, by = 0.1),
+       col = 'grey')
+
+legend("top",#text.width = 0.05,
+       legend = c("Locally non-informative",
+                  "Skeptical",
+                  "Enthusiastic"),
+       lty = c('solid','longdash','dotted'))
+
+if(output_png){dev.off()}

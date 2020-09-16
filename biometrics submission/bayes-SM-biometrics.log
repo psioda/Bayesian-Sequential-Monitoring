@@ -1,181 +1,204 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.9.17)  7 SEP 2020 21:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  15 SEP 2020 14:43
 entering extended mode
 **./bayes-SM-biometrics.tex
 (bayes-SM-biometrics.tex
-LaTeX2e <2018-04-01> patch level 5
-(biom.cls
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-06-03> (biom.cls
 Document Class: biom 2006/12/12 v2.2 LaTeX2e Biom document class
 Document Style `Biom' v1.0, released 2006 December 12
-\math@groups=\toks14
+\math@groups=\toks15
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/cmsy/b/n --> OMS/cmsy/b/n on input line 236.
 \symUPM=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `UPM' in version `bold'
 (Font)                  U/eur/m/n --> U/eur/b/n on input line 273.
 \symAMSa=\mathgroup5
-\SFB@measure=\dimen102
-\realparindent=\skip41
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@discounter=\count86
-\@topalign=\dimen103
-\Verticalskip=\dimen104
-\@partialpageht=\dimen105
-\store@outputbox=\box26
-\storedboxheight=\dimen106
-\@indentskip=\skip42
-\smallindent=\skip43
-\@footindent=\skip44
-\@leftskip=\skip45
-\absbox=\box27
-\keywdbox=\box28
-\c@emailcnt=\count87
-\c@emailxcnt=\count88
-\tempcount=\count89
-("C:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
-Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip46
-\bibsep=\skip47
-LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count90
-)
-\c@dummy=\count91
-\c@table=\count92
-\c@figure=\count93
-\mathindent=\dimen107
- ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\theorem.sty"
-Package: theorem 2014/10/28 v2.2c Theorem extension package (FMi)
-\theorem@style=\toks15
-\theorem@bodyfont=\toks16
-\theorempreskipamount=\skip48
-\theorempostskipamount=\skip49
+\SFB@measure=\dimen134
+\realparindent=\skip47
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@discounter=\count173
+\@topalign=\dimen135
+\Verticalskip=\dimen136
+\@partialpageht=\dimen137
+\store@outputbox=\box45
+\storedboxheight=\dimen138
+\@indentskip=\skip48
+\smallindent=\skip49
+\@footindent=\skip50
+\@leftskip=\skip51
+\absbox=\box46
+\keywdbox=\box47
+\c@emailcnt=\count174
+\c@emailxcnt=\count175
+\tempcount=\count176
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\thp.sty"
+("/Users/kwiatkoe/Library/Application Support/MiKTeX/texmfs/install/tex/latex/n
+atbib/natbib.sty"
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip52
+\bibsep=\skip53
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count177
+)
+\c@dummy=\count178
+\c@table=\count179
+\c@figure=\count180
+\mathindent=\dimen139
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/theorem.st
+y"
+Package: theorem 2014/10/28 v2.2c Theorem extension package (FMi)
+\theorem@style=\toks16
+\theorem@bodyfont=\toks17
+\theorempreskipamount=\skip54
+\theorempostskipamount=\skip55
+ ("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/tools/thp.sty"
 File: thp.sty 2014/10/28 v2.2c Theorem extension package (FMi)
 ))
-\c@theorem=\count94
-\c@theorem=\count95
-\c@corollary=\count96
-\c@fact=\count97
-\c@property=\count98
-\c@result=\count99
-\c@lemma=\count100
-\c@assumption=\count101
-\c@case=\count102
-\c@axiom=\count103
-\c@change=\count104
-\c@claim=\count105
-\c@conjecture=\count106
-\c@definition=\count107
-\c@example=\count108
-\c@formula=\count109
-\c@hypothesis=\count110
-\c@method=\count111
-\c@model=\count112
-\c@notation=\count113
-\c@note=\count114
-\c@objective=\count115
-\c@observation=\count116
-\c@principle=\count117
-\c@problem=\count118
-\c@procedure=\count119
-\c@remark=\count120
-\c@step=\count121
-\theorempreskipamount=\skip50
-\theorempostskipamount=\skip51
- ("C:\Program Files\MiKTeX 2.9\tex\latex\endfloat\endfloat.sty"
-Package: endfloat 2018/03/24 v2.6 LaTeX2e package puts figures and tables at end (jdm)
+\c@theorem=\count181
+\c@theorem=\count182
+\c@corollary=\count183
+\c@fact=\count184
+\c@property=\count185
+\c@result=\count186
+\c@lemma=\count187
+\c@assumption=\count188
+\c@case=\count189
+\c@axiom=\count190
+\c@change=\count191
+\c@claim=\count192
+\c@conjecture=\count193
+\c@definition=\count194
+\c@example=\count195
+\c@formula=\count196
+\c@hypothesis=\count197
+\c@method=\count198
+\c@model=\count199
+\c@notation=\count266
+\c@note=\count267
+\c@objective=\count268
+\c@observation=\count269
+\c@principle=\count270
+\c@problem=\count271
+\c@procedure=\count272
+\c@remark=\count273
+\c@step=\count274
+\theorempreskipamount=\skip56
+\theorempostskipamount=\skip57
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+("/Users/kwiatkoe/Library/Application Support/MiKTeX/texmfs/install/tex/latex/e
+ndfloat/endfloat.sty"
+Package: endfloat 2019/04/15 v2.7 LaTeX2e package puts figures and tables at en
+d (jdm)
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/keyval.
+sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks17
+\KV@toks@=\toks18
 )
-\c@postfigure=\count122
+\c@postfigure=\count275
 \efloat@postfff=\write3
-\@ef@fffopen=\count123
-\c@posttable=\count124
+\@ef@fffopen=\count276
+\c@posttable=\count277
 \efloat@postttt=\write4
-\@ef@tttopen=\count125
+\@ef@tttopen=\count278
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/graphic
+x.sty"
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
- ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/graphic
+s.sty"
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics/trig.st
+y"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+)
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-cfg/gra
+phics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 105.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-def/pdf
+tex.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen108
-\Gin@req@width=\dimen109
+\Gin@req@height=\dimen140
+\Gin@req@width=\dimen141
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
-Package: amsmath 2017/09/02 v2.17a AMS math features
-\@mathmargin=\skip52
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsmath.
+sty"
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip58
 
 For additional information on amsmath, use the `?' option.
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amstext.
+sty"
 Package: amstext 2000/06/29 v2.01 AMS text
- ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsgen.s
+ty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks18
-\ex@=\dimen110
-)) ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+\@emptytoks=\toks19
+\ex@=\dimen142
+))
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsbsy.s
+ty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen111
+\pmbraise@=\dimen143
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsmath/amsopn.s
+ty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count126
-LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count127
-\leftroot@=\count128
-LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count129
-\DOTSCASE@=\count130
-LaTeX Info: Redefining \ldots on input line 472.
-LaTeX Info: Redefining \dots on input line 475.
-LaTeX Info: Redefining \cdots on input line 596.
-\Mathstrutbox@=\box29
-\strutbox@=\box30
-\big@size=\dimen112
-LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count131
-\c@MaxMatrixCols=\count132
-\dotsspace@=\muskip10
-\c@parentequation=\count133
-\dspbrk@lvl=\count134
-\tag@help=\toks19
-\row@=\count135
-\column@=\count136
-\maxfields@=\count137
-\andhelp@=\toks20
-\eqnshift@=\dimen113
-\alignsep@=\dimen114
-\tagshift@=\dimen115
-\tagwidth@=\dimen116
-\totwidth@=\dimen117
-\lineht@=\dimen118
-\@envbody=\toks21
-\multlinegap=\skip53
-\multlinetaggap=\skip54
-\mathdisplay@stack=\toks22
-LaTeX Info: Redefining \[ on input line 2817.
-LaTeX Info: Redefining \] on input line 2818.
+\inf@bad=\count279
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count280
+\leftroot@=\count281
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count282
+\DOTSCASE@=\count283
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box48
+\strutbox@=\box49
+\big@size=\dimen144
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count284
+\c@MaxMatrixCols=\count285
+\dotsspace@=\muskip16
+\c@parentequation=\count286
+\dspbrk@lvl=\count287
+\tag@help=\toks20
+\row@=\count288
+\column@=\count289
+\maxfields@=\count290
+\andhelp@=\toks21
+\eqnshift@=\dimen145
+\alignsep@=\dimen146
+\tagshift@=\dimen147
+\tagwidth@=\dimen148
+\totwidth@=\dimen149
+\lineht@=\dimen150
+\@envbody=\toks22
+\multlinegap=\skip59
+\multlinetaggap=\skip60
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/amsfont
+s.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring symbol font `AMSa' on input line 59.
 LaTeX Font Info:    Overwriting symbol font `AMSa' in version `normal'
@@ -183,11 +206,16 @@ LaTeX Font Info:    Overwriting symbol font `AMSa' in version `normal'
 LaTeX Font Info:    Overwriting symbol font `AMSa' in version `bold'
 (Font)                  U/msa/m/n --> U/msa/m/n on input line 59.
 \symAMSb=\mathgroup6
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+)
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/xcolor/xcolor.st
+y"
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
- ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\color.cfg"
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/graphics-cfg/col
+or.cfg"
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -200,101 +228,80 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/l3backend/l3back
+end-pdfmode.def"
+File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count291
+\l__pdf_internal_box=\box50
 ) (bayes-SM-biometrics.aux)
 \openout1 = `bayes-SM-biometrics.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 156.
 LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 156.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 156.
 LaTeX Font Info:    ... okay on input line 156.
 LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 156.
 LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 156.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 156.
 LaTeX Font Info:    ... okay on input line 156.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 156.
 LaTeX Font Info:    ... okay on input line 156.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 156.
 LaTeX Font Info:    ... okay on input line 156.
  (endrotfloat.sty
-Package: endrotfloat 2007/01/23 v1.0 LaTeX2e package puts sideways figures and tables at end
+Package: endrotfloat 2007/01/23 v1.0 LaTeX2e package puts sideways figures and 
+tables at end
 )
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+("/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp
+-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count138
-\scratchdimen=\dimen119
-\scratchbox=\box31
-\nofMPsegments=\count139
-\nofMParguments=\count140
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count141
-\MPscratchDim=\dimen120
-\MPnumerator=\count142
-\makeMPintoPDFobject=\count143
-\everyMPtoPDFconversion=\toks24
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+\scratchcounter=\count292
+\scratchdimen=\dimen151
+\scratchbox=\box51
+\nofMPsegments=\count293
+\nofMParguments=\count294
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count295
+\MPscratchDim=\dimen152
+\MPnumerator=\count296
+\makeMPintoPDFobject=\count297
+\everyMPtoPDFconversion=\toks25
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)))
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/epstopdf-pkg/eps
+topdf-base.sty"
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
 )
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
-Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO)
+LaTeX Font Info:    Trying to load font information for U+eur on input line 239
+.
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
-Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 438.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
-)
-LaTeX Font Info:    Try loading font information for U+eur on input line 239.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\ueur.fd"
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/ueur.fd
+"
 File: ueur.fd 2013/01/14 v3.01 Euler Roman
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 239.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+LaTeX Font Info:    Trying to load font information for U+msa on input line 239
+.
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd
+"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 239.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+LaTeX Font Info:    Trying to load font information for U+msb on input line 239
+.
+
+("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd
+"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Overfull \vbox (10.83334pt too high) has occurred while \output is active []
 
- [1{C:/Users/psioda/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+[1{/Users/kwiatkoe/Library/Application Support/MiKTeX/texmfs/data/pdftex/config
+/pdftex.map}
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -315,7 +322,16 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [2]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (0.39626pt too wide) in paragraph at lines 358--365
+ \OT1/cmr/m/n/12 2.1.1 \OT1/cmr/m/it/12 Bayesian Hypothesis Testing. [] \OT1/cm
+r/m/n/12 Consider a clinical trial application where the primary
+ []
+
+
+Overfull \hbox (11.1414pt too wide) in paragraph at lines 358--365
+\OT1/cmr/m/n/12 receiving the investigational treatment and those receiving the
+ control treatment (e.g., placebo). 
+ []
 
 
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
@@ -323,15 +339,19 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [3]
-Underfull \vbox (badness 5954) has occurred while \output is active []
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 4
  []
 
 [4]
-Underfull \vbox (badness 1226) has occurred while \output is active []
+Overfull \hbox (25.47514pt too wide) in paragraph at lines 423--434
+ \OT1/cmr/m/n/12 2.1.3 \OT1/cmr/m/it/12 Skeptical and Enthusiastic Monitoring P
+riors. [] \OT1/cmr/m/n/12 Having formalized concepts for \OT1/cmr/m/it/12 subst
+antial
+ []
+
+
+Underfull \vbox (badness 2384) has occurred while \output is active []
 
 
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
@@ -339,25 +359,46 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [5]
+Overfull \hbox (2.3901pt too wide) in paragraph at lines 469--481
+\OT1/cmr/m/n/12 skepticism regarding whether the alternative hypothesis is true
+. Indeed, assuming a symmetric
+ []
+
+
+Overfull \hbox (8.92198pt too wide) in paragraph at lines 469--481
+\OT1/cmr/m/n/12 possibility of large treatment effects but is otherwise consist
+ent with clinical equipoise regarding
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 6
  []
 
 [6]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 7
  []
 
 [7]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 8
  []
 
 [8]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (1.21928pt too wide) in paragraph at lines 558--568
+\OT1/cmr/m/n/12 constraints alone do not uniquely determine the priors. There a
+re infinitely many distributions
+ []
+
+
+Underfull \vbox (badness 7344) has occurred while \output is active []
 
 
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
@@ -365,31 +406,41 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [9]
+Overfull \hbox (68.7699pt too wide) in paragraph at lines 573--593
+\OT1/cmr/m/n/12 constraints. The density for a generalized normal distribution 
+$[](\OML/cmm/m/it/12 ; ; \OT1/cmr/m/n/12 )$ is $\OML/cmm/m/it/12 f\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 ) = [] []\OMS/cmsy/m/n/12 f \OT1/cmr/m
+/n/12 ([])[]\OMS/cmsy/m/n/12 g$
+ []
+
 \openout3 = `bayes-SM-biometrics.fff'.
 
- (bayes-SM-biometrics.fff)
+(bayes-SM-biometrics.fff)
+Overfull \hbox (1.0013pt too wide) in paragraph at lines 594--602
+\OT1/cmr/m/n/12 distribution), while maintaining the same residual uncertainty 
+that $\OML/cmm/m/it/12  < []$\OT1/cmr/m/n/12 . Similarly, choosing
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 10
  []
 
 [10]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 11
  []
 
 [11]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 12
  []
 
 [12]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1248) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -397,11 +448,33 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [13]
+
+LaTeX Warning: Reference `eq:skptprior' on page 14 undefined on input line 829.
+
+
+
+LaTeX Warning: Reference `eq:enthprior' on page 14 undefined on input line 829.
+
+
+
+LaTeX Warning: Reference `sec:gen_norm_appendix' on page 14 undefined on input 
+line 829.
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 14
  []
 
 [14]
+
+LaTeX Warning: Reference `eq:efficacy_criteria' on page 15 undefined on input l
+ine 871.
+
+
+LaTeX Warning: Reference `eq:futility_criteria' on page 15 undefined on input l
+ine 871.
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 15
  []
@@ -412,29 +485,15 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [16]
-
-LaTeX Warning: Reference `eq:skptprior' on page 17 undefined on input line 865.
-
-
-LaTeX Warning: Reference `eq:enthprior' on page 17 undefined on input line 865.
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 17
  []
 
 [17]
-
-LaTeX Warning: Reference `eq:efficacy_criteria' on page 18 undefined on input line 886.
-
-
-LaTeX Warning: Reference `eq:futility_criteria' on page 18 undefined on input line 886.
-
-
-LaTeX Warning: Reference `eq:efficacy_criteria' on page 18 undefined on input line 892.
-
-
-LaTeX Warning: Reference `eq:futility_criteria' on page 18 undefined on input line 892.
+Overfull \hbox (38.54944pt too wide) in paragraph at lines 936--964
+ \OT1/cmr/m/n/12 3.1.4 \OT1/cmr/m/it/12 Preposterior Analysis of Operating Char
+acteristics. [] \OT1/cmr/m/n/12 The estimated operating characteristics
+ []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -442,13 +501,6 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [18]
-
-LaTeX Warning: Reference `eq:efficacy_criteria' on page 19 undefined on input line 907.
-
-
-LaTeX Warning: Reference `eq:futility_criteria' on page 19 undefined on input line 907.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -457,17 +509,47 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [19]
+Overfull \hbox (14.72641pt too wide) in paragraph at lines 1007--1020
+ \OT1/cmr/m/n/12 3.1.5 \OT1/cmr/m/it/12 Type 1 Error Rate by the Frequency of D
+ata Monitoring. [] \OT1/cmr/m/n/12 Figure 5[] shows the probability
+ []
+
+
+Overfull \hbox (20.86769pt too wide) in paragraph at lines 1007--1020
+\OT1/cmr/m/n/12 sample size, the probability of determining efficacy is only $0
+\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 8%$. This is because the determination
+ []
+
+
+Overfull \hbox (1.41512pt too wide) in paragraph at lines 1038--1055
+\OT1/cmr/m/n/12 enrollment of 100 patients, the first 24 patients randomized in
+ a 5:1 ratio (belimumab:placebo)
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 20
  []
 
 [20]
+Overfull \hbox (10.30957pt too wide) in paragraph at lines 1063--1074
+ \OT1/cmr/m/n/12 3.2.2 \OT1/cmr/m/it/12 Model Formulation & Prior Elicitation. 
+[] \OT1/cmr/m/n/12 We use this trial as a template to demonstrate
+ []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 21
  []
 
 [21]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (1.43187pt too wide) in paragraph at lines 1098--1107
+ \OT1/cmr/m/n/12 3.2.3 \OT1/cmr/m/it/12 Preposterior Analysis of Operating Char
+acteristics. [] \OT1/cmr/m/n/12 Figure 6[](A) shows the operating
+ []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -475,7 +557,16 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [22]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (7.61644pt too wide) in paragraph at lines 1145--1148
+\OT1/cmr/m/n/12 natural interpretations and ability to incorporate external evi
+dence through prior distributions.
+ []
+
+
+Overfull \hbox (6.9595pt too wide) in paragraph at lines 1145--1148
+\OT1/cmr/m/n/12 Monitoring priors used for efficacy and futility stopping funda
+mentally determine the operating
+ []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -483,300 +574,222 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [23]
+Overfull \hbox (0.74023pt too wide) in paragraph at lines 1149--1156
+[]\OT1/cmr/m/n/12 This paper presents a structured framework for designing a Ba
+yesian sequentially monitored
+ []
+
+
+LaTeX Warning: Reference `eq:eff_evidence' on page 24 undefined on input line 1
+159.
+
+
+LaTeX Warning: Reference `eq:fut_evidence' on page 24 undefined on input line 1
+159.
+
+
+LaTeX Warning: Reference `eq:futility_criteria' on page 24 undefined on input l
+ine 1163.
+
+(bayes-SM-biometrics.bbl
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 24
  []
 
 [24]
+Underfull \hbox (badness 1490) in paragraph at lines 51--58
+\OT1/cmr/m/n/12 Baldassano, R., and Griffiths, A. (2012).  Induction and mainte
+nance therapy
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 25
  []
 
 [25]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 1028) in paragraph at lines 118--122
+[]\OT1/cmr/m/n/12 Ventz, S. and Trippa, L. (2015).  Bayesian designs and the co
+ntrol of frequentist
+ []
 
-
+) AED endfloat: Processing end Figures and Tables
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 26
  []
 
-[26]
+[26] (bayes-SM-biometrics.fff
+<figure1a.png, id=112, 1505.625pt x 1505.625pt>
+File: figure1a.png Graphic file (type png)
+<use figure1a.png>
+Package pdftex.def Info: figure1a.png  used on input line 3.
+(pdftex.def)             Requested size: 216.81pt x 216.80524pt.
+<figure1b.png, id=114, 1505.625pt x 1505.625pt>
+File: figure1b.png Graphic file (type png)
+<use figure1b.png>
+Package pdftex.def Info: figure1b.png  used on input line 4.
+(pdftex.def)             Requested size: 216.81pt x 216.80524pt.
+<figure1c.png, id=115, 1505.625pt x 1505.625pt>
+File: figure1c.png Graphic file (type png)
+<use figure1c.png>
+Package pdftex.def Info: figure1c.png  used on input line 5.
+(pdftex.def)             Requested size: 216.81pt x 216.80524pt.
+<figure1d.png, id=116, 1505.625pt x 1505.625pt>
+File: figure1d.png Graphic file (type png)
+<use figure1d.png>
+Package pdftex.def Info: figure1d.png  used on input line 6.
+(pdftex.def)             Requested size: 216.81pt x 216.80524pt.
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 27
  []
 
-[27]
+[27 <./figure1a.png> <./figure1b.png> <./figure1c.png> <./figure1d.png>]
+<figure5a.png, id=124, 867.24pt x 433.62pt>
+File: figure5a.png Graphic file (type png)
+<use figure5a.png>
+Package pdftex.def Info: figure5a.png  used on input line 16.
+(pdftex.def)             Requested size: 433.62pt x 216.80946pt.
 
-LaTeX Warning: Reference `eq:eff_evidence' on page 28 undefined on input line 1074.
-
-
-LaTeX Warning: Reference `eq:fut_evidence' on page 28 undefined on input line 1074.
-
-
-LaTeX Warning: Reference `eq:futility_criteria' on page 28 undefined on input line 1074.
-
-(bayes-SM-biometrics.bbl
-Underfull \vbox (badness 2409) has occurred while \output is active []
+Underfull \hbox (badness 2027) in paragraph at lines 20--20
+[]\OT1/cmr/bx/n/12 Figure 2. \OT1/cmr/m/n/12 Joint distribution $\OML/cmm/m/it/
+12 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 
+\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12  \OML/c
+mm/m/it/12 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OMS/cmsy/m/n/12 j\OML/cmm/m/it/
+12 \OT1/cmr/m/n/12 )$, where $\OML/cmm/m/it/12 \OT1/cmr/m/n/12 (\OML/cmm/m/it
+/12 \OT1/cmr/m/n/12 )$ is a default
+ []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 28
  []
 
-[28]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+[28 <./figure5a.png>]
+<figure2a.png, id=129, 758.835pt x 505.89pt>
+File: figure2a.png Graphic file (type png)
+<use figure2a.png>
+Package pdftex.def Info: figure2a.png  used on input line 27.
+(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
+<figure2b.png, id=130, 758.835pt x 505.89pt>
+File: figure2b.png Graphic file (type png)
+<use figure2b.png>
+Package pdftex.def Info: figure2b.png  used on input line 28.
+(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 29
  []
 
-[29])
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 30
- []
-
-[30]
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 31
- []
-
-[31]
-Overfull \hbox (33.91699pt too wide) in paragraph at lines 1210--1213
-[][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; ; \OT1/cmr/m/n/12 )$, is $\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12
- \OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 c \OMS/cmsy/m/n/12  [] [] []$ \OT1/cmr/m/n/12 where $\OML/cmm/m/it/12 c \OT1/cmr
-/m/n/12 = []([])[]$.
- []
-
-
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 32
- []
-
-[32]
-Underfull \vbox (badness 1270) has occurred while \output is active []
-
-
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 33
- []
-
-[33] AED endfloat: Processing end Figures and Tables
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 34
- []
-
-[34] (bayes-SM-biometrics.fff
-<figure2a.png, id=138, 758.835pt x 505.89pt>
-File: figure2a.png Graphic file (type png)
-<use figure2a.png>
-Package pdftex.def Info: figure2a.png  used on input line 2.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-<figure2b.png, id=139, 758.835pt x 505.89pt>
-File: figure2b.png Graphic file (type png)
-<use figure2b.png>
-Package pdftex.def Info: figure2b.png  used on input line 3.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 35
- []
-
-[35 <./figure2a.png> <./figure2b.png>]
-<figure1a.png, id=145, 433.62pt x 433.62pt>
-File: figure1a.png Graphic file (type png)
-<use figure1a.png>
-Package pdftex.def Info: figure1a.png  used on input line 12.
-(pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<figure1b.png, id=146, 433.62pt x 433.62pt>
-File: figure1b.png Graphic file (type png)
-<use figure1b.png>
-Package pdftex.def Info: figure1b.png  used on input line 13.
-(pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<figure1c.png, id=147, 433.62pt x 433.62pt>
-File: figure1c.png Graphic file (type png)
-<use figure1c.png>
-Package pdftex.def Info: figure1c.png  used on input line 14.
-(pdftex.def)             Requested size: 216.81pt x 216.80946pt.
-<figure1d.png, id=148, 1806.75pt x 1806.75pt>
-File: figure1d.png Graphic file (type png)
-<use figure1d.png>
-Package pdftex.def Info: figure1d.png  used on input line 15.
-(pdftex.def)             Requested size: 216.81pt x 216.80064pt.
-
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 36
- []
-
-[36 <./figure1a.png> <./figure1b.png> <./figure1c.png> <./figure1d.png>]
-<figure5a.png, id=158, 867.24pt x 433.62pt>
-File: figure5a.png Graphic file (type png)
-<use figure5a.png>
-Package pdftex.def Info: figure5a.png  used on input line 25.
-(pdftex.def)             Requested size: 433.62pt x 216.80946pt.
-
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 37
- []
-
-[37 <./figure5a.png>]
-<figure3a.png, id=163, 758.835pt x 505.89pt>
+[29 <./figure2a.png> <./figure2b.png>]
+<figure3a.png, id=136, 758.835pt x 505.89pt>
 File: figure3a.png Graphic file (type png)
 <use figure3a.png>
 Package pdftex.def Info: figure3a.png  used on input line 37.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-<figure3b.png, id=164, 758.835pt x 505.89pt>
+<figure3b.png, id=137, 758.835pt x 505.89pt>
 File: figure3b.png Graphic file (type png)
 <use figure3b.png>
 Package pdftex.def Info: figure3b.png  used on input line 38.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 38
+\OT1/cmr/m/n/9 30
  []
 
-[38 <./figure3a.png> <./figure3b.png>]
-<figure4.png, id=170, 758.835pt x 505.89pt>
+[30 <./figure3a.png> <./figure3b.png>]
+<figure4.png, id=144, 758.835pt x 505.89pt>
 File: figure4.png Graphic file (type png)
 <use figure4.png>
 Package pdftex.def Info: figure4.png  used on input line 48.
 (pdftex.def)             Requested size: 433.62pt x 289.08589pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 39
+\OT1/cmr/m/n/9 31
  []
 
-[39 <./figure4.png>]
-<figure9.png, id=175, 3161.8125pt x 2107.875pt>
+[31 <./figure4.png>]
+<figure9.png, id=149, 3161.8125pt x 2107.875pt>
 File: figure9.png Graphic file (type png)
 <use figure9.png>
 Package pdftex.def Info: figure9.png  used on input line 62.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure6.png, id=176, 3161.8125pt x 2107.875pt>
+<figure6.png, id=150, 3161.8125pt x 2107.875pt>
 File: figure6.png Graphic file (type png)
 <use figure6.png>
 Package pdftex.def Info: figure6.png  used on input line 63.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 40
+\OT1/cmr/m/n/9 32
  []
 
-[40 <./figure9.png> <./figure6.png>]
-<3-part-compatibility-1.png, id=182, 3161.8125pt x 2107.875pt>
+[32 <./figure9.png> <./figure6.png>]
+<3-part-compatibility-1.png, id=156, 3161.8125pt x 2107.875pt>
 File: 3-part-compatibility-1.png Graphic file (type png)
 <use 3-part-compatibility-1.png>
 Package pdftex.def Info: 3-part-compatibility-1.png  used on input line 71.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<3-part-compatibility-2.png, id=183, 3161.8125pt x 2107.875pt>
+<3-part-compatibility-2.png, id=157, 3161.8125pt x 2107.875pt>
 File: 3-part-compatibility-2.png Graphic file (type png)
 <use 3-part-compatibility-2.png>
 Package pdftex.def Info: 3-part-compatibility-2.png  used on input line 72.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-
+)
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 41
+\OT1/cmr/m/n/9 33
  []
 
-[41 <./3-part-compatibility-1.png> <./3-part-compatibility-2.png>]
-<figureS1.png, id=189, 758.835pt x 505.89pt>
-File: figureS1.png Graphic file (type png)
-<use figureS1.png>
-Package pdftex.def Info: figureS1.png  used on input line 81.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 42
- []
-
-[42 <./figureS1.png>]
-<figureS2a.png, id=195, 758.835pt x 505.89pt>
-File: figureS2a.png Graphic file (type png)
-<use figureS2a.png>
-Package pdftex.def Info: figureS2a.png  used on input line 91.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-<figureS2b.png, id=196, 758.835pt x 505.89pt>
-File: figureS2b.png Graphic file (type png)
-<use figureS2b.png>
-Package pdftex.def Info: figureS2b.png  used on input line 92.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-
-
-LaTeX Warning: Text page 43 contains only floats.
-
-
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 43
- []
-
-[43
-
-
-
-
-
-
-
-
-
-
- <./figureS2a.png> <./figureS2b.png>]
-<figureS2c.png, id=202, 758.835pt x 505.89pt>
-File: figureS2c.png Graphic file (type png)
-<use figureS2c.png>
-Package pdftex.def Info: figureS2c.png  used on input line 101.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-<figureS2d.png, id=203, 758.835pt x 505.89pt>
-File: figureS2d.png Graphic file (type png)
-<use figureS2d.png>
-Package pdftex.def Info: figureS2d.png  used on input line 102.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-
-
-LaTeX Warning: Text page 44 contains only floats.
-
-
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 44
- []
-
-[44
-
- <./figureS2c.png> <./figureS2d.png>]) (bayes-SM-biometrics.aux)
+[33 <./3-part-compatibility-1.png> <./3-part-compatibility-2.png>]
+(bayes-SM-biometrics.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 3848 strings out of 492969
- 50019 string characters out of 3135798
- 127486 words of memory out of 3000000
- 7622 multiletter control sequences out of 15000+200000
- 21660 words of font info for 79 fonts, out of 3000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 41i,9n,35p,1197b,316s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cmextra/cmmib7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmti9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on bayes-SM-biometrics.pdf (45 pages, 2143217 bytes).
+ 3600 strings out of 482730
+ 48175 string characters out of 2947761
+ 291504 words of memory out of 3000000
+ 19298 multiletter control sequences out of 15000+200000
+ 550358 words of font info for 89 fonts, out of 3000000 for 9000
+ 0 hyphenation exceptions out of 8191
+ 33i,11n,38p,966b,332s stack positions out of 5000i,500n,10000p,200000b,50000s
+</Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfon
+ts/cmextra/cmbsy7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts
+/type1/public/amsfonts/cm/cmbx10.pfb></Library/Application Support/MiKTeX/texmf
+s/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></Library/Application Suppo
+rt/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx7.pfb></Library/App
+lication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx8.pfb
+></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfont
+s/cm/cmcsc10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type
+1/public/amsfonts/cm/cmex10.pfb></Library/Application Support/MiKTeX/texmfs/ins
+tall/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Library/Application Support/Mi
+KTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Library/Applicat
+ion Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Li
+brary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/
+cmmib10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/pub
+lic/amsfonts/cmextra/cmmib7.pfb></Library/Application Support/MiKTeX/texmfs/ins
+tall/fonts/type1/public/amsfonts/cm/cmr10.pfb></Library/Application Support/MiK
+TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></Library/Applicati
+on Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></Libr
+ary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cm
+r7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/a
+msfonts/cm/cmr8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/t
+ype1/public/amsfonts/cm/cmr9.pfb></Library/Application Support/MiKTeX/texmfs/in
+stall/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Library/Application Support/M
+iKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb></Library/Applica
+tion Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></L
+ibrary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm
+/cmti10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/pub
+lic/amsfonts/cm/cmti12.pfb></Library/Application Support/MiKTeX/texmfs/install/
+fonts/type1/public/amsfonts/cm/cmti9.pfb></Library/Application Support/MiKTeX/t
+exmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on bayes-SM-biometrics.pdf (34 pages, 1891653 bytes).
 PDF statistics:
- 291 PDF objects out of 1000 (max. 8388607)
+ 240 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 96 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

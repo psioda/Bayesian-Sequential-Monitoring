@@ -73,7 +73,7 @@ reps      <- 100000
 mu0.skpt  <- p.skpt
 mu0.enth  <- p.intr
 
-width.scale <- 6
+width.scale <- 5
 if(output_png){png('figure1d.png', width = 300*width.scale,  height = 300*width.scale, pointsize=12, res=300)}
 scale         <-  1.5
 prior.nc.enth <- enth_prior_custom(scale=scale)
@@ -93,29 +93,35 @@ plot(x, prior.nc.enth(x), type="l",
      xlim=c(xmin, xmax), 
      ylim=c(0, ymax)) # 20-01-02
 #axis(2, at=c(0, 1, 2, 3), labels=c(0, 1, 2, 3))
-axis(1, at=c(p.enth, p.skpt, (p.enth+p.skpt)/2, (3*p.skpt-p.enth)/2), 
+axis(1, at=c(p.enth, p.skpt#, (p.enth+p.skpt)/2, (3*p.skpt-p.enth)/2
+             ), 
      labels=c(as.expression(bquote(theta[1])), 
-              as.expression(bquote(theta[0])), 
-              as.expression(bquote((theta[0]+theta[1])/2)),
-              as.expression(bquote((3*theta[0]-theta[1])/2))))
+              as.expression(bquote(theta[0])) 
+              #as.expression(bquote((theta[0]+theta[1])/2)),
+              #as.expression(bquote((3*theta[0]-theta[1])/2))
+              ))
 title(ylab="Density Value",  line=1)
 title(xlab="Response Probability", line=2)
 #title(xlab="Density Value", line=2)
 
-polygon(c(x[x<=mu0.enth-(p.enth-p.skpt)], mu0.enth-(p.enth-p.skpt)), 
-        c(prior.nc.enth(x)[x<=mu0.enth-(p.enth-p.skpt)], 0), col="black")
+# polygon(c(x[x<=mu0.enth-(p.enth-p.skpt)], mu0.enth-(p.enth-p.skpt)), 
+#         c(prior.nc.enth(x)[x<=mu0.enth-(p.enth-p.skpt)], 0), col="black")
 
-polygon(c(mu0.enth-(p.enth-p.skpt), x[x>=mu0.enth-(p.enth-p.skpt) & x<=p.skpt], p.skpt), 
-        c(0, prior.nc.enth(x)[x>=mu0.enth-(p.enth-p.skpt) & x<=p.skpt], 0), col="lightgrey")
+# polygon(c(mu0.enth-(p.enth-p.skpt), x[x>=mu0.enth-(p.enth-p.skpt) & x<=p.skpt], p.skpt), 
+#         c(0, prior.nc.enth(x)[x>=mu0.enth-(p.enth-p.skpt) & x<=p.skpt], 0), col="lightgrey")
 
 segments(x0=p.enth, y0=0, y1=prior.nc.enth(p.enth))
-segments(x0=p.intr, y0=0, y1=prior.nc.enth(p.intr))
+segments(x0=p.skpt, y0=0, y1=prior.nc.enth(p.skpt))
+
+#segments(x0=p.intr, y0=0, y1=prior.nc.enth(p.intr))
 
 legend("top", 
        legend= c(
-         as.expression(bquote(mode(theta) == (theta[0]+theta[1])/2)), 
-         as.expression(bquote(P(theta< (3*theta[0]-theta[1])/2)==.(tail.enth))), 
-         as.expression(bquote(P(theta %in% ((3*theta[0]-theta[1])/2*", "*theta[0])==.(round((pnorm(qnorm(tail.enth)/2)-tail.enth)*scale, 3)))))#, 
+         #as.expression(bquote(mode(theta) == (theta[0]+theta[1])/2)), 
+         as.expression(bquote(pi[E](theta[0])==pi[E](theta[1]))),
+         as.expression(bquote(pi[E](theta)%~~%"c for "*theta %in% (theta[0]*", "*theta[1])))
+         #as.expression(bquote(P(theta< (3*theta[0]-theta[1])/2)==.(tail.enth))), 
+         #as.expression(bquote(P(theta %in% ((3*theta[0]-theta[1])/2*", "*theta[0])==.(round((pnorm(qnorm(tail.enth)/2)-tail.enth)*scale, 3)))))#, 
          #as.expression(bquote(GN(mu==theta[1], alpha==.(sigma0.enth), beta==.(lambda0.enth))))
        ))
 

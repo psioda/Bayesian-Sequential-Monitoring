@@ -1,2 +1,2 @@
 "","eff.mon.initial","eff.mon.final","eff.inf.initial","eff.inf.final","fut.mon.initial","fut.mon.final","fut.inf.initial","fut.inf.final","phat.initial","phat.final","ss.initial","ss.final","post.mean.initial","post.mean.final","cov.initial","cov.final","idx"
-"1",0.2043,0.1169,0.2146,0.1777,0.5002,0.3609,NA,NA,0.432545453558441,0.431843939463307,79.4738,84.8215,0.43972041508505,0.438617243422743,0.919,0.9255,4
+"1",0.0854,0.0485,0.0856,0.0788,0.9146,0.8141,NA,NA,0.388910170968725,0.412334284579684,23.3876,31.3521,0.431508292134277,0.435868046040854,0.9407,0.9506,4

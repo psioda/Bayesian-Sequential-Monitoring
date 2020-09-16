@@ -119,7 +119,7 @@ mu0.enth<-p.enth
 #root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 #setwd(root)
 
-width.scale<-6
+width.scale<-5
 png('figure1a.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
 scale <- 1
 prior.nc.enth<-enth_prior_default()
@@ -139,10 +139,9 @@ plot(x,prior.nc.enth(x),type="l",
      xlim=c(xmin,xmax),
      ylim=c(0,ymax)) # 20-01-02
 #axis(2,at=c(0,1,2,3),labels=c(0,1,2,3))
-axis(1,at=c(p.enth,p.skpt,(p.enth+p.skpt)/2),
+axis(1,at=c(p.enth,p.skpt),
      labels=c(as.expression(bquote(theta[1])),
-              as.expression(bquote(theta[0])),
-              as.expression(bquote((theta[0]+theta[1])/2))))
+              as.expression(bquote(theta[0]))))
 title(ylab="Density Value", line=1)
 title(xlab="Response Probability",line=2)
 #title(xlab="Density Value",line=2)
@@ -150,8 +149,8 @@ title(xlab="Response Probability",line=2)
 polygon(c(x[x<=p.skpt],p.skpt),
         c(prior.nc.enth(x)[x<=p.skpt],0),col="black")
 
-polygon(c(p.skpt,x[x>=p.skpt & x<=p.intr],p.intr),
-        c(0,prior.nc.enth(x)[x>=p.skpt & x<=p.intr],0),col="lightgrey")
+# polygon(c(p.skpt,x[x>=p.skpt & x<=p.intr],p.intr),
+#         c(0,prior.nc.enth(x)[x>=p.skpt & x<=p.intr],0),col="lightgrey")
 
 segments(x0=p.enth,y0=0,y1=prior.nc.enth(p.enth))
 
@@ -159,7 +158,8 @@ legend("top",
        legend= c(
                  as.expression(bquote(mode(theta) == theta[1])),
                  as.expression(bquote(P(theta< theta[0])==.(tail.enth))),
-                 as.expression(bquote(P(theta %in% (theta[0]*","*(theta[0]+theta[1])/2)==.(round((pnorm(qnorm(tail.enth)/2)-tail.enth)*scale,3)))))#,
+                 as.expression(bquote(k==1))
+                 #as.expression(bquote(P(theta %in% (theta[0]*","*(theta[0]+theta[1])/2)==.(round((pnorm(qnorm(tail.enth)/2)-tail.enth)*scale,3)))))#,
                  #as.expression(bquote(GN(mu==theta[1],alpha==.(sigma0.enth),beta==.(lambda0.enth))))
        ))
 
@@ -169,7 +169,7 @@ dev.off()
 #rm(list = ls())
 #root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 #setwd(root)
-width.scale<-6
+width.scale<-5
 png('figure1b.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
 scale <- 0.75
 prior.nc.enth<-enth_prior_custom(scale=scale)
@@ -189,10 +189,9 @@ plot(x,prior.nc.enth(x),type="l",
      xlim=c(xmin,xmax),
      ylim=c(0,ymax)) # 20-01-02
 #axis(2,at=c(0,1,2,3),labels=c(0,1,2,3))
-axis(1,at=c(p.enth,p.skpt,(p.enth+p.skpt)/2),
+axis(1,at=c(p.enth,p.skpt),
      labels=c(as.expression(bquote(theta[1])),
-              as.expression(bquote(theta[0])),
-              as.expression(bquote((theta[0]+theta[1])/2))))
+              as.expression(bquote(theta[0]))))
 title(ylab="Density Value", line=1)
 title(xlab="Response Probability",line=2)
 #title(xlab="Density Value",line=2)
@@ -200,16 +199,17 @@ title(xlab="Response Probability",line=2)
 polygon(c(x[x<=p.skpt],p.skpt),
         c(prior.nc.enth(x)[x<=p.skpt],0),col="black")
 
-polygon(c(p.skpt,x[x>=p.skpt & x<=p.intr],p.intr),
-        c(0,prior.nc.enth(x)[x>=p.skpt & x<=p.intr],0),col="lightgrey")
+# polygon(c(p.skpt,x[x>=p.skpt & x<=p.intr],p.intr),
+#         c(0,prior.nc.enth(x)[x>=p.skpt & x<=p.intr],0),col="lightgrey")
 
 segments(x0=p.enth,y0=0,y1=prior.nc.enth(p.enth))
 
 legend("top",
        legend= c(
                  as.expression(bquote(mode(theta) == theta[1])),
-                 as.expression(bquote(P(theta< theta[0])==.(tail.enth))),
-                 as.expression(bquote(P(theta %in% (theta[0]*","*(theta[0]+theta[1])/2)==.(round((pnorm(qnorm(tail.enth)/2)-tail.enth)*scale,3)))))#,
+                 as.expression(bquote(P(theta< theta[0])==.(tail.enth))),                 
+                 as.expression(bquote(k==1.5))
+                 #as.expression(bquote(P(theta %in% (theta[0]*","*(theta[0]+theta[1])/2)==.(round((pnorm(qnorm(tail.enth)/2)-tail.enth)*scale,3)))))#,
                  #as.expression(bquote(GN(mu==theta[1],alpha==.(sigma0.enth),beta==.(lambda0.enth))))
        ))
 
@@ -219,7 +219,7 @@ dev.off()
 #rm(list = ls())
 #root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 #setwd(root)
-width.scale<-6
+width.scale<-5
 png('figure1c.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
 scale <- 1.5
 prior.nc.enth<-enth_prior_custom(scale=scale)
@@ -239,10 +239,9 @@ plot(x,prior.nc.enth(x),type="l",
      xlim=c(xmin,xmax),
      ylim=c(0,ymax)) # 20-01-02
 #axis(2,at=c(0,1,2,3),labels=c(0,1,2,3))
-axis(1,at=c(p.enth,p.skpt,(p.enth+p.skpt)/2),
+axis(1,at=c(p.enth,p.skpt),
      labels=c(as.expression(bquote(theta[1])),
-              as.expression(bquote(theta[0])),
-              as.expression(bquote((theta[0]+theta[1])/2))))
+              as.expression(bquote(theta[0]))))
 title(ylab="Density Value", line=1)
 title(xlab="Response Probability",line=2)
 #title(xlab="Density Value",line=2)
@@ -250,8 +249,8 @@ title(xlab="Response Probability",line=2)
 polygon(c(x[x<=p.skpt],p.skpt),
         c(prior.nc.enth(x)[x<=p.skpt],0),col="black")
 
-polygon(c(p.skpt,x[x>=p.skpt & x<=p.intr],p.intr),
-        c(0,prior.nc.enth(x)[x>=p.skpt & x<=p.intr],0),col="lightgrey")
+# polygon(c(p.skpt,x[x>=p.skpt & x<=p.intr],p.intr),
+#         c(0,prior.nc.enth(x)[x>=p.skpt & x<=p.intr],0),col="lightgrey")
 
 segments(x0=p.enth,y0=0,y1=prior.nc.enth(p.enth))
 
@@ -259,7 +258,8 @@ legend("top",
        legend= c(
                  as.expression(bquote(mode(theta) == theta[1])),
                  as.expression(bquote(P(theta< theta[0])==.(tail.enth))),
-                 as.expression(bquote(P(theta %in% (theta[0]*","*(theta[0]+theta[1])/2)==.(round((pnorm(qnorm(tail.enth)/2)-tail.enth)*scale,3)))))#,
+                 as.expression(bquote(k==0.67))
+                 #as.expression(bquote(P(theta %in% (theta[0]*","*(theta[0]+theta[1])/2)==.(round((pnorm(qnorm(tail.enth)/2)-tail.enth)*scale,3)))))#,
                  #as.expression(bquote(GN(mu==theta[1],alpha==.(sigma0.enth),beta==.(lambda0.enth))))
                  ))
 
