@@ -1,4 +1,5 @@
 output_png <- FALSE
+library(gnorm)
 
 # assemble final prior
 skpt.prior.1 <- function(x, y){ # for x > 0 (gamma > 0)

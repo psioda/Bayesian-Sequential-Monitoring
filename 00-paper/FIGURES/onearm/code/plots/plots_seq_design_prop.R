@@ -59,9 +59,8 @@ text(figure3_table$p.range[seq(1,length(figure3_table$p.range))],
 
 legend("right",#text.width=0.05,
        legend=c("Stop Early for Efficacy",
-                "Stop Early for Futility",
-                "Inconclusive Findings"),
-       lty=c('solid','longdash','dotted'))
+                "Stop Early for Futility"),
+       lty=c('solid','longdash'))
 
 # row<-2
 # for (j in seq(1,length(figure3$p.range),by=9)){

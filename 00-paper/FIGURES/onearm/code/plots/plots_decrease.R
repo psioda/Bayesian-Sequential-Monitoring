@@ -1,16 +1,16 @@
 plot(figure3b$p.range,figure3b$X0.5,
      type='l',
-     ylim=c(0.9,0.975),
+     ylim=c(0.88,0.975),
      ylab="",
      xlab="",
      main="",
      axes=FALSE)
 box()
 
-axis(2,las=2,at=seq(0.9,1,by=0.01),labels=format(seq(0.9,1,by=0.01),nsmall=1))
+axis(2,las=2,at=seq(0.88,1,by=0.01),labels=format(seq(0.88,1,by=0.01),nsmall=1))
 title(ylab="Final Efficacy Criteria", line=3, #cex.lab=1.2
 )
-abline(h=seq(0.9,1,by=0.01),col='grey')
+abline(h=seq(0.88,1,by=0.01),col='grey')
 
 lines(figure3b$p.range,figure3b$X0.1)
 lines(figure3b$p.range,figure3b$X0.25)

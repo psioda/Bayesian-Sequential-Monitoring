@@ -13,11 +13,13 @@
  
 \begin{figure}\begin{center}
 %\includegraphics[width=6in]{figure5c.png}
+\includegraphics[width=3in]{figure5a_NEW.png}
+\includegraphics[width=3in]{figure5b_NEW.png}
 \includegraphics[width=6in]{figure5a.png}
 %\includegraphics[width=6in]{figure5d.png}
 %\includegraphics[width=6in]{figure5b.png}
 %\includegraphics[width=6in]{figure5e.png}
-\caption{Joint distribution $\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$, where $\pi(\theta)$ is a default skeptical prior truncated to $[-1,1]$, and $\pi(\eta|\theta)$ is a default skeptical prior truncated to $[\rmn{max}(-\theta,0),\rmn{min}(1,1+\theta)]$.}
+\caption{A, concentrated skeptical prior $\pi_S(\theta)$ truncated to $[-1,1]$. B, conditional prior $\pi(\eta|\theta=\theta_0)$. C, joint prior $\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$ truncated based on the conditions $-1<\theta<1$ and $0<\theta+\eta<1$.}
 \label{fig:figure5}
  \end{center}
 \end{figure}
@@ -46,7 +48,7 @@
 \begin{figure}\begin{center}
 
     \includegraphics[width=6in]{figure4.png}
-    \caption{Probability of efficacy criteria being satisfied when $\theta=\theta_0$. SS; sample size. Monitor Freq; monitoring frequency.}
+    \caption{Probability of stopping early for efficacy and the posterior probability that the alternative hypothesis is true at the final analysis when $\theta=\theta_0$. SS; sample size. Monitor Freq; monitoring frequency.}
 \label{fig:ex1t1e}
 
 %  \begin{subfigure}{7in}

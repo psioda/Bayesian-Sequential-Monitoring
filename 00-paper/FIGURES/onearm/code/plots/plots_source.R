@@ -1,54 +1,54 @@
-#######################################
-#### Figure 1, One Arm Prior Plots ####
-#######################################
-dev.off()
-rm(list = ls())
-root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
-setwd(root)
-source("code_functions.R")
-source("args_model.R")
-width.scale<-6
-png('../../figure1a.png',width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
-prior.nc.skpt<-skpt_prior_default()
-source("plots/plots_prior_skpt.R")
-mtext("(A)",side=2,line=1,at=6,las=1)
-dev.off()
-
-rm(list = ls())
-root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
-setwd(root)
-source("code_functions.R")
-source("args_model.R")
-width.scale<-6
-png('../../figure1b.png',width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
-prior.nc.skpt<-skpt_prior_custom(scale=1.15)
-source("plots/plots_prior_skpt.R")
-mtext("(B)",side=2,line=1,at=6,las=1)
-dev.off()
-
-rm(list = ls())
-root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
-setwd(root)
-source("code_functions.R")
-source("args_model.R")
-width.scale<-6
-png('../../figure1c.png',width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
-prior.nc.enth<-enth_prior_default()
-source("plots/plots_prior_enth.R")
-mtext("(C)",side=2,line=1,at=3,las=1)
-dev.off()
-
-rm(list = ls())
-root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
-setwd(root)
-source("code_functions.R")
-source("args_model.R")
-width.scale<-6
-png('../../figure1d.png',width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
-prior.nc.enth<-enth_prior_custom(scale=0.85)
-source("plots/plots_prior_enth.R")
-mtext("(D)",side=2,line=1,at=3,las=1)
-dev.off()
+# #######################################
+# #### Figure 1, One Arm Prior Plots ####
+# #######################################
+# dev.off()
+# rm(list = ls())
+# root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+# setwd(root)
+# source("code_functions.R")
+# source("args_model.R")
+# width.scale<-6
+# png('../../figure1a.png',width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
+# prior.nc.skpt<-skpt_prior_default()
+# source("plots/plots_prior_skpt.R")
+# mtext("(A)",side=2,line=1,at=6,las=1)
+# dev.off()
+# 
+# rm(list = ls())
+# root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+# setwd(root)
+# source("code_functions.R")
+# source("args_model.R")
+# width.scale<-6
+# png('../../figure1b.png',width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
+# prior.nc.skpt<-skpt_prior_custom(scale=1.15)
+# source("plots/plots_prior_skpt.R")
+# mtext("(B)",side=2,line=1,at=6,las=1)
+# dev.off()
+# 
+# rm(list = ls())
+# root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+# setwd(root)
+# source("code_functions.R")
+# source("args_model.R")
+# width.scale<-6
+# png('../../figure1c.png',width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
+# prior.nc.enth<-enth_prior_default()
+# source("plots/plots_prior_enth.R")
+# mtext("(C)",side=2,line=1,at=3,las=1)
+# dev.off()
+# 
+# rm(list = ls())
+# root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+# setwd(root)
+# source("code_functions.R")
+# source("args_model.R")
+# width.scale<-6
+# png('../../figure1d.png',width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
+# prior.nc.enth<-enth_prior_custom(scale=0.85)
+# source("plots/plots_prior_enth.R")
+# mtext("(D)",side=2,line=1,at=3,las=1)
+# dev.off()
 
 ########################################
 #### Figure 2, One Arm Violin Plots ####
@@ -58,18 +58,19 @@ root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/
 setwd(root)
 source("code_functions.R")
 source("args_model.R")
-prior.nc.skpt<-skpt_prior_custom(scale=1.15)
+prior.nc.skpt<-skpt_prior_custom(scale=0.75)
 prior.nc.enth<-enth_prior_default()
 label.x<- (-15)
 x.len<-1000
 grid<-seq(0+1E-4,1-1E-4,length=x.len)
 width.scale<-7
-png('../../figure2a.png',width = 450*width.scale, height = 300*width.scale,pointsize=20,res=300)
+
+png('../../figure2a.png',width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
 par(mar=c(5.1+1,4.1,2.1,2.1)) #c(bottom, left, top, right)
 # Efficacy example
 miss<-c(0,2,3  ,4 ,0)
 n<-   c(0,10,20,30,34)
-y1<-  c(0,7,12 ,21,21)
+y1<-  c(0,7,12 ,20,20)
 y0=n-y1
 spacing<-(seq(1:length(n))-1)*12
 source("plots/plots_violin_v2.R")
@@ -86,6 +87,7 @@ legend("bottomright",
        lwd=c(NA,NA,1,1),
        border=c('black','black',NA,NA)#,x.intersp=c(-.5,-.5,1,1)
 )
+mtext("(A)", side = 2, line = 3, at = 1, las = 1)
 dev.off()
 
 rm(list = ls())
@@ -93,17 +95,18 @@ root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/
 setwd(root)
 source("code_functions.R")
 source("args_model.R")
-prior.nc.skpt<-skpt_prior_custom(scale=1.15)
+prior.nc.skpt<-skpt_prior_custom(scale=0.75)
 prior.nc.enth<-enth_prior_default()
 label.x<- (-15)
 x.len<-1000
 grid<-seq(0+1E-4,1-1E-4,length=x.len)
 width.scale<-7
+
 png('../../figure2b.png',width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
 par(mar=c(5.1+1,4.1,2.1,2.1)) #c(bottom, left, top, right)
 # Futility example
 n<-   c(0,10,20,30,37)
-y1<-  c(0,6 ,7 ,7 ,9)
+y1<-  c(0,6 ,10 ,14 ,15)
 miss<-c(0,2 ,4 ,7 ,0)
 y0=n-y1
 spacing<-(seq(1:length(n))-1)*12
@@ -121,6 +124,7 @@ legend("topright",
        lwd=c(NA,NA,1,1),
        border=c('black','black',NA,NA)#,x.intersp=c(-.5,-.5,1,1)
        )
+mtext("(B)", side = 2, line = 3, at = 1, las = 1)
 dev.off()
 
 
@@ -139,7 +143,7 @@ args_simulation<-read.csv(file="args_simulation.csv",header=TRUE,sep=",")
 Table1<-read.csv(file="../output/Table1_merged.csv",header=TRUE,sep=",")
 combined1<-merge(args_simulation,Table1,by.x="X",by.y="idx")
 
-figure3<-combined1[combined1$model==1 & combined1$skpt_spike==0 & combined1$enth_flat==0,] # change here
+figure3<-combined1[combined1$model==1 & combined1$skpt_spike==1 & combined1$enth_flat==0,] # change here
 figure3_table<-figure3[seq(1,length(figure3$p.range),length=5),]
 
 label_main=""
@@ -205,14 +209,14 @@ v<-floor(max.ss/figure4$freq.mntr)
 #freq.mntr.lst<-length(v)-match(unique(v),rev(v))+1
 #figure4<-figure4[figure4$freq.mntr %in% freq.mntr.lst,]
 
-width.scale<-7
+width.scale<-9
 
 # run plot
 png('../../figure4.png',width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
 label_main=""
-stretch<- (-1.15)
+stretch<- (-.8)
 
-mntr.pts<-c(1,2,4,8,16,56,112)
+mntr.pts<-c(1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60)
 
 source("plots/plots_t1e.R")
 legend("right",c("Initial","Final"),lty=c(5,1))
@@ -234,7 +238,7 @@ Table1<-read.csv(file="../output/Table1_merged.csv",header=TRUE,sep=",")
 combined1<-merge(args_simulation,Table1,by.x="X",by.y="idx")
 k1<-c(4)
 k2<-c(0.25)
-width.scale<-7
+width.scale<-9
 
 ## subset data before running plot, called figure4 for historical reasons
 figure4<-combined1[combined1$model==2 & combined1$enr.shape==k2[1],]
@@ -244,7 +248,7 @@ png('../../figureS1.png',width = 450*width.scale, height = 300*width.scale,point
 label_main=""
 stretch<- (-1.15)
 
-mntr.pts<-c(1,2,4,8,16,56,112)
+mntr.pts<-c(1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60)
 source("plots/plots_t1e.R")
 legend("right",c("Initial","Final"),lty=c(5,1))
 
@@ -381,6 +385,7 @@ png('../../figureS2a.png',
 figure3<-combined1[combined1$model==1 & combined1$skpt_spike==1 & combined1$enth_flat==0,]
 figure3_table<-figure3[seq(1,length(figure3$p.range),length=3),]
 source("plots/plots_seq_design_prop.R")
+mtext("(A)", side = 2, line = 3, at = 1, las = 1)
 dev.off()
 
 png('../../figureS2b.png',
@@ -390,6 +395,7 @@ png('../../figureS2b.png',
 figure3<-combined1[combined1$model==1 & combined1$skpt_spike==1 & combined1$enth_flat==1,]
 figure3_table<-figure3[seq(1,length(figure3$p.range),length=3),]
 source("plots/plots_seq_design_prop.R")
+mtext("(B)", side = 2, line = 3, at = 1, las = 1)
 dev.off()
 
 png('../../figureS2c.png',
@@ -399,6 +405,7 @@ png('../../figureS2c.png',
 figure3<-combined1[combined1$model==1 & combined1$skpt_spike==0 & combined1$enth_flat==1,]
 figure3_table<-figure3[seq(1,length(figure3$p.range),length=3),]
 source("plots/plots_seq_design_prop.R")
+mtext("(C)", side = 2, line = 3, at = 1, las = 1)
 dev.off()
 
 png('../../figureS2d.png',
@@ -408,4 +415,5 @@ png('../../figureS2d.png',
 figure3<-combined1[combined1$model==1 & combined1$skpt_spike==0 & combined1$enth_flat==0,]
 figure3_table<-figure3[seq(1,length(figure3$p.range),length=3),]
 source("plots/plots_seq_design_prop.R")
+mtext("(D)", side = 2, line = 3, at = 1, las = 1)
 dev.off()

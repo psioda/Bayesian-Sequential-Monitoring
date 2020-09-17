@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  15 SEP 2020 16:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  17 SEP 2020 12:25
 entering extended mode
 **./bayes-SM-supplement.tex
 (bayes-SM-supplement.tex
@@ -391,11 +391,11 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [4] (bayes-SM-supplement.fff
-<figureS1.png, id=31, 758.835pt x 505.89pt>
+<figureS1.png, id=31, 4065.1875pt x 2710.125pt>
 File: figureS1.png Graphic file (type png)
 <use figureS1.png>
 Package pdftex.def Info: figureS1.png  used on input line 3.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
+(pdftex.def)             Requested size: 433.62pt x 289.05833pt.
 
 
 LaTeX Warning: Reference `sec:example1' on page 5 undefined on input line 4.
@@ -409,16 +409,16 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [5 <./figureS1.png>]
-<figureS2a.png, id=36, 758.835pt x 505.89pt>
+<figureS2a.png, id=37, 3161.8125pt x 2107.875pt>
 File: figureS2a.png Graphic file (type png)
 <use figureS2a.png>
 Package pdftex.def Info: figureS2a.png  used on input line 13.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-<figureS2b.png, id=37, 758.835pt x 505.89pt>
+(pdftex.def)             Requested size: 433.62pt x 289.05374pt.
+<figureS2b.png, id=38, 3161.8125pt x 2107.875pt>
 File: figureS2b.png Graphic file (type png)
 <use figureS2b.png>
 Package pdftex.def Info: figureS2b.png  used on input line 14.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
+(pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 
 
 LaTeX Warning: Reference `sec:example1' on page 6 undefined on input line 15.
@@ -457,16 +457,16 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 
 
  <./figureS2a.png> <./figureS2b.png>]
-<figureS2c.png, id=43, 758.835pt x 505.89pt>
+<figureS2c.png, id=44, 3161.8125pt x 2107.875pt>
 File: figureS2c.png Graphic file (type png)
 <use figureS2c.png>
 Package pdftex.def Info: figureS2c.png  used on input line 23.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
-<figureS2d.png, id=44, 758.835pt x 505.89pt>
+(pdftex.def)             Requested size: 433.62pt x 289.05374pt.
+<figureS2d.png, id=45, 3161.8125pt x 2107.875pt>
 File: figureS2d.png Graphic file (type png)
 <use figureS2d.png>
 Package pdftex.def Info: figureS2d.png  used on input line 24.
-(pdftex.def)             Requested size: 433.62pt x 289.08589pt.
+(pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 
 
 LaTeX Warning: Reference `sec:example1' on page 7 undefined on input line 25.
@@ -536,9 +536,9 @@ X/texmfs/install/fonts/type1/public/amsfonts/cm/cmti9.pfb></Library/Application
  Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb><
 /Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/
 symbols/msbm10.pfb>
-Output written on bayes-SM-supplement.pdf (7 pages, 474970 bytes).
+Output written on bayes-SM-supplement.pdf (7 pages, 1225978 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
+ 105 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
