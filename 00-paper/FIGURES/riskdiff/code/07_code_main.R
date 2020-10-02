@@ -14,7 +14,7 @@
 ### # If changes made to functions then re-run args_model.R
 ##################################
 
-for (idx in 41){ # check here
+for (idx in 1:7){ # check here
 
 if (Sys.getenv("USER") == "kwiatkoe") {
   library(pracma)
@@ -28,7 +28,7 @@ if (Sys.getenv("USER") == "kwiatkoe") {
 
 # Model information, including all functions used (The only additional source file to be called is "code_enrollment.R")
 load(file = 'args_model.RData') # loads all model information include prior parameters AND SETS SEED
-set.seed(idx*71420)  #  05-19-2020
+set.seed(idx*92920)  #  05-19-2020
 
 # Simulation information
 simulation <- read.csv(file = "args_simulation.csv", header = TRUE, sep = ",")
@@ -43,7 +43,7 @@ inner <- array(NA, dim = c(reps, length(names)), dimnames = list(seq_len(reps), 
 
 for (i in 1:reps){
   
-  {print(paste0("IDX ", idx, ", Simulation ", i))}
+  {print(paste0("IDX ", idx, ", Simulation ", i, ", eff_mix_prob ", eff.mix.prob))}
   
   source("04_code_enrollment.R")
   

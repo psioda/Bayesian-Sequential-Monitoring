@@ -9,7 +9,7 @@
 rm(list = ls())
 
 simulation1 <- expand.grid(
-  seq(.39, 0.63, length = 5), # p.IP
+  seq(.27, 0.63, length = 7), # p.IP
   .39, # p.PC
   2,   # freq.mntr
   1,   # enr.shape
@@ -20,7 +20,7 @@ simulation1 <- expand.grid(
   0.05, # cred.tail
   100,  # max.ss
   70,   # min.ss
-  10000)   # reps
+  100)   # reps
 
 simulation2 <- expand.grid(
   seq(.39, 0.63, length = 5), # p.IP

@@ -26,12 +26,14 @@ monitoring <- function(index){
   ## futility probability using skeptical prior (scaled)
   # integrate joint prior from [delta.intr , 1], stop if less than epsilon
   # alternatively, stop if 1 - (fut.prob.skpt/skpt.nc.sc) is greater than 1 - epsilon
-  fut.prob.skpt <- integrate_debug(skpt.post.sc.1, xmin = delta.intr, xmax = 1, ymin = 0, ymax = function(x) 1 - x)
+  # UPDATE 9/29/20: change xmin from delta.intr to delta.enth
+  fut.prob.skpt <- integrate_debug(skpt.post.sc.1, xmin = delta.enth, xmax = 1, ymin = 0, ymax = function(x) 1 - x)
   
   # futility probability using enthusiastic prior (scaled)
   # integrate joint prior from [delta.intr , 1], stop if less than epsilon
   # alternatively, stop if 1 - (fut.prob.skpt/skpt.nc.sc) is greater than 1 - epsilon
-  fut.prob.enth <- integrate_debug(enth.post.sc.1, xmin = delta.intr, xmax = 1, ymin = 0, ymax = function(x) 1 - x)
+  # UPDATE 9/29/20: change xmin from delta.intr to delta.enth
+  fut.prob.enth <- integrate_debug(enth.post.sc.1, xmin = delta.enth, xmax = 1, ymin = 0, ymax = function(x) 1 - x)
   
   # Recall default is eff.skpt.wt <- 1   (all skeptical prior for efficacy monitoring)
   eff.prob <- eff.skpt.wt*(eff.prob.skpt/skpt.nc.sc) + (1 - eff.skpt.wt)*(eff.prob.enth/enth.nc.sc)

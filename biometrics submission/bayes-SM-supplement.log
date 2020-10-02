@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  17 SEP 2020 12:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  2 OCT 2020 10:00
 entering extended mode
 **./bayes-SM-supplement.tex
 (bayes-SM-supplement.tex
@@ -312,29 +312,10 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 /pdftex.map}
 
 ]
-
-Package natbib Warning: Citation `Griffin2018' on page 2 undefined on input lin
-e 203.
-
-
 Overfull \hbox (1.19305pt too wide) in paragraph at lines 203--204
  \OT1/cmr/m/it/12 Generalized Normal Distributions $[][]\OT1/cmr/m/n/12 ([]\OML
 /cmm/m/it/12 ; q; \OT1/cmr/m/n/12 )$ Let $\OML/cmm/m/it/12 F[]$ \OT1/cmr/m/n/1
 2 denote the cumulative distribution
- []
-
-
-Package natbib Warning: Citation `Byrd1995' on page 2 undefined on input line 2
-11.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 2 undefined on input line 213.
-
-
-Overfull \hbox (4.5435pt too wide) in paragraph at lines 213--214
-\OT1/cmr/m/n/12 prior as $[][]([] = \OML/cmm/m/it/12 []; q \OT1/cmr/m/n/12 = \
-OML/cmm/m/it/12 [];  \OT1/cmr/m/n/12 = 1)$, the concentrated enthusiastic pri
-or as $[][]([] =
  []
 
 
@@ -344,48 +325,23 @@ Overfull \hbox (16.37509pt too wide) in paragraph at lines 215--218
 ; \OT1/cmr/m/n/12 )$,
  []
 
-
-LaTeX Warning: Reference `fig:figure5' on page 2 undefined on input line 219.
-
-
-LaTeX Warning: Reference `fig:ex1t1e' on page 2 undefined on input line 228.
-
-
-LaTeX Warning: Reference `sec:example1' on page 2 undefined on input line 228.
-
 \openout3 = `bayes-SM-supplement.fff'.
 
 (bayes-SM-supplement.fff)
-Underfull \vbox (badness 1275) has occurred while \output is active []
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 2
  []
 
 [2]
 
-LaTeX Warning: Reference `sec:example1' on page 3 undefined on input line 238.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 3 undefined on input line 238.
-
-
 LaTeX Warning: Reference `sec:example1' on page 3 undefined on input line 240.
-
-
-LaTeX Warning: Reference `sec:example1' on page 3 undefined on input line 242.
 
 
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 3
  []
 
-[3]
-
-Package natbib Warning: There were undefined citations.
-
-AED endfloat: Processing end Figures and Tables
+[3] (bayes-SM-supplement.bbl) AED endfloat: Processing end Figures and Tables
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 4
  []
@@ -396,13 +352,6 @@ File: figureS1.png Graphic file (type png)
 <use figureS1.png>
 Package pdftex.def Info: figureS1.png  used on input line 3.
 (pdftex.def)             Requested size: 433.62pt x 289.05833pt.
-
-
-LaTeX Warning: Reference `sec:example1' on page 5 undefined on input line 4.
-
-
-LaTeX Warning: Reference `sec:example1' on page 5 undefined on input line 4.
-
 
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 5
@@ -420,43 +369,11 @@ File: figureS2b.png Graphic file (type png)
 Package pdftex.def Info: figureS2b.png  used on input line 14.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 
-
-LaTeX Warning: Reference `sec:example1' on page 6 undefined on input line 15.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 6 undefined on input line 15.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 6 undefined on input line 15.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 6 undefined on input line 15.
-
-
-LaTeX Warning: Reference `sec:example1' on page 6 undefined on input line 15.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 6 undefined on input line 15.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 6 undefined on input line 15.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 6 undefined on input line 15.
-
-
-LaTeX Warning: Text page 6 contains only floats.
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 6
  []
 
-[6
-
-
-
- <./figureS2a.png> <./figureS2b.png>]
+[6 <./figureS2a.png> <./figureS2b.png>]
 <figureS2c.png, id=44, 3161.8125pt x 2107.875pt>
 File: figureS2c.png Graphic file (type png)
 <use figureS2c.png>
@@ -469,30 +386,6 @@ Package pdftex.def Info: figureS2d.png  used on input line 24.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 
 
-LaTeX Warning: Reference `sec:example1' on page 7 undefined on input line 25.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 7 undefined on input line 25.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 7 undefined on input line 25.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 7 undefined on input line 25.
-
-
-LaTeX Warning: Reference `sec:example1' on page 7 undefined on input line 25.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 7 undefined on input line 25.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 7 undefined on input line 25.
-
-
-LaTeX Warning: Reference `fig:figure1' on page 7 undefined on input line 25.
-
-
 LaTeX Warning: Text page 7 contains only floats.
 
 
@@ -502,19 +395,22 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 
 [7
 
+
+
+
  <./figureS2c.png> <./figureS2d.png>]) (bayes-SM-supplement.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3417 strings out of 482730
- 45177 string characters out of 2947761
- 291793 words of memory out of 3000000
- 19140 multiletter control sequences out of 15000+200000
+ 3424 strings out of 482730
+ 45403 string characters out of 2947761
+ 291882 words of memory out of 3000000
+ 19144 multiletter control sequences out of 15000+200000
  543476 words of font info for 64 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 33i,7n,38p,1041b,320s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,7n,38p,1041b,309s stack positions out of 5000i,500n,10000p,200000b,50000s
 </Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type
 1/public/amsfonts/cm/cmex10.pfb></Library/Application Support/MiKTeX/texmfs/ins
@@ -536,7 +432,7 @@ X/texmfs/install/fonts/type1/public/amsfonts/cm/cmti9.pfb></Library/Application
  Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb><
 /Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/
 symbols/msbm10.pfb>
-Output written on bayes-SM-supplement.pdf (7 pages, 1225978 bytes).
+Output written on bayes-SM-supplement.pdf (7 pages, 1230908 bytes).
 PDF statistics:
  105 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

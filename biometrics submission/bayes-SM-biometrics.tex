@@ -765,7 +765,7 @@ As can be seen, for the proposed approach the weight given to the enthusiastic c
 %as a mixing weight that dynamically gives preference to the prior that has the higher density evaluated at $\hat{\theta}$ with a minimum weight $\omega_{min}$ given to the skeptical component with $\omega_{min}\in[0,1]$.
 %%%\end{mydef}
 
-\subsubsection{Inference Priors}
+\subsubsection{Inference Priors}\label{sec:inferencepriors}
 The purpose of the inference prior is to synthesize the posterior inferences from the a priori diverse perspectives to 
 facilitate interpretation of the data once it has been obtained. 
 %
@@ -779,7 +779,7 @@ two perspectives.
 Thus, when interpreting the final data once in hand, intermediate perspectives should be considered.
 %
 To that end, we define an inference prior through mixing the two monitoring priors along with (potentially) a locally 
-non-informative prior to provided added robustness, if desired.
+non-informative prior to provide added robustness, if desired.
 
 {
 Define the inference prior as
@@ -892,9 +892,7 @@ In this case $\theta$ and $\eta$  are linked through constrained support (e.g. $
 \subsubsection{Motivating Example}
 Consider the T72 pediatric trial ``A Study of the Safety and Efficacy of Infliximab (REMICADE) in Pediatric Patients With Moderately to Severely Active Ulcerative Colitis" (NCT00336492) ~\citep{Hyams2012} which was conducted between August 2006 and June 2010.
 %
-Disease activity was measured via Mayo score on a scale of 0-12 points, with higher scores indicating more severe disease activity.
-%
-The population was patients ages 6 through 17 who had a baseline Mayo score of 6-12 points.
+The population was patients ages 6 through 17 with ulcerative colitis measured by a baseline Mayo score of 6 or above on a scale of 0-12, where higher scores indicate more severe disease activity.
 %
 A 5mg/kg dose of infliximab was given to patients at weeks 0, 2, and 6.
 %
@@ -902,7 +900,13 @@ The primary endpoint was a dichotomous variable reflecting a 3-point or greater 
 %
 Patients were enrolled over approximately 33.5 months (approximately 1 patient enrolled per 17 days). 
 %
-The sample size of 60 patients was chosen so that a 95\% two-sided confidence interval for the response probability would have 12\% precision in estimating the true response proportion if the observed response rate was 0.67 (i.e. confidence interval half-width of 0.12). The rate of 0.67 was the observed response rate among adults in the ACT 1 and ACT 2 trials \citep{Rutgeerts2005} at the same 5mg/kg dose (N = 242). Obtaining a 95\% confidence interval that excluded 0.40 was used as the criterion for classifying the results as clinically significant. At week 8, clinical response was observed in 44 out of 60 (73.3\%) patients.
+The sample size of 60 patients was chosen so that a 95\% two-sided confidence interval for the response probability would have 12\% precision in estimating the true response proportion if the observed response rate was 0.67 (i.e. confidence interval half-width of 0.12). 
+%
+The rate of 0.67 was the observed response rate among adults in the ACT 1 and ACT 2 trials \citep{Rutgeerts2005} at the same 5mg/kg dose (N = 242).
+%
+Obtaining a 95\% confidence interval that excluded 0.40 was used as the criterion for classifying the results as clinically significant.
+%
+Clinical response was observed in 44 of 60 (73.3\%) patients.
 
 \subsubsection{Model Formulation \& Prior Elicitation}\label{sec:example1model} We use this trial as a motivating example to demonstrate the proposed 
 framework for sequential monitoring. The data $\bmath{D}$ are assumed to be comprised of independent Bernoulli random variables having common response 
@@ -1019,54 +1023,52 @@ This is to be expected; there are more opportunities for a conclusion of efficac
 
 \subsection{Parallel Two-Group Design with Binary Endpoint}\label{sec:example2}
 \subsubsection{Motivating Example}
-Consider the trial ``The Pediatric Lupus Trial of Belimumab Plus Background Standard Therapy (PLUTO)" (NCT01649765).
+Consider the trial ``The Pediatric Lupus Trial of Belimumab Plus Background Standard Therapy (PLUTO)" (NCT01649765) which was conducted between September 2012 and January 2018.
 %
-Patients were randomized to belimumab 10mg/kg or placebo, and the primary endpoint was response at week 52.
+The population was patients ages 5 though 17 with active systemic lupus erythematosus (SLE) measured by a baseline SELENA SLEDAI score of 6 or above on a scale of 0-105, where higher scores indicate more severe disease activity.
 %
-A binary response variable was measured by improvement in disease severity scores.
+Patients were randomized to monthly dosing of either belimumab 10mg/kg or placebo, while continuing to receive standard of care therapy regardless of assignment.
 %
-The goal was to test for superiority of belimumab to placebo. 
+The primary endpoint was a dichotomous variable reflecting a 4-point or greater reduction in SELENA SLEDAI score from baseline to week 52. 
 %
-The study start date was September 7, 2012, and the primary completion date was January 24, 2018.
+The study design included enrollment of 100 patients, the first 24 patients randomized in a 5:1 allocation ratio (belimumab:placebo) and the remaining 76 patients in a 1:1 ratio, resulting in 58 patients randomized to belimumab and 42 to placebo. 
 %
-Since the follow-up period is 52 weeks the last enrollment is estimated to be a year prior to the primary competition date yielding an average enrollment rate of one enrollment per $17$ days.
+The sample size was based on feasibility constraints rather than a power calculation.
 %
-The study design included enrollment of 100 patients, the first 24 patients randomized in a 5:1 ratio (belimumab:placebo) and the remaining 76 patients would be randomized in a 1:1 allocation ratio.
+Data from two studies of the use of belimumab in adults showed a placebo response rate of $0.39$, and a 10mg/kg response rate of $0.51$. 
 %
-Therefore, 58 patients would be randomized to belimumab and 42 to placebo.
+Using these values for the null and anticipated response rates, a frequentist two-sided hypothesis test with confidence level $95\%$ and power $70\%$ would require 210 total patients assuming equal allocation, and with $80\%$ power 266 patients would be required.
 %
-The sample size was based on feasibility constraints rather than a power calculation, and the study was terminated after 93 patients enrolled.
+Enrollment was terminated at 93 patients who were enrolled over approximately 52.5 months (approximately 1 patient enrolled per 17 days).
+%
+Clinical response was observed in 28 of 53 (52.8\%) of patients randomized to belimumab and in 17 of 40 (43.6\%) of patients randomized to placebo.
 
-The results of this trial were inconclusive with the 93 patients.
-%
-A post-hoc Bayesian analysis that gave $55\%$ weight to adult data with response rate $0.51$ was sufficient to provide evidence of positive treatment effect \citep{Travis2019}.
-%
-Our method contrasts such a post-hoc analysis with the prospective use of a monitoring prior for efficacy which gives weight to the adult data.
+A post-hoc Bayesian hierarchical analysis was conducted which used data from two studies of the use of belimumab in adults. Subjects in the pediatric trial had 1.5 times the odds of clinical response with 95\% CI (0.6, 3.5), and a meta-analysis of the two adult studies showed an odds ratio of 1.6 with 95\% CI (1.3, 2.1). The analysis used a mixture prior which was a weighted sum of a skeptical prior centered at null effect with effective sample size equal to 2 pediatric patients and an informative prior resulting from the meta-analysis. When the weight of the informative component was 0.55 and above, efficacy was concluded based on a 95\% credible interval excluding one. The 0.55 weight of the informative component, interpreted as a 55\% weight on the relevance of the adult information to the pediatric population, was determined to be a reasonable by the clinical team. Our method contrasts such a post-hoc analysis with the prospective use of a monitoring prior for efficacy which gives weight to the adult data at interim analyses.
 
 \subsubsection{Model Formulation \& Prior Elicitation}\label{sec:example2model}
-We use this trial as a template to demonstrate our framework, in particular the performance of our response-adaptive monitoring prior \eqref{eq:adaptive_prior}.
+We use this trial as a template to demonstrate our framework, in particular the performance of our response-adaptive monitoring prior from Section \ref{sec:incorporating}.
 %
 The adaptive prior is useful in this setting because the trial is underpowered and the prospective use of an informative monitoring prior for efficacy provides a different perspective than a post-hoc analysis with an informative prior.
 %
-The data $\bmath{D}$ are assumed to be independent Bernoulli random variables with response probability $\eta_0$ for the placebo group and $\eta_1$ for the treatment (IP for investigational product) group. 
+The data $\bmath{D}$ are assumed to be independent Bernoulli random variables with response probability $\eta_0$ for the placebo group and $\eta_1$ for the treatment group. 
 %
-This trial has a superiority hypothesis of IP to control with null treatment difference value of $\theta_0=0$.
+This trial has a superiority hypothesis of treatment to control with null risk difference value denoted by $\theta_0=0$.
 %
-For purposes of monitoring, a highly efficacious difference probability is $\theta_1=0.12$ \citep{Travis2019} and an intermediate response value is $\theta_m=0.06$.
+An estimate for the pediatric response rate is denoted by $\eta_0=0.39$ (the placebo response rate from adult studies), and for purposes of monitoring, a highly efficacious difference probability is $\theta_1=0.12$ (i.e. anticipating the  adult studies treatment response rate of $0.51$) \citep{Travis2019}.
 %
-An estimate for the pediatric response rate is $\eta_0=0.39$, which is $0.12$ less than the adult data response rate.
+
 
 The skeptical monitoring prior is $\pi_S(\theta,\eta_0)=\pi_S(\theta)\times\pi(\eta_0|\theta)$, where $\pi_S(\theta)$ is a concentrated skeptical prior.
 %
 The enthusiastic monitoring prior is $\pi_E(\theta,\eta_0)=\pi_E(\theta)\times\pi(\eta_0|\theta)$, where $\pi_E(\theta)$ is a default enthusiastic prior.
 %
-The probability of concluding efficacy at an interim analysis is made using a mixture prior with dynamic weight of the form \eqref{eq:adaptive_prior}.
+The probability of concluding efficacy at an interim analysis is made using a mixture prior with dynamic weight of the form \eqref{eq:adaptive_prior} as described in Section \ref{sec:incorporating}.
 %
-A 3-part mixture inference prior of the form \eqref{eq:3partmix} will be used to estimate the posterior mean and coverage probabilities for $\theta$.
+A 3-part mixture inference prior of the form \eqref{eq:3partmix} as described in Section \ref{sec:inferencepriors} will be used to estimate the posterior mean and coverage probabilities for $\theta$.
 %
-The locally non-informative prior is $\pi_{NI}(\theta,\eta_0)=\pi_{NI}(\theta)\times\pi(\eta_0|\theta)$.
+%The locally non-informative prior is $\pi_{NI}(\theta,\eta_0)=\pi_{NI}(\theta)\times\pi(\eta_0|\theta)$.
 %
-For the skeptical, enthusiastic, and locally non-informative priors, $\pi(\eta_0|\theta)$ is a flattened prior with mode value $0.39$ and tail probability condition $P(\eta_0>0.59 | \theta)=0.025$.
+%For the skeptical, enthusiastic, and locally non-informative priors, $\pi(\eta_0|\theta)$ is a flattened prior with mode value $0.39$ and tail probability condition $P(\eta_0>0.59 | \theta)=0.025$.
 
 %, where $\pi_S(\theta)\sim\mathcal{GN}_{p=0.975,\Theta=[-1,1]}(\tilde{\mu}=\theta_0,q=\theta_1,\gamma=0.75)$. The value $\gamma=0.75$ reflects a concentrated distribution which was chosen to reflect a conservative opinion for added Type 1 error control. The enthusiastic monitoring prior is $\pi_E(\theta,\eta_0)=\pi_E(\theta)\times\pi(\eta_0|\theta)$, where $\pi_E(\theta)\sim\mathcal{GN}_{p=0.025,\Theta=[-1,1]}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$. The value $\gamma=1$ was chosen as the default value. For both the skeptical and enthusiastic monitoring prior,$\pi(\eta_0|\theta)\sim\mathcal{GN}_{p=0.975,H=[max(-\theta,0),min(1,1+\theta)]}(\tilde{\mu}=0.39,q=0.59,\gamma=1.5)$. The value $\gamma=1.5$ was chosen to reflect a liberal opinion about the distribution of $\eta_0$. In general, it is recommended to use flattened priors for nuisance parameters.
 
@@ -1083,7 +1085,7 @@ Figure \ref{fig:ex2varyomega}(A) shows the operating characteristics of this des
 %
 The generating response probability in the placebo group is 0.39, and the generating response probability in the treatment group is based on risk differences $\theta$ in $\{0, 0.06, 0.12, 0.18, 0.24\}$.
 %
-When $\theta=0$, there is a 0.008 probability of concluding efficacy at an interim analysis.
+When $\theta=0$, there is probability 0.008 of concluding efficacy at an interim analysis.
 %
 This probability increases to $0.193$ at $\theta_1=0.12$.
 %
@@ -1094,9 +1096,6 @@ Figure \ref{fig:ex2varyomega}(B) shows the probability of stopping early for eff
 Note that $\omega=1$ corresponds to the traditional skeptical prior, $\omega=0.5$ gives equal weight to the skeptical and enthusiastic components, and $\omega=0.25$ most of the weight is applied to the enthusiastic component.
 %
 The adaptive weight mixture behaves similar to using a fixed weight prior that equally weighs the skeptical and enthusiastic prior.
-
-
-
 
 \begin{figure}\begin{center}
       \includegraphics[width=6in]{figure9.png}
@@ -1110,7 +1109,7 @@ Figure \ref{fig:3-part-compatibility}(A) shows the prior-data compatibility asse
 %
 As expected, the skeptical and enthusiastic priors show highest compatibility when the observed risk difference matches the corresponding prior mode, and the non-informative prior shows high compatibility for a wide range of $\theta$.
 %
-Figure \ref{fig:3-part-compatibility}(B) shows the 3-part mixture inference prior weights $\omega_S$, $\omega_{E}$, $\omega_{NI}$ using \eqref{eq:3partmix}-\eqref{eq:3partmix_ni} by observed risk difference.
+Figure \ref{fig:3-part-compatibility}(B) shows the 3-part mixture inference prior weights $\omega_S$, $\omega_{E}$, $\omega_{NI}$ by observed risk difference.
 %
 Recall our goal is to create a mixture prior which favors the skeptical or enthusiastic components in areas where high compatibility is demonstrated for those components, and favors the locally non-informative prior if both the skeptical and enthusiastic components show low compatibility.
 %
@@ -1140,17 +1139,15 @@ This paper demonstrates how the operating characteristics are affected by the ch
 
 Presentation of these concepts was simplified by generic choices for design parameters.
 %
-The same quantity $1-\epsilon$ was used as the threshold for substantial evidence in efficacy and futility monitoring \eqref{eq:eff_evidence} and \eqref{eq:fut_evidence}.
+The same quantity $1-\epsilon$ was used as the threshold for substantial evidence in efficacy and futility monitoring.
 %
-In practice, the value of $\epsilon$ could be different for these two purposes (e.g. $\epsilon_{\text{eff}}=0.025$, $\epsilon_{\text{fut}}=0.05$).
+In practice, the value of $\epsilon$ could be different for these two purposes.
 %
-The intermediate effect size $\theta_m$ used in futility monitoring \eqref{eq:futility_criteria} was chosen to be $\theta_m=(\theta_0+\theta_1)/2$, but another effect size between $\theta_0$ and $\theta_1$ could be considered.
-%
-Different assessments of prior-data conflict could be used to create a dynamic prior \eqref{eq:inference_prior}.
-%
-Other distributions than the generalized normal could be used to create monitoring priors with the desired mode value and tail probability constraint (Section \ref{sec:gen_normal}).
+Other distributions than the generalized normal could be used to create monitoring priors with the desired mode value and tail probability constraint (Section \ref{sec:gen_normal}), and different assessments of prior-data conflict could be used to create a dynamic prior (Section \ref{sec:incorporating}).
 %
 Each of these quantities could be modified to better suit the needs of the practitioner. 
+%
+This paper presents standardized recommendations for these quantities which can be used as the starting point for a design.
 
 Although the examples provided are superiority trials with binary data and response probabilities as the parameter of interest, the framework applies to any type of data likelihood and parameter of interest on an interval domain.
 %
