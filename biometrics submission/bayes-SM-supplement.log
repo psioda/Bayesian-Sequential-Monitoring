@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  2 OCT 2020 10:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  25 OCT 2020 09:19
 entering extended mode
 **./bayes-SM-supplement.tex
 (bayes-SM-supplement.tex
@@ -333,10 +333,6 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [2]
-
-LaTeX Warning: Reference `sec:example1' on page 3 undefined on input line 240.
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 3
  []
@@ -398,41 +394,38 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 
 
 
- <./figureS2c.png> <./figureS2d.png>]) (bayes-SM-supplement.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+ <./figureS2c.png> <./figureS2d.png>]) (bayes-SM-supplement.aux) ) 
 Here is how much of TeX's memory you used:
- 3424 strings out of 482730
- 45403 string characters out of 2947761
+ 3423 strings out of 482730
+ 45389 string characters out of 2947761
  291882 words of memory out of 3000000
- 19144 multiletter control sequences out of 15000+200000
+ 19143 multiletter control sequences out of 15000+200000
  543476 words of font info for 64 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
  33i,7n,38p,1041b,309s stack positions out of 5000i,500n,10000p,200000b,50000s
-</Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfon
-ts/cm/cmbx12.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type
-1/public/amsfonts/cm/cmex10.pfb></Library/Application Support/MiKTeX/texmfs/ins
-tall/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Library/Application Support/Mi
-KTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Library/Applicat
-ion Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Li
-brary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/
-cmmib10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/pub
-lic/amsfonts/cm/cmr12.pfb></Library/Application Support/MiKTeX/texmfs/install/f
-onts/type1/public/amsfonts/cm/cmr6.pfb></Library/Application Support/MiKTeX/tex
-mfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Library/Application Suppo
-rt/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr9.pfb></Library/Appl
-ication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfont
-s/cm/cmsy6.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/
-public/amsfonts/cm/cmsy8.pfb></Library/Application Support/MiKTeX/texmfs/instal
-l/fonts/type1/public/amsfonts/cm/cmti12.pfb></Library/Application Support/MiKTe
-X/texmfs/install/fonts/type1/public/amsfonts/cm/cmti9.pfb></Library/Application
- Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb><
-/Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/
-symbols/msbm10.pfb>
-Output written on bayes-SM-supplement.pdf (7 pages, 1230908 bytes).
+</Library/App
+lication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pf
+b></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfon
+ts/cm/cmex10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type
+1/public/amsfonts/cm/cmmi12.pfb></Library/Application Support/MiKTeX/texmfs/ins
+tall/fonts/type1/public/amsfonts/cm/cmmi6.pfb></Library/Application Support/MiK
+TeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Library/Applicati
+on Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmib10.pfb></L
+ibrary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm
+/cmr12.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/publ
+ic/amsfonts/cm/cmr6.pfb></Library/Application Support/MiKTeX/texmfs/install/fon
+ts/type1/public/amsfonts/cm/cmr8.pfb></Library/Application Support/MiKTeX/texmf
+s/install/fonts/type1/public/amsfonts/cm/cmr9.pfb></Library/Application Support
+/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Library/Appl
+ication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
+</Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/p
+ublic/amsfonts/cm/cmti12.pfb></Library/Application Support/MiKTeX/texmfs/instal
+l/fonts/type1/public/amsfonts/cm/cmti9.pfb></Library/Application Support/MiKTeX
+/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb></Library/Applic
+ation Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msbm10.
+pfb>
+Output written on bayes-SM-supplement.pdf (7 pages, 1230692 bytes).
 PDF statistics:
  105 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

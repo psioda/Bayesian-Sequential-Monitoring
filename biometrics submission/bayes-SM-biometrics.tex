@@ -1125,33 +1125,26 @@ To this end, the skeptical and enthusiastic components have the highest weight w
 \end{figure}
 
 \section{Discussion}
-Bayesian methods are well suited for sequentially monitored clinical trials because of their natural interpretations and ability to incorporate external evidence through prior distributions. 
+In this paper, we present a structured framework for specifying monitoring priors and stoppage criteria for a Bayesian sequentially monitored clinical trial.
 %
-Monitoring priors used for efficacy and futility stopping fundamentally determine the operating characteristics of the trial, in addition to factors such as the frequency of data monitoring and number of patients in progress at enrollment termination. 
+To develop this methodology, we present a precise definition of sufficient level of evidence as it relates to the trial hypotheses and relevant external data, and use the generalized normal distribution for the monitoring priors.
+%
+The inputs necessary to parameterize the monitoring priors and define the stoppage criteria are the sufficient level of evidence, the boundary null value for the treatment effect, and a plausible, clinically meaningful value for the treatment effect.
+%
+This framework provides a reproducible process that emphasizes interpretability of the trial results as it directly relates to the design choices.
+%
+We begin the presentation with with fixed choices for the skeptical and monitoring priors, and then extend to adaptive mixtures based on assessments of prior-data conflict.
 
-This paper presents a structured framework for designing a Bayesian sequentially monitored clinical trial.
+This framework is based on intuitive justification for the design quantities rather than being motivated by having pre-specified frequentist operating characteristics.
 %
-The generalized normal distribution gives a flexible and intuitive way to create monitoring priors.
+Consequently, the choice of monitoring prior and stoppage criteria are the same regardless of the frequency of data monitoring and the number of patients in progress at enrollment termination, although these factors do impact the operating characteristics of the trial.
 %
-It is required that the practitioner specify the mode value, a quantile condition, and an additional parameter which can concentrate or flatten the distribution around the mode value (with the normal distribution as the default case).
-%
-This paper demonstrates how the operating characteristics are affected by the choice of monitoring priors.
-
-Presentation of these concepts was simplified by generic choices for design parameters.
-%
-The same quantity $1-\epsilon$ was used as the threshold for substantial evidence in efficacy and futility monitoring.
-%
-In practice, the value of $\epsilon$ could be different for these two purposes.
-%
-Other distributions than the generalized normal could be used to create monitoring priors with the desired mode value and tail probability constraint (Section \ref{sec:gen_normal}), and different assessments of prior-data conflict could be used to create a dynamic prior (Section \ref{sec:incorporating}).
-%
-Each of these quantities could be modified to better suit the needs of the practitioner. 
-%
-This paper presents standardized recommendations for these quantities which can be used as the starting point for a design.
+Even though frequentist operating characteristics are not an explicit focus of the design, we demonstrate that the Bayesian approaches proposed provide good operating characteristics across a wide range of data monitoring frequencies and enrollment patterns.
 
 Although the examples provided are superiority trials with binary data and response probabilities as the parameter of interest, the framework applies to any type of data likelihood and parameter of interest on an interval domain.
 %
 Future work will involve demonstrating the framework in Bayesian clinical trials with survival outcomes.
+
 
 %\begin{table}
 %\caption{This is a simple table.}

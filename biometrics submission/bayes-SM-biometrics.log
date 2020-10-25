@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  2 OCT 2020 09:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  25 OCT 2020 10:00
 entering extended mode
 **./bayes-SM-biometrics.tex
 (bayes-SM-biometrics.tex
@@ -522,33 +522,24 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [22]
-Overfull \hbox (7.61644pt too wide) in paragraph at lines 1128--1131
-\OT1/cmr/m/n/12 natural interpretations and ability to incorporate external evi
-dence through prior distributions.
+Overfull \hbox (20.89825pt too wide) in paragraph at lines 1128--1137
+\OT1/cmr/m/n/12 stoppage criteria for a Bayesian sequentially monitored clinica
+l trial. To develop this methodology,
  []
 
-
-Overfull \hbox (6.9595pt too wide) in paragraph at lines 1128--1131
-\OT1/cmr/m/n/12 Monitoring priors used for efficacy and futility stopping funda
-mentally determine the operating
- []
-
-
-Overfull \hbox (0.74023pt too wide) in paragraph at lines 1132--1139
-[]\OT1/cmr/m/n/12 This paper presents a structured framework for designing a Ba
-yesian sequentially monitored
- []
-
-
+(bayes-SM-biometrics.bbl
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 23
  []
 
-[23] (bayes-SM-biometrics.bbl
+[23]
 Underfull \hbox (badness 1490) in paragraph at lines 51--58
 \OT1/cmr/m/n/12 Baldassano, R., and Griffiths, A. (2012).  Induction and mainte
 nance therapy
  []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -705,7 +696,7 @@ Here is how much of TeX's memory you used:
  19301 multiletter control sequences out of 15000+200000
  550358 words of font info for 89 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 33i,11n,38p,1381b,348s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,11n,38p,1381b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
 </Library/Application Support/MiKTeX/texmfs/install/
 fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb></Library/Application Support/Mi
 KTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></Library/Applica
@@ -737,7 +728,7 @@ s/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Library/Application Suppo
 rt/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti9.pfb></Library/App
 lication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam
 10.pfb>
-Output written on bayes-SM-biometrics.pdf (34 pages, 2969827 bytes).
+Output written on bayes-SM-biometrics.pdf (34 pages, 2969570 bytes).
 PDF statistics:
  244 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

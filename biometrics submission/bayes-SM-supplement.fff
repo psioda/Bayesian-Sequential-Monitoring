@@ -1,7 +1,7 @@
 \begin{figure}\begin{center}
 
    \includegraphics[width=6in]{figureS1.png}
-    \caption{Single arm design from Example \ref{sec:example1} with a longer follow-up period. Probability of efficacy criteria being satisfied when $\theta=\theta_0$. SS; sample size. Monitor Freq; monitoring frequency.}
+    \caption{Single arm design from main article Section 3.1 with a longer follow-up period. Probability of efficacy criteria being satisfied when $\theta=\theta_0$. SS; sample size. Monitor Freq; monitoring frequency.}
 \label{fig:ex1t1e_longer}
 
 \end{center}
@@ -12,7 +12,7 @@
 
  \includegraphics[width=6in]{figureS2a.png}
  \includegraphics[width=6in]{figureS2b.png}
- \caption{Modification of enthusiastic prior parameterization in Example \ref{sec:example1}. A, default enthusiastic prior (Figure \ref{fig:figure1}(c)). B, flattened enthusiastic prior (Figure \ref{fig:figure1}(d)). Both designs use concentrated skeptical prior (Figure \ref{fig:figure1}(b)).}
+ \caption{Modification of enthusiastic prior parameterization from main article Section 3.1. A, default enthusiastic prior (main article Figure 1(c)). B, flattened enthusiastic prior (main article Figure 1(d)). Both designs use concentrated skeptical prior (main article Figure 1(b)).}
 \label{fig:robustness1}
 \end{center}
 \end{figure}
@@ -22,7 +22,7 @@
 
  \includegraphics[width=6in]{figureS2c.png}
  \includegraphics[width=6in]{figureS2d.png}
- \caption{Modification of enthusiastic prior parameterization in Example \ref{sec:example1}. A, default enthusiastic prior (Figure \ref{fig:figure1}(c)). B, flattened enthusiastic prior (Figure \ref{fig:figure1}(d)). Both designs use default skeptical prior (Figure \ref{fig:figure1}(a)).}
+ \caption{Modification of enthusiastic prior parameterization in main article Section 3.1. A, default enthusiastic prior (main article Figure 1(c)). B, flattened enthusiastic prior (main article Figure 1(d)). Both designs use default skeptical prior (main article Figure 1(a)).}
 \label{fig:robustness2}
 \end{center}
 \end{figure}
