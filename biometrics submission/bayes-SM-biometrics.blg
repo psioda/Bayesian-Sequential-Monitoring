@@ -1,5 +1,63 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: bayes-SM-biometrics.aux
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: bayes-SM-biometrics.aux
+Reallocating 'name_of_file' (item size: 1) to 5 items.
 The style file: biom.bst
-Database file #1: fda_bib_062420.bib
+Reallocating 'name_of_file' (item size: 1) to 17 items.
+Database file #1: fda_bib_12_04_20.bib
+Repeated entry---line 361 of file fda_bib_12_04_20.bib
+ : @article{Fayers1997
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 373 of file fda_bib_12_04_20.bib
+ : @article{Freedman1989
+ :                      ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 602 of file fda_bib_12_04_20.bib
+ : @article{Spiegelhalter1993
+ :                           ,
+I'm skipping whatever remains of this entry
+Warning--empty journal in FDA2006
 Warning--empty journal in FDA_CID
-(There was 1 warning)
+You've used 20 entries,
+            2146 wiz_defined-function locations,
+            655 strings with 8216 characters,
+and the built_in function-call counts, 9695 in all, are:
+= -- 846
+> -- 660
+< -- 11
++ -- 222
+- -- 222
+* -- 966
+:= -- 1758
+add.period$ -- 56
+call.type$ -- 20
+change.case$ -- 173
+chr.to.int$ -- 20
+cite$ -- 22
+duplicate$ -- 290
+empty$ -- 532
+format.name$ -- 252
+if$ -- 1762
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 19
+newline$ -- 99
+num.names$ -- 80
+pop$ -- 146
+preamble$ -- 1
+purify$ -- 174
+quote$ -- 0
+skip$ -- 196
+stack$ -- 0
+substring$ -- 591
+swap$ -- 121
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 118
+warning$ -- 2
+while$ -- 86
+width$ -- 0
+write$ -- 249
+(There were 3 error messages)

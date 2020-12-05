@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  25 OCT 2020 10:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  5 DEC 2020 04:25
 entering extended mode
 **./bayes-SM-biometrics.tex
 (bayes-SM-biometrics.tex
@@ -276,21 +276,21 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 )
-LaTeX Font Info:    Trying to load font information for U+eur on input line 239
+LaTeX Font Info:    Trying to load font information for U+eur on input line 233
 .
 
 ("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/ueur.fd
 "
 File: ueur.fd 2013/01/14 v3.01 Euler Roman
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 239
+LaTeX Font Info:    Trying to load font information for U+msa on input line 233
 .
 
 ("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd
 "
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 239
+LaTeX Font Info:    Trying to load font information for U+msb on input line 233
 .
 
 ("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd
@@ -314,6 +314,24 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 [1
 
 ]
+Overfull \hbox (2.26372pt too wide) in paragraph at lines 322--330
+\OT1/cmr/m/n/12 null value for the treatment effect, (2) a plausible, clinicall
+y meaningful value for the treatment
+ []
+
+
+Overfull \hbox (1.22643pt too wide) in paragraph at lines 332--341
+[]\OT1/cmr/m/n/12 A key contribution of this work is to give structured definit
+ions for skeptical and enthusiastic
+ []
+
+
+Overfull \hbox (22.75526pt too wide) in paragraph at lines 332--341
+\OT1/cmr/m/n/12 prior opinion about the treatment effect (Section 2.2.2[]). A c
+onditional-marginal prior factorization
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -322,16 +340,13 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [2]
-Overfull \hbox (0.39626pt too wide) in paragraph at lines 358--365
- \OT1/cmr/m/n/12 2.1.1 \OT1/cmr/m/it/12 Bayesian Hypothesis Testing. [] \OT1/cm
-r/m/n/12 Consider a clinical trial application where the primary
+Overfull \hbox (2.00261pt too wide) in paragraph at lines 342--356
+\OT1/cmr/m/n/12 influenced by the frequency of monitoring. Specifically, we est
+imate the probability of stopping
  []
 
 
-Overfull \hbox (11.1414pt too wide) in paragraph at lines 358--365
-\OT1/cmr/m/n/12 receiving the investigational treatment and those receiving the
- control treatment (e.g., placebo). 
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
@@ -339,19 +354,21 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [3]
+Overfull \hbox (0.39626pt too wide) in paragraph at lines 389--395
+ \OT1/cmr/m/n/12 2.1.1 \OT1/cmr/m/it/12 Bayesian Hypothesis Testing. [] \OT1/cm
+r/m/n/12 Consider a clinical trial application where the primary
+ []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 4
  []
 
 [4]
-Overfull \hbox (25.47514pt too wide) in paragraph at lines 423--434
+Overfull \hbox (2.57288pt too wide) in paragraph at lines 453--464
  \OT1/cmr/m/n/12 2.1.3 \OT1/cmr/m/it/12 Skeptical and Enthusiastic Monitoring P
-riors. [] \OT1/cmr/m/n/12 Having formalized concepts for \OT1/cmr/m/it/12 subst
-antial
+riors. [] \OT1/cmr/m/n/12 Monitoring priors are used for interim
  []
-
-
-Underfull \vbox (badness 2384) has occurred while \output is active []
 
 
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
@@ -359,18 +376,6 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [5]
-Overfull \hbox (2.3901pt too wide) in paragraph at lines 469--481
-\OT1/cmr/m/n/12 skepticism regarding whether the alternative hypothesis is true
-. Indeed, assuming a symmetric
- []
-
-
-Overfull \hbox (8.92198pt too wide) in paragraph at lines 469--481
-\OT1/cmr/m/n/12 possibility of large treatment effects but is otherwise consist
-ent with clinical equipoise regarding
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -379,34 +384,40 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [6]
+Overfull \hbox (2.3901pt too wide) in paragraph at lines 488--500
+\OT1/cmr/m/n/12 skepticism regarding whether the alternative hypothesis is true
+. Indeed, assuming a symmetric
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 7
  []
 
 [7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 8
  []
 
 [8]
-Overfull \hbox (1.21928pt too wide) in paragraph at lines 558--568
-\OT1/cmr/m/n/12 constraints alone do not uniquely determine the priors. There a
-re infinitely many distributions
- []
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 9
  []
 
 [9]
-\openout3 = `bayes-SM-biometrics.fff'.
+Overfull \hbox (12.08821pt too wide) in paragraph at lines 600--609
+ \OT1/cmr/m/n/12 2.2.2 \OT1/cmr/m/it/12 Generalized Normal Distribution. [] \OT
+1/cmr/m/n/12 Despite the aforementioned justification of normally
+ []
 
- (bayes-SM-biometrics.fff)
-Underfull \vbox (badness 10000) has occurred while \output is active []
+
+Overfull \hbox (7.13734pt too wide) in paragraph at lines 600--609
+\OT1/cmr/m/n/12 while maintaining the same residual uncertainty that $\OML/cmm/
+m/it/12  < []$\OT1/cmr/m/n/12 . Similarly, choosing a concentrated
+ []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -414,27 +425,42 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [10]
+\openout3 = `bayes-SM-biometrics.fff'.
+
+ (bayes-SM-biometrics.fff)
+Overfull \hbox (11.07486pt too wide) in paragraph at lines 648--667
+[]\OT1/cmr/m/n/12 The use of the scale factor $\OML/cmm/m/it/12 k$ \OT1/cmr/m/n
+/12 corresponds to beliefs that reflect useful and nuanced perspectives
+ []
+
+
+Underfull \vbox (badness 2512) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 11
  []
 
 [11]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 12
  []
 
 [12]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 13
  []
 
 [13]
-Overfull \hbox (8.48953pt too wide) in paragraph at lines 834--844
-\OT1/cmr/m/n/12 conditional factorization of the joint prior $\OML/cmm/m/it/12 
-\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 \O
-T1/cmr/m/n/12 (\OML/cmm/m/it/12 \OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12  \OML/cmm/
-m/it/12 \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 \OMS/cmsy/m/n/12 j\OML/cmm/m/it/12 
-\OT1/cmr/m/n/12 )$ allows direct parameterization
+Overfull \hbox (5.26646pt too wide) in paragraph at lines 793--806
+\OT1/cmr/m/n/12 inferences from the disparate skeptical and enthusiastic perspe
+ctives to facilitate interpretation
  []
 
 
@@ -448,14 +474,17 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [15]
+Underfull \vbox (badness 2662) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 16
  []
 
 [16]
-Overfull \hbox (38.54944pt too wide) in paragraph at lines 952--965
- \OT1/cmr/m/n/12 3.1.4 \OT1/cmr/m/it/12 Preposterior Analysis of Operating Char
-acteristics. [] \OT1/cmr/m/n/12 The estimated operating characteristics
+Overfull \hbox (12.24747pt too wide) in paragraph at lines 955--959
+ \OT1/cmr/m/n/12 3.1.3 \OT1/cmr/m/it/12 Example Paths. [] \OT1/cmr/m/n/12 Figur
+e 3 presents violin plots that are used to illustrate the monitoring
  []
 
 
@@ -464,23 +493,14 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [17]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 18
  []
 
 [18]
-Overfull \hbox (14.72641pt too wide) in paragraph at lines 995--1008
+Overfull \hbox (14.72641pt too wide) in paragraph at lines 1030--1043
  \OT1/cmr/m/n/12 3.1.5 \OT1/cmr/m/it/12 Type 1 Error Rate by the Frequency of D
 ata Monitoring. [] \OT1/cmr/m/n/12 Figure 5[] shows the probability
- []
-
-
-Overfull \hbox (8.1873pt too wide) in paragraph at lines 1026--1045
-\OT1/cmr/m/n/12 Plus Background Standard Therapy (PLUTO)" (NCT01649765) which w
-as conducted between
  []
 
 
@@ -489,7 +509,22 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [19]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (2.72867pt too wide) in paragraph at lines 1061--1080
+ \OT1/cmr/m/n/12 3.2.1 \OT1/cmr/m/it/12 Motivating Example. [] \OT1/cmr/m/n/12 
+We consider the trial ``The Pediatric Lupus Trial of Belimumab
+ []
+
+
+Overfull \hbox (8.1873pt too wide) in paragraph at lines 1061--1080
+\OT1/cmr/m/n/12 Plus Background Standard Therapy (PLUTO)" (NCT01649765) which w
+as conducted between
+ []
+
+
+Overfull \hbox (53.96318pt too wide) in paragraph at lines 1061--1080
+\OT1/cmr/m/n/12 enrollment of 100 patients, the first 24 patients randomized in
+ a 5:1 allocation ratio (belimumab:placebo)
+ []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -497,15 +532,21 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [20]
-Overfull \hbox (10.30957pt too wide) in paragraph at lines 1049--1059
+Overfull \hbox (10.30957pt too wide) in paragraph at lines 1082--1090
  \OT1/cmr/m/n/12 3.2.2 \OT1/cmr/m/it/12 Model Formulation & Prior Elicitation. 
 [] \OT1/cmr/m/n/12 We use this trial as a template to demonstrate
  []
 
 
-Overfull \hbox (1.43187pt too wide) in paragraph at lines 1084--1093
- \OT1/cmr/m/n/12 3.2.3 \OT1/cmr/m/it/12 Preposterior Analysis of Operating Char
-acteristics. [] \OT1/cmr/m/n/12 Figure 6[](A) shows the operating
+Overfull \hbox (4.22203pt too wide) in paragraph at lines 1082--1090
+\OT1/cmr/m/n/12 probabilities. This trial has a superiority hypothesis of treat
+ment to control with null difference
+ []
+
+
+Overfull \hbox (3.4853pt too wide) in paragraph at lines 1082--1090
+\OT1/cmr/m/n/12 in response probabilities, denoted by $\OML/cmm/m/it/12 [] \OT
+1/cmr/m/n/12 = 0$. An estimate for the pediatric response probability
  []
 
 
@@ -514,7 +555,22 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [21]
-Underfull \vbox (badness 3118) has occurred while \output is active []
+Overfull \hbox (8.72615pt too wide) in paragraph at lines 1138--1151
+\OT1/cmr/m/n/12 frequentist operating characteristics. Consequently, the choice
+ of monitoring prior and stoppage
+ []
+
+
+Overfull \hbox (0.56651pt too wide) in paragraph at lines 1138--1151
+\OT1/cmr/m/n/12 patients in progress at enrollment termination, although these 
+factors do impact the operating
+ []
+
+
+Overfull \hbox (14.2747pt too wide) in paragraph at lines 1138--1151
+\OT1/cmr/m/n/12 good operating characteristics across a wide range of data moni
+toring frequencies and enrollment
+ []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -522,24 +578,21 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [22]
-Overfull \hbox (20.89825pt too wide) in paragraph at lines 1128--1137
-\OT1/cmr/m/n/12 stoppage criteria for a Bayesian sequentially monitored clinica
-l trial. To develop this methodology,
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-(bayes-SM-biometrics.bbl
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 23
  []
 
-[23]
-Underfull \hbox (badness 1490) in paragraph at lines 51--58
-\OT1/cmr/m/n/12 Baldassano, R., and Griffiths, A. (2012).  Induction and mainte
-nance therapy
+[23] (bayes-SM-biometrics.bbl
+Underfull \hbox (badness 1112) in paragraph at lines 41--48
+\OT1/cmr/m/n/12 Baldassano, R., and Griffiths, A. (2012).  Induction and Mainte
+nance Therapy
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2409) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -547,12 +600,6 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [24]
-Underfull \hbox (badness 1028) in paragraph at lines 118--122
-[]\OT1/cmr/m/n/12 Ventz, S. and Trippa, L. (2015).  Bayesian designs and the co
-ntrol of frequentist
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -560,7 +607,13 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 25
  []
 
-[25]) AED endfloat: Processing end Figures and Tables
+[25]
+Underfull \hbox (badness 1028) in paragraph at lines 122--126
+[]\OT1/cmr/m/n/12 Ventz, S. and Trippa, L. (2015).  Bayesian designs and the co
+ntrol of frequentist
+ []
+
+) AED endfloat: Processing end Figures and Tables
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 26
  []
@@ -666,71 +719,54 @@ File: figure6.png Graphic file (type png)
 <use figure6.png>
 Package pdftex.def Info: figure6.png  used on input line 65.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-
+)
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 32
  []
 
-[32 <./figure9.png> <./figure6.png>]
-<3-part-compatibility-1.png, id=160, 3161.8125pt x 2107.875pt>
-File: 3-part-compatibility-1.png Graphic file (type png)
-<use 3-part-compatibility-1.png>
-Package pdftex.def Info: 3-part-compatibility-1.png  used on input line 73.
-(pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<3-part-compatibility-2.png, id=161, 3161.8125pt x 2107.875pt>
-File: 3-part-compatibility-2.png Graphic file (type png)
-<use 3-part-compatibility-2.png>
-Package pdftex.def Info: 3-part-compatibility-2.png  used on input line 74.
-(pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-)
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 33
- []
-
-[33 <./3-part-compatibility-1.png> <./3-part-compatibility-2.png>]
-(bayes-SM-biometrics.aux) ) 
+[32 <./figure9.png> <./figure6.png>] (bayes-SM-biometrics.aux) ) 
 Here is how much of TeX's memory you used:
- 3605 strings out of 482730
- 48278 string characters out of 2947761
- 290504 words of memory out of 3000000
- 19301 multiletter control sequences out of 15000+200000
- 550358 words of font info for 89 fonts, out of 3000000 for 9000
+ 3595 strings out of 482730
+ 47968 string characters out of 2947761
+ 290545 words of memory out of 3000000
+ 19292 multiletter control sequences out of 15000+200000
+ 550527 words of font info for 90 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 33i,11n,38p,1381b,346s stack positions out of 5000i,500n,10000p,200000b,50000s
-</Library/Application Support/MiKTeX/texmfs/install/
-fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb></Library/Application Support/Mi
-KTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></Library/Applica
-tion Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
-Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/c
-m/cmbx7.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/pub
-lic/amsfonts/cm/cmbx8.pfb></Library/Application Support/MiKTeX/texmfs/install/f
-onts/type1/public/amsfonts/cm/cmcsc10.pfb></Library/Application Support/MiKTeX/
-texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb></Library/Application 
-Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi12.pfb></Libra
-ry/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmm
-i6.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/a
-msfonts/cm/cmmi8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/
-type1/public/amsfonts/cm/cmmib10.pfb></Library/Application Support/MiKTeX/texmf
-s/install/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></Library/Application 
-Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></Librar
-y/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/am
-sfonts/cm/cmr6.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/ty
-pe1/public/amsfonts/cm/cmr7.pfb></Library/Application Support/MiKTeX/texmfs/ins
-tall/fonts/type1/public/amsfonts/cm/cmr8.pfb></Library/Application Support/MiKT
-eX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr9.pfb></Library/Application
- Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Libr
-ary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cm
-sy6.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/
-amsfonts/cm/cmsy8.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts
-/type1/public/amsfonts/cm/cmti10.pfb></Library/Application Support/MiKTeX/texmf
-s/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Library/Application Suppo
-rt/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti9.pfb></Library/App
-lication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam
-10.pfb>
-Output written on bayes-SM-biometrics.pdf (34 pages, 2969570 bytes).
+ 33i,10n,38p,1705b,342s stack positions out of 5000i,500n,10000p,200000b,50000s
+</Library/Appli
+cation Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cmextra/cmbsy7
+.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/ams
+fonts/cm/cmbx10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/t
+ype1/public/amsfonts/cm/cmbx12.pfb></Library/Application Support/MiKTeX/texmfs/
+install/fonts/type1/public/amsfonts/cm/cmbx7.pfb></Library/Application Support/
+MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></Library/Appl
+ication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.pfb
+></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfont
+s/cm/cmmi12.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1
+/public/amsfonts/cm/cmmi6.pfb></Library/Application Support/MiKTeX/texmfs/insta
+ll/fonts/type1/public/amsfonts/cm/cmmi8.pfb></Library/Application Support/MiKTe
+X/texmfs/install/fonts/type1/public/amsfonts/cm/cmmib10.pfb></Library/Applicati
+on Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb
+></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/
+public/amsfonts/cm/cmr12.pfb></Library/Application Support/MiKTeX/texmfs/instal
+l/fonts/type1/public/amsfonts/cm/cmr6.pfb></Library/Application Support/MiKTeX/
+texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></Library/Application Su
+pport/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></Library/A
+pplication Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmr9.pf
+b></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type
+1/public/amsfonts/cm/cmsy6.pfb></Library/Application Support/MiKTeX/texmfs/inst
+all/fonts/type1/public/amsfonts/cm/cmsy8.pfb></Library/Application Support/MiKT
+eX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb></Library/Applicati
+on Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/cmti12.pfb></Li
+brary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/
+cmti9.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/publi
+c/amsfonts/cm/cmtt12.pfb></Library/Application Support/MiKTeX/texmfs/install/fo
+nts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on bayes-SM-biometrics.pdf (33 pages, 2552767 bytes).
 PDF statistics:
- 244 PDF objects out of 1000 (max. 8388607)
+ 237 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

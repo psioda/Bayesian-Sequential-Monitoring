@@ -163,9 +163,9 @@ Silver Spring, Maryland, USA}
 \section*{Web Appendix A: Bayesian Hypothesis Testing}\label{sec:hypothesis}
 Consider the hypotheses $H_0:\theta\in\Theta_{0}$ versus $H_1:\theta\in\Theta_{1}$ where $\Theta_{0}\bigcup \Theta_{1} = \Theta$ and $\Theta_{0} \bigcap \Theta_{1} = \emptyset$.
 %
-Formal Bayesian hypothesis testing requires the specification of prior probabilities on the hypotheses (e.g., $p(H_i)$ for $i=0,1$)
-and prior distributions for $\left(\theta,\eta\right)$ specified over the parameter space defined with respect to each of the 
-hypotheses (e.g. $\pi\left(\theta,\eta \big| H_i\right)$ for $i=0,1$). 
+Formal Bayesian hypothesis testing requires the specification of prior probabilities on the hypotheses (e.g. $p(H_i)$ for $i=0,1$)
+and prior distributions for $\theta$ specified over the parameter space defined with respect to each of the 
+hypotheses (e.g. $\pi(\theta \big| H_i)$ for $i=0,1$). 
 %
 
 The posterior probability of hypothesis $H_i$ is given by 
@@ -174,9 +174,9 @@ p(H_i|\bmath{D})=\frac{p(\bmath{D}|H_i)\cdot p(H_i)}{p(\bmath{D}|H_0)\cdot p(H_0
 \end{equation}
 where $p(\bmath{D}|H_i) = \int_{\Theta_i} p(\bmath{D}|\theta)\pi(\theta|H_i)d\theta$ is the marginal likelihood associated with hypothesis $H_i$.
 %
-In practice, most Bayesian methods for clinical trials perform hypothesis testing based on the posterior probability of the \textit{event defining $H_i$}.
+In practice, most Bayesian hypothesis testing methods are based on the posterior probability of the \textit{event defining $H_i$}.
 %
-For this approach, one simply needs to specify a prior $\pi\left(\theta\right)$ representing belief about $\theta$ overall and compute the posterior distribution.
+For this approach, one simply needs to specify a prior $\pi\left(\theta\right)$ representing belief about $\theta$ and compute the posterior distribution.
 %
 The posterior probability that $\theta\in\Theta_i$ is given by
 \begin{equation}\label{eq:equation2}
@@ -192,40 +192,34 @@ $p(H_i) =P(\theta\in\Theta_i)$ and $\pi\left(\theta \big| H_i\right) = \pi\left(
 %
 If in fact $\pi\left(\theta\right)$ does represent belief about $\theta$, these choices are perhaps the most intuitive and thus 
 we should have no reservation referring to $P(\theta\in\Theta_i|\bmath{D})$ as the probability that hypothesis $H_i$ is true.
-\section*{Web Appendix B: Monitoring Prior Parameterization}\label{sec:gen_normal_details}
+\section*{Web Appendix B: Parameterizing Flattened and Concentrated Monitoring Priors}\label{sec:gen_normal_details}
 
-\subsubsection*{Normal Distribution $\mathcal{N}_p(\tilde{\mu},q)$}\label{sec:normal_tail_area}
-%The specification of the mean and variance of a normal distribution completely specifies the mode value and a tail-probability constraint, and is therefore sufficient for defining enthusiastic and skeptical priors.
-
-Suppose $\theta\sim\mathcal{N}(\mu,\sigma)$ is a normal random variable that satisfies $\rmn{mode}(\theta)=\tilde{\mu}$ and $P(\theta\leq q)=p$. The values for the mean and standard deviation are $\mu=\tilde{\mu}$ and $\sigma=\frac{q-\mu}{\Phi^{-1}(p)}$, where $\Phi$ denotes the cumulative distribution function for a standard normal distribution and $\Phi^{-1}$ denotes its quantile function. Therefore we can denote the distribution with the desired mode and tail probability constraint as  $\theta\sim\mathcal{N}_p(\tilde{\mu},q)$, which is well-defined for values $(\mu,q,p)$ that satisfy $\frac{q-\mu}{p-0.5}>0$. Since the normal distribution is completely specified by $(\mu, \sigma)$, quantities such as $P(\theta\leq\tilde{q})$ are also specified for any $\tilde{q}\in\mathbb{R}$. In particular, if $\theta\sim\mathcal{N}_p(\tilde{\mu},q)$ then $P(\theta\leq\frac{q+\mu}{2})=\Phi(\frac{\Phi^{-1}(p)}{2})$. Furthermore, $P(\theta\in(\mu,\frac{q+\mu}{2}))=|p-\Phi(\frac{\Phi^{-1}(p)}{2})|$. 
-
-\subsubsection*{Generalized Normal Distributions $\mathcal{GN}_p(\tilde{\mu},q,\gamma)$}\label{sec:gen_norm_appendix}
-Let $F_{\mu,\alpha,\beta}$ denote the cumulative distribution function of $\mathcal{GN}(\mu,\alpha,\beta)$. The CDF of a generalized normal random variable $\theta\sim\mathcal{GN}(\mu,\alpha,\beta)$ can be expressed as \citep{Griffin2018}
-\begin{equation}
-P(\theta\leq q|\mu,\alpha,\beta)=\frac{1}{2}+\frac{\rmn{sign}(q-\mu)}{2}\int_0^{|q-\mu|^\beta}\frac{w^{1/\beta-1}}{\alpha\Gamma(1/\beta)}\rmn{exp}\left\{-\left(\frac{1}{\alpha}\right)^\beta w\right\} dw
-\end{equation}
-%Computations involving $F_{\mu,\alpha,\beta}$ are done using the gnorm package \citep{Griffin2018}. 
-Define $\theta\sim\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ as the generalized normal distribution $\mathcal{GN}(\mu,\alpha,\beta)$ that satisfies mode$(\theta)=\tilde{\mu}$, $P(\theta\leq q)=p$, and $P(\theta\in(q,\frac{q+\mu}{2}))=\gamma\cdot|p-\Phi(\frac{\Phi^{-1}(p)}{2})|$.
-%\end{mydef}
+Recall the value of the normal density at the mode is $\frac{1}{\sqrt{2\pi}\sigma}$ and note that the value of a generalized normal density at the mode is $\frac{\beta}{2\alpha\Gamma(1/\beta)}$. These are equivalent when $\beta=2$ and $\alpha=\sqrt{2}\sigma$ (i.e. the normal density is a special case of the generalized normal density at these parameter values). Let $F_{\mu,\alpha,\beta}$ denote the cumulative distribution function of the generalized normal distribution $\mathcal{GN}(\mu,\alpha,\beta)$, which can be expressed as \citep{Griffin2018}
+\begin{align*}
+P(\theta\leq q|\mu,\alpha,\beta)=\frac{1}{2}+\frac{\rmn{sign}(q-\mu)}{2}\int_0^{|q-\mu|^\beta}\frac{w^{1/\beta-1}}{\alpha\Gamma(1/\beta)}\rmn{exp}\left\{-\left(\frac{1}{\alpha}\right)^\beta w\right\} dw.
+\end{align*}
 %
-The mode is equal to $\mu=\tilde{\mu}$, and $\alpha$ and $\beta$ are determined to minimize the function $(F_{\mu,\alpha,\beta}(q)-p)^2+(F_{\mu,\alpha,\beta}(\frac{q+\mu}{2})-\gamma\cdot|p-\Phi(\frac{\Phi^{-1}(p)}{2})|)^2$ with box-constrained optimization \citep{Byrd1995}. %The restrictions on well-defined choices of $(p,\tilde{\mu},q,\gamma)$ for the $\theta\sim\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ distribution are described in the appendix.
-
-Using this notation to define the distributions in main article Figure 1 yields the default enthusiastic prior as $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1)$, the concentrated enthusiastic prior as $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=0.75)$, the flattened enthusiastic prior as $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\theta_1,q=\theta_0,\gamma=1.5)$, and the locally non-informative prior as $\mathcal{GN}_{p=0.025}(\tilde{\mu}=\frac{\theta_0+\theta_1}{2},q=\frac{3\theta_0-\theta_1}{2},\gamma=1.5)$.
-\subsubsection*{Truncated Generalized Normal Distribution $\mathcal{GN}_{p,\Theta}(\tilde{\mu},q,\gamma)$}\label{sec:gen_normal_appendix}
-The density for a generalized normal distribution truncated to the interval domain $\Theta=(\theta_{min},\theta_{max})$, denoted by $\mathcal{GN}_\Theta(\mu,\alpha,\beta)$, is $f(\theta)=c\cdot\exp\left\{-\frac{|\theta-\mu|}{\alpha}^{\beta}\right\}{I(\theta\in \Theta)}$ where $c=\frac{\beta}{2\alpha \Gamma(1/\beta)}({F_{\mu,\alpha,\beta}(\theta_{max})-F_{\mu,\alpha,\beta}(\theta_{min})})^{-1}$. 
-%\begin{mydef}\label{def:gennormaltruncated}
-Define $\theta\sim\mathcal{GN}_{p,\Theta}(\tilde{\mu},q,\gamma)$ as the truncated generalized normal distribution $\mathcal{GN}_\Theta(\mu,\alpha,\beta)$ that satisfies mode$(\theta)=\tilde{\mu}$, $P(\theta\leq q)=p$, and $P(\theta\in(q,\frac{q+\mu}{2}))=\gamma|p-\Phi(\frac{\Phi^{-1}(p)}{2})|$.
-
-Using this notation to define the distribution in main article Figure 2 yields the joint distribution $\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$, as $
-\pi(\theta)\sim\mathcal{GN}_{p=0.975,\Theta=[-1,1]}(\tilde{\mu}=\theta_0,q=\theta_1,\gamma=1)$ and $\pi(\eta|\theta)\sim \mathcal{GN}_{p=0.975,\Theta=[\rmn{max}(-\theta,0),\rmn{min}(1,1+\theta)]}(\tilde{\mu}=\eta_0,q=\eta_1,\gamma=1)$.
-
-%\end{mydef}
+A flattened or concentrated enthusiastic monitoring prior in the generalized normal family of distributions has density at the mode equal to $k\times \frac{1}{\sqrt{2\pi}\sigma}$. 
 %
-%\subsection{Parameterizing the $\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ Distribution}
-%The restrictions on the choice of $(p,\tilde{\mu},q,\gamma)$ for the $\theta\sim\mathcal{GN}_p(\tilde{\mu},q,\gamma)$ distribution to be well-defined:
+The parameters for the generalized normal distribution $\mathcal{GN}(\mu,\alpha,\beta)$ are derived as follows: $\mu$ remains equal to the mode value of $\theta_1$ and $\alpha$ and $\beta$ are determined to minimize the function 
+\begin{align*}
+\bigg(F_{\mu,\alpha,\beta}(\theta_0)-\epsilon\bigg)^2+\left(\frac{\beta}{2\alpha\Gamma(1/\beta)}-k \frac{1}{\sqrt{2\pi}\sigma}\right)^2
+\end{align*} with box-constrained optimization \citep{Byrd1995}, where $\sigma=\frac{\theta_1-\theta_0}{\Phi^{-1}(1-\epsilon)}$ is the standard deviation of the default normally distributed enthusiastic monitoring prior. The first term reflects the residual uncertainty that $\theta<\theta_0$, and the second term reflects the density at the mode value. Similarly, the parameters for a flattened or concentrated skeptical monitoring prior are as follows: $\mu$ remains equal to the mode value of $\theta_0$ and $\alpha$ and $\beta$ are determined to minimize the function 
+\begin{align*}
+\bigg((1-F_{\mu,\alpha,\beta}(\theta_1))-\epsilon\bigg)^2+\left(\frac{\beta}{2\alpha\Gamma(1/\beta)}-k \frac{1}{\sqrt{2\pi}\sigma}\right)^2,
+\end{align*} 
+where $\sigma=\frac{\theta_0-\theta_1}{\Phi^{-1}(\epsilon)}$.
+%
+The parameters for a locally non-informative generalized normal distribution are derived as follows: $\mu$ is equal to $\frac{\theta_0+\theta_1}{2}$ (i.e. the midpoint between $\theta_0$ and $\theta_1$) and $\alpha$ and $\beta$ are determined to minimize the function 
+\begin{align*}
+\bigg(F_{\mu,\alpha,\beta}\left(\frac{3\theta_0-\theta_1}{2}\right)-\epsilon\bigg)^2+\left(\frac{\beta}{2\alpha\Gamma(1/\beta)}-k \frac{1}{\sqrt{2\pi}\sigma}\right)^2,
+\end{align*} where $\sigma=\frac{2(\theta_1-\theta_0)}{\Phi^{-1}(1-\epsilon)}$ (i.e. reflecting residual uncertainty that $\theta<\frac{\theta_0+\theta_1}{2}-2(\theta_1-\theta_0)$) and $k=1.5$. Note that the standard deviation $\sigma$ was chosen to be twice that of the normally distributed skeptical or enthusiastic monitoring priors, so that the locally non-informative prior would have greater dispersion around the mode value.
+%
+Finally, this parameterizing procedure is applicable to a generalized normal distribution truncated to an interval domain (e.g. when $\theta$ is a response probability with domain $[0,1]$). In this case, the generalized normal distribution truncated to an interval domain $\Theta=(\theta_{min},\theta_{max})$ has density equal to $f(\theta)=c\cdot\exp\left\{-\frac{|\theta-\mu|}{\alpha}^{\beta}\right\}{I(\theta\in \Theta)}$ where $c=\frac{\beta}{2\alpha \Gamma(1/\beta)}({F_{\mu,\alpha,\beta}(\theta_{max})-F_{\mu,\alpha,\beta}(\theta_{min})})^{-1}$.
+
 
 \section*{Web Appendix C: Type 1 Error Rate Depending on Enrollment Schemes}
-Recall main article Figure 5 showed Type 1 error properties for the single-arm design. Figure \ref{fig:ex1t1e_longer} shows results from a design that has a longer follow-up period. The interim sample sizes are the same for each monitoring frequency, however, the final sample sizes under the longer follow-up designs are much larger (over 20 patients in follow-up for monitoring frequencies of 8 or fewer, compared to approximately 6 patients in the shorter follow-up designs). The final probability of efficacy criteria being satisfied is generally slightly lower in the longer follow-up design, which is what we would expect since the larger final sample size contains more data consistent with a null result.
+Recall main article Figure 5 showed Type 1 error properties for the single-arm design. Figure C\ref{fig:ex1t1e_longer} shows results from a design that has a longer follow-up period. The interim sample sizes are the same for each monitoring frequency, however, the final sample sizes under the longer follow-up designs are much larger (over 20 patients in follow-up for monitoring frequencies of 8 or fewer, compared to approximately 6 patients in the shorter follow-up designs). The final probability of efficacy criteria being satisfied is generally slightly lower in the longer follow-up design, which is what we would expect since the larger final sample size contains more data and is therefore more likely to be consistent with the underlying true null treatment effect.
 \begin{figure}\begin{center}
 
    \includegraphics[width=6in]{figureS1.png}
@@ -235,13 +229,13 @@ Recall main article Figure 5 showed Type 1 error properties for the single-arm d
 \end{center}
 \end{figure}
 \section*{Web Appendix D: Robustness of Parameterizations of Monitoring Priors}\label{sec:priorRobustness}
-Recall the analyses done in main article Section 3.1 used a concentrated skeptical prior and default enthusiastic prior. In this section we show the four possible designs using the combinations of skeptical and enthusiastic prior given in main article Figure 1.
+Recall the analyses done in main article Section 3.1 used a concentrated skeptical prior and default enthusiastic prior. In this section we show the four possible designs using the combinations of skeptical and enthusiastic prior given in main article Figure 1. Figures D\ref{fig:robustness1} and D\ref{fig:robustness2} illustrate how the design operating characteristics change when the enthusiastic prior shifts from default to flattened, with the skeptical prior remaining fixed. Note that in the region between $\theta_0$ and $\frac{\theta_0+\theta_1}{2}$ as the enthusiastic prior shifts from default to flattened, (a) the probability of stopping early for futility increases (b) the probability of inconclusive findings decreases and (c) the intermediate and final sample sizes decrease. This is because the enthusiastic prior gives more mass in this region of $\theta$. 
+%
+%The flattened enthusiastic prior was used in main article Section 3.1 to enhance the ability of futility monitoring to reduce the sample size.
 
-Figures \ref{fig:robustness1} and \ref{fig:robustness2} show what happens when the enthusiastic prior shifts from default to flattened, with the skeptical prior remaining fixed. Note that in the region between $\theta_0$ and $\frac{\theta_0+\theta_1}{2}$ as the enthusiastic prior shifts from default to flattened, (a) the probability of stopping early for futility increases (b) the probability of inconclusive findings decreases and (c) the intermediate and final sample sizes decrease. This is because the enthusiastic prior gives more mass in for this region of $\theta$. The flattened enthusiastic prior was used in main article Section 3.1 to enhance the ability of futility monitoring to reduce the sample size.
+Contrasting Figures D\ref{fig:robustness1} and D\ref{fig:robustness2}, we see that the probability of stopping early for efficacy is much higher at $\theta_0$ when the default skeptical prior is used rather than the concentrated skeptical prior. This is because the default skeptical prior has less mass around $\theta=\theta_0$, therefore it is easier to convince the skeptic that $\theta>\theta_0$ under the null result $\theta=\theta_0$. %The concentrated skeptical prior was used in main article Section 3.1 to limit this probability and provide better Type 1 error control.
 
-Contrasting \ref{fig:robustness1} and \ref{fig:robustness2}, we see that the probability of stopping early for efficacy is much higher at $\theta_0$ when the default skeptical prior is used rather than the concentrated skeptical prior. This is because the default skeptical prior has less mass around $\theta=\theta_0$, therefore it is easier to convince the skeptic that $\theta>\theta_0$ under the null result $\theta=\theta_0$. The concentrated skeptical prior was used in main article Section 3.1 to limit this probability and provide better Type 1 error control.
-
-The choice of skeptical and enthusiastic prior affects the analysis, and their specification (e.g. default, skeptical, enthusiastic) should be made with these properties in mind.
+%The choice of skeptical and enthusiastic prior affects the analysis, and their specification (e.g. default, skeptical, enthusiastic) should be made with these properties in mind.
 
 \begin{figure}\begin{center}
 
@@ -253,11 +247,30 @@ The choice of skeptical and enthusiastic prior affects the analysis, and their s
 \end{figure}
 \begin{figure}\begin{center}
 
+
  \includegraphics[width=6in]{figureS2c.png}
  \includegraphics[width=6in]{figureS2d.png}
  \caption{Modification of enthusiastic prior parameterization in main article Section 3.1. A, default enthusiastic prior (main article Figure 1(c)). B, flattened enthusiastic prior (main article Figure 1(d)). Both designs use default skeptical prior (main article Figure 1(a)).}
 \label{fig:robustness2}
 \end{center}
+\end{figure}
+
+\section*{Web Appendix E: Mixture Inference Prior Weights}\label{sec:priorRobustness}
+Figure E1(A) shows the prior-data compatibility assessments $\psi^{(S)}$, $\psi^{(E)}$, $\psi^{(NI)}$ by observed risk difference which were used in main article Section 3.2.
+%
+As expected, the skeptical and enthusiastic priors show highest compatibility when the observed risk difference matches the corresponding prior mode, and the non-informative prior shows high compatibility for a wide range of $\theta$.
+
+Figure E1(B) shows the 3-part mixture inference prior weights $\omega_S$, $\omega_{E}$, $\omega_{NI}$ by observed risk difference.
+%
+Recall our goal is to create a mixture prior which favors the skeptical or enthusiastic components in areas where high compatibility is demonstrated for those components, and favors the locally non-informative prior if both the skeptical and enthusiastic components show low compatibility.
+%
+To this end, the skeptical and enthusiastic components have the highest weight when the observed data is aligned with the prior mode, and the locally non-informative prior has highest weight towards extreme values of the observed response difference.
+\begin{figure}\begin{center}
+\includegraphics[width=6in]{3-part-compatibility-1.png}
+\includegraphics[width=6in]{3-part-compatibility-2.png}
+    \caption{A; Prior-data compatibility assessments $\psi^{(S)}$, $\psi^{(E)}$, $\psi^{(NI)}$ by observed risk difference. B; 3-part mixture inference prior weights $\omega_S$, $\omega_{E}$, $\omega_{NI}$ by observed risk difference.}
+\label{fig:3-part-compatibility}
+ \end{center}
 \end{figure}
 
 \bibliographystyle{biom} 
