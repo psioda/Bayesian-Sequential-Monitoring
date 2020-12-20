@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  5 DEC 2020 04:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  19 DEC 2020 22:29
 entering extended mode
 **./bayes-SM-biometrics.tex
 (bayes-SM-biometrics.tex
@@ -450,7 +450,13 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [12]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (5.26646pt too wide) in paragraph at lines 793--806
+\OT1/cmr/m/n/12 inferences from the disparate skeptical and enthusiastic perspe
+ctives to facilitate interpretation
+ []
+
+
+Underfull \vbox (badness 1275) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -458,10 +464,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [13]
-Overfull \hbox (5.26646pt too wide) in paragraph at lines 793--806
-\OT1/cmr/m/n/12 inferences from the disparate skeptical and enthusiastic perspe
-ctives to facilitate interpretation
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -474,9 +477,6 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [15]
-Underfull \vbox (badness 2662) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 16
  []
@@ -498,7 +498,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [18]
-Overfull \hbox (14.72641pt too wide) in paragraph at lines 1030--1043
+Overfull \hbox (14.72641pt too wide) in paragraph at lines 1032--1045
  \OT1/cmr/m/n/12 3.1.5 \OT1/cmr/m/it/12 Type 1 Error Rate by the Frequency of D
 ata Monitoring. [] \OT1/cmr/m/n/12 Figure 5[] shows the probability
  []
@@ -509,21 +509,21 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [19]
-Overfull \hbox (2.72867pt too wide) in paragraph at lines 1061--1080
+Overfull \hbox (2.72867pt too wide) in paragraph at lines 1063--1082
  \OT1/cmr/m/n/12 3.2.1 \OT1/cmr/m/it/12 Motivating Example. [] \OT1/cmr/m/n/12 
 We consider the trial ``The Pediatric Lupus Trial of Belimumab
  []
 
 
-Overfull \hbox (8.1873pt too wide) in paragraph at lines 1061--1080
+Overfull \hbox (8.1873pt too wide) in paragraph at lines 1063--1082
 \OT1/cmr/m/n/12 Plus Background Standard Therapy (PLUTO)" (NCT01649765) which w
 as conducted between
  []
 
 
-Overfull \hbox (53.96318pt too wide) in paragraph at lines 1061--1080
-\OT1/cmr/m/n/12 enrollment of 100 patients, the first 24 patients randomized in
- a 5:1 allocation ratio (belimumab:placebo)
+Overfull \hbox (3.36928pt too wide) in paragraph at lines 1063--1082
+\OT1/cmr/m/n/12 September 2012 and January 2018 (Brunner et al., 2020). The stu
+dy population was comprised
  []
 
 
@@ -532,21 +532,9 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [20]
-Overfull \hbox (10.30957pt too wide) in paragraph at lines 1082--1090
+Overfull \hbox (10.30957pt too wide) in paragraph at lines 1084--1092
  \OT1/cmr/m/n/12 3.2.2 \OT1/cmr/m/it/12 Model Formulation & Prior Elicitation. 
 [] \OT1/cmr/m/n/12 We use this trial as a template to demonstrate
- []
-
-
-Overfull \hbox (4.22203pt too wide) in paragraph at lines 1082--1090
-\OT1/cmr/m/n/12 probabilities. This trial has a superiority hypothesis of treat
-ment to control with null difference
- []
-
-
-Overfull \hbox (3.4853pt too wide) in paragraph at lines 1082--1090
-\OT1/cmr/m/n/12 in response probabilities, denoted by $\OML/cmm/m/it/12 [] \OT
-1/cmr/m/n/12 = 0$. An estimate for the pediatric response probability
  []
 
 
@@ -555,22 +543,25 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [21]
-Overfull \hbox (8.72615pt too wide) in paragraph at lines 1138--1151
+Overfull \hbox (8.72615pt too wide) in paragraph at lines 1140--1153
 \OT1/cmr/m/n/12 frequentist operating characteristics. Consequently, the choice
  of monitoring prior and stoppage
  []
 
 
-Overfull \hbox (0.56651pt too wide) in paragraph at lines 1138--1151
+Overfull \hbox (0.56651pt too wide) in paragraph at lines 1140--1153
 \OT1/cmr/m/n/12 patients in progress at enrollment termination, although these 
 factors do impact the operating
  []
 
 
-Overfull \hbox (14.2747pt too wide) in paragraph at lines 1138--1151
+Overfull \hbox (14.2747pt too wide) in paragraph at lines 1140--1153
 \OT1/cmr/m/n/12 good operating characteristics across a wide range of data moni
 toring frequencies and enrollment
  []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -586,12 +577,6 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [23] (bayes-SM-biometrics.bbl
-Underfull \hbox (badness 1112) in paragraph at lines 41--48
-\OT1/cmr/m/n/12 Baldassano, R., and Griffiths, A. (2012).  Induction and Mainte
-nance Therapy
- []
-
-
 Underfull \vbox (badness 2409) has occurred while \output is active []
 
 
@@ -600,6 +585,12 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [24]
+Underfull \hbox (badness 1112) in paragraph at lines 68--75
+\OT1/cmr/m/n/12 Baldassano, R., and Griffiths, A. (2012).  Induction and Mainte
+nance Therapy
+ []
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -608,131 +599,139 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [25]
-Underfull \hbox (badness 1028) in paragraph at lines 122--126
+Underfull \hbox (badness 1028) in paragraph at lines 160--164
 []\OT1/cmr/m/n/12 Ventz, S. and Trippa, L. (2015).  Bayesian designs and the co
 ntrol of frequentist
  []
 
-) AED endfloat: Processing end Figures and Tables
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 26
  []
 
-[26] (bayes-SM-biometrics.fff
-<figure1a.png, id=112, 1505.625pt x 1505.625pt>
+[26]) AED endfloat: Processing end Figures and Tables
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 27
+ []
+
+[27] (bayes-SM-biometrics.fff
+<figure1a.png, id=115, 1505.625pt x 1505.625pt>
 File: figure1a.png Graphic file (type png)
 <use figure1a.png>
 Package pdftex.def Info: figure1a.png  used on input line 3.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure1b.png, id=114, 1505.625pt x 1505.625pt>
+<figure1b.png, id=117, 1505.625pt x 1505.625pt>
 File: figure1b.png Graphic file (type png)
 <use figure1b.png>
 Package pdftex.def Info: figure1b.png  used on input line 4.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure1c.png, id=115, 1505.625pt x 1505.625pt>
+<figure1c.png, id=118, 1505.625pt x 1505.625pt>
 File: figure1c.png Graphic file (type png)
 <use figure1c.png>
 Package pdftex.def Info: figure1c.png  used on input line 5.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure1d.png, id=116, 1505.625pt x 1505.625pt>
+<figure1d.png, id=119, 1505.625pt x 1505.625pt>
 File: figure1d.png Graphic file (type png)
 <use figure1d.png>
 Package pdftex.def Info: figure1d.png  used on input line 6.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 27
+\OT1/cmr/m/n/9 28
  []
 
-[27 <./figure1a.png> <./figure1b.png> <./figure1c.png> <./figure1d.png>]
-<figure5a_NEW.png, id=124, 1505.625pt x 1505.625pt>
+[28 <./figure1a.png> <./figure1b.png> <./figure1c.png> <./figure1d.png>]
+<figure5a_NEW.png, id=127, 1505.625pt x 1505.625pt>
 File: figure5a_NEW.png Graphic file (type png)
 <use figure5a_NEW.png>
 Package pdftex.def Info: figure5a_NEW.png  used on input line 16.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure5b_NEW.png, id=125, 1505.625pt x 1505.625pt>
+<figure5b_NEW.png, id=128, 1505.625pt x 1505.625pt>
 File: figure5b_NEW.png Graphic file (type png)
 <use figure5b_NEW.png>
 Package pdftex.def Info: figure5b_NEW.png  used on input line 17.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure5a.png, id=126, 3613.5pt x 1806.75pt>
+<figure5a.png, id=129, 3613.5pt x 1806.75pt>
 File: figure5a.png Graphic file (type png)
 <use figure5a.png>
 Package pdftex.def Info: figure5a.png  used on input line 18.
 (pdftex.def)             Requested size: 433.62pt x 216.80064pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 28
+\OT1/cmr/m/n/9 29
  []
 
-[28 <./figure5a_NEW.png> <./figure5b_NEW.png> <./figure5a.png>]
-<figure2a.png, id=133, 3161.8125pt x 2107.875pt>
+[29 <./figure5a_NEW.png> <./figure5b_NEW.png> <./figure5a.png>]
+<figure2a.png, id=136, 3161.8125pt x 2107.875pt>
 File: figure2a.png Graphic file (type png)
 <use figure2a.png>
 Package pdftex.def Info: figure2a.png  used on input line 29.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure2b.png, id=134, 3161.8125pt x 2107.875pt>
+<figure2b.png, id=137, 3161.8125pt x 2107.875pt>
 File: figure2b.png Graphic file (type png)
 <use figure2b.png>
 Package pdftex.def Info: figure2b.png  used on input line 30.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 29
+\OT1/cmr/m/n/9 30
  []
 
-[29 <./figure2a.png> <./figure2b.png>]
-<figure3a.png, id=140, 3161.8125pt x 2107.875pt>
+[30 <./figure2a.png> <./figure2b.png>]
+<figure3a.png, id=144, 3161.8125pt x 2107.875pt>
 File: figure3a.png Graphic file (type png)
 <use figure3a.png>
 Package pdftex.def Info: figure3a.png  used on input line 39.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure3b.png, id=141, 3161.8125pt x 2107.875pt>
+<figure3b.png, id=145, 3161.8125pt x 2107.875pt>
 File: figure3b.png Graphic file (type png)
 <use figure3b.png>
 Package pdftex.def Info: figure3b.png  used on input line 40.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 30
+\OT1/cmr/m/n/9 31
  []
 
-[30 <./figure3a.png> <./figure3b.png>]
-<figure4.png, id=148, 4065.1875pt x 2710.125pt>
+[31 <./figure3a.png> <./figure3b.png>]
+<figure4.png, id=151, 4065.1875pt x 2710.125pt>
 File: figure4.png Graphic file (type png)
 <use figure4.png>
 Package pdftex.def Info: figure4.png  used on input line 50.
 (pdftex.def)             Requested size: 433.62pt x 289.05833pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 31
+\OT1/cmr/m/n/9 32
  []
 
-[31 <./figure4.png>]
-<figure9.png, id=153, 3161.8125pt x 2107.875pt>
+[32 <./figure4.png>]
+<figure9.png, id=156, 3161.8125pt x 2107.875pt>
 File: figure9.png Graphic file (type png)
 <use figure9.png>
 Package pdftex.def Info: figure9.png  used on input line 64.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure6.png, id=154, 3161.8125pt x 2107.875pt>
+<figure6.png, id=157, 3161.8125pt x 2107.875pt>
 File: figure6.png Graphic file (type png)
 <use figure6.png>
 Package pdftex.def Info: figure6.png  used on input line 65.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 )
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 32
+\OT1/cmr/m/n/9 33
  []
 
-[32 <./figure9.png> <./figure6.png>] (bayes-SM-biometrics.aux) ) 
+[33 <./figure9.png> <./figure6.png>] (bayes-SM-biometrics.aux) ) 
 Here is how much of TeX's memory you used:
- 3595 strings out of 482730
- 47968 string characters out of 2947761
- 290545 words of memory out of 3000000
- 19292 multiletter control sequences out of 15000+200000
+ 3606 strings out of 482730
+ 48149 string characters out of 2947761
+ 291182 words of memory out of 3000000
+ 19303 multiletter control sequences out of 15000+200000
  550527 words of font info for 90 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 33i,10n,38p,1705b,342s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,10n,38p,1705b,334s stack positions out of 5000i,500n,10000p,200000b,50000s
 </Library/Appli
 cation Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cmextra/cmbsy7
 .pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/ams
@@ -764,9 +763,9 @@ brary/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/cm/
 cmti9.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type1/publi
 c/amsfonts/cm/cmtt12.pfb></Library/Application Support/MiKTeX/texmfs/install/fo
 nts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on bayes-SM-biometrics.pdf (33 pages, 2552767 bytes).
+Output written on bayes-SM-biometrics.pdf (34 pages, 2555820 bytes).
 PDF statistics:
- 237 PDF objects out of 1000 (max. 8388607)
+ 240 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

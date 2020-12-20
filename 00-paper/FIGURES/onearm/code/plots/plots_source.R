@@ -105,9 +105,9 @@ width.scale<-7
 png('../../figure2b.png',width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
 par(mar=c(5.1+1,4.1,2.1,2.1)) #c(bottom, left, top, right)
 # Futility example
-n<-   c(0,10,20,30,37)
-y1<-  c(0,6 ,10 ,14 ,15)
-miss<-c(0,2 ,4 ,7 ,0)
+n<-   c(0,10,20,30,30)
+y1<-  c(0,6 ,10 ,14 ,14) # changed 12/3/20
+miss<-c(0,2 ,4 ,7 ,7)
 y0=n-y1
 spacing<-(seq(1:length(n))-1)*12
 source("plots/plots_violin_v2.R")
