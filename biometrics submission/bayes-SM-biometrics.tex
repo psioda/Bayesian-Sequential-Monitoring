@@ -259,8 +259,8 @@ While monitoring of trials takes on various forms, one form of monitoring is to 
 The most commonly used statistical approach to account for interim analyses are frequentist group sequential methods in which Type I error for testing a null and alternative hypothesis is distributed across the set of interim analyses to ensure overall Type I error control for establishing the efficacy or futility of a product \citep{Jennison2000}.  
 %
 %Bayesian monitoring of sequential trials is an alternative to the frequentist approach. 
-Alternatively, in Bayesian sequential monitoring data can be monitored on a continual basis and the evidence in favor (or against) a hypothesis can be evaluated against a single standard without penalty. %
-Under this paradigm, data is monitored and collection stopped when any of the following conditions are met (a) a sufficiently skeptical person is convinced the alternative hypothesis is true (b) a sufficiently enthusiastic person is convinced the alternative is false or the benefit of treatment is not as high as expected (c) the probability of eventually proving the alternative is true is sufficiently low or (d) all resources allocated have been exhausted \citep{Spiegelhalter1993} .
+Alternatively, in Bayesian sequential monitoring data can be monitored on a continual basis and the evidence in favor (or against) a hypothesis can be evaluated against a single standard without penalty \citep{Spiegelhalter1993}. %
+%Under this paradigm, data is monitored and collection stopped when any of the following conditions are met (a) a sufficiently skeptical person is convinced the alternative hypothesis is true (b) a sufficiently enthusiastic person is convinced the alternative is false or the benefit of treatment is not as high as expected (c) the probability of eventually proving the alternative is true is sufficiently low or (d) all resources allocated have been exhausted \citep{Spiegelhalter1993} .
 
 In the clinical development of a therapeutic product, external forces may impede a clinical trial from reaching its objective (e.g. difficulty in enrolling, limited patient populations, long latency in observing the outcome of interest, etc.). 
 %
@@ -268,11 +268,11 @@ This challenge is especially apparent in cases where the disease for which the i
 %
 In settings where patients are difficult to enroll, and therefore meaningful numbers of patients will complete follow up prior to the trial reaching full enrollment, the concept of frequently monitoring interim data to determine whether a trial (or enrollment) can be stopped becomes appealing. 
 %
-As such, the use of Bayesian sequential methods, rooted in the likelihood principle and thus completely consistent with frequent or even continual data monitoring, provide an ideal basis from which to develop Complex Innovative Designs (CIDS) \citep{FDA_CID} – a performance goal set forth under PDUFA VI legislation.
+As such, the use of Bayesian sequential methods, rooted in the likelihood principle and thus completely consistent with frequent or even continual data monitoring, provide an ideal basis from which to develop Complex Innovative Designs (CIDS) – a performance goal set forth under PDUFA VI legislation \citep{FDA2017}.
 %
 Moreover, in settings where pertinent preexisting data are available, Bayesian methods inarguably provide a natural approach for incorporating that information via a prior distribution into the design and analysis of a future trial.
 %
-The potential use of Bayesian methods is discussed throughout the draft guidance \citep{FDA_CID}, including the use of Bayesian methods to extrapolate information from adult patients to pediatric settings as one type of possible CID (see Section II, Part C).
+The potential use of Bayesian methods is discussed throughout the draft guidance \citep{FDA_CID}, created in response to the 21st Century Cures Act \citep{USCongress2016}, including the use of Bayesian methods to extrapolate information from adult patients to pediatric settings as one type of possible CID (see Section III, Part C).
 
 %Enrolling the number of patients needed to adequately address objectives of a clinical trial can be difficult.
 %% 
@@ -324,7 +324,7 @@ priors used to monitor enrollment and/or data collection (i.e., monitoring prior
 be derived in a semi-automatic fashion based on standard inputs that are required for trial planning. 
 %
 These inputs include (1) the boundary null value for the treatment effect, (2) a plausible, clinically meaningful 
-value for the treatment effect, and (3) a criteria for what constitutes substantial evidence of efficacy. 
+value for the treatment effect, and (3) a criteria for what constitutes a compelling demonstration of efficacy. 
 %
 In principle, the plausible, clinically meaningful value for the treatment effect should be informed from relevant external data, when available. 
 
@@ -339,17 +339,17 @@ A conditional-marginal prior factorization is proposed for settings where there 
 parameters (Section \ref{sec:cond_marg}) and we illustrate how prior information can be used in both marginal 
 distribution for the treatment effect and conditional distribution for the nuisance parameters, if desired. 
 
-We perform preposterior analysis to examine a variety of operating characteristics for the proposed design framework,
+We perform simulation-based preposterior analysis to examine a variety of operating characteristics for the proposed design framework,
 and to understand how key operating characteristics are influenced by the frequency of monitoring.
 %	%
 %\textcolor{red}{General feedback: Compare this text against the previous version. There was a good deal of 
 %confusing/inaccurate language -- e.g.,  coverage probability for the treatment effect or probability of early stopping
 %at an interim or final analysis. We need all sentences to be 100\% conceptually and mathematically precise.}
 	%
-Specifically, we estimate the probability of stopping early at an interim analysis due to substantial evidence of efficacy or futility, the expected sample size and trial duration, the average posterior mean, and the coverage probabilities for 95\% credible intervals for the treatment effect. 
+Specifically, we estimate the probability of stopping early at an interim analysis due to a compelling demonstration of efficacy or futility, the expected sample size and trial duration, the average posterior mean, and the coverage probabilities for 95\% credible intervals for the treatment effect. 
 	%
 In most cases, patients will be ongoing in the trial at the time interim data are obtained that lead to 
-ending enrollment as a result of substantial evidence of efficacy. 
+ending enrollment as a result of a compelling demonstration of efficacy. 
 	%
 It is our assumption that in most cases these patients will complete the study protocol and, accordingly, we also explore 
 the degree that interim evidence changes on average, once final data are available.	
@@ -363,7 +363,7 @@ While it is possible to calibrate a Bayesian design to have specific frequentist
 for that strategy.
 	%
 Instead, we propose a Bayesian framework that leverages what the authors argue is an intuitive criteria for stopping enrollment 
-and/or data collection at any point (based on posterior inference using a consistent criteria for substantial evidence) without 
+and/or data collection at any point (based on posterior inference using a consistent criteria for a compelling demonstration) without 
 explicit focus on strict type I error control -- something that is not achievable when prior information are incorporated into 
 the analysis \citep{Psioda2018}.
 	%
@@ -423,7 +423,7 @@ as the posterior probability of hypothesis $H_i$.
 
 %see \eqref{eq:equation1} and \eqref{eq:equation2} in Appendix Section \ref{sec:hypothesis}).
 
-\subsubsection{Formalizing the Statistical Concept of Substantial Evidence}\label{sec:sub_evid}
+\subsubsection{Formalizing the Statistical Concept of a Compelling Demonstration}\label{sec:sub_evid}
 Consider the one-sided hypotheses $H_0: \theta \le \theta_0$ versus $H_1: \theta > \theta_0$ for fixed $\theta_0$, which we refer to as the boundary null value.
 	%
 Often in Bayesian hypothesis testing, one rejects the null hypothesis when $P(\theta > \theta_0 |\bmath{D})$ exceeds 
@@ -432,13 +432,13 @@ a prespecified threshold.
 Let $\epsilon$ represent \textit{insignificant residual probabilistic uncertainty} regarding a claim. 
  %
  Define $1-\epsilon$ to be the threshold for posterior probabilities in favor of the claim 
-(e.g., that $\theta > \theta_0$), such that posterior probabilities above $1-\epsilon$ are considered as providing \textit{substantial evidence} 
+(e.g., that $\theta > \theta_0$), such that posterior probabilities above $1-\epsilon$ are considered as providing \textit{a compelling demonstration} 
 that the claim is true. 
 %
 Leveraging common practice, we will use $\epsilon=0.025$ for the examples presented herein 
-so that $1-\epsilon=0.975$ is the threshold that determines when evidence of a claim is substantial.
+so that $1-\epsilon=0.975$ is the threshold that determines when evidence of a claim is compelling.
 %
-Our purpose in this paper is not to debate the appropriateness of using $0.975$ as a threshold for defining substantial evidence, but rather to develop a strategy for prior elicitation that leverages an accepted threshold to simplify prior elicitation for sequentially monitored trials in hopes that this may facilitate the use of sequential monitoring more broadly and consistently.
+Our purpose in this paper is not to debate the appropriateness of using $0.975$ as a threshold for defining a compelling demonstration, but rather to develop a strategy for prior elicitation that leverages an accepted threshold to simplify prior elicitation for sequentially monitored trials in hopes that this may facilitate the use of sequential monitoring more broadly and consistently.
 
 %%\begin{mydef}
 Formally, we say that an individual whose belief is summarized by the distribution $\pi\left(\theta\right)$ is \textit{all but convinced} that $H_i$ is true if 
@@ -452,18 +452,18 @@ or posterior distribution.
 \subsubsection{Skeptical and Enthusiastic Monitoring Priors}\label{sec:MP}
 Monitoring priors are used for interim analyses of the data, and the purpose of monitoring priors is to help answer the question ``Is the evidence compelling enough to stop enrollment for the trial, or possibly end it altogether?''
 %
-A promising interim analysis that provides substantial evidence of efficacy may justify ending enrollment, while enrolled patients may continue to receive the treatment for the pre-planned period of exposure. 
+A promising interim analysis that provides a compelling demonstration of efficacy may justify ending enrollment, while enrolled patients may continue to receive the treatment for the pre-planned period of exposure. 
 %
-A discouraging interim analysis that provides substantial evidence of futility may justify ending enrollment, and may call for enrolled patients who are ongoing in the trial to be transitioned off the IP (i.e., termination of investigation of the treatment). 
+A discouraging interim analysis that provides a compelling demonstration of futility may justify ending enrollment, and may call for enrolled patients who are ongoing in the trial to be transitioned off the IP (i.e., termination of investigation of the treatment). 
 %
-For the Bayesian, the question becomes ``From what prior perspective must the evidence be substantial to justify one of the two actions described above?'' 
+For the Bayesian, the question becomes ``From what prior perspective must the evidence be compelling to justify one of the two actions described above?'' 
 %
 This motivates skeptical and enthusiastic monitoring priors, which represent two extreme but plausible beliefs about the quantity of interest $\theta$ relative to the hypotheses considered.
 %
-The use of monitoring based on changing the opinion of skeptical and enthusiastic observers has been described as overcoming a handicap \citep{Freedman1989} and providing a brake on the premature termination of trials \citep{Fayers1997}, and as constructing ``an adversary who will need to be disillusioned by the data to stop further experimentation" \citep{Spiegelhalter1994}. 
+%The use of monitoring based on changing the opinion of skeptical and enthusiastic observers has been described as ``overcoming a handicap" \citep{Freedman1989} and ``providing a brake on the premature termination of trials" \citep{Fayers1997}, and as constructing ``an adversary who will need to be disillusioned by the data to stop further experimentation" \citep{Spiegelhalter1994}. 
 
 
-Having formalized concepts for \textit{substantial evidence} and  being \textit{all but convinced} of a claim, we can now develop a structured framework for constructing skeptical and enthusiastic monitoring priors which will be used to determine early stopping rules for efficacy and futility, respectively.
+Having formalized concepts for \textit{a compelling demonstration} and  being \textit{all but convinced} of a claim, we can now develop a structured framework for constructing skeptical and enthusiastic monitoring priors which will be used to determine early stopping rules for efficacy and futility, respectively.
 %
 Consider again the hypotheses $H_0: \theta \le \theta_0$ versus $H_0: \theta > \theta_0$ where $\theta_0$ represents a 
 treatment effect of interest and let $\theta_1>\theta_0$ represent a plausible, clinically meaningful effect.
@@ -510,7 +510,7 @@ of additional data in order to assess whether the treatment is beneficial would 
 %
 Similarly, if at any point data sufficiently convince an observer whose prior belief is in accordance with $\pi_{E}(\theta)$ that 
 the effect of interest is significantly less than what was originally believed, then any less enthusiastic observer would be similarly convinced.
-Therefore, ceasing the collection of data altogether would be a reasonable action from most any rational perspective.
+Therefore, ceasing the collection of data altogether would be a reasonable action from most rational perspectives.
 
 \subsubsection{Maximum Sample Size and Formal Stoppage Criteria}
 In this section we formalize stopping criteria for futility and efficacy and give general 
@@ -520,12 +520,12 @@ Although sequentially monitored trials in principle require no fixed sample size
 constraints it will almost always be the case that a maximum sample size exists. 
 %
 We recommend that (resources permitting) the maximum sample size, denoted by $n_{\text{max}}$, should be chosen so that there is a 
-high probability that the trial generates substantial evidence from the perspective of the skeptic when in 
+high probability that the trial generates a compelling demonstration from the perspective of the skeptic when in 
 fact $\theta \approx \theta_1$ in a scenario where the data are only examined once when the full set of 
 outcomes are ascertained.
 %
 The rationale behind this strategy is that one would want to ensure the trial's sample size is sufficient so that
-there is high probability the data collected will provide substantial evidence of treatment benefit to observers 
+there is high probability the data collected will provide a compelling demonstration of treatment benefit to observers 
 having relatively extreme skepticism regarding the magnitude of treatment benefit a priori.  
 
 
@@ -550,11 +550,11 @@ The strategies presented herein for sequential monitoring are appropriate regard
 Stopping criteria for efficacy are defined from the perspective of a skeptical observer. 
 	%
 The skeptic becomes convinced that a treatment is effective if at some point the observed data suggest there is 
-substantial evidence that the alternative hypothesis is true. 
+a compelling demonstration that the alternative hypothesis is true. 
 	%
 Formally, the early stopping criteria are met based on data $\bmath{D}$ when $P_S(\theta>\theta_0|\bmath{D})>1-\epsilon$.
 	%
-Note that the evidence must \textit{exceed} the threshold for what defines it being substantial.
+Note that the evidence must \textit{exceed} the threshold for what defines it being compelling.
 	%
 When the evidence in favor of the alternative surpasses this threshold, it may no longer be necessary to 
 enroll patients for the purpose of proving treatment efficacy.
@@ -570,7 +570,7 @@ $\theta$ much less than $\theta_0$.
 %
 For this reason, we consider a different approach.
 %
-Recalling that $\theta_1$ represents a plausible, clinically meaningful treatment effect, the early stopping criteria are met based on data $\mathbf{D}$ when $P_E\left(\theta<\theta_1| \bmath{D}\right)>1-\epsilon$. In this case the trial may be stopped due to there being substantial evidence that the treatment effect is much less than hypothesized (i.e., $\theta_1$).
+Recalling that $\theta_1$ represents a plausible, clinically meaningful treatment effect, the early stopping criteria are met based on data $\mathbf{D}$ when $P_E\left(\theta<\theta_1| \bmath{D}\right)>1-\epsilon$. In this case the trial may be stopped due to there being a compelling demonstration that the treatment effect is much less than hypothesized (i.e., $\theta_1$).
 %
 \subsection{Specifying Monitoring Priors}\label{sec:mps}
 \subsubsection{Default Monitoring Priors}
@@ -587,12 +587,12 @@ However, the mode and tail constraints do uniquely determine a pair of normal di
 A default enthusiastic monitoring prior satisfying (i) $\text{argmax}_\theta~\pi_E(\theta)=\theta_1$
 and (ii) $P_E(\theta > \theta_0)=1-\epsilon$ is the normal distribution with location $\theta_1$ and standard deviation $\sigma=\frac{\theta_1-\theta_0}{\Phi^{-1}(1-\epsilon)}$, where $\Phi^{-1}$ denotes the quantile function of a standard normal.
 %
-Note that the specification of $\mu$ and $\sigma$ completely determine the density at all points, including the value of the density at the mode which is $f(\theta_1)=\frac{1}{\sqrt{2\pi}\sigma}$.
+The specification of $\mu$ and $\sigma$ completely determine the density at all points, including the value of the density at the mode which is $f(\theta_1)=\frac{1}{\sqrt{2\pi}\sigma}$.
 %
 The skeptical monitoring prior is similarly defined, satisfying (i) $\text{argmax}_\theta~\pi_S(\theta)=\theta_0$ and (ii) $P_S(\theta < \theta_1)=1-\epsilon$.
 %Specifying the specification of the mean and variance of a normal distribution completely determine the mode value and tail-probabilities, and is therefore sufficient for defining skeptical and enthusiastic priors (see Section \ref{sec:normal_tail_area}). 
 
-Use of normal distributions for the monitoring priors can be motivated by the Bayesian Central Limit Theorem which states that, under general conditions, the posterior distribution for $\theta$ approaches normality as the sample size increases, regardless of the initial choice of prior.
+Use of normal distributions for the monitoring priors can be motivated by the Bayesian Central Limit Theorem (CLT) \citep{LeCam2000} which states that, under general conditions, the posterior distribution for $\theta$ approaches normality as the sample size increases, regardless of the initial choice of prior.
 %
 Therefore, a normally distributed monitoring prior is consistent with belief derived from a sufficiently large (hypothetical) dataset with maximum likelihood estimate equal to the mode value required by the prior.
 
@@ -620,7 +620,7 @@ An enthusiastic monitoring prior in the generalized normal family of distributio
 %
 Web Appendix B details a procedure for parameterizing flattened and concentrated monitoring priors using the generalized normal distribution. 
 
-Example flattened and concentrated distributions for different choices of $k$ are shown in Figure \ref{fig:figure1}. 
+Flattened and concentrated distributions for different choices of $k$ are shown in Figure \ref{fig:figure1}. 
 
 \begin{figure}
 \begin{center}
@@ -647,11 +647,11 @@ The approach we have proposed results in a unique flattened or concentrated prio
 
 The use of the scale factor $k$ corresponds to beliefs that reflect useful and nuanced perspectives for clinical trial decision making.
 %
-A concentrated skeptical prior views $\theta_0$ as being more likely than a (hypothetical) data-driven perspective while still reflecting residual uncertainty that $\theta>\theta_1$.
+A concentrated skeptical prior views $\theta_0$ as being more likely than a data-driven (i.e. normally distributed via Bayesian CLT) perspective while still reflecting residual uncertainty that $\theta>\theta_1$.
 %
 This is a rational perspective for a monitoring prior since the skeptical viewpoint should give substantial preference to the null value.
 %
-Similarly, a flattened enthusiastic prior views $\theta_1$ as being less likely than a (hypothetical) data driven perspective while still reflecting residual uncertainty that $\theta<\theta_0$.
+Similarly, a flattened enthusiastic prior views $\theta_1$ as being less likely than a data-driven perspective while still reflecting residual uncertainty that $\theta<\theta_0$.
 %
 This is a rational perspective for a monitoring prior since even from an enthusiastic viewpoint, one may wish to reflect increased uncertainty regarding the likelihood of values at and around $\theta_1$.
 %
@@ -708,14 +708,14 @@ A locally non-informative prior is shown in Panel D of Figure \ref{fig:figure1},
 %Suppose the trial from Section \ref{sec:preliminaries} has added a control arm, and let $\eta_0$ and $\eta_1$ be the response proportions for a control and treatment group respectively. Suppose that the risk difference $\theta=\eta_1-\eta_0$ is the parameter of interest, and let $\eta_0$ be a nuisance parameter. Let $\delta_0$ denote a null risk difference and $\delta_1$ denote a highly efficacious risk difference.
 
 \subsubsection{Incorporating Prior Information in the Monitoring Priors}\label{sec:incorporating}
-The monitoring priors are constructed based on the quantities $\theta_0$ and $\theta_1$, as well as the definition of substantial evidence. 
+The monitoring priors are constructed based on the quantities $\theta_0$ and $\theta_1$, as well as the definition of a compelling demonstration. 
 %
 As described previously, prior information may be directly used in the construction of the enthusiastic prior (e.g., choice of $\theta_1$).
 %
 It may also be desirable to incorporate prior information into the monitoring process when making a determination of when to stop enrollment 
 early for efficacy.
 %
-To facilitate this, we introduce a procedure for modifying the skeptical prior such that, if the enthusiastic prior is congruent with observed data, the degree of skepticism can be adaptively lessened.
+To facilitate this, we introduce a procedure for modifying the monitoring process such that, if the enthusiastic prior is congruent with observed data, the degree of skepticism can be adaptively lessened.
 	%
 We propose incorporating prior information into the monitoring process for efficacy through constructing a mixture prior
 from the skeptical and enthusiastic priors using a mixing weight that is constructed from measures of compatibility between the
@@ -812,9 +812,9 @@ Define the inference prior as
 where $\omega_S+\omega_E+\omega_{NI}=1$ and each weight is non-negative. 
 	%
 One may take $\omega_{NI}=0$ and fixed value of $\omega_S=\omega_E=1/2$ to obtain an \textit{agnostic} inference prior since it 
-gives equal weight to the skeptical and enthusiastic components.
+gives equal weight to the skeptical and enthusiastic components (see Section \ref{sec:example1}).
 %
-This type of inference prior is demonstrated in Section \ref{sec:example1}.
+%This type of inference prior is demonstrated in Section \ref{sec:example1}.
 }
 
 {
@@ -952,18 +952,17 @@ The early stopping criteria, as well as any quantity involving the posterior dis
 For the cases we consider in this paper, these quantities are 1$-$ or 2$-$dimensional integrals which are evaluated using numerical integration in R \citep{R2017} using the \texttt{pracma} package \citep{Borchers2019}.
 
 \subsubsection{Example Paths}
-Figure 3 presents violin plots that are used to illustrate the monitoring process for two hypothetical instances of the trial. 
+Figure 3 presents violin plots to illustrate the monitoring process for two hypothetical instances of the trial. 
 %
-For each instance, the monitoring priors (left-most set of distributions), the posterior distributions at three selected interim analyses (middle sets), and from the final analysis (right-most set) are shown.
+For each instance, the monitoring priors (left-most set of distributions), and the posterior distributions at three selected interim analyses (middle sets) and from the final analysis (right-most set) are shown.
 	%
-
 Panel A of Figure \ref{fig:figure2} shows the results of a trial with early stopping for efficacy once 30 outcomes are ascertained, and enrollment is henceforth terminated. 
 %
-Note that the final data (i.e., the data after ongoing patients are followed-up) in this example no longer meet the criteria for substantial evidence of efficacy.
+The final data (i.e., the data after ongoing patients are followed-up) in this example no longer meet the criteria for a compelling demonstration of efficacy.
 	%
 %A discussion of this type of evidence attenuation is given in Section \ref{sec:evid_decrease}.
 %
-Panel B of Figure \ref{fig:figure2} shows the results of a trial with early stopping for futility once 30 outcomes are ascertained, and enrollment is henceforth terminated. Note that the final data matches the last interim analysis since enrolled patients would be transitioned off the IP.
+Panel B of Figure \ref{fig:figure2} shows the results of a trial with early stopping for futility once 30 outcomes are ascertained, and enrollment is henceforth terminated. The final data matches the last interim analysis since enrolled patients would be transitioned off the IP.
 
 \begin{figure}\begin{center}
     \includegraphics[width=6in]{figure2a.png}
@@ -1000,7 +999,7 @@ The 95\% credible intervals are shown to have coverage probabilities exceeding t
 
 Given that the early stopping criteria was satisfied as an interim analysis, it is of interest to compare the posterior probability of the alternative once patients in follow-up have completed outcomes using the same skeptical prior.
 %
-It is of particular interest when the threshold for substantial evidence is satisfied for an interim analysis but is no longer satisfied once outcomes from patients in progress are ascertained, as was the case in Panel A of Figure \ref{fig:figure2}.
+It is of particular interest when the threshold for a compelling demonstration is satisfied for an interim analysis but is no longer satisfied once outcomes from patients in progress are ascertained, as was the case in Panel A of Figure \ref{fig:figure2}.
 %
 The probability of such an occurrence and the difference between the posterior probabilities evaluated at the different time points is shown in Panel B of Figure \ref{fig:ex1.1}.
 %
@@ -1008,7 +1007,7 @@ The probability of these cases occurring is reflected by the percent agreement b
 %
 Recall that when the generating value of theta is $\theta_0=0.4$, the trial is stopped early for efficacy with probability $0.026$. Among these cases, the posterior probability is still greater than $1-\epsilon$ with probability $0.433$. 
 %
-This means that the completed outcomes from patients in progress at time enrollment was terminated are likely to meaningfully diminish the evidence in favor of efficacy relative to the threshold for what is viewed as substantial.
+This means that the completed outcomes from patients in progress at time enrollment was terminated are likely to meaningfully diminish the evidence in favor of efficacy relative to the threshold for what is viewed as compelling.
 %
 When the generating value of theta is $\theta_1=0.67$, the trial is stopped early for efficacy with probability $0.952$, and among those cases the posterior probability is  greater than $1-\epsilon$ with probability $0.887$.
 
@@ -1039,9 +1038,9 @@ When there is only a single analysis completed at the maximum sample size, the p
 %
 %If the determination of efficacy was made with a non-informative prior, then the probability of the efficacy criteria being satisfied with a single analysis completed at the maximum sample size would be $2.5\%$.
 %
-For more frequent data monitoring, the probability of obtaining substantial evidence of efficacy at an interim analysis increases slightly, but never far exceeds the typical nominal level. 
+For more frequent data monitoring, the probability of obtaining a compelling demonstration of efficacy at an interim analysis increases slightly, but never far exceeds the typical nominal level. 
 %
-In many of these cases with early stoppage for efficacy with a true $\theta=\theta_0$, the final posterior probability which includes the total follow-up no longer meets the threshold for substantial evidence.
+In many of these cases with early stoppage for efficacy with a true $\theta=\theta_0$, the final posterior probability which includes the total follow-up no longer meets the threshold for a compelling demonstration.
 \begin{figure}\begin{center}
 
     \includegraphics[width=6in]{figure4.png}
@@ -1081,13 +1080,13 @@ Ultimately, 93 patients were enrolled over approximately 52.5 months (approximat
 Clinical response was observed in 28 of 53 (52.8\%) of patients randomized to belimumab and in 17 of 40 (43.6\%) of patients randomized to placebo.
 
 \subsubsection{Model Formulation \& Prior Elicitation}\label{sec:example2model}
-We use this trial as a template to demonstrate our framework, in particular the performance response-adaptive sequential monitoring from Section \ref{sec:incorporating}. Response-adaptive sequential monitoring is necessary since the power analysis in Section \ref{sec:example2motivating} shows the need for many more patients than were available, therefore, a strategy for prospective incorporation of prior information must be implemented for the trial to have a chance of providing substantial evidence of efficacy through a pre-specified design.
+We use this trial as a template to demonstrate our framework, in particular the performance response-adaptive sequential monitoring from Section \ref{sec:incorporating}. Response-adaptive sequential monitoring is necessary since the power analysis in Section \ref{sec:example2motivating} shows the need for many more patients than were available, therefore, a strategy for prospective incorporation of prior information must be implemented for the trial to have a chance of providing a compelling demonstration of efficacy through a pre-specified design.
 %
 The data $\bmath{D}$ are assumed to be independent Bernoulli random variables with response probability $\eta_0$ for the placebo group and $\eta_1$ for the treatment group, with $\theta=\eta_1-\eta_0$ denoting the difference in response probabilities. 
 %
 This trial has a superiority hypothesis of treatment to control with null difference in response probabilities, denoted by $\theta_0=0$.
 %
-An estimate for the pediatric response probability is denoted by $\eta_0=0.39$ (i.e. the sample proportion of responders from the pooled adult studies), and for purposes of monitoring, a plausible, clinically meaningful difference in response probabilities is $\theta_1=0.12$ (i.e. based on the pooled adult study's treatment response probability of $0.51$) \citep{Furie2011,Navarra2011}.
+An estimate for the pediatric response probability is denoted by $\eta_0=0.39$ (i.e. the sample proportion of responders from the pooled adult studies), and for purposes of monitoring, a plausible, clinically meaningful difference in response probabilities is $\theta_1=0.12$ (i.e. based on the pooled adult study's treatment response probability of $0.51$).% \citep{Furie2011,Navarra2011}.
 %
 
 
@@ -1118,13 +1117,13 @@ Panel A of Figure \ref{fig:ex2varyomega} shows the operating characteristics of 
 %
 When $\theta=0$, there is probability 0.008 of concluding efficacy at an interim analysis.
 %
-This probability increases to $0.193$ at $\theta_1=0.12$.
+This probability increases to $0.193$ at $\theta_1=0.12$. While this doesn't attain traditional power thresholds, it is much greater than the respective probability of 0.006 using the default (non-adaptive) skeptical prior at this effect size.
 %
 At the effect size $0.24$ the probability of concluding efficacy increases to $0.711$, and the expected final sample size is 90.3 patients.
 
 Panel B of Figure \ref{fig:ex2varyomega} shows the probability of stopping early for efficacy using a fixed weight mixture prior of the form \eqref{eq:inference_prior}  for efficacy monitoring with a fixed choice of $\omega$ chosen at the outset to be in the set $\{0.25,0.5,0.75,1\}$, and the associated sample sizes.
 %
-Note that $\omega=1$ corresponds to the traditional skeptical prior, $\omega=0.5$ gives equal weight to the skeptical and enthusiastic components, and $\omega=0.25$ most of the weight is applied to the enthusiastic component.
+%Note that $\omega=1$ corresponds to the traditional skeptical prior, $\omega=0.5$ gives equal weight to the skeptical and enthusiastic components, and $\omega=0.25$ most of the weight is applied to the enthusiastic component.
 %
 The design based on the adaptive weight mixture behaves similar to the design based on the fixed weight prior that equally weighs the skeptical and enthusiastic prior.
 
@@ -1151,7 +1150,7 @@ Consequently, the choice of monitoring prior and stoppage criteria are the same 
 %
 Even though frequentist operating characteristics are not an explicit focus of the design, we demonstrate that the Bayesian approaches proposed provide good operating characteristics across a wide range of data monitoring frequencies and enrollment patterns.
 
-Our results in Section \ref{sec:example2} can be compared to a post-hoc Bayesian hierarchical analysis which used data from two studies of the use of belimumab in adults \citep{Travis2019}. Patients in the pediatric trial had 1.5 times the odds of clinical response with 95\% CI (0.6, 3.5), and a meta-analysis of the two adult studies showed an odds ratio of 1.6 with 95\% CI (1.3, 2.1). The analysis used a mixture prior which was a weighted sum of a skeptical prior centered at null effect with effective sample size equal to 2 pediatric patients and an informative prior resulting from the meta-analysis. When the weight of the informative component was 0.55 and above, efficacy was concluded based on a 95\% credible interval excluding one. The 0.55 weight of the informative component, interpreted as a 55\% weight on the relevance of the adult information to the pediatric population, was determined to be reasonable by the clinical team. Our method contrasts such a post-hoc analysis with the prospective use of a monitoring prior for efficacy which gives weight to the adult data at interim analyses, although both methods show the necessity of information borrowing. Our analyses show that for such a trial to have any chance of early stopping, it is necessary to borrow information for the skeptical monitoring prior as frequent data monitoring with a default skeptical prior has limited potential to conclude efficacy (see Figure \ref{fig:ex2varyomega}). In fact, the adaptive weight skeptical prior used in this example may be too conservative for this setting, and adaptive methods that include more liberal information borrowing could be used.
+Our results in Section \ref{sec:example2} can be compared to a post-hoc Bayesian hierarchical analysis which used data from two studies of the use of belimumab in adults \citep{Brunner2020}. Patients in the pediatric trial had 1.5 times the odds of clinical response with 95\% CI (0.6, 3.5), and a meta-analysis of the two adult studies showed an odds ratio of 1.6 with 95\% CI (1.3, 2.1). The analysis used a mixture prior which was a weighted sum of a skeptical prior centered at null effect with effective sample size equal to 2 pediatric patients and an informative prior resulting from the meta-analysis. When the weight of the informative component was 0.55 and above, efficacy was concluded based on a 95\% credible interval excluding one. The 0.55 weight of the informative component, interpreted as a 55\% weight on the relevance of the adult information to the pediatric population, was determined to be reasonable by the clinical team. Our method contrasts such a post-hoc analysis with the prospective use of a monitoring prior for efficacy which gives weight to the adult data at interim analyses, although both methods show the necessity of information borrowing. Our analyses show that for such a trial to have any chance of early stopping, it is necessary to borrow information for the skeptical monitoring prior as frequent data monitoring with a default skeptical prior has limited potential to conclude efficacy (see Figure \ref{fig:ex2varyomega}). In fact, the adaptive weight skeptical prior used in this example may be too conservative for this setting, and adaptive methods that include more liberal information borrowing could be used.
 
 Although the examples provided are based on superiority trials with binary endpoints and response probabilities as the parameter of interest, the framework applies to any type of data and parameter of interest.
 %
@@ -1184,7 +1183,7 @@ Future work will involve demonstrating the framework in Bayesian clinical trials
 %  This section is optional.  Here is where you will want to cite
 %  grants, people who helped with the paper, etc.  But keep it short!
 
-\section*{Acknowledgements}
+%\section*{Acknowledgements}
 
 \vspace*{-8pt}
 

@@ -3,8 +3,9 @@
 #############################################
 
 rm(list = ls())
+setwd("/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code/plots")
 
-output_png <- TRUE
+output_png <- FALSE
 
 sig.fut    <- 0.975
 sig.eff    <- 0.975

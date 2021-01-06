@@ -12,14 +12,9 @@ Box, G. E.~P. (1980).
   {\bf 143,} 383--430.
 
 \bibitem[\protect\citeauthoryear{Brunner, Abud-Mendoza, Viola, {Calvo Penades},
-  Levy, Anton, Calderon, Chasnyk, Ferrandiz, Keltsev, {Paz Gastanaga}, Shishov,
-  Boteanu, Henrickson, Bass, Clark, Hammer, Ji, Nino, Roth, Struemper, Wang,
-  Martini, Lovell, and Ruperto}{Brunner et~al.}{2020}]{Brunner2020}
+  Levy, Anton, and et~al.}{Brunner et~al.}{2020}]{Brunner2020}
 Brunner, H.~I., Abud-Mendoza, C., Viola, D.~O., {Calvo Penades}, I., Levy, D.,
-  Anton, J., Calderon, J.~E., Chasnyk, V.~G., Ferrandiz, M.~A., Keltsev, V.,
-  {Paz Gastanaga}, M.~E., Shishov, M., Boteanu, A.~L., Henrickson, M., Bass,
-  D., Clark, K., Hammer, A., Ji, B.~N., Nino, A., Roth, D.~A., Struemper, H.,
-  Wang, M.-L., Martini, A., Lovell, D., and Ruperto, N. (2020).
+  Anton, J., and et~al. (2020).
 \newblock {Safety and efficacy of intravenous belimumab in children with
   systemic lupus erythematosus: results from a randomised, placebo-controlled
   trial}.
@@ -37,6 +32,11 @@ FDA (2006).
 \newblock {Establishment and Operation of Clinical Trial Data Monitoring
   Committees}.
 
+\bibitem[\protect\citeauthoryear{{FDA}}{{FDA}}{2017}]{FDA2017}
+{FDA} (2017).
+\newblock {PDUFA Reauthorization Performance Goals and Procedures Fiscal Years
+  2018 through 2022}.
+
 \bibitem[\protect\citeauthoryear{FDA}{FDA}{2019}]{FDA_CID}
 FDA (2019).
 \newblock {Interacting with the FDA on Complex Innovative Trial Designs for
@@ -49,25 +49,10 @@ Freedman, L.~S. and Spiegelhalter, D.~J. (1989).
   clinical trials}.
 \newblock {\em Controlled Clinical Trials} {\bf 10,} 357--367.
 
-\bibitem[\protect\citeauthoryear{Furie, Petri, Zamani, Cervera, Wallace,
-  Tegzov{\'{a}}, Sanchez-Guerrero, Schwarting, Merrill, Chatham, Stohl,
-  Ginzler, Hough, Zhong, Freimuth, van Vollenhoven, and Group}{Furie
-  et~al.}{2011}]{Furie2011}
-Furie, R., Petri, M., Zamani, O., Cervera, R., Wallace, D.~J., Tegzov{\'{a}},
-  D., Sanchez-Guerrero, J., Schwarting, A., Merrill, J.~T., Chatham, W.~W.,
-  Stohl, W., Ginzler, E.~M., Hough, D.~R., Zhong, Z.~J., Freimuth, W., van
-  Vollenhoven, R.~F., and Group, B.-.~S. (2011).
-\newblock {A phase III, randomized, placebo-controlled study of belimumab, a
-  monoclonal antibody that inhibits B lymphocyte stimulator, in patients with
-  systemic lupus erythematosus}.
-\newblock {\em Arthritis {\&} Rheumatism} {\bf 63,} 3918--3930.
-
 \bibitem[\protect\citeauthoryear{Hyams, Damaraju, Blank, Johanns, Guzzo,
-  Winter, Kugathasan, Cohen, Markowitz, Escher, Veereman–Wauters, Crandall,
-  Baldassano, and Griffiths}{Hyams et~al.}{2012}]{Hyams2012}
-Hyams, J., Damaraju, L., Blank, M., Johanns, J., Guzzo, C., Winter, H.~S.,
-  Kugathasan, S., Cohen, S., Markowitz, J., Escher, J.~C., Veereman–Wauters,
-  G., Crandall, W., Baldassano, R., and Griffiths, A. (2012).
+  Winter, and et~al.}{Hyams et~al.}{2012}]{Hyams2012}
+Hyams, J., Damaraju, L., Blank, M., Johanns, J., Guzzo, C., Winter, H.~S., and
+  et~al. (2012).
 \newblock {Induction and Maintenance Therapy With Infliximab for Children With
   Moderate to Severe Ulcerative Colitis}.
 \newblock {\em Clinical Gastroenterology and Hepatology} {\bf 10,} 391 --
@@ -88,21 +73,16 @@ Kopp-Schneider, A., Wiesenfarth, M., Witt, R., Edelmann, D., Witt, O., and
   posterior distributions—A calibration approach}.
 \newblock {\em Biometrical Journal} {\bf 61,} 488--502.
 
+\bibitem[\protect\citeauthoryear{{Le Cam} and Yang}{{Le Cam} and
+  Yang}{2000}]{LeCam2000}
+{Le Cam}, L. and Yang, G.~L. (2000).
+\newblock {\em {Asymptotics in Statistics: Some Basic Concepts}}.
+\newblock Springer, New York.
+
 \bibitem[\protect\citeauthoryear{Nadarajah}{Nadarajah}{2005}]{Nadarajah2005}
 Nadarajah, S. (2005).
 \newblock {A generalized normal distribution}.
 \newblock {\em Journal of Applied Statistics} {\bf 32,} 685--694.
-
-\bibitem[\protect\citeauthoryear{Navarra, Guzm{\'{a}}n, Gallacher, Hall, Levy,
-  Jimenez, Li, Thomas, Kim, Le{\'{o}}n, Tanasescu, Nasonov, Lan, Pineda, Zhong,
-  Freimuth, and Petri}{Navarra et~al.}{2011}]{Navarra2011}
-Navarra, S.~V., Guzm{\'{a}}n, R.~M., Gallacher, A.~E., Hall, S., Levy, R.~A.,
-  Jimenez, R.~E., Li, E. K.-M., Thomas, M., Kim, H.-Y., Le{\'{o}}n, M.~G.,
-  Tanasescu, C., Nasonov, E., Lan, J.-L., Pineda, L., Zhong, Z.~J., Freimuth,
-  W., and Petri, M.~A. (2011).
-\newblock {Efficacy and safety of belimumab in patients with active systemic
-  lupus erythematosus: a randomised, placebo-controlled, phase 3 trial}.
-\newblock {\em The Lancet} {\bf 377,} 721--731.
 
 \bibitem[\protect\citeauthoryear{Psioda and Ibrahim}{Psioda and
   Ibrahim}{2019}]{Psioda2018}
@@ -116,12 +96,9 @@ Psioda, M.~A. and Ibrahim, J.~G. (2019).
 \newblock {R: A Language and Environment for Statistical Computing}.
 
 \bibitem[\protect\citeauthoryear{Rutgeerts, Sandborn, Feagan, Reinisch, Olson,
-  Johanns, Travers, Rachmilewitz, Hanauer, Lichtenstein, de~Villiers, Present,
-  Sands, and Colombel}{Rutgeerts et~al.}{2005}]{Rutgeerts2005}
+  Johanns, and et~al.}{Rutgeerts et~al.}{2005}]{Rutgeerts2005}
 Rutgeerts, P., Sandborn, W.~J., Feagan, B.~G., Reinisch, W., Olson, A.,
-  Johanns, J., Travers, S., Rachmilewitz, D., Hanauer, S.~B., Lichtenstein,
-  G.~R., de~Villiers, W. J.~S., Present, D., Sands, B.~E., and Colombel, J.~F.
-  (2005).
+  Johanns, J., and et~al. (2005).
 \newblock {Infliximab for Induction and Maintenance Therapy for Ulcerative
   Colitis}.
 \newblock {\em New England Journal of Medicine} {\bf 353,} 2462--2476.
@@ -146,14 +123,10 @@ Stallard, N., Todd, S., Ryan, E.~G., and Gates, S. (2020).
   trial designs}.
 \newblock {\em BMC Medical Research Methodology} {\bf 20,} 4.
 
-\bibitem[\protect\citeauthoryear{Travis, Neuner, Rothwell, Levin, Nie, Niu,
-  Marathe, and Nikolov}{Travis et~al.}{2019}]{Travis2019}
-Travis, J., Neuner, R., Rothwell, R., Levin, G., Nie, L., Niu, J., Marathe, A.,
-  and Nikolov, N. (2019).
-\newblock {Application of Bayesian Statistics to Support Approval of
-  Intravenous Belimumab in Children with Systemic Lupus Erythematosus in the
-  United States}.
-\newblock In {\em 2019 ACR/ARP Annual Meeting}.
+\bibitem[\protect\citeauthoryear{{U.S. Congress}}{{U.S.
+  Congress}}{2016}]{USCongress2016}
+{U.S. Congress} (2016).
+\newblock {21st Century Cures Act (Pubic Law 114-255, 130 STAT 1033-1344)}.
 
 \bibitem[\protect\citeauthoryear{Ventz and Trippa}{Ventz and
   Trippa}{2015}]{Ventz2015}
