@@ -3,63 +3,51 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: bayes-SM-biometrics.aux
 Reallocating 'name_of_file' (item size: 1) to 5 items.
 The style file: biom.bst
-Reallocating 'name_of_file' (item size: 1) to 17 items.
-Database file #1: fda_bib_12_04_20.bib
-Repeated entry---line 149 of file fda_bib_12_04_20.bib
- : @article{Spiegelhalter1993
- :                           ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 509 of file fda_bib_12_04_20.bib
- : @article{Freedman1989
- :                      ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 548 of file fda_bib_12_04_20.bib
- : @article{Fayers1997
- :                    ,
-I'm skipping whatever remains of this entry
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Database file #1: jan-07-bib.bib
+Warning--empty journal in USCongress2016
 Warning--empty journal in FDA2006
 Warning--empty journal in FDA2017
 Warning--empty journal in FDA_CID
-Warning--empty journal in USCongress2016
-You've used 23 entries,
+You've used 20 entries,
             2146 wiz_defined-function locations,
-            671 strings with 8168 characters,
-and the built_in function-call counts, 10098 in all, are:
-= -- 914
-> -- 580
-< -- 14
-+ -- 189
-- -- 189
-* -- 971
-:= -- 1814
-add.period$ -- 63
-call.type$ -- 23
-change.case$ -- 176
-chr.to.int$ -- 23
-cite$ -- 27
-duplicate$ -- 329
-empty$ -- 602
-format.name$ -- 224
-if$ -- 1849
+            652 strings with 8601 characters,
+and the built_in function-call counts, 9934 in all, are:
+= -- 835
+> -- 736
+< -- 13
++ -- 252
+- -- 252
+* -- 1002
+:= -- 1826
+add.period$ -- 54
+call.type$ -- 20
+change.case$ -- 182
+chr.to.int$ -- 20
+cite$ -- 24
+duplicate$ -- 284
+empty$ -- 511
+format.name$ -- 282
+if$ -- 1781
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 23
-newline$ -- 112
-num.names$ -- 92
-pop$ -- 148
+missing$ -- 20
+newline$ -- 97
+num.names$ -- 80
+pop$ -- 161
 preamble$ -- 1
-purify$ -- 178
+purify$ -- 184
 quote$ -- 0
-skip$ -- 230
+skip$ -- 201
 stack$ -- 0
-substring$ -- 673
-swap$ -- 135
+substring$ -- 554
+swap$ -- 114
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 134
+type$ -- 116
 warning$ -- 4
-while$ -- 97
+while$ -- 83
 width$ -- 0
-write$ -- 283
-(There were 3 error messages)
+write$ -- 244
+(There were 4 warnings)

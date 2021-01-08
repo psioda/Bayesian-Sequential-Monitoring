@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  5 DEC 2020 03:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7445) (preloaded format=pdflatex 2020.6.9)  7 JAN 2021 20:22
 entering extended mode
 **./bayes-SM-supplement.tex
 (bayes-SM-supplement.tex
@@ -229,10 +229,41 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
+("/Users/kwiatkoe/Library/Application Support/MiKTeX/texmfs/install/tex/latex/c
+aption/caption.sty"
+Package: caption 2020/05/10 v3.4j Customizing captions (AR)
+
+("/Users/kwiatkoe/Library/Application Support/MiKTeX/texmfs/install/tex/latex/c
+aption/caption3.sty"
+Package: caption3 2020/05/10 v1.11 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 61.
+\captionmargin=\dimen151
+\captionmargin@=\dimen152
+\captionwidth=\dimen153
+\caption@tempdima=\dimen154
+\caption@indent=\dimen155
+\caption@parindent=\dimen156
+\caption@hangindent=\dimen157
+\abovecaptionskip=\skip61
+\belowcaptionskip=\skip62
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+Package caption Info: \@makecaption = \long macro:#1#2->\ifx \FigName \@captype
+ \SFB@makefigurecaption {#1}{#2}\else \SFB@maketablecaption {#1}{#2}\fi  on inp
+ut line 1053.
+)
+
+Package caption Warning: Unknown document class (or package),
+(caption)                standard defaults will be used.
+See the caption package documentation for explanation.
+
+\c@caption@flags=\count291
+\c@continuedfloat=\count292
+)
 ("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/l3backend/l3back
 end-pdfmode.def"
 File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count291
+\l__kernel_color_stack_int=\count293
 \l__pdf_internal_box=\box50
 ) (bayes-SM-supplement.aux
 
@@ -241,20 +272,20 @@ LaTeX Warning: Label `sec:priorRobustness' multiply defined.
 )
 \openout1 = `bayes-SM-supplement.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 158.
-LaTeX Font Info:    ... okay on input line 158.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 164.
+LaTeX Font Info:    ... okay on input line 164.
  (endrotfloat.sty
 Package: endrotfloat 2007/01/23 v1.0 LaTeX2e package puts sideways figures and 
 tables at end
@@ -262,16 +293,16 @@ tables at end
 ("/Library/Application Support/MiKTeX/texmfs/install/tex/context/base/mkii/supp
 -pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count292
-\scratchdimen=\dimen151
+\scratchcounter=\count294
+\scratchdimen=\dimen158
 \scratchbox=\box51
-\nofMPsegments=\count293
-\nofMParguments=\count294
+\nofMPsegments=\count295
+\nofMParguments=\count296
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count295
-\MPscratchDim=\dimen152
-\MPnumerator=\count296
-\makeMPintoPDFobject=\count297
+\MPscratchCnt=\count297
+\MPscratchDim=\dimen159
+\MPnumerator=\count298
+\makeMPintoPDFobject=\count299
 \everyMPtoPDFconversion=\toks25
 )
 ("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/epstopdf-pkg/eps
@@ -280,28 +311,30 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 )
-LaTeX Font Info:    Trying to load font information for U+eur on input line 164
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Trying to load font information for U+eur on input line 170
 .
 
 ("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/ueur.fd
 "
 File: ueur.fd 2013/01/14 v3.01 Euler Roman
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 164
+LaTeX Font Info:    Trying to load font information for U+msa on input line 170
 .
 
 ("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsa.fd
 "
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 164
+LaTeX Font Info:    Trying to load font information for U+msb on input line 170
 .
 
 ("/Library/Application Support/MiKTeX/texmfs/install/tex/latex/amsfonts/umsb.fd
 "
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (12.09029pt too wide) in paragraph at lines 174--182
+Overfull \hbox (12.09029pt too wide) in paragraph at lines 180--188
 \OML/cmm/m/it/12 H[]$\OT1/cmr/m/n/12 . In practice, most Bayesian hypothesis te
 sting methods are based on the posterior probability
  []
@@ -318,7 +351,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 /pdftex.map}
 
 ]
-Overfull \hbox (5.46893pt too wide) in paragraph at lines 210--214
+Overfull \hbox (5.46893pt too wide) in paragraph at lines 216--220
 \OT1/cmr/m/n/12 where $\OML/cmm/m/it/12  \OT1/cmr/m/n/12 = []$. The parameters
  for a locally non-informative generalized normal distribution
  []
@@ -340,12 +373,22 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [3]
-Overfull \hbox (0.8929pt too wide) in paragraph at lines 263--268
+Overfull \hbox (0.15929pt too wide) in paragraph at lines 266--269
+\OT1/cmr/m/n/12 Web Figure 4[](A) shows the prior-data compatibility assessment
+s $\OML/cmm/m/it/12  []$\OT1/cmr/m/n/12 , $\OML/cmm/m/it/12  []$\OT1/cmr/m/n/12
+ , $\OML/cmm/m/it/12  []$ \OT1/cmr/m/n/12 by observed
+ []
+
+
+Overfull \hbox (0.8929pt too wide) in paragraph at lines 270--275
 \OT1/cmr/m/n/12 components, and favors the locally non-informative prior if bot
 h the skeptical and enthusiastic
  []
 
 (bayes-SM-supplement.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 4
  []
@@ -430,13 +473,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3433 strings out of 482730
- 45695 string characters out of 2947761
- 290908 words of memory out of 3000000
- 19151 multiletter control sequences out of 15000+200000
+ 4587 strings out of 482730
+ 67227 string characters out of 2947761
+ 310492 words of memory out of 3000000
+ 20299 multiletter control sequences out of 15000+200000
  543476 words of font info for 64 fonts, out of 3000000 for 9000
  0 hyphenation exceptions out of 8191
- 33i,12n,38p,922b,309s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,12n,44p,924b,388s stack positions out of 5000i,500n,10000p,200000b,50000s
 </Library/Application Support/MiKTeX/texmfs/install/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb></Library/Application Support/MiKTeX/texmfs/install/fonts/type
 1/public/amsfonts/cm/cmex10.pfb></Library/Application Support/MiKTeX/texmfs/ins
@@ -456,7 +499,7 @@ public/amsfonts/cm/cmsy8.pfb></Library/Application Support/MiKTeX/texmfs/instal
 l/fonts/type1/public/amsfonts/cm/cmti12.pfb></Library/Application Support/MiKTe
 X/texmfs/install/fonts/type1/public/amsfonts/cm/cmti9.pfb></Library/Application
  Support/MiKTeX/texmfs/install/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on bayes-SM-supplement.pdf (9 pages, 1641263 bytes).
+Output written on bayes-SM-supplement.pdf (9 pages, 1641136 bytes).
 PDF statistics:
  111 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

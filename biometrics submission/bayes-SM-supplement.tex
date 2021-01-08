@@ -20,6 +20,11 @@
 \usepackage{graphicx}
 \usepackage{amsmath,amsfonts}
 \usepackage{xcolor}
+\usepackage{caption}
+\makeatletter
+\usepackage[labelfont=bf,labelsep=colon]{caption} 
+\renewcommand{\fnum@figure}{Web Figure \thefigure}
+\makeatother
 %\renewcommand\thesection{\Alph{section}}
 %\renewcommand\thesubsection{\thesection.\arabic{subsection}}
 %\usepackage{amssymb}
@@ -57,6 +62,7 @@
 \newcommand{\tcr}[1]{\textcolor{red}{#1}}
 \newcommand{\tcb}[1]{\textcolor{blue}{#1}}
 \newcommand{\tco}[1]{\textcolor{orange}{#1}}
+
 %  The rotating package allows you to have tables displayed in landscape
 %  mode.  The rotating package is NOT included in this distribution, but
 %  can be obtained from the CTAN archive.  USE OF LANDSCAPE TABLES IS
@@ -219,21 +225,22 @@ Finally, this parameterizing procedure is applicable to a generalized normal dis
 
 
 \section*{Web Appendix C: Type 1 Error Rate Depending on Enrollment Schemes}
-Recall main article Figure 5 showed Type 1 error properties for the single-arm design. Figure C\ref{fig:ex1t1e_longer} shows results from a design that has a longer follow-up period. The interim sample sizes are the same for each monitoring frequency, however, the final sample sizes under the longer follow-up designs are much larger (over 20 patients in follow-up for monitoring frequencies of 8 or fewer, compared to approximately 6 patients in the shorter follow-up designs). The final probability of efficacy criteria being satisfied is generally slightly lower in the longer follow-up design, which is what we would expect since the larger final sample size contains more data and is therefore more likely to be consistent with the underlying true null treatment effect.
+Recall main article Figure 5 showed Type 1 error properties for the single-arm design. Web Figure \ref{fig:ex1t1e_longer} shows results from a design that has a longer follow-up period. The interim sample sizes are the same for each monitoring frequency, however, the final sample sizes under the longer follow-up designs are much larger (over 20 patients in follow-up for monitoring frequencies of 8 or fewer, compared to approximately 6 patients in the shorter follow-up designs). The final probability of efficacy criteria being satisfied is generally slightly lower in the longer follow-up design, which is what we would expect since the larger final sample size contains more data and is therefore more likely to be consistent with the underlying true null treatment effect.
+
 \begin{figure}\begin{center}
 
    \includegraphics[width=6in]{figureS1.png}
-    \caption{Single arm design from main article Section 3.1 with a longer follow-up period. Probability of efficacy criteria being satisfied when $\theta=\theta_0$. SS; sample size. Monitor Freq; monitoring frequency.}
+    \caption{Single arm design from main article Section 3.1 with a longer follow-up period. Probability of efficacy criteria being satisfied when $\theta=\theta_0$ (SS; sample size, Monitor Freq; monitoring frequency).}
 	\label{fig:ex1t1e_longer}
 
 \end{center}
 \end{figure}
 \section*{Web Appendix D: Robustness of Parameterizations of Monitoring Priors}\label{sec:priorRobustness}
-Recall the analyses done in main article Section 3.1 used a concentrated skeptical prior and default enthusiastic prior. In this section we show the four possible designs using the combinations of skeptical and enthusiastic prior given in main article Figure 1. Figures D\ref{fig:robustness1} and D\ref{fig:robustness2} illustrate how the design operating characteristics change when the enthusiastic prior shifts from default to flattened, with the skeptical prior remaining fixed. Note that in the region between $\theta_0$ and $\frac{\theta_0+\theta_1}{2}$ as the enthusiastic prior shifts from default to flattened, (a) the probability of stopping early for futility increases (b) the probability of inconclusive findings decreases and (c) the intermediate and final sample sizes decrease. This is because the enthusiastic prior gives more mass in this region of $\theta$. 
+Recall the analyses done in main article Section 3.1 used a concentrated skeptical prior and default enthusiastic prior. In this section we show the four possible designs using the combinations of skeptical and enthusiastic prior given in main article Figure 1. Web Figures \ref{fig:robustness1} and \ref{fig:robustness2} illustrate how the design operating characteristics change when the enthusiastic prior shifts from default to flattened, with the skeptical prior remaining fixed. Note that in the region between $\theta_0$ and $\frac{\theta_0+\theta_1}{2}$ as the enthusiastic prior shifts from default to flattened, (a) the probability of stopping early for futility increases (b) the probability of inconclusive findings decreases and (c) the intermediate and final sample sizes decrease. This is because the enthusiastic prior gives more mass in this region of $\theta$. 
 %
 %The flattened enthusiastic prior was used in main article Section 3.1 to enhance the ability of futility monitoring to reduce the sample size.
 
-Contrasting Figures D\ref{fig:robustness1} and D\ref{fig:robustness2}, we see that the probability of stopping early for efficacy is much higher at $\theta_0$ when the default skeptical prior is used rather than the concentrated skeptical prior. This is because the default skeptical prior has less mass around $\theta=\theta_0$, therefore it is easier to convince the skeptic that $\theta>\theta_0$ under the null result $\theta=\theta_0$. %The concentrated skeptical prior was used in main article Section 3.1 to limit this probability and provide better Type 1 error control.
+Contrasting Web Figures \ref{fig:robustness1} and \ref{fig:robustness2}, we see that the probability of stopping early for efficacy is much higher at $\theta_0$ when the default skeptical prior is used rather than the concentrated skeptical prior. This is because the default skeptical prior has less mass around $\theta=\theta_0$, therefore it is easier to convince the skeptic that $\theta>\theta_0$ under the null result $\theta=\theta_0$. %The concentrated skeptical prior was used in main article Section 3.1 to limit this probability and provide better Type 1 error control.
 
 %The choice of skeptical and enthusiastic prior affects the analysis, and their specification (e.g. default, skeptical, enthusiastic) should be made with these properties in mind.
 
@@ -241,7 +248,7 @@ Contrasting Figures D\ref{fig:robustness1} and D\ref{fig:robustness2}, we see th
 
  \includegraphics[width=6in]{figureS2a.png}
  \includegraphics[width=6in]{figureS2b.png}
- \caption{Modification of enthusiastic prior parameterization from main article Section 3.1. A, default enthusiastic prior (main article Figure 1(c)). B, flattened enthusiastic prior (main article Figure 1(d)). Both designs use concentrated skeptical prior (main article Figure 1(b)).}
+ \caption{Modification of enthusiastic prior parameterization from main article Section 3.1. A, Default enthusiastic prior (main article Figure 1(c)). B, Flattened enthusiastic prior (main article Figure 1(d)). Both designs use concentrated skeptical prior (main article Figure 1(b)).}
 \label{fig:robustness1}
 \end{center}
 \end{figure}
@@ -250,17 +257,17 @@ Contrasting Figures D\ref{fig:robustness1} and D\ref{fig:robustness2}, we see th
 
  \includegraphics[width=6in]{figureS2c.png}
  \includegraphics[width=6in]{figureS2d.png}
- \caption{Modification of enthusiastic prior parameterization in main article Section 3.1. A, default enthusiastic prior (main article Figure 1(c)). B, flattened enthusiastic prior (main article Figure 1(d)). Both designs use default skeptical prior (main article Figure 1(a)).}
+ \caption{Modification of enthusiastic prior parameterization in main article Section 3.1. A, Default enthusiastic prior (main article Figure 1(c)). B, Flattened enthusiastic prior (main article Figure 1(d)). Both designs use default skeptical prior (main article Figure 1(a)).}
 \label{fig:robustness2}
 \end{center}
 \end{figure}
 
 \section*{Web Appendix E: Mixture Inference Prior Weights}\label{sec:priorRobustness}
-Figure E1(A) shows the prior-data compatibility assessments $\psi^{(S)}$, $\psi^{(E)}$, $\psi^{(NI)}$ by observed risk difference which were used in main article Section 3.2.
+Web Figure \ref{fig:3-part-compatibility}(A) shows the prior-data compatibility assessments $\psi^{(S)}$, $\psi^{(E)}$, $\psi^{(NI)}$ by observed risk difference which were used in main article Section 3.2.
 %
 As expected, the skeptical and enthusiastic priors show highest compatibility when the observed risk difference matches the corresponding prior mode, and the non-informative prior shows high compatibility for a wide range of $\theta$.
 
-Figure E1(B) shows the 3-part mixture inference prior weights $\omega_S$, $\omega_{E}$, $\omega_{NI}$ by observed risk difference.
+Web Figure \ref{fig:3-part-compatibility}(B) shows the 3-part mixture inference prior weights $\omega_S$, $\omega_{E}$, $\omega_{NI}$ by observed risk difference.
 %
 Recall our goal is to create a mixture prior which favors the skeptical or enthusiastic components in areas where high compatibility is demonstrated for those components, and favors the locally non-informative prior if both the skeptical and enthusiastic components show low compatibility.
 %
