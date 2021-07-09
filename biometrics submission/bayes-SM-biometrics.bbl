@@ -3,7 +3,7 @@
 \bibitem[\protect\citeauthoryear{Borchers}{Borchers}{2019}]{Borchers2019}
 Borchers, H.~W. (2019).
 \newblock {pracma: Practical Numerical Math Functions. R package version 2.2.9.
-  https://cran.r-project.org/package=pracma. Last accessed November 30, 2020}.
+  https://cran.r-project.org/package=pracma}.
 
 \bibitem[\protect\citeauthoryear{Box}{Box}{1980}]{Box1980}
 Box, G. E.~P. (1980).
@@ -17,7 +17,10 @@ Box, G. E.~P. (1980).
   Boteanu, Henrickson, Bass, Clark, Hammer, Ji, Nino, Roth, Struemper, Wang,
   Martini, Lovell, and Ruperto}{Brunner et~al.}{2020}]{Brunner2020}
 Brunner, H.~I., Abud-Mendoza, C., Viola, D.~O., {Calvo Penades}, I., Levy, D.,
-  Anton, J., et al. (2020).
+  Anton, J., Calderon, J.~E., Chasnyk, V.~G., Ferrandiz, M.~A., Keltsev, V.,
+  {Paz Gastanaga}, M.~E., Shishov, M., Boteanu, A.~L., Henrickson, M., Bass,
+  D., Clark, K., Hammer, A., Ji, B.~N., Nino, A., Roth, D.~A., Struemper, H.,
+  Wang, M.-L., Martini, A., Lovell, D., and Ruperto, N. (2020).
 \newblock {Safety and efficacy of intravenous belimumab in children with
   systemic lupus erythematosus: results from a randomised, placebo-controlled
   trial}.
@@ -26,7 +29,9 @@ Brunner, H.~I., Abud-Mendoza, C., Viola, D.~O., {Calvo Penades}, I., Levy, D.,
 \bibitem[\protect\citeauthoryear{Hyams, Damaraju, Blank, Johanns, Guzzo,
   Winter, Kugathasan, Cohen, Markowitz, Escher, Veereman-Wauters, Crandall,
   Baldassano, and Griffiths}{Hyams et~al.}{2012}]{Hyams2012}
-Hyams, J., Damaraju, L., Blank, M., Johanns, J., Guzzo, C., Winter, H.~S., et al. (2012).
+Hyams, J., Damaraju, L., Blank, M., Johanns, J., Guzzo, C., Winter, H.~S.,
+  Kugathasan, S., Cohen, S., Markowitz, J., Escher, J.~C., Veereman-Wauters,
+  G., Crandall, W., Baldassano, R., and Griffiths, A. (2012).
 \newblock {Induction and Maintenance Therapy With Infliximab for Children With
   Moderate to Severe Ulcerative Colitis}.
 \newblock {\em Clinical Gastroenterology and Hepatology} {\bf 10,} 391--399.
@@ -71,7 +76,8 @@ Psioda, M.~A. and Ibrahim, J.~G. (2018).
   Johanns, Travers, Rachmilewitz, Hanauer, Lichtenstein, de~Villiers, Present,
   Sands, and Colombel}{Rutgeerts et~al.}{2005}]{Rutgeerts2005}
 Rutgeerts, P., Sandborn, W.~J., Feagan, B.~G., Reinisch, W., Olson, A.,
-  Johanns, J., et al.
+  Johanns, J., Travers, S., Rachmilewitz, D., Hanauer, S.~B., Lichtenstein,
+  G.~R., de~Villiers, W. J.~S., Present, D., Sands, B.~E., and Colombel, J.~F.
   (2005).
 \newblock {Infliximab for Induction and Maintenance Therapy for Ulcerative
   Colitis}.

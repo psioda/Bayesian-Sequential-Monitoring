@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2020)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: bayes-SM-statmed.aux
+The style file: WileyNJD-AMA.bst
+Database file #1: wileyNJD-AMA.bib
+Warning--I didn't find a database entry for "Kenamond2013"
+Warning--empty journal in FDA2006
+Warning--empty journal in FDA2017
+Warning--empty journal in FDA_CID
+Warning--empty journal in USCongress2016
+`howpublished' is a missing field, not a string, for entry R2017
+while executing---line 1090 of file WileyNJD-AMA.bst
+`howpublished' is a missing field, not a string, for entry Borchers2019
+while executing---line 1090 of file WileyNJD-AMA.bst
+Warning--empty journal in FDA2018
+You've used 21 entries,
+            2067 wiz_defined-function locations,
+            684 strings with 8521 characters,
+and the built_in function-call counts, 3700 in all, are:
+= -- 302
+> -- 145
+< -- 0
++ -- 62
+- -- 41
+* -- 390
+:= -- 613
+add.period$ -- 25
+call.type$ -- 21
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 26
+duplicate$ -- 208
+empty$ -- 412
+format.name$ -- 41
+if$ -- 841
+int.to.chr$ -- 0
+int.to.str$ -- 21
+missing$ -- 21
+newline$ -- 83
+num.names$ -- 21
+pop$ -- 73
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 26
+stack$ -- 0
+substring$ -- 0
+swap$ -- 50
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 5
+while$ -- 21
+width$ -- 23
+write$ -- 228
+(There were 2 error messages)

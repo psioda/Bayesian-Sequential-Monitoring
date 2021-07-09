@@ -3,15 +3,6 @@
 ### Evan Kwiatkowski, Feb 2020
 ###
 ### # If changes made to functions then re-run args_model.R
-### # If changes made to functions then re-run args_model.R
-### # If changes made to functions then re-run args_model.R
-### # If changes made to functions then re-run args_model.R
-### # If changes made to functions then re-run args_model.R
-### # If changes made to functions then re-run args_model.R
-### # If changes made to functions then re-run args_model.R
-### # If changes made to functions then re-run args_model.R
-### # If changes made to functions then re-run args_model.R
-### # If changes made to functions then re-run args_model.R
 ##################################
 
 for (idx in 1:7){ # check here

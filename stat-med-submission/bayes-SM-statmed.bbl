@@ -1,0 +1,122 @@
+\begin{thebibliography}{10}
+\providecommand \doibase [0]{http://dx.doi.org/}%
+
+\bibitem{FDA2006}
+{U.S. Food and Drug Administration} . {Establishment and Operation of Clinical
+  Trial Data Monitoring Committees}.  2006.
+
+\bibitem{Jennison2000}
+Jennison C, Turnbull BW. {\it {Group sequential methods with applications to
+  clinical trials}}.
+\newblock Boca Raton: Chapman {\&} Hall/CRC .
+\newblock 2000.
+
+\bibitem{Spiegelhalter1993}
+Spiegelhalter DJ, Freedman LS, Parmar MKB. {Applying Bayesian ideas in drug
+  development and clinical trials}. {\it Statistics in Medicine} 1993\string;
+  12(15-16)\string: 1501--1511.
+\newblock \href {\doibase 10.1002/sim.4780121516} {doi: 10.1002/sim.4780121516}
+
+\bibitem{FDA2017}
+{U.S. Food and Drug Administration} . {PDUFA Reauthorization Performance Goals
+  and Procedures Fiscal Years 2018 through 2022}.  2017.
+
+\bibitem{FDA_CID}
+{U.S. Food and Drug Administration} . {Interacting with the FDA on Complex
+  Innovative Trial Designs for Drugs and Biological Products}.  2019.
+
+\bibitem{USCongress2016}
+{U.S. Congress} . {21st Century Cures Act (Pubic Law 114-255, 130 STAT
+  1033-1344)}.  2016.
+
+\bibitem{Ventz2015}
+Ventz S, Trippa L. {Bayesian designs and the control of frequentist
+  characteristics: A practical solution}. {\it Biometrics} 2015\string;
+  71(1)\string: 218--226.
+\newblock \href {\doibase 10.1111/biom.12226} {doi: 10.1111/biom.12226}
+
+\bibitem{Zhu2015}
+Zhu H, Yu Q. {A Bayesian sequential design using alpha spending function to
+  control type I error}. {\it Statistical Methods in Medical Research}
+  2015\string; 26(5)\string: 2184--2196.
+\newblock \href {\doibase 10.1177/0962280215595058} {doi:
+  10.1177/0962280215595058}
+
+\bibitem{Stallard2020}
+Stallard N, Todd S, Ryan EG, Gates S. {Comparison of Bayesian and frequentist
+  group-sequential clinical trial designs}. {\it BMC Medical Research
+  Methodology} 2020\string; 20(1)\string: 4.
+\newblock \href {\doibase 10.1186/s12874-019-0892-8} {doi:
+  10.1186/s12874-019-0892-8}
+
+\bibitem{Kopp-Schneider2020}
+Kopp-Schneider A, Calderazzo S, Wiesenfarth M. {Power gains by using external
+  information in clinical trials are typically not possible when requiring
+  strict type I error control}. {\it Biometrical Journal} 2020\string;
+  62(2)\string: 361--374.
+\newblock \href {\doibase 10.1002/bimj.201800395} {doi: 10.1002/bimj.201800395}
+
+\bibitem{Zhu2019}
+Zhu L, Yu Q, Mercante DE. {A Bayesian Sequential Design for Clinical Trials
+  with Time-to-Event Outcomes}. {\it Statistics in biopharmaceutical research}
+  2019\string; 11(4)\string: 387--397.
+\newblock \href {\doibase 10.1080/19466315.2019.1629996} {doi:
+  10.1080/19466315.2019.1629996}
+
+\bibitem{Psioda2018}
+Psioda MA, Ibrahim JG. {Bayesian design of a survival trial with a cured
+  fraction using historical data}. {\it Statistics in Medicine} 2018\string;
+  37(26)\string: 3814--3831.
+\newblock \href {\doibase 10.1002/sim.7846} {doi: 10.1002/sim.7846}
+
+\bibitem{LeCam2000}
+{Le Cam} L, Yang GL. {\it {Asymptotics in Statistics: Some Basic Concepts}}.
+\newblock New York: Springer .
+\newblock 2000.
+
+\bibitem{Nadarajah2005}
+Nadarajah S. {A generalized normal distribution}. {\it Journal of Applied
+  Statistics} 2005\string; 32(7)\string: 685--694.
+\newblock \href {\doibase 10.1080/02664760500079464} {doi:
+  10.1080/02664760500079464}
+
+\bibitem{Box1980}
+Box GEP. {Sampling and Bayes' Inference in Scientific Modelling and
+  Robustness}. {\it Journal of the Royal Statistical Society. Series A
+  (General)} 1980\string; 143(4)\string: 383--430.
+\newblock \href {\doibase 10.2307/2982063} {doi: 10.2307/2982063}
+
+\bibitem{Hyams2012}
+Hyams J, Damaraju L, Blank M, et al. {Induction and Maintenance Therapy With
+  Infliximab for Children With Moderate to Severe Ulcerative Colitis}. {\it
+  Clinical Gastroenterology and Hepatology} 2012\string; 10(4)\string: 391 --
+  399.e1.
+\newblock \href {\doibase https://doi.org/10.1016/j.cgh.2011.11.026} {doi:
+  https://doi.org/10.1016/j.cgh.2011.11.026}
+
+\bibitem{Rutgeerts2005}
+Rutgeerts P, Sandborn WJ, Feagan BG, et al. {Infliximab for Induction and
+  Maintenance Therapy for Ulcerative Colitis}. {\it New England Journal of
+  Medicine} 2005\string; 353(23)\string: 2462--2476.
+\newblock \href {\doibase 10.1056/NEJMoa050516} {doi: 10.1056/NEJMoa050516}
+
+\bibitem{R2017}
+{R Core Team} . {R: A Language and Environment for Statistical Computing}.
+  2017.
+
+\bibitem{Borchers2019}
+Borchers HW. {pracma: Practical Numerical Math Functions}. 2019.
+
+\bibitem{Brunner2020}
+Brunner HI, Abud-Mendoza C, Viola DO, et al. {Safety and efficacy of
+  intravenous belimumab in children with systemic lupus erythematosus: results
+  from a randomised, placebo-controlled trial}. {\it Annals of the Rheumatic
+  Diseases} 2020\string; 79(10)\string: 1340 LP -- 1348.
+\newblock \href {\doibase 10.1136/annrheumdis-2020-217101} {doi:
+  10.1136/annrheumdis-2020-217101}
+
+\bibitem{FDA2018}
+{U.S. Food and Drug Administration} . {Guidance for the Use of Bayesian
+  Statistics in Medical Device Clinical Trials}.  2018.
+
+\end{thebibliography}
