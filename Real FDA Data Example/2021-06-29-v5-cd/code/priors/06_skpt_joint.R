@@ -1,7 +1,7 @@
 skpt_joint <- function(){
 
 q.outer    <- 1 - sig.eff
-scale      <- 0.75
+scale      <- 1 # 0.75
 q.inner    <- (1 - pnorm(qnorm(1 - q.outer)/2) - q.outer)*scale
 
 source("priors/04_skpt_marginal.R", local = TRUE)

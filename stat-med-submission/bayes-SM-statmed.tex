@@ -979,24 +979,35 @@ The design based on the adaptive weight mixture behaves similar to the design ba
 \textcolor{blue}{
 \section{Real Data Example}
 We consider applying the adaptive mixture prior of \eqref{eq:adaptive_prior_delta} to the real outcomes of ``The Pediatric Lupus Trial of Belimumab Plus Background Standard Therapy (PLUTO)" (NCT01649765) \citep{Brunner2020}. The skeptical and enthusiastic priors are defined in the same way as Section \ref{sec:example2model}, which are centered around response differences of 0 and 0.12 respectively. There were responses available from 92 patients that were used for this analysis. Sequential monitoring after every two completed outcomes was conducted after a minimum sample size of 50 had been reached, however there were not exactly 50 completed outcomes reported so the first interim analysis was conducted with 52 completed outcomes.
+\newpage
+Consider the mixing weight $\omega$ given to the \textit{enthusiastic} prior:
+\begin{align*}
+\omega= (1 - \delta)f_\beta(\text{BoxPE})
+\end{align*}
+The minimum possible mixing weight assigned to the \textit{skeptical} prior is achieved when BoxPE=1 and is equal to  $\delta$.
+\\
+$f_\beta$ indicates an upwards scaling of the value $0.5$ such that $f_\beta(0.5)=\beta$ through a $\text{beta}(1, s_\beta)$ transformation.
+\\
+For $\beta=\{0.5, 0.6, 0.7, 0.8, 0.9\}$, $s_\beta=\{1, 1.32, 1.74, 2.32, 3.32\}$
 \begin{center}
-\begin{table}[b]\label{tbl:real-pluto}%
+\begin{table}\label{tbl:real-pluto}%
 \centering
-\caption{Interim and final sample sizes when using the adaptive mixture priors of \eqref{eq:adaptive_prior_delta} for efficacy monitoring in the PLUTO study.\citep{Brunner2020} (SS; sample size).}%
-\begin{tabular*}{300pt}{@{\extracolsep\fill}cccc@{\extracolsep\fill}}%
+\caption{Interim sample size at stoppage for efficacy by choice of minimum skeptical mixture weight $\delta$ and upwards scaling of Bayesian $p$-value of $0.5$.}%
+\begin{tabular*}{300pt}{@{\extracolsep\fill}cccccc@{\extracolsep\fill}}%
 \toprule
-\textbf{$\delta$} & \textbf{Interim SS} & \textbf{In Progress} & \textbf{Final SS}\\
+\textbf{$\delta$} & 0.5	&	0.6	&	0.7	&	0.8	&	0.9\\
 \midrule
-0.25	&	92	&	0	&	92	\\
-0.20	&	80	&	12	&	92	\\
-0.15	&	64	&	28	&	92	\\
-0.10	&	62	&	28	&	90	\\
-0.05	&	54	&	14	&	68	\\
-0	&	52	&	14	&	66	\\
+0.00	&	62	&	54	&	54	&	50	&	50	\\
+0.05	&	62	&	62	&	54	&	54	&	54	\\
+0.10	&	72	&	62	&	62	&	54	&	54	\\
+0.15	&	92	&	72	&	64	&	64	&	64	\\
+0.20	&	92	&	92	&	78	&	78	&	78	\\
+0.25	&	92	&	92	&	92	&	92	&	92	\\
 \bottomrule
 \end{tabular*}
 \end{table}
 \end{center}
+\newpage
 When $\delta$ is equal to zero, that is, the weight of the enthusiastic component is allowed to approach 1 in \eqref{eq:inference_prior}, then the efficacy criteria is satisfied at the first monitoring opportunity with 52 completed outcomes. At this point the data were shown to be more compatible with the enthusiastic prior than the skeptical prior, so the skeptical weight was reduced the $\delta=0$ in the mixture. As the value of $\delta$ increases, so does the interim sample size where the efficacy criteria is achieved.}
 \section{Discussion}
 In this paper, we present a structured framework for specifying monitoring priors and stoppage criteria for a Bayesian sequentially monitored clinical trial that is based on intuitive justification for the design quantities rather than being motivated by having pre-specified frequentist operating characteristics.

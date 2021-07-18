@@ -7,7 +7,8 @@ rm(list = ls())
 if (Sys.getenv("USER") == "kwiatkoe") {
   library(pracma)
   library(gnorm)
-  setwd("/Users/kwiatkoe/Documents/Github/Bayesian-Sequential-Monitoring/MP_FDA_Check/code")}
+  setwd("/Users/kwiatkoe/Documents/Github/Bayesian-Sequential-Monitoring/Real FDA Data Example/MP_FDA_Check/code")
+}
 
 if (.Platform$OS.type == "unix")    { 
   library(pracma, lib.loc = "../rpkgs/")
@@ -23,6 +24,7 @@ sig.eff    <- 0.975
 
 source("03_code_integrate.R")
 source("06_code_functions.R") # contains nested source("code_posteriors.R", local = TRUE)
+source("08_code_inference.R") # 2021-07-17
 
 source("priors/03_enth_joint.R")
 enth_joint()
