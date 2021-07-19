@@ -262,24 +262,6 @@ Contrasting Web Figures \ref{fig:robustness1} and \ref{fig:robustness2}, we see 
 \end{center}
 \end{figure}
 
-\section*{Web Appendix E: Mixture Inference Prior Weights}\label{sec:priorRobustness}
-Web Figure \ref{fig:3-part-compatibility}(A) shows the prior-data compatibility assessments $\psi^{(S)}$, $\psi^{(E)}$, $\psi^{(NI)}$ by observed risk difference which were used in main article Section 3.2.
-%
-As expected, the skeptical and enthusiastic priors show highest compatibility when the observed risk difference matches the corresponding prior mode, and the non-informative prior shows high compatibility for a wide range of $\theta$.
-
-Web Figure \ref{fig:3-part-compatibility}(B) shows the 3-part mixture inference prior weights $\omega_S$, $\omega_{E}$, $\omega_{NI}$ by observed risk difference.
-%
-Recall our goal is to create a mixture prior which favors the skeptical or enthusiastic components in areas where high compatibility is demonstrated for those components, and favors the locally non-informative prior if both the skeptical and enthusiastic components show low compatibility.
-%
-To this end, the skeptical and enthusiastic components have the highest weight when the observed data is aligned with the prior mode, and the locally non-informative prior has highest weight towards extreme values of the observed response difference.
-\begin{figure}\begin{center}
-\includegraphics[width=6in]{3-part-compatibility-1.png}
-\includegraphics[width=6in]{3-part-compatibility-2.png}
-    \caption{A; Prior-data compatibility assessments $\psi^{(S)}$, $\psi^{(E)}$, $\psi^{(NI)}$ by observed risk difference. B; 3-part mixture inference prior weights $\omega_S$, $\omega_{E}$, $\omega_{NI}$ by observed risk difference.}
-\label{fig:3-part-compatibility}
- \end{center}
-\end{figure}
-
 \bibliographystyle{biom} 
 \bibliography{fda_bib_062420}
 \vspace*{-8pt}

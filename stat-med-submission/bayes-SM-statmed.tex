@@ -951,6 +951,24 @@ A minimum sample size of $n_{min}=70$ was chosen to provide an adequate number o
 %
 An interim analysis is completed after every two patients have outcomes beginning at $n_{min}$.
 
+\section*{Web Appendix E: Mixture Inference Prior Weights}\label{sec:priorRobustness}
+Web Figure \ref{fig:3-part-compatibility}(A) shows the prior-data compatibility assessments $\psi^{(S)}$, $\psi^{(E)}$, $\psi^{(NI)}$ by observed risk difference which were used in main article Section 3.2.
+%
+As expected, the skeptical and enthusiastic priors show highest compatibility when the observed risk difference matches the corresponding prior mode, and the non-informative prior shows high compatibility for a wide range of $\theta$.
+
+Web Figure \ref{fig:3-part-compatibility}(B) shows the 3-part mixture inference prior weights $\omega_S$, $\omega_{E}$, $\omega_{NI}$ by observed risk difference.
+%
+Recall our goal is to create a mixture prior which favors the skeptical or enthusiastic components in areas where high compatibility is demonstrated for those components, and favors the locally non-informative prior if both the skeptical and enthusiastic components show low compatibility.
+%
+To this end, the skeptical and enthusiastic components have the highest weight when the observed data is aligned with the prior mode, and the locally non-informative prior has highest weight towards extreme values of the observed response difference.
+\begin{figure}\begin{center}
+\includegraphics[width=6in]{3-part-compatibility-1.png}
+\includegraphics[width=6in]{3-part-compatibility-2.png}
+    \caption{A; Prior-data compatibility assessments $\psi^{(S)}$, $\psi^{(E)}$, $\psi^{(NI)}$ by observed risk difference. B; 3-part mixture inference prior weights $\omega_S$, $\omega_{E}$, $\omega_{NI}$ by observed risk difference.}
+\label{fig:3-part-compatibility}
+ \end{center}
+\end{figure}
+
 \subsubsection{Preposterior Analysis of Operating Characteristics}\label{sec:ex2operatingcharacteristics} 
 The operating characteristics presented in this section are estimated using 20,000 simulated trials per value of $\theta$ using the trial design as described in Section \ref{sec:example2model}. The generating response probability in the placebo group was assumed to be 0.39, and the generating response probability in the treatment group was determined based on risk differences $\theta$ in $\{0, 0.06, 0.12, 0.18, 0.24\}$.
 

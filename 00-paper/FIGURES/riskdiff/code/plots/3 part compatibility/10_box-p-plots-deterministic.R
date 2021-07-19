@@ -158,15 +158,15 @@ cat("Started  ", as.character(start_time), "\n",
 
 Table0 <- cbind(Table0, x.t)
 Table0$risk.diff <- Table0$y1.IP/(Table0$y1.IP + Table0$y0.IP) - Table0$y1.PC/(Table0$y1.PC + Table0$y0.PC)
-############################################################################################################################################
-############################################################################################################################################
-############################################################################################################################################
 
+############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
 
 output_png <- TRUE
 width.scale <- 7
 
-if(output_png){png('3-part-compatibility-1.png',
+if(output_png){png('3 part compatibility/3-part-compatibility-1.png',
                    width = 450*width.scale, 
                    height = 300*width.scale,
                    pointsize=16,
@@ -188,8 +188,8 @@ lines(x,y, lty='dotted')
 # ix <- sort(x,index.return=T)$ix
 # lines(x[ix], myPredict[ix], col=2, lwd=2 )  
 
-y <- c(Table0$box.ni)
-lines(x,y, lty="solid")
+# y <- c(Table0$box.ni)
+# lines(x,y, lty="solid")
 # model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
 # myPredict <- predict( model ) 
 # ix <- sort(x,index.return=T)$ix
@@ -205,46 +205,156 @@ abline(h = seq(0, 1, by = 0.1),
        col = 'grey')
 
 legend("topright",#text.width = 0.05,
-       legend = c("Locally non-informative",
-                  "Skeptical",
+       legend = c("Skeptical",
                   "Enthusiastic"),
-       lty = c('solid','longdash','dotted'))
+       lty = c('longdash','dotted'))
 
 if(output_png){dev.off()}
 
-if(output_png){png('3-part-compatibility-2.png',
+############################################################################################################################################
+############################################################################################################################################
+############################################################################################################################################
+
+# delta.list <- seq(0, 0.25, by = 0.05)
+# beta.list <- c(1, 1.3220, 1.7370, 2.3220, 3.3220)
+# adapt.mat <- expand.grid(delta.list, beta.list)
+# adapt.mat$id <- 101:130
+# 
+# if (eff.mix.prob > 100){
+#   delta.a <- adapt.mat[adapt.mat$id == eff.mix.prob, "Var1"]
+#   beta.a <- adapt.mat[adapt.mat$id == eff.mix.prob, "Var2"]
+#   
+#   prior_data_conflict_result <- prior_dat_conflict(y1.IP, y0.IP, y1.PC, y0.PC)
+#   
+#   box.skpt                   <- prior_data_conflict_result[,"box.skpt"]
+#   box.enth                   <- prior_data_conflict_result[,"box.enth"]
+#   box.ni                     <- prior_data_conflict_result[,"box.ni"]
+#   BoxPE                      <- box.enth
+#   eff.mix.prob               <- 1 - (1 - delta.a)*pbeta(BoxPE, 1, beta.a) # amount assigned to skeptical prior
+# }
+
+# default
+delta.a <- 0
+beta.a <- 1
+Table0$eff.mix.prob1               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# 0.1 & 0.5
+delta.a <- 0
+beta.a <- 1.7370
+Table0$eff.mix.prob2               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# 0.1 & 0.7
+delta.a <- 0
+beta.a <- 3.3220
+Table0$eff.mix.prob3               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# default
+delta.a <- 0.1
+beta.a <- 1
+Table0$eff.mix.prob4               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# 0.1 & 0.5
+delta.a <- 0.1
+beta.a <- 1.7370
+Table0$eff.mix.prob5               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# 0.1 & 0.7
+delta.a <- 0.1
+beta.a <- 3.3220
+Table0$eff.mix.prob6               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# default
+delta.a <- 0.2
+beta.a <- 1
+Table0$eff.mix.prob7               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# 0.1 & 0.5
+delta.a <- 0.2
+beta.a <- 1.7370
+Table0$eff.mix.prob8               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# 0.1 & 0.7
+delta.a <- 0.2
+beta.a <- 3.3220
+Table0$eff.mix.prob9               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+
+if(output_png){png('3 part compatibility/3-part-compatibility-2.png',
                    width = 450*width.scale, 
                    height = 300*width.scale,
                    pointsize = 16,
                    res = 300)}
 
-omega.skpt <- Table0$box.skpt
-omega.enth <- Table0$box.enth
-omega.ni   <- Table0$box.ni
-omega.ni   <- pmax(omega.ni-pmax(omega.skpt,omega.enth),0)
-omega.sum  <- omega.skpt+omega.enth+omega.ni
-omega.skpt <- omega.skpt/omega.sum
-omega.enth <- omega.enth/omega.sum
-omega.ni   <- omega.ni/omega.sum
+# omega.skpt <- Table0$box.skpt
+# omega.enth <- Table0$box.enth
+# omega.ni   <- Table0$box.ni
+# omega.ni   <- pmax(omega.ni-pmax(omega.skpt,omega.enth),0)
+# omega.sum  <- omega.skpt+omega.enth+omega.ni
+# omega.skpt <- omega.skpt/omega.sum
+# omega.enth <- omega.enth/omega.sum
+# omega.ni   <- omega.ni/omega.sum
 
 x <- c(Table0$risk.diff)
-y <- omega.skpt
-plot(x,y, pch = 19, cex = 0.25, ylim = c(0,1), xlab = "Observed Response Difference", ylab = "Mixture Weights", type = 'l',
-     lty='longdash', yaxt='n')
+y <- Table0$eff.mix.prob1
+plot(x, y, 
+     # pch = 19, 
+     # cex = 0.25, 
+     ylim = c(0,1), 
+     xlab = "Observed Response Difference", 
+     ylab = "Mixture Weights", type = 'l',
+     lty=1, 
+     yaxt='n',
+     col = 'red')
+
+abline(h = seq(0, 1, by = 0.1),
+       col = 'grey')
+abline(v=0, col="grey")
+abline(v=0.12, col="grey")
+
 # model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
 # myPredict <- predict( model ) 
 # ix <- sort(x,index.return=T)$ix
 # lines(x[ix], myPredict[ix], lwd=2 )  
 
-y <- omega.enth
-points(x,y, col=2, pch = 19, cex = 0.25, type = 'l', lty='dotted')
+# y <- Table0$eff.mix.prob2
+# points(x, y, 
+#        col = 2, 
+#        pch = 19, 
+#        cex = 0.25, 
+#        type = 'l', 
+#        lty='dotted')
+
+y <- Table0$eff.mix.prob2
+points(x, y, 
+       # col = 2, pch = 19,  cex = 0.25, 
+       type = 'l',
+       lty = 'longdash', col = 'red')
+
+# y <- Table0$eff.mix.prob4
+# points(x, y, col = 2, pch = 19,  cex = 0.25, type = 'l', lty='dotted')
+# 
+# y <- Table0$eff.mix.prob5
+# points(x, y, col = 2, pch = 19,  cex = 0.25, type = 'l', lty='dotted')
+# 
+# y <- Table0$eff.mix.prob6
+# points(x, y, col = 2, pch = 19,  cex = 0.25, type = 'l', lty='dotted')
+
+y <- Table0$eff.mix.prob7
+points(x, y, 
+       # col = 2, pch = 19,  cex = 0.25, 
+       type = 'l', lty=1, col = 'blue')
+# points(x[c(TRUE, FALSE)], y[c(TRUE, FALSE)], pch = 4)
+# y <- Table0$eff.mix.prob8
+# points(x, y, col = 2, pch = 19,  cex = 0.25, type = 'l', lty=1)
+
+y <- Table0$eff.mix.prob8
+points(x, y, 
+       # col = 2, pch = 19,  cex = 0.25, 
+       type = 'l', lty='longdash', col = 'blue')
+# points(x[c(TRUE, FALSE)], y[c(TRUE, FALSE)], pch = 4)
+
+
+
+
+
 # model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
 # myPredict <- predict( model ) 
 # ix <- sort(x,index.return=T)$ix
 # lines(x[ix], myPredict[ix], lwd=2, col = 2)
 
-y <- omega.ni
-points(x,y, lty='solid', pch = 19, cex = 0.25, type = 'l')
+# y <- omega.ni
+# points(x,y, lty='solid', pch = 19, cex = 0.25, type = 'l')
 # model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
 # myPredict <- predict( model ) 
 # ix <- sort(x,index.return=T)$ix
@@ -267,13 +377,21 @@ axis(2,
      las = 2,
      at = seq(0, 1, by = 0.1),
      labels = format(seq(0, 1, by = 0.1), nsmall = 1))
-abline(h = seq(0, 1, by = 0.1),
-       col = 'grey')
 
-legend("top",#text.width = 0.05,
-       legend = c("Locally non-informative",
-                  "Skeptical",
-                  "Enthusiastic"),
-       lty = c('solid','longdash','dotted'))
+
+legend("top",
+       legend= c(
+         as.expression(bquote(delta*"=0, "*beta*"=0.5")),
+         as.expression(bquote(delta*"=0, "*beta*"=0.7")),             
+         as.expression(bquote(delta*"=0.2, "*beta*"=0.5")),  
+         as.expression(bquote(delta*"=0.2, "*beta*"=0.7")) 
+       ),
+       lty = c(1,2,1,2),
+       col = c("red", "red", "blue", "blue"))
+
+# legend("top",#text.width = 0.05,
+#        legend = c("Skeptical",
+#                   "Enthusiastic"),
+#        lty = c('solid','longdash','dotted'))
 
 if(output_png){dev.off()}
