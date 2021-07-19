@@ -120,13 +120,13 @@ mu0.enth<-p.enth
 #setwd(root)
 
 width.scale<-5
-png('figure1a.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
+png('figure1c.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
 scale <- 1
 prior.nc.enth<-enth_prior_default()
 
-xmin <- p.enth - 0.5
-xmax <- p.enth + 0.5
-ymax <- 6
+xmin <- (p.skpt + p.enth)/2 - 0.5
+xmax <- (p.skpt + p.enth)/2 + 0.5
+ymax <- 5
 x<-seq(xmin,
        xmax,
        by=0.005)
@@ -154,7 +154,7 @@ polygon(c(x[x<=p.skpt],p.skpt),
 
 segments(x0=p.enth,y0=0,y1=prior.nc.enth(p.enth))
 
-legend("top",
+legend("topright",
        legend= c(
                  as.expression(bquote(mode(theta) == theta[1])),
                  as.expression(bquote(P(theta< theta[0])==.(tail.enth))),
@@ -163,7 +163,7 @@ legend("top",
                  #as.expression(bquote(GN(mu==theta[1],alpha==.(sigma0.enth),beta==.(lambda0.enth))))
        ))
 
-mtext("(A)",side=2,line=1,at=ymax,las=1)
+mtext("(C)",side=2,line=1,at=ymax,las=1)
 dev.off()
 
 #rm(list = ls())
@@ -174,9 +174,9 @@ png('figure1b.png',width = 300*width.scale, height = 300*width.scale,pointsize=1
 scale <- 0.75
 prior.nc.enth<-enth_prior_custom(scale=scale)
 
-xmin <- p.enth - 0.5
-xmax <- p.enth + 0.5
-ymax <- 6
+xmin <- (p.skpt + p.enth)/2 - 0.5
+xmax <- (p.skpt + p.enth)/2 + 0.5
+ymax <- 5
 x<-seq(xmin,
        xmax,
        by=0.005)
@@ -204,7 +204,7 @@ polygon(c(x[x<=p.skpt],p.skpt),
 
 segments(x0=p.enth,y0=0,y1=prior.nc.enth(p.enth))
 
-legend("top",
+legend("topright",
        legend= c(
                  as.expression(bquote(mode(theta) == theta[1])),
                  as.expression(bquote(P(theta< theta[0])==.(tail.enth))),                 
@@ -220,13 +220,13 @@ dev.off()
 #root<-"P:/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 #setwd(root)
 width.scale<-5
-png('figure1c.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
+png('figure1d.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
 scale <- 1.5
 prior.nc.enth<-enth_prior_custom(scale=scale)
 
-xmin <- p.enth - 0.5
-xmax <- p.enth + 0.5
-ymax <- 6
+xmin <- (p.skpt + p.enth)/2 - 0.5
+xmax <- (p.skpt + p.enth)/2 + 0.5
+ymax <- 5
 x<-seq(xmin,
        xmax,
        by=0.005)
@@ -254,7 +254,7 @@ polygon(c(x[x<=p.skpt],p.skpt),
 
 segments(x0=p.enth,y0=0,y1=prior.nc.enth(p.enth))
 
-legend("top",
+legend("topright",
        legend= c(
                  as.expression(bquote(mode(theta) == theta[1])),
                  as.expression(bquote(P(theta< theta[0])==.(tail.enth))),
@@ -263,6 +263,6 @@ legend("top",
                  #as.expression(bquote(GN(mu==theta[1],alpha==.(sigma0.enth),beta==.(lambda0.enth))))
                  ))
 
-mtext("(C)",side=2,line=1,at=ymax,las=1)
+mtext("(D)",side=2,line=1,at=ymax,las=1)
 dev.off()
 

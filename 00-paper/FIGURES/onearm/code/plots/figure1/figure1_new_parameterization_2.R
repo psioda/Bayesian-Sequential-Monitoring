@@ -117,7 +117,7 @@ dnorm(0, mean = 0, sd = sigma0.enth/sqrt(2))
 
 xmin  <-  p.enth - 0.5
 xmax  <-  p.enth + 0.5
-ymax  <-  6
+ymax  <-  7
 x <- seq(xmin, 
          xmax, 
          by=0.005)
