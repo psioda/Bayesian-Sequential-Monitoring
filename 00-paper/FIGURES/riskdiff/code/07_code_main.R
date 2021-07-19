@@ -81,9 +81,9 @@ for (i in 1:reps){
   mon.result.final                 <- monitoring(index = n.final) # calls prior_data_conflict(), takes time
   for(k in 1:length(vars)){ inner[i, paste(vars[k], "final", sep = ".")] <- as.numeric(mon.result.final[vars[k]]) }
   
-  inf.result.final                   <- inference(index = n.final)
-  for(k in 1:length(final.inf.vars)){ inner[i, paste(final.inf.vars[k], "f", sep = ".")] <- as.numeric(inf.result.final[final.inf.vars[k]]) }
-  
+  # inf.result.final                   <- inference(index = n.final)
+  # for(k in 1:length(final.inf.vars)){ inner[i, paste(final.inf.vars[k], "f", sep = ".")] <- as.numeric(inf.result.final[final.inf.vars[k]]) }
+  # 
 }
 
 Table0     <- data.frame(t(inner))

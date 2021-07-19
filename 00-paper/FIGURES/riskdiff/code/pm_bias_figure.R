@@ -1,28 +1,81 @@
 setwd("/Users/evankwiatkowski/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/output")
 
-dat <- read.csv("Table0_merged.csv")
 
-head(dat)
-table(dat$p.IP)
-
+# LOAD & RECODE FIXED WEIGHTS
+dat <- read.csv("Table0_merged-2021-07-19-vFixed.csv")
+# head(dat)
+# table(dat$p.IP)
 dat$success <- dat$eff.prob.initial >= 0.975
-
-dat$pm.rd.f2 <- (dat$y1.IP.f / (dat$y1.IP.f + dat$y0.IP.f)) - (dat$y1.PC.f / (dat$y1.PC.f + dat$y0.PC.f))
-
-
-
-
-
+dat$pm.rd.f2 <- (dat$y1.IP.final / (dat$y1.IP.final + dat$y0.IP.final)) - (dat$y1.PC.final / (dat$y1.PC.final + dat$y0.PC.final))
 final <- aggregate(dat, list(dat$p.IP), mean)
-final$mean.ss <- final$y1.IP.f + final$y0.IP.f + final$y1.PC.f + final$y0.PC.f # avg ss
-final$mean.ss2 <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
+library(dplyr)
+final <- dat %>%
+  group_by(p.IP, eff.mix.prob) %>% 
+  summarise_each(funs(mean))
+# final$mean.ss <- final$y1.IP.f + final$y0.IP.f + final$y1.PC.f + final$y0.PC.f # avg ss
+final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.initial + final$y0.PC.initial # avg ss
+final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
+final <- data.frame(final)
 
-final$mean.ss
-final$mean.ss2
-final$pm.rd.f
-final$pm.rd.f2
+# PLOT
+x <- unique(final$p.IP - final$p.PC)
+y <- final[final$eff.mix.prob == 1, "success"]
+final[final$eff.mix.prob == 1, "ss.final"]
+plot(x,y, type = 'l', ylim = c(0, 1))
+y <- final[final$eff.mix.prob == 0.5, "success"]
+final[final$eff.mix.prob == 0.5, "ss.final"]
+lines(x,y)
+y <- final[final$eff.mix.prob == 0, "success"]
+final[final$eff.mix.prob == 0, "ss.final"]
+lines(x,y)
 
-final$success
+# LOAD & RECODE v103
+dat <- read.csv("Table0_merged-2021-07-19-v103.csv")
+# head(dat)
+# table(dat$p.IP)
+dat$success <- dat$eff.prob.initial >= 0.975
+dat$pm.rd.f2 <- (dat$y1.IP.final / (dat$y1.IP.final + dat$y0.IP.final)) - (dat$y1.PC.final / (dat$y1.PC.final + dat$y0.PC.final))
+final <- aggregate(dat, list(dat$p.IP), mean)
+library(dplyr)
+final <- dat %>%
+  group_by(p.IP, eff.mix.prob) %>% 
+  summarise_each(funs(mean))
+# final$mean.ss <- final$y1.IP.f + final$y0.IP.f + final$y1.PC.f + final$y0.PC.f # avg ss
+final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.initial + final$y0.PC.initial # avg ss
+final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
+final <- data.frame(final)
+
+# PLOT
+x <- unique(final$p.IP - final$p.PC)
+y <- final$success
+final$ss.final
+lines(x,y, type = 'l', ylim = c(0, 1))
+
+# LOAD & RECODE v115
+dat <- read.csv("Table0_merged_2021-07-19-v115.csv")
+# head(dat)
+# table(dat$p.IP)
+dat$success <- dat$eff.prob.initial >= 0.975
+dat$pm.rd.f2 <- (dat$y1.IP.final / (dat$y1.IP.final + dat$y0.IP.final)) - (dat$y1.PC.final / (dat$y1.PC.final + dat$y0.PC.final))
+final <- aggregate(dat, list(dat$p.IP), mean)
+library(dplyr)
+final <- dat %>%
+  group_by(p.IP, eff.mix.prob) %>% 
+  summarise_each(funs(mean))
+# final$mean.ss <- final$y1.IP.f + final$y0.IP.f + final$y1.PC.f + final$y0.PC.f # avg ss
+final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.initial + final$y0.PC.initial # avg ss
+final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
+final <- data.frame(final)
+
+# PLOT
+x <- unique(final$p.IP - final$p.PC)
+y <- final$success
+final$ss.final
+lines(x,y, type = 'l', ylim = c(0, 1))
+
+
+
+
 # subs <- dat[dat$p.IP == 0.54, !names(dat) %in% c("X.1", "X")]
 # colMeans(subs)
 # mean(subs$y1.IP.f + subs$y0.IP.f + subs$y1.PC.f + subs$y0.PC.f) # avg ss
