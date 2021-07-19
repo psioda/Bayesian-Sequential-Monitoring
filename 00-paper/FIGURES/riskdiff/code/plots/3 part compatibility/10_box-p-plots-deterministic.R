@@ -166,7 +166,7 @@ Table0$risk.diff <- Table0$y1.IP/(Table0$y1.IP + Table0$y0.IP) - Table0$y1.PC/(T
 output_png <- TRUE
 width.scale <- 7
 
-if(output_png){png('../../../3-part-compatibility-1.png',
+if(output_png){png('3-part-compatibility-1.png',
                    width = 450*width.scale, 
                    height = 300*width.scale,
                    pointsize=16,
@@ -212,7 +212,7 @@ legend("topright",#text.width = 0.05,
 
 if(output_png){dev.off()}
 
-if(output_png){png('../../../3-part-compatibility-2.png',
+if(output_png){png('3-part-compatibility-2.png',
                    width = 450*width.scale, 
                    height = 300*width.scale,
                    pointsize = 16,
