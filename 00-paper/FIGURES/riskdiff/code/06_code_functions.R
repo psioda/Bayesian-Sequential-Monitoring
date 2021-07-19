@@ -8,11 +8,17 @@
 # Monitoring ---
 monitoring <- function(index){
   
-  y1.IP <- sum(responses.IP[outcome.times.IP <= outcome.times.all[index]] == 1)
-  y0.IP <- sum(responses.IP[outcome.times.IP <= outcome.times.all[index]] == 0)
-  y1.PC <- sum(responses.PC[outcome.times.PC <= outcome.times.all[index]] == 1)
-  y0.PC <- sum(responses.PC[outcome.times.PC <= outcome.times.all[index]] == 0)
-  
+  if (is.na(p.IP)){
+    y1.IP <- dat[dat$targOutNum == index, "yObs1"]
+    y0.IP <- dat[dat$targOutNum == index, "nObs1"] - dat[dat$targOutNum == index, "yObs1"]
+    y1.PC <- dat[dat$targOutNum == index, "yObs0"]
+    y0.PC <- dat[dat$targOutNum == index, "nObs0"] - dat[dat$targOutNum == index, "yObs0"]
+  } else {
+    y1.IP <- sum(responses.IP[outcome.times.IP <= outcome.times.all[index]] == 1)
+    y0.IP <- sum(responses.IP[outcome.times.IP <= outcome.times.all[index]] == 0)
+    y1.PC <- sum(responses.PC[outcome.times.PC <= outcome.times.all[index]] == 1)
+    y0.PC <- sum(responses.PC[outcome.times.PC <= outcome.times.all[index]] == 0)
+  }
   source("05_code_posteriors.R", local = TRUE)
   
   ## efficacy probability using skeptical prior (scaled)
@@ -34,6 +40,12 @@ monitoring <- function(index){
   # alternatively, stop if 1 - (fut.prob.skpt/skpt.nc.sc) is greater than 1 - epsilon
   # UPDATE 9/29/20: change xmin from delta.intr to delta.enth
   fut.prob.enth <- integrate_debug(enth.post.sc.1, xmin = delta.enth, xmax = 1, ymin = 0, ymax = function(x) 1 - x)
+  
+  # posterior mixing weights
+  # http://www.mas.ncl.ac.uk/~nmf16/teaching/mas3301/week11.pdf
+  fut.skpt.wt <- fut.mix.prob*skpt.nc.sc/(fut.mix.prob*skpt.nc.sc + (1 - fut.mix.prob)*enth.nc.sc)
+  eff.skpt.wt <- eff.mix.prob*skpt.nc.sc/(eff.mix.prob*skpt.nc.sc + (1 - eff.mix.prob)*enth.nc.sc)
+  inf.skpt.wt <- inf.mix.prob*skpt.nc.sc/(inf.mix.prob*skpt.nc.sc + (1 - inf.mix.prob)*enth.nc.sc)
   
   # Recall default is eff.skpt.wt <- 1   (all skeptical prior for efficacy monitoring)
   eff.prob <- eff.skpt.wt*(eff.prob.skpt/skpt.nc.sc) + (1 - eff.skpt.wt)*(eff.prob.enth/enth.nc.sc)

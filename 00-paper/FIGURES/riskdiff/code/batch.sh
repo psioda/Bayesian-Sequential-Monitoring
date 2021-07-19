@@ -3,11 +3,11 @@
 #SBATCH -p general
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH -t 47:00:00
+#SBATCH -t 12:00:00
 #SBATCH --mem=1g
 #SBATCH --output=../slurm/%a.slurm
 #SBATCH --error=../error/%a.err
-#SBATCH --array=1-800
+#SBATCH --array=1-793
 
 
 ## add R module

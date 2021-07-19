@@ -67,59 +67,61 @@ risk.diff.mle <- IP.mle - PC.mle
 box.skpt <- NA
 box.enth <- NA
 box.ni   <- NA
-if (is.na(eff.mix.prob)){
-  if (IP.mle >= PC.mle){
-  skpt.lik <- skpt.prior.1(IP.mle - PC.mle, PC.mle)
-  enth.lik <- enth.prior.1(IP.mle - PC.mle, PC.mle)
-  } else {
-  skpt.lik <- skpt.prior.2(IP.mle - PC.mle, PC.mle)
-  enth.lik <- enth.prior.2(IP.mle - PC.mle, PC.mle)
-  }
-  eff.mix.prob <- 0.25 + 0.75*(skpt.lik/sum(skpt.lik, enth.lik)) # 3-19-20 update
-}
+
+# if (is.na(eff.mix.prob)){ # commented out 06-17-21
+#   if (IP.mle >= PC.mle){
+#   skpt.lik <- skpt.prior.1(IP.mle - PC.mle, PC.mle)
+#   enth.lik <- enth.prior.1(IP.mle - PC.mle, PC.mle)
+#   } else {
+#   skpt.lik <- skpt.prior.2(IP.mle - PC.mle, PC.mle)
+#   enth.lik <- enth.prior.2(IP.mle - PC.mle, PC.mle)
+#   }
+#   eff.mix.prob <- 0.25 + 0.75*(skpt.lik/sum(skpt.lik, enth.lik)) # 3-19-20 update
+# }
 
 prior_dat_conflict <- function(y1.IP, y0.IP, y1.PC, y0.PC){
   
-  skpt.post.nc       <- matrix(NA, 
-                               nrow = y1.IP + y0.IP + 1, 
-                               ncol = y1.PC + y0.PC + 1)
+  # skpt.post.nc       <- matrix(NA, 
+  #                              nrow = y1.IP + y0.IP + 1, 
+  #                              ncol = y1.PC + y0.PC + 1)
   enth.post.nc       <- matrix(NA, 
                                nrow = y1.IP + y0.IP + 1, 
                                ncol = y1.PC + y0.PC + 1)
-  ni.post.nc         <- matrix(NA, 
-                               nrow = y1.IP + y0.IP + 1, 
-                               ncol = y1.PC + y0.PC + 1)
+  # ni.post.nc         <- matrix(NA, 
+  #                              nrow = y1.IP + y0.IP + 1, 
+  #                              ncol = y1.PC + y0.PC + 1)
+  
   print(paste0("Interim analysis ", sum(y1.IP,y0.IP,y1.PC,y0.PC)))
   
   for (i in 1:(y1.IP + y0.IP + 1)){
     for (j in 1:(y1.PC + y0.PC + 1)){
-      skpt.post.1   <- function(x, y){
-        exp(
-          dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
-            dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) + 
-            dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) - 
-            log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) - 
-                  pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)) +
-            dgnorm(y,            mu, skpt.alpha0, skpt.beta0, log = TRUE) - 
-            log(pgnorm(q = 1-x,  mu, skpt.alpha0, skpt.beta0) - 
-                  pgnorm(q = 0,  mu, skpt.alpha0, skpt.beta0))
-        )
-      }
-      skpt.post.2   <- function(x, y){
-        exp(
-          dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
-            dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) + 
-            dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) - 
-            log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) - 
-                  pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)) +
-            dgnorm(y,            mu, skpt.alpha0, skpt.beta0, log = TRUE) - 
-            log(pgnorm(q = 1,    mu, skpt.alpha0, skpt.beta0) - 
-                  pgnorm(q = -x, mu, skpt.alpha0, skpt.beta0))
-        )
-      }
-      skpt.post.nc[i, j] <- integrate_debug(skpt.post.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
-        integrate_debug(skpt.post.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
-      
+      # skpt.post.1   <- function(x, y){
+      #   exp(
+      #     dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
+      #       dbinom(j-1, y1.PC + y0.PC, y, log = TRUE) +
+      #       dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) -
+      #       log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
+      #             pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)) +
+      #       dgnorm(y,            mu, skpt.alpha0, skpt.beta0, log = TRUE) -
+      #       log(pgnorm(q = 1 - x,  mu, skpt.alpha0, skpt.beta0) -
+      #             pgnorm(q = 0,  mu, skpt.alpha0, skpt.beta0))
+      #   )
+      # }
+      # skpt.post.2   <- function(x, y){
+      #   exp(
+      #     dbinom(i - 1,   y1.IP + y0.IP, x + y, log = TRUE) +
+      #       dbinom(j - 1, y1.PC + y0.PC, y, log = TRUE) +
+      #       dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) -
+      #       log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
+      #             pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)) +
+      #       dgnorm(y,            mu, skpt.alpha0, skpt.beta0, log = TRUE) -
+      #       log(pgnorm(q = 1,    mu, skpt.alpha0, skpt.beta0) -
+      #             pgnorm(q = -x, mu, skpt.alpha0, skpt.beta0))
+      #   )
+      # }
+      # skpt.post.nc[i, j] <- integrate_debug(skpt.post.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
+      #   integrate_debug(skpt.post.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
+
       enth.post.1   <- function(x, y){
         exp(
           dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
@@ -173,36 +175,111 @@ prior_dat_conflict <- function(y1.IP, y0.IP, y1.PC, y0.PC){
       # }
       # ni.post.nc[i, j] <- integrate_debug(ni.post.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
       #                     integrate_debug(ni.post.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
+      
     }
   }
-  # prior data conflict for skeptical prior
-  box.skpt <- sum(skpt.post.nc[skpt.post.nc <= skpt.post.nc[y1.IP + 1, y1.PC + 1]])
-  print(paste0("Sum marginal prob of data with enth prior (should be 1): ", sum(skpt.post.nc)))
-  print(paste0("Skeptical prior compatibility: ", box.skpt))
   
+  # # prior data conflict for skeptical prior
+  # box.skpt <- sum(skpt.post.nc[skpt.post.nc <= skpt.post.nc[y1.IP + 1, y1.PC + 1]])
+  # print(paste0("Sum marginal prob of data with skpt prior (should be 1): ", sum(skpt.post.nc)))
+  # print(paste0("Skeptical prior compatibility: ", box.skpt))
+
   # prior data conflict for enthusiastic prior
   box.enth <- sum(enth.post.nc[enth.post.nc <= enth.post.nc[y1.IP + 1, y1.PC + 1]])
   print(paste0("Sum marginal prob of data with enth prior (should be 1): ", sum(enth.post.nc)))
   print(paste0("Enthuastic prior compatibility: ", box.enth))
   
-  # prior data conflict for non-informative prior
-  box.ni <- sum(ni.post.nc[ni.post.nc <= ni.post.nc[y1.IP + 1, y1.PC + 1]])
-  print(paste0("Sum marginal prob of data with ni prior (should be 1): ", sum(ni.post.nc)))
-  print(paste0("Non-informative prior compatibility: ", box.ni))
+  # # prior data conflict for non-informative prior
+  # box.ni <- sum(ni.post.nc[ni.post.nc <= ni.post.nc[y1.IP + 1, y1.PC + 1]])
+  # print(paste0("Sum marginal prob of data with ni prior (should be 1): ", sum(ni.post.nc)))
+  # print(paste0("Non-informative prior compatibility: ", box.ni))
   
   # compute SKEPTICAL COMPONENT mixing weight
-  eff.mix.prob <- 1 - max(box.enth - box.skpt, 0)
-  print(paste0("Efficacy mixing weight for skeptical component: ", eff.mix.prob))
-  return(cbind(eff.mix.prob, box.skpt, box.enth, box.ni))
+  # eff.mix.prob <- 1 - max(box.enth - box.skpt, 0)
+  # eff.mix.prob20 <- max(box.skpt - box.enth, 0) # 6-10-21 edit
+  
+  # print(paste0("Efficacy mixing weight for skeptical component: ", eff.mix.prob))
+  
+  return(cbind(box.skpt, box.enth, box.ni))
+  
+  # return(cbind(eff.mix.prob, eff.mix.prob20, box.skpt, box.enth, box.ni))
 }
 
-if (eff.mix.prob == 10){
+delta.list <- seq(0, 0.25, by = 0.05)
+beta.list <- c(1, 1.3220, 1.7370, 2.3220, 3.3220)
+adapt.mat <- expand.grid(delta.list, beta.list)
+adapt.mat$id <- 101:130
+
+if (eff.mix.prob > 100){
+  delta.a <- adapt.mat[adapt.mat$id == eff.mix.prob, "Var1"]
+  beta.a <- adapt.mat[adapt.mat$id == eff.mix.prob, "Var2"]
+  
   prior_data_conflict_result <- prior_dat_conflict(y1.IP, y0.IP, y1.PC, y0.PC)
-  eff.mix.prob               <- prior_data_conflict_result[,"eff.mix.prob"]
+  
   box.skpt                   <- prior_data_conflict_result[,"box.skpt"]
   box.enth                   <- prior_data_conflict_result[,"box.enth"]
   box.ni                     <- prior_data_conflict_result[,"box.ni"]
-  }
+  BoxPE                      <- box.enth
+  eff.mix.prob               <- 1 - (1 - delta.a)*pbeta(BoxPE, 1, beta.a) # amount assigned to skeptical prior
+}
+
+# if (eff.mix.prob == 10){
+#   prior_data_conflict_result <- prior_dat_conflict(y1.IP, y0.IP, y1.PC, y0.PC)
+#   eff.mix.prob               <- prior_data_conflict_result[,"eff.mix.prob"]
+#   box.skpt                   <- prior_data_conflict_result[,"box.skpt"]
+#   box.enth                   <- prior_data_conflict_result[,"box.enth"]
+#   box.ni                     <- prior_data_conflict_result[,"box.ni"]
+# }
+# 
+# if (eff.mix.prob == 20){ # 6-10-21 edit
+#   prior_data_conflict_result <- prior_dat_conflict(y1.IP, y0.IP, y1.PC, y0.PC)
+#   eff.mix.prob               <- prior_data_conflict_result[,"eff.mix.prob20"] # 6-10-21 edit
+#   box.skpt                   <- prior_data_conflict_result[,"box.skpt"]
+#   box.enth                   <- prior_data_conflict_result[,"box.enth"]
+#   box.ni                     <- prior_data_conflict_result[,"box.ni"]
+# }
+# 
+# if (eff.mix.prob == 21){ # 6-17-21 edit
+#   prior_data_conflict_result <- prior_dat_conflict(y1.IP, y0.IP, y1.PC, y0.PC)
+#   eff.mix.prob               <- max(prior_data_conflict_result[,"eff.mix.prob20"], 0.2) # 6-17-21 edit
+#   box.skpt                   <- prior_data_conflict_result[,"box.skpt"]
+#   box.enth                   <- prior_data_conflict_result[,"box.enth"]
+#   box.ni                     <- prior_data_conflict_result[,"box.ni"]
+# }
+# 
+# if (eff.mix.prob == 22){ # 6-17-21 edit
+#   prior_data_conflict_result <- prior_dat_conflict(y1.IP, y0.IP, y1.PC, y0.PC)
+#   eff.mix.prob               <- max(prior_data_conflict_result[,"eff.mix.prob20"], 0.15) # 6-17-21 edit
+#   box.skpt                   <- prior_data_conflict_result[,"box.skpt"]
+#   box.enth                   <- prior_data_conflict_result[,"box.enth"]
+#   box.ni                     <- prior_data_conflict_result[,"box.ni"]
+# }
+# 
+# if (eff.mix.prob == 23){ # 6-17-21 edit
+#   prior_data_conflict_result <- prior_dat_conflict(y1.IP, y0.IP, y1.PC, y0.PC)
+#   eff.mix.prob               <- max(prior_data_conflict_result[,"eff.mix.prob20"], 0.1) # 6-17-21 edit
+#   box.skpt                   <- prior_data_conflict_result[,"box.skpt"]
+#   box.enth                   <- prior_data_conflict_result[,"box.enth"]
+#   box.ni                     <- prior_data_conflict_result[,"box.ni"]
+# }
+# 
+# if (eff.mix.prob == 24){ # 6-17-21 edit
+#   prior_data_conflict_result <- prior_dat_conflict(y1.IP, y0.IP, y1.PC, y0.PC)
+#   eff.mix.prob               <- max(prior_data_conflict_result[,"eff.mix.prob20"], 0.05) # 6-17-21 edit
+#   box.skpt                   <- prior_data_conflict_result[,"box.skpt"]
+#   box.enth                   <- prior_data_conflict_result[,"box.enth"]
+#   box.ni                     <- prior_data_conflict_result[,"box.ni"]
+# }
+# 
+# if (eff.mix.prob == 30){
+#   prior_data_conflict_result <- prior_dat_conflict(y1.IP, y0.IP, y1.PC, y0.PC)
+#   box.skpt                   <- prior_data_conflict_result[,"box.skpt"]
+#   box.enth                   <- prior_data_conflict_result[,"box.enth"]
+#   box.ni                     <- prior_data_conflict_result[,"box.ni"]
+#   eff.mix.prob               <- box.skpt / (box.skpt + box.enth)
+# }
+
+
 # SECTION 3: POSTERIOR DENSITIES
 # log (un-normalized) posterior density
 # Deemed unnecessary on 5/7/2020
@@ -213,6 +290,8 @@ if (eff.mix.prob == 10){
 # scaled (un-normalized) posterior density
 # Edited on 5/7/2020
 # Still should be on log scale
+
+
 skpt.post.sc.1 <- function(x, y){
   exp(
     dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
@@ -278,9 +357,3 @@ enth.nc.sc <- integrate_debug(enth.post.sc.1, xmin = 0,  xmax = 1, ymin = 0, yma
 #      (integrate_debug(enth.post.sc.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
 #       integrate_debug(enth.post.sc.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1))/
 #       enth.nc.sc))
-
-# posterior mixing weights
-# http://www.mas.ncl.ac.uk/~nmf16/teaching/mas3301/week11.pdf
-fut.skpt.wt <- fut.mix.prob*skpt.nc.sc/(fut.mix.prob*skpt.nc.sc + (1 - fut.mix.prob)*enth.nc.sc)
-eff.skpt.wt <- eff.mix.prob*skpt.nc.sc/(eff.mix.prob*skpt.nc.sc + (1 - eff.mix.prob)*enth.nc.sc)
-inf.skpt.wt <- inf.mix.prob*skpt.nc.sc/(inf.mix.prob*skpt.nc.sc + (1 - inf.mix.prob)*enth.nc.sc)
