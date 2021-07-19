@@ -17,7 +17,7 @@ simulation <- expand.grid(
  1,   # enr.shape
  4,   # out.mean
  0,   # fut.mix.prob
- c(rep(115, 114)), # eff.mix.prob
+ c(rep(103, 114)), # eff.mix.prob
  0.5,  # inf.mix.prob
  0.05, # cred.tail
  100,  # max.ss

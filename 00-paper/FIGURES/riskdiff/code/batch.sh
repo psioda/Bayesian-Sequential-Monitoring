@@ -7,7 +7,7 @@
 #SBATCH --mem=1g
 #SBATCH --output=../slurm/%a.slurm
 #SBATCH --error=../error/%a.err
-#SBATCH --array=1-793
+#SBATCH --array=1-798
 
 
 ## add R module
