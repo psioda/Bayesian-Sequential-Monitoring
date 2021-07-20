@@ -1,4 +1,5 @@
 setwd("/Users/evankwiatkowski/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/output")
+setwd("/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/output")
 
 
 # LOAD & RECODE FIXED WEIGHTS
@@ -6,6 +7,7 @@ dat <- read.csv("Table0_merged-2021-07-19-vFixed.csv")
 # head(dat)
 # table(dat$p.IP)
 dat$success <- dat$eff.prob.initial >= 0.975
+dat$successfinal <- dat$eff.prob.final >= 0.975
 dat$pm.rd.f2 <- (dat$y1.IP.final / (dat$y1.IP.final + dat$y0.IP.final)) - (dat$y1.PC.final / (dat$y1.PC.final + dat$y0.PC.final))
 final <- aggregate(dat, list(dat$p.IP), mean)
 library(dplyr)

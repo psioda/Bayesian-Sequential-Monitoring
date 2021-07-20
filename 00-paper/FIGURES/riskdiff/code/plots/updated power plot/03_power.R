@@ -3,7 +3,7 @@
 #############################################
 
 rm(list = ls())
-setwd("/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code/plots")
+setwd("/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/output")
 
 output_png <- TRUE
 sig.fut    <- 0.975
@@ -12,7 +12,7 @@ sig.eff    <- 0.975
 width.scale <- 7
 if(output_png){
   png('figure6.png',
-      width = 600*width.scale,
+      width = 450*width.scale,
       height = 300*width.scale,
       pointsize=16,
       res=300)
@@ -25,7 +25,7 @@ stretch <- -0.05# to add x-axis table under graph
 # set initial plotting area
 plot(NULL,
      type = 'l',
-     xlim = c(-0.03,0.15),
+     xlim = c(0,0.12),
      ylim = c(0,1),
      lwd  = 1,
      ylab = "Probability",
@@ -45,7 +45,7 @@ legend('topleft',
                  as.expression(bquote("2: Adaptive "*delta*"=0.1, "*beta*"=0.7")),
                  as.expression(bquote("3: Adaptive "*delta*"=0.1, "*beta*"=0.5")),
                  "4: 50% Enthusiastic",
-                 "5: 0% Enthusiastic (100% Skeptical)"))
+                 "5: 100% Skeptical"))
 
 # # plot all fixed weight priors
 # Table1        <- read.csv(file = "../../output/table1031920.csv", header = T)
@@ -90,7 +90,7 @@ final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + fi
 final <- data.frame(final)
 
 # PLOT
-x <- unique(final$p.IP - final$p.PC)
+x <- seq(0, 0.12, by = 0.03)
 
 axis(1,
      las = 0,
@@ -100,7 +100,7 @@ axis(1,
 
 #FIRST LINE
 
-temp <- final[final$eff.mix.prob == 1, ]
+temp <- final[final$eff.mix.prob == 1 & final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
 y <- temp$success
 row = 6
 lines(x,y)
@@ -121,7 +121,7 @@ mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
 
 ## SECOND LINE
 row <- 5
-temp <- final[final$eff.mix.prob == 0.5, ]
+temp <- final[final$eff.mix.prob == 0.5 & final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
 y <- temp$success
 lines(x,y)
 for (j in seq(1,length(temp$p.IP)#, by=6
@@ -139,7 +139,7 @@ mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
 
 ## THIRD LINE
 row <- 2
-temp <- final[final$eff.mix.prob == 0, ]
+temp <- final[final$eff.mix.prob == 0 & final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
 y <- temp$success
 lines(x,y)
 for (j in seq(1,length(temp$p.IP)#, by=6
@@ -172,7 +172,7 @@ final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.init
 final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
 final <- data.frame(final)
 
-temp <- final
+temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
 
 row <- 4
 y <- temp$success
@@ -207,7 +207,7 @@ final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.init
 final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
 final <- data.frame(final)
 
-temp <- final
+temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
 
 row <- 3
 y <- temp$success

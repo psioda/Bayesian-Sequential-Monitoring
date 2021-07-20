@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  19 JUL 2021 14:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  19 JUL 2021 23:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1104,19 +1104,78 @@ Overfull \vbox (6.46347pt too high) has occurred while \output is active []
 \openout3 = `bayes-SM-statmed.pag'.
 
 ]
+Overfull \vbox (2.4078pt too high) has occurred while \output is active []
+
+
 [2] [3]
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 230.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 218.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 230
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 218
 .
 
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 232.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 220.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 232
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 220
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 222.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 222
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 222.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 222
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 233.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 233
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 233.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 233
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 233.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 233
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 233.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 233
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 233.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 233
+.
+
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 233.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 233
 .
 
 
@@ -1127,13 +1186,12 @@ LaTeX Font Warning: Command \mathversion invalid in math mode on input line 234
 .
 
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 234.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 241.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 234
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 241
 .
 
-[4]
 
 LaTeX Font Warning: Command \boldmath invalid in math mode on input line 243.
 
@@ -1142,226 +1200,197 @@ LaTeX Font Warning: Command \mathversion invalid in math mode on input line 243
 .
 
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 244.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 251.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 244
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 251
+.
+
+[4] [5]
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 376.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 376
 .
 
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 244.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 376.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 244
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 376
+.
+
+[6]
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 387.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 387
 .
 
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 246.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 394.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 246
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 394
 .
 
-
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 253.
-
-
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 253
-.
-
-
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 255.
-
-
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 255
-.
-
-
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 263.
-
-
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 263
-.
-
-[5] [6]
-
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 388.
-
-
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 388
-.
-
-
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 388.
-
-
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 388
-.
-
-
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 399.
-
-
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 399
-.
-
-
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 406.
-
-
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 406
-.
-
-[7] [8]
-<figure1a.png, id=111, 1505.625pt x 1505.625pt>
+[7]
+<figure1a.png, id=96, 1505.625pt x 1505.625pt>
 File: figure1a.png Graphic file (type png)
 <use figure1a.png>
-Package pdftex.def Info: figure1a.png  used on input line 460.
+Package pdftex.def Info: figure1a.png  used on input line 448.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure1b.png, id=113, 1505.625pt x 1505.625pt>
+<figure1b.png, id=98, 1505.625pt x 1505.625pt>
 File: figure1b.png Graphic file (type png)
 <use figure1b.png>
-Package pdftex.def Info: figure1b.png  used on input line 461.
+Package pdftex.def Info: figure1b.png  used on input line 449.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure1c.png, id=114, 1505.625pt x 1505.625pt>
+<figure1c.png, id=99, 1505.625pt x 1505.625pt>
 File: figure1c.png Graphic file (type png)
 <use figure1c.png>
-Package pdftex.def Info: figure1c.png  used on input line 462.
+Package pdftex.def Info: figure1c.png  used on input line 450.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure1d.png, id=115, 1505.625pt x 1505.625pt>
+<figure1d.png, id=100, 1505.625pt x 1505.625pt>
 File: figure1d.png Graphic file (type png)
 <use figure1d.png>
-Package pdftex.def Info: figure1d.png  used on input line 463.
+Package pdftex.def Info: figure1d.png  used on input line 451.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
- [9 <./figure1a.png> <./figure1b.png> <./figure1c.png> <./figure1d.png>] [10]
+ [8] [9 <./figure1a.png> <./figure1b.png> <./figure1c.png> <./figure1d.png>]
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 570.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 558.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 570
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 558
 .
 
-LaTeX Font Info:    Calculating math sizes for size <> on input line 571.
-[11] [12]
-<figure5a_NEW.png, id=165, 1505.625pt x 1505.625pt>
+LaTeX Font Info:    Calculating math sizes for size <> on input line 559.
+[10]
+<figure5a_NEW.png, id=143, 1505.625pt x 1505.625pt>
 File: figure5a_NEW.png Graphic file (type png)
 <use figure5a_NEW.png>
-Package pdftex.def Info: figure5a_NEW.png  used on input line 714.
+Package pdftex.def Info: figure5a_NEW.png  used on input line 712.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure5b_NEW.png, id=166, 1505.625pt x 1505.625pt>
+<figure5b_NEW.png, id=144, 1505.625pt x 1505.625pt>
 File: figure5b_NEW.png Graphic file (type png)
 <use figure5b_NEW.png>
-Package pdftex.def Info: figure5b_NEW.png  used on input line 715.
+Package pdftex.def Info: figure5b_NEW.png  used on input line 713.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure5a.png, id=167, 3613.5pt x 1806.75pt>
+<figure5a.png, id=145, 3613.5pt x 1806.75pt>
 File: figure5a.png Graphic file (type png)
 <use figure5a.png>
-Package pdftex.def Info: figure5a.png  used on input line 716.
+Package pdftex.def Info: figure5a.png  used on input line 714.
 (pdftex.def)             Requested size: 433.62pt x 216.80064pt.
- [13 <./figure5a_NEW.png> <./figure5b_NEW.png> <./figure5a.png>]
+ [11] [12 <./figure5a_NEW.png> <./figure5b_NEW.png> <./figure5a.png>]
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 773.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 771.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 773
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 771
 .
+
+
+LaTeX Warning: Reference `eq:3partmix' on page 13 undefined on input line 784.
 
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
-90.
+88.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [14]
-<figure2a.png, id=196, 3161.8125pt x 2107.875pt>
+)
+<figure2a.png, id=169, 3161.8125pt x 2107.875pt>
 File: figure2a.png Graphic file (type png)
 <use figure2a.png>
-Package pdftex.def Info: figure2a.png  used on input line 807.
+Package pdftex.def Info: figure2a.png  used on input line 805.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure2b.png, id=197, 3161.8125pt x 2107.875pt>
+<figure2b.png, id=170, 3161.8125pt x 2107.875pt>
 File: figure2b.png Graphic file (type png)
 <use figure2b.png>
-Package pdftex.def Info: figure2b.png  used on input line 808.
+Package pdftex.def Info: figure2b.png  used on input line 806.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
- [15]
-<figure3a.png, id=212, 3161.8125pt x 2107.875pt>
+ [13]
+<figure3a.png, id=189, 3161.8125pt x 2107.875pt>
 File: figure3a.png Graphic file (type png)
 <use figure3a.png>
-Package pdftex.def Info: figure3a.png  used on input line 863.
+Package pdftex.def Info: figure3a.png  used on input line 861.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure3b.png, id=213, 3161.8125pt x 2107.875pt>
+<figure3b.png, id=190, 3161.8125pt x 2107.875pt>
 File: figure3b.png Graphic file (type png)
 <use figure3b.png>
-Package pdftex.def Info: figure3b.png  used on input line 864.
+Package pdftex.def Info: figure3b.png  used on input line 862.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure4.png, id=215, 4065.1875pt x 2710.125pt>
-File: figure4.png Graphic file (type png)
-<use figure4.png>
-Package pdftex.def Info: figure4.png  used on input line 887.
-(pdftex.def)             Requested size: 433.62pt x 289.05833pt.
+ [14]
 
-[16]
-
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 926.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 924.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 926
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 924
 .
 
-<3-part-compatibility-1.png, id=233, 3161.8125pt x 2107.875pt>
+[15]
+<3-part-compatibility-1.png, id=210, 3161.8125pt x 2107.875pt>
 File: 3-part-compatibility-1.png Graphic file (type png)
 <use 3-part-compatibility-1.png>
 Package pdftex.def Info: 3-part-compatibility-1.png  used on input line 965.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<3-part-compatibility-2.png, id=234, 3161.8125pt x 2107.875pt>
+<3-part-compatibility-2.png, id=211, 3161.8125pt x 2107.875pt>
 File: 3-part-compatibility-2.png Graphic file (type png)
 <use 3-part-compatibility-2.png>
 Package pdftex.def Info: 3-part-compatibility-2.png  used on input line 966.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-[17]
-<figure9.png, id=244, 3161.8125pt x 2107.875pt>
-File: figure9.png Graphic file (type png)
-<use figure9.png>
-Package pdftex.def Info: figure9.png  used on input line 991.
-(pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure6.png, id=245, 3161.8125pt x 2107.875pt>
+<figure6.png, id=215, 3161.8125pt x 2107.875pt>
 File: figure6.png Graphic file (type png)
 <use figure6.png>
-Package pdftex.def Info: figure6.png  used on input line 992.
+Package pdftex.def Info: figure6.png  used on input line 991.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
- [18] [19] (./bayes-SM-statmed.bbl [20]
+<figure6a.png, id=216, 3161.8125pt x 2107.875pt>
+File: figure6a.png Graphic file (type png)
+<use figure6a.png>
+Package pdftex.def Info: figure6a.png  used on input line 992.
+(pdftex.def)             Requested size: 433.62pt x 289.05374pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 988--998
+
+ []
+
+[16] [17] (./bayes-SM-statmed.bbl [18]
 Underfull \hbox (badness 4328) in paragraph at lines 78--82
 []\T1/stix/m/n/10.03749 Nadarajah S. A gen-er-al-ized nor-mal dis-tri-bu-tion. 
 \T1/stix/m/it/10.03749 Jour-nal of Applied Statis-tics \T1/stix/m/n/10.03749 20
 05; 32(7): 685--694.  []doi:
  []
 
-[21]
+
 Underfull \hbox (badness 1389) in paragraph at lines 90--96
 []\T1/stix/m/n/10.03749 Hyams J, Dama-raju L, Blank M, et al. Induc-tion and Ma
 in-te-nance Ther-apy With Inflix-imab for Chil-dren With
  []
 
-) [22] [23 <./figure2a.png> <./figure2b.png>] [24 <./figure3a.png> <./figure3b.
-png>] [25 <./figure4.png>] [26 <./3-part-compatibility-1.png> <./3-part-compati
-bility-2.png>] [27 <./figure9.png> <./figure6.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1300.
- [28
+) [19] [20 <./figure2a.png> <./figure2b.png>] [21 <./figure3a.png> <./figure3b.
+png>] [22 <./3-part-compatibility-1.png> <./3-part-compatibility-2.png>]
+[23 <./figure6.png> <./figure6a.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1296.
+ [24
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1300.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1296.
+ (./bayes-SM-statmed.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1296.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1296.
 
-(./bayes-SM-statmed.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1300.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1300.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1300.
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1296.
  ) 
 Here is how much of TeX's memory you used:
- 16465 strings out of 480608
- 232245 string characters out of 5903631
- 492681 words of memory out of 5000000
- 31895 multiletter control sequences out of 15000+600000
+ 16436 strings out of 480608
+ 231934 string characters out of 5903631
+ 492920 words of memory out of 5000000
+ 31882 multiletter control sequences out of 15000+600000
  664617 words of font info for 214 fonts, out of 8000000 for 9000
  1167 hyphenation exceptions out of 8191
- 49i,11n,46p,1703b,501s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,12n,46p,1703b,453s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc}</usr/loca
 l/texlive/2020/texmf-dist/fonts/type1/public/stix/STIXGeneral-Bold.pfb></usr/lo
@@ -1377,10 +1406,10 @@ b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/stix/stix-mathex.pfb><
 usr/local/texlive/2020/texmf-dist/fonts/type1/public/stix/stix-mathrm-bold.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb></u
 sr/local/texlive/2020/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb>
-Output written on bayes-SM-statmed.pdf (28 pages, 2882495 bytes).
+Output written on bayes-SM-statmed.pdf (24 pages, 2578793 bytes).
 PDF statistics:
- 492 PDF objects out of 1000 (max. 8388607)
- 411 compressed objects within 5 object streams
- 100 named destinations out of 1000 (max. 500000)
- 329 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 446 PDF objects out of 1000 (max. 8388607)
+ 372 compressed objects within 4 object streams
+ 85 named destinations out of 1000 (max. 500000)
+ 308 words of extra memory for PDF output out of 10000 (max. 10000000)
 
