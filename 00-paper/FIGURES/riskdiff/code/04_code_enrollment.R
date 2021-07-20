@@ -26,7 +26,7 @@ if (is.na(p.IP)){
              sample(c(rep("PC", 38),
                       rep("IP", 38))))
   enr.times.all     <- seq(1:100) * 17.2
-  outcome.times.all <- enr.times.all + 52
+  outcome.times.all <- enr.times.all + 365.25
   
   enr.times.PC     <- enr.times.all[group == "PC"]
   outcome.times.PC <- outcome.times.all[group == "PC"]
