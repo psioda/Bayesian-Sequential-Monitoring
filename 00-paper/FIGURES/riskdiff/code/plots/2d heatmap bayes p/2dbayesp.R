@@ -1,7 +1,7 @@
 rm(list = ls())
-setwd("/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/output")
+setwd("/Users/evankwiatkowski/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/output")
 dat <- read.csv("Table0_merged_2021-07-21-bayes-p-grid.csv")
-setwd("/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code/plots/2d heatmap bayes p")
+setwd("/Users/evankwiatkowski/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code/plots/2d heatmap bayes p")
 
 head(dat)
 summary(dat$eff.mix.prob.initial)
