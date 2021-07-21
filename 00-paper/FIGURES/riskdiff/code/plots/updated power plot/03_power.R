@@ -5,7 +5,7 @@
 rm(list = ls())
 setwd("/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/output")
 
-output_png <- TRUE
+output_png <- FALSE
 sig.fut    <- 0.975
 sig.eff    <- 0.975
 
@@ -46,6 +46,90 @@ legend('topleft',
                  as.expression(bquote("3: Adaptive "*delta*"=0.1, "*beta*"=0.5")),
                  "4: 50% Enthusiastic",
                  "5: 100% Skeptical"))
+# PLOT
+x <- seq(0, 0.12, by = 0.03)
+
+axis(1,
+     las = 0,
+     at = x,
+     labels = format(x, nsmall = 2))
+
+
+################################################################################################################################################
+
+# LOAD & RECODE v101-106
+dat <- read.csv("Table0_merged_2021-07-20-v101-106.csv")
+# head(dat)
+# table(dat$p.IP)
+dat$success <- dat$eff.prob.initial >= 0.975
+dat$pm.rd.f2 <- (dat$y1.IP.final / (dat$y1.IP.final + dat$y0.IP.final)) - (dat$y1.PC.final / (dat$y1.PC.final + dat$y0.PC.final))
+final <- aggregate(dat, list(dat$p.IP), mean)
+library(dplyr)
+final <- dat %>%
+  group_by(p.IP, eff.mix.prob) %>% 
+  summarise_each(funs(mean))
+# final$mean.ss <- final$y1.IP.f + final$y0.IP.f + final$y1.PC.f + final$y0.PC.f # avg ss
+final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.initial + final$y0.PC.initial # avg ss
+final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
+final <- data.frame(final)
+
+temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51 & final$eff.mix.prob == 101, ]
+row <- 2
+y <- temp$success
+lines(x,y)
+for (j in seq(1,length(temp$p.IP)#, by=6
+)){
+  mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
+                    " + ",
+                    format(round(temp$ss.final[j]-
+                                   temp$ss.initial[j],digits=1),nsmall=1),
+                    " = ",
+                    format(round(temp$ss.final[j],digits=1),nsmall=1)),
+        side=1,line=row,at=x[j])
+}
+text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
+mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
+
+temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51 & final$eff.mix.prob == 101, ]
+row <- 2
+y <- temp$success
+lines(x,y)
+for (j in seq(1,length(temp$p.IP)#, by=6
+)){
+  mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
+                    " + ",
+                    format(round(temp$ss.final[j]-
+                                   temp$ss.initial[j],digits=1),nsmall=1),
+                    " = ",
+                    format(round(temp$ss.final[j],digits=1),nsmall=1)),
+        side=1,line=row,at=x[j])
+}
+text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
+mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
+
+# make loop
+loop.list <- 101:106
+for (i in 1:length(loop.list)){
+  row <- i + 1
+  temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51 & final$eff.mix.prob == loop.list[i], ]
+  y <- temp$success
+  lines(x,y)
+  for (j in seq(1,length(temp$p.IP)#, by=6
+  )){
+    mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
+                      " + ",
+                      format(round(temp$ss.final[j]-
+                                     temp$ss.initial[j],digits=1),nsmall=1),
+                      " = ",
+                      format(round(temp$ss.final[j],digits=1),nsmall=1)),
+          side=1,line=row,at=x[j])
+  }
+  text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
+  mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
+}
+
+
+
 
 # # plot all fixed weight priors
 # Table1        <- read.csv(file = "../../output/table1031920.csv", header = T)
@@ -89,13 +173,6 @@ final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.init
 final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
 final <- data.frame(final)
 
-# PLOT
-x <- seq(0, 0.12, by = 0.03)
-
-axis(1,
-     las = 0,
-     at = x,
-     labels = format(x, nsmall = 2))
 
 
 #FIRST LINE
@@ -191,7 +268,7 @@ text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
 mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
 
 # FIFTH LINE
-# LOAD & RECODE v103
+# LOAD & RECODE v115
 dat <- read.csv("Table0_merged_2021-07-19-v115.csv")
 # head(dat)
 # table(dat$p.IP)
@@ -226,3 +303,4 @@ text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
 mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
 
 if(output_png){dev.off()}
+

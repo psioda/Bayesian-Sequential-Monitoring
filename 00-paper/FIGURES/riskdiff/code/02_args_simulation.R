@@ -11,19 +11,19 @@
 rm(list = ls())
 
 simulation <- expand.grid(
- seq(0.39,0.51,by = 0.03), # p.IP
- .39, # p.PC
+ NA, # p.IP
+ NA, # p.PC
  2,   # freq.mntr
  1,   # enr.shape
  4,   # out.mean
  0,   # fut.mix.prob
- c(rep(101:106,26)), # eff.mix.prob
+ rep(101, 2537), # eff.mix.prob
  # c(rep(103, 114)), # eff.mix.prob
  0.5,  # inf.mix.prob
  0.05, # cred.tail
  100,  # max.ss
- 50,   # min.ss
- 97)   # reps
+ 100,   # min.ss
+ 1)   # reps
 
 # simulation2 <- expand.grid(
 #  .63, # p.IP
