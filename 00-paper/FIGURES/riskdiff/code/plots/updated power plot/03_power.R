@@ -5,11 +5,11 @@
 rm(list = ls())
 setwd("/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/output")
 
-output_png <- FALSE
+output_png <- TRUE
 sig.fut    <- 0.975
 sig.eff    <- 0.975
 
-width.scale <- 7
+width.scale <- 12
 if(output_png){
   png('figure6.png',
       width = 450*width.scale,
@@ -17,16 +17,16 @@ if(output_png){
       pointsize=16,
       res=300)
 }
-par(mar=c(5.1 + 2, 4.1 + 0.5, 2.1, 2.1 + 0.5)) #c(bottom, left, top, right)
+par(mar=c(5.1 + 3, 4.1 + 0.5, 2.1, 2.1 + 0.5)) #c(bottom, left, top, right)
 
 #par(mar=c(5.1+2, 4.1, 4.1, 2.1)) #c(bottom, left, top, right)
-stretch <- -0.05# to add x-axis table under graph
+stretch <- -0.0125# to add x-axis table under graph
 
 # set initial plotting area
 plot(NULL,
      type = 'l',
-     xlim = c(0,0.12),
-     ylim = c(0,1),
+     xlim = c(-0.005,0.125),
+     ylim = c(0,0.8),
      lwd  = 1,
      ylab = "Probability",
      xlab = "", #Treatment Response Probability",
@@ -39,13 +39,9 @@ axis(2,
      las = 2,
      at = seq(0, 1, by = 0.1),
      labels = format(seq(0, 1, by = 0.1), nsmall = 1))
-mtext(text=c(as.expression(bquote(theta))),side=1,line=1,at=stretch,adj=0)
-legend('topleft',
-       legend= c("1: 100% Enthusiastic",
-                 as.expression(bquote("2: Adaptive "*delta*"=0.1, "*beta*"=0.7")),
-                 as.expression(bquote("3: Adaptive "*delta*"=0.1, "*beta*"=0.5")),
-                 "4: 50% Enthusiastic",
-                 "5: 100% Skeptical"))
+# mtext(text=c(as.expression(bquote(theta))),side=1,line=1,at=stretch,adj=0)
+mtext(text="Risk Difference",side=1,line=1,at=-0.02,adj=0)
+
 # PLOT
 x <- seq(0, 0.12, by = 0.03)
 
@@ -73,42 +69,10 @@ final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.init
 final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
 final <- data.frame(final)
 
-temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51 & final$eff.mix.prob == 101, ]
-row <- 2
-y <- temp$success
-lines(x,y)
-for (j in seq(1,length(temp$p.IP)#, by=6
-)){
-  mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
-                    " + ",
-                    format(round(temp$ss.final[j]-
-                                   temp$ss.initial[j],digits=1),nsmall=1),
-                    " = ",
-                    format(round(temp$ss.final[j],digits=1),nsmall=1)),
-        side=1,line=row,at=x[j])
-}
-text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
-
-temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51 & final$eff.mix.prob == 101, ]
-row <- 2
-y <- temp$success
-lines(x,y)
-for (j in seq(1,length(temp$p.IP)#, by=6
-)){
-  mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
-                    " + ",
-                    format(round(temp$ss.final[j]-
-                                   temp$ss.initial[j],digits=1),nsmall=1),
-                    " = ",
-                    format(round(temp$ss.final[j],digits=1),nsmall=1)),
-        side=1,line=row,at=x[j])
-}
-text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
 
 # make loop
 loop.list <- 101:106
+delta.list <- seq(0, 0.25, by = 0.05)
 for (i in 1:length(loop.list)){
   row <- i + 1
   temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51 & final$eff.mix.prob == loop.list[i], ]
@@ -117,19 +81,66 @@ for (i in 1:length(loop.list)){
   for (j in seq(1,length(temp$p.IP)#, by=6
   )){
     mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
-                      " + ",
-                      format(round(temp$ss.final[j]-
-                                     temp$ss.initial[j],digits=1),nsmall=1),
-                      " = ",
+                      " / ",
                       format(round(temp$ss.final[j],digits=1),nsmall=1)),
           side=1,line=row,at=x[j])
+    # mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
+    #                   " + ",
+    #                   format(round(temp$ss.final[j]-
+    #                                  temp$ss.initial[j],digits=1),nsmall=1),
+    #                   " = ",
+    #                   format(round(temp$ss.final[j],digits=1),nsmall=1)),
+    #       side=1,line=row,at=x[j])
   }
-  text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-  mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
+  # text(temp$p.IP[j], temp$eff.prob.initial[j], row - 1)
+  text(x = temp$p.IP[j] - 0.39 + 0.0025, 
+       y = temp$success[j] , 
+       labels = format(round(temp$success[j],digits=2),nsmall=2))
+  text(x = temp$p.IP[1] - 0.39 - 0.0025, 
+       y = temp$success[1], 
+       labels = format(round(temp$success[1],digits=2),nsmall=2))
+  text(x = 0.06, 
+       y = temp$success[3], 
+       labels = row - 1)
 }
 
+legend('topleft',
+       title = "Skptical Prior Weight Minimum",
+       legend= c(as.expression(bquote("1: "*delta*"=0.00")),
+                 as.expression(bquote("2: "*delta*"=0.05")),
+                 as.expression(bquote("3: "*delta*"=0.10")),
+                 as.expression(bquote("4: "*delta*"=0.15")),
+                 as.expression(bquote("5: "*delta*"=0.20")),
+                 as.expression(bquote("6: "*delta*"=0.25"))))
 
+mtext(text="SS (I/F)",
+      side=1,line=2,at=-0.02,adj=0)
 
+# mtext(text=as.expression(bquote(delta*"=0.00")),
+#       side=1,line=2,at=stretch,adj=0)
+# mtext(text=as.expression(bquote(delta*"=0.05")),
+#       side=1,line=3,at=stretch,adj=0)
+# mtext(text=as.expression(bquote(delta*"=0.10")),
+#       side=1,line=4,at=stretch,adj=0)
+# mtext(text=as.expression(bquote(delta*"=0.15")),
+#       side=1,line=5,at=stretch,adj=0)
+# mtext(text=as.expression(bquote(delta*"=0.20")),
+#       side=1,line=6,at=stretch,adj=0)
+# mtext(text=as.expression(bquote(delta*"=0.25")),
+#       side=1,line=7,at=stretch,adj=0)
+
+mtext(text="1:",
+      side=1,line=2,at=stretch,adj=0)
+mtext(text="2:",
+      side=1,line=3,at=stretch,adj=0)
+mtext(text="3:",
+      side=1,line=4,at=stretch,adj=0)
+mtext(text="4:",
+      side=1,line=5,at=stretch,adj=0)
+mtext(text="5:",
+      side=1,line=6,at=stretch,adj=0)
+mtext(text="6:",
+      side=1,line=7,at=stretch,adj=0)
 
 # # plot all fixed weight priors
 # Table1        <- read.csv(file = "../../output/table1031920.csv", header = T)
@@ -156,151 +167,150 @@ for (i in 1:length(loop.list)){
 #                              FUN = mean)
 
 ## may need to change eff.mix.prob to eff.mix.prob.x
-
-# LOAD & RECODE FIXED WEIGHTS
-dat <- read.csv("Table0_merged-2021-07-19-vFixed.csv")
-# head(dat)
-# table(dat$p.IP)
-dat$success <- dat$eff.prob.initial >= 0.975
-dat$pm.rd.f2 <- (dat$y1.IP.final / (dat$y1.IP.final + dat$y0.IP.final)) - (dat$y1.PC.final / (dat$y1.PC.final + dat$y0.PC.final))
-final <- aggregate(dat, list(dat$p.IP), mean)
-library(dplyr)
-final <- dat %>%
-  group_by(p.IP, eff.mix.prob) %>% 
-  summarise_each(funs(mean))
-# final$mean.ss <- final$y1.IP.f + final$y0.IP.f + final$y1.PC.f + final$y0.PC.f # avg ss
-final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.initial + final$y0.PC.initial # avg ss
-final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
-final <- data.frame(final)
-
-
-
-#FIRST LINE
-
-temp <- final[final$eff.mix.prob == 1 & final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
-y <- temp$success
-row = 6
-lines(x,y)
-
-for (j in seq(1,length(temp$p.IP)#, by=6
-)){
-  mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
-                    " + ",
-                    format(round(temp$ss.final[j]-
-                                   temp$ss.initial[j],digits=1),nsmall=1),
-                    " = ",
-                    format(round(temp$ss.final[j],digits=1),nsmall=1)),
-        side=1,line=row,at=x[j])
-}
-text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
-
-
-## SECOND LINE
-row <- 5
-temp <- final[final$eff.mix.prob == 0.5 & final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
-y <- temp$success
-lines(x,y)
-for (j in seq(1,length(temp$p.IP)#, by=6
-)){
-  mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
-                    " + ",
-                    format(round(temp$ss.final[j]-
-                                   temp$ss.initial[j],digits=1),nsmall=1),
-                    " = ",
-                    format(round(temp$ss.final[j],digits=1),nsmall=1)),
-        side=1,line=row,at=x[j])
-}
-text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
-
-## THIRD LINE
-row <- 2
-temp <- final[final$eff.mix.prob == 0 & final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
-y <- temp$success
-lines(x,y)
-for (j in seq(1,length(temp$p.IP)#, by=6
-)){
-  mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
-                    " + ",
-                    format(round(temp$ss.final[j]-
-                                   temp$ss.initial[j],digits=1),nsmall=1),
-                    " = ",
-                    format(round(temp$ss.final[j],digits=1),nsmall=1)),
-        side=1,line=row,at=x[j])
-}
-text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
-
-# FORTH LINE
-# LOAD & RECODE v103
-dat <- read.csv("Table0_merged-2021-07-19-v103.csv")
-# head(dat)
-# table(dat$p.IP)
-dat$success <- dat$eff.prob.initial >= 0.975
-dat$pm.rd.f2 <- (dat$y1.IP.final / (dat$y1.IP.final + dat$y0.IP.final)) - (dat$y1.PC.final / (dat$y1.PC.final + dat$y0.PC.final))
-final <- aggregate(dat, list(dat$p.IP), mean)
-library(dplyr)
-final <- dat %>%
-  group_by(p.IP, eff.mix.prob) %>% 
-  summarise_each(funs(mean))
-# final$mean.ss <- final$y1.IP.f + final$y0.IP.f + final$y1.PC.f + final$y0.PC.f # avg ss
-final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.initial + final$y0.PC.initial # avg ss
-final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
-final <- data.frame(final)
-
-temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
-
-row <- 4
-y <- temp$success
-lines(x,y)
-for (j in seq(1,length(temp$p.IP)#, by=6
-)){
-  mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
-                    " + ",
-                    format(round(temp$ss.final[j]-
-                                   temp$ss.initial[j],digits=1),nsmall=1),
-                    " = ",
-                    format(round(temp$ss.final[j],digits=1),nsmall=1)),
-        side=1,line=row,at=x[j])
-}
-text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
-
-# FIFTH LINE
-# LOAD & RECODE v115
-dat <- read.csv("Table0_merged_2021-07-19-v115.csv")
-# head(dat)
-# table(dat$p.IP)
-dat$success <- dat$eff.prob.initial >= 0.975
-dat$pm.rd.f2 <- (dat$y1.IP.final / (dat$y1.IP.final + dat$y0.IP.final)) - (dat$y1.PC.final / (dat$y1.PC.final + dat$y0.PC.final))
-final <- aggregate(dat, list(dat$p.IP), mean)
-library(dplyr)
-final <- dat %>%
-  group_by(p.IP, eff.mix.prob) %>% 
-  summarise_each(funs(mean))
-# final$mean.ss <- final$y1.IP.f + final$y0.IP.f + final$y1.PC.f + final$y0.PC.f # avg ss
-final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.initial + final$y0.PC.initial # avg ss
-final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
-final <- data.frame(final)
-
-temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
-
-row <- 3
-y <- temp$success
-lines(x,y)
-for (j in seq(1,length(temp$p.IP)#, by=6
-)){
-  mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
-                    " + ",
-                    format(round(temp$ss.final[j]-
-                                   temp$ss.initial[j],digits=1),nsmall=1),
-                    " = ",
-                    format(round(temp$ss.final[j],digits=1),nsmall=1)),
-        side=1,line=row,at=x[j])
-}
-text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
-
+# 
+# # LOAD & RECODE FIXED WEIGHTS
+# dat <- read.csv("Table0_merged-2021-07-19-vFixed.csv")
+# # head(dat)
+# # table(dat$p.IP)
+# dat$success <- dat$eff.prob.initial >= 0.975
+# dat$pm.rd.f2 <- (dat$y1.IP.final / (dat$y1.IP.final + dat$y0.IP.final)) - (dat$y1.PC.final / (dat$y1.PC.final + dat$y0.PC.final))
+# final <- aggregate(dat, list(dat$p.IP), mean)
+# library(dplyr)
+# final <- dat %>%
+#   group_by(p.IP, eff.mix.prob) %>% 
+#   summarise_each(funs(mean))
+# # final$mean.ss <- final$y1.IP.f + final$y0.IP.f + final$y1.PC.f + final$y0.PC.f # avg ss
+# final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.initial + final$y0.PC.initial # avg ss
+# final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
+# final <- data.frame(final)
+# 
+# 
+# 
+# #FIRST LINE
+# 
+# temp <- final[final$eff.mix.prob == 1 & final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
+# y <- temp$success
+# row = 6
+# lines(x,y)
+# 
+# for (j in seq(1,length(temp$p.IP)#, by=6
+# )){
+#   mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
+#                     " + ",
+#                     format(round(temp$ss.final[j]-
+#                                    temp$ss.initial[j],digits=1),nsmall=1),
+#                     " = ",
+#                     format(round(temp$ss.final[j],digits=1),nsmall=1)),
+#         side=1,line=row,at=x[j])
+# }
+# text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
+# mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
+# 
+# 
+# ## SECOND LINE
+# row <- 5
+# temp <- final[final$eff.mix.prob == 0.5 & final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
+# y <- temp$success
+# lines(x,y)
+# for (j in seq(1,length(temp$p.IP)#, by=6
+# )){
+#   mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
+#                     " + ",
+#                     format(round(temp$ss.final[j]-
+#                                    temp$ss.initial[j],digits=1),nsmall=1),
+#                     " = ",
+#                     format(round(temp$ss.final[j],digits=1),nsmall=1)),
+#         side=1,line=row,at=x[j])
+# }
+# text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
+# mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
+# 
+# ## THIRD LINE
+# row <- 2
+# temp <- final[final$eff.mix.prob == 0 & final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
+# y <- temp$success
+# lines(x,y)
+# for (j in seq(1,length(temp$p.IP)#, by=6
+# )){
+#   mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
+#                     " + ",
+#                     format(round(temp$ss.final[j]-
+#                                    temp$ss.initial[j],digits=1),nsmall=1),
+#                     " = ",
+#                     format(round(temp$ss.final[j],digits=1),nsmall=1)),
+#         side=1,line=row,at=x[j])
+# }
+# text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
+# mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
+# 
+# # FORTH LINE
+# # LOAD & RECODE v103
+# dat <- read.csv("Table0_merged-2021-07-19-v103.csv")
+# # head(dat)
+# # table(dat$p.IP)
+# dat$success <- dat$eff.prob.initial >= 0.975
+# dat$pm.rd.f2 <- (dat$y1.IP.final / (dat$y1.IP.final + dat$y0.IP.final)) - (dat$y1.PC.final / (dat$y1.PC.final + dat$y0.PC.final))
+# final <- aggregate(dat, list(dat$p.IP), mean)
+# library(dplyr)
+# final <- dat %>%
+#   group_by(p.IP, eff.mix.prob) %>% 
+#   summarise_each(funs(mean))
+# # final$mean.ss <- final$y1.IP.f + final$y0.IP.f + final$y1.PC.f + final$y0.PC.f # avg ss
+# final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.initial + final$y0.PC.initial # avg ss
+# final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
+# final <- data.frame(final)
+# 
+# temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
+# 
+# row <- 4
+# y <- temp$success
+# lines(x,y)
+# for (j in seq(1,length(temp$p.IP)#, by=6
+# )){
+#   mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
+#                     " + ",
+#                     format(round(temp$ss.final[j]-
+#                                    temp$ss.initial[j],digits=1),nsmall=1),
+#                     " = ",
+#                     format(round(temp$ss.final[j],digits=1),nsmall=1)),
+#         side=1,line=row,at=x[j])
+# }
+# text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
+# mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
+# 
+# # FIFTH LINE
+# # LOAD & RECODE v115
+# dat <- read.csv("Table0_merged_2021-07-19-v115.csv")
+# # head(dat)
+# # table(dat$p.IP)
+# dat$success <- dat$eff.prob.initial >= 0.975
+# dat$pm.rd.f2 <- (dat$y1.IP.final / (dat$y1.IP.final + dat$y0.IP.final)) - (dat$y1.PC.final / (dat$y1.PC.final + dat$y0.PC.final))
+# final <- aggregate(dat, list(dat$p.IP), mean)
+# library(dplyr)
+# final <- dat %>%
+#   group_by(p.IP, eff.mix.prob) %>% 
+#   summarise_each(funs(mean))
+# # final$mean.ss <- final$y1.IP.f + final$y0.IP.f + final$y1.PC.f + final$y0.PC.f # avg ss
+# final$ss.initial <- final$y1.IP.initial + final$y0.IP.initial + final$y1.PC.initial + final$y0.PC.initial # avg ss
+# final$ss.final <- final$y1.IP.final + final$y0.IP.final + final$y1.PC.final + final$y0.PC.final # avg ss
+# final <- data.frame(final)
+# 
+# temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51, ]
+# 
+# row <- 3
+# y <- temp$success
+# lines(x,y)
+# for (j in seq(1,length(temp$p.IP)#, by=6
+# )){
+#   mtext(text=paste0(format(round(temp$ss.initial[j],digits=1),nsmall=1),
+#                     " + ",
+#                     format(round(temp$ss.final[j]-
+#                                    temp$ss.initial[j],digits=1),nsmall=1),
+#                     " = ",
+#                     format(round(temp$ss.final[j],digits=1),nsmall=1)),
+#         side=1,line=row,at=x[j])
+# }
+# text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
+# mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
+# 
 if(output_png){dev.off()}
-

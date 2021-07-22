@@ -17,12 +17,12 @@ simulation <- expand.grid(
  1,   # enr.shape
  4,   # out.mean
  0,   # fut.mix.prob
- rep(101, 2160), # eff.mix.prob
+ rep(101, 2067), # eff.mix.prob
  # c(rep(103, 114)), # eff.mix.prob
  0.5,  # inf.mix.prob
  0.05, # cred.tail
- 92,  # max.ss
- 92,   # min.ss
+ 90,  # max.ss
+ 90,   # min.ss
  1)   # reps
 
 # simulation2 <- expand.grid(

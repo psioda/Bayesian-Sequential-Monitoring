@@ -7,9 +7,9 @@ if (is.na(p.IP)){
   
   ## BEGIN FAKE DATA FOR GRID OUTCOMES ##################
   # remember idx variable is available
-  y0.seq <- 0:39
-  y1.seq <- 0:53
-  mat <- expand.grid(39, y0.seq, 53, y1.seq, 92, 92)
+  y0.seq <- 0:38
+  y1.seq <- 0:52
+  mat <- expand.grid(38, y0.seq, 52, y1.seq, 92, 92)
   dat <- mat[idx, ]
   names(dat) <- c("nObs0", "yObs0", "nObs1", "yObs1", "targOutNum", "nFin")
   ## END FAKE DATA FOR GRID OUTCOMES ####################

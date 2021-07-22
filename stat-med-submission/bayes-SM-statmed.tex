@@ -25,7 +25,7 @@
 
 
 
-\title{\textcolor{blue}{Towards a} Structured Framework for \textcolor{blue}{Adaptively Incorporating External Evidence in Sequentially Monitored Clinical Trials}}
+\title{A Structured Framework for \textcolor{blue}{Adaptively Incorporating External Evidence in Sequentially Monitored Clinical Trials}}
 
 \author[1]{Evan Kwiatkowski*}
 
@@ -52,9 +52,9 @@ Chapel Hill, North Carolina, USA. \email{ekwiatkowski@unc.edu}}
 
 \abstract[Summary]{We present a Bayesian framework for sequential monitoring that allows for use of external data, and that 
 can be applied in a wide range of clinical trial applications. The basis for this framework is the 
-idea that, in many cases, specification of priors used for sequential monitoring and the stopping criteria can be semi-algorithmic byproducts of the trial hypotheses and relevant external data, simplifying the process of prior elicitation. Monitoring priors are defined using the family of generalized normal distributions which comprise a flexible class of priors, naturally allowing one to construct a prior that is peaked or flat about the parameter values thought to be most likely. External data are incorporated into the monitoring process though mixing an a priori skeptical prior with an enthusiastic prior using a weight that can be fixed or adaptively estimated based on the degree to which observed data are better supported by a skeptical versus an enthusiastic perspective. \textcolor{blue}{In particular, we introduce the adaptive skeptical monitoring prior which dynamically weights skeptical and enthusiastic components in a mixture prior for data monitoring, where the priors used in the mixture are constructed using summaries from external data. The adaptive skeptical monitoring prior allows for prospective and pre-specified use of external data into the monitoring procedure.}
+idea that, in many cases, specification of priors used for sequential monitoring and the stopping criteria can be semi-algorithmic byproducts of the trial hypotheses and relevant external data, simplifying the process of prior elicitation. Monitoring priors are defined using the family of generalized normal distributions which comprise a flexible class of priors, naturally allowing one to construct a prior that is peaked or flat about the parameter values thought to be most likely. External data are incorporated into the monitoring process though mixing an a priori skeptical prior with an enthusiastic prior using a weight that can be fixed or adaptively estimated based on the degree to which observed data are better supported by a skeptical versus an enthusiastic perspective. \textcolor{blue}{In particular, we introduce the adaptive skeptical monitoring prior which dynamically weights skeptical and enthusiastic components in a mixture prior for efficacy monitoring, where the priors used in the mixture are constructed using summaries from external data. The adaptive skeptical monitoring prior allows for prospective and pre-specified use of external data into the monitoring procedure.}
 %
-The proposed method is applied in two examples: (1) a single-arm proof-of-concept trial and (2) a two-arm randomized controlled trial \textcolor{blue}{including a retrospective analysis of the real trial data under the proposed adaptive sequential monitoring procedure}. Both examples are motivated by completed pediatric trials, and the designs incorporate information from adult trials to varying degrees. Preposterior analysis of each trial design is performed to illustrate that the proposed Bayesian approaches provide reasonable frequentist operating characteristics without having that explicit focus.}
+The proposed method is applied in two examples: (1) a single-arm proof-of-concept trial and (2) a two-arm randomized controlled trial \textcolor{blue}{including a retrospective analysis of real trial data under the proposed adaptive sequential monitoring procedure}. Both examples are motivated by completed pediatric trials, and the designs incorporate information from adult trials to varying degrees. Preposterior analysis of each trial design is performed to illustrate that the proposed Bayesian approaches provide reasonable frequentist operating characteristics without having that explicit focus.}
 
 \keywords{Adaptive Trial Design, Bayesian Sequential Monitoring, Information Borrowing, Pediatric Trials, Skeptical Prior}
 
@@ -153,13 +153,13 @@ A key contribution of this work is to give structured definitions for skeptical 
 to inform early stopping decisions in favor of efficacy and futility, respectively. Skeptical and enthusiastic priors are developed using the generalized normal family of distributions. 
 	%
 This flexible family includes the normal distribution as a special case, and provides the capacity to construct monitoring 
-priors that reflect nuanced prior opinion about the treatment effect (Section \ref{sec:gen_normal}). 
+priors that reflect nuanced prior opinion about the treatment effect. 
 	%
 A conditional-marginal prior factorization is proposed for settings where there are one or more nuisance 
-parameters (Section \ref{sec:cond_marg}) and we illustrate how prior information can be used in both marginal 
+parameters, and we illustrate how prior information can be used in both marginal 
 distribution for the treatment effect and conditional distribution for the nuisance parameters, if desired. 
-
-\textcolor{blue}{The structured definitions of skeptical and enthusiastic perspectives form the basis for adaptive mixture priors to be used prospectively. The prospective use of external data in a pre-specified design provides novelty beyond routine sensitivity analyses with different priors, and our structured framework makes these ideas more rigorous. The prospective incorporation of external data is not routinely used at the Center for Drug Evaluation and Research at the FDA, and this framework could lead to increased use of these methods.}
+%
+\textcolor{blue}{The structured definitions of skeptical and enthusiastic perspectives form the basis for adaptive mixture priors to be used for monitoring when there is a desire to incorporate prior information into the monitoring process. The prospective use of external data in a pre-specified design provides novelty beyond conducting sensitivity analyses with different priors, and provides a pathway for innovative designs not routinely used at the Center for Drug Evaluation and Research at the FDA.}
 
 We perform simulation-based preposterior analysis to examine a variety of operating characteristics for the proposed design framework,
 and to understand how key operating characteristics are influenced by the frequency of monitoring.
@@ -440,7 +440,7 @@ Recall the density at the mode for a default enthusiastic prior is $f(\theta_1)=
 An enthusiastic monitoring prior in the generalized normal family of distributions can have density at the mode equal to $k\times \frac{1}{\sqrt{2\pi}\sigma}$, with $k<1$ indicating a more flattened distribution and $k>1$ indicating a more peaked distribution at the mode, relative to the default normal distribution. 
 %
 Web Appendix B details a procedure for parameterizing these flattened and concentrated monitoring priors. 
-
+%
 Flattened and concentrated distributions for different choices of $k$ are shown in Figure \ref{fig:figure1}. 
 
 \begin{figure}
@@ -623,59 +623,6 @@ $f_\beta$ indicates an upwards scaling of the value $0.5$ such that $f_\beta(0.5
 %\end{equation}
 %as a mixing weight that dynamically gives preference to the prior that has the higher density evaluated at $\hat{\theta}$ with a minimum weight $\omega_{min}$ given to the skeptical component with $\omega_{min}\in[0,1]$.
 %%%\end{mydef}
-
-\subsubsection{Inference Priors}\label{sec:inferencepriors}
-The purpose of the inference prior is to synthesize posterior inferences from the disparate skeptical and enthusiastic perspectives to 
-facilitate interpretation of the data once it has been obtained. 
-%
-The skeptical and enthusiastic monitoring priors defined in Section~\ref{sec:MP} represent extreme but plausible 
-beliefs about $\theta$.
-%
-While analysis with these priors provides a rational perspective from which one can determine whether interim data 
-are sufficient to cease enrolling patients, the belief of most stakeholders will likely fall somewhere between the 
-two perspectives.
-%
-Thus, when interpreting the final data once in hand, intermediate perspectives should be considered.
-%
-To that end, we define an inference prior through mixing the two monitoring priors.
-%, with the optional addition of a locally non-informative prior to provide added robustness.
-{
-%Define the inference prior as
-%\begin{equation}\label{eq:3partmix}
-%\pi(\theta)=\omega_S\cdot \pi_S(\theta)+\omega_E\cdot\pi_E(\theta)%+\omega_{NI}\cdot\pi_{NI}(\theta)
-%\end{equation}
-%where $\omega_S+\omega_E$ and each weight is non-negative. 
-	%
-One may take a fixed value of $\omega_S=\omega_E=1/2$ in \eqref{eq:inference_prior} to obtain an \textit{agnostic} inference prior since it 
-gives equal weight to the skeptical and enthusiastic components (see Section \ref{sec:example1}).
-%
-%This type of inference prior is demonstrated in Section \ref{sec:example1}.
-}
-
-%{
-%Alternatively, an adaptive inference prior is obtained as follows.
-%	%
-%One first computes the quantities $\psi^{(S)}(\mathbf{D}_{\text{obs}})$, $\psi^{(E)}(\mathbf{D}_{\text{obs}})$, and $\psi^{(NI)}(\mathbf{D}_{\text{obs}})$ using the priors $\pi_S(\theta)$, 
-%$\pi_E(\theta)$, and $\pi_{NI}(\theta)$, respectively, based on Box's p-value as given in \eqref{eq:box_p}. 
-%	%
-%Each of $\psi^{(S)}(\mathbf{D}_{\text{obs}})$, $\psi^{(E)}(\mathbf{D}_{\text{obs}})$, and $\psi^{(NI)}(\mathbf{D}_{\text{obs}})$ characterizes compatibility of the data with the respective prior.
-%	%
-%Our goal is to create a mixture prior which gives more weight to the skeptical (or enthusiastic) prior in situations where the data are highly compatible 
-%with that prior and that favors the locally non-informative prior if data exhibit low compatibility with both the skeptical and enthusiastic priors.
-%	%
-% To that end, we propose transforming $\psi^{(NI)}(\mathbf{D}_{\text{obs}})$ to obtain $\tilde{\psi}^{(NI)}(\mathbf{D}_{\text{obs}})$ which is defined as
-%\begin{equation}\label{eq:3partmix_ni}
-%\tilde{\psi}^{(NI)}(\mathbf{D}_{\text{obs}})=\text{max}\left[0,\psi^{(NI)}(\mathbf{D}_{\text{obs}})-\text{max}\left(\psi^{(S)}(\mathbf{D}_{\text{obs}}),\psi^{(E)}(\mathbf{D}_{\text{obs}})\right)\right].
-%%\begin{cases} 
-%%      \psi^{(NI)}(\mathbf{D}_{\text{obs}})-\text{max}(\psi^{(S)}(\mathbf{D}_{\text{obs}}),\psi^{(E)}(\mathbf{D}_{\text{obs}})) \text{ if }\\ \psi^{(NI)}(\mathbf{D}_{\text{obs}})>\text{max}(\psi^{(S)}(\mathbf{D}_{\text{obs}}),\psi^{(E)}(\mathbf{D}_{\text{obs}}))\\
-%%      0 \text{ if } \\\psi^{(NI)}(\mathbf{D}_{\text{obs}})\leq\text{max}(\psi^{(S)}(\mathbf{D}_{\text{obs}}),\psi^{(E)}(\mathbf{D}_{\text{obs}}))
-%%   \end{cases}.
-%\end{equation}	
-%	%
-%We then let the mixing weights $\omega^{(E)}$, $\omega^{(S)}$, and $\omega^{(NI)}$ be the normalized values of $\psi^{(E)}(\mathbf{D}_{\text{obs}})$, $\psi^{(S)}(\mathbf{D}_{\text{obs}})$, and $\tilde{\psi}^{(NI)}(\mathbf{D}_{\text{obs}})$ so that their sum is unity.
-%	%
-%This type of inference prior is demonstrated in Section \ref{sec:example2}.
-%}
 
 \subsubsection{Prior Specification for Nuisance Parameters}\label{sec:cond_marg}
 %\textcolor{red}{This section confuses me a good deal. In reference to the figure (and hypotheses to be tested), what are $\eta_0$ and $\eta_1$. These things have not be defined.
@@ -989,7 +936,7 @@ Figure \ref{fig:ex2varyomega} shows the probability of stopping early for effica
 \begin{figure}
 \begin{center}
    \includegraphics[width=6in]{figure6.png}
-    \includegraphics[width=6in]{figure6a.png}
+%    \includegraphics[width=6in]{figure6a.png}
     \caption{%A, Sequential design properties using adaptive weight monitoring prior (SS; mean sample size, PM; posterior mean, CP; coverage probability, (I); interim analysis, (F); final analysis). B, 
     Probability of stopping for efficacy and associated sample sizes by true IP response probability $\theta$ with different choices of efficacy monitoring prior.}
 \label{fig:ex2varyomega}
@@ -1006,21 +953,30 @@ We consider applying the adaptive mixture prior of \eqref{eq:inference_prior} to
 \begin{center}
 \begin{table}\label{tbl:real-pluto}%
 \centering
-\caption{Interim sample size at stoppage for efficacy by choice of minimum skeptical mixture weight $\delta$ and upwards scaling of Bayesian $p$-value of $0.5$ ($\beta$) using concentrated skeptical prior and default enthusiastic prior.}%
-\begin{tabular*}{300pt}{@{\extracolsep\fill}cccccc@{\extracolsep\fill}}%
+\caption{Summary characteristics of re-analysis of PLUTO trial. I/F = Interim/Final, Enth Box PV = Box's $p$-value using enthusiastic prior, Enth Mix Wt = Enthusiastic mixing weight in adaptive monitoring prior, Efficacy Post Prob = Posterior probability of treatment efficacy.}%
+\begin{tabular*}{400pt}{@{\extracolsep\fill}cccccc@{\extracolsep\fill}}%
 \toprule
-\textbf{$\delta$ / $\beta$} & 0.5	&	0.6	&	0.7	&	0.8	&	0.9\\
+$\delta$	&	Sample Size (I/F)			&	Enth Box PV (I/F)			&	Enth Mix Wt (I/F)			&	Efficacy Post Prob (I/F)			\\
 \midrule
-0.00	&	62	&	54	&	54	&	50	&	50	\\
-0.05	&	62	&	62	&	54	&	54	&	54	\\
-0.10	&	72	&	62	&	62	&	54	&	54	\\
-0.15	&	92	&	72	&	64	&	64	&	64	\\
-0.20	&	92	&	92	&	78	&	78	&	78	\\
-0.25	&	92	&	92	&	92	&	92	&	92	\\
+0.00	&	62	/	90	&	0.914	/	0.965	&	0.914	/	0.965	&	0.980	/	0.979	\\
+0.05	&	64	/	92	&	0.876	/	0.934	&	0.833	/	0.887	&	0.976	/	0.962	\\
+0.10	&	76	/	92	&	0.941	/	0.934	&	0.847	/	0.841	&	0.975	/	0.951	\\
+0.15	&	92	/	92	&	0.934	/	0.934	&	0.794	/	0.794	&	0.940	/	0.940	\\
+0.20	&	92	/	92	&	0.934	/	0.934	&	0.747	/	0.747	&	0.928	/	0.928	\\
+0.25	&	92	/	92	&	0.934	/	0.934	&	0.701	/	0.701	&	0.917	/	0.917	\\
 \bottomrule
 \end{tabular*}
 \end{table}
 \end{center}
+
+\begin{figure}
+\begin{center}
+   \includegraphics[width=6in]{2dbayesp.png}
+    \includegraphics[width=6in]{2dpostp.png}
+    \caption{A, XXX. B, YYY.}
+\label{fig:2dheatmaps}
+ \end{center}
+\end{figure}
 
 When $\delta$ is equal to zero, that is, the weight of the enthusiastic component is allowed to approach 1 in \eqref{eq:inference_prior}, then the efficacy criteria is satisfied at the first monitoring opportunity with 52 completed outcomes. At this point the data were shown to be more compatible with the enthusiastic prior than the skeptical prior, so the skeptical weight was reduced the $\delta=0$ in the mixture. As the value of $\delta$ increases, so does the interim sample size where the efficacy criteria is achieved.
 \section{Discussion}

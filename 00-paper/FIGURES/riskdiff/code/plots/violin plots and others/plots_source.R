@@ -8,7 +8,7 @@ setwd(root)
 source("code_functions.R")
 source("args_model.R")
 width.scale<-6
-png('../../figure1a.png',width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
+png(paste0(plot.dir,'figure1a.png'),width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
 prior.nc.skpt<-skpt_prior_default()
 source("plots/plots_prior_skpt.R")
 mtext("(A)",side=2,line=1,at=6,las=1)
@@ -20,7 +20,7 @@ setwd(root)
 source("code_functions.R")
 source("args_model.R")
 width.scale<-6
-png('../../figure1b.png',width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
+png(paste0(plot.dir,'figure1b.png'),width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
 prior.nc.skpt<-skpt_prior_custom(scale=1.15)
 source("plots/plots_prior_skpt.R")
 mtext("(B)",side=2,line=1,at=6,las=1)
@@ -32,7 +32,7 @@ setwd(root)
 source("code_functions.R")
 source("args_model.R")
 width.scale<-6
-png('../../figure1c.png',width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
+png(paste0(plot.dir,'figure1c.png'),width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
 prior.nc.enth<-enth_prior_default()
 source("plots/plots_prior_enth.R")
 mtext("(C)",side=2,line=1,at=3,las=1)
@@ -44,7 +44,7 @@ setwd(root)
 source("code_functions.R")
 source("args_model.R")
 width.scale<-6
-png('../../figure1d.png',width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
+png(paste0(plot.dir,'figure1d.png'),width = 300*width.scale, height = 300*width.scale,pointsize=16,res=300)
 prior.nc.enth<-enth_prior_custom(scale=0.85)
 source("plots/plots_prior_enth.R")
 mtext("(D)",side=2,line=1,at=3,las=1)
@@ -54,17 +54,19 @@ dev.off()
 #### Figure 2, One Arm Violin Plots ####
 ########################################
 rm(list = ls())
+plot.dir <-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code/plots/violin plots and others/"
+
 root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
 source("code_functions.R")
 source("args_model.R")
-prior.nc.skpt<-skpt_prior_custom(scale=1.15)
+prior.nc.skpt<-skpt_prior_custom(scale=0.75)
 prior.nc.enth<-enth_prior_default()
 label.x<- (-15)
 x.len<-1000
 grid<-seq(0+1E-4,1-1E-4,length=x.len)
 width.scale<-7
-png('../../figure2a.png',width = 450*width.scale, height = 300*width.scale,pointsize=20,res=300)
+png(paste0(plot.dir,'figure2a.png'),width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
 par(mar=c(5.1+1,4.1,2.1,2.1)) #c(bottom, left, top, right)
 # Efficacy example
 miss<-c(0,2,3  ,4 ,0)
@@ -74,52 +76,49 @@ y0=n-y1
 spacing<-(seq(1:length(n))-1)*12
 source("plots/plots_violin_v2.R")
 legend("bottomright",
-       c("Skeptical Prior Posterior",
-         "Enthuastic Prior Posterior",
-         "Mixture Prior 95% Credible Interval",
-         "Mixture Prior Posterior Mean"),
+       c("Skeptical Posterior",
+         "Enthuastic Posterior"),
        #bty="n",
-       fill=c("darkgray","lightgray","black","black"),
-       density=c(NA,NA,0,0),
-       lty=c(NA,NA,1,1),
-       pch=c(NA,NA,3,20),
-       lwd=c(NA,NA,1,1),
-       border=c('black','black',NA,NA)#,x.intersp=c(-.5,-.5,1,1)
+       fill=c("darkgray","lightgray"),
+       density=c(NA,NA),
+       lty=c(NA,NA),
+       pch=c(NA,NA),
+       lwd=c(NA,NA),
+       border=c('black','black')#,x.intersp=c(-.5,-.5,1,1)
 )
 dev.off()
 
 rm(list = ls())
 root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
+plot.dir <-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code/plots/violin plots and others/"
 setwd(root)
 source("code_functions.R")
 source("args_model.R")
-prior.nc.skpt<-skpt_prior_custom(scale=1.15)
+prior.nc.skpt<-skpt_prior_custom(scale=0.75)
 prior.nc.enth<-enth_prior_default()
 label.x<- (-15)
 x.len<-1000
 grid<-seq(0+1E-4,1-1E-4,length=x.len)
 width.scale<-7
-png('../../figure2b.png',width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
+png(paste0(plot.dir,'figure2b.png'),width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
 par(mar=c(5.1+1,4.1,2.1,2.1)) #c(bottom, left, top, right)
 # Futility example
 n<-   c(0,10,20,30,37)
-y1<-  c(0,6 ,7 ,7 ,9)
+y1<-  c(0,6 ,10 ,14 ,15)
 miss<-c(0,2 ,4 ,7 ,0)
 y0=n-y1
 spacing<-(seq(1:length(n))-1)*12
 source("plots/plots_violin_v2.R")
 legend("topright",
-       c("Skeptical Prior Posterior",
-         "Enthuastic Prior Posterior",
-         "Mixture Prior 95% Credible Interval",
-         "Mixture Prior Posterior Mean"),
+       c("Skeptical Posterior",
+         "Enthuastic Posterior"),
        #bty="n",
-       fill=c("darkgray","lightgray","black","black"),
-       density=c(NA,NA,0,0),
-       lty=c(NA,NA,1,1),
-       pch=c(NA,NA,3,20),
-       lwd=c(NA,NA,1,1),
-       border=c('black','black',NA,NA)#,x.intersp=c(-.5,-.5,1,1)
+       fill=c("darkgray","lightgray"),
+       density=c(NA,NA),
+       lty=c(NA,NA),
+       pch=c(NA,NA),
+       lwd=c(NA,NA),
+       border=c('black','black')#,x.intersp=c(-.5,-.5,1,1)
        )
 dev.off()
 

@@ -96,16 +96,17 @@ for (i in seq(1,length(n))){
   }
 }
 
-for (i in 1:length(n)){
-points(spacing[i],lower[i],pch="-",cex = 2)
-points(spacing[i],upper[i],pch="-",cex = 2)
-points(spacing[i],mean[i],pch=20)
-lines(rep(spacing[i],2),c(lower[i],upper[i]),lwd=1)
-}
-
-for (i in 2:length(n)){
-lines(c(spacing[i-1],spacing[i]),c(mean[i-1],mean[i]),lwd=1)
-  }
+# Remove posterior means 7/21/2021
+# for (i in 1:length(n)){
+# points(spacing[i],lower[i],pch="-",cex = 2)
+# points(spacing[i],upper[i],pch="-",cex = 2)
+# points(spacing[i],mean[i],pch=20)
+# lines(rep(spacing[i],2),c(lower[i],upper[i]),lwd=1)
+# }
+# 
+# for (i in 2:length(n)){
+# lines(c(spacing[i-1],spacing[i]),c(mean[i-1],mean[i]),lwd=1)
+#   }
 
 row<-1
 mtext(text="Enrolled",side=1,line=row,at=label.x,adj=0)

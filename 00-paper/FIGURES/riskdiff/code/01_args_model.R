@@ -7,7 +7,7 @@ rm(list = ls())
 if (Sys.getenv("USER") == "kwiatkoe") {
   library(pracma)
   library(gnorm)
-  setwd("/Users/kwiatkoe/Documents/Github/Bayesian-Sequential-Monitoring/Real FDA Data Example/MP_FDA_Check/code")
+  setwd("/Users/kwiatkoe/Documents/Github/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code")
 }
 
 if (.Platform$OS.type == "unix")    { 

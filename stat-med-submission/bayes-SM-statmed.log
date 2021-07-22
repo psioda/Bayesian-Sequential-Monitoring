@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  19 JUL 2021 23:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.7)  21 JUL 2021 22:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1237,22 +1237,22 @@ LaTeX Font Warning: Command \mathversion invalid in math mode on input line 394
 .
 
 [7]
-<figure1a.png, id=96, 1505.625pt x 1505.625pt>
+<figure1a.png, id=93, 1505.625pt x 1505.625pt>
 File: figure1a.png Graphic file (type png)
 <use figure1a.png>
 Package pdftex.def Info: figure1a.png  used on input line 448.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure1b.png, id=98, 1505.625pt x 1505.625pt>
+<figure1b.png, id=95, 1505.625pt x 1505.625pt>
 File: figure1b.png Graphic file (type png)
 <use figure1b.png>
 Package pdftex.def Info: figure1b.png  used on input line 449.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure1c.png, id=99, 1505.625pt x 1505.625pt>
+<figure1c.png, id=96, 1505.625pt x 1505.625pt>
 File: figure1c.png Graphic file (type png)
 <use figure1c.png>
 Package pdftex.def Info: figure1c.png  used on input line 450.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure1d.png, id=100, 1505.625pt x 1505.625pt>
+<figure1d.png, id=97, 1505.625pt x 1505.625pt>
 File: figure1d.png Graphic file (type png)
 <use figure1d.png>
 Package pdftex.def Info: figure1d.png  used on input line 451.
@@ -1267,93 +1267,104 @@ LaTeX Font Warning: Command \mathversion invalid in math mode on input line 558
 
 LaTeX Font Info:    Calculating math sizes for size <> on input line 559.
 [10]
-<figure5a_NEW.png, id=143, 1505.625pt x 1505.625pt>
+<figure5a_NEW.png, id=138, 1505.625pt x 1505.625pt>
 File: figure5a_NEW.png Graphic file (type png)
 <use figure5a_NEW.png>
-Package pdftex.def Info: figure5a_NEW.png  used on input line 712.
+Package pdftex.def Info: figure5a_NEW.png  used on input line 659.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure5b_NEW.png, id=144, 1505.625pt x 1505.625pt>
+<figure5b_NEW.png, id=139, 1505.625pt x 1505.625pt>
 File: figure5b_NEW.png Graphic file (type png)
 <use figure5b_NEW.png>
-Package pdftex.def Info: figure5b_NEW.png  used on input line 713.
+Package pdftex.def Info: figure5b_NEW.png  used on input line 660.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<figure5a.png, id=145, 3613.5pt x 1806.75pt>
+<figure5a.png, id=140, 3613.5pt x 1806.75pt>
 File: figure5a.png Graphic file (type png)
 <use figure5a.png>
-Package pdftex.def Info: figure5a.png  used on input line 714.
+Package pdftex.def Info: figure5a.png  used on input line 661.
 (pdftex.def)             Requested size: 433.62pt x 216.80064pt.
- [11] [12 <./figure5a_NEW.png> <./figure5b_NEW.png> <./figure5a.png>]
+ [11]
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 771.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 718.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 771
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 718
 .
 
 
-LaTeX Warning: Reference `eq:3partmix' on page 13 undefined on input line 784.
+LaTeX Warning: Reference `eq:3partmix' on page 12 undefined on input line 731.
 
+[12 <./figure5a_NEW.png> <./figure5b_NEW.png> <./figure5a.png>]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
-88.
+35.
+
 (/usr/local/texlive/2020/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-<figure2a.png, id=169, 3161.8125pt x 2107.875pt>
+<figure2a.png, id=164, 3161.8125pt x 2107.875pt>
 File: figure2a.png Graphic file (type png)
 <use figure2a.png>
-Package pdftex.def Info: figure2a.png  used on input line 805.
+Package pdftex.def Info: figure2a.png  used on input line 752.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure2b.png, id=170, 3161.8125pt x 2107.875pt>
+<figure2b.png, id=165, 3161.8125pt x 2107.875pt>
 File: figure2b.png Graphic file (type png)
 <use figure2b.png>
-Package pdftex.def Info: figure2b.png  used on input line 806.
+Package pdftex.def Info: figure2b.png  used on input line 753.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
  [13]
-<figure3a.png, id=189, 3161.8125pt x 2107.875pt>
+<figure3a.png, id=185, 3161.8125pt x 2107.875pt>
 File: figure3a.png Graphic file (type png)
 <use figure3a.png>
-Package pdftex.def Info: figure3a.png  used on input line 861.
+Package pdftex.def Info: figure3a.png  used on input line 808.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure3b.png, id=190, 3161.8125pt x 2107.875pt>
+<figure3b.png, id=186, 3161.8125pt x 2107.875pt>
 File: figure3b.png Graphic file (type png)
 <use figure3b.png>
-Package pdftex.def Info: figure3b.png  used on input line 862.
+Package pdftex.def Info: figure3b.png  used on input line 809.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
  [14]
 
-LaTeX Font Warning: Command \boldmath invalid in math mode on input line 924.
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 871.
 
 
-LaTeX Font Warning: Command \mathversion invalid in math mode on input line 924
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 871
 .
 
-[15]
-<3-part-compatibility-1.png, id=210, 3161.8125pt x 2107.875pt>
+<3-part-compatibility-1.png, id=200, 3161.8125pt x 2107.875pt>
 File: 3-part-compatibility-1.png Graphic file (type png)
 <use 3-part-compatibility-1.png>
-Package pdftex.def Info: 3-part-compatibility-1.png  used on input line 965.
+Package pdftex.def Info: 3-part-compatibility-1.png  used on input line 912.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<3-part-compatibility-2.png, id=211, 3161.8125pt x 2107.875pt>
+<3-part-compatibility-2.png, id=201, 3161.8125pt x 2107.875pt>
 File: 3-part-compatibility-2.png Graphic file (type png)
 <use 3-part-compatibility-2.png>
-Package pdftex.def Info: 3-part-compatibility-2.png  used on input line 966.
+Package pdftex.def Info: 3-part-compatibility-2.png  used on input line 913.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure6.png, id=215, 3161.8125pt x 2107.875pt>
+<figure6.png, id=205, 5420.25pt x 3613.5pt>
 File: figure6.png Graphic file (type png)
 <use figure6.png>
-Package pdftex.def Info: figure6.png  used on input line 991.
-(pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<figure6a.png, id=216, 3161.8125pt x 2107.875pt>
-File: figure6a.png Graphic file (type png)
-<use figure6a.png>
-Package pdftex.def Info: figure6a.png  used on input line 992.
-(pdftex.def)             Requested size: 433.62pt x 289.05374pt.
+Package pdftex.def Info: figure6.png  used on input line 938.
+(pdftex.def)             Requested size: 433.62pt x 289.03078pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 988--998
+Underfull \hbox (badness 10000) in paragraph at lines 935--945
 
  []
 
-[16] [17] (./bayes-SM-statmed.bbl [18]
+[15]
+<2dbayesp.png, id=215, 4516.875pt x 3613.5pt>
+File: 2dbayesp.png Graphic file (type png)
+<use 2dbayesp.png>
+Package pdftex.def Info: 2dbayesp.png  used on input line 974.
+(pdftex.def)             Requested size: 433.62pt x 346.87001pt.
+<2dpostp.png, id=216, 4516.875pt x 3613.5pt>
+File: 2dpostp.png Graphic file (type png)
+<use 2dpostp.png>
+Package pdftex.def Info: 2dpostp.png  used on input line 975.
+(pdftex.def)             Requested size: 433.62pt x 346.87001pt.
+
+
+LaTeX Warning: Float too large for page by 57.99269pt on input line 979.
+
+[16] (./bayes-SM-statmed.bbl [17]
 Underfull \hbox (badness 4328) in paragraph at lines 78--82
 []\T1/stix/m/n/10.03749 Nadarajah S. A gen-er-al-ized nor-mal dis-tri-bu-tion. 
 \T1/stix/m/it/10.03749 Jour-nal of Applied Statis-tics \T1/stix/m/n/10.03749 20
@@ -1366,31 +1377,32 @@ Underfull \hbox (badness 1389) in paragraph at lines 90--96
 in-te-nance Ther-apy With Inflix-imab for Chil-dren With
  []
 
-) [19] [20 <./figure2a.png> <./figure2b.png>] [21 <./figure3a.png> <./figure3b.
-png>] [22 <./3-part-compatibility-1.png> <./3-part-compatibility-2.png>]
-[23 <./figure6.png> <./figure6a.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1296.
- [24
+[18]) [19] [20 <./figure2a.png> <./figure2b.png>] [21 <./figure3a.png> <./figur
+e3b.png>] [22 <./3-part-compatibility-1.png> <./3-part-compatibility-2.png>]
+[23 <./figure6.png>] [24 <./2dbayesp.png> <./2dpostp.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1252.
+ [25
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1296.
- (./bayes-SM-statmed.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1296.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1296.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1252.
+
+(./bayes-SM-statmed.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1252.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1252.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1296.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1252.
  ) 
 Here is how much of TeX's memory you used:
- 16436 strings out of 480608
- 231934 string characters out of 5903631
- 492920 words of memory out of 5000000
- 31882 multiletter control sequences out of 15000+600000
+ 16443 strings out of 480608
+ 232021 string characters out of 5903631
+ 492912 words of memory out of 5000000
+ 31887 multiletter control sequences out of 15000+600000
  664617 words of font info for 214 fonts, out of 8000000 for 9000
  1167 hyphenation exceptions out of 8191
- 49i,12n,46p,1703b,453s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,12n,46p,1703b,475s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc}</usr/loca
 l/texlive/2020/texmf-dist/fonts/type1/public/stix/STIXGeneral-Bold.pfb></usr/lo
@@ -1406,10 +1418,10 @@ b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/stix/stix-mathex.pfb><
 usr/local/texlive/2020/texmf-dist/fonts/type1/public/stix/stix-mathrm-bold.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb></u
 sr/local/texlive/2020/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb>
-Output written on bayes-SM-statmed.pdf (24 pages, 2578793 bytes).
+Output written on bayes-SM-statmed.pdf (25 pages, 3126889 bytes).
 PDF statistics:
- 446 PDF objects out of 1000 (max. 8388607)
- 372 compressed objects within 4 object streams
- 85 named destinations out of 1000 (max. 500000)
- 308 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 445 PDF objects out of 1000 (max. 8388607)
+ 368 compressed objects within 4 object streams
+ 86 named destinations out of 1000 (max. 500000)
+ 305 words of extra memory for PDF output out of 10000 (max. 10000000)
 
