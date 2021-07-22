@@ -1,7 +1,7 @@
 rm(list = ls())
-setwd("/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/output")
-dat <- read.csv("Table0_merged_2021-07-21-bayes-p-grid-92.csv")
-setwd("/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code/plots/2d heatmap bayes p")
+setwd("/Users/evankwiatkowski/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/output")
+dat <- read.csv("Table0_merged_2021-07-21-bayes-p-grid-90.csv")
+setwd("/Users/evankwiatkowski/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code/plots/2d heatmap bayes p")
 
 head(dat)
 summary(dat$eff.mix.prob.initial)
@@ -9,7 +9,7 @@ summary(dat$eff.mix.prob.final)
 summary(dat$box.enth.initial)
 summary(dat$box.skpt.initial)
 
-output_png <- TRUE
+output_png <- FALSE
 par(mar=c(5.1, 4.1, 4.1, 2.1)) # c(bottom, left, top, right))
 width.scale<-12
 if(output_png){png('2dbayesp.png',width = 300*1.25*width.scale, height = 300*width.scale,pointsize=16,res=300)}
@@ -17,8 +17,8 @@ if(output_png){png('2dbayesp.png',width = 300*1.25*width.scale, height = 300*wid
 
 grid.skpt <- dat
 plot(NULL,
-     xlim = c(0, 53),
-     ylim = c(0, 39),
+     xlim = c(0, 52),
+     ylim = c(0, 38),
      xlab="",
      ylab="",
      col="white",
@@ -28,10 +28,10 @@ plot(NULL,
      yaxs = "i")
 
 axis(1,
-     at = 0:10*(53/10),
+     at = 0:10*(52/10),
      labels = format(round(seq(0,1,by=0.1),digits=1),nsmall=1))
 axis(2,
-     at = 0:10*(39/10),
+     at = 0:10*(38/10),
      labels = format(round(seq(0,1,by=0.1),digits=1),nsmall=1))
 
 grid.skpt$x <- grid.skpt$y1.IP.initial
@@ -66,10 +66,10 @@ for (i in 1:length(cuts)-1){
           border = NA)
 }
 
-points(28, 17, pch = 19, col = "white")
-
+points(27, 16, pch = 19, col = "white")
+text(27, 16, labels = round(grid.skpt[grid.skpt$x == 27 & grid.skpt$y == 16, "z"],3), color = white)
 library(RColorBrewer)
-# abline(a = c(0, 0), b = 39/53, lwd = 3, lty = 'dashed')
+# abline(a = c(0, 0), b = 38/52, lwd = 3, lty = 'dashed')
 legend(x="topleft", 
        title = "Box's p-value",
        # legend=c(cuts.names, "Observed Data", "Equivalent Proportions"), 
