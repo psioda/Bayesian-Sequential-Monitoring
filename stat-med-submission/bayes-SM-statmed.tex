@@ -52,9 +52,9 @@ Chapel Hill, North Carolina, USA. \email{ekwiatkowski@unc.edu}}
 
 \abstract[Summary]{We present a Bayesian framework for sequential monitoring that allows for use of external data, and that 
 can be applied in a wide range of clinical trial applications. The basis for this framework is the 
-idea that, in many cases, specification of priors used for sequential monitoring and the stopping criteria can be semi-algorithmic byproducts of the trial hypotheses and relevant external data, simplifying the process of prior elicitation. Monitoring priors are defined using the family of generalized normal distributions which comprise a flexible class of priors, naturally allowing one to construct a prior that is peaked or flat about the parameter values thought to be most likely. External data are incorporated into the monitoring process though mixing an a priori skeptical prior with an enthusiastic prior using a weight that can be fixed or adaptively estimated based on the degree to which observed data are better supported by a skeptical versus an enthusiastic perspective. \textcolor{blue}{In particular, we introduce the adaptive skeptical monitoring prior which dynamically weights skeptical and enthusiastic components in a mixture prior for efficacy monitoring, where the priors used in the mixture are constructed using summaries from external data. The adaptive skeptical monitoring prior allows for prospective and pre-specified use of external data into the monitoring procedure.}
+idea that, in many cases, specification of priors used for sequential monitoring and the stopping criteria can be semi-algorithmic byproducts of the trial hypotheses and relevant external data, simplifying the process of prior elicitation. Monitoring priors are defined using the family of generalized normal distributions which comprise a flexible class of priors, naturally allowing one to construct a prior that is peaked or flat about the parameter values thought to be most likely. External data are incorporated into the monitoring process though mixing an a priori skeptical prior with an enthusiastic prior using a weight that can be fixed or adaptively estimated based on the degree to which observed data consistent with an enthusiastic perspective. \textcolor{blue}{In particular, we introduce the adaptive enthusiastic monitoring prior which dynamically weighs skeptical and enthusiastic components in a mixture prior for efficacy monitoring. The adaptive enthusiastic monitoring prior allows for prospective and pre-specified use of external data into the monitoring procedure.}
 %
-The proposed method is applied in two examples: (1) a single-arm proof-of-concept trial and (2) a two-arm randomized controlled trial \textcolor{blue}{including a retrospective analysis of real trial data under the proposed adaptive sequential monitoring procedure}. Both examples are motivated by completed pediatric trials, and the designs incorporate information from adult trials to varying degrees. Preposterior analysis of each trial design is performed to illustrate that the proposed Bayesian approaches provide reasonable frequentist operating characteristics without having that explicit focus.}
+The proposed method is applied in two examples: (1) a single-arm proof-of-concept trial and (2) a two-arm randomized controlled trial \textcolor{blue}{including a retrospective analysis of real trial data under the proposed adaptive sequential monitoring procedure}. Both examples are motivated by completed pediatric trials, and the designs incorporate information from adult trials to varying degrees. Preposterior analysis \textcolor{blue}{and frequentist operating characteristics} of each trial design \textcolor{blue}{are discussed.}}
 
 \keywords{Adaptive Trial Design, Bayesian Sequential Monitoring, Information Borrowing, Pediatric Trials, Skeptical Prior}
 
@@ -198,7 +198,7 @@ the analysis \citep{Psioda2018}.
 This paper is organized as follows: %
 Section \ref{sec:preliminaries} reviews Bayesian hypothesis testing using posterior probabilities and the use of  skeptical and enthusiastic priors for efficacy and futility monitoring. 
 %
-Section \ref{sec:mps} presents a method for parameterizing monitoring priors using the generalized normal distribution and for incorporating prior information into the monitoring priors, as well as construction of inference priors and a method to specify priors for nuisance parameters.
+Section \ref{sec:mps} presents a method for parameterizing monitoring priors using the generalized normal distribution and for incorporating prior information into the monitoring priors and a method to specify priors for nuisance parameters.
 %
 Examples are given in Section \ref{sec:examples}, with Section \ref{sec:example1} presenting an example based on a single-arm trial and Section \ref{sec:example2} presenting an example based on a two-arm randomized, controlled trial.
 %Conclusions from Bayesian inferences are not affected by the frequency with which the data are monitored, and such interim analyses should be encouraged to terminate data collection if appropriate \citep{Berry1989,Berry1993,Spiegelhalter1994}. The Bayesian perspective is based on the likelihood principle which asserts that any data with the same likelihood function should lead to the same conclusion \citep{Berger1988}. In the context of sequential analysis of clinical trials, the stopping rule that leads to the termination of data collection is irrelevant to the conclusion \citep{Barnard1947,Anscombe1963,Cornfield1966a,Cornfield1966b}. 
@@ -539,18 +539,18 @@ early for efficacy.
 To facilitate this, we introduce a procedure for modifying the monitoring process such that, if the enthusiastic prior is congruent with observed data, the degree of skepticism can be adaptively lessened.
 	%
 We propose incorporating prior information into the monitoring process for efficacy through constructing a mixture prior
-from the skeptical and enthusiastic priors using a mixing weight that is constructed from measures of compatibility between the
-observed data and the skeptical and enthusiastic priors. 
+from the skeptical and enthusiastic priors using a mixing weight that is constructed from \textcolor{blue}{a measure} of compatibility between the
+observed data and the \textcolor{blue}{enthusiastic prior}. 
 	%
-We define the \textit{adaptive skeptical monitoring prior} as the mixture distribution	
+We define the \textit{adaptive \textcolor{blue}{enthusiastic} monitoring prior} as the mixture distribution	
 \begin{equation}\label{eq:inference_prior}
-	\pi_{AS}\left(\theta\right)\pi(\theta)=\omega_S\cdot \pi_S(\theta)+\omega_E\cdot\pi_E(\theta),
+	\pi_{AE}\left(\theta\right)=\omega\cdot\pi_E(\theta)+(1 - \omega)\cdot \pi_S(\theta),
 \end{equation}
-where $\omega\in[0,1]$ is an adaptively determined mixing weight. Fixed choices of $\omega$ will be used as comparisons for the performance of the adaptive weight monitoring prior in Section \ref{sec:example2}. 
+where $\omega\in(0,1)$ is an adaptively determined mixing weight. %In contrast to adaptive weighting, fixed choices of $\omega$ will be used as comparisons for the performance of the adaptive weight monitoring prior in Section \ref{sec:example2}. 
 
 
-The adaptive mixing weight $\omega$ is determined by an assessment of prior-data conflict, proposed by \cite{Box1980}, derived using the prior predictive distribution of 
-the data which is defined (in our case) using the skeptical and enthusiastic monitoring priors.
+\textcolor{blue}{Our goal is to create a mixture prior which favors the enthusiastic component in areas where high compatibility is demonstrated for this component, and favors the skeptical prior if the observed data are incompatible with the enthusiastic component.} The adaptive mixing weight $\omega$ is determined by an assessment of prior-data conflict, proposed by \cite{Box1980}, derived using the prior predictive distribution of 
+the data which is defined (in our case) using the \textcolor{blue}{enthusiastic monitoring prior}.
 	%
 The prior-predictive distribution for data $\mathbf{D}$ (also called the marginal likelihood) reflects the probability of observing $\mathbf{D}$ given 
 the assumed prior distribution for $\theta$ and is defined formally as
@@ -576,16 +576,14 @@ Box's p-value can be interpreted as the probability of observing data as or more
 %
 Small values of $\psi({\mathbf{D}_{\text{obs}}})$ indicate a lack of compatibility or congruency between the prior and the data. 
 %
-We propose using the skeptical and enthusiastic priors $\pi_S(\theta)$ and $\pi_E(\theta)$ to compute the quantities in \eqref{eq:pred_dist} and \eqref{eq:box_p} to create compatibility measurements $\psi^{(S)}(\mathbf{D}_{\text{obs}})$ and $\psi^{(E)}(\mathbf{D}_{\text{obs}})$ which are used to determine the mixing weight in \eqref{eq:inference_prior}. 
+We propose using the \textcolor{blue}{enthusiastic prior} $\pi_E(\theta)$ to compute the quantities in \eqref{eq:pred_dist} and \eqref{eq:box_p} to create \textcolor{blue}{a compatibility measurement} $\psi^{(E)}(\mathbf{D}_{\text{obs}})$ which \textcolor{blue}{is} used to determine the mixing weight in \eqref{eq:inference_prior}. 
 
 \textcolor{blue}{
-Consider the mixing weight $\omega_E$ given to the \textit{enthusiastic} prior:
-\begin{align}
-\omega_E= (1 - \delta)f_\beta\left(\psi^{(E)}(\mathbf{D}_{\text{obs}})\right)
+Define the mixing weight $\omega$ given to the \textit{enthusiastic} prior as
+\begin{align}\label{eq:omega}
+\omega= (1 - \delta)\cdot\psi^{(E)}(\mathbf{D}_{\text{obs}})
 \end{align}
-The minimum possible mixing weight assigned to the \textit{skeptical} prior is achieved when $\psi^{(E)}(\mathbf{D}_{\text{obs}})=1$ and is equal to  $\delta$.
-\\
-$f_\beta$ indicates an upwards scaling of the value $0.5$ such that $f_\beta(0.5)=\beta$ through a $\text{beta}(1, s_\beta)$ transformation. For $\beta=\{0.5, 0.6, 0.7, 0.8, 0.9\}$, $s_\beta=\{1, 1.32, 1.74, 2.32, 3.32\}$}
+This mixture weight achieves the goal of favoring the enthusiastic component if the trial data are compatible with external data, and otherwise assigning to a higher weight in the skeptical component. The minimum possible mixing weight $\delta$ assigned to the \textit{skeptical} prior is achieved when $\psi^{(E)}(\mathbf{D}_{\text{obs}})=1$ and is equal to $\delta$. Choices of $\delta$ in $\{0, 0.05, 0.10, 0.15, 0.20, 0.25\}$ are explored in Sections \ref{sec:example2} and \ref{sec:realdataexample}, and general advice for choosing $\delta$ is given in Section \ref{sec:discussion}.}
 %
 %If $\psi^{(E)}(\mathbf{D}_{\text{obs}})>\psi^{(S)}(\mathbf{D}_{\text{obs}})$, then the observed data are more consistent with the enthusiastic prior, which should be given a greater weight in the mixture. Similarly, if $\psi^{(S)}(\mathbf{D}_{\text{obs}})>\psi^{(E)}(\mathbf{D}_{\text{obs}})$ then the skeptical prior should be given a greater mixing weight.
 %A conservative choice of mixing weight which gives full weight to the skeptical prior (i.e. $\omega=1$) whenever $\psi^{(S)}(\mathbf{D}_{\text{obs}})\geq \psi^{(E)}(\mathbf{D}_{\text{obs}})$ is
@@ -728,7 +726,8 @@ The example presented in this section make use of a concentrated skeptical prior
 %
 A comparison of design properties based on various combinations of the monitoring priors is given in Web Appendix D.
 %
-In this example, we considered an inference prior defined as the mixture \eqref{eq:3partmix} using the values $\omega_S=\omega_E=0.5$ (i.e., a non-adaptive inference prior), which was used to determine the posterior mean and 95\% credible intervals. For sequential monitoring, we consider analyzing the accumulating data after every two patients complete follow-up.
+%In this example, we considered an inference prior defined as the mixture \eqref{eq:3partmix} using the values $\omega_S=\omega_E=0.5$ (i.e., a non-adaptive inference prior), which was used to determine the posterior mean and 95\% credible intervals. 
+For sequential monitoring, we consider analyzing the accumulating data after every two patients complete follow-up.
 
 The early stopping criteria, as well as any quantity involving the posterior distribution of $\theta$ requires evaluating integrals of the dimension of $\theta$ (or the dimension of $(\theta,\eta)$ in the case of nuisance parameters).
 %
@@ -799,7 +798,7 @@ The distribution of the posterior probability given the final data for these cas
 %
 Consider $\theta_1=0.67$: in the $11.3\%$ of situations where there is evidence decrease below the $1-\epsilon=0.975$ threshold, $90\%$ of these cases have a final posterior probability of approximately $0.93$ or greater. 
 %
-These analyses show that even if the skeptical prior was used for the final determination of efficacy rather than an inference prior, the final posterior probability of the alternative would be similar to that which triggered stoppage of enrollment, and the level of similarity increases as the underlying response probability $\theta$ increases.
+%\textcolor{red}{These analyses show that even if the skeptical prior was used for the final determination of efficacy rather than an inference prior, the final posterior probability of the alternative would be similar to that which triggered stoppage of enrollment, and the level of similarity increases as the underlying response probability $\theta$ increases.}
 %
 
 \begin{figure}
@@ -875,7 +874,6 @@ This trial has a superiority hypothesis of treatment to control with null differ
 An estimate for the pediatric response probability is denoted by $\eta_0=0.39$ (i.e. the sample proportion of responders from the pooled adult studies), and for purposes of monitoring, a plausible, clinically meaningful difference in response probabilities is $\theta_1=0.12$ (i.e. based on the pooled adult study's treatment response probability of $0.51$).% \citep{Furie2011,Navarra2011}.
 %
 
-
 The skeptical monitoring prior is $\pi_S(\theta,\eta_0)=\pi_S(\theta)\times\pi(\eta_0|\theta)$, where $\pi_S(\theta)$ is a concentrated skeptical prior.
 %
 The enthusiastic monitoring prior is $\pi_E(\theta,\eta_0)=\pi_E(\theta)\times\pi(\eta_0|\theta)$, where $\pi_E(\theta)$ is a default enthusiastic prior.
@@ -896,67 +894,32 @@ A minimum sample size of $n_{min}=50$ was chosen to provide an adequate number o
 %
 An interim analysis is completed after every two patients have outcomes beginning at $n_{min}$.
 
-\subsection{Mixture Inference Prior Weights}\label{sec:priorRobustness}
-\textcolor{blue}{
-Figure \ref{fig:3-part-compatibility}(A) shows the prior-data compatibility assessments $\psi^{(S)}$ and $\psi^{(E)}$ by observed risk difference.
-%
-As expected, the skeptical and enthusiastic priors show highest compatibility when the observed risk difference matches the corresponding prior mode, and the non-informative prior shows high compatibility for a wide range of $\theta$.
-%
-Figure \ref{fig:3-part-compatibility}(B) shows the mixture inference prior weights $\omega_{E}$ by observed risk difference and choice of $\delta$, $\beta$.
-%
-Recall our goal is to create a mixture prior which favors the enthusiastic components in areas where high compatibility is demonstrated for this components, and favors the skeptical prior if the enthusiastic component shows low compatibility.
-%
-%To this end, the skeptical and enthusiastic components have the highest weight when the observed data is aligned with the prior mode, and the locally non-informative prior has highest weight towards extreme values of the observed response difference.
-}
-\begin{figure}\begin{center}
-\includegraphics[width=6in]{3-part-compatibility-1.png}
-\includegraphics[width=6in]{3-part-compatibility-2.png}
-    \caption{A; Prior-data compatibility assessments $\psi^{(S)}$, $\psi^{(E)}$ by observed risk difference. B; Mixture inference prior weights $\omega_{E}$ by observed risk difference and choice of $\delta$, $\beta$.}
-\label{fig:3-part-compatibility}
- \end{center}
-\end{figure}
-
 \subsubsection{Preposterior Analysis of Operating Characteristics}\label{sec:ex2operatingcharacteristics} 
-\textcolor{blue}{The operating characteristics presented in this section are estimated using 2,500 simulated trials per value of $\theta$ using the trial design as described in Section \ref{sec:example2model}. The generating response probability in the placebo group was assumed to be 0.39, and the generating response probability in the treatment group was determined based on risk differences $\theta$ in $\{0, 0.03, 0.06, 0.09, 0.12\}$.
-%\\\\
-%Panel A of Figure \ref{fig:ex2varyomega} shows the operating characteristics of this design using the adaptive weight monitoring prior and the 3-part mixture inference prior (see Web Appendix E for discussion of the mixture inference prior weights). 
-%%
-%When $\theta=0$, there is probability 0.008 of concluding efficacy at an interim analysis.
-%%
-%This probability increases to $0.193$ at $\theta_1=0.12$. While this does not attain traditional power thresholds, it is much greater than the respective probability of 0.006 using the default (non-adaptive) skeptical prior at this effect size.
-%%
-%At the effect size $0.24$ the probability of concluding efficacy increases to $0.711$, and the expected final sample size is 90.3 patients.
-\\\\
-Figure \ref{fig:ex2varyomega} shows the probability of stopping early for efficacy using a fixed weight mixture prior of the form \eqref{eq:inference_prior} for efficacy monitoring with a fixed choice of $\omega$ chosen at the outset to be in the set $\{0,0.5,1\}$ and the associated sample sizes, along with adaptive weight mixtures with different choices of $\delta$ and $\beta$.
-%
-%Note that $\omega=1$ corresponds to the traditional skeptical prior, $\omega=0.5$ gives equal weight to the skeptical and enthusiastic components, and $\omega=0.25$ most of the weight is applied to the enthusiastic component.
-%
-%The design based on the adaptive weight mixture behaves similar to the design based on the fixed weight prior that equally weighs the skeptical and enthusiastic prior.
+\textcolor{blue}{Figure \ref{fig:ex2varyomega}(A) shows the enthusiastic mixture weights $\omega$ by choice of $\delta$ in \eqref{eq:omega} for all combinations of response difference between the IP and PC groups, when the PC group is fixed at a 38\% response rate (16/42 responses). Observe that the highest mixture weights $\omega$ are observed when the response differences are observed to be around $0.12$, which was the modal outcome for the enthusiastic prior, and have maximum values of $1-\delta$.}
+
+\textcolor{blue}{
+The operating characteristics presented in this section are estimated using 2,500 simulated trials per value of $\theta$ using the trial design as described in Section \ref{sec:example2model}. The generating response probability in the placebo group was assumed to be 0.39, and the generating response probability in the treatment group was determined based on risk differences $\theta$ in $\{0, 0.03, 0.06, 0.09, 0.12\}$. Figure \ref{fig:ex2varyomega}(B) shows the probability of stopping early for efficacy and the associated sample sizes when using the adaptive enthusiastic mixture prior \eqref{eq:inference_prior} with different choices of $\delta$ in \eqref{eq:omega}. When $\delta=0$ or $\delta=0.05$, a conclusion of efficacy is made at an interim analysis $24\%$ and $14\%$ of the time respectively, while this value is $7\%$ or lower when $\delta \geq 0.1$. Reductions in expected sample size are seen with lower choices of $\delta$ and higher generated risk differences. When $\delta=0.1$, a demonstration of efficacy is observed in $53\%$ of simulated trials, with an expected sample size of 90.1. Even though this is a modest reduction from the maximum sample size of 100, it could be meaningful to make this determination sooner if enrollment is slow or follow-up time is long.
 }
 \begin{figure}
 \begin{center}
+\includegraphics[width=6in]{3-part-compatibility-2.png}
    \includegraphics[width=6in]{figure6.png}
 %    \includegraphics[width=6in]{figure6a.png}
-    \caption{%A, Sequential design properties using adaptive weight monitoring prior (SS; mean sample size, PM; posterior mean, CP; coverage probability, (I); interim analysis, (F); final analysis). B, 
-    Probability of stopping for efficacy and associated sample sizes by true IP response probability $\theta$ with different choices of efficacy monitoring prior.}
+    \caption{A, Enthusiastic prior mixing weight $\omega$ associated with skeptical prior weight minimum $\delta$ in \eqref{eq:omega} by observed response difference between IP and PC groups, when the PC response rate is fixed at $38\%$ (16/42 responses). B; Summary characteristics of simulated PLUTO trial associated with skeptical prior weight minimum $\delta$ in \eqref{eq:omega} by risk difference when the PC response rate generated at $39\%$.}
 \label{fig:ex2varyomega}
  \end{center}
 \end{figure}
 
-\section{Real Data Example}
+\section{Real Data Example}\label{sec:realdataexample}
 \textcolor{blue}{
-We consider applying the adaptive mixture prior of \eqref{eq:inference_prior} to the real outcomes of ``The Pediatric Lupus Trial of Belimumab Plus Background Standard Therapy (PLUTO)" (NCT01649765) \citep{Brunner2020}. The skeptical and enthusiastic priors are defined in the same way as Section \ref{sec:example2model}, which are centered around response differences of 0 and 0.12 respectively. There were responses available from 92 patients that were used for this analysis (one patient in the placebo group dropped out before any outcome was observed). Sequential monitoring after every two completed outcomes was conducted after a minimum sample size of 50 had been reached.
-%, however there were not exactly 50 completed outcomes reported so the first interim analysis was conducted with 52 completed outcomes.
-}
-
-
+We consider applying the adaptive enthusiastic mixture prior of \eqref{eq:inference_prior} to the observed outcomes of the PLUTO trial presented in Section \ref{sec:example2}. %The skeptical and enthusiastic priors are defined in the same way as Section \ref{sec:example2model}, which are centered around response differences of 0 and 0.12 respectively. 
 \begin{center}
 \begin{table}\label{tbl:real-pluto}%
 \centering
-\caption{Summary characteristics of re-analysis of PLUTO trial. I/F = Interim/Final, Enth Box PV = Box's $p$-value using enthusiastic prior, Enth Mix Wt = Enthusiastic mixing weight in adaptive monitoring prior, Efficacy Post Prob = Posterior probability of treatment efficacy.}%
+\caption{Summary characteristics of re-analysis of PLUTO trial. I/F = Interim/Final, $\psi^{(E)}(\mathcal{D}_{\text{obs}})$ = Box's $p$-value using enthusiastic prior, $\omega$ = Enthusiastic mixing weight in adaptive monitoring prior, Efficacy Post Prob = Posterior probability of treatment efficacy.}%
 \begin{tabular*}{400pt}{@{\extracolsep\fill}cccccc@{\extracolsep\fill}}%
 \toprule
-$\delta$	&	Sample Size (I/F)			&	Enth Box PV (I/F)			&	Enth Mix Wt (I/F)			&	Efficacy Post Prob (I/F)			\\
+$\delta$	&	Sample Size (I/F)			&	$\psi^{(E)}(\mathcal{D}_{\text{obs}})$ (I/F)			&	$\omega$ (I/F)			&	Efficacy Post Prob (I/F)			\\
 \midrule
 0.00	&	62	/	90	&	0.914	/	0.965	&	0.914	/	0.965	&	0.980	/	0.979	\\
 0.05	&	64	/	92	&	0.876	/	0.934	&	0.833	/	0.887	&	0.976	/	0.962	\\
@@ -968,18 +931,20 @@ $\delta$	&	Sample Size (I/F)			&	Enth Box PV (I/F)			&	Enth Mix Wt (I/F)			&	Eff
 \end{tabular*}
 \end{table}
 \end{center}
+There were responses available from 92 patients that were used for this analysis (there was no outcome available for one subject from the placebo group due to a protocol violation). Sequential monitoring after every two completed outcomes was conducted after a minimum sample size of 50 had been reached. Results of this analysis by difference choice of $\delta$ are shown in Table 1. When $\delta\leq 0.1$, a conclusion of efficacy is made before the maximum sample size of 92. Figure \ref{fig:2dheatmaps}(A) shows Box's $p$-value at the observed data with $90$ completed outcomes to be $0.965$. This is equal to $\omega$ in the case that $\delta=0$. Figure \ref{fig:2dheatmaps}(B) shows the efficacy posterior probability of $0.979$ when $\delta=0$ and $\omega=\psi^{(E)}(\mathcal{D}_{\text{obs}})$.
+}
 
 \begin{figure}
 \begin{center}
-   \includegraphics[width=6in]{2dbayesp.png}
-    \includegraphics[width=6in]{2dpostp.png}
-    \caption{A, XXX. B, YYY.}
+   \includegraphics[width=5.5in]{2dbayesp.png}
+    \includegraphics[width=5.5in]{2dpostp.png}
+    \caption{A, Box's p-value by control and treatment sample proportions at the final analysis with 90 subjects when $\delta=0$ is used \eqref{eq:omega} for the adaptive enthusiastic monitoring prior. B, Posterior probability of efficacy by control and treatment sample proportions.}
 \label{fig:2dheatmaps}
  \end{center}
 \end{figure}
-
-When $\delta$ is equal to zero, that is, the weight of the enthusiastic component is allowed to approach 1 in \eqref{eq:inference_prior}, then the efficacy criteria is satisfied at the first monitoring opportunity with 52 completed outcomes. At this point the data were shown to be more compatible with the enthusiastic prior than the skeptical prior, so the skeptical weight was reduced the $\delta=0$ in the mixture. As the value of $\delta$ increases, so does the interim sample size where the efficacy criteria is achieved.
-\section{Discussion}
+%\textcolor{blue}{
+%When $\delta$ is equal to zero, that is, the weight of the enthusiastic component is allowed to approach 1 in \eqref{eq:inference_prior}, then the efficacy criteria is satisfied at 62 ascertained outcomes. At this point the data were shown to be more compatible with the enthusiastic prior than the skeptical prior, so the skeptical weight was reduced the $\delta=0$ in the mixture. As the value of $\delta$ increases, so does the interim sample size where the efficacy criteria is achieved.}
+\section{Discussion}\label{sec:discussion}
 In this paper, we present a structured framework for specifying monitoring priors and stoppage criteria for a Bayesian sequentially monitored clinical trial that is based on intuitive justification for the design quantities rather than being motivated by having pre-specified frequentist operating characteristics.
 %
 %To develop this methodology, we present a precise definition of sufficient level of evidence as it relates to the trial hypotheses and relevant external data, and use the generalized normal distribution for the monitoring priors.
@@ -992,9 +957,15 @@ In this paper, we present a structured framework for specifying monitoring prior
 %
 Consequently, the choice of monitoring prior and stoppage criteria are the same regardless of the frequency of data monitoring and the number of patients in progress at enrollment termination, although these factors do impact the operating characteristics of the trial.
 %
-Even though frequentist operating characteristics are not an explicit focus of the design, we demonstrate that the Bayesian approaches proposed provide good operating characteristics across a wide range of data monitoring frequencies and enrollment patterns.
+%Even though frequentist operating characteristics are not an explicit focus of the design, we demonstrate that the Bayesian approaches proposed provide good operating characteristics across a wide range of data monitoring frequencies and enrollment patterns.
 
-Our results in Section \ref{sec:example2} can be compared to a post-hoc Bayesian hierarchical analysis which used data from two studies of the use of belimumab in adults \citep{Brunner2020}. Patients in the pediatric trial had 1.5 times the odds of clinical response with 95\% CI (0.6, 3.5), and a meta-analysis of the two adult studies showed an odds ratio of 1.6 with 95\% CI (1.3, 2.1). The analysis used a mixture prior which was a weighted sum of a skeptical prior centered at null effect with effective sample size equal to two pediatric patients and an informative prior resulting from the meta-analysis. When the weight of the informative component was 0.55 and above, efficacy was concluded based on a 95\% credible interval excluding one. The 0.55 weight of the informative component, interpreted as a 55\% weight on the relevance of the adult information to the pediatric population, was determined to be reasonable by the clinical team. Our method contrasts such a post-hoc analysis with the prospective use of a monitoring prior for efficacy which gives weight to the adult data at interim analyses, although both methods show the necessity of information borrowing. Our analyses show that for such a trial to have any chance of early stopping, it is necessary to borrow information for the skeptical monitoring prior as frequent data monitoring with a default skeptical prior has limited potential to conclude efficacy (see Figure \ref{fig:ex2varyomega}). In fact, the adaptive weight skeptical prior used in this example may be too conservative for this setting, and adaptive methods that include more liberal information borrowing could be used.
+\textcolor{blue}{Our formulation of the enthusiastic monitoring prior maintains residual uncertainty that the null hypothesis is true, and this same level of residual uncertainty is required to be overcome for a conclusion of treatment efficacy to be made. This requires a treatment benefit to be observed for any conclusion of treatment efficacy to be made, regardless of the modal value chosen for the enthusiastic monitoring prior. This limits the ability of the enthusiastic prior to overwhelm the observed data in the trial. Without maintaining residual uncertainty when using an informative prior to determine treatment efficacy, it would be possible to conclude efficacy for a harmful treatment. Other methods for creating informative priors, such as conjugate priors, do not intrinsically require this residual uncertainty condition, and could lead to errant conclusions if this condition is not imposed.}
+
+\textcolor{blue}{Our adaptive monitoring prior uses a higher weight for the enthusiastic component if there is demonstrated consistency between the trial and external data, and conversely uses a higher weight for the skeptical component if the trial data is inconsistent with external data. The trial data is therefore penalized for inconsistency with the external data by using a higher skeptical component weight even if there is observed treatment benefit. Therefore, a conclusion of treatment efficacy is made when there is overwhelming treatment benefit observed as to convince a skeptic regardless of the compatibility with the external data, or in the more likely scenario of some benefit observed in the trial along with reasonable consistency with the external data.}
+
+\textcolor{blue}{While much of this procedure is automatic given the trial hypotheses and relevant external data, there are several quantities that can be chosen by the practitioner for which we provide general recommendations. For the parameter of interest we recommend using the concentrated skeptical prior and the default enthusiastic prior. For nuisance parameters we recommend using a flattened prior. We recommend using a skeptical weight minimum of $\delta=0.1$ when there is relevant external data used to create the enthusiastic prior.}
+
+Our results in Section \ref{sec:example2} can be compared to a post-hoc Bayesian hierarchical analysis which used data from two studies of the use of belimumab in adults \citep{Brunner2020}. Patients in the pediatric trial had 1.5 times the odds of clinical response with 95\% CI (0.6, 3.5), and a meta-analysis of the two adult studies showed an odds ratio of 1.6 with 95\% CI (1.3, 2.1). The analysis used a mixture prior which was a weighted sum of a skeptical prior centered at null effect with effective sample size equal to two pediatric patients and an informative prior resulting from the meta-analysis. When the weight of the informative component was 0.55 and above, efficacy was concluded based on a 95\% credible interval excluding one. The 0.55 weight of the informative component, interpreted as a 55\% weight on the relevance of the adult information to the pediatric population, was determined to be reasonable by the clinical team. Our method contrasts such a post-hoc analysis with the prospective use of a monitoring prior for efficacy which gives weight to the adult data at interim analyses, although both methods show the necessity of information borrowing. %\textcolor{red}{Our analyses show that for such a trial to have any chance of early stopping, it is necessary to borrow information for the skeptical monitoring prior as frequent data monitoring with a default skeptical prior has limited potential to conclude efficacy (see Figure \ref{fig:ex2varyomega}).} %In fact, the adaptive weight skeptical prior used in this example may be too conservative for this setting, and adaptive methods that include more liberal information borrowing could be used.
 
 Although the examples provided are based on superiority trials with binary endpoints and response probabilities as the parameter of interest, the framework applies to any type of data and parameter of interest.
 %
