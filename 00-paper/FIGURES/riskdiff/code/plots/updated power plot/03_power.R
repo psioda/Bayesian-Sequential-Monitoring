@@ -9,19 +9,19 @@ output_png <- TRUE
 sig.fut    <- 0.975
 sig.eff    <- 0.975
 
-width.scale <- 9
+width.scale <- 12
 if(output_png){
-  png('../code/plots/updated power plot/figure6.png',
+  png('figure6.png',
       width = 450*width.scale,
       height = 300*width.scale,
       pointsize=16,
       res=300)
 }
-par(mar=c(5.1 + 5, 4.1 + 2, 2.1, 2.1 + 0.5)) #c(bottom, left, top, right)
+par(mar=c(5.1 + 3, 4.1 + 0.5, 2.1, 2.1 + 0.5)) #c(bottom, left, top, right)
 
 #par(mar=c(5.1+2, 4.1, 4.1, 2.1)) #c(bottom, left, top, right)
-stretch1 <- -0.03# to add x-axis table under graph
-stretch2 <- -0.03
+stretch <- -0.0125# to add x-axis table under graph
+
 # set initial plotting area
 plot(NULL,
      type = 'l',
@@ -39,8 +39,8 @@ axis(2,
      las = 2,
      at = seq(0, 1, by = 0.1),
      labels = format(seq(0, 1, by = 0.1), nsmall = 1))
-# mtext(text=c(as.expression(bquote(theta))),side=1,line=1,at=stretch1,adj=0)
-mtext(text="Risk Difference",side=1,line=2,at=0.05,adj=0)
+# mtext(text=c(as.expression(bquote(theta))),side=1,line=1,at=stretch,adj=0)
+mtext(text="Risk Difference",side=1,line=1,at=-0.02,adj=0)
 
 # PLOT
 x <- seq(0, 0.12, by = 0.03)
@@ -48,8 +48,7 @@ x <- seq(0, 0.12, by = 0.03)
 axis(1,
      las = 0,
      at = x,
-     labels = format(x, nsmall = 2),
-     line = 0)
+     labels = format(x, nsmall = 2))
 
 
 ################################################################################################################################################
@@ -75,7 +74,7 @@ final <- data.frame(final)
 loop.list <- 101:106
 delta.list <- seq(0, 0.25, by = 0.05)
 for (i in 1:length(loop.list)){
-  row <- i + 3
+  row <- i + 1
   temp <- final[final$p.IP >= 0.39 & final$p.IP <= 0.51 & final$eff.mix.prob == loop.list[i], ]
   y <- temp$success
   lines(x,y)
@@ -97,33 +96,16 @@ for (i in 1:length(loop.list)){
   text(x = temp$p.IP[j] - 0.39 + 0.0025, 
        y = temp$success[j] , 
        labels = format(round(temp$success[j],digits=2),nsmall=2))
-  if (i %in% c(1,2,3)){
   text(x = temp$p.IP[1] - 0.39 - 0.0025, 
        y = temp$success[1], 
        labels = format(round(temp$success[1],digits=2),nsmall=2))
-  }
-  if (i == 4){
-    text(x = temp$p.IP[1] - 0.39 - 0.0025, 
-         y = 0.04, 
-         labels = format(round(temp$success[1],digits=2),nsmall=2))
-  }
-  if (i == 5){
-    text(x = temp$p.IP[1] - 0.39 - 0.0025, 
-         y = 0.015, 
-         labels = format(round(temp$success[1],digits=2),nsmall=2))
-  }
-  if (i == 6){
-    text(x = temp$p.IP[1] - 0.39 - 0.0025, 
-         y = -0.01, 
-         labels = format(round(temp$success[1],digits=2),nsmall=2))
-  }
   text(x = 0.06, 
        y = temp$success[3], 
-       labels = row - 3)
+       labels = row - 1)
 }
 
 legend('topleft',
-       title = "Skeptical Prior Weight Minimum",
+       title = "Skptical Prior Weight Minimum",
        legend= c(as.expression(bquote("1: "*delta*"=0.00")),
                  as.expression(bquote("2: "*delta*"=0.05")),
                  as.expression(bquote("3: "*delta*"=0.10")),
@@ -131,34 +113,34 @@ legend('topleft',
                  as.expression(bquote("5: "*delta*"=0.20")),
                  as.expression(bquote("6: "*delta*"=0.25"))))
 
-mtext(text="Expected Sample Size (Interim/Final)",
-      side=1,line=3,at=stretch2,adj=0)
+mtext(text="SS (I/F)",
+      side=1,line=2,at=-0.02,adj=0)
 
 # mtext(text=as.expression(bquote(delta*"=0.00")),
-#       side=1,line=2,at=stretch1,adj=0)
+#       side=1,line=2,at=stretch,adj=0)
 # mtext(text=as.expression(bquote(delta*"=0.05")),
-#       side=1,line=3,at=stretch1,adj=0)
+#       side=1,line=3,at=stretch,adj=0)
 # mtext(text=as.expression(bquote(delta*"=0.10")),
-#       side=1,line=4,at=stretch1,adj=0)
+#       side=1,line=4,at=stretch,adj=0)
 # mtext(text=as.expression(bquote(delta*"=0.15")),
-#       side=1,line=5,at=stretch1,adj=0)
+#       side=1,line=5,at=stretch,adj=0)
 # mtext(text=as.expression(bquote(delta*"=0.20")),
-#       side=1,line=6,at=stretch1,adj=0)
+#       side=1,line=6,at=stretch,adj=0)
 # mtext(text=as.expression(bquote(delta*"=0.25")),
-#       side=1,line=7,at=stretch1,adj=0)
+#       side=1,line=7,at=stretch,adj=0)
 
-mtext(text=as.expression(bquote("1: "*delta*"=0.00")),
-      side=1,line=4,at=stretch1,adj=0)
-mtext(text=as.expression(bquote("2: "*delta*"=0.05")),
-      side=1,line=5,at=stretch1,adj=0)
-mtext(text=as.expression(bquote("3: "*delta*"=0.10")),
-      side=1,line=6,at=stretch1,adj=0)
-mtext(text=as.expression(bquote("4: "*delta*"=0.15")),
-      side=1,line=7,at=stretch1,adj=0)
-mtext(text=as.expression(bquote("5: "*delta*"=0.20")),
-      side=1,line=8,at=stretch1,adj=0)
-mtext(text=as.expression(bquote("6: "*delta*"=0.25")),
-      side=1,line=9,at=stretch1,adj=0)
+mtext(text="1:",
+      side=1,line=2,at=stretch,adj=0)
+mtext(text="2:",
+      side=1,line=3,at=stretch,adj=0)
+mtext(text="3:",
+      side=1,line=4,at=stretch,adj=0)
+mtext(text="4:",
+      side=1,line=5,at=stretch,adj=0)
+mtext(text="5:",
+      side=1,line=6,at=stretch,adj=0)
+mtext(text="6:",
+      side=1,line=7,at=stretch,adj=0)
 
 # # plot all fixed weight priors
 # Table1        <- read.csv(file = "../../output/table1031920.csv", header = T)
@@ -222,7 +204,7 @@ mtext(text=as.expression(bquote("6: "*delta*"=0.25")),
 #         side=1,line=row,at=x[j])
 # }
 # text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-# mtext(text=paste0(row - 1),side=1,line=row,at=stretch1,adj=0)
+# mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
 # 
 # 
 # ## SECOND LINE
@@ -241,7 +223,7 @@ mtext(text=as.expression(bquote("6: "*delta*"=0.25")),
 #         side=1,line=row,at=x[j])
 # }
 # text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-# mtext(text=paste0(row - 1),side=1,line=row,at=stretch1,adj=0)
+# mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
 # 
 # ## THIRD LINE
 # row <- 2
@@ -259,7 +241,7 @@ mtext(text=as.expression(bquote("6: "*delta*"=0.25")),
 #         side=1,line=row,at=x[j])
 # }
 # text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-# mtext(text=paste0(row - 1),side=1,line=row,at=stretch1,adj=0)
+# mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
 # 
 # # FORTH LINE
 # # LOAD & RECODE v103
@@ -294,7 +276,7 @@ mtext(text=as.expression(bquote("6: "*delta*"=0.25")),
 #         side=1,line=row,at=x[j])
 # }
 # text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-# mtext(text=paste0(row - 1),side=1,line=row,at=stretch1,adj=0)
+# mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
 # 
 # # FIFTH LINE
 # # LOAD & RECODE v115
@@ -329,6 +311,6 @@ mtext(text=as.expression(bquote("6: "*delta*"=0.25")),
 #         side=1,line=row,at=x[j])
 # }
 # text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
-# mtext(text=paste0(row - 1),side=1,line=row,at=stretch1,adj=0)
+# mtext(text=paste0(row - 1),side=1,line=row,at=stretch,adj=0)
 # 
 if(output_png){dev.off()}

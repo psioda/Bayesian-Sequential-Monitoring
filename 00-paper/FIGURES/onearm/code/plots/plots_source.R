@@ -150,7 +150,7 @@ label_main=""
 stretch<-p.skpt*0.9
 width.scale<-7
 
-png('plots/figure3a.png',
+png('../../figure3a.png',
     width = 450*width.scale,
     height = 300*width.scale,
     pointsize=16,
@@ -244,7 +244,7 @@ width.scale<-9
 figure4<-combined1[combined1$model==2 & combined1$enr.shape==k2[1],]
 
 # run plot
-png('../plots/figureS1.png',width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
+png('../../figureS1.png',width = 450*width.scale, height = 300*width.scale,pointsize=16,res=300)
 label_main=""
 stretch<- (-1.15)
 
@@ -376,7 +376,7 @@ label_main=""
 stretch<-p.skpt*0.9
 width.scale<-7
 
-png('plots/figureS2a.png',
+png('../../figureS2a.png',
     width = 450*width.scale, 
     height = 300*width.scale,
     pointsize=16,
@@ -388,7 +388,7 @@ source("plots/plots_seq_design_prop.R")
 mtext("(A)", side = 2, line = 3, at = 1, las = 1)
 dev.off()
 
-png('plots/figureS2b.png',
+png('../../figureS2b.png',
     width = 450*width.scale, 
     height = 300*width.scale,
     pointsize=16,res=300)
@@ -398,7 +398,7 @@ source("plots/plots_seq_design_prop.R")
 mtext("(B)", side = 2, line = 3, at = 1, las = 1)
 dev.off()
 
-png('plots/figureS2c.png',
+png('../../figureS2c.png',
     width = 450*width.scale, 
     height = 300*width.scale,
     pointsize=16,res=300)
@@ -408,7 +408,7 @@ source("plots/plots_seq_design_prop.R")
 mtext("(C)", side = 2, line = 3, at = 1, las = 1)
 dev.off()
 
-png('plots/figureS2d.png',
+png('../../figureS2d.png',
     width = 450*width.scale, 
     height = 300*width.scale,
     pointsize=16,res=300)

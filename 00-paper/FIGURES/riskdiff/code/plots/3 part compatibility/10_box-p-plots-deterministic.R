@@ -162,54 +162,54 @@ Table0$risk.diff <- Table0$y1.IP/(Table0$y1.IP + Table0$y0.IP) - Table0$y1.PC/(T
 ############################################################################################################################################
 ############################################################################################################################################
 ############################################################################################################################################
-# 
-# output_png <- TRUE
-# width.scale <- 7
-# 
-# if(output_png){png('3 part compatibility/3-part-compatibility-1.png',
-#                    width = 450*width.scale, 
-#                    height = 300*width.scale,
-#                    pointsize=16,
-#                    res=300)}
-# 
-# x <- c(Table0$risk.diff)
-# y <- c(Table0$box.skpt)
-# plot(x, y, xlab = "Observed Response Difference", ylab = "Box's p-value", pch = 19, cex = 0.25, type = 'l',
-#      lty='longdash', yaxt='n')
-# # model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10))
-# # myPredict <- predict( model ) 
-# # ix <- sort(x,index.return=T)$ix
-# # lines(x[ix], myPredict[ix], lwd=2 )  
-# 
-# y <- c(Table0$box.enth)
-# lines(x,y, lty='dotted')
-# # model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10))
-# # myPredict <- predict( model ) 
-# # ix <- sort(x,index.return=T)$ix
-# # lines(x[ix], myPredict[ix], col=2, lwd=2 )  
-# 
-# # y <- c(Table0$box.ni)
-# # lines(x,y, lty="solid")
-# # model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
-# # myPredict <- predict( model ) 
-# # ix <- sort(x,index.return=T)$ix
-# # lines(x[ix], myPredict[ix], col="blue", lwd=2 )  
-# 
-# abline(v=0, col="grey")
-# abline(v=0.12, col="grey")
-# axis(2,
-#      las = 2,
-#      at = seq(0, 1, by = 0.1),
-#      labels = format(seq(0, 1, by = 0.1), nsmall = 1))
-# abline(h = seq(0, 1, by = 0.1),
-#        col = 'grey')
-# 
-# legend("topright",#text.width = 0.05,
-#        legend = c("Skeptical",
-#                   "Enthusiastic"),
-#        lty = c('longdash','dotted'))
-# 
-# if(output_png){dev.off()}
+
+output_png <- TRUE
+width.scale <- 7
+
+if(output_png){png('3 part compatibility/3-part-compatibility-1.png',
+                   width = 450*width.scale, 
+                   height = 300*width.scale,
+                   pointsize=16,
+                   res=300)}
+
+x <- c(Table0$risk.diff)
+y <- c(Table0$box.skpt)
+plot(x, y, xlab = "Observed Response Difference", ylab = "Box's p-value", pch = 19, cex = 0.25, type = 'l',
+     lty='longdash', yaxt='n')
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], lwd=2 )  
+
+y <- c(Table0$box.enth)
+lines(x,y, lty='dotted')
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], col=2, lwd=2 )  
+
+# y <- c(Table0$box.ni)
+# lines(x,y, lty="solid")
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], col="blue", lwd=2 )  
+
+abline(v=0, col="grey")
+abline(v=0.12, col="grey")
+axis(2,
+     las = 2,
+     at = seq(0, 1, by = 0.1),
+     labels = format(seq(0, 1, by = 0.1), nsmall = 1))
+abline(h = seq(0, 1, by = 0.1),
+       col = 'grey')
+
+legend("topright",#text.width = 0.05,
+       legend = c("Skeptical",
+                  "Enthusiastic"),
+       lty = c('longdash','dotted'))
+
+if(output_png){dev.off()}
 
 ############################################################################################################################################
 ############################################################################################################################################
@@ -233,22 +233,42 @@ Table0$risk.diff <- Table0$y1.IP/(Table0$y1.IP + Table0$y0.IP) - Table0$y1.PC/(T
 #   eff.mix.prob               <- 1 - (1 - delta.a)*pbeta(BoxPE, 1, beta.a) # amount assigned to skeptical prior
 # }
 
-output_png <- TRUE
-width.scale <- 7
 # default
 delta.a <- 0
 beta.a <- 1
-Table0$eff.mix.prob1               <- (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
-delta.a <- 0.05
-Table0$eff.mix.prob2               <- (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+Table0$eff.mix.prob1               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# 0.1 & 0.5
+delta.a <- 0
+beta.a <- 1.7370
+Table0$eff.mix.prob2               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# 0.1 & 0.7
+delta.a <- 0
+beta.a <- 3.3220
+Table0$eff.mix.prob3               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# default
 delta.a <- 0.1
-Table0$eff.mix.prob3               <- (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
-delta.a <- 0.15
-Table0$eff.mix.prob4               <- (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+beta.a <- 1
+Table0$eff.mix.prob4               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# 0.1 & 0.5
+delta.a <- 0.1
+beta.a <- 1.7370
+Table0$eff.mix.prob5               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# 0.1 & 0.7
+delta.a <- 0.1
+beta.a <- 3.3220
+Table0$eff.mix.prob6               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# default
 delta.a <- 0.2
-Table0$eff.mix.prob5               <- (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
-delta.a <- 0.25
-Table0$eff.mix.prob6               <- (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+beta.a <- 1
+Table0$eff.mix.prob7               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# 0.1 & 0.5
+delta.a <- 0.2
+beta.a <- 1.7370
+Table0$eff.mix.prob8               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
+# 0.1 & 0.7
+delta.a <- 0.2
+beta.a <- 3.3220
+Table0$eff.mix.prob9               <- 1 - (1 - delta.a)*pbeta(Table0$box.enth, 1, beta.a)
 
 if(output_png){png('3 part compatibility/3-part-compatibility-2.png',
                    width = 450*width.scale, 
@@ -272,51 +292,102 @@ plot(x, y,
      # cex = 0.25, 
      ylim = c(0,1), 
      xlab = "Observed Response Difference", 
-     ylab = "Enthusiastic Mixture Weight", type = 'l',
+     ylab = "Mixture Weights", type = 'l',
      lty=1, 
-     xaxt = 'n',
-     yaxt='n')
+     yaxt='n',
+     col = 'red')
 
-axis(1,
-     las = 0,
-     at = seq(-4, 0.6, by = 0.05),
-     labels = format(seq(-4, 0.6, by = 0.05), nsmall = 2),
-     line = 0)
+abline(h = seq(0, 1, by = 0.1),
+       col = 'grey')
+abline(v=0, col="grey")
+abline(v=0.12, col="grey")
+
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], lwd=2 )  
+
+# y <- Table0$eff.mix.prob2
+# points(x, y, 
+#        col = 2, 
+#        pch = 19, 
+#        cex = 0.25, 
+#        type = 'l', 
+#        lty='dotted')
+
+y <- Table0$eff.mix.prob2
+points(x, y, 
+       # col = 2, pch = 19,  cex = 0.25, 
+       type = 'l',
+       lty = 'longdash', col = 'red')
+
+# y <- Table0$eff.mix.prob4
+# points(x, y, col = 2, pch = 19,  cex = 0.25, type = 'l', lty='dotted')
+# 
+# y <- Table0$eff.mix.prob5
+# points(x, y, col = 2, pch = 19,  cex = 0.25, type = 'l', lty='dotted')
+# 
+# y <- Table0$eff.mix.prob6
+# points(x, y, col = 2, pch = 19,  cex = 0.25, type = 'l', lty='dotted')
+
+y <- Table0$eff.mix.prob7
+points(x, y, 
+       # col = 2, pch = 19,  cex = 0.25, 
+       type = 'l', lty=1, col = 'blue')
+# points(x[c(TRUE, FALSE)], y[c(TRUE, FALSE)], pch = 4)
+# y <- Table0$eff.mix.prob8
+# points(x, y, col = 2, pch = 19,  cex = 0.25, type = 'l', lty=1)
+
+y <- Table0$eff.mix.prob8
+points(x, y, 
+       # col = 2, pch = 19,  cex = 0.25, 
+       type = 'l', lty='longdash', col = 'blue')
+# points(x[c(TRUE, FALSE)], y[c(TRUE, FALSE)], pch = 4)
+
+
+
+
+
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], lwd=2, col = 2)
+
+# y <- omega.ni
+# points(x,y, lty='solid', pch = 19, cex = 0.25, type = 'l')
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], lwd=2, col = "blue")  
+
+## Used for 7/2/20 plot
+# y1 <- c(Table0$box.skpt.initial,Table0$box.skpt.final)
+# y2 <- c(Table0$box.enth.initial,Table0$box.enth.final)
+# y  <- y2 - y1
+# plot(x, y, xlab = "Observed Risk Difference", ylab = "Difference in Box's p-value")
+# model <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10))
+# myPredict <- predict( model ) 
+# ix <- sort(x,index.return=T)$ix
+# lines(x[ix], myPredict[ix], lwd=2 )  
+# abline(v=0, col="grey")
+# abline(v=0.12, col="grey")
+# abline(h=0)
+
 axis(2,
      las = 2,
      at = seq(0, 1, by = 0.1),
      labels = format(seq(0, 1, by = 0.1), nsmall = 1))
-abline(h = seq(0, 1, by = 0.1),
-       col = 'grey')
-# abline(v=0, col="grey")
-# abline(v=0.12, col="grey")
 
 
-lines(x, Table0$eff.mix.prob1)
-text(0.125, 1, labels = 1)
-lines(x, Table0$eff.mix.prob2)
-text(0.125, 0.95, labels = 2)
-lines(x, Table0$eff.mix.prob3)
-text(0.125, 0.9, labels = 3)
-lines(x, Table0$eff.mix.prob4)
-text(0.125, 0.85, labels = 4)
-lines(x, Table0$eff.mix.prob5)
-text(0.125, 0.8, labels = 5)
-lines(x, Table0$eff.mix.prob6)
-text(0.125, 0.75, labels = 6)
-
-
-
-
-
-legend('topleft',
-       title = "Skeptical Prior Weight Minimum",
-       legend= c(as.expression(bquote("1: "*delta*"=0.00")),
-                 as.expression(bquote("2: "*delta*"=0.05")),
-                 as.expression(bquote("3: "*delta*"=0.10")),
-                 as.expression(bquote("4: "*delta*"=0.15")),
-                 as.expression(bquote("5: "*delta*"=0.20")),
-                 as.expression(bquote("6: "*delta*"=0.25"))))
+legend("top",
+       legend= c(
+         as.expression(bquote(delta*"=0, "*beta*"=0.5")),
+         as.expression(bquote(delta*"=0, "*beta*"=0.7")),             
+         as.expression(bquote(delta*"=0.2, "*beta*"=0.5")),  
+         as.expression(bquote(delta*"=0.2, "*beta*"=0.7")) 
+       ),
+       lty = c(1,2,1,2),
+       col = c("red", "red", "blue", "blue"))
 
 # legend("top",#text.width = 0.05,
 #        legend = c("Skeptical",
