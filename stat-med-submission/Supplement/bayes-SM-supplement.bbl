@@ -1,0 +1,13 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Byrd, Lu, Nocedal, and Zhu}{Byrd
+  et~al.}{1995}]{Byrd1995}
+Byrd, R.~H., Lu, P., Nocedal, J., and Zhu, C. (1995).
+\newblock A limited memory algorithm for bound constrained optimization.
+\newblock {\em SIAM Journal on Scientific Computing} {\bf 16,} 1190--1208.
+
+\bibitem[\protect\citeauthoryear{Griffin}{Griffin}{2018}]{Griffin2018}
+Griffin, M. (2018).
+\newblock Working with the exponential power distribution using gnorm.
+
+\end{thebibliography}

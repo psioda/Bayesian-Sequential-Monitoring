@@ -132,7 +132,6 @@ dev.off()
 #### Figure 3a, One Arm Sequential Design Properties ####
 #########################################################
 dev.off()
-par(mar=c(5.1,4.1,2.1,2.1)) #c(bottom, left, top, right)
 rm(list = ls())
 root<-"/Users/kwiatkoe/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/onearm/code"
 setwd(root)
@@ -149,14 +148,29 @@ figure3_table<-figure3[seq(1,length(figure3$p.range),length=5),]
 label_main=""
 stretch<-p.skpt*0.9
 width.scale<-7
-
+par(mar=c(5.1-2,4.1,2.1,2.1)) #c(bottom, left, top, right)
 png('plots/figure3a.png',
     width = 450*width.scale,
     height = 300*width.scale,
     pointsize=16,
     res=300)
+plot(NULL,
+     xlim = c(mu0.skpt, mu0.enth),
+     ylim = c(0, 1),
+     ylab="Probability",
+     xlab="",
+     main=label_main,
+     axes=FALSE)
+box()
+axis(2,las=2,at=seq(0,1,by=0.1),labels=format(seq(0,1,by=0.1),nsmall=1))
+abline(h=seq(0,1,by=0.1),col='grey')
+axis(1,las=0,at=seq(mu0.skpt, mu0.enth, length = 5),
+     labels=format(seq(mu0.skpt, mu0.enth, length = 5),nsmall=2))
+mtext(bquote(theta),side=1,line=1,at=stretch)
+
 source("plots/plots_seq_design_prop.R")
 mtext("(A)", side = 2, line = 3, at = 1, las = 1)
+legend("right",c("Stop Early for Efficacy", "Stop Early for Futility"), lty = c(1, 2))
 dev.off()
 
 ##############################################

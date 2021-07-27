@@ -331,4 +331,7 @@ mtext(text=as.expression(bquote("6: "*delta*"=0.25")),
 # text(temp$p.IP[j], temp$eff.mon.initial[j], row - 1)
 # mtext(text=paste0(row - 1),side=1,line=row,at=stretch1,adj=0)
 # 
+
+mtext("(B)", side = 2, line = 3, at = 0.8, las = 1)
+
 if(output_png){dev.off()}

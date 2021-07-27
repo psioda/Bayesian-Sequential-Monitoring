@@ -322,5 +322,6 @@ legend('topleft',
 #        legend = c("Skeptical",
 #                   "Enthusiastic"),
 #        lty = c('solid','longdash','dotted'))
+mtext("(A)", side = 2, line = 3, at = 1, las = 1)
 
 if(output_png){dev.off()}

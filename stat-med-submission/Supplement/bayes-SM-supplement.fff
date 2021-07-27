@@ -1,0 +1,19 @@
+\begin{figure}\begin{center}
+
+ \includegraphics[width=6in]{figureS2a.png}
+ \includegraphics[width=6in]{figureS2b.png}
+ \caption{Modification of enthusiastic prior parameterization from main article Section 3.1. A, Default enthusiastic prior (main article Figure 1(c)). B, Flattened enthusiastic prior (main article Figure 1(d)). Both designs use concentrated skeptical prior (main article Figure 1(b)).}
+\label{fig:robustness1}
+\end{center}
+\end{figure}
+\efloatseparator
+ 
+\begin{figure}\begin{center}
+
+
+ \includegraphics[width=6in]{figureS2c.png}
+ \includegraphics[width=6in]{figureS2d.png}
+ \caption{Modification of enthusiastic prior parameterization in main article Section 3.1. A, Default enthusiastic prior (main article Figure 1(c)). B, Flattened enthusiastic prior (main article Figure 1(d)). Both designs use default skeptical prior (main article Figure 1(a)).}
+\label{fig:robustness2}
+\end{center}
+\end{figure}

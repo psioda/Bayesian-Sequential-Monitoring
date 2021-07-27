@@ -12,8 +12,8 @@ summary(dat$box.skpt.initial)
 output_png <- TRUE
 par(mar=c(5.1, 4.1, 4.1, 2.1)) # c(bottom, left, top, right))
 width.scale<-8
-# if(output_png){png('2dbayesp.png',width = 300*1.25*width.scale, height = 300*width.scale,pointsize=16,res=300)}
-if(output_png){png('2dpostp.png',width = 300*1.25*width.scale, height = 300*width.scale,pointsize=16,res=300)}
+if(output_png){png('2dbayesp.png',width = 300*1.25*width.scale, height = 300*width.scale,pointsize=16,res=300)}
+# if(output_png){png('2dpostp.png',width = 300*1.25*width.scale, height = 300*width.scale,pointsize=16,res=300)}
 
 
 grid.skpt <- dat
@@ -37,8 +37,8 @@ axis(2,
 
 grid.skpt$x <- grid.skpt$y1.IP.initial
 grid.skpt$y <- grid.skpt$y1.PC.initial
-# grid.skpt$z <- grid.skpt$box.enth.initial
-grid.skpt$z <- grid.skpt$eff.prob.initial
+grid.skpt$z <- grid.skpt$box.enth.initial
+# grid.skpt$z <- grid.skpt$eff.prob.initial
 
 title(ylab=as.expression(bquote("Control Sample Proportion")),line=2)
 title(xlab=as.expression(bquote("Treatment Sample Proportion")),line=3)
@@ -46,11 +46,11 @@ title(xlab=as.expression(bquote("Treatment Sample Proportion")),line=3)
 # cuts<-c(0,1E-11,1E-12,1E-10,1E-9,1E-8,1E-7,1E-6,1E-5,1E-4,1E-3,1E-2,1E-1,1,10,20,30)
 
 
-cuts <- c(0, 0.025, 0.5, 0.975, 1)
-cuts.names <- c("<0.025", "0.025 - 0.5", "0.5 - 0.975", ">0.975")
+# cuts <- c(0, 0.025, 0.5, 0.975, 1)
+# cuts.names <- c("<0.025", "0.025 - 0.5", "0.5 - 0.975", ">0.975")
 # 
-# cuts <- c(0, 0.1, 0.25, 0.75, 0.9, 1)
-# cuts.names <- c("<0.1", "0.1 - 0.25", "0.25 - 0.75", "0.75 - 0.9", ">0.9")
+cuts <- c(0, 0.1, 0.25, 0.75, 0.9, 1)
+cuts.names <- c("<0.1", "0.1 - 0.25", "0.25 - 0.75", "0.75 - 0.9", ">0.9")
 
 colors <- gray.colors(length(cuts)-1, start = 0.9, end = 0)
 
@@ -72,8 +72,8 @@ text(27, 16, labels = round(grid.skpt[grid.skpt$x == 27 & grid.skpt$y == 16, "z"
 library(RColorBrewer)
 abline(a = c(0, 0), b = 38/52, lwd = 3, lty = 'dashed')
 legend(x="topleft", 
-       # title = "Box's p-value",
-       title = "Efficacy Posterior Probability",
+       title = "Box's p-value",
+       # title = "Efficacy Posterior Probability",
        legend=c(cuts.names, "Observed Data", "Equivalent Proportions"),
        # legend=c(cuts.names, "Observed Data"),
        fill = c(colors,'black', NA),
@@ -93,6 +93,7 @@ legend(x="topleft",
 #         c(outer.y,outer.y[1]),
 #         col=colors[i], 
 #         border = NA)
+mtext("(A)", side = 2, line = 3, at = 38, las = 1)
 
 
 if(output_png){dev.off()}

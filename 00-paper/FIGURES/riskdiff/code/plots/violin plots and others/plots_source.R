@@ -86,6 +86,7 @@ legend("bottomright",
        lwd=c(NA,NA),
        border=c('black','black')#,x.intersp=c(-.5,-.5,1,1)
 )
+mtext("(A)", side = 2, line = 3, at = 1, las = 1)
 dev.off()
 
 rm(list = ls())
@@ -120,6 +121,7 @@ legend("topright",
        lwd=c(NA,NA),
        border=c('black','black')#,x.intersp=c(-.5,-.5,1,1)
        )
+mtext("(B)", side = 2, line = 3, at = 1, las = 1)
 dev.off()
 
 

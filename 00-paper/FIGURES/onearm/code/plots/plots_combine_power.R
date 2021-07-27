@@ -39,18 +39,35 @@ mtext(bquote(theta),side=1,line=1,at=stretch)
 ## subset data before running plot
 figure3<-combined1[combined1$model==1 & combined1$skpt_spike==1 & combined1$enth_flat==0,]
 figure3_table<-figure3[seq(1,length(figure3$p.range),length=3),]
+figure3$eff.mon.initial[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+figure3$fut.mon.initial[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+figure3$ss.initial[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+figure3$ss.final[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+
 source("plots/plots_seq_design_prop.R")
 
 figure3<-combined1[combined1$model==1 & combined1$skpt_spike==1 & combined1$enth_flat==1,]
 figure3_table<-figure3[seq(1,length(figure3$p.range),length=3),]
+figure3$eff.mon.initial[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+figure3$fut.mon.initial[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+figure3$ss.initial[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+figure3$ss.final[figure3$p.range %in% c(0.4, 0.535, 0.67)]
 source("plots/plots_seq_design_prop.R")
 
 figure3<-combined1[combined1$model==1 & combined1$skpt_spike==0 & combined1$enth_flat==1,]
 figure3_table<-figure3[seq(1,length(figure3$p.range),length=3),]
+figure3$eff.mon.initial[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+figure3$fut.mon.initial[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+figure3$ss.initial[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+figure3$ss.final[figure3$p.range %in% c(0.4, 0.535, 0.67)]
 source("plots/plots_seq_design_prop.R")
 
 figure3<-combined1[combined1$model==1 & combined1$skpt_spike==0 & combined1$enth_flat==0,]
 figure3_table<-figure3[seq(1,length(figure3$p.range),length=3),]
+figure3$eff.mon.initial[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+figure3$fut.mon.initial[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+figure3$ss.initial[figure3$p.range %in% c(0.4, 0.535, 0.67)]
+figure3$ss.final[figure3$p.range %in% c(0.4, 0.535, 0.67)]
 source("plots/plots_seq_design_prop.R")
 
 legend("right",#text.width=0.05,
