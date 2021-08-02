@@ -1,0 +1,13 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: bayes-SM-statmed.aux
+The style file: WileyNJD-AMA.bst
+Database file #1: wileyNJD-AMA.bib
+Warning--empty journal in FDA2006
+Warning--empty journal in USCongress2016
+`howpublished' is a missing field, not a string, for entry R2017
+while executing---line 1090 of file WileyNJD-AMA.bst
+`howpublished' is a missing field, not a string, for entry Borchers2019
+while executing---line 1090 of file WileyNJD-AMA.bst
+Warning--empty journal in FDA_CID
+Warning--empty journal in FDA2017
+Warning--empty journal in FDA2018
+(There were 2 error messages)
