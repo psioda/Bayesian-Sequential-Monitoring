@@ -27,7 +27,7 @@ skpt.prior.2 <- function(x, y){ # for x < 0 (gamma < 0)
 ############################################################################################################
 # plot \pi(\eta|\theta = 0)
 width.scale<-5
-png('../../../figure5b_NEW.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
+png('figure5b_NEW.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
 
 # y.seq <- seq(0, 1, length = 1E3)
 # plot(y.seq, skpt.prior.2(0,y.seq)/dgnorm(0, mu = delta.skpt, alpha = skpt.rd.alpha0, beta = skpt.rd.beta0), type = 'l')
@@ -79,7 +79,7 @@ dev.off()
 ############################################################################################################
 # plot \pi(\theta)
 width.scale<-5
-png('../../../figure5a_NEW.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
+png('figure5a_NEW.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
 
 x.seq <- seq(-1/2, 1/2, length = 1E3)
 marg <- function(x){
@@ -145,7 +145,7 @@ for (i in 1:nrow(grid)){
 
 par(mar=c(5.1, 4.1, 4.1, 2.1)) # c(bottom, left, top, right))
 width.scale<-6
-if(output_png){png('../../../figure5a.png',width = 300*2*width.scale, height = 300*width.scale,pointsize=16,res=300)}
+if(output_png){png('figure5a.png',width = 300*2*width.scale, height = 300*width.scale,pointsize=16,res=300)}
 
 plot(grid.skpt$x,grid.skpt$y,
      xlab="",
