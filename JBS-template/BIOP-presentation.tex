@@ -366,21 +366,21 @@ f(\theta)=\frac{\beta}{2\alpha\Gamma(1/\beta)}\exp\left\{-\left(\frac{|\theta-\m
 
 \subsection{Adaptive Monitoring Priors}
 
-\begin{frame}{Adaptive Monitoring Prior}
+\begin{frame}{Adaptive Monitoring Prior I}
 \begin{itemize}
 	\item 
-	One may define the \textit{adaptive monitoring prior} for efficacy monitoring as the mixture distribution	
+	One may define an \textit{adaptive monitoring prior} for efficacy monitoring as the mixture distribution	
 	\begin{equation*}
 		\pi_{AMP}\left(\theta\right)=\omega\cdot\pi_E(\theta)+(1 - \omega)\cdot \pi_S(\theta)
 	\end{equation*}
 	
 	\vspace{0.2cm}
-	\item We define $\omega_0 = (1 - \delta) \psi^{(E)}(\mathbf{D}_{\text{obs}})$, where 
+	\item We take $\omega = (1 - \delta) \times \psi^{(E)}(\mathbf{D}_{\text{obs}})$, where 
 	
 	\begin{itemize}
 	  \vspace{0.2cm}	
 		\item $\psi^{(E)}(\mathbf{D}_{\text{obs}}) \in [0,1]$ is a measure
-		      of congruency between the pediatric data (i.e., $\mathbf{D}_{\text{p}}$) and the enthusiastic prior, and
+		      of congruency between the pediatric data and the enthusiastic prior, and
 					
 		\vspace{0.2cm}		
 		\item $\delta \in [0,1]$ provides a limit regarding how much the adaptive monitoring prior can ``shift'' away from
@@ -393,121 +393,67 @@ f(\theta)=\frac{\beta}{2\alpha\Gamma(1/\beta)}\exp\left\{-\left(\frac{|\theta-\m
 \end{itemize}
 \end{frame}
 
+\begin{frame} \frametitle{Adaptive Monitoring Prior II}
+	\begin{itemize}
+		\item Similar to \cite{Psioda2020JBS}, we weight the enthusiastic prior based on  
+					congruency of the pediatric data with the enthusiastic prior predictive distribution
+					using a Bayesian p-value (\cite{Box1980}).
+		
+		\vspace{0.2cm}								
+		\item The prior-predictive distribution for reflects the probability of 
+					observing data $\mathbf{D}$ given the enthusiastic prior.
+						\begin{equation*}
+								p(\mathbf{D}) =\int p(\mathbf{D}|\theta)\pi_E(\theta)d\theta
+						\end{equation*}
 
-
-\begin{frame}{Box's $p$-value}
-The prior-predictive distribution for data $\mathbf{D}$ (also called the marginal likelihood) reflects the probability of observing $\mathbf{D}$ given 
-the assumed prior distribution for $\theta$ and is defined formally as
-\begin{equation}\label{eq:pred_dist}
-p(\mathbf{D}) =\int p(\mathbf{D}|\theta)\pi(\theta)d\theta.
-\end{equation}
-	%
-Let $\mathbf{D}_{\text{obs}}$ be the observed data at some point in time in an ongoing trial. 
-	%
-\textit{Box's p-value} is defined as the following:
-%\begin{equation}
-%p=P(p(y)\leq p(y_{obs}))
-%\end{equation}
-\begin{equation}\label{eq:box_p}
-\psi({\mathbf{D}_{\text{obs}}})=\int {p(\mathbf{D})}  1[p(\mathbf{D})\leq p(\mathbf{D}_{\text{obs}})] d(\mathbf{D})
-%\sum_{\mathbf{D}}p^{(h)}(\mathbf{D})1[p^{(h)}(\mathbf{D})\leq p^{(h)}(\mathbf{D}_{\text{obs}})]
-\end{equation}
-%which in the case of discrete data is equal to $\psi({\mathbf{D}_{\text{obs}}})=\sum_{\mathbf{D}}p(\mathbf{D})1[p(\mathbf{D})\leq p(\mathbf{D}_{\text{obs}})]$.
-%
-where $1[A]$ is an indicator that the event $A$ is true.
-\end{frame}
-
-
-
-
-
-\begin{frame}{PLUTO Trial}
-\begin{itemize}
-\item
-We consider the trial ``The Pediatric Lupus Trial of Belimumab Plus Background Standard Therapy (PLUTO)" (NCT01649765) which was conducted between September 2012 and January 2018 \citep{Brunner2020}.
-\item
-The study population was comprised of patients ages 5 though 17 with active systemic lupus erythematosus (SLE), defined as a baseline SELENA SLEDAI score of 6 or above on a scale of 0-105, where higher scores indicate more severe disease activity.
-\item
-Patients were randomized to monthly dosing of either belimumab 10mg/kg or placebo, while continuing to receive standard of care therapy regardless of assignment.
-\item
-The primary endpoint was a dichotomous variable reflecting a 4-point or greater reduction in SELENA SLEDAI score from baseline to week 52. 
-\end{itemize}
-\end{frame}
-\begin{frame}{External Evidence \& Power}
-\begin{itemize}
-\item
-An estimate for the pediatric response probability is denoted by $\eta_0=0.39$ (i.e. the sample proportion of responders from the pooled adult studies), and for purposes of monitoring, a plausible, clinically meaningful difference in response probabilities is $\theta_1=0.12$ (i.e. based on the pooled adult study's treatment response probability of $0.51$).
-%
-\item Using these values for the null and hypothesized response probabilities for the treatment group and assuming a response probability of 0.39 for the control group, a frequentist two-sided hypothesis test with confidence level $95\%$ and $80\%$ power would require 266 patients per group.
+		\vspace{0.0cm}								
+		\item Let $\mathbf{D}_{\text{obs}}$ be the observed data at some point in time in an ongoing trial. 
+		         Box's p-value is defined as the following:
+						\begin{equation*}
+								\psi({\mathbf{D}_{\text{obs}}})=\int {p(\mathbf{D})}  1[p(\mathbf{D})\leq p(\mathbf{D}_{\text{obs}})] d\mathbf{D},
+						\end{equation*}
+						
+						\vspace{-0.25cm}
+						where $1[A]$ is an indicator that the event $A$ is true.
 \end{itemize}
 \end{frame}
 
-%\begin{frame}{Simulation Plan}
-%\begin{itemize}
-%\item A maximum sample size of $n_{\text{max}}=100$ was chosen based on the original trial protocol.
-%\item 
-%A minimum sample size of $n_{min}=50$ was chosen to provide an adequate number of placebo controls to be enrolled given the initial 5:1 allocation to the treatment group.
-%\item 
-%An interim analysis is completed after every two patients have outcomes beginning at $n_{min}$.
-%\item Placebo response rate generated at $39\%$
-%\end{itemize}
-%\end{frame}
 
 
 
-%\begin{frame}
-%\begin{figure}[htbp]
-%\begin{center}
-%\includegraphics[width=0.5\textwidth]{./figures/figure5a_NEW.png}%
-%\includegraphics[width=0.5\textwidth]{./figures/figure5b_NEW.png}
-%\caption{A, Concentrated skeptical prior $\pi_S(\theta)$ truncated to $[-1,1]$. B, Conditional prior $\pi(\eta|\theta=\theta_0)$.}
-%\label{fig:figure5}
-% \end{center}
-%\end{figure}
-%\end{frame}
+\section{An Illustration Based on the PLUTO Trial}
+\begin{frame}{Returning to the PLUTO Trial}
+\begin{itemize}
+	  \item From the BLISS trial data, we elicited an enthusiastic prior that reflected a 
+	    	  difference in response probabilities equal to $\theta_1=0.118$.
+		
+		\vspace{0.2cm}	
+		\item A weakly informative prior was elicited for the placebo group response probability (denoted by $\eta$) centered
+		      at approximately $\eta_0=0.38$. 
+\end{itemize}
 
-\begin{frame}{Joint Enthusiastic Monitoring Prior}
+\vspace{-0.3cm}
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=1\textwidth]{./figures/enth_aug12.png}
-\caption{Joint prior $\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$ truncated based on the conditions $-1<\theta<1$ and $0<\theta+\eta<1$.}
+\includegraphics[width=0.8\textwidth]{./figures/enth_aug12.png}
+\caption{$\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$ over $-1<\theta<1$ and $0<\theta+\eta<1$.}
 \label{fig:figure5}
  \end{center}
 \end{figure}
+
 \end{frame}
 
 
 
-%\begin{frame}
-%\begin{figure}[htbp]
-%\begin{center}
-%    \includegraphics[width=1in]{./figures/figure2a.png}
-%    \includegraphics[width=1in]{./figures/figure2b.png}
-%    \caption{Example paths for the trial described in Section \ref{sec:example1model}. A, Early stoppage for efficacy. B, Early stoppage for futility.}
-%	\label{fig:figure2}
-%\end{center}
-%\end{figure}
-%\end{frame}
-
-%\begin{frame}
-%\begin{figure}[htbp]
-%\begin{center}
-%
-%    \includegraphics[width=1in]{./figures/figure3a.png}
-%    \includegraphics[width=1in]{./figures/figure3b.png}
-%    \caption{A, Sequential design properties. (SS; mean sample size, (I); interim analysis, (F); final analysis). B, Distribution of final posterior probability given interim stoppage and evidence decrease ($\%$ AGR; percent of agreement between final and interim posterior probabilities relative to $1-\epsilon$ threshold).}
-%	\label{fig:ex1.1}
-%
-%\end{center}
-%\end{figure}
-%\end{frame}
 
 \begin{frame}{Enthusiastic Prior Mixing Weight $\omega$}
+
+\vspace{-0.5cm}
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{./figures/3-part-compatibility-2.png}
+\includegraphics[width=0.75\textwidth]{./figures/3-part-compatibility-2.png}
 %    \includegraphics[width=6in]{figure6a.png}
-    \caption{A, Enthusiastic prior mixing weight $\omega$ associated with skeptical prior weight minimum $\delta$ in \eqref{eq:omega} by observed response difference between IP and PC groups, when the PC response rate is fixed at $38\%$ (16/42 responses).}
+    \caption{A, Enthusiastic prior mixing weight $\omega$ associated with skeptical prior weight minimum $\delta$ by observed response rate difference, when the placebo response rate is fixed at $38\%$.}
 \label{fig:ex2varyomega}
  \end{center}
 \end{figure}

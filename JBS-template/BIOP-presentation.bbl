@@ -6,15 +6,12 @@ Avant, D., Wharton, G.~T., and Murphy, D. (2018).
   the Best Pharmaceuticals for Children Act}.
 \newblock {\em Journal of Pediatrics\/}, {\bf 192}, 8--12.
 
-\bibitem[Brunner {\em et~al.}(2020)Brunner, Abud-Mendoza, Viola, {Calvo
-  Penades}, Levy, Anton, and et~al.]{Brunner2020}
-Brunner, H.~I., Abud-Mendoza, C., Viola, D.~O., {Calvo Penades}, I., Levy, D.,
-  Anton, J., and et~al. (2020).
-\newblock {Safety and efficacy of intravenous belimumab in children with
-  systemic lupus erythematosus: results from a randomised, placebo-controlled
-  trial}.
-\newblock {\em Annals of the Rheumatic Diseases\/}, {\bf 79}(10), 1340 LP --
-  1348.
+\bibitem[Box(1980)Box]{Box1980}
+Box, G. E.~P. (1980).
+\newblock {Sampling and Bayes' Inference in Scientific Modelling and
+  Robustness}.
+\newblock {\em Journal of the Royal Statistical Society. Series A (General)\/},
+  {\bf 143}(4), 383--430.
 
 \bibitem[Greenberg {\em et~al.}(2018)Greenberg, Gamel, Bloom, Bradley, Jafri,
   Hinton, Nambiar, Wheeler, Tiernan, Smith, Roberts, and
@@ -25,6 +22,11 @@ Greenberg, R.~G., Gamel, B., Bloom, D., Bradley, J., Jafri, H.~S., Hinton, D.,
 \newblock {Parents' perceived obstacles to pediatric clinical trial
   participation: Findings from the clinical trials transformation initiative}.
 \newblock {\em Contemporary Clinical Trials Communications\/}, {\bf 9}, 33--39.
+
+\bibitem[Psioda and Xue(2020)Psioda and Xue]{Psioda2020JBS}
+Psioda, M.~A. and Xue, X. (2020).
+\newblock {A Bayesian Adaptive Two-Stage Design for Pediatric Clinical Trials}.
+\newblock {\em Journal of Biopharmaceutical Statistics\/}, pages 1--18.
 
 \bibitem[Spiegelhalter {\em et~al.}(1994)Spiegelhalter, Freedman, and
   Parmar]{Spiegelhalter1994}

@@ -4,3 +4,4 @@
 \beamer@subsectionintoc {2}{2}{Evidence from the Bayesian Perspective}{10}{0}{2}
 \beamer@subsectionintoc {2}{3}{Skeptical/Enthusiastic Priors}{12}{0}{2}
 \beamer@subsectionintoc {2}{4}{Adaptive Monitoring Priors}{15}{0}{2}
+\beamer@sectionintoc {3}{An Illustration Based on the PLUTO Trial}{17}{0}{3}

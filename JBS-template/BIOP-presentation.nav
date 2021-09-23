@@ -44,29 +44,30 @@
 \headcommand {\beamer@framepages {15}{15}}
 \headcommand {\slideentry {2}{4}{2}{16/16}{Adaptive Monitoring Priors}{0}}
 \headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {2}{4}{3}{17/17}{Adaptive Monitoring Priors}{0}}
+\headcommand {\beamer@sectionpages {8}{16}}
+\headcommand {\beamer@subsectionpages {15}{16}}
+\headcommand {\sectionentry {3}{An Illustration Based on the PLUTO Trial}{17}{An Illustration Based on the PLUTO Trial}{0}}
+\headcommand {\slideentry {3}{0}{1}{17/17}{}{0}}
 \headcommand {\beamer@framepages {17}{17}}
-\headcommand {\slideentry {2}{4}{4}{18/18}{Adaptive Monitoring Priors}{0}}
+\headcommand {\slideentry {3}{0}{2}{18/18}{}{0}}
 \headcommand {\beamer@framepages {18}{18}}
-\headcommand {\slideentry {2}{4}{5}{19/19}{Adaptive Monitoring Priors}{0}}
+\headcommand {\slideentry {3}{0}{3}{19/19}{}{0}}
 \headcommand {\beamer@framepages {19}{19}}
-\headcommand {\slideentry {2}{4}{6}{20/20}{Adaptive Monitoring Priors}{0}}
+\headcommand {\slideentry {3}{0}{4}{20/20}{}{0}}
 \headcommand {\beamer@framepages {20}{20}}
-\headcommand {\slideentry {2}{4}{7}{21/21}{Adaptive Monitoring Priors}{0}}
+\headcommand {\slideentry {3}{0}{5}{21/21}{}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\slideentry {2}{4}{8}{22/22}{Adaptive Monitoring Priors}{0}}
+\headcommand {\slideentry {3}{0}{6}{22/22}{}{0}}
 \headcommand {\beamer@framepages {22}{22}}
-\headcommand {\slideentry {2}{4}{9}{23/23}{Adaptive Monitoring Priors}{0}}
+\headcommand {\slideentry {3}{0}{7}{23/23}{}{0}}
 \headcommand {\beamer@framepages {23}{23}}
-\headcommand {\slideentry {2}{4}{10}{24/24}{Adaptive Monitoring Priors}{0}}
+\headcommand {\beamer@sectionpages {17}{23}}
+\headcommand {\beamer@subsectionpages {17}{23}}
+\headcommand {\sectionentry {4}{\translate {References}}{24}{\translate {References}}{0}}
+\headcommand {\slideentry {4}{0}{0}{24/24}{}{0}}
 \headcommand {\beamer@framepages {24}{24}}
-\headcommand {\beamer@sectionpages {8}{24}}
-\headcommand {\beamer@subsectionpages {15}{24}}
-\headcommand {\sectionentry {3}{\translate {References}}{25}{\translate {References}}{0}}
-\headcommand {\slideentry {3}{0}{0}{25/25}{Adaptive Monitoring Priors}{0}}
-\headcommand {\beamer@framepages {25}{25}}
-\headcommand {\beamer@partpages {1}{25}}
-\headcommand {\beamer@subsectionpages {15}{25}}
-\headcommand {\beamer@sectionpages {8}{25}}
-\headcommand {\beamer@documentpages {25}}
-\headcommand {\gdef \inserttotalframenumber {25}}
+\headcommand {\beamer@partpages {1}{24}}
+\headcommand {\beamer@subsectionpages {17}{24}}
+\headcommand {\beamer@sectionpages {17}{24}}
+\headcommand {\beamer@documentpages {24}}
+\headcommand {\gdef \inserttotalframenumber {24}}
