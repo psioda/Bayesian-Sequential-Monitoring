@@ -75,7 +75,8 @@ Department of Biostatistics, University of North Carolina at Chapel Hill%\\
 %\textsuperscript{2}Division of Biometrics VII, Office of Biostatistics, Center for Drug Evaluation and Research, US Food and Drug Administration
 }
 \date{\scriptsize{September 23$\textsuperscript{rd}$, 2021} \\ \vspace{0.5cm} 
- \tiny{Joint work with Evan Kwiatkowski, Eugenio Andraca-Carrera, and Mat Soukup} }
+ \tiny{Joint work with Evan Kwiatkowski, Eugenio Andraca-Carrera, and Mat Soukup} \\
+ \tiny{(In partial fulfillment of doctoral thesis requirements for Evan Kwiatkowski)} }
 
 \begin{document}
 \beamertemplatefootpagenumber
@@ -99,13 +100,13 @@ Department of Biostatistics, University of North Carolina at Chapel Hill%\\
 		      of the application for authorization of new medicines.	
 
 	 \vspace{0.5cm}	
-		\item Significant challenges are faced in pediatric trials necessitating 
+		\item Significant challenges often occur in pediatric trials necessitating 
 					timeline extensions and/or modifications to original designs developed to meet 
 					FDA post marking requirements (PMRs).				
 			
     \vspace{0.5cm}
 		\item Pediatric trials face numerous barriers (e.g., small 
-					participant pools, ethical/parental concerns related to participation \citep{Greenberg2018})
+					participant pools and ethical/parental concerns related to participation \citep{Greenberg2018})
 					and are often unable to produce substantial evidence of efficacy.
 													
 	\end{itemize}
@@ -283,34 +284,35 @@ Department of Biostatistics, University of North Carolina at Chapel Hill%\\
 \subsection{Skeptical/Enthusiastic Priors}
 \begin{frame} \frametitle{Skeptical and Enthusiastic Priors I}
 	\begin{itemize}
-		\item Define a skeptical observer as someone whose belief satisfies:
+		\item Define a skeptical observer as someone who ...
 					\begin{enumerate}
-					  \vspace{0.35cm}
-						\item[(i)] 		The observer believes $\theta_0$ is the most likely value 
-													of $\theta$.
+					  \vspace{0.30cm}
+						\item[(i)] 		believes that $\theta_0$ is the most likely value of $\theta$.
 													
-						\vspace{0.35cm}							
-						\item[(ii)] 	Belief consistent with substantial total evidence that $\theta < \theta_1$.		
-						
-						\vspace{0.35cm}	
-						\item[(iii)] Formally, this is defined as the prior $\pi_{S}(\theta)$ satisfying 
-						             $\text{argmax}_\theta~\pi_S(\theta)=\theta_0$  and $P_S(\theta <\theta_1)=1-\epsilon$.					
+						\vspace{0.30cm}							
+						\item[(ii)] 	is all but convinced that $\theta < \theta_1$.		
+											
 					\end{enumerate}
 					
-		\vspace{0.35cm}			
-		\item Define an enthusiastic observer as someone whose belief satisfies:
+		\vspace{0.30cm}	
+		      This is operationalized through a skeptical prior $\pi_{S}(\theta)$ satisfying 
+					\textcolor{red}{$\text{argmax}_\theta~\pi_S(\theta)=\theta_0$}  and \textcolor{blue}{$P_S(\theta <\theta_1)=1-\epsilon$}.
+					
+		\vspace{0.30cm}			
+		\item Define an enthusiastic observer as someone who ...
 					\begin{enumerate}
-					  \vspace{0.35cm}
-						\item[(i)] 		The observer believes $\theta_1$ is the most likely value 
-													of $\theta$.
+					  \vspace{0.30cm}
+						\item[(i)] 		believes that $\theta_1$ is the most likely value of $\theta$.
 													
-						\vspace{0.35cm}							
-						\item[(ii)] 	Belief consistent with substantial total evidence that $\theta > \theta_0$.		
+						\vspace{0.30cm}							
+						\item[(ii)] 	is all but convinced that $\theta > \theta_0$.		
+													
+					\end{enumerate}	
 						
-						\vspace{0.35cm}	
-					  \item[(iii)] Formally, this is defined as the prior $\pi_{E}(\theta)$ satisfying 
-						             $\text{argmax}_\theta~\pi_E(\theta)=\theta_1$ and $P_E(\theta >\theta_0)=1-\epsilon$.							
-					\end{enumerate}						
+					\vspace{0.30cm}	
+		      This is operationalized through an enthusiastic prior $\pi_{E}(\theta)$ satisfying 
+					\textcolor{red}{$\text{argmax}_\theta~\pi_E(\theta)=\theta_1$} and \textcolor{blue}{$P_E(\theta >\theta_0)=1-\epsilon$}.									
+									
 	\end{itemize}
 \end{frame}
 
@@ -326,7 +328,7 @@ f(\theta)=\frac{\beta}{2\alpha\Gamma(1/\beta)}\exp\left\{-\left(\frac{|\theta-\m
 						\item $\mu$ is a location parameter, 
 						
 						\vspace{0.2cm}
-						\item $\alpha$ is a scale parameter, and 
+						\item $\alpha>0$ is a scale parameter, and 
 													
 						\vspace{0.2cm}							
 						\item $\beta>0$ is a shape parameter.		
@@ -345,14 +347,14 @@ f(\theta)=\frac{\beta}{2\alpha\Gamma(1/\beta)}\exp\left\{-\left(\frac{|\theta-\m
 \begin{center}
 %\includegraphics[width=2in]{./figures/figure1a.png}
 %\includegraphics[width=2in]{./figures/figure1b.png}
-\vspace{-0.3cm}
+\vspace{-0.2cm}
 
 \includegraphics[width=0.28\textwidth]{./figures/figure1a.png}
 \includegraphics[width=0.28\textwidth]{./figures/figure1b.png}
 
 \includegraphics[width=0.28\textwidth]{./figures/figure1c.png}
 \includegraphics[width=0.28\textwidth]{./figures/figure1d.png}
-\caption{A, Default skeptical prior.    B, Concentrated skeptical prior.
+\caption{A, Default skeptical prior.    B, Peaked skeptical prior.
          C, Default enthusiastic prior. D, Flattened enthusiastic prior.}
 
 \label{fig:figure1}
@@ -375,20 +377,20 @@ f(\theta)=\frac{\beta}{2\alpha\Gamma(1/\beta)}\exp\left\{-\left(\frac{|\theta-\m
 	\end{equation*}
 	
 	\vspace{0.2cm}
-	\item We take $\omega = (1 - \delta) \times \psi^{(E)}(\mathbf{D}_{\text{obs}})$, where 
+	\item We take $\omega = \textcolor{blue}{(1 - \delta)} \times \textcolor{red}{\psi^{(E)}(\mathbf{D}_{\text{obs}})}$, where 
 	
 	\begin{itemize}
 	  \vspace{0.2cm}	
-		\item $\psi^{(E)}(\mathbf{D}_{\text{obs}}) \in [0,1]$ is a measure
-		      of congruency between the pediatric data and the enthusiastic prior, and
+		\item $\textcolor{red}{\psi^{(E)}(\mathbf{D}_{\text{obs}}) \in [0,1]}$ is a measure
+		      of congruency between the observed pediatric data $\mathbf{D}_{\text{obs}}$ and the enthusiastic prior, and
 					
 		\vspace{0.2cm}		
-		\item $\delta \in [0,1]$ provides a limit regarding how much the adaptive monitoring prior can ``shift'' away from
-					the skeptical perspective and towards the enthusiastic one.			
+		\item $\textcolor{blue}{\delta \in [0,1]}$ represents the fraction of skepticism to be overcome by the pediatric
+		      data alone.			
 	\end{itemize}
 	
 		\vspace{0.2cm}								
-		\item $\delta=1 \rightarrow \pi_{AMP}\left(\theta\right) = \pi_{S}\left(\theta\right)$ regardless of $\psi^{(E)}(\mathbf{D}_{\text{obs}})$	
+		\item $\delta=1 \implies \pi_{AMP}\left(\theta\right) = \pi_{S}\left(\theta\right)$ regardless of $\psi^{(E)}(\mathbf{D}_{\text{obs}})$	
 					
 \end{itemize}
 \end{frame}
@@ -429,13 +431,13 @@ f(\theta)=\frac{\beta}{2\alpha\Gamma(1/\beta)}\exp\left\{-\left(\frac{|\theta-\m
 		
 		\vspace{0.2cm}	
 		\item A weakly informative prior was elicited for the placebo group response probability (denoted by $\eta$) centered
-		      at approximately $\eta_0=0.38$. 
+		      at approximately $\eta_0=0.38$ (consistent with the BLISS data). 
 \end{itemize}
 
-\vspace{-0.3cm}
+\vspace{-0.1cm}
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{./figures/enth_aug12.png}
+\includegraphics[width=0.7\textwidth]{./figures/enth_aug12.png}
 \caption{$\pi(\theta,\eta)=\pi(\theta)\times\pi(\eta|\theta)$ over $-1<\theta<1$ and $0<\theta+\eta<1$.}
 \label{fig:figure5}
  \end{center}
@@ -446,18 +448,18 @@ f(\theta)=\frac{\beta}{2\alpha\Gamma(1/\beta)}\exp\left\{-\left(\frac{|\theta-\m
 
 
 
-\begin{frame}{Enthusiastic Prior Mixing Weight $\omega$}
+%\begin{frame}{Enthusiastic Prior Mixing Weight $\omega$}
 
-\vspace{-0.5cm}
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=0.75\textwidth]{./figures/3-part-compatibility-2.png}
+%\vspace{-0.5cm}
+%\begin{figure}[htbp]
+%\begin{center}
+%\includegraphics[width=0.75\textwidth]{./figures/3-part-compatibility-2.png}
 %    \includegraphics[width=6in]{figure6a.png}
-    \caption{A, Enthusiastic prior mixing weight $\omega$ associated with skeptical prior weight minimum $\delta$ by observed response rate difference, when the placebo response rate is fixed at $38\%$.}
-\label{fig:ex2varyomega}
- \end{center}
-\end{figure}
-\end{frame}
+%    \caption{A, Enthusiastic prior mixing weight $\omega$ associated with skeptical prior weight minimum $\delta$ by observed response rate difference, when the placebo response rate is fixed at $38\%$.}
+%\label{fig:ex2varyomega}
+% \end{center}
+%\end{figure}
+%\end{frame}
 
 %\begin{frame}{Operating Characteristics}
 %\begin{figure}[htbp]
