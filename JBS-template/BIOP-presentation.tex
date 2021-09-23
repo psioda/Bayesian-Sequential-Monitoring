@@ -470,22 +470,33 @@ f(\theta)=\frac{\beta}{2\alpha\Gamma(1/\beta)}\exp\left\{-\left(\frac{|\theta-\m
 %\end{figure}
 %\end{frame}
 
-\begin{frame}{Trial Result}
+\begin{frame}{Final PLUTO Trial Data}
 \begin{itemize}
 \item Ultimately, 93 patients were enrolled over approximately 52.5 months (approximately 1 patient enrolled per 17 days).
 %
-\item Clinical response was observed in 28 of 53 (52.8\%) of patients randomized to belimumab and in 17 of 40 (43.6\%) of patients randomized to placebo (95\% CI [-0.1122, 0.2962])
+\vspace{0.5cm}
+\item Clinical response was observed in 28 of 53 (52.8\%) of patients randomized to belimumab and in 17 of 40 (43.6\%) of patients randomized to placebo.
+
+\vspace{0.5cm}
+\item Posterior characteristics for response rate difference (using non-informative priors)
+\begin{itemize}
+  \vspace{0.5cm}
+	\item Posterior Mean $\rightarrow$ 0.09
+	
+	\vspace{0.5cm}
+	\item 95\% Credible Interval $\rightarrow$ [-0.11, 0.30]
+\end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Re-analysis of PLUTO trial}
+\begin{frame}{Re-analysis of Accumulating PLUTO Trial Data}
 \footnotesize
 \begin{table}[htbp]\label{tbl:real-pluto}%
 \centering
-\caption{Summary characteristics of re-analysis of PLUTO trial. SS = Sample Size, I/F = Interim/Final, $\psi^{(E)}(\mathbf{D}_{\text{obs}})$ = Box's $p$-value using enthusiastic prior, $\omega$ = Enthusiastic mixing weight in adaptive monitoring prior, Efficacy Post Prob = Posterior probability of treatment efficacy.}%
+\caption{Summary characteristics of re-analysis of PLUTO trial.}%
 \begin{tabular*}{300pt}{@{\extracolsep\fill}cccccc@{\extracolsep\fill}}%
 \toprule
-$\delta$	&	SS (I/F)			&	$\psi^{(E)}(\mathbf{D}_{\text{obs}})$ (I/F)			&	$\omega$ (I/F)			&	Efficacy Post Prob (I/F)			\\
+$\delta$	&	SS (I/F)			&	$\psi^{(E)}(\mathbf{D}_{\text{obs}})$ (I/F)			&	$\omega$ (I/F)			&	$P(\theta>\theta_0=0)$ (I/F)			\\
 \midrule
 0.00	&	62	/	90	&	0.914	/	0.965	&	0.914	/	0.965	&	0.980	/	0.979	\\
 0.05	&	64	/	92	&	0.876	/	0.934	&	0.833	/	0.887	&	0.976	/	0.962	\\
@@ -496,40 +507,55 @@ $\delta$	&	SS (I/F)			&	$\psi^{(E)}(\mathbf{D}_{\text{obs}})$ (I/F)			&	$\omega$
 \bottomrule
 \end{tabular*}
 \end{table}
+\hspace{0.75cm} SS = Sample Size, I/F = Interim/Final.
 \end{frame}
 
 \begin{frame}{Box's $P$-value Using Enthusiastic Prior $\psi^{(E)}(\mathbf{D}_{\text{obs}})$ }
+
+\vspace{-0.3cm}
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{./figures/2dbayesp.png}
-    \caption{A, Box's p-value by control and treatment sample proportions at the final analysis with 90 subjects when $\delta=0$ is used \eqref{eq:omega} for the adaptive monitoring prior.}
+    \caption{A, Values of $\psi^{(E)}(\mathbf{D}_{\text{obs}})$ by control and treatment sample proportions at the final analysis with 90 subjects for the $\delta=0$ case.}
 \label{fig:2dheatmaps}
  \end{center}
 \end{figure}
 \end{frame}
 
 \begin{frame}{Posterior Probability of Treatment Efficacy}
+
+\vspace{-0.3cm}
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{./figures/2dpostp.png}
-    \caption{B, Posterior probability of efficacy by control and treatment sample proportions.}
+    \caption{B, $P(\theta>\theta_0=0)$ by control and treatment sample proportions at the final analysis with 90 subjects for the $\delta=0$ case.}
 \label{fig:2dheatmaps}
  \end{center}
 \end{figure}
 \end{frame}
 
 
+\section{Closing Remarks}
+
+\begin{frame} \frametitle{Closing Remarks}
+		\begin{itemize}
+			\item The formulation of the enthusiastic prior enforces that there be residual uncertainty 
+						that the null hypothesis is true; it demonstrates strong belief about effectiveness 
+						of the treatment yet is still consistent with a modicum of equipoise.
+			
+			\vspace{0.75cm}	
+			\item Even in the most liberal case where $\delta=0$, the residual uncertainty that the null hypothesis is true 
+						reflected in the adaptive monitoring prior cannot be less than that reflected in the 
+						enthusiastic prior.
+			
+			\vspace{0.75cm}	
+			\item This is a critical feature of the design as it enforces the requirement that observed data 
+			      must demonstrate some degree of efficacy on their own to justify stopping enrollment early.
+		 \end{itemize}
+\end{frame}
 
 
-
-%
-%\begin{frame}{Discussion}
-%\begin{itemize}
-%\item 
-%\end{itemize}
-%\end{frame}
-
-\begin{frame}{References}
+\begin{frame}[t,allowframebreaks]{References}
 %\bibliographystyle{agsm} 
 \bibliographystyle{natbib}
 \bibliography{./References}	
