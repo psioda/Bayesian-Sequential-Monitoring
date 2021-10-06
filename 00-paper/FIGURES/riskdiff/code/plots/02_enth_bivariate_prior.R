@@ -1,6 +1,9 @@
 width.scale<-5
+par(oma=c(0, 0, 0, 0))
+par(mar=c(0, 0, 0, 0))
 png('enth_aug12.png',width = 300*2*width.scale, height = 300*width.scale,pointsize=16,res=300)
-
+par(oma=c(0, 0, 0, 0))
+par(mar=c(0, 0, 0, 0))
 # assemble final prior
 enth.prior.1 <- function(x, y){ # for x > 0 (gamma > 0)
   exp(-(abs(x - delta.enth)/enth.rd.alpha0)^enth.rd.beta0)/(2*enth.rd.alpha0*gamma(1/enth.rd.beta0)/enth.rd.beta0)*
@@ -36,20 +39,24 @@ for (i in 1:nrow(grid)){
   }
 }
 
-par(mar=c(5.1, 4.1, 4.1, 2.1)) # c(bottom, left, top, right))
+par(mar=c(3.1, 3.1, 0.1, 0.1)) # c(bottom, left, top, right))
 
 plot(grid.enth$x,grid.enth$y,
      xlab="",
      ylab="",
      col="white",
      xaxt='n',
-     yaxt='n')
+     yaxt='n',
+     xlim = c(-1,1),
+     ylim = c(0,1))
 
-title(ylab=as.expression(bquote("Response Probability")), line = 3)
-title(xlab=as.expression(bquote("Risk Difference")), line = 3)
+title(ylab=as.expression(bquote("Response Probability")), line = 2)
+title(xlab=as.expression(bquote("Risk Difference")), line = 2)
 
 cuts<-c(0,1E-11,1E-12,1E-10,1E-9,1E-8,1E-7,1E-6,1E-5,1E-4,1E-3,1E-2,1E-1,1,10,20,30)
-colors<-gray.colors(length(cuts)-1, start = 0.9, end = 0)
+# colors<-gray.colors(length(cuts)-1, start = 0.9, end = 0)
+colors = rev(hcl.colors(length(cuts)-1, palette = "blues", alpha = NULL, rev = FALSE, fixup = TRUE))
+
 
 for (i in 1:length(cuts)-1){
   outer.xy <- grid.enth[grid.enth$z>cuts[i+1],c("x","y")]

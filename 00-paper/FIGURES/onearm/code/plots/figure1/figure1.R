@@ -1,4 +1,8 @@
 rm(list = ls())
+
+
+colors <- brewer.pal(5,"Blues")
+
 enth_prior_default<-function(){
   
   mu0.enth<-p.enth
@@ -121,6 +125,7 @@ mu0.enth<-p.enth
 
 width.scale<-5
 png('figure1c.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
+par(mar=c(2.1, 2.1, 0.1, 0.1)) # c(bottom, left, top, right))
 scale <- 1
 prior.nc.enth<-enth_prior_default()
 
@@ -137,7 +142,7 @@ plot(x,prior.nc.enth(x),type="l",
      xaxt="n",
      yaxt="n",
      xlim=c(xmin,xmax),
-     ylim=c(0,ymax)) # 20-01-02
+     ylim=c(0,ymax), col = "darkblue") # 20-01-02
 #axis(2,at=c(0,1,2,3),labels=c(0,1,2,3))
 axis(1,at=c(p.enth,p.skpt),
      labels=c(as.expression(bquote(theta[1])),
@@ -147,18 +152,18 @@ title(xlab="Response Probability",line=2)
 #title(xlab="Density Value",line=2)
 
 polygon(c(x[x<=p.skpt],p.skpt),
-        c(prior.nc.enth(x)[x<=p.skpt],0),col="black")
+        c(prior.nc.enth(x)[x<=p.skpt],0), col=colors[3], border = "darkblue")
 
 # polygon(c(p.skpt,x[x>=p.skpt & x<=p.intr],p.intr),
 #         c(0,prior.nc.enth(x)[x>=p.skpt & x<=p.intr],0),col="lightgrey")
 
-segments(x0=p.enth,y0=0,y1=prior.nc.enth(p.enth))
+segments(x0=p.enth,y0=0,y1=prior.nc.enth(p.enth), col = "darkblue")
 
 legend("topright",
        legend= c(
                  as.expression(bquote(mode(theta) == theta[1])),
                  as.expression(bquote(P(theta< theta[0])==.(tail.enth))),
-                 as.expression(bquote(k==1))
+                 "Normal"
                  #as.expression(bquote(P(theta %in% (theta[0]*","*(theta[0]+theta[1])/2)==.(round((pnorm(qnorm(tail.enth)/2)-tail.enth)*scale,3)))))#,
                  #as.expression(bquote(GN(mu==theta[1],alpha==.(sigma0.enth),beta==.(lambda0.enth))))
        ))
@@ -221,6 +226,8 @@ dev.off()
 #setwd(root)
 width.scale<-5
 png('figure1d.png',width = 300*width.scale, height = 300*width.scale,pointsize=12,res=300)
+par(mar=c(2.1, 2.1, 0.1, 0.1)) # c(bottom, left, top, right))
+
 scale <- 1.5
 prior.nc.enth<-enth_prior_custom(scale=scale)
 
@@ -237,7 +244,8 @@ plot(x,prior.nc.enth(x),type="l",
      xaxt="n",
      yaxt="n",
      xlim=c(xmin,xmax),
-     ylim=c(0,ymax)) # 20-01-02
+     ylim=c(0,ymax),
+     col = "darkblue") # 20-01-02
 #axis(2,at=c(0,1,2,3),labels=c(0,1,2,3))
 axis(1,at=c(p.enth,p.skpt),
      labels=c(as.expression(bquote(theta[1])),
@@ -247,18 +255,19 @@ title(xlab="Response Probability",line=2)
 #title(xlab="Density Value",line=2)
 
 polygon(c(x[x<=p.skpt],p.skpt),
-        c(prior.nc.enth(x)[x<=p.skpt],0),col="black")
+        c(prior.nc.enth(x)[x<=p.skpt],0),col=colors[3], border = "darkblue")
 
 # polygon(c(p.skpt,x[x>=p.skpt & x<=p.intr],p.intr),
 #         c(0,prior.nc.enth(x)[x>=p.skpt & x<=p.intr],0),col="lightgrey")
 
-segments(x0=p.enth,y0=0,y1=prior.nc.enth(p.enth))
+segments(x0=p.enth,y0=0,y1=prior.nc.enth(p.enth),
+         col = "darkblue")
 
 legend("topright",
        legend= c(
                  as.expression(bquote(mode(theta) == theta[1])),
                  as.expression(bquote(P(theta< theta[0])==.(tail.enth))),
-                 as.expression(bquote(k==0.67))
+                 "Flat"
                  #as.expression(bquote(P(theta %in% (theta[0]*","*(theta[0]+theta[1])/2)==.(round((pnorm(qnorm(tail.enth)/2)-tail.enth)*scale,3)))))#,
                  #as.expression(bquote(GN(mu==theta[1],alpha==.(sigma0.enth),beta==.(lambda0.enth))))
                  ))
