@@ -1,0 +1,87 @@
+\begin{thebibliography}{xx}
+
+\harvarditem{Box}{1980}{Box1980}
+Box, G. E.~P.  \harvardyearleft 1980\harvardyearright , `{Sampling and Bayes'
+  Inference in Scientific Modelling and Robustness}', {\em Journal of the Royal
+  Statistical Society. Series A (General)} {\bf 143}(4),~383--430.
+
+\harvarditem[Brunner et~al.]{Brunner, Abud-Mendoza, Viola, {Calvo Penades},
+  Levy, Anton \harvardand\ et~al.}{2020}{Brunner2020}
+Brunner, H.~I., Abud-Mendoza, C., Viola, D.~O., {Calvo Penades}, I., Levy, D.,
+  Anton, J. \harvardand\ et~al.  \harvardyearleft 2020\harvardyearright ,
+  `{Safety and efficacy of intravenous belimumab in children with systemic
+  lupus erythematosus: results from a randomised, placebo-controlled trial}',
+  {\em Annals of the Rheumatic Diseases} {\bf 79}(10),~1340 LP -- 1348.
+
+\harvarditem{Jennison \harvardand\ Turnbull}{2000}{Jennison2000}
+Jennison, C. \harvardand\ Turnbull, B.~W.  \harvardyearleft
+  2000\harvardyearright , {\em {Group sequential methods with applications to
+  clinical trials}}, Chapman {\&} Hall/CRC, Boca Raton.
+
+\harvarditem[Kopp-Schneider et~al.]{Kopp-Schneider, Calderazzo \harvardand\
+  Wiesenfarth}{2020}{Kopp-Schneider2020}
+Kopp-Schneider, A., Calderazzo, S. \harvardand\ Wiesenfarth, M.
+  \harvardyearleft 2020\harvardyearright , `{Power gains by using external
+  information in clinical trials are typically not possible when requiring
+  strict type I error control}', {\em Biometrical Journal} {\bf
+  62}(2),~361--374.
+
+\harvarditem{{Le Cam} \harvardand\ Yang}{2000}{LeCam2000}
+{Le Cam}, L. \harvardand\ Yang, G.~L.  \harvardyearleft 2000\harvardyearright ,
+  {\em {Asymptotics in Statistics: Some Basic Concepts}}, Springer, New York.
+
+\harvarditem{Nadarajah}{2005}{Nadarajah2005}
+Nadarajah, S.  \harvardyearleft 2005\harvardyearright , `{A generalized normal
+  distribution}', {\em Journal of Applied Statistics} {\bf 32}(7),~685--694.
+
+\harvarditem{Psioda \harvardand\ Ibrahim}{2018}{Psioda2018}
+Psioda, M.~A. \harvardand\ Ibrahim, J.~G.  \harvardyearleft
+  2018\harvardyearright , `{Bayesian design of a survival trial with a cured
+  fraction using historical data}', {\em Statistics in Medicine} {\bf
+  37}(26),~3814--3831.
+
+\harvarditem{Psioda \harvardand\ Xue}{2020}{PsiodaXue2020}
+Psioda, M.~A. \harvardand\ Xue, X.  \harvardyearleft 2020\harvardyearright ,
+  `{A Bayesian Adaptive Two-Stage Design for Pediatric Clinical Trials}', {\em
+  Journal of Biopharmaceutical Statistics} .
+
+\harvarditem[Spiegelhalter et~al.]{Spiegelhalter, Freedman \harvardand\
+  Parmar}{1993}{Spiegelhalter1993}
+Spiegelhalter, D.~J., Freedman, L.~S. \harvardand\ Parmar, M. K.~B.
+  \harvardyearleft 1993\harvardyearright , `{Applying Bayesian ideas in drug
+  development and clinical trials}', {\em Statistics in Medicine} {\bf
+  12}(15-16),~1501--1511.
+
+\harvarditem[Stallard et~al.]{Stallard, Todd, Ryan \harvardand\
+  Gates}{2020}{Stallard2020}
+Stallard, N., Todd, S., Ryan, E.~G. \harvardand\ Gates, S.  \harvardyearleft
+  2020\harvardyearright , `{Comparison of Bayesian and frequentist
+  group-sequential clinical trial designs}', {\em BMC Medical Research
+  Methodology} {\bf 20}(1),~4.
+
+\harvarditem{{U.S. Congress}}{2016}{USCongress2016}
+{U.S. Congress}  \harvardyearleft 2016\harvardyearright , `{21st Century Cures
+  Act (Pubic Law 114-255, 130 STAT 1033-1344)}'.
+
+\harvarditem{{U.S. Food and Drug Administration}}{2006}{FDA2006}
+{U.S. Food and Drug Administration}  \harvardyearleft 2006\harvardyearright ,
+  `{Establishment and Operation of Clinical Trial Data Monitoring Committees}'.
+
+\harvarditem{Ventz \harvardand\ Trippa}{2015}{Ventz2015}
+Ventz, S. \harvardand\ Trippa, L.  \harvardyearleft 2015\harvardyearright ,
+  `{Bayesian designs and the control of frequentist characteristics: A
+  practical solution}', {\em Biometrics} {\bf 71}(1),~218--226.
+
+\harvarditem{Zhu \harvardand\ Yu}{2015}{Zhu2015}
+Zhu, H. \harvardand\ Yu, Q.  \harvardyearleft 2015\harvardyearright , `{A
+  Bayesian sequential design using alpha spending function to control type I
+  error}', {\em Statistical Methods in Medical Research} {\bf
+  26}(5),~2184--2196.
+
+\harvarditem[Zhu et~al.]{Zhu, Yu \harvardand\ Mercante}{2019}{Zhu2019}
+Zhu, L., Yu, Q. \harvardand\ Mercante, D.~E.  \harvardyearleft
+  2019\harvardyearright , `{A Bayesian Sequential Design for Clinical Trials
+  with Time-to-Event Outcomes}', {\em Statistics in biopharmaceutical research}
+  {\bf 11}(4),~387--397.
+
+\end{thebibliography}
