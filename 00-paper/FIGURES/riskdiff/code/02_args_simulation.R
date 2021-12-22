@@ -10,20 +10,20 @@
 
 rm(list = ls())
 
-simulation <- expand.grid(
- NA, # p.IP
- NA, # p.PC
- 2,   # freq.mntr
- 1,   # enr.shape
- 4,   # out.mean
- 0,   # fut.mix.prob
- rep(101, 2067), # eff.mix.prob
- # c(rep(103, 114)), # eff.mix.prob
- 0.5,  # inf.mix.prob
- 0.05, # cred.tail
- 90,  # max.ss
- 90,   # min.ss
- 1)   # reps
+# simulation <- expand.grid(
+#  NA, # p.IP
+#  NA, # p.PC
+#  2,   # freq.mntr
+#  1,   # enr.shape
+#  4,   # out.mean
+#  0,   # fut.mix.prob
+#  rep(101, 2067), # eff.mix.prob
+#  # c(rep(103, 114)), # eff.mix.prob
+#  0.5,  # inf.mix.prob
+#  0.05, # cred.tail
+#  90,  # max.ss
+#  90,   # min.ss
+#  1)   # reps
 
 # simulation2 <- expand.grid(
 #  .63, # p.IP
@@ -57,6 +57,26 @@ simulation <- expand.grid(
 #   92,  # max.ss
 #   50,   # min.ss
 #   1)   # reps
+
+## December 2021
+simulation <- expand.grid(
+  # seq(.27, 0.63, length = 7), # p.IP
+  .39, # p.IP
+  .39, # p.PC
+  # NA,
+  # NA,
+  2,   # freq.mntr
+  1,   # enr.shape
+  4,   # out.mean
+  0,   # fut.mix.prob
+  rep(101, 800),   # eff.mix.prob
+  # c(seq(1, 0, by = -0.05), 10, 20, 21, 22, 23, 24, 30), # eff.mix.prob
+  # c(seq(1, 0, by = -0.05), 101:130), # eff.mix.prob
+  0.5,  # inf.mix.prob
+  0.05, # cred.tail
+  100,  # max.ss
+  100,   # min.ss
+  13)   # reps
 
 names(simulation) <- c(
   "p.IP",

@@ -9,7 +9,7 @@
 
 # for (idx in 1:8){ # check here
 
-if (Sys.getenv("USER") == "kwiatkoe") {
+if (Sys.getenv("USER") %in% c("kwiatkoe", "ek50"))  {
   library(pracma)
   library(gnorm)
 } else {                                    # longleaf
@@ -21,7 +21,7 @@ if (Sys.getenv("USER") == "kwiatkoe") {
 
 # Model information, including all functions used (The only additional source file to be called is "code_enrollment.R")
 load(file = 'args_model.RData') # loads all model information include prior parameters AND SETS SEED
-set.seed(as.integer(idx*92920))  #  05-19-2020
+set.seed(as.integer(idx*1221))  #  05-19-2020
 
 # Simulation information
 simulation <- read.csv(file = "args_simulation.csv", header = TRUE, sep = ",")

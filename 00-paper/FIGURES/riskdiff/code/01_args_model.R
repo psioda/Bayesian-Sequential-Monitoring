@@ -4,10 +4,10 @@
 ##################################
 rm(list = ls())
 
-if (Sys.getenv("USER") == "kwiatkoe") {
+if (Sys.getenv("USER") %in% c("kwiatkoe", "ek50")) {
   library(pracma)
   library(gnorm)
-  setwd("/Users/kwiatkoe/Documents/Github/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code")
+  setwd("/Users/ek50/Documents/Github/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code")
 }
 
 if (.Platform$OS.type == "unix")    { 
@@ -42,5 +42,9 @@ delta.ni.intr <- 0.24   ## new halfway point
 #delta.ni.intr <- delta.enth                  ## new halfway point
 source("priors/09_ni_joint.R")
 ni_joint()
+
+# December 2021
+skpt.alpha0    <- 1E3
+skpt.rd.alpha0 <- 1E3
 
 save.image(file = 'args_model.RData')
