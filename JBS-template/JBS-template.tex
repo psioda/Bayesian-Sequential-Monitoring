@@ -230,7 +230,7 @@ Section \ref{sec:preliminaries} reviews Bayesian hypothesis testing using poster
 %
 Section \ref{sec:mps} presents a method for parameterizing monitoring priors the generalized normal distribution and for incorporating prior information into the monitoring priors, and a method to specify priors for nuisance parameters.
 %
-Examples are given in Section \ref{sec:examples}, with Section \ref{sec:example1} presenting an example based on a single-arm trial and Section \ref{sec:example2} presenting an example based on a two-arm randomized, controlled trial. \textcolor{black}{The purpose of Section \ref{sec:example1} is to demonstrate using skeptical and enthusiastic priors that are peaked or flat about the parameter values thought to be most likely, and the purpose of Section \ref{sec:example2} is to demonstrate the adaptive monitoring prior in a more complicated setting that involves specifying a prior for a nuisance parameter.}
+Examples are given in Section \ref{sec:examples}, with Section \ref{sec:example1} presenting an example based on a single-arm trial and Section \ref{sec:example2} presenting an example based on a two-arm randomized, controlled trial. \textcolor{black}{The purpose of Section \ref{sec:example1} is to demonstrate using skeptical and enthusiastic priors that are peaked or flat about the parameter values thought to be most likely, and the purpose of Section \ref{sec:example2} is to demonstrate the adaptive monitoring prior in a more complicated setting that involves specifying a prior for a nuisance parameter.} \textcolor{red}{Section \ref{sec:non-informative} contains a comparison of the adaptive monitoring prior with a standard design using a non-informative prior.}
 %Conclusions from Bayesian inferences are not affected by the frequency with which the data are monitored, and such interim analyses should be encouraged to terminate data collection if appropriate \citep{Berry1989,Berry1993,Spiegelhalter1994}. The Bayesian perspective is based on the likelihood principle which asserts that any data with the same likelihood function should lead to the same conclusion \citep{Berger1988}. In the context of sequential analysis of clinical trials, the stopping rule that leads to the termination of data collection is irrelevant to the conclusion \citep{Barnard1947,Anscombe1963,Cornfield1966a,Cornfield1966b}. 
 %In contrast ... add stuff Frequentist group sequential designs rely on pre-specified interim analyses and spending functions to maintain desired trial operating characteristics \citep{Pocock1977,OBrien1979}.
 %Interpretation of conclusions from the Bayesian perspective is natural when specification of prior distributions are intuitively related to the research objectives. Skeptical and enthusiastic monitoring priors are used to evaluate efficacy and futility at an interim analysis \citep{Freedman1989,Freedman1992,Spiegelhalter1993,Fayers1997}. The most common Bayesian metrics for assessing evidence at interim analyses are posterior probabilities and predictive probabilities, and the choice of metric depends on the research objective. Posterior probabilities assess the level of evidence in favor of the null or alternative hypothesis, and predictive probabilities determine the capacity for the trial to show convincing evidence in favor of the alternative hypothesis if more outcomes are ascertained. 
@@ -257,7 +257,7 @@ For the two-arm trial example, $\eta$ might correspond to the response probabili
 For ease of exposition, for the remainder of Section~\ref{sec:preliminaries} we will focus on the case where $\theta$ is the only unknown parameter.
 
 Consider the hypothesis $H_0:\theta\in\Theta_{0}$ versus $H_1:\theta\in\Theta_{1}$. The posterior probability that $\theta\in\Theta_i$ is given by
-\begin{align}
+\begin{align}\label{eq:postprob}
 P(\theta\in\Theta_i|\mathbf{D})
 =\frac{\int_{\Theta_i} p(\mathbf{D}|\theta)\pi (\theta)d\theta}{\int_{\Theta}p(\mathbf{D}|\theta)\pi(\theta) d\theta}
 \end{align}
@@ -400,11 +400,11 @@ The strategies presented here for sequential monitoring are appropriate regardle
 %$P_S(\theta>\theta_0|\mathbf{D})$ which has already been defined so there is no need to relabel it. Also, it is not ``efficacy 
 %criteria'', it is a posterior probability -- this is what I mean by an imprecise statement. We need to be careful to avoid these.}
 
-\textcolor{red}{Stopping criteria are based on the probability that the treatment effect is in a particular region $\Theta_i$ given the data $\mathbf{D}$ is greater than the threshold for compelling evidence, that is,
+\textcolor{red}{Stopping criteria are based on the posterior probability that the treatment effect is in a particular region \eqref{eq:postprob} is greater than the threshold for a compelling demonstration, that is,
 \begin{equation}\label{eq:convinced}
 		P_\pi(\theta\in\Theta_i|\mathbf{D}) > 1-\epsilon,
 \end{equation} 
-where the subscript $\pi$ indicates the probability is calculated based on a prior or posterior distribution, as in equation \eqref{eq:compellingevidence}.
+where the subscript $\pi$ indicates the probability is calculated based on a prior or posterior distribution, as in \eqref{eq:compellingevidence}.
 }
 Stopping criteria for efficacy are defined from the perspective of a skeptical observer. 
 	%
@@ -432,7 +432,7 @@ For this reason, we consider a different approach.
 Recalling that $\theta_1$ represents a plausible, clinically meaningful treatment effect, the early stopping criteria are met based on data $\mathbf{D}$ when $P_E\left(\theta<\theta_1| \mathbf{D}\right)>1-\epsilon$. In this case the trial may be stopped due to there being a compelling demonstration that the treatment effect is much less than hypothesized (i.e., $\theta_1$).
 %
 \subsection{Specifying Monitoring Priors}\label{sec:mps}
-\subsubsection{Default Monitoring Priors}
+\subsubsection{Default Monitoring Priors}\label{sec:def-mon-priors}
 The skeptical and enthusiastic monitoring priors defined in Section \ref{sec:MP} have mode value and tail-probability constraints. 
 %
 However, these constraints alone do not uniquely determine the priors.
@@ -574,14 +574,14 @@ We define the \textit{adaptive monitoring prior} \textcolor{black}{for efficacy 
 \end{equation}
 where $\omega\in(0,1)$ is an adaptively determined mixing weight. %In contrast to adaptive weighting, fixed choices of $\omega$ will be used as comparisons for the performance of the adaptive weight monitoring prior in Section \ref{sec:example2}. 
 %
-\textcolor{black}{The objective of the proposed approach is to create a mixture prior which favors the enthusiastic prior component in cases where high compatibility is observed between the trial data and the enthusiastic prior, and favors the skeptical prior component if the data observed are incompatible with the enthusiastic prior. This approach is motivated by the rationale that the enthusiastic prior reflects a plausible perspective about the treatment's effect, and one that we assume will typically be informed by data (e.g., from adult trials in the case of a planned pediatric trial).} \textcolor{red}{The \textit{adaptive monitoring prior} $\pi_{AE}(\theta)$ is used to make determinations about treatment efficacy as shown in equation \eqref{eq:convinced}.}
+\textcolor{black}{The objective of the proposed approach is to create a mixture prior which favors the enthusiastic prior component in cases where high compatibility is observed between the trial data and the enthusiastic prior, and favors the skeptical prior component if the data observed are incompatible with the enthusiastic prior. This approach is motivated by the rationale that the enthusiastic prior reflects a plausible perspective about the treatment's effect, and one that we assume will typically be informed by data (e.g., from adult trials in the case of a planned pediatric trial).} \textcolor{red}{The adaptive monitoring prior $\pi_{AE}(\theta)$ is used to make determinations regarding treatment efficacy in \eqref{eq:convinced}, as a replacement for the traditional skeptical prior $\pi_S(\theta)$ used for efficacy monitoring.}
 
 
 The adaptive mixing weight $\omega$ is determined by an assessment of prior-data conflict, proposed by \textcolor{black}{Box} \citep{Box1980}, derived using the prior predictive distribution of 
 the data which is defined (in our case) using the \textcolor{black}{enthusiastic prior}.
 	%
-The prior-predictive distribution for \textcolor{red}{replicated data $\mathbf{D}_{\text{rep}}$ (also called the marginal likelihood) reflects the probability of observing hypothetical data $\mathbf{D}_{\text{rep}}$ given 
-the assumed prior distribution for $\theta$ and is defined formally as
+The prior-predictive distribution (also called the marginal likelihood) for \textcolor{red}{replicated data $\mathbf{D}_{\text{rep}}$ reflects the probability of observing hypothetical data $\mathbf{D}_{\text{rep}}$ given 
+the assumed data generating mechanism and prior distribution for $\theta$ and is defined formally as
 \begin{equation}\label{eq:pred_dist}
 p(\mathbf{D}_{\text{rep}}) =\int p(\mathbf{D}_{\text{rep}}|\theta)\pi(\theta)d\theta.
 \end{equation}}
@@ -902,13 +902,13 @@ An interim analysis is completed after every two patients have outcomes beginnin
 The operating characteristics presented in this section are estimated using 2,500 simulated trials per value of $\theta$ using the trial design as described in Section \ref{sec:example2model}. The generating response probability in the placebo group was assumed to be 0.39, and the generating response probability in the treatment group was determined based on risk differences $\theta$ in $\{0, 0.03, 0.06, 0.09, 0.12\}$. Figure \ref{fig:ex2varyomega}(B) shows the probability of stopping early for efficacy and the associated sample sizes when using the adaptive monitoring prior \eqref{eq:inference_prior} with different choices of $\delta$ in \eqref{eq:omega}. When $\delta=0$ or $\delta=0.05$, a conclusion of efficacy is made at an interim analysis $24\%$ and $14\%$ of the time respectively, while this value is $7\%$ or lower when $\delta \geq 0.1$. Reductions in expected sample size are seen with lower choices of $\delta$ and higher generated risk differences. When $\delta=0.1$, a demonstration of efficacy is observed in $53\%$ of simulated trials, with an expected sample size of 90.1. Even though this is a modest reduction from the maximum sample size of 100 for this case, even more favorable reductions are possible when enrollment is comparatively slower and/or when follow-up times are comparatively shorter.}
 
 \textcolor{red}{
-\subsection{Comparison to Single Analysis with Non-Informative Prior}
-We consider comparing the adaptive monitoring prior of \eqref{eq:inference_prior} with a standard design that uses a non-informative prior to determine treatment efficacy in equation \eqref{eq:convinced}. To simplify this illustration, we consider a design without interim analyses. The non-informative prior will be a uniform prior over the joint parameter space of $(\theta,\eta)$. In particular, $\pi_{NI}(\theta)$ is a marginal uniform prior on the risk difference, with range $[-1, 1]$.}
+\subsection{Comparison to Single Analysis with Non-Informative Prior}\label{sec:non-informative}
+We consider comparing the adaptive monitoring prior \eqref{eq:inference_prior} with a standard design that uses a non-informative prior to determine treatment efficacy in \eqref{eq:convinced}. To simplify this illustration, we consider a design without interim analyses. The non-informative prior will be a uniform prior over the joint parameter space of $(\theta,\eta)$. In particular, $\pi_{NI}(\theta)$ is a marginal uniform prior on the risk difference $\theta$, with range $[-1, 1]$.}
 
 \textcolor{red}{
-When using $\pi_{NI}(\theta)$ in \eqref{eq:convinced}, the probability of concluding treatment efficacy when $\theta=\theta_0$ is $0.025$, and when $\theta=\theta_1$ is $0.217$. This shows that the non-informative prior maintains the nominal type I error rate. When using $\pi_{AE}(\theta)$ with $\delta=0$, the probability of concluding efficacy is $0.189$ when $\theta=\theta_0$ and is $0.675$ when $\theta=\theta_1$. This shows that the adaptive monitoring prior has a higher than nominal type I error rate, and correspondingly has higher power. If an analysis with the non-informative prior was permitted to have this same higher type I error rate by modifying the evidence threshold in equation \eqref{eq:convinced}, the associated power would be similar, at $0.617$. This shows that power is comparable across analyses that use priors with the same allowable type I error rate (see \cite{Psioda2018}).}
+When using $\pi_{NI}(\theta)$ in \eqref{eq:convinced}, the probability of concluding treatment efficacy when $\theta=\theta_0$ is $0.025$, and when $\theta=\theta_1$ it is $0.217$. This shows that the non-informative prior maintains the nominal type I error rate. When using $\pi_{AE}(\theta)$ with $\delta=0$, the probability of concluding efficacy is $0.189$ when $\theta=\theta_0$ and is $0.675$ when $\theta=\theta_1$. This shows that the adaptive monitoring prior has a higher than nominal type I error rate, and correspondingly has higher power. If an analysis with the non-informative prior was permitted to have this same higher type I error rate by modifying the evidence threshold in equation \eqref{eq:convinced}, the associated power would be similar, at $0.617$. This shows that power is comparable across analyses that use priors with the same allowable type I error rate (see \cite{Psioda2018}).}
 
-\textcolor{red}{Any time the evidence threshold in equation \eqref{eq:convinced} is modified, the associated posterior probability is not compared to an interpretable quantity that is associated with substantial evidence. Our approach uses the same threshold $1-\epsilon$ regardless of the number of interim analyses.
+\textcolor{red}{Any time the evidence threshold in equation \eqref{eq:convinced} is modified, the associated posterior probability is not compared to an interpretable quantity that is associated with a compelling demonstration. Our approach uses the same threshold $1-\epsilon$ regardless of the number of interim analyses.
 }
 \section{Real Data Example}\label{sec:realdataexample}
 \textcolor{black}{
@@ -1018,9 +1018,26 @@ where $\sigma=\frac{\theta_0-\theta_1}{\Phi^{-1}(\epsilon)}$.
 This parameterizing procedure is applicable to a generalized normal distribution truncated to an interval domain (e.g. when $\theta$ is a response probability with domain $[0,1]$). In this case, the generalized normal distribution truncated to an interval domain $\Theta=(\theta_{min},\theta_{max})$ has density equal to $f(\theta)=c\cdot\exp\left\{-\frac{|\theta-\mu|}{\alpha}^{\beta}\right\}{I(\theta\in \Theta)}$ where $c=\frac{\beta}{2\alpha \Gamma(1/\beta)}({F_{\mu,\alpha,\beta}(\theta_{max})-F_{\mu,\alpha,\beta}(\theta_{min})})^{-1}$.
 
 \textcolor{red}{
-\subsection*{C: Step-by-Step Implementation}
+\subsection*{C: Step-by-Step Implementation Guide}
+Below are step-by-step instructions for implementing this method in the context of a non-inferiority trial.
 \begin{enumerate}
-\item 
+\item Identify parameters for the trial design:
+\begin{enumerate}
+\item Specify null treatment response rate $\theta_0$ which is used in the null and alternative hypotheses $H_0$ and $H_1$.
+\item Specify threshold for a compelling demonstration $1-\epsilon$.
+\item Specify the plausible, clinically meaningful value for the treatment effect $\theta_1$.
+\end{enumerate}
+\item Create monitoring priors:
+\begin{enumerate}
+\item Choose prior shape for the skeptical and enthusiastic monitoring priors $\pi_S(\theta)$ and $\pi_E(\theta)$ (e.g. choose $k$ as described in Section \ref{sec:def-mon-priors}). Our recommendation is to use a concentrated specification for $\pi_S(\theta)$ and a default specification for $\pi_E(\theta)$.
+\item Solve for the parameters in the generalized normal distributions $\pi_S(\theta)$ and $\pi_E(\theta)$ as described in Section \ref{sec:def-mon-priors} and Appendix B. These parameters are deterministic byproducts the quantities provided in Step 1 and Step 2(a). The code for this paper shows how these parameters were computed.
+\item Repeat Steps 2(a,b) for nuisance parameters as described in Section \ref{sec:cond_marg}.
+\item If the adaptive monitoring prior $\pi_{AE}(\theta)$ is to be used, specify the minimum possible mixing weight $\delta$ assigned to the skeptical prior. Our recommendation is $\delta=0.1$.
+\end{enumerate}
+\item Sequentially monitor the clinical trial:
+\begin{enumerate}
+\item Conduct monitoring according to \eqref{eq:convinced}. If the adaptive monitoring prior is used, then compute the mixture weight $\omega$ using \eqref{eq:omega}.
+\end{enumerate}
 \end{enumerate}
 }
 
