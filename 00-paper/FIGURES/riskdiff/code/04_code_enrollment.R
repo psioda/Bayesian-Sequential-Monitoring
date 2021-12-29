@@ -33,7 +33,20 @@ if (is.na(p.IP)){
   # outcome.times.IP <- outcome.times.all[group == "IP"]
   # responses.IP     <- responses[group == "IP"]
   ## END REAL FDA FILE ##################################
+} else if (min.ss == 322){
+  group <- sample(c(rep("PC", 161),
+                    rep("IP", 161)))
+  enr.times.all     <- seq(1:322) * 17.2
+  outcome.times.all <- enr.times.all + 365.25
   
+  enr.times.PC     <- enr.times.all[group == "PC"]
+  outcome.times.PC <- outcome.times.all[group == "PC"]
+  responses.PC     <- rbinom(n = 161, size = 1, prob = p.PC)
+  
+  enr.times.IP     <- enr.times.all[group == "IP"]
+  outcome.times.IP <- outcome.times.all[group == "IP"]
+  responses.IP     <- rbinom(n = 161, size = 1, prob = p.IP)
+
 } else {
   group <- c(sample(c(rep("PC", 4),
                       rep("IP", 20))),

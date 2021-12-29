@@ -6,7 +6,8 @@
 # assigned to the SKEPTICAL component
 #####################################
 
-# setwd("/Users/kwiatkoe/Documents/Github/Bayesian-Sequential-Monitoring/Real FDA Data Example/MP_FDA_Check/code")
+# setwd("/Users/ek50/Documents/Github/Bayesian-Sequential-Monitoring/Real FDA Data Example/MP_FDA_Check/code")
+setwd("/Users/ek50/Documents/GitHub/Bayesian-Sequential-Monitoring/00-paper/FIGURES/riskdiff/code")
 
 rm(list = ls())
 
@@ -61,7 +62,7 @@ rm(list = ls())
 ## December 2021
 simulation <- expand.grid(
   # seq(.27, 0.63, length = 7), # p.IP
-  .39, # p.IP
+  .51, # p.IP
   .39, # p.PC
   # NA,
   # NA,
@@ -69,14 +70,15 @@ simulation <- expand.grid(
   1,   # enr.shape
   4,   # out.mean
   0,   # fut.mix.prob
-  rep(101, 800),   # eff.mix.prob
+  rep(1, 800),   # eff.mix.prob
+  # rep(101, 800),   # eff.mix.prob
   # c(seq(1, 0, by = -0.05), 10, 20, 21, 22, 23, 24, 30), # eff.mix.prob
   # c(seq(1, 0, by = -0.05), 101:130), # eff.mix.prob
   0.5,  # inf.mix.prob
   0.05, # cred.tail
-  100,  # max.ss
-  100,   # min.ss
-  13)   # reps
+  322,  # max.ss
+  322,   # min.ss
+  130)   # reps
 
 names(simulation) <- c(
   "p.IP",

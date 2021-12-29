@@ -43,7 +43,7 @@ delta.ni.intr <- 0.24   ## new halfway point
 source("priors/09_ni_joint.R")
 ni_joint()
 
-# December 2021
+# # December 2021
 skpt.alpha0    <- 1E3
 skpt.rd.alpha0 <- 1E3
 

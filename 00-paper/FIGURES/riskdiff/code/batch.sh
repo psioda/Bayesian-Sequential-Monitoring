@@ -3,7 +3,7 @@
 #SBATCH -p general
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH -t 01:00:00
+#SBATCH -t 01:59:59
 #SBATCH --mem=1g
 #SBATCH --output=../slurm/%a.slurm
 #SBATCH --error=../error/%a.err

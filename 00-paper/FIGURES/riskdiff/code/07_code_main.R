@@ -21,7 +21,7 @@ if (Sys.getenv("USER") %in% c("kwiatkoe", "ek50"))  {
 
 # Model information, including all functions used (The only additional source file to be called is "code_enrollment.R")
 load(file = 'args_model.RData') # loads all model information include prior parameters AND SETS SEED
-set.seed(as.integer(idx*1221))  #  05-19-2020
+set.seed(as.integer(idx*28))  #  05-19-2020
 
 # Simulation information
 simulation <- read.csv(file = "args_simulation.csv", header = TRUE, sep = ",")
@@ -50,24 +50,28 @@ for (i in 1:reps){
   
   source("04_code_enrollment.R")
   
-  for (j in unique(c(seq(min.ss, max.ss, by = freq.mntr), max.ss))){
-    #for(j in max.ss){
-    #{print(paste0("Inner loop: ", j))}
-    n.initial          <- j     
-    mon.result.initial <- monitoring(index = j)
-    futility           <- mon.result.initial$fut.prob
-    efficacy           <- mon.result.initial$eff.prob
-    
-    # # 06-10-21 added
-    # for(k in 1:length(vars)){ inner[i, paste(vars[k], j, sep = ".")] <- as.numeric(mon.result.initial[vars[k]]) }
-    
-    if (futility > sig.fut | efficacy > sig.eff){
-      break
-    }
-  }
+  # December 2021 - add this line
+  n.initial <- max.ss
+  # December 2021 - comment below
+  # for (j in unique(c(seq(min.ss, max.ss, by = freq.mntr), max.ss))){
+  #   #for(j in max.ss){
+  #   #{print(paste0("Inner loop: ", j))}
+  #   n.initial          <- j     
+  #   mon.result.initial <- monitoring(index = j)
+  #   futility           <- mon.result.initial$fut.prob
+  #   efficacy           <- mon.result.initial$eff.prob
+  #   
+  #   # # 06-10-21 added
+  #   # for(k in 1:length(vars)){ inner[i, paste(vars[k], j, sep = ".")] <- as.numeric(mon.result.initial[vars[k]]) }
+  #   
+  #   if (futility > sig.fut | efficacy > sig.eff){
+  #     break
+  #   }
+  # }
   
-  # Initial
-  for(k in 1:length(vars)){ inner[i, paste(vars[k], "initial", sep = ".")] <- as.numeric(mon.result.initial[vars[k]]) }
+  # December 2021 - comment below
+  # # Initial
+  # for(k in 1:length(vars)){ inner[i, paste(vars[k], "initial", sep = ".")] <- as.numeric(mon.result.initial[vars[k]]) }
   
   # Final 
   if (is.na(p.IP)){

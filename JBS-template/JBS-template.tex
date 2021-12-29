@@ -109,16 +109,18 @@ As such, the use of Bayesian sequential methods, rooted in the likelihood princi
 % \textcolor{red}{...which to develop Complex Innovative Designs (CIDs) – a performance goal set forth under PDUFA VI legislation\citep{FDA2017}}.
 %
 
-\textcolor{red}{In settings where pertinent preexisting data are available, Bayesian methods provide a natural approach for incorporating that information via a prior distribution into the design and analysis of a future trial.
+\textcolor{red}{In settings where pertinent preexisting data are available, Bayesian methods provide a natural approach for incorporating that information, via a prior distribution, into the design and analysis of a future trial.
 %
-Preexisting data can provide the external information to inform a plausible, clinically meaningful 
-value for the treatment effect.
+In traditional frequentist approaches to design, preexisting data can provide external information to inform a plausible, clinically meaningful 
+choice for the value of the treatment effect for power calculations for a new study.
 %
-This is comparable to the value used in frequentist analyses to inform power calculations.
+For the Bayesian approach, external information is typically translated into a prior distribution that characterizes what is currently thought about the treatment effect and the strength of evidence that the effect meets certain criteria (e.g., the treatment is helpful regarding the outcome of interest).
 %
-External evidence refers to the use of external information in probabilistic statements regarding the treatment effect (e.g. determination of treatment efficacy). 
+%This is comparable to the value used in frequentist analyses to inform power calculations.
 %
-In Bayesian methods, external evidence can be incorporated via a prior distribution which is informed by external information and is used in the analysis of the treatment effect.
+%External evidence refers to the use of external information in probabilistic statements regarding the treatment effect (e.g. determination of treatment efficacy). 
+%
+%In Bayesian methods, external evidence can be incorporated via a prior distribution which is informed by external information and is used in the analysis of the treatment effect.
 }
 
 %
@@ -400,11 +402,11 @@ The strategies presented here for sequential monitoring are appropriate regardle
 %$P_S(\theta>\theta_0|\mathbf{D})$ which has already been defined so there is no need to relabel it. Also, it is not ``efficacy 
 %criteria'', it is a posterior probability -- this is what I mean by an imprecise statement. We need to be careful to avoid these.}
 
-\textcolor{red}{Stopping criteria are based on the posterior probability that the treatment effect is in a particular region \eqref{eq:postprob} is greater than the threshold for a compelling demonstration, that is,
+\textcolor{red}{Stopping criteria are based on the posterior probability that the treatment effect is in a particular region (i.e., expression \eqref{eq:postprob}) is convincing, that is,
 \begin{equation}\label{eq:convinced}
 		P_\pi(\theta\in\Theta_i|\mathbf{D}) > 1-\epsilon,
 \end{equation} 
-where the subscript $\pi$ indicates the probability is calculated based on a prior or posterior distribution, as in \eqref{eq:compellingevidence}.
+where the subscript $\pi$ indicates the probability is calculated based on a prior or posterior distribution for $\theta$.
 }
 Stopping criteria for efficacy are defined from the perspective of a skeptical observer. 
 	%
@@ -581,7 +583,7 @@ The adaptive mixing weight $\omega$ is determined by an assessment of prior-data
 the data which is defined (in our case) using the \textcolor{black}{enthusiastic prior}.
 	%
 The prior-predictive distribution (also called the marginal likelihood) for \textcolor{red}{replicated data $\mathbf{D}_{\text{rep}}$ reflects the probability of observing hypothetical data $\mathbf{D}_{\text{rep}}$ given 
-the assumed data generating mechanism and prior distribution for $\theta$ and is defined formally as
+the assumed data generating mechanism and prior distribution for $\theta$, and is defined formally as
 \begin{equation}\label{eq:pred_dist}
 p(\mathbf{D}_{\text{rep}}) =\int p(\mathbf{D}_{\text{rep}}|\theta)\pi(\theta)d\theta.
 \end{equation}}
@@ -596,10 +598,11 @@ p(\mathbf{D}_{\text{rep}}) =\int p(\mathbf{D}_{\text{rep}}|\theta)\pi(\theta)d\t
 %which in the case of discrete data is equal to $\psi({\textcolor{red}{\mathbf{D}}})=\sum_{\mathbf{D}}p(\mathbf{D})1[p(\mathbf{D})\leq p(\textcolor{red}{\mathbf{D}})]$.
 %
 where $1[A]$ is an indicator that the event $A$ is true.
-
-Box's p-value can be interpreted as the probability of observing data as or more extreme than $\textcolor{red}{\mathbf{D}}$, given the predictive distribution. 
 %
-Small values of $\psi({\textcolor{red}{\mathbf{D}}})$ indicate a lack of compatibility or congruency between the prior and the data. 
+\textcolor{red}{Note that the expression in \eqref{eq:box_p} can be viewed as an expectation of $1[p(\mathbf{D}_{\text{rep}})\leq p(\mathbf{D})]$ with respect to random $\mathbf{D}_{\text{rep}}$ and is thus equal to the probability of observing a dataset $\mathbf{D}_{\text{rep}}$ as or less likely that $\mathbf{D}$. Thus, large values of $\psi({\mathbf{D}})$ indicate the observed data are very well supported by the distribution in \eqref{eq:pred_dist} whereas small values indicate the observed data are not well supported by the distribution in \eqref{eq:pred_dist} and hence the prior $\pi(\theta)$ that is integrated over to obtain it.}
+%Box's p-value can be interpreted as the probability of observing data as or more extreme than $\textcolor{red}{\mathbf{D}}$, given the predictive distribution. 
+%
+%Small values of $\psi({\textcolor{red}{\mathbf{D}}})$ indicate a lack of compatibility or congruency between the prior and the data. 
 %
 We propose using the \textcolor{black}{enthusiastic prior} $\pi_E(\theta)$ to compute the quantities in \eqref{eq:pred_dist} and \eqref{eq:box_p} to create \textcolor{black}{a compatibility measurement} $\psi^{(E)}(\textcolor{red}{\mathbf{D}})$ which \textcolor{black}{is} used to determine the mixing weight in \eqref{eq:inference_prior}. Use of Box's p-value as a measure of prior-data conflict has been considered previously \citep{PsiodaXue2020}, but not in the context of sequential monitoring or using a mixture prior framework as we proposed here.
 
@@ -906,9 +909,10 @@ The operating characteristics presented in this section are estimated using 2,50
 We consider comparing the adaptive monitoring prior \eqref{eq:inference_prior} with a standard design that uses a non-informative prior to determine treatment efficacy in \eqref{eq:convinced}. To simplify this illustration, we consider a design without interim analyses. The non-informative prior will be a uniform prior over the joint parameter space of $(\theta,\eta)$. In particular, $\pi_{NI}(\theta)$ is a marginal uniform prior on the risk difference $\theta$, with range $[-1, 1]$.}
 
 \textcolor{red}{
-When using $\pi_{NI}(\theta)$ in \eqref{eq:convinced}, the probability of concluding treatment efficacy when $\theta=\theta_0$ is $0.025$, and when $\theta=\theta_1$ it is $0.217$. This shows that the non-informative prior maintains the nominal type I error rate. When using $\pi_{AE}(\theta)$ with $\delta=0$, the probability of concluding efficacy is $0.189$ when $\theta=\theta_0$ and is $0.675$ when $\theta=\theta_1$. This shows that the adaptive monitoring prior has a higher than nominal type I error rate, and correspondingly has higher power. If an analysis with the non-informative prior was permitted to have this same higher type I error rate by modifying the evidence threshold in equation \eqref{eq:convinced}, the associated power would be similar, at $0.617$. This shows that power is comparable across analyses that use priors with the same allowable type I error rate (see \cite{Psioda2018}).}
+When using $\pi_{NI}(\theta)$ in \eqref{eq:convinced}, the probability of concluding treatment efficacy when $\theta=\theta_0$ is $0.025$ (i.e., the type I error rate), and when $\theta=\theta_1$ it is $0.217$ (i.e., the power). This shows that an analysis with the non-informative prior maintains the nominal type I error rate but, for the sample sizes used in the PLUTO trial, provides very low power. When using $\pi_{AE}(\theta)$ with $\delta=0$, the probability of concluding efficacy is $0.189$ when $\theta=\theta_0$ and is $0.675$ when $\theta=\theta_1$. This shows that the adaptive monitoring prior has a higher than nominal type I error rate, and correspondingly has higher power. If an analysis with the non-informative prior was permitted to have this same higher type I error rate by modifying the evidence threshold in equation \eqref{eq:convinced}, the associated power would be similar, at $0.617$.}
+\textcolor{blue}{Consider increasing the sample size to 161 subjects per group and changing the residual uncertainty to $\epsilon=0.05$. When using a non-informative prior, the probability of concluding treatment efficacy when $\theta=\theta_0$ is $0.05$ (i.e., the type I error rate), and when $\theta=\theta_1$ it is $0.70$ (i.e., the power). When using $\pi_{AE}(\theta)$ with $\delta=0$, the probability of concluding efficacy is $0.26$ when $\theta=\theta_0$ and is $0.94$ when $\theta=\theta_1$. If an analysis with the non-informative prior was permitted to have this same higher type I error rate by modifying the evidence threshold in equation \eqref{eq:convinced}, the associated power would identical, at $0.94$. }
 
-\textcolor{red}{Any time the evidence threshold in equation \eqref{eq:convinced} is modified, the associated posterior probability is not compared to an interpretable quantity that is associated with a compelling demonstration. Our approach uses the same threshold $1-\epsilon$ regardless of the number of interim analyses.
+\textcolor{red}{Although possible to simply modify the critical value used for hypothesis testing within a traditional design framework, we do not advocate this approach. By doing so, one is implicitly deciding what level of evidence the pediatric data provide on their own, whereas a compelling demonstration of treatment effectiveness after synthesis of all pertinent information still requires additional post hoc evaluation. Instead, the proposed approach focuses on the end result, whether or not there is a compelling demonstration of treatment efficacy once all evidence has been synthesized and provides a clear and rigorous framework for synthesis that balances information borrowing with the need to act sensibly in the presence of prior-data conflict.
 }
 \section{Real Data Example}\label{sec:realdataexample}
 \textcolor{black}{
@@ -1023,20 +1027,20 @@ Below are step-by-step instructions for implementing this method in the context 
 \begin{enumerate}
 \item Identify parameters for the trial design:
 \begin{enumerate}
-\item Specify null treatment response rate $\theta_0$ which is used in the null and alternative hypotheses $H_0$ and $H_1$.
+\item Specify null treatment effect $\theta_0$ which is used to define the null and alternative hypotheses $H_0$ and $H_1$.
 \item Specify threshold for a compelling demonstration $1-\epsilon$.
 \item Specify the plausible, clinically meaningful value for the treatment effect $\theta_1$.
 \end{enumerate}
 \item Create monitoring priors:
 \begin{enumerate}
-\item Choose prior shape for the skeptical and enthusiastic monitoring priors $\pi_S(\theta)$ and $\pi_E(\theta)$ (e.g. choose $k$ as described in Section \ref{sec:def-mon-priors}). Our recommendation is to use a concentrated specification for $\pi_S(\theta)$ and a default specification for $\pi_E(\theta)$.
-\item Solve for the parameters in the generalized normal distributions $\pi_S(\theta)$ and $\pi_E(\theta)$ as described in Section \ref{sec:def-mon-priors} and Appendix B. These parameters are deterministic byproducts the quantities provided in Step 1 and Step 2(a). The code for this paper shows how these parameters were computed.
+\item Choose prior shape for the skeptical and enthusiastic monitoring priors $\pi_S(\theta)$ and $\pi_E(\theta)$ (e.g. choose $k$ as described in Section \ref{sec:def-mon-priors}). Our recommendation is to use a concentrated specification (i.e., $k=1.5$)  for $\pi_S(\theta)$ and a default specification (i.e., a normal distribution which has asymptotic justification as belief arriving from a hypothetical dataset) for $\pi_E(\theta)$.
+\item Solve for the parameters in the generalized normal distributions $\pi_S(\theta)$ and $\pi_E(\theta)$ as described in Section \ref{sec:def-mon-priors} and Appendix B. These parameters are determined by the quantities provided in Step 1 and Step 2(a). The code for this paper shows how these parameters were computed.
 \item Repeat Steps 2(a,b) for nuisance parameters as described in Section \ref{sec:cond_marg}.
-\item If the adaptive monitoring prior $\pi_{AE}(\theta)$ is to be used, specify the minimum possible mixing weight $\delta$ assigned to the skeptical prior. Our recommendation is $\delta=0.1$.
+\item If the adaptive monitoring prior $\pi_{AE}(\theta)$ is to be used, specify the minimum possible mixing weight $\delta$ assigned to the skeptical prior. Our recommendation is $\delta=0.1$ so that a modest weight of at least 0.1 is always given to the skeptical prior.
 \end{enumerate}
 \item Sequentially monitor the clinical trial:
 \begin{enumerate}
-\item Conduct monitoring according to \eqref{eq:convinced}. If the adaptive monitoring prior is used, then compute the mixture weight $\omega$ using \eqref{eq:omega}.
+\item Iteratively conduct monitoring according to \eqref{eq:convinced}. If the adaptive monitoring prior is used, then compute the mixture weight $\omega$ using \eqref{eq:omega} at each iteration.
 \end{enumerate}
 \end{enumerate}
 }
