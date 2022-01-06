@@ -44,7 +44,7 @@ source("priors/09_ni_joint.R")
 ni_joint()
 
 # # December 2021
-skpt.alpha0    <- 1E3
-skpt.rd.alpha0 <- 1E3
-
+skpt.alpha0    <- 1E3     # eta
+# skpt.rd.alpha0 <- 1E3   # theta
+# 
 save.image(file = 'args_model.RData')

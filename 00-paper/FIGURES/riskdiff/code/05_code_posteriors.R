@@ -25,8 +25,10 @@
 # Notes: Anything with "post" refers to a function
 
 # SECTION 1: PRIORS (normalized)
+
+
 skpt.prior.1 <- function(x, y){ # for x > 0 (theta > 0)
-    dgnorm(x,         delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)/
+  dgnorm(x,         delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)/
     (pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
        pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0))*
     dgnorm(y,          mu, skpt.alpha0, skpt.beta0)/
@@ -41,6 +43,7 @@ skpt.prior.2 <- function(x, y){ # for x < 0 (theta < 0)
     (pgnorm(q = 1,    mu,         skpt.alpha0,    skpt.beta0) -
        pgnorm(q = -x, mu,         skpt.alpha0,    skpt.beta0))
 }
+
 enth.prior.1 <- function(x, y){ # for x > 0 (theta > 0)
   dgnorm(x,           delta.enth, enth.rd.alpha0, enth.rd.beta0)/
     (pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) -
@@ -121,7 +124,7 @@ prior_dat_conflict <- function(y1.IP, y0.IP, y1.PC, y0.PC){
       # }
       # skpt.post.nc[i, j] <- integrate_debug(skpt.post.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
       #   integrate_debug(skpt.post.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
-
+      
       enth.post.1   <- function(x, y){
         exp(
           dbinom(i-1,   y1.IP + y0.IP, x + y, log = TRUE) +
@@ -183,7 +186,7 @@ prior_dat_conflict <- function(y1.IP, y0.IP, y1.PC, y0.PC){
   # box.skpt <- sum(skpt.post.nc[skpt.post.nc <= skpt.post.nc[y1.IP + 1, y1.PC + 1]])
   # print(paste0("Sum marginal prob of data with skpt prior (should be 1): ", sum(skpt.post.nc)))
   # print(paste0("Skeptical prior compatibility: ", box.skpt))
-
+  
   # prior data conflict for enthusiastic prior
   box.enth <- sum(enth.post.nc[enth.post.nc <= enth.post.nc[y1.IP + 1, y1.PC + 1]])
   print(paste0("Sum marginal prob of data with enth prior (should be 1): ", sum(enth.post.nc)))
@@ -291,62 +294,124 @@ if (eff.mix.prob > 100){
 # Edited on 5/7/2020
 # Still should be on log scale
 
-
-skpt.post.sc.1 <- function(x, y){
-  exp(
-    dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
-      dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
-      dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) - 
-      log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) - 
-            pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)) +
-      dgnorm(y,            mu, skpt.alpha0, skpt.beta0, log = TRUE) - 
-      log(pgnorm(q = 1-x,  mu, skpt.alpha0, skpt.beta0) - 
-            pgnorm(q = 0,  mu, skpt.alpha0, skpt.beta0))
-  )
+if (skpt.rd.alpha0 == 1E3 & skpt.alpha0 == 1E3){ 
+  skpt.post.sc.1 <- function(x, y){
+    exp(
+      dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+        dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE)
+    )
+  }
+  skpt.post.sc.2 <- function(x, y){
+    exp(
+      dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+        dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE)
+    )
+  }
+  enth.post.sc.1 <- function(x, y){
+    exp(
+      dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+        dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE)
+    )
+  }
+  enth.post.sc.2 <- function(x, y){
+    exp(
+      dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+        dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE)
+    )
+  }
+} else if (skpt.alpha0 == 1E3){
+  skpt.post.sc.1 <- function(x, y){
+    exp(
+      dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+        dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) +
+        dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) -
+        log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
+              pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0))
+    )
+  }
+  skpt.post.sc.2 <- function(x, y){
+    exp(
+      dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+        dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) +
+        dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) -
+        log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) -
+              pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0))
+    )
+  }
+  enth.post.sc.1 <- function(x, y){
+    exp(
+      dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+        dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
+        dgnorm(x,            delta.enth, enth.rd.alpha0, enth.rd.beta0, log = TRUE) - 
+        log(pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) - 
+              pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))
+    )
+  }
+  enth.post.sc.2 <- function(x, y){
+    exp(
+      dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+        dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
+        dgnorm(x,            delta.enth, enth.rd.alpha0, enth.rd.beta0, log = TRUE) - 
+        log(pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) - 
+              pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0))
+    )
+  }
+} else {
+  skpt.post.sc.1 <- function(x, y){
+    exp(
+      dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+        dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
+        dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) - 
+        log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) - 
+              pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)) +
+        dgnorm(y,            mu, skpt.alpha0, skpt.beta0, log = TRUE) - 
+        log(pgnorm(q = 1-x,  mu, skpt.alpha0, skpt.beta0) - 
+              pgnorm(q = 0,  mu, skpt.alpha0, skpt.beta0))
+    )
+  }
+  skpt.post.sc.2 <- function(x, y){
+    exp(
+      dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+        dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
+        dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) - 
+        log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) - 
+              pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)) +
+        dgnorm(y,            mu, skpt.alpha0, skpt.beta0, log = TRUE) - 
+        log(pgnorm(q = 1,    mu, skpt.alpha0, skpt.beta0) - 
+              pgnorm(q = -x, mu, skpt.alpha0, skpt.beta0))
+    )
+  }
+  enth.post.sc.1 <- function(x, y){
+    exp(
+      dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+        dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
+        dgnorm(x,            delta.enth, enth.rd.alpha0, enth.rd.beta0, log = TRUE) - 
+        log(pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) - 
+              pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0)) +
+        dgnorm(y,            mu, enth.alpha0, enth.beta0, log = TRUE) - 
+        log(pgnorm(q = 1-x,  mu, enth.alpha0, enth.beta0) - 
+              pgnorm(q = 0,  mu, enth.alpha0, enth.beta0))
+    )
+  }
+  enth.post.sc.2 <- function(x, y){
+    exp(
+      dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
+        dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
+        dgnorm(x,            delta.enth, enth.rd.alpha0, enth.rd.beta0, log = TRUE) - 
+        log(pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) - 
+              pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0)) +
+        dgnorm(y,            mu, enth.alpha0, enth.beta0, log = TRUE) - 
+        log(pgnorm(q = 1,    mu, enth.alpha0, enth.beta0) - 
+              pgnorm(q = -x, mu, enth.alpha0, enth.beta0))
+    )
+  }
 }
-skpt.post.sc.2 <- function(x, y){
-  exp(
-    dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
-      dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
-      dgnorm(x,            delta.skpt, skpt.rd.alpha0, skpt.rd.beta0, log = TRUE) - 
-      log(pgnorm(q = 1,    delta.skpt, skpt.rd.alpha0, skpt.rd.beta0) - 
-            pgnorm(q = -1, delta.skpt, skpt.rd.alpha0, skpt.rd.beta0)) +
-      dgnorm(y,            mu, skpt.alpha0, skpt.beta0, log = TRUE) - 
-      log(pgnorm(q = 1,    mu, skpt.alpha0, skpt.beta0) - 
-            pgnorm(q = -x, mu, skpt.alpha0, skpt.beta0))
-  )
-}
-enth.post.sc.1 <- function(x, y){
-  exp(
-    dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
-      dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
-      dgnorm(x,            delta.enth, enth.rd.alpha0, enth.rd.beta0, log = TRUE) - 
-      log(pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) - 
-            pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0)) +
-      dgnorm(y,            mu, enth.alpha0, enth.beta0, log = TRUE) - 
-      log(pgnorm(q = 1-x,  mu, enth.alpha0, enth.beta0) - 
-            pgnorm(q = 0,  mu, enth.alpha0, enth.beta0))
-  )
-}
-enth.post.sc.2 <- function(x, y){
-  exp(
-    dbinom(y1.IP,   y1.IP + y0.IP, x + y, log = TRUE) +
-      dbinom(y1.PC, y1.PC + y0.PC, y, log = TRUE) + 
-      dgnorm(x,            delta.enth, enth.rd.alpha0, enth.rd.beta0, log = TRUE) - 
-      log(pgnorm(q = 1,    delta.enth, enth.rd.alpha0, enth.rd.beta0) - 
-            pgnorm(q = -1, delta.enth, enth.rd.alpha0, enth.rd.beta0)) +
-      dgnorm(y,            mu, enth.alpha0, enth.beta0, log = TRUE) - 
-      log(pgnorm(q = 1,    mu, enth.alpha0, enth.beta0) - 
-            pgnorm(q = -x, mu, enth.alpha0, enth.beta0))
-  )
-}
-
 # scaled normalizing constant for posterior density
 # No longer scaled on 5/7/2020, just regular probability of data
 skpt.nc.sc <- integrate_debug(skpt.post.sc.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
-              integrate_debug(skpt.post.sc.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
+  integrate_debug(skpt.post.sc.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
 enth.nc.sc <- integrate_debug(enth.post.sc.1, xmin = 0,  xmax = 1, ymin = 0, ymax = function(x) 1 - x) +
-              integrate_debug(enth.post.sc.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
+  integrate_debug(enth.post.sc.2, xmin = -1, xmax = 0, ymin = function(x) -x, ymax = 1)
 
 # check that posterior is normalized
 # print(paste0("skpt posterior integral: ",

@@ -62,7 +62,8 @@ rm(list = ls())
 ## December 2021
 simulation <- expand.grid(
   # seq(.27, 0.63, length = 7), # p.IP
-  .51, # p.IP
+  seq(0.15, 0.87, by = 0.03),
+  # .51, # p.IP
   .39, # p.PC
   # NA,
   # NA,
@@ -70,15 +71,15 @@ simulation <- expand.grid(
   1,   # enr.shape
   4,   # out.mean
   0,   # fut.mix.prob
-  rep(1, 800),   # eff.mix.prob
+  rep(0.2, 32),   # eff.mix.prob
   # rep(101, 800),   # eff.mix.prob
   # c(seq(1, 0, by = -0.05), 10, 20, 21, 22, 23, 24, 30), # eff.mix.prob
   # c(seq(1, 0, by = -0.05), 101:130), # eff.mix.prob
   0.5,  # inf.mix.prob
   0.05, # cred.tail
-  322,  # max.ss
-  322,   # min.ss
-  130)   # reps
+  100,  # max.ss
+  100,   # min.ss
+  313)   # reps
 
 names(simulation) <- c(
   "p.IP",
