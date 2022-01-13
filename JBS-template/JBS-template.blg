@@ -1,30 +1,28 @@
-This is BibTeX, Version 0.99d
+This is BibTeX, Version 0.99d (TeX Live 2021)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: JBS-template.aux
-Reallocating 'name_of_file' (item size: 1) to 5 items.
 The style file: agsm.bst
-Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: ./References.bib
 You've used 22 entries,
             2909 wiz_defined-function locations,
-            798 strings with 8993 characters,
-and the built_in function-call counts, 102242 in all, are:
-= -- 16693
+            798 strings with 8989 characters,
+and the built_in function-call counts, 102227 in all, are:
+= -- 16690
 > -- 1374
 < -- 0
 + -- 8026
 - -- 420
-* -- 8956
-:= -- 20355
+* -- 8952
+:= -- 20354
 add.period$ -- 23
 call.type$ -- 22
 change.case$ -- 306
 chr.to.int$ -- 22
 cite$ -- 22
 duplicate$ -- 348
-empty$ -- 749
+empty$ -- 748
 format.name$ -- 497
-if$ -- 18363
+if$ -- 18362
 int.to.chr$ -- 5
 int.to.str$ -- 0
 missing$ -- 21
@@ -36,13 +34,13 @@ purify$ -- 330
 quote$ -- 0
 skip$ -- 300
 stack$ -- 0
-substring$ -- 23781
+substring$ -- 23777
 swap$ -- 64
 text.length$ -- 308
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 84
 warning$ -- 0
-while$ -- 487
+while$ -- 486
 width$ -- 0
 write$ -- 286

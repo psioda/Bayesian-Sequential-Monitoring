@@ -44,7 +44,7 @@
 \textbf{Abstract}:
 {We present a Bayesian framework for sequential monitoring that allows for use of external data, and that 
 can be applied in a wide range of clinical trial applications. The basis for this framework is the 
-idea that, in many cases, specification of priors used for sequential monitoring and the stopping criteria can be semi-algorithmic byproducts of the trial hypotheses and relevant external data, simplifying the process of prior elicitation. Monitoring priors are defined using the family of generalized normal distributions which comprise a flexible class of priors, naturally allowing one to construct a prior that is peaked or flat about the parameter values thought to be most likely. External data are incorporated into the monitoring process though mixing an a priori skeptical prior with an enthusiastic prior using a weight that can be fixed or adaptively estimated. In particular, we introduce an \textcolor{black}{adaptive monitoring prior} for efficacy evaluation which dynamically weighs skeptical and enthusiastic prior components based on the degree to which observed data \textcolor{black}{are} consistent with an enthusiastic perspective. The proposed approach allows for prospective and pre-specified use of external data in the monitoring procedure.
+idea that, in many cases, specification of priors used for sequential monitoring and the stopping criteria can be semi-algorithmic byproducts of the trial hypotheses and relevant external data, simplifying the process of prior elicitation. Monitoring priors are defined using the family of generalized normal distributions which comprise a flexible class of priors, naturally allowing one to construct a prior that is peaked or flat about the parameter values thought to be most likely. External data are incorporated into the monitoring process through mixing an a priori skeptical prior with an enthusiastic prior using a weight that can be fixed or adaptively estimated. In particular, we introduce an \textcolor{black}{adaptive monitoring prior} for efficacy evaluation which dynamically weighs skeptical and enthusiastic prior components based on the degree to which observed data \textcolor{black}{are} consistent with an enthusiastic perspective. The proposed approach allows for prospective and pre-specified use of external data in the monitoring procedure.
 %
 We illustrate the method for both single-arm and two-arm randomized controlled trials. For the latter case, we \textcolor{black}{also include a retrospective analysis of actual trial data using the proposed adaptive sequential monitoring procedure}. Both examples are motivated by completed pediatric trials, and the designs incorporate information from adult trials to varying degrees. Preposterior analysis \textcolor{black}{and frequentist operating characteristics} of each trial design \textcolor{black}{are discussed.}}
 
@@ -102,7 +102,7 @@ Alternatively, in Bayesian sequential monitoring, data can be monitored on a con
 
 In the clinical development of a therapeutic product, external forces may impede a clinical trial from reaching its objective (e.g. difficulty in enrolling, limited patient populations, long latency in observing the outcome of interest). 
 %
-This challenge is especially apparent in cases where the disease for which the investigational product (IP) is an intended treatment is rare or where the focus is on \textcolor{black}{a pediatric population}. 
+This challenge is especially apparent in cases where \textcolor{red}{the treatment setting is in a rare disease or where the focus is on a pediatric population}.
 %
 In settings where patients are difficult to enroll, and therefore meaningful numbers of patients will complete follow-up prior to the trial reaching full enrollment, the concept of frequently monitoring interim data to determine whether a trial (or enrollment) can be stopped becomes appealing. 
 %
@@ -112,8 +112,8 @@ As such, the use of Bayesian sequential methods, rooted in the likelihood princi
 
 \textcolor{red}{
 %
-For traditional frequentist approaches, pre-existing information (e.g., historical data) are often used to determine a plausible, clinically meaningful 
-value for the treatment effect to use for power calculations, but is not generally used in analysis once data are actually available.
+For traditional frequentist approaches, pre-existing information (e.g., historical data) is often used to determine a plausible, clinically meaningful 
+value for the treatment effect to use for power calculations, but this pre-existing information is not generally used in analysis once data are actually available.
 %
 In contrast, the Bayesian paradigm provides a natural framework for incorporating information into both the design and analysis of a future trial.
 %
@@ -235,7 +235,7 @@ the analysis \citep{Psioda2018}.
 This paper is organized as follows: %
 Section \ref{sec:preliminaries} reviews Bayesian hypothesis testing using posterior probabilities and the use of  skeptical and enthusiastic priors for efficacy and futility monitoring. 
 %
-Section \ref{sec:mps} presents a method for parameterizing monitoring priors the generalized normal distribution and for incorporating prior information into the monitoring priors, and a method to specify priors for nuisance parameters.
+Section \ref{sec:mps} presents a method for parameterizing monitoring priors \textcolor{red}{using} the generalized normal distribution and for incorporating prior information into the monitoring priors, and a method to specify priors for nuisance parameters.
 %
 Examples are given in Section \ref{sec:examples}, with Section \ref{sec:example1} presenting an example based on a single-arm trial and Section \ref{sec:example2} presenting an example based on a two-arm randomized, controlled trial. \textcolor{black}{The purpose of Section \ref{sec:example1} is to demonstrate using skeptical and enthusiastic priors that are peaked or flat about the parameter values thought to be most likely, and the purpose of Section \ref{sec:example2} is to demonstrate the adaptive monitoring prior in a more complicated setting that involves specifying a prior for a nuisance parameter.} \textcolor{red}{The example from Section \ref{sec:example2} is explored further in Section \ref{sec:non-informative} which contains a comparison of the adaptive monitoring prior with a standard design using a non-informative prior, and Section \ref{sec:realdataexample} which contains an analysis of a real dataset. We close the paper with some discussion and recommendations for practitioners in Section \ref{sec:discussion}.}
 %Conclusions from Bayesian inferences are not affected by the frequency with which the data are monitored, and such interim analyses should be encouraged to terminate data collection if appropriate \citep{Berry1989,Berry1993,Spiegelhalter1994}. The Bayesian perspective is based on the likelihood principle which asserts that any data with the same likelihood function should lead to the same conclusion \citep{Berger1988}. In the context of sequential analysis of clinical trials, the stopping rule that leads to the termination of data collection is irrelevant to the conclusion \citep{Barnard1947,Anscombe1963,Cornfield1966a,Cornfield1966b}. 
@@ -248,9 +248,9 @@ Examples are given in Section \ref{sec:examples}, with Section \ref{sec:example1
 Consider a clinical trial application where the primary objective is to test a hypothesis about an unknown quantity of interest which we denote by $\theta$, with possible values
 for $\theta$ falling in the parameter space $\Theta$.
 %
-For example, in a single-arm trial with a binary response endpoint, $\theta \in (0,1)$ may be the response probability associated with patients receiving the IP.
+For example, in a single-arm trial with a binary response endpoint, $\theta \in (0,1)$ may be the response probability associated with patients receiving the IP \textcolor{red}{(investigational product)}.
 %
-In a two-arm trial with a binary response endpoint, $\theta \in (-1,1)$ may be the difference in response probabilities between patients receiving the IP and those receiving the control treatment.
+In a two-arm trial with a binary response endpoint, $\theta \in (-1,1)$ may be the difference in response probabilities between patients receiving the IP and those receiving the \textcolor{red}{PC (placebo control)}.
 
 Throughout the paper we will let $\mathbf{D}$ represent the data collected in a trial at some point in time. 
 %
@@ -390,7 +390,7 @@ having relatively extreme skepticism regarding the magnitude of treatment benefi
 
 
 For a sequentially monitored trial, observed data are analyzed as often as is feasible in accordance with 
-the cost and/or logistical challenges of assembling the necessary data.
+the cost and/or logistical challenges of assembling the necessary data \textcolor{red}{and its assessment}.
 %
 For example, if an outcome requires adjudication by a committee of clinical experts, it may not be possible to reanalyze the
 data after each new patient's outcome is obtained due to scheduling or other constraints on the adjudication panel.
@@ -452,7 +452,7 @@ However, the mode and tail constraints do uniquely determine a pair of normal di
 %The density for a  normal distribution $\mathcal{N}(\mu,\sigma)$ is $f(\theta)=\frac{1}{\sqrt 2\pi\sigma} \text{exp}(-\frac{1}{2}(\frac{\theta-\mu}{\sigma})^2)$ where $\mu$ is a location parameter and $\sigma>0$ is the standard deviation. 
 %
 A default enthusiastic monitoring prior satisfying (i) $\text{argmax}_\theta~\pi_E(\theta)=\theta_1$
-and (ii) $P_E(\theta > \theta_0)=1-\epsilon$ is the normal distribution with location $\theta_1$ and standard deviation $\sigma=\frac{\theta_1-\theta_0}{\Phi^{-1}(1-\epsilon)}$, where $\Phi^{-1}$ denotes the quantile function of a standard normal.
+and (ii) $P_E(\theta > \theta_0)=1-\epsilon$ is the normal distribution with location $\mu=\theta_1$ and standard deviation $\sigma=\frac{\theta_1-\theta_0}{\Phi^{-1}(1-\epsilon)}$, where $\Phi^{-1}$ denotes the quantile function of a standard normal.
 %
 The specification of $\mu$ and $\sigma$ completely determine the density at all points, including the value of the density at the mode which is $f(\theta_1)=\frac{1}{\sqrt{2\pi}\sigma}$.
 %
@@ -916,9 +916,9 @@ The operating characteristics presented in this section are estimated using 2,50
 \subsection{Comparison to Single Analysis with Non-Informative Prior}\label{sec:non-informative}
 We consider a simplified design without interim analyses that compares the use of the adaptive monitoring prior to a non-informative prior for the determination of treatment efficacy. The sample size of 100 patients and randomization scheme are the same as described in Section \ref{sec:example2}. The non-informative prior, denoted by $\pi_{NI}(\theta)$, is a uniform prior over the joint parameter space of $(\theta,\eta)$ so that the distribution of the risk difference $\theta$ and placebo response rate $\eta$ are both marginally uniform. As was done in Section \ref{sec:example2}, the placebo response rate $\eta$ is fixed at $0.39$, and different possible values of the risk difference $\theta$ are considered.}
 
-\textcolor{red}{For comparison purposes, we modify the skeptical and enthusiastic components which contribute to the adaptive monitoring prior to each have a marginally uniform distribution on $\eta$. We note that it is possible to achieve a simultaneous increase in power and preservation of nominal type I error rate as compared with a non-informative prior on the treatment effect if there is still an informative prior providing accurate information on nuisance parameters (e.g., see \cite{Psioda2018a}), but that is not the focus in this example. In the following analyses, we also consider comparisons with a non-informative prior with a modified threshold for compelling evidence (referred to as modified critical value method in \cite{Psioda2018}) to identify any differences in null hypothesis rejection rates beyond a simple rescaling of the rejection rate at $\theta=\theta_0$.}
+\textcolor{red}{For comparison purposes, we modify the skeptical and enthusiastic components which contribute to the adaptive monitoring prior to each having a marginally uniform distribution on $\eta$. We note that it is possible to achieve a simultaneous increase in power and preservation of nominal type I error rate as compared with a non-informative prior on the treatment effect if there is still an informative prior providing accurate information on nuisance parameters (e.g., see \cite{Psioda2018a}), but that is not the focus in this example. In the following analyses, we also consider comparisons with a non-informative prior with a modified threshold for compelling evidence (referred to as modified critical value method in \cite{Psioda2018}) to identify any differences in null hypothesis rejection rates beyond a simple rescaling of the rejection rate at $\theta=\theta_0$.}
 
-\textcolor{red}{Figure \ref{fig:adaptive-vs-ni}(A) demonstrates that the null hypothesis rejection rate using a fixed weight mixture prior with $\omega=0.8$ in \eqref{eq:inference_prior} is uniformly greater than the non-informative prior, including at $\theta=0$. However, if we modify the threshold for compelling evidence in \eqref{eq:compellingevidence} so that the rejection rates at $\theta=0$ are equal, then the rejection rates for all values of $\theta$ become identical, consistent with findings from \cite{Psioda2018}. Although possible to simply modify the critical value used for hypothesis testing within a traditional design framework, we do not advocate this approach. By doing so, one is implicitly deciding what level of evidence the pediatric data provide on their own, whereas a compelling demonstration of treatment effectiveness after synthesis of all pertinent information still requires additional post hoc evaluation. Instead, the proposed approach focuses on the end result, whether or not there is a compelling demonstration of treatment efficacy once all evidence has been synthesized and provides a clear and rigorous framework for synthesis that balances information borrowing with the need to act sensibly in the presence of prior-data conflict.}
+\textcolor{red}{Figure \ref{fig:adaptive-vs-ni}(A) demonstrates that the null hypothesis rejection rate using a fixed weight mixture prior with $\omega=0.8$ in \eqref{eq:inference_prior} is uniformly greater than the non-informative prior, including at $\theta=0$. However, if we modify the threshold for compelling evidence in \eqref{eq:compellingevidence} so that the rejection rates at $\theta=0$ are equal, then the rejection rates for all values of $\theta$ become identical, consistent with findings from \cite{Psioda2018}. Although possible to simply modify the critical value used for hypothesis testing within a traditional design framework, we do not advocate for this approach. By doing so, one is implicitly deciding what level of evidence the pediatric data provide on their own, whereas a compelling demonstration of treatment effectiveness after synthesis of all pertinent information still requires additional post hoc evaluation. Instead, the proposed approach focuses on the end result, whether or not there is a compelling demonstration of treatment efficacy once all evidence has been synthesized and provides a clear and rigorous framework for synthesis that balances information borrowing with the need to act sensibly in the presence of prior-data conflict.}
 
 \textcolor{red}{Figure \ref{fig:adaptive-vs-ni}(B) demonstrates that the adaptive monitoring prior has a higher null hypothesis rejection rate at $\theta=0$, and a higher rejection rate for values of $\theta$ less than 0.3. However, if we modify the threshold for compelling evidence in \eqref{eq:compellingevidence} so that the rejection rates at $\theta=0$ are identical, then the rejection rates for the adaptive monitoring prior is higher for the adaptive monitoring prior for fewer values of theta, in particular for values of $\theta$ greater than 0 and less than 0.19, an interval containing effects much larger than that best supported by the adult data. This showcases desirable operating characteristics of the adaptive monitoring prior as compared to a non-informative prior, even when the required evidence threshold for analysis with the non-informative prior is modified (i.e., lowered).}
 
@@ -982,7 +982,7 @@ needed to reproduce the analyses presented Examples 1 and 2 of this paper. Softw
 To be written.
 
 \section*{Declaration of Interest Statement}
-To be written.
+\textcolor{red}{Disclaimer: This work represents the views of the authors and should not be construed to represent FDA's views or policies.}
 
  \bibliographystyle{agsm} 
  \bibliography{./References}		
@@ -1048,7 +1048,7 @@ This parameterizing procedure is applicable to a generalized normal distribution
 
 \textcolor{red}{
 \subsection*{C: Step-by-Step Implementation Guide}
-Below are step-by-step instructions for implementing this method in the context of a non-inferiority trial.
+Below are step-by-step instructions for implementing this method in the context of a superiority trial.
 \begin{enumerate}
 \item Identify parameters for the trial design:
 \begin{enumerate}
@@ -1224,8 +1224,8 @@ $\delta$	&	Sample Size (I/F)			&	$\psi^{(E)}(\textcolor{red}{\mathbf{D}})$ (I/F)
 
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[width=5.5in]{./figures/fixed-vs-ni.png}
-   \includegraphics[width=5.5in]{./figures/adaptive-vs-ni.png}
+\includegraphics[width=5.5in]{./figures/7A.png}
+   \includegraphics[width=5.5in]{./figures/7B.png}
 %    \includegraphics[width=6in]{figure6a.png}
     \caption{A, Null hypothesis rejection rate by choice of prior for treatment efficacy, comparing fixed weight monitoring prior to non-informative monitoring priors. B, Null hypothesis rejection rate by choice of prior for treatment efficacy, comparing adaptive monitoring prior to non-informative monitoring priors.}
 \label{fig:adaptive-vs-ni}
