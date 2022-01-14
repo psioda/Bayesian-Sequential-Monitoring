@@ -22,6 +22,9 @@ Byrd, R.~H., Lu, P., Nocedal, J., and Zhu, C.
   1995. A limited memory algorithm for bound constrained
   optimization. {\em SIAM Journal on Scientific Computing} {16}(5):1190--1208.
 
+\harvarditem{Duan et~al.}{2006}{Duan2006}
+Duan Y., Ye K., and Smith, E. 2006. Evaluating water quality using power priors to incorporate historical information. {\em Environmetrics} {17}(1):95--106.
+
 \harvarditem{Griffin}{2018}{Griffin2018}
 Griffin, M. 2018. gnorm: Working with the
   exponential power distribution using gnorm. R package version 1.0.0.
@@ -29,6 +32,9 @@ Griffin, M. 2018. gnorm: Working with the
 \harvarditem[Hyams et~al.]{Hyams, Damaraju, Blank, Johanns, Guzzo, Winter
   \harvardand\ et~al.}{2012}{Hyams2012}
 Hyams, J., Damaraju, L., Blank, M., Johanns, J., Guzzo, C., Winter, H.~S., et~al. 2012. {Induction and maintenance therapy with infliximab for children with moderate to severe  ulcerative colitis}. {\em Clinical Gastroenterology and Hepatology} {10}(4):391--399.
+
+\harvarditem{Ibrahim \harvardand\ Chen}{2000}{Ibrahim2000}
+Ibrahim, J. and Chen M. 2000. Power prior distributions for regression models. {\em Statistical Science} {15}(1):46--60.
 
 \harvarditem{Jennison \harvardand\ Turnbull}{2000}{Jennison2000}
 Jennison, C. and Turnbull, B.~W.  2000. {\em {Group sequential methods with applications to
