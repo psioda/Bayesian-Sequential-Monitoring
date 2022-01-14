@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.12.21)  13 JAN 2022 15:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.12.21)  14 JAN 2022 09:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -360,14 +360,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--87
  []
 
 ) [29] [30]
-Overfull \hbox (51.00914pt too wide) in paragraph at lines 1047--1048
+Overfull \hbox (51.00914pt too wide) in paragraph at lines 1044--1045
 \OT1/cmr/m/n/12 has den-sity equal to $\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/
 cmm/m/it/12 ^^R\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 c \OMS/cmsy/m/n/12 ^^A [] [
 ] []$ \OT1/cmr/m/n/12 where $\OML/cmm/m/it/12 c \OT1/cmr/m/n/12 = []([])[]$. 
  []
 
 [31] [32] [33]
-Overfull \hbox (30.24498pt too wide) in paragraph at lines 1079--1091
+Overfull \hbox (30.24498pt too wide) in paragraph at lines 1076--1088
  [][] 
  []
 
@@ -375,132 +375,132 @@ Overfull \hbox (30.24498pt too wide) in paragraph at lines 1079--1091
 <./figures/figure1a.png, id=126, 1505.625pt x 1505.625pt>
 File: ./figures/figure1a.png Graphic file (type png)
 <use ./figures/figure1a.png>
-Package pdftex.def Info: ./figures/figure1a.png  used on input line 1161.
+Package pdftex.def Info: ./figures/figure1a.png  used on input line 1158.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
 <./figures/figure1b.png, id=128, 1505.625pt x 1505.625pt>
 File: ./figures/figure1b.png Graphic file (type png)
 <use ./figures/figure1b.png>
-Package pdftex.def Info: ./figures/figure1b.png  used on input line 1162.
+Package pdftex.def Info: ./figures/figure1b.png  used on input line 1159.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
 <./figures/figure1c.png, id=129, 1505.625pt x 1505.625pt>
 File: ./figures/figure1c.png Graphic file (type png)
 <use ./figures/figure1c.png>
-Package pdftex.def Info: ./figures/figure1c.png  used on input line 1163.
+Package pdftex.def Info: ./figures/figure1c.png  used on input line 1160.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
 <./figures/figure1d.png, id=130, 1505.625pt x 1505.625pt>
 File: ./figures/figure1d.png Graphic file (type png)
 <use ./figures/figure1d.png>
-Package pdftex.def Info: ./figures/figure1d.png  used on input line 1164.
+Package pdftex.def Info: ./figures/figure1d.png  used on input line 1161.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
  [36 <./figures/figure1a.png> <./figures/figure1b.png> <./figures/figure1c.png>
  <./figures/figure1d.png>]
 <./figures/figure5a_NEW.png, id=138, 1505.625pt x 1505.625pt>
 File: ./figures/figure5a_NEW.png Graphic file (type png)
 <use ./figures/figure5a_NEW.png>
-Package pdftex.def Info: ./figures/figure5a_NEW.png  used on input line 1174.
+Package pdftex.def Info: ./figures/figure5a_NEW.png  used on input line 1171.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
 <./figures/figure5b_NEW.png, id=139, 1505.625pt x 1505.625pt>
 File: ./figures/figure5b_NEW.png Graphic file (type png)
 <use ./figures/figure5b_NEW.png>
-Package pdftex.def Info: ./figures/figure5b_NEW.png  used on input line 1175.
+Package pdftex.def Info: ./figures/figure5b_NEW.png  used on input line 1172.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
 <./figures/figure5a.png, id=140, 3613.5pt x 1806.75pt>
 File: ./figures/figure5a.png Graphic file (type png)
 <use ./figures/figure5a.png>
-Package pdftex.def Info: ./figures/figure5a.png  used on input line 1176.
+Package pdftex.def Info: ./figures/figure5a.png  used on input line 1173.
 (pdftex.def)             Requested size: 433.62pt x 216.80064pt.
 <./figures/figure2a.png, id=141, 3161.8125pt x 2107.875pt>
 File: ./figures/figure2a.png Graphic file (type png)
 <use ./figures/figure2a.png>
-Package pdftex.def Info: ./figures/figure2a.png  used on input line 1197.
+Package pdftex.def Info: ./figures/figure2a.png  used on input line 1194.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 <./figures/figure2b.png, id=142, 3161.8125pt x 2107.875pt>
 File: ./figures/figure2b.png Graphic file (type png)
 <use ./figures/figure2b.png>
-Package pdftex.def Info: ./figures/figure2b.png  used on input line 1198.
+Package pdftex.def Info: ./figures/figure2b.png  used on input line 1195.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 <./figures/figure3a.png, id=143, 3161.8125pt x 2107.875pt>
 File: ./figures/figure3a.png Graphic file (type png)
 <use ./figures/figure3a.png>
-Package pdftex.def Info: ./figures/figure3a.png  used on input line 1207.
+Package pdftex.def Info: ./figures/figure3a.png  used on input line 1204.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 <./figures/figure3b.png, id=144, 3161.8125pt x 2107.875pt>
 File: ./figures/figure3b.png Graphic file (type png)
 <use ./figures/figure3b.png>
-Package pdftex.def Info: ./figures/figure3b.png  used on input line 1208.
+Package pdftex.def Info: ./figures/figure3b.png  used on input line 1205.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 
 
-LaTeX Warning: Float too large for page by 12.67747pt on input line 1213.
+LaTeX Warning: Float too large for page by 12.67747pt on input line 1210.
 
 <./figures/3-part-compatibility-2.png, id=145, 3161.8125pt x 2107.875pt>
 File: ./figures/3-part-compatibility-2.png Graphic file (type png)
 <use ./figures/3-part-compatibility-2.png>
 Package pdftex.def Info: ./figures/3-part-compatibility-2.png  used on input li
-ne 1217.
+ne 1214.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
 <./figures/figure6.png, id=146, 4065.1875pt x 2710.125pt>
 File: ./figures/figure6.png Graphic file (type png)
 <use ./figures/figure6.png>
-Package pdftex.def Info: ./figures/figure6.png  used on input line 1218.
+Package pdftex.def Info: ./figures/figure6.png  used on input line 1215.
 (pdftex.def)             Requested size: 433.62pt x 289.05833pt.
 
-LaTeX Warning: Float too large for page by 26.51538pt on input line 1223.
+LaTeX Warning: Float too large for page by 26.51538pt on input line 1220.
 
 <./figures/7A.png, id=147, 4065.1875pt x 2710.125pt>
 File: ./figures/7A.png Graphic file (type png)
 <use ./figures/7A.png>
-Package pdftex.def Info: ./figures/7A.png  used on input line 1227.
+Package pdftex.def Info: ./figures/7A.png  used on input line 1224.
 (pdftex.def)             Requested size: 397.48499pt x 264.99081pt.
 <./figures/7B.png, id=148, 4065.1875pt x 2710.125pt>
 File: ./figures/7B.png Graphic file (type png)
 <use ./figures/7B.png>
-Package pdftex.def Info: ./figures/7B.png  used on input line 1228.
+Package pdftex.def Info: ./figures/7B.png  used on input line 1225.
 (pdftex.def)             Requested size: 397.48499pt x 264.99081pt.
 <./figures/2dbayesp.png, id=149, 3011.25pt x 2409.0pt>
 File: ./figures/2dbayesp.png Graphic file (type png)
 <use ./figures/2dbayesp.png>
-Package pdftex.def Info: ./figures/2dbayesp.png  used on input line 1237.
+Package pdftex.def Info: ./figures/2dbayesp.png  used on input line 1234.
 (pdftex.def)             Requested size: 383.03122pt x 306.41747pt.
 <./figures/2dpostp.png, id=150, 3011.25pt x 2409.0pt>
 File: ./figures/2dpostp.png Graphic file (type png)
 <use ./figures/2dpostp.png>
-Package pdftex.def Info: ./figures/2dpostp.png  used on input line 1238.
+Package pdftex.def Info: ./figures/2dpostp.png  used on input line 1235.
 (pdftex.def)             Requested size: 383.03122pt x 306.41747pt.
 
-LaTeX Warning: Float too large for page by 32.23824pt on input line 1242.
+LaTeX Warning: Float too large for page by 32.23824pt on input line 1239.
 
 [37 <./figures/figure5a_NEW.png> <./figures/figure5b_NEW.png> <./figures/figure
 5a.png>] [38 <./figures/figure2a.png> <./figures/figure2b.png>] [39 <./figures/
 figure3a.png> <./figures/figure3b.png>] [40 <./figures/3-part-compatibility-2.p
 ng> <./figures/figure6.png>] [41 <./figures/7A.png> <./figures/7B.png>]
 [42 <./figures/2dbayesp.png> <./figures/2dpostp.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1246--1259
+Underfull \hbox (badness 10000) in paragraph at lines 1243--1256
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1246--1259
+Underfull \hbox (badness 10000) in paragraph at lines 1243--1256
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1246--1259
+Underfull \hbox (badness 10000) in paragraph at lines 1243--1256
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1246--1259
+Underfull \hbox (badness 10000) in paragraph at lines 1243--1256
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1246--1259
+Underfull \hbox (badness 10000) in paragraph at lines 1243--1256
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1246--1259
+Underfull \hbox (badness 10000) in paragraph at lines 1243--1256
 
  []
 
@@ -527,7 +527,7 @@ s/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
 m/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmti12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mtt12.pfb>
-Output written on JBS-template.pdf (44 pages, 3240982 bytes).
+Output written on JBS-template.pdf (44 pages, 3240566 bytes).
 PDF statistics:
  235 PDF objects out of 1000 (max. 8388607)
  140 compressed objects within 2 object streams
