@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.12.21)  15 JAN 2022 06:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.12.21)  15 JAN 2022 15:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -977,7 +977,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1249--1262
 Here is how much of TeX's memory you used:
  15783 strings out of 478994
  305218 string characters out of 5858183
- 605694 words of memory out of 5000000
+ 605695 words of memory out of 5000000
  32891 multiletter control sequences out of 15000+600000
  411643 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -996,7 +996,7 @@ s/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
 m/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmti12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mtt12.pfb>
-Output written on JBS-template.pdf (44 pages, 3241311 bytes).
+Output written on JBS-template.pdf (44 pages, 3241305 bytes).
 PDF statistics:
  238 PDF objects out of 1000 (max. 8388607)
  143 compressed objects within 2 object streams
