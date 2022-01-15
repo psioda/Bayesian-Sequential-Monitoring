@@ -115,14 +115,14 @@ As such, the use of Bayesian sequential methods, rooted in the likelihood princi
 % \textcolor{black}{...which to develop Complex Innovative Designs (CIDs) – a performance goal set forth under PDUFA VI legislation\citep{FDA2017}}.
 %
 
-\hl{For traditional frequentist approaches, prior information (e.g., historical data) is often used to provide external evidence about the magnitude of a plausible, clinically meaningful 
+{For traditional frequentist approaches, prior information (e.g., historical data) is often used to provide external evidence about the magnitude of a plausible, clinically meaningful 
 value for the treatment effect to use for power calculations, but this external evidence generally is not used in analysis once data are actually available.
 %
 In contrast, the Bayesian paradigm provides a natural framework for incorporating information into both the design and analysis of a future trial.
 %
 For analysis purposes, external evidence is typically translated into a prior distribution that characterizes what is currently believed about the treatment effect.
 %
-See, for example,}\colorbox{yellow}{\cite{Psioda2018}}\hl{ and the references therein for recent work on general Bayesian methods for trial design and analysis using historical data.}
+See, for example, \cite{Psioda2018} and the references therein for recent work on general Bayesian methods for trial design and analysis using historical data.}
 %
 %This is comparable to the value used in frequentist analyses to inform power calculations.
 %
@@ -407,9 +407,9 @@ The strategies presented here for sequential monitoring are appropriate regardle
 %$P_S(\theta>\theta_0|\mathbf{D})$ which has already been defined so there is no need to relabel it. Also, it is not ``efficacy 
 %criteria'', it is a posterior probability -- this is what I mean by an imprecise statement. We need to be careful to avoid these.}
 
-\hl{Stopping criteria are based on whether the posterior probability that the treatment effect is in a particular region is sufficiently large. For region $\Theta_i$, this is formalized as}
+{Stopping criteria are based on whether the posterior probability that the treatment effect is in a particular region is sufficiently large. For region $\Theta_i$, this is formalized as}
 \begin{equation}\label{eq:convinced}
-\mathcolorbox{yellow}		{P_\pi(\theta\in\Theta_i|\mathbf{D}) > 1-\epsilon,}
+{P_\pi(\theta\in\Theta_i|\mathbf{D}) > 1-\epsilon,}
 \end{equation} 
 where we note the inequality in \eqref{eq:convinced} compared to the equality in \eqref{eq:compellingevidence}.
 %where the subscript $\pi$ indicates the probability is calculated based on a prior or posterior distribution for $\theta$.
@@ -582,23 +582,23 @@ We define the \textit{adaptive monitoring prior} \textcolor{black}{for efficacy 
 \end{equation}
 where $\omega\in(0,1)$ is an adaptively determined mixing weight. %In contrast to adaptive weighting, fixed choices of $\omega$ will be used as comparisons for the performance of the adaptive weight monitoring prior in Section \ref{sec:example2}. 
 %
-\textcolor{black}{The objective of the proposed approach is to create a mixture prior which favors the enthusiastic prior component in cases where high compatibility is observed between the trial data and the enthusiastic prior, but favors the skeptical prior component if the data observed are incompatible with the enthusiastic prior. This approach is motivated by the rationale that the enthusiastic prior reflects a plausible perspective about the treatment's effect, and one that we assume will typically be informed by data (e.g., from adult trials in the case of a planned pediatric trial).} \hl{The adaptive monitoring prior $\pi_{AE}(\theta)$ is used to make determinations regarding treatment efficacy for monitoring purposes, and is a replacement for the traditional skeptical prior $\pi_S(\theta)$ in}\colorbox{yellow}{\eqref{eq:convinced}}.
+\textcolor{black}{The objective of the proposed approach is to create a mixture prior which favors the enthusiastic prior component in cases where high compatibility is observed between the trial data and the enthusiastic prior, but favors the skeptical prior component if the data observed are incompatible with the enthusiastic prior. This approach is motivated by the rationale that the enthusiastic prior reflects a plausible perspective about the treatment's effect, and one that we assume will typically be informed by data (e.g., from adult trials in the case of a planned pediatric trial).} {The adaptive monitoring prior $\pi_{AE}(\theta)$ is used to make determinations regarding treatment efficacy for monitoring purposes, and is a replacement for the traditional skeptical prior $\pi_S(\theta)$ in} {\eqref{eq:convinced}}.
 
 
 The adaptive mixing weight $\omega$ is determined by an assessment of prior-data conflict, proposed by \textcolor{black}{Box} \citep{Box1980}, derived using the prior predictive distribution of 
 the data which is defined (in our case) using the \textcolor{black}{enthusiastic prior}.
 	%
-\hl{The prior-predictive distribution for replicated data denoted by $\mathbf{D}_{\text{rep}}$ reflects the probability of observing this hypothetical data given 
+{The prior-predictive distribution for replicated data denoted by $\mathbf{D}_{\text{rep}}$ reflects the probability of observing this hypothetical data given 
 the assumed data generating mechanism and prior for $\theta$, and is defined formally as}
 \begin{equation}\label{eq:pred_dist}
-\mathcolorbox{yellow}{p(\mathbf{D}_{\text{rep}}) =\int p(\mathbf{D}_{\text{rep}}|\theta)\pi(\theta)d\theta.}
+{p(\mathbf{D}_{\text{rep}}) =\int p(\mathbf{D}_{\text{rep}}|\theta)\pi(\theta)d\theta.}
 \end{equation}
-\hl{\textit{Box's p-value} is defined as the following:}
+{\textit{Box's p-value} is defined as the following:}
 %\begin{equation}
 %p=P(p(y)\leq p(y_{obs}))
 %\end{equation}
 \begin{equation}\label{eq:box_p}
-\mathcolorbox{yellow}{\psi({\textcolor{black}{\mathbf{D}}})=\int {p(\textcolor{black}{\mathbf{D}_{\text{rep}}})}  1[p(\textcolor{black}{\mathbf{D}_{\text{rep}}})\leq p(\textcolor{black}{\mathbf{D}})] d(\textcolor{black}{\mathbf{D}_{\text{rep}}})}
+{\psi({\textcolor{black}{\mathbf{D}}})=\int {p(\textcolor{black}{\mathbf{D}_{\text{rep}}})}  1[p(\textcolor{black}{\mathbf{D}_{\text{rep}}})\leq p(\textcolor{black}{\mathbf{D}})] d(\textcolor{black}{\mathbf{D}_{\text{rep}}})}
 %\sum_{\mathbf{D}}p^{(h)}(\mathbf{D})1[p^{(h)}(\mathbf{D})\leq p^{(h)}(\textcolor{black}{\mathbf{D}})]
 \end{equation}
 %which in the case of discrete data is equal to $\psi({\textcolor{black}{\mathbf{D}}})=\sum_{\mathbf{D}}p(\mathbf{D})1[p(\mathbf{D})\leq p(\textcolor{black}{\mathbf{D}})]$.
@@ -912,7 +912,7 @@ An interim analysis is completed after every two patients have outcomes beginnin
 \textcolor{black}{
 The operating characteristics presented in this section are estimated using 2,500 simulated trials per value of $\theta$ using the trial design as described in Section \ref{sec:example2model}. The generating response probability in the placebo group was assumed to be 0.39, and the generating response probability in the treatment group was determined based on risk differences $\theta$ in $\{0, 0.03, 0.06, 0.09, 0.12\}$. Figure \ref{fig:ex2varyomega}(B) shows the probability of stopping early for efficacy and the associated sample sizes when using the adaptive monitoring prior \eqref{eq:inference_prior} with different choices of $\delta$ in \eqref{eq:omega}. When $\delta=0$ or $\delta=0.05$, a conclusion of efficacy is made at an interim analysis $24\%$ and $14\%$ of the time respectively, while this value is $7\%$ or lower when $\delta \geq 0.1$. Reductions in expected sample size are seen with lower choices of $\delta$ and higher generated risk differences. When $\delta=0.1$, a demonstration of efficacy is observed in $53\%$ of simulated trials, with an expected sample size of 90.1. Even though this is a modest reduction from the maximum sample size of 100 for this case, even more favorable reductions are possible when enrollment is comparatively slower and/or when follow-up times are comparatively shorter.}
 
-\begin{mdframed}[hidealllines=true,backgroundcolor=yellow]
+%\begin{mdframed}[hidealllines=true,backgroundcolor=yellow]
 \subsection{Comparison to Single Analysis with Non-Informative Prior}\label{sec:non-informative}
 We consider a simplified design without interim analyses that compares the use of the adaptive monitoring prior to a non-informative prior for the determination of treatment efficacy. The sample size of 100 patients and randomization scheme are the same as described in Section \ref{sec:example2}. The non-informative prior, denoted by $\pi_{NI}(\theta)$, is a uniform prior over the joint parameter space of $(\theta,\eta)$ so that the distribution of the risk difference $\theta$ and placebo response rate $\eta$ are both marginally uniform. As was done in Section \ref{sec:example2}, the placebo response rate $\eta$ is fixed at $0.39$, and different possible values of the risk difference $\theta$ are considered.
 
@@ -922,7 +922,7 @@ We consider a simplified design without interim analyses that compares the use o
 
 \textcolor{black}{Figure \ref{fig:adaptive-vs-ni}(B) demonstrates that the adaptive monitoring prior has a higher null hypothesis rejection rate at $\theta=0$, and a higher rejection rate for values of $\theta$ less than 0.3. However, if we modify the threshold for compelling evidence in \eqref{eq:compellingevidence} so that the rejection rates at $\theta=0$ are identical, then the rejection rates for the adaptive monitoring prior are higher for the adaptive monitoring prior for fewer values of theta, in particular for values of $\theta$ greater than 0 and less than 0.19, an interval containing effects much larger than those best supported by the adult data. This showcases desirable operating characteristics of the adaptive monitoring prior as compared to a non-informative prior, even when the required evidence threshold for analysis with the non-informative prior is modified (i.e., lowered).}
 
-\end{mdframed}
+%\end{mdframed}
 %\textcolor{black}{
 %When using $\pi_{NI}(\theta)$, the probability of concluding treatment efficacy when $\theta=\theta_0$ is $0.025$ (i.e., the type I error rate), and when $\theta=\theta_1$ it is $0.217$ (i.e., the power). This shows that an analysis with the non-informative prior maintains the nominal type I error rate but, for the sample sizes used in the PLUTO trial, provides very low power. When using $\pi_{AE}(\theta)$ with $\delta=0$, the probability of concluding efficacy is $0.189$ when $\theta=\theta_0$ and is $0.675$ when $\theta=\theta_1$. Thus, the design with the adaptive monitoring prior has substantially higher power and, necessarily, a substantially higher type I error rate.
 %%
@@ -961,7 +961,7 @@ In this paper, we present a structured framework for specifying monitoring prior
 
 \textcolor{black}{Our formulation of the enthusiastic prior enforces that there be residual uncertainty that the null hypothesis is true; 
 %\sout{it demonstrates strong belief about effectiveness of the treatment yet is still consistent with a degree of equipoise. In the extreme case that interim data are observed to be perfectly consistent with the enthusiastic prior,} 
-\textcolor{black}{by construction} the residual uncertainty that the null hypothesis is true reflected in the adaptive monitoring prior cannot be less than that reflected in the enthusiastic prior itself. This is a critical feature of the design as it enforces the requirement that observed data must demonstrate some degree of efficacy on their own to justify stopping enrollment early. Without maintaining residual uncertainty as we have done when constructing the enthusiastic prior, it would be possible to conclude benefit in cases where observed data are somewhat consistent with that prior (i.e., $\psi^{(E)}(\textcolor{black}{\mathbf{D}}) > 0$) but also consistent with no benefit (or even harm). This is particularly problematic when the observed data contain little information compared to the source that informs the enthusiastic prior (as is often the case in pediatric settings). \hl{Other techniques for creating a dynamic borrowing prior for monitoring purposes would require manual verification that the information contributed by the prior is consistent with the residual uncertainty that must be present to justify the trial to begin with. For example, using a power prior }\colorbox{yellow}{\citep{Ibrahim2000}}\hl{ or a normalized power prior }\colorbox{yellow}{\citep{Duan2006}}\hl{ would require that the value of the borrowing parameter (or its distribution) be chosen such that analysis of new data does not result in a compelling demonstration of efficacy in cases where the new data suggest otherwise.} Thus, the proposed approach provides a desirable assurance that evidence of efficacy must come, at least in part, from both the prior information and the trial data. 
+\textcolor{black}{by construction} the residual uncertainty that the null hypothesis is true reflected in the adaptive monitoring prior cannot be less than that reflected in the enthusiastic prior itself. This is a critical feature of the design as it enforces the requirement that observed data must demonstrate some degree of efficacy on their own to justify stopping enrollment early. Without maintaining residual uncertainty as we have done when constructing the enthusiastic prior, it would be possible to conclude benefit in cases where observed data are somewhat consistent with that prior (i.e., $\psi^{(E)}(\textcolor{black}{\mathbf{D}}) > 0$) but also consistent with no benefit (or even harm). This is particularly problematic when the observed data contain little information compared to the source that informs the enthusiastic prior (as is often the case in pediatric settings). {Other techniques for creating a dynamic borrowing prior for monitoring purposes would require manual verification that the information contributed by the prior is consistent with the residual uncertainty that must be present to justify the trial to begin with. For example, using a power prior \citep{Ibrahim2000} or a normalized power prior \citep{Duan2006} would require that the value of the borrowing parameter (or its distribution) be chosen such that analysis of new data does not result in a compelling demonstration of efficacy in cases where the new data suggest otherwise.} Thus, the proposed approach provides a desirable assurance that evidence of efficacy must come, at least in part, from both the prior information and the trial data. 
 }
 
 %A conclusion of treatment efficacy is possible only when there is overwhelming treatment benefit observed in the trial data so as to convince a skeptic on that data's own merit, or, in the more likely scenario, some evidence of benefit from the trial data along with reasonable compatibility with the enthusiastic prior.
@@ -1049,7 +1049,7 @@ where $\sigma=\frac{\theta_0-\theta_1}{\Phi^{-1}(\epsilon)}$.
 
 This parameterizing procedure is applicable to a generalized normal distribution truncated to an interval domain (e.g. when $\theta$ is a response probability with domain $[0,1]$). In this case, the generalized normal distribution truncated to an interval domain $\Theta=(\theta_{min},\theta_{max})$ has density equal to $f(\theta)=c\cdot\exp\left\{-\frac{|\theta-\mu|}{\alpha}^{\beta}\right\}{I(\theta\in \Theta)}$ where $c=\frac{\beta}{2\alpha \Gamma(1/\beta)}({F_{\mu,\alpha,\beta}(\theta_{max})-F_{\mu,\alpha,\beta}(\theta_{min})})^{-1}$.
 
-\begin{mdframed}[hidealllines=true,backgroundcolor=yellow]
+%\begin{mdframed}[hidealllines=true,backgroundcolor=yellow]
 \subsection*{C: Step-by-Step Implementation Guide}
 Below are step-by-step instructions for implementing this method in the context of a superiority trial.
 \begin{enumerate}
@@ -1071,7 +1071,7 @@ Below are step-by-step instructions for implementing this method in the context 
 \item Iteratively conduct monitoring according to \eqref{eq:convinced}. If the adaptive monitoring prior is used, then compute the mixture weight $\omega$ using \eqref{eq:omega} at each iteration, which is constructed using the computation of Box's p-value \eqref{eq:box_p} which in turn uses the predictive distribution of the data \eqref{eq:pred_dist}.
 \end{enumerate}
 \end{enumerate}
-\end{mdframed}
+%\end{mdframed}
 
 \newpage
 \section*{Tables}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.12.21)  14 JAN 2022 16:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.12.21)  15 JAN 2022 06:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -810,13 +810,13 @@ Non-PDF special ignored!
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17]
-[18] [19] [20] [21] [22] [23] [24] [25] [26]
+[18] [19] [20] [21] [22] [23] [24] [25]
 Overfull \hbox (35.74402pt too wide) in paragraph at lines 979--981
 \OT1/cmr/m/n/12 A GitHub repos-i-tory (https://github.com/kwiatkowski-evan/JBS-
 Adaptive-Sequential-Monitoring)
  []
 
-(./JBS-template.bbl [27] [28]
+[26] (./JBS-template.bbl [27] [28]
 Underfull \hbox (badness 10000) in paragraph at lines 92--93
 []\OT1/cmr/m/n/12 U.S. Congress. 2016. 21st Cen-tury Cures Act. H.R. 34, 114th 
 Congress.
@@ -828,74 +828,72 @@ Underfull \hbox (badness 10000) in paragraph at lines 92--93
 4enr.pdf. Ac-
  []
 
-[29]) [30] [31]
+) [29] [30]
 Overfull \hbox (51.00914pt too wide) in paragraph at lines 1050--1051
 \OT1/cmr/m/n/12 has den-sity equal to $\OML/cmm/m/it/12 f\OT1/cmr/m/n/12 (\OML/
 cmm/m/it/12 ^^R\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 c \OMS/cmsy/m/n/12 ^^A [] [
 ] []$ \OT1/cmr/m/n/12 where $\OML/cmm/m/it/12 c \OT1/cmr/m/n/12 = []([])[]$. 
  []
 
-[32]
-Package mdframed Info: Not enough space on this page on input line 1074.
- [33] [34]
+[31] [32] [33]
 Overfull \hbox (30.24498pt too wide) in paragraph at lines 1082--1094
  [][] 
  []
 
-[35] [36]
-<./figures/figure1a.png, id=132, 1505.625pt x 1505.625pt>
+[34] [35]
+<./figures/figure1a.png, id=129, 1505.625pt x 1505.625pt>
 File: ./figures/figure1a.png Graphic file (type png)
 <use ./figures/figure1a.png>
 Package pdftex.def Info: ./figures/figure1a.png  used on input line 1164.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<./figures/figure1b.png, id=134, 1505.625pt x 1505.625pt>
+<./figures/figure1b.png, id=131, 1505.625pt x 1505.625pt>
 File: ./figures/figure1b.png Graphic file (type png)
 <use ./figures/figure1b.png>
 Package pdftex.def Info: ./figures/figure1b.png  used on input line 1165.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<./figures/figure1c.png, id=135, 1505.625pt x 1505.625pt>
+<./figures/figure1c.png, id=132, 1505.625pt x 1505.625pt>
 File: ./figures/figure1c.png Graphic file (type png)
 <use ./figures/figure1c.png>
 Package pdftex.def Info: ./figures/figure1c.png  used on input line 1166.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<./figures/figure1d.png, id=136, 1505.625pt x 1505.625pt>
+<./figures/figure1d.png, id=133, 1505.625pt x 1505.625pt>
 File: ./figures/figure1d.png Graphic file (type png)
 <use ./figures/figure1d.png>
 Package pdftex.def Info: ./figures/figure1d.png  used on input line 1167.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
- [37 <./figures/figure1a.png> <./figures/figure1b.png> <./figures/figure1c.png>
+ [36 <./figures/figure1a.png> <./figures/figure1b.png> <./figures/figure1c.png>
  <./figures/figure1d.png>]
-<./figures/figure5a_NEW.png, id=145, 1505.625pt x 1505.625pt>
+<./figures/figure5a_NEW.png, id=141, 1505.625pt x 1505.625pt>
 File: ./figures/figure5a_NEW.png Graphic file (type png)
 <use ./figures/figure5a_NEW.png>
 Package pdftex.def Info: ./figures/figure5a_NEW.png  used on input line 1177.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<./figures/figure5b_NEW.png, id=146, 1505.625pt x 1505.625pt>
+<./figures/figure5b_NEW.png, id=142, 1505.625pt x 1505.625pt>
 File: ./figures/figure5b_NEW.png Graphic file (type png)
 <use ./figures/figure5b_NEW.png>
 Package pdftex.def Info: ./figures/figure5b_NEW.png  used on input line 1178.
 (pdftex.def)             Requested size: 216.81pt x 216.80524pt.
-<./figures/figure5a.png, id=147, 3613.5pt x 1806.75pt>
+<./figures/figure5a.png, id=143, 3613.5pt x 1806.75pt>
 File: ./figures/figure5a.png Graphic file (type png)
 <use ./figures/figure5a.png>
 Package pdftex.def Info: ./figures/figure5a.png  used on input line 1179.
 (pdftex.def)             Requested size: 433.62pt x 216.80064pt.
-<./figures/figure2a.png, id=148, 3161.8125pt x 2107.875pt>
+<./figures/figure2a.png, id=144, 3161.8125pt x 2107.875pt>
 File: ./figures/figure2a.png Graphic file (type png)
 <use ./figures/figure2a.png>
 Package pdftex.def Info: ./figures/figure2a.png  used on input line 1200.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<./figures/figure2b.png, id=149, 3161.8125pt x 2107.875pt>
+<./figures/figure2b.png, id=145, 3161.8125pt x 2107.875pt>
 File: ./figures/figure2b.png Graphic file (type png)
 <use ./figures/figure2b.png>
 Package pdftex.def Info: ./figures/figure2b.png  used on input line 1201.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<./figures/figure3a.png, id=150, 3161.8125pt x 2107.875pt>
+<./figures/figure3a.png, id=146, 3161.8125pt x 2107.875pt>
 File: ./figures/figure3a.png Graphic file (type png)
 <use ./figures/figure3a.png>
 Package pdftex.def Info: ./figures/figure3a.png  used on input line 1210.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<./figures/figure3b.png, id=151, 3161.8125pt x 2107.875pt>
+<./figures/figure3b.png, id=147, 3161.8125pt x 2107.875pt>
 File: ./figures/figure3b.png Graphic file (type png)
 <use ./figures/figure3b.png>
 Package pdftex.def Info: ./figures/figure3b.png  used on input line 1211.
@@ -904,13 +902,13 @@ Package pdftex.def Info: ./figures/figure3b.png  used on input line 1211.
 
 LaTeX Warning: Float too large for page by 12.67747pt on input line 1216.
 
-<./figures/3-part-compatibility-2.png, id=152, 3161.8125pt x 2107.875pt>
+<./figures/3-part-compatibility-2.png, id=148, 3161.8125pt x 2107.875pt>
 File: ./figures/3-part-compatibility-2.png Graphic file (type png)
 <use ./figures/3-part-compatibility-2.png>
 Package pdftex.def Info: ./figures/3-part-compatibility-2.png  used on input li
 ne 1220.
 (pdftex.def)             Requested size: 433.62pt x 289.05374pt.
-<./figures/figure6.png, id=153, 4065.1875pt x 2710.125pt>
+<./figures/figure6.png, id=149, 4065.1875pt x 2710.125pt>
 File: ./figures/figure6.png Graphic file (type png)
 <use ./figures/figure6.png>
 Package pdftex.def Info: ./figures/figure6.png  used on input line 1221.
@@ -918,22 +916,22 @@ Package pdftex.def Info: ./figures/figure6.png  used on input line 1221.
 
 LaTeX Warning: Float too large for page by 26.51538pt on input line 1226.
 
-<./figures/7A.png, id=154, 4065.1875pt x 2710.125pt>
+<./figures/7A.png, id=150, 4065.1875pt x 2710.125pt>
 File: ./figures/7A.png Graphic file (type png)
 <use ./figures/7A.png>
 Package pdftex.def Info: ./figures/7A.png  used on input line 1230.
 (pdftex.def)             Requested size: 397.48499pt x 264.99081pt.
-<./figures/7B.png, id=155, 4065.1875pt x 2710.125pt>
+<./figures/7B.png, id=151, 4065.1875pt x 2710.125pt>
 File: ./figures/7B.png Graphic file (type png)
 <use ./figures/7B.png>
 Package pdftex.def Info: ./figures/7B.png  used on input line 1231.
 (pdftex.def)             Requested size: 397.48499pt x 264.99081pt.
-<./figures/2dbayesp.png, id=156, 3011.25pt x 2409.0pt>
+<./figures/2dbayesp.png, id=152, 3011.25pt x 2409.0pt>
 File: ./figures/2dbayesp.png Graphic file (type png)
 <use ./figures/2dbayesp.png>
 Package pdftex.def Info: ./figures/2dbayesp.png  used on input line 1240.
 (pdftex.def)             Requested size: 383.03122pt x 306.41747pt.
-<./figures/2dpostp.png, id=157, 3011.25pt x 2409.0pt>
+<./figures/2dpostp.png, id=153, 3011.25pt x 2409.0pt>
 File: ./figures/2dpostp.png Graphic file (type png)
 <use ./figures/2dpostp.png>
 Package pdftex.def Info: ./figures/2dpostp.png  used on input line 1241.
@@ -941,11 +939,11 @@ Package pdftex.def Info: ./figures/2dpostp.png  used on input line 1241.
 
 LaTeX Warning: Float too large for page by 32.23824pt on input line 1245.
 
-[38 <./figures/figure5a_NEW.png> <./figures/figure5b_NEW.png> <./figures/figure
-5a.png>] [39 <./figures/figure2a.png> <./figures/figure2b.png>] [40 <./figures/
-figure3a.png> <./figures/figure3b.png>] [41 <./figures/3-part-compatibility-2.p
-ng> <./figures/figure6.png>] [42 <./figures/7A.png> <./figures/7B.png>]
-[43 <./figures/2dbayesp.png> <./figures/2dpostp.png>]
+[37 <./figures/figure5a_NEW.png> <./figures/figure5b_NEW.png> <./figures/figure
+5a.png>] [38 <./figures/figure2a.png> <./figures/figure2b.png>] [39 <./figures/
+figure3a.png> <./figures/figure3b.png>] [40 <./figures/3-part-compatibility-2.p
+ng> <./figures/figure6.png>] [41 <./figures/7A.png> <./figures/7B.png>]
+[42 <./figures/2dbayesp.png> <./figures/2dpostp.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 1249--1262
 
  []
@@ -975,15 +973,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 1249--1262
 
  []
 
-[44] [45] (./JBS-template.aux) ) 
+[43] [44] (./JBS-template.aux) ) 
 Here is how much of TeX's memory you used:
- 15883 strings out of 478994
- 307593 string characters out of 5858183
- 627764 words of memory out of 5000000
- 32991 multiletter control sequences out of 15000+600000
+ 15783 strings out of 478994
+ 305218 string characters out of 5858183
+ 605694 words of memory out of 5000000
+ 32891 multiletter control sequences out of 15000+600000
  411643 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 133i,12n,138p,1745b,907s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 133i,12n,138p,1745b,274s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/p
@@ -998,10 +996,10 @@ s/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts
 m/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmti12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mtt12.pfb>
-Output written on JBS-template.pdf (45 pages, 3253746 bytes).
+Output written on JBS-template.pdf (44 pages, 3241311 bytes).
 PDF statistics:
- 241 PDF objects out of 1000 (max. 8388607)
- 145 compressed objects within 2 object streams
+ 238 PDF objects out of 1000 (max. 8388607)
+ 143 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  98 words of extra memory for PDF output out of 10000 (max. 10000000)
 
